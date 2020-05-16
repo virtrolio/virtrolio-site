@@ -9,7 +9,9 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
   },
   "storage": {
     "rules": "storage.rules"
