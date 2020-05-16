@@ -4,3 +4,47 @@
 
 # Jetbrains
 .idea
+
+
+# compiled output
+virtrolio/dist
+virtrolio/tmp
+virtrolio/out-tsc
+
+# dependencies
+virtrolio/node_modules
+
+# IDEs and editors
+virtrolio/.idea
+virtrolio/.project
+virtrolio/.classpath
+virtrolio/.c9/
+virtrolio/*.launch
+virtrolio/.settings/
+virtrolio/*.sublime-workspace
+
+# IDE - VSCode
+virtrolio/.vscode/*
+virtrolio/!.vscode/settings.json
+virtrolio/!.vscode/tasks.json
+virtrolio/!.vscode/launch.json
+virtrolio/!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+virtrolio/.DS_Store
+virtrolio/Thumbs.db
