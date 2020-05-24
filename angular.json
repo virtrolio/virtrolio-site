@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "virtrolio-site"
+    }
+  },
+  "defaultProject": "virtrolio-site",
+  "cli": {
+    "analytics": false
+  }
 }
