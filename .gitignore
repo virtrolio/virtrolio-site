@@ -2,33 +2,37 @@
 # firebase.json
 .firebase
 
-# Jetbrains
-.idea
-
-
 # compiled output
-virtrolio/dist
-virtrolio/tmp
-virtrolio/out-tsc
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
 
 # dependencies
-virtrolio/node_modules
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
 # IDEs and editors
-virtrolio/.idea
-virtrolio/.project
-virtrolio/.classpath
-virtrolio/.c9/
-virtrolio/*.launch
-virtrolio/.settings/
-virtrolio/*.sublime-workspace
+.idea
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 # IDE - VSCode
-virtrolio/.vscode/*
-virtrolio/!.vscode/settings.json
-virtrolio/!.vscode/tasks.json
-virtrolio/!.vscode/launch.json
-virtrolio/!.vscode/extensions.json
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # misc
 /.sass-cache
@@ -36,15 +40,10 @@ virtrolio/!.vscode/extensions.json
 /coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 testem.log
 /typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
 
 # System Files
 .DS_Store
 Thumbs.db
-virtrolio/.DS_Store
-virtrolio/Thumbs.db
