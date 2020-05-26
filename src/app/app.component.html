@@ -1,3 +1,15 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+
+<div class="d-none d-lg-block">
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+
+<div class="d-none d-block d-sm-block d-md-block d-lg-none">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Device too small</h1>
+      <p class="lead">Please use Virtolio on a wider screen for the best experience.</p>
+    </div>
+  </div>
+</div>
