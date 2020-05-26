@@ -9,3 +9,15 @@
     font-weight: regular;
     color: white;
 }
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+.footer-copyright {
+    background-color: rgb(43, 43, 43);
+}
