@@ -5,9 +5,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login'},
-  { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'},
   { path: 'login', component: LoginComponent },
-  { path: 'pagenotfound', component: PagenotfoundComponent }
+  { path: 'pagenotfound', component: PagenotfoundComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
