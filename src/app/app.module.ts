@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ViewingComponent } from './viewing/viewing.component';
 import { MessagesComponent } from './viewing/messages/messages.component';
+import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MessagesComponent } from './viewing/messages/messages.component';
     LoginComponent,
     PagenotfoundComponent,
     ViewingComponent,
-    MessagesComponent
+    MessagesComponent,
+    ResponsesListComponent
   ],
   imports: [
     BrowserModule,
