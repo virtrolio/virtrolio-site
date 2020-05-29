@@ -29,6 +29,18 @@
     align-items: center;
 }
 
+.message-card {
+    background-color: #EEEEEE;
+    height: 25em;
+    padding-left: 6em;
+    padding-right: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+
 /* Message Styling Classes */
 .font-family-montserrat {
     font-family: Montserrat;
