@@ -1,0 +1,18 @@
+#test {
+    background-color: skyblue;
+    border: 2px solid black;
+}
+
+#virtrolio-outer {
+    background-color: red;
+    height: 500px;
+    margin: 50px 0;
+}
+
+#virtrolio-title {
+    background-color: blue;
+}
+
+.btn-lg {
+    margin: 25px;
+}
