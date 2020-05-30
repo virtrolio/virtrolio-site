@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #4488ff;
+    background-color: var(--accent);
     position: fixed;
     top: 0;
     width: 100%;
