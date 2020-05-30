@@ -32,17 +32,12 @@
     </div>
 </div>
 <div *ngIf="viewMode == 'Cards'">
-    <div class="card message-card" *ngFor="let msg of userMsgData" class="page bg-color-{{msg.bgcolor}}">
+    <div class="card message-card" *ngFor="let msg of userMsgData" [ngStyle]="{'background': msg.bgcolor}">
         <table>
-          <tr class="message
-          font-family-{{msg.fontfamily}} 
-          font-style-{{msg.fontstyle}}
-          font-color-{{msg.fontcolor}}">
+          <tr [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
               <td>{{ msg.message }}</td>
           </tr>
-          <tr class="author
-          font-style-{{msg.fontstyle}}
-          font-color-{{msg.fontcolor}}">
+          <tr [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
               <td> {{ msg.author }}</td>
           </tr>
       </table>
