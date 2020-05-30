@@ -9,22 +9,22 @@ export class MessagesComponent implements OnInit {
   viewMode: string = 'Carousel';
   userMsgData = [{  'author': 'Rammy',
                     'message': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-                    'fontfamily': 'montserrat',
+                    'fontfamily': 'Montserrat',
                     'fontstyle': 'regular',
-                    'fontcolor': 'white',
-                    'bgcolor': 'blue'},
+                    'fontcolor': '#FFFFFF',
+                    'bgcolor': '#55d3f2'},
                   { 'author': 'Alice',
                     'message': 'Have a good summer',
-                    'fontfamily': 'courierNew',
+                    'fontfamily': 'Courier New',
                     'fontstyle': 'bold',
-                    'fontcolor': 'white',
-                    'bgcolor': 'salmon'},
+                    'fontcolor': '#FFFFFF',
+                    'bgcolor': '#ff6b8b'},
                   { 'author': 'Bob',
                     'message': 'Goodbye',
                     'fontfamily': 'Montserrat',
                     'fontstyle': 'italic',
-                    'fontcolor': 'pink',
-                    'bgcolor': 'blue'}];
+                    'fontcolor': '#696969',
+                    'bgcolor': '#f76534'}];
   constructor() { }
 
   ngOnInit(): void {

@@ -9,17 +9,12 @@
             </div>
           </div>
           <div class="carousel-item" *ngFor="let msg of userMsgData">
-            <div class="page bg-color-{{msg.bgcolor}}">
+            <div class="page" [ngStyle]="{'background': msg.bgcolor}">
                 <table>
-                    <tr class="message
-                    font-family-{{msg.fontfamily}} 
-                    font-style-{{msg.fontstyle}}
-                    font-color-{{msg.fontcolor}}">
+                    <tr [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
                         <td>{{ msg.message }}</td>
                     </tr>
-                    <tr class="author
-                    font-style-{{msg.fontstyle}}
-                    font-color-{{msg.fontcolor}}">
+                    <tr [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
                         <td> {{ msg.author }}</td>
                     </tr>
                 </table>
