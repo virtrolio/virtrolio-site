@@ -26,7 +26,6 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/main.css",
-              "src/assets/css/viewing-styles.css",
               "src/assets/css/message-styles.css",
               "src/styles.css"
             ],
