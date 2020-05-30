@@ -3,32 +3,3 @@
 h2 {
     font-family: Montserrat;
 }
-
-.navbar {
-    background-color: #4488ff;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-#navbar_title {
-    font-family: Montserrat;
-    font-weight: regular;
-    color: white;
-}
-
-#navbar-spacer {
-    padding-bottom: 5em;
-}
-
-footer {
-    left: 0;
-    bottom: 0;
-    background-color: rgb(43, 43, 43);
-    color: white;
-}
-
-.footer-copyright {
-    background-color: rgb(43, 43, 43);
-}
