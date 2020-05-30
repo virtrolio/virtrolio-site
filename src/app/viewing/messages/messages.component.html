@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-primary btn-sm" (click)="toggleViewStyle()" *ngIf="viewMode == 'Cards'">Carousel View</button>
 <button type="button" class="btn btn-primary btn-sm" (click)="toggleViewStyle()" *ngIf="viewMode == 'Carousel'">Cards View</button>
-<div *ngIf="viewMode == 'Carousel'">
+<div class="viewing-container" *ngIf="viewMode == 'Carousel'">
     <div id="carouselExampleControls" class="carousel slide my-4 border rounded" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
