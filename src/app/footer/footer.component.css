@@ -1,10 +1,10 @@
 footer {
     left: 0;
     bottom: 0;
-    background-color: rgb(43, 43, 43);
+    background-color: var(--dark-accent);
     color: white;
 }
 
 .footer-copyright {
-    background-color: rgb(43, 43, 43);
+    background-color: var(--dark-accent);
 }
