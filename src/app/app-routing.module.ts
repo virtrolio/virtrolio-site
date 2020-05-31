@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'friend-link', component: FriendLinkComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
