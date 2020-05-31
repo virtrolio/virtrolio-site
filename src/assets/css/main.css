@@ -1,10 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
+  /* variables */
   --accent: #fa8072;
-  --dark-accent: #353535;
+  --accent-transparent: rgba(250, 128, 114, 0.5);
+  --dark-accent: #e6716d;
+  --darkest-accent: #353535;
 }
 
 h2 {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
+}
+
+p {
+  font-family: Montserrat, sans-serif;
+}
+
+
+/* BOOTSTRAP BUTTON COLOUR MODIFICATIONS */
+
+.btn-primary {
+  background-color: var(--accent);
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-accent);
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--dark-accent);
+  box-shadow: 0 0 0 0.2rem rgba(224, 110, 81, 0.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: var(--dark-accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem var(--accent-transparent);
 }
