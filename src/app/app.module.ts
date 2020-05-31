@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SigningComponent } from './signing/signing.component';
+import { FriendLinkComponent } from './friend-link/friend-link.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SigningComponent } from './signing/signing.component';
     FooterComponent,
     LoginComponent,
     PagenotfoundComponent,
-    SigningComponent
+    SigningComponent,
+    FriendLinkComponent
   ],
   imports: [
     BrowserModule,
