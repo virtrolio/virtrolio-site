@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from "../environments/environment";
-import {AngularFireAnalyticsModule} from "@angular/fire/analytics";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
+import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 // App
 import { AppRoutingModule } from './app-routing.module';
