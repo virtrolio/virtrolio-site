@@ -1,0 +1,10 @@
+footer {
+    left: 0;
+    bottom: 0;
+    background-color: var(--darkest-accent);
+    color: white;
+}
+
+.footer-copyright {
+    background-color: var(--darkest-accent);
+}
