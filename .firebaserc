@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "virtrolio"
+  },
+  "targets": {
+    "virtrolio": {
+      "hosting": {
+        "virtrolio-site": [
+          "virtrolio"
+        ]
+      }
+    }
   }
 }
