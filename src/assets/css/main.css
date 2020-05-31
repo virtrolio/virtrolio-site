@@ -9,6 +9,10 @@ h2 {
     font-family: Montserrat;
 }
 
+p {
+  font-family: Montserrat;
+}
+
 .bg-primary {
   background-color: var(--accent) !important;
 }
