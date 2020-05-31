@@ -12,4 +12,13 @@ export class VirtrolioCoverComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  copyLink(inputElement, buttonElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000); /*For mobile devices*/
+    // actually do the copy
+    document.execCommand("copy");
+    // confirm da copy
+    buttonElement.innerHTML = "Copied!";
+  }
+
 }
