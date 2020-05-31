@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./virtrolio-cover.component.css']
 })
 export class VirtrolioCoverComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {

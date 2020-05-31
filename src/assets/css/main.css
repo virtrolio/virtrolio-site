@@ -8,3 +8,21 @@
 h2 {
     font-family: Montserrat;
 }
+
+.bg-primary {
+  background-color: var(--accent) !important;
+}
+
+.vertical-center {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.center-children > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

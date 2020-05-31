@@ -1,18 +1,22 @@
 #test {
-    background-color: skyblue;
-    border: 2px solid black;
+    /* background-color: rgb(135, 235, 135);
+    border: 2px solid black; */
 }
 
 #virtrolio-outer {
-    background-color: red;
-    height: 500px;
-    margin: 50px 0;
+    /* virtrolio book */
+    height: 35em;
+    margin: 3.5em 0;
 }
 
 #virtrolio-title {
-    background-color: blue;
+    /* Title of the virtrolio */
+    height: 10em;
 }
 
-.btn-lg {
-    margin: 25px;
+#buttons > *.row > * {
+    /* Each individual button will have these properties: */
+    height: 4em;
+    width: 9em;
+    margin: 1.2em;
 }
