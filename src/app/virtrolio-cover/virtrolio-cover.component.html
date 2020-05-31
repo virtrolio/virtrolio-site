@@ -14,14 +14,34 @@
                         <button class="btn-lg btn-primary" type="button">Export to PDF</button>
                     </div>
                     <div class="row">
-                        <button class="btn-lg btn-primary" type="button">Generate Friend Link</button>
-                    </div>
+                        <button class="btn-lg btn-primary" type="button" data-toggle="modal" data-target="#linkgen">
+                            Generate Friend Link
+                        </button>
+                    </div>   
                     <div class="row">
                         <button class="btn-lg btn-primary" type="button">virtrolio Settings</button>
-                    </div>   
+                    </div>
                     <div class="row">
                         <button class="btn-lg btn-primary" type="button">Change Background</button>
                     </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="linkgen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Here is your randomly generated Friend Link!
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
             </div>
         </div>
     </div>
