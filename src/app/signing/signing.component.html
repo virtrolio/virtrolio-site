@@ -1,12 +1,26 @@
-<div class="container py-5" style="margin: 25px auto">
-    <h2>Sending Message to friend.</h2>
-    <div>
-      <textarea class="shadow" autofocus id="signing-box"></textarea>
+<div class="container py-5 center-children" style="margin: 25px auto">
+    <div class="row"><h2>Sending Message to friend.</h2></div>
+    <div class="row">
+        <textarea class="shadow" autofocus id="signing-box"></textarea>
     </div>
-    <br>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        SUBMIT
-    </button>
+    <div class="row" id="options">
+      <div class="btn-group" id="font-dropdown">
+        <button type="button" class="btn btn-primary">Font</button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="signing">Arial</a>
+          <a class="dropdown-item" href="signing">Comic Sans</a>
+          <a class="dropdown-item" href="signing">Times New Roman</a>
+        </div>
+      </div>
+      <input type="color" id="colorpicker" name="colorpicker" value="#ff0000">
+      <input type="color" id="colorpicker" name="colorpicker" value="#00ff00">
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+      Submit
+      </button>
+    </div>
 </div>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -28,3 +42,5 @@
       </div>
     </div>
   </div>
+
+     
