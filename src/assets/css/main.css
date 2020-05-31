@@ -9,11 +9,11 @@
 }
 
 h2 {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
 }
 
 p {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
 }
 
 
@@ -22,7 +22,7 @@ p {
 
 .btn-primary {
   background-color: var(--accent);
-  border: 0px;
+  border: 0;
 }
 
 .btn-primary:hover {
