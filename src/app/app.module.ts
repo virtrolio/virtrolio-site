@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { MsgSentComponent } from './msg-sent/msg-sent.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    MsgSentComponent
   ],
   imports: [
     BrowserModule,
