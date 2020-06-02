@@ -1,10 +1,14 @@
 footer {
     left: 0;
     bottom: 0;
-    background-color: var(--dark-accent);
+    margin-bottom: 0;
+    width: 100%;
+    background-color: var(--darkest-accent);
     color: white;
+    position: absolute;
+    height: 7em;
 }
 
 .footer-copyright {
-    background-color: var(--dark-accent);
+    background-color: var(--darkest-accent);
 }

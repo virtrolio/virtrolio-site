@@ -1,3 +1,6 @@
-#main {
-    height: 1200px;
-}
+#page-container {
+    /* Container for webpage content; relative position so that children (i.e. footer) can be positioned absolutely (see footer component css) */
+    position: relative;
+    min-height: 100vh;
+  } 
+ 
