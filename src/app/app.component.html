@@ -1,9 +1,13 @@
 <div>
-  <app-navbar></app-navbar>
-  <div class="py-5 mt-5" id="main">
-    <router-outlet></router-outlet>
+  <div id="page-container">
+    <app-navbar></app-navbar>
+    <div class="py-5">
+      <div class="py-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
 </div>
 
 <!-- 

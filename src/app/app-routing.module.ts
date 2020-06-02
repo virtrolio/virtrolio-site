@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

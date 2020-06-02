@@ -17,7 +17,7 @@ export class VirtrolioCoverComponent implements OnInit {
     inputElement.setSelectionRange(0, 10000); /*For mobile devices*/
     // actually do the copy
     document.execCommand("copy");
-    // confirm da copy
+    // confirm the copy
     buttonElement.innerHTML = "Copied!";
   }
 

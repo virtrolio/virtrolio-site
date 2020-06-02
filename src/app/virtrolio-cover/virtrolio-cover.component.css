@@ -1,17 +1,23 @@
-#test {
-    /* background-color: rgb(135, 235, 135);
-    border: 2px solid black; */
-}
-
 #virtrolio-outer {
     /* virtrolio book */
     height: 35em;
-    margin: 3.5em 0;
 }
 
 #virtrolio-title {
     /* Title of the virtrolio */
     height: 10em;
+}
+
+#friend-link-body {
+    text-align: center;
+}
+
+#friend-link-body > * {
+    margin: 1em;
+}
+
+#friend-link-field {
+    width: 15em;
 }
 
 #buttons > *.row > * {
