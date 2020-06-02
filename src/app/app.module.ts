@@ -1,6 +1,7 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -19,8 +20,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ViewingComponent } from './viewing/viewing.component';
 import { MessagesComponent } from './viewing/messages/messages.component';
 import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
-import {AngularFireAnalyticsModule} from "@angular/fire/analytics";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
 
 
 @NgModule({
@@ -36,6 +35,7 @@ import {AngularFirestoreModule} from "@angular/fire/firestore";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,

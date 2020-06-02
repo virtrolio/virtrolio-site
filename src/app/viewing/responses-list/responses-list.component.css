@@ -1,0 +1,19 @@
+.response-list-card {
+    position: relative;
+    width: inherit;
+}
+
+.profile-pic {
+    background: grey;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 100%;
+}
+
+#username {
+    font-style: bold;
+}
+
+#user-info {
+    word-wrap: break-word;
+}
