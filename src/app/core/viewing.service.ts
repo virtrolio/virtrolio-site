@@ -21,6 +21,12 @@ export class ViewingService {
                     'fontfamily': 'Montserrat',
                     'fontstyle': 'italic',
                     'fontcolor': '#696969',
-                    'bgcolor': '#f76534'}];
+                    'bgcolor': '#f76534'},
+                  { 'author': 'Isabelle',
+                    'message': 'The Woodlands School was opened in the year 1969. While the first phase of its present building was under construction, The Woodlands operated within Springfield Public School building. In September, 1970, the schools students and staff moved to the new building, and The Woodlands became a combined elementary and secondary school.',
+                    'fontfamily': 'Times New Roman',
+                    'fontstyle': 'underline',
+                    'fontcolor': 'white',
+                    'bgcolor': '#8a3b12'}];
   constructor() { }
 }
