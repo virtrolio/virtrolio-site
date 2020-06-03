@@ -13,14 +13,8 @@
       <li id="response-title" class="nav-item mb-2">
         My Responses
       </li>
-      <li class="nav-item mb-1">
-        Rammy
-      </li>
-      <li class="nav-item mb-1">
-        Alice
-      </li>
-      <li class="nav-item mb-1">
-        Bob
+      <li class="nav-item mb-1" *ngFor="let response of userMsgData">
+        {{ response.author }}
       </li>
     </ul>
   </div>

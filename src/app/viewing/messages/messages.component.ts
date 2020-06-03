@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ViewingService } from '../../core/viewing.service';
 
 @Component({
@@ -10,11 +9,10 @@ import { ViewingService } from '../../core/viewing.service';
 export class MessagesComponent implements OnInit {
   isCardView: boolean = false;
   userMsgData;
-  constructor(private viewingService: ViewingService) { 
-    this.userMsgData = viewingService.userMsgData;
-  }
+  constructor(private viewingService: ViewingService) {}
 
   ngOnInit(): void {
+    this.userMsgData = this.viewingService.userMsgData;
   }
 
   toggleViewStyle() {
