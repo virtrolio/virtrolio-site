@@ -1,5 +1,11 @@
-#contents > * {
-    width: 16em;
-    height: 30em;
-    margin: 0 5em;
+#graphic {
+    height: 25em;
+}
+
+#buttons > button {
+    width: 15em;
+    height: 3em;
+    margin: 0 1em;
+    margin-top: 2em;
+    font-size: 1.1em;
 }
