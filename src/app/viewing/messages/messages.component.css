@@ -24,8 +24,10 @@
 }
 
 .page {
-    background-color: #EEEEEE;
-    height: 35em;
+    background-color: #fa8072;
+    color: white;
+    font-style: bold;
+    height: 40em;
     padding-left: 6em;
     padding-right: 6em;
     display: flex;
@@ -36,7 +38,7 @@
 .message-card {
     background-color: #EEEEEE;
     height: auto;
-    min-height: 30em;
+    min-height: 40em;
     padding: 3em 6em 3em 6em;
     display: flex;
     justify-content: center;

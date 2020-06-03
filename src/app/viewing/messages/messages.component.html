@@ -2,7 +2,8 @@
   <div class="col-12">
     <div class="custom-control custom-switch">
       <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isCardView" (click)="toggleViewStyle()">
-      <label class="custom-control-label toggle-switch" for="customSwitch1">Booklet/Cards view</label>
+      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!isCardView">Switch to Cards</label>
+      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="isCardView">Switch to Booklet</label>
     </div>
   </div>
 </div>
