@@ -1,11 +1,14 @@
 #graphic {
-    height: 30em;
+    height: 25em;
 }
 
 #buttons > button {
-    width: 15em;
-    height: 3em;
     margin: 0 1em;
     margin-top: 2em;
     font-size: 1.1em;
+}
+
+#title-text {
+    text-align: center;
+    font-size: 2em;
 }
