@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login'},
-  { path: 'login', component: LoginComponent },
+  { path: '', component: HomeComponent },
   { path: 'pagenotfound', component: PagenotfoundComponent },
   { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}

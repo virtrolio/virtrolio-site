@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent} from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
 
@@ -24,7 +24,7 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent,
+    HomeComponent,
     PagenotfoundComponent,
     VirtrolioCoverComponent
   ],
