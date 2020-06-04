@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent} from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SigningComponent } from './signing/signing.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
@@ -25,7 +25,7 @@ import { FriendLinkComponent } from './friend-link/friend-link.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent,
+    HomeComponent,
     PagenotfoundComponent,
     SigningComponent,
     FriendLinkComponent
