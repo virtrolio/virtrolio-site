@@ -23,16 +23,16 @@
     </div>
     <div class="row py-5">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger btn-lg mx-auto" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-danger btn-lg mx-auto" data-toggle="modal" data-target="#newUserModal">
             (Trigger New User Alert)
         </button>
         
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">You seem new here...</h5>
+                <h5 class="modal-title" id="newUserModalLabel">You seem new here...</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -41,8 +41,11 @@
                 This must be your first time visiting! Take a look at our homepage and 'About' page to learn more about us, then feel free to sign up for an account. Or, if you'd like, you can sign up for one right now!
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-primary">New Account</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-primary" disabled="disabled">
+                        Sign in with 
+                        <img src="../../assets/images/icons/google.svg" alt="" width="32" height="32">
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
