@@ -26,3 +26,7 @@
     width: 9em;
     margin: 1.2em;
 }
+
+a.clickable-card:hover {
+    color:black;
+}
