@@ -1,6 +1,11 @@
 #content-wrapper {
   /* div to surround router-outlet component with a minimum height that ensures the footer is at the bottom of the page at all times yet is in a "relative" position so that it doesn't overlap with screen content */
   
-  min-height: calc(100vh - 7em - 4.5em + 0.5em);
-  /* 100% viewport height - footerHeight - navbarHeight + adjusting */
+  min-height: calc(100vh - 7em);
+  /* 100% viewport height - footerHeight */
+}
+
+#mock-navbar {
+  /* Fake navbar to push router-outlet content downwards */
+  height: 4.5em;
 }
