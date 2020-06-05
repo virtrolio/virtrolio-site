@@ -3,51 +3,59 @@
     <h2>Sending Message to friend.</h2>
   </div>
   <div class="row">
-    <textarea class="shadow" autofocus id="signing-box"></textarea>
+    <textarea class="shadow" id="signing-box" #signingbox 
+          (keyup)="sync(signingbox, previewbox)" autofocus [ngStyle]="color"></textarea>
   </div>
 
   <div class="row" id="options">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar for formatting text"></div>
 
-      <div class="btn-group mr-2" role="group" aria-label="Font group">
-        <button type="button" class="btn btn-primary">Font</button>
-        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="signing">Arial</a>
-          <a class="dropdown-item" href="signing">Comic Sans</a>
-          <a class="dropdown-item" href="signing">Times New Roman</a>
-        </div>
+    <div class="btn-group mr-2" role="group" aria-label="Font group">
+      <button type="button" class="btn btn-primary">Font</button>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="signing">Arial</a>
+        <a class="dropdown-item" href="signing">Comic Sans</a>
+        <a class="dropdown-item" href="signing">Times New Roman</a>
       </div>
-
-      <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-bold">
-        <img src="../../assets/images/icons/bold.png" class="format-icons">
-      </button>
-      <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-italics">
-        <img src="../../assets/images/icons/italics.png" class="format-icons">
-      </button>
-      <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-underline">
-        <img src="../../assets/images/icons/underline.png" class="format-icons">
-      </button>
-      <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-strikethrough">
-        <img src="../../assets/images/icons/strikethrough.png" class="format-icons">
-      </button>
-
-      <div class="btn-group mr-2" role="group" aria-label="Font group">
-        <div>
-          <input type="color" id="colorpicker mr-2" name="colorpicker" value="#ff0000">
-        </div>
-        <div>
-          <input type="color" id="colorpicker mr-2" name="colorpicker" value="#00ff00">
-        </div>
-      </div>
-      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
-        Submit
-      </button>
     </div>
+
+    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-bold">
+      <img src="../../assets/images/icons/bold.png" class="format-icons">
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-italics">
+      <img src="../../assets/images/icons/italics.png" class="format-icons">
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-underline">
+      <img src="../../assets/images/icons/underline.png" class="format-icons">
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-strikethrough">
+      <img src="../../assets/images/icons/strikethrough.png" class="format-icons">
+    </button>
+
+    <div class="btn-group mr-2" role="group" aria-label="Font group">
+      <div>
+        <input type="color" id="colorpicker mr-2" name="colorpicker" [(ngModel)]="color" value="#ff0000" >
+      </div>
+      <div>
+        <input type="color" id="colorpicker mr-2" name="colorpicker" value="#00ff00">
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+      Submit
+    </button>
   </div>
+  <div class="row">
+    <h3>Preview:</h3>
+  </div>
+  <div class="row">
+    <textarea class="signing-box" #previewbox id="preview-box" readonly></textarea>
+  </div>
+</div>
+
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -67,6 +75,6 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
      

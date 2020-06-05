@@ -6,6 +6,18 @@
 	margin-top: 2em;
 	margin-left:auto;
 	margin-right:auto;
+	padding: 0.1em;
+}
+
+#preview-box {
+	width: 50em;
+	height: 10em;
+	resize: none; /*both;*/
+	margin-top: 2em;
+	margin-left:auto;
+	margin-right:auto;
+	outline: none;
+	padding: 0.1em;
 }
 
 #options > * {
