@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../../core/viewing.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-responses-list',
@@ -8,11 +9,14 @@ import { ViewingService } from '../../core/viewing.service';
 })
 export class ResponsesListComponent implements OnInit {
   userMsgData;
-  constructor(private viewingService: ViewingService) {}
+  constructor(public viewingService: ViewingService, private vps: ViewportScroller) {}
 
   ngOnInit(): void {
     this.userMsgData = this.viewingService.userMsgData;
-    console.log(this.userMsgData);
   }
-
+  
+  showMessage(id) {
+    this.viewingService.isCardView = true;
+    this.vps.scrollToAnchor(id);
+  }
 }

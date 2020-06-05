@@ -13,7 +13,7 @@
       <li id="response-title" class="nav-item mb-2">
         My Responses
       </li>
-      <li class="nav-item mb-1" *ngFor="let response of userMsgData">
+      <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
         {{ response.author }}
       </li>
     </ul>

@@ -7,16 +7,15 @@ import { ViewingService } from '../../core/viewing.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  isCardView: boolean = false;
   userMsgData;
-  constructor(private viewingService: ViewingService) {}
+  constructor(public viewingService: ViewingService) {}
 
   ngOnInit(): void {
     this.userMsgData = this.viewingService.userMsgData;
   }
 
   toggleViewStyle() {
-    this.isCardView = this.isCardView === false ? true : false;
+    this.viewingService.isCardView = this.viewingService.isCardView === false ? true : false;
   }
 
 }
