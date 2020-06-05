@@ -1,11 +1,5 @@
-<div>
-  <div id="page-container">
-    <app-navbar></app-navbar>
-    <div class="py-5">
-      <div class="py-4">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-    <app-footer></app-footer>
-  </div>
+<app-navbar></app-navbar>
+<div id="content-wrapper">
+  <router-outlet></router-outlet>
 </div>
+<app-footer></app-footer>
