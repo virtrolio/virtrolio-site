@@ -17,17 +17,20 @@ p {
 }
 
 .vertical-center {
-  margin: 0;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  display: flex;            /* Use flexbox for centering */
+  flex-direction: column;   /* Align items vertically (column-direction) */
+  justify-content: center;  /* Align items in the flex direction */
 }
 
 .center-children > * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  min-height: calc(100vh - 7em - 4.5em);
+  /* Set all components' containers to an appropriate minimum height */
 }
 
 
