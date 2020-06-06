@@ -5,8 +5,9 @@ footer {
     width: 100%;
     background-color: var(--darkest-accent);
     color: white;
-    position: absolute;
-    height: 7em;
+    position: relative;
+    height: var(--footer-height);
+    flex-direction: row;
 }
 
 .footer-copyright {
