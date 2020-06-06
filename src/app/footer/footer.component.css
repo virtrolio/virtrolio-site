@@ -5,7 +5,7 @@ footer {
     width: 100%;
     background-color: var(--darkest-accent);
     color: white;
-    position: absolute;
+    position: relative;
     height: 7em;
 }
 
