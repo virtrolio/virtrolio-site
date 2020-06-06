@@ -5,7 +5,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    height: 4.5em;
+    height: var(--navbar-height);
 }
 
 #profile-pic {
