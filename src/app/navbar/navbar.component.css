@@ -1,5 +1,6 @@
 .navbar {
-    background-color: var(--accent);
+    background: var(--accent);
+    background: linear-gradient(45deg, rgba(250,128,114,1) 0%, rgba(251,91,91,1) 100%);
     position: fixed;
     top: 0;
     width: 100%;
