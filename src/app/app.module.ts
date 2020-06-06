@@ -16,10 +16,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ViewingComponent } from './viewing/viewing.component';
 import { MessagesComponent } from './viewing/messages/messages.component';
 import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
+
 
 
 @NgModule({
@@ -27,12 +28,11 @@ import { ResponsesListComponent } from './viewing/responses-list/responses-list.
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    PagenotfoundComponent,
+    PageNotFoundComponent,
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    HomeComponent,
-    PagenotfoundComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

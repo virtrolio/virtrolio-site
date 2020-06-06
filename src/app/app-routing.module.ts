@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ViewingComponent } from './viewing/viewing.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'viewing', component: ViewingComponent },
-  { path: 'pagenotfound', component: PagenotfoundComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
-]
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
