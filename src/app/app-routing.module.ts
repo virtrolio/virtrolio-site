@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { SettingsComponent } from "./settings/settings.component";
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login'},
-  { path: 'login', component: LoginComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'pagenotfound', component: PagenotfoundComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
+  { path: '', component: HomeComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
 ];
 
 @NgModule({

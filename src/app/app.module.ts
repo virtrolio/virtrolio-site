@@ -1,6 +1,7 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -14,8 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { HomeComponent} from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings.component';
 
 
@@ -24,12 +25,13 @@ import { SettingsComponent } from './settings/settings.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent,
-    PagenotfoundComponent,
+    HomeComponent,
+    PageNotFoundComponent,
     SettingsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
