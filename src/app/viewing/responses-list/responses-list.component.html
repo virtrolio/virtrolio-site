@@ -1,16 +1,16 @@
 <div class="response-list-card d-none d-sm-none d-md-none d-lg-block mt-4">
   <div class="card p-3 border-0">
-    <div class="row" id="user-info">
+    <div class="row user-info">
       <div class="col-lg-3 col-md-4">
         <a href="#"><div class="profile-pic"></div></a>
       </div>
       <div class="col-lg-9 col-md-8">
-        <label id="username" class="mt-2">User Name</label>
+        <label class="mt-2 username">User Name</label>
       </div>
     </div>
     <div class="dropdown-divider"></div>
     <ul class="nav flex-column ml-2">
-      <li id="response-title" class="nav-item mb-2">
+      <li class="nav-item mb-2 response-title">
         My Responses
       </li>
       <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
@@ -19,3 +19,30 @@
     </ul>
   </div>
 </div>
+
+<div class="response-list-card-relative col-12 d-block d-sm-block d-md-block d-lg-none mt-4">
+  <div class="card p-3 border-0">
+    <div class="row user-info">
+      <div class="col-md-1 col-sm-2 col-2">
+        <a href="#"><div class="profile-pic"></div></a>
+      </div>
+      <div class="col-md-11 col-sm-10 col-10">
+        <label class="mt-2 username">User Name</label>
+      </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    <ul class="nav flex-column ml-2">
+      <li class="nav-item mb-2 response-title">
+        My Responses
+      </li>
+    </ul>
+    <div id="fixed-height-list">
+      <ul class="nav flex-column ml-2">
+      <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
+        {{ response.author }}
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
+
