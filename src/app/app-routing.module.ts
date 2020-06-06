@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'signing', component: SigningComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
 ];
 
 @NgModule({
