@@ -17,8 +17,8 @@
 }
 
 #navbar_title {
-    font-family: Montserrat;
-    font-weight: regular;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
     color: white;
 }
 
