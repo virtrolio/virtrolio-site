@@ -27,6 +27,7 @@ import { SigningComponent } from "./signing/signing.component";
     FooterComponent,
     HomeComponent,
     PagenotfoundComponent,
+    SigningComponent
   ],
   imports: [
     BrowserModule,

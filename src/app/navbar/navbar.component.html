@@ -1,11 +1,19 @@
-<nav class="navbar navbar-light">
-    <a class="navbar-brand" id="navbar_title" href="#">
-      <img src="../../assets/images/logo_inverted.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-      virtrolio
-    </a>
-    <div class="float-right">
-      <div class="col-4">
-        <a href="#"><div class="profile-pic"></div></a>
+<nav class="navbar navbar-light shadow">
+  <a class="navbar-brand" id="navbar_title" href="#">
+    <img src="../../assets/images/logo_inverted.png" width="30" height="30" class="d-inline-block align-top"
+         alt="Virtrolio Logo">
+    virtrolio
+  </a>
+  <div class="float-right">
+    <div class="dropdown dropleft">
+      <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="float-right" id="profile-pic"></div>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">My Profile</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" id="logout-text" href="#">Logout</a>
       </div>
     </div>
+  </div>
 </nav>

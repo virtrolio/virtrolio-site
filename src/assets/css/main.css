@@ -6,6 +6,9 @@
   --accent-transparent: rgba(250, 128, 114, 0.5);
   --dark-accent: #e6716d;
   --darkest-accent: #353535;
+
+  --footer-height: 7em;
+  --navbar-height: 4.5em;
 }
 
 h2 {
@@ -17,11 +20,9 @@ p {
 }
 
 .vertical-center {
-  margin: 0;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  display: flex;            /* Use flexbox for centering */
+  flex-direction: column;   /* Align items vertically (column-direction) */
+  justify-content: center;  /* Align items in the flex direction */
 }
 
 .center-children > * {
@@ -29,10 +30,11 @@ p {
   justify-content: center;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
+.container, .container-fluid {
+  min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
+  /* Set all components' [outermost] containers (or fluid-containers) to an appropriate minimum height which will fill the screen and push the footer down. vh is viewport height */
+}
 
 /* BOOTSTRAP BUTTON COLOUR MODIFICATIONS */
 
