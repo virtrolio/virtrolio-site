@@ -6,7 +6,7 @@ import { SigningComponent } from './signing/signing.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'pagenotfound', component: PageNotFoundComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'signing', component: SigningComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/pagenotfound'}
 ];
