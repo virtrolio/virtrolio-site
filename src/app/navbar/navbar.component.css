@@ -1,5 +1,6 @@
 .navbar {
-    background-color: var(--accent);
+    background: var(--accent);
+    background: linear-gradient(45deg, rgba(250,128,114,1) 0%, rgba(251,91,91,1) 100%);
     position: fixed;
     top: 0;
     width: 100%;
@@ -7,15 +8,20 @@
     height: 4.5em;
 }
 
-.profile-pic {
+#profile-pic {
     background: white;
     height: 2.5em;
     width: 2.5em;
     border-radius: 100%;
+    display: flex;
 }
 
 #navbar_title {
     font-family: Montserrat;
     font-weight: regular;
     color: white;
+}
+
+#logout-text {
+    color: red;
 }

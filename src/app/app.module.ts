@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent} from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ViewingComponent } from './viewing/viewing.component';
 import { MessagesComponent } from './viewing/messages/messages.component';
@@ -27,11 +27,12 @@ import { ResponsesListComponent } from './viewing/responses-list/responses-list.
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent,
     PagenotfoundComponent,
     ViewingComponent,
     MessagesComponent,
-    ResponsesListComponent
+    ResponsesListComponent,
+    HomeComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
