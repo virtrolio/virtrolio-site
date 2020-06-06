@@ -1,27 +1,27 @@
 .navbar {
-    background: var(--accent);
-    background: linear-gradient(45deg, rgba(250,128,114,1) 0%, rgba(251,91,91,1) 100%);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    height: var(--navbar-height);
+  background: var(--accent);
+  background: linear-gradient(45deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: var(--navbar-height);
 }
 
 #profile-pic {
-    background: white;
-    height: 2.5em;
-    width: 2.5em;
-    border-radius: 100%;
-    display: flex;
+  background: white;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 100%;
+  display: flex;
 }
 
 #navbar_title {
-    font-family: Montserrat, sans-serif;
-    font-weight: 400;
-    color: white;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  color: white;
 }
 
 #logout-text {
-    color: red;
+  color: red;
 }
