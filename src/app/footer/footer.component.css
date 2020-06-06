@@ -6,7 +6,8 @@ footer {
     background-color: var(--darkest-accent);
     color: white;
     position: relative;
-    height: 7em;
+    height: var(--footer-height);
+    flex-direction: row;
 }
 
 .footer-copyright {
