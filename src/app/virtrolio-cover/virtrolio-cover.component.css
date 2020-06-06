@@ -1,6 +1,10 @@
-#virtrolio-outer {
+#virtrolio-outer-div {
     /* virtrolio book */
     height: 35em;
+}
+
+#virtrolio-outer {
+    height: 100%;
 }
 
 #virtrolio-title {
@@ -23,10 +27,10 @@
 #buttons > *.row > * {
     /* Each individual button will have these properties: */
     height: 4em;
-    width: 9em;
+    width: 100%;
     margin: 1.2em;
 }
 
-a.clickable-card:hover {
-    color:black;
+#buttons {
+    margin-bottom: 5em;
 }
