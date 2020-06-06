@@ -2,7 +2,7 @@
 #signing-box {
 	width: 50em;
 	height: 10em;
-	resize: none; /*both;*/
+	resize: none;
 	margin-top: 2em;
 	margin-left:auto;
 	margin-right:auto;
@@ -12,7 +12,7 @@
 #preview-box {
 	width: 50em;
 	height: 10em;
-	resize: none; /*both;*/
+	resize: none;
 	margin-top: 2em;
 	margin-left:auto;
 	margin-right:auto;
@@ -28,5 +28,4 @@
 	width:1.8em;
 	height:1.8em;
 }
-
 
