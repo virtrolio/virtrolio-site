@@ -28,6 +28,9 @@ import { MessagesComponent } from './viewing/messages/messages.component';
 import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
 import { SigningComponent } from "./signing/signing.component";
 import { SettingsComponent } from './settings/settings.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { SettingsComponent } from './settings/settings.component';
     MsgSentComponent,
     VirtrolioCoverComponent,
     SigningComponent,
-    SettingsComponent
+    SettingsComponent,
+    AboutComponent,
+    FaqComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
