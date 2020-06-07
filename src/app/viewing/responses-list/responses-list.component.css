@@ -11,10 +11,14 @@
   background-color: transparent;
   position: relative;
   width: auto;
-
 }
 
-#fixed-height-list {
+#author-list {
+  height: 10em;
+  overflow-y: scroll;
+}
+
+#author-list-relative-list {
   height: 5em;
   overflow-y: scroll;
 }
@@ -37,4 +41,14 @@
 
 .user-info {
     word-wrap: break-word;
+}
+
+.hamburger-menu {
+  height: auto;
+  width: auto;
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
 }
