@@ -10,6 +10,9 @@ import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+// ngx-markdown
+import { MarkdownModule } from "ngx-markdown";
+
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,7 @@ import { ViewingComponent } from './viewing/viewing.component';
 import { MessagesComponent } from './viewing/messages/messages.component';
 import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
 
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import { ResponsesListComponent } from './viewing/responses-list/responses-list.
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { ResponsesListComponent } from './viewing/responses-list/responses-list.
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

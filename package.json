@@ -21,8 +21,10 @@
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
     "bootstrap": "^4.5.0",
+    "emoji-toolkit": "^5.5.1",
     "firebase": "^7.14.6",
     "jquery": "^3.5.1",
+    "ngx-markdown": "^9.1.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
