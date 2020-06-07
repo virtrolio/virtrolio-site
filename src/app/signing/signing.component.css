@@ -1,13 +1,17 @@
-
-#signing-box {
-	width: 50em;
-	height: 10em;
-	resize: none; /*both;*/
-	margin-top: 2em;
-	margin-left:auto;
-	margin-right:auto;
+.form-control:focus {
+	border-color: var(--accent);
+	box-shadow: none;
 }
 
 #options > * {
 	margin: 2em 0.5em;
+}
+
+.format-icons {
+	width:1.8em;
+	height:1.8em;
+}
+
+.btn-outline-dark:hover {
+	background-color: var(--accent);
 }

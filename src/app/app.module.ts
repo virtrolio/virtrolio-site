@@ -10,6 +10,9 @@ import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+// ngx-markdown
+import { MarkdownModule } from "ngx-markdown";
+
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +22,7 @@ import { HomeComponent} from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SigningComponent } from './signing/signing.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -29,7 +33,9 @@ import { FriendLinkComponent } from './friend-link/friend-link.component';
     HomeComponent,
     PageNotFoundComponent,
     SigningComponent,
-    FriendLinkComponent
+    FriendLinkComponent,
+
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,8 @@ import { FriendLinkComponent } from './friend-link/friend-link.component';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

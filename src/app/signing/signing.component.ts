@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SigningComponent implements OnInit {
-
+  public signingBoxText='';
+  
   constructor() { }
 
   ngOnInit(): void {
