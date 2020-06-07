@@ -10,6 +10,9 @@ import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+// ngx-markdown
+import { MarkdownModule } from "ngx-markdown";
+
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +37,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
