@@ -24,7 +24,7 @@
 }
 
 .profile-pic {
-    background: grey;
+    background: var(--light-grey);
     height: 2.5em;
     width: 2.5em;
     border-radius: 100%;
