@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MsgSentComponent } from './msg-sent/msg-sent.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
 import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
 import { ViewingComponent } from './viewing/viewing.component';
@@ -40,6 +41,7 @@ import { SettingsComponent } from './settings/settings.component';
     MessagesComponent,
     ResponsesListComponent,
     HomeComponent,
+    MsgSentComponent
     VirtrolioCoverComponent
     SigningComponent
     SettingsComponent
