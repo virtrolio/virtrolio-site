@@ -41,14 +41,14 @@
           <p><b>By clicking the button below, I understand that my data will be removed IMMEDIATELY.
           I also understand that I will NOT be able to recover, download or otherwise access my data
             after it is deleted.</b></p>
-          <button type="submit" class="btn btn-danger">Delete Account</button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteErrorModal">Delete Account</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="downloadErrorModal" tabindex="-1" role="dialog" aria-labelledby="downloadErrorModalLabel" aria-hidden="true">
+<div class="modal fade" id="downloadErrorModal" tabindex="-1" role="dialog" aria-labelledby="deleteErrorModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -64,6 +64,31 @@
         and that there aren't any firewalls on your computer that could be blocking the download.</p>
         <p>If the error persists, please click the button below to send an email to the support team,
         or email us directly at <a href="mailto:virtrolio.team@gmail.com" target="_blank">virtrolio.team@gmail.com</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-primary" href="mailto:virtrolio.team@gmail.com" target="_blank">Email Us</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteErrorModal" tabindex="-1" role="dialog" aria-labelledby="deleteErrorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteErrorModalLabel">Data Export Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Oops! It looks like something went wrong during the account deletion.</p>
+        <p><em>Please close this window and try again.</em></p>
+        <p>Also, make sure that your internet connection is working properly,
+          and that there aren't any firewalls on your computer that could be causing issues.</p>
+        <p>If the error persists, please click the button below to send an email to the support team,
+          or email us directly at <a href="mailto:virtrolio.team@gmail.com" target="_blank">virtrolio.team@gmail.com</a>.</p>
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-primary" href="mailto:virtrolio.team@gmail.com" target="_blank">Email Us</a>
