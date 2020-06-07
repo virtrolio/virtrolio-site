@@ -24,7 +24,7 @@
 }
 
 .page {
-    background-color: #fa8072;
+    background-color: var(--accent);
     color: white;
     height: 70vh;
     padding-left: 6em;
