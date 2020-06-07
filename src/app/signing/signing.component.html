@@ -1,10 +1,9 @@
-<div class="container py-5 center-children vertical-center" style="margin: 1.0em auto">
+<div class="container py-5 center-children vertical-center">
   <div class="row">
     <h2>Sending Message to friend.</h2>
   </div>
   <div class="row">
-    <textarea class="shadow" id="signing-box" #signingbox 
-          (keyup)="sync(signingbox, previewbox)" autofocus></textarea>
+    <textarea class="shadow" id="signing-box" #signingbox autofocus></textarea>
   </div>
 
   <div class="row" id="options">
@@ -24,16 +23,10 @@
     </div>
 
     <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-bold">
-      <img src="../../assets/images/icons/bold.png" class="format-icons">
+      bold
     </button>
     <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-italics">
-      <img src="../../assets/images/icons/italics.png" class="format-icons">
-    </button>
-    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-underline">
-      <img src="../../assets/images/icons/underline.png" class="format-icons">
-    </button>
-    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-strikethrough">
-      <img src="../../assets/images/icons/strikethrough.png" class="format-icons">
+      italics
     </button>
 
     <div class="btn-group mr-2" role="group" aria-label="Font group">
@@ -52,7 +45,7 @@
     <h3>Preview:</h3>
   </div>
   <div class="row">
-    <textarea class="signing-box" #previewbox id="preview-box" readonly></textarea>
+    <markdown data="updateMd(signingbox)"></markdown>
   </div>
 </div>
 

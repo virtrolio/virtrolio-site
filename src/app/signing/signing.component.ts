@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SigningComponent implements OnInit {
+  public textval='';
 
-  sync(signbox, syncbox) {
-    syncbox.value = signbox.value;
+  updateMd(textbox) {
+    return textbox.value;
   }
   
   constructor() { }
