@@ -6,6 +6,7 @@ import { ViewingService } from '../../core/viewing.service';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
+
 export class MessagesComponent implements OnInit {
   userMsgData;
   constructor(public viewingService: ViewingService) {}
