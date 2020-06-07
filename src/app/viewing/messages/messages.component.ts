@@ -16,7 +16,7 @@ export class MessagesComponent implements OnInit {
   }
 
   toggleViewStyle() {
-    this.viewingService.isCardView = this.viewingService.isCardView === false ? true : false;
+    this.viewingService.isCardView = this.viewingService.isCardView === false;
   }
 
 }
