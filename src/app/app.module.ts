@@ -41,9 +41,9 @@ import { SettingsComponent } from './settings/settings.component';
     MessagesComponent,
     ResponsesListComponent,
     HomeComponent,
-    MsgSentComponent
-    VirtrolioCoverComponent
-    SigningComponent
+    MsgSentComponent,
+    VirtrolioCoverComponent,
+    SigningComponent,
     SettingsComponent
   ],
   imports: [
