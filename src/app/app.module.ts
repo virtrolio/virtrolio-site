@@ -18,6 +18,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Components
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { FaqComponent } from './faq/faq.component';
 import { FooterComponent } from './footer/footer.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
 import { HomeComponent} from './home/home.component';
@@ -35,6 +38,9 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
+    ContactComponent,
+    FaqComponent,
     FooterComponent,
     FriendLinkComponent,
     HomeComponent,
