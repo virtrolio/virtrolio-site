@@ -15,15 +15,15 @@ import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'faq', component: FaqComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'viewing', component: ViewingComponent },
-  { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'msg-sent', component: MsgSentComponent },
+  { path: 'faq', component: FaqComponent },
   { path: 'friend-link', component: FriendLinkComponent },
-  { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
-  { path: 'signing', component: SigningComponent },
+  { path: 'msg-sent', component: MsgSentComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'settings', component: SettingsComponent},
+  { path: 'signing', component: SigningComponent },
+  { path: 'viewing', component: ViewingComponent },
+  { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
 ];
 
