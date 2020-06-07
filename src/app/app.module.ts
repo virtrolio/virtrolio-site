@@ -21,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SigningComponent } from "./signing/signing.component";
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SigningComponent } from "./signing/signing.component";
     HomeComponent,
     PageNotFoundComponent,
     SigningComponent
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
