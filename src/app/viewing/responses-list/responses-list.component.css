@@ -50,5 +50,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
+  width: 0;  /* Remove scrollbar space */
 }
