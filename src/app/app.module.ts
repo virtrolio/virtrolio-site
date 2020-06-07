@@ -20,8 +20,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SigningComponent } from './signing/signing.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
+import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
+import { ViewingComponent } from './viewing/viewing.component';
+import { MessagesComponent } from './viewing/messages/messages.component';
+import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
+import { SigningComponent } from "./signing/signing.component";
 import { SettingsComponent } from './settings/settings.component';
 
 
@@ -30,11 +34,14 @@ import { SettingsComponent } from './settings/settings.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent,
     PageNotFoundComponent,
-    SigningComponent,
     FriendLinkComponent,
-
+    ViewingComponent,
+    MessagesComponent,
+    ResponsesListComponent,
+    HomeComponent,
+    VirtrolioCoverComponent
+    SigningComponent
     SettingsComponent
   ],
   imports: [

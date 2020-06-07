@@ -6,6 +6,8 @@
   --accent-transparent: rgba(250, 128, 114, 0.5);
   --dark-accent: #e6716d;
   --darkest-accent: #353535;
+  --light-grey: #999999;
+
 
   --footer-height: 7em;
   --navbar-height: 4.5em;
@@ -19,6 +21,10 @@ p {
   font-family: Montserrat, sans-serif;
 }
 
+.bg-primary {
+  background-color: var(--accent) !important;
+}
+
 .vertical-center {
   display: flex;            /* Use flexbox for centering */
   flex-direction: column;   /* Align items vertically (column-direction) */
@@ -29,6 +35,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+a.clickable-object, a.clickable-object:hover {
+  /* Adds clickable functionality for any object, ensuring that hyperlink text recoloring doesn't impede your artistic freedom */
+  color: inherit;
+  text-decoration: none;
 }
 
 .container, .container-fluid {
