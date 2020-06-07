@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.toggle-switch {
+    color: var(--light-grey);
+}
+
+.titlepage {
+    font-size: 3em;
+    font-family: Montserrat, sans-serif;
+}
+
+.message {
+    text-align: justify;
+    font-size: 1.2em;
+}
+
+.author-row {
+    font-size: 0.5em;
+    font-family: Montserrat, sans-serif;
+}
+
+.table td {
+    overflow-wrap: break-word;
+}
+
+.page {
+    background-color: var(--accent);
+    color: white;
+    height: 70vh;
+    padding-left: 6em;
+    padding-right: 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-card {
+    background-color: var(--light-grey);
+    height: auto;
+    min-height: 40em;
+    padding: 3em 6em 3em 6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
