@@ -1,4 +1,4 @@
-#mock-navbar {
+#navbar-filler {
   /* Fake navbar to push router-outlet content downwards */
   height: var(--navbar-height);
 }
