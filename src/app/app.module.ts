@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SigningComponent } from './signing/signing.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
 
@@ -27,7 +27,7 @@ import { FriendLinkComponent } from './friend-link/friend-link.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    PagenotfoundComponent,
+    PageNotFoundComponent,
     SigningComponent,
     FriendLinkComponent
   ],
