@@ -37,7 +37,7 @@ p {
 
 a.clickable-object, a.clickable-object:hover {
   /* Adds clickable functionality for any object, ensuring that hyperlink text recoloring doesn't impede your artistic freedom */
-  color:inherit;
+  color: inherit;
   text-decoration: none;
 }
 
