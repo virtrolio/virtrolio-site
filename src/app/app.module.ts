@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent} from './home/home.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
 
 
@@ -26,7 +26,7 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    PagenotfoundComponent,
+    PageNotFoundComponent,
     VirtrolioCoverComponent
   ],
   imports: [
