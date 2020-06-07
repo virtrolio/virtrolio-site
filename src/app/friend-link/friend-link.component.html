@@ -11,13 +11,32 @@
 
     <!-- Buttons -->
     <div class="row justify-content-center" id="buttons">
-        <button type="button" class="col-sm-4 col-md-3 btn btn-outline-primary" disabled="disabled">
+        <button type="button" class="col-sm-4 col-md-3 btn btn-outline-primary" data-toggle="modal" data-target="#rejeccModal">
             <!-- Google Sign-in (improper branding) -->
             Sign in with 
             <img src="../../assets/images/icons/google.svg" alt="" width="32" height="32">
         </button>
         <button type="button" routerLink="/login" class="col-sm-4 col-md-3 btn btn-primary">Home Page</button>
     </div>
-
+</div>
+  
+<!-- Rejecc Modal -->
+<div class="modal fade" id="rejeccModal" tabindex="-1" role="dialog" aria-labelledby="rejeccModalTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="rejeccModalTitle">Hold your horses!</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        It looks like you’ve already signed this friend's virtrolio with this account. Ask your friend to remove your previous message if you want to send a different one.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
 </div>
 
