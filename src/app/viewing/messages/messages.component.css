@@ -11,7 +11,7 @@
 
 .message {
     text-align: justify;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 .author-row {
@@ -26,8 +26,7 @@
 .page {
     background-color: #fa8072;
     color: white;
-    font-style: bold;
-    height: 40em;
+    height: 70vh;
     padding-left: 6em;
     padding-right: 6em;
     display: flex;
