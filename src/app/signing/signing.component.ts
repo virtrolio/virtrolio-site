@@ -7,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SigningComponent implements OnInit {
-  public textval='';
-
-  updateMd(textbox) {
-    return textbox.value;
-  }
+  public signingBoxText='';
   
   constructor() { }
 

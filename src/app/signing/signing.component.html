@@ -3,7 +3,7 @@
     <h2>Sending Message to friend.</h2>
   </div>
   <div class="row">
-    <textarea class="shadow" id="signing-box" #signingbox autofocus></textarea>
+    <textarea rows="8" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
   </div>
 
   <div class="row" id="options">
@@ -22,10 +22,10 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-bold">
+    <button type="button" class="btn btn-outline-dark mr-2" id="button-bold">
       bold
     </button>
-    <button type="button" class="btn btn-outline-dark mr-2" style="padding: 0em;" id="button-italics">
+    <button type="button" class="btn btn-outline-dark mr-2" id="button-italics">
       italics
     </button>
 
@@ -44,9 +44,15 @@
   <div class="row">
     <h3>Preview:</h3>
   </div>
+  <textarea 
+  class="shadow"
+  id="signing-box" 
+  autofocus
+  ></textarea>
   <div class="row">
-    <markdown data="updateMd(signingbox)"></markdown>
+    <markdown id="preview-box" data="{{signingBoxText}}"></markdown>
   </div>
+  
 </div>
 
 

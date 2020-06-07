@@ -1,23 +1,6 @@
-
-#signing-box {
-	width: 50em;
-	height: 10em;
-	resize: none;
-	margin-top: 2em;
-	margin-left:auto;
-	margin-right:auto;
-	padding: 0.1em;
-}
-
-#preview-box {
-	width: 50em;
-	height: 10em;
-	resize: none;
-	margin-top: 2em;
-	margin-left:auto;
-	margin-right:auto;
-	outline: none;
-	padding: 0.1em;
+.form-control:focus {
+	border-color: var(--accent);
+	box-shadow: none;
 }
 
 #options > * {
@@ -29,3 +12,6 @@
 	height:1.8em;
 }
 
+.btn-outline-dark:hover {
+	background-color: var(--accent);
+}
