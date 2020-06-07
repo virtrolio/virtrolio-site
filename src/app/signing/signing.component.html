@@ -1,0 +1,79 @@
+<div class="container py-5 center-children vertical-center">
+  <div class="row">
+    <h2>Sending Message to friend.</h2>
+  </div>
+  <div class="row">
+    <textarea rows="8" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
+  </div>
+
+  <div class="row" id="options">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar for formatting text"></div>
+
+    <div class="btn-group mr-2" role="group" aria-label="Font group">
+      <button type="button" class="btn btn-primary">Font</button>
+      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="javascript: void(0)">Arial</a>
+        <a class="dropdown-item" href="javascript: void(0)">Comic Sans</a>
+        <a class="dropdown-item" href="javascript: void(0)">Times New Roman</a>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-outline-dark mr-2" id="button-bold">
+      bold
+    </button>
+    <button type="button" class="btn btn-outline-dark mr-2" id="button-italics">
+      italics
+    </button>
+
+    <div class="btn-group mr-2" role="group" aria-label="Font group">
+      <div>
+        <input type="color" id="colorpicker mr-2" name="backgroundPicker" value="#ffffff" >
+      </div>
+      <div>
+        <input type="color" id="colorpicker mr-2" name="fontColorPicker" value="#000000">
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#submitConfirmModal">
+      Submit
+    </button>
+  </div>
+  <div class="row">
+    <h3>Preview:</h3>
+  </div>
+  <textarea 
+  class="shadow"
+  id="signing-box" 
+  autofocus
+  ></textarea>
+  <div class="row">
+    <markdown id="preview-box" data="{{signingBoxText}}"></markdown>
+  </div>
+  
+</div>
+
+
+<div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="submitConfirmModalTitle">Are you sure you want to submit?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+     

@@ -1,0 +1,99 @@
+<div class="container py-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-8">
+      <div class="card shadow border p-3">
+        <div class="card-body">
+          <h2 class="mb-2">Settings</h2>
+          <em>Don't forget to click Save after making changes!</em>
+          <form class="mt-3">
+            <div class="form-group">
+              <label for="display-name">Display Name</label>
+              <input type="text" class="form-control" id="display-name" placeholder="Display Name">
+            </div>
+            <div class="form-group">
+              <p>You can also reset your name to match the name used in the account that you signed in with
+              using the button below.</p>
+              <button type="submit" class="btn btn-success">Save</button>
+              <button type="submit" class="btn btn-secondary ml-2">Reset Name</button>
+            </div>
+          </form>
+          <hr/>
+          <h2>Download your Data</h2>
+          <p>
+            Clicking the button below will allow you to download all data that was created by you that is stored
+          on Virtrolio. Note that this does not include messages written <b>to</b> you, as those messages are owned
+          by the message sender.
+          </p>
+          <p>
+            The data will be provided in one of several usable formats including .json, .csv, .txt or .xlsx.
+          You may need additional software to open some of these file types.
+            <u>Virtrolio will not make any recommendations on what software to use.</u>
+          </p>
+          <p><b>Note: You can only request your data once every 30 days.</b></p>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#downloadErrorModal">Request Data</button>
+          <hr/>
+          <h2>Delete Your Virtrolio Account</h2>
+          <h6><b>READ CAREFULLY:</b></h6>
+          <p>The button below will delete your account on Virtrolio, the data associated with your account,
+          and any messages that you have sent. It will NOT delete messages sent by others to you since that is not
+          data created by you. If you would like these to be deleted, please ask the friend that created the message
+          to delete it.</p>
+          <p><b>By clicking the button below, I understand that my data will be removed IMMEDIATELY.
+          I also understand that I will NOT be able to recover, download or otherwise access my data
+            after it is deleted.</b></p>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteErrorModal">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="downloadErrorModal" tabindex="-1" role="dialog" aria-labelledby="deleteErrorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="downloadErrorModalLabel">Data Export Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Oops! It looks like something went wrong during the data export.</p>
+        <p><em>Please close this window and try again.</em></p>
+        <p>Also, make sure that your internet connection is working properly,
+        and that there aren't any firewalls on your computer that could be blocking the download.</p>
+        <p>If the error persists, please click the button below to send an email to the support team,
+        or email us directly at <a href="mailto:virtrolio.team@gmail.com" target="_blank">virtrolio.team@gmail.com</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-primary" href="mailto:virtrolio.team@gmail.com" target="_blank">Email Us</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteErrorModal" tabindex="-1" role="dialog" aria-labelledby="deleteErrorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteErrorModalLabel">Data Export Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Oops! It looks like something went wrong during the account deletion.</p>
+        <p><em>Please close this window and try again.</em></p>
+        <p>Also, make sure that your internet connection is working properly,
+          and that there aren't any firewalls on your computer that could be causing issues.</p>
+        <p>If the error persists, please click the button below to send an email to the support team,
+          or email us directly at <a href="mailto:virtrolio.team@gmail.com" target="_blank">virtrolio.team@gmail.com</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-primary" href="mailto:virtrolio.team@gmail.com" target="_blank">Email Us</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
