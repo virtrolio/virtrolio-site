@@ -1,11 +1,13 @@
 <div class="response-list-card d-none d-sm-none d-md-none d-lg-block mt-4">
   <div class="card p-3 border-0">
-    <div class="row user-info">
+    <div class="row user-info" *ngIf="authService.auth.user | async as user">
       <div class="col-lg-3 col-md-4">
-        <a [routerLink]=""><div class="profile-pic"></div></a>
+        <div class="profile-pic-container">
+          <img class="profile-pic" src="{{user.photoURL}}" alt="profile-pic">
+        </div>
       </div>
       <div class="col-lg-9 col-md-8">
-        <label class="mt-2 username">User Name</label>
+        <label class="mt-2 username">{{ user.displayName }}</label>
       </div>
     </div>
     <div class="dropdown-divider"></div>
