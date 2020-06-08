@@ -6,7 +6,7 @@ import { AppAuthService } from '../../core/app-auth.service';
 @Component({
   selector: 'app-responses-list',
   templateUrl: './responses-list.component.html',
-  styleUrls: ['./responses-list.component.css']
+  styleUrls: [ './responses-list.component.css' ]
 })
 export class ResponsesListComponent implements OnInit {
   userMsgData;

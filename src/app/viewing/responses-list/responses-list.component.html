@@ -36,29 +36,31 @@
       <label class="mt-2 username">{{ user.displayName }}</label>
     </div>
     <div class="col-md-2 col-sm-2 col-2">
-      <button class="navbar-toggler hamburger-menu float-right" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler hamburger-menu float-right" type="button" data-toggle="collapse"
+              data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+              aria-expanded="false" aria-label="Toggle navigation">
         <img src="../../../assets/images/icons/hamburger_menu.svg" alt="Hamburger Menu">
       </button>
     </div>
   </div>
 
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="response-list-card-relative">
-    <div class="card p-3 border-0">
-      <div class="dropdown-divider"></div>
-      <ul class="nav flex-column ml-2">
-        <li class="nav-item mb-2 response-title">
-          My Responses
-        </li>
-      </ul>
-      <div id="author-list-relative">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="response-list-card-relative">
+      <div class="card p-3 border-0">
+        <div class="dropdown-divider"></div>
         <ul class="nav flex-column ml-2">
-          <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
-            {{ response.author }}
+          <li class="nav-item mb-2 response-title">
+            My Responses
           </li>
         </ul>
+        <div id="author-list-relative">
+          <ul class="nav flex-column ml-2">
+            <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
+              {{ response.author }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

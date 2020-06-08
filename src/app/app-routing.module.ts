@@ -20,15 +20,16 @@ const routes: Routes = [
   { path: 'friend-link', component: FriendLinkComponent },
   { path: 'msg-sent', component: MsgSentComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'settings', component: SettingsComponent},
+  { path: 'settings', component: SettingsComponent },
   { path: 'signing', component: SigningComponent },
   { path: 'viewing', component: ViewingComponent },
   { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
