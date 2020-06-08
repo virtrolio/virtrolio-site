@@ -8,11 +8,11 @@ import { Router } from "@angular/router";
 })
 export class AppAuthService {
 
-  constructor(public auth: AngularFireAuth, private _router: Router) {
+  constructor(private _auth: AngularFireAuth, private _router: Router) {
   }
 
   login(routeTo: string) {
-    this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+    this._auth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this._router.navigate([ routeTo ])
       } else {
@@ -22,7 +22,7 @@ export class AppAuthService {
   }
 
   logout() {
-    this.auth.signOut().then(() => {
+    this._auth.signOut().then(() => {
       return this._router.navigate([ "/" ])
     });
   }
