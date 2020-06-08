@@ -1,12 +1,14 @@
 #virtrolio-outer-div {
   /* Div enclosing virtrolio (outside <a> tag) */
   height: 35em;
-  padding: 0 4.5%;
+  padding: 0 5%;
 }
 
 #virtrolio-outer {
   /* Div enclosing virtrolio (inside <a> tag) */
   height: 100%;
+  box-shadow: 5px 10px var(--light-grey);
+
 }
 
 #virtrolio-title {
