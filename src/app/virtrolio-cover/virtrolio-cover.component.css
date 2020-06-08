@@ -10,8 +10,9 @@
 }
 
 #virtrolio-title {
-  /* Title of the virtrolio (currently 2019-2020) */
-  height: 10em;
+    /* Title of the virtrolio (currently 2019-2020) */
+    height: 10em;
+    text-align: center;
 }
 
 #usersVirtrolio {
@@ -26,8 +27,8 @@
 }
 
 #friend-link-body > * {
-  /* Each item inside the friend-link modal body */
-  margin: 1em;
+    /* Each item inside the friend-link modal body */
+    margin: 0.8em;
 }
 
 #friend-link-field {
