@@ -1,9 +1,9 @@
 <div class="container py-5 center-children vertical-center">
   <div class="row">
-    <h2>Sending Message to friend.</h2>
+    <h2>Type your message to [friend name] below.</h2>
   </div>
   <div class="row">
-    <textarea rows="8" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
+    <textarea rows="5" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
   </div>
 
   <div class="row" id="options">
@@ -22,11 +22,17 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-outline-dark mr-2" id="button-bold">
-      bold
+    <button type="button" class="btn btn-primary mr-2" id="button-bold">
+      <b>B</b>
     </button>
-    <button type="button" class="btn btn-outline-dark mr-2" id="button-italics">
-      italics
+    <button type="button" class="btn btn-primary mr-2" id="button-italics">
+      <i>I</i>
+    </button>
+    <button type="button" class="btn btn-primary mr-2" id="button-italics">
+      <u>U</u>
+    </button>
+    <button type="button" class="btn btn-primary mr-2" id="button-italics">
+      <s>S</s>
     </button>
 
     <div class="btn-group mr-2" role="group" aria-label="Font group">
@@ -38,17 +44,12 @@
       </div>
     </div>
     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#submitConfirmModal">
-      Submit
+      Send
     </button>
   </div>
   <div class="row">
     <h3>Preview:</h3>
   </div>
-  <textarea 
-  class="shadow"
-  id="signing-box" 
-  autofocus
-  ></textarea>
   <div class="row">
     <markdown id="preview-box" data="{{signingBoxText}}"></markdown>
   </div>

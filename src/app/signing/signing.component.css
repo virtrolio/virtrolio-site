@@ -12,6 +12,6 @@
 	height:1.8em;
 }
 
-.btn-outline-dark:hover {
-	background-color: var(--accent);
+#signing-box {
+	width: 50em;
 }
