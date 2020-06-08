@@ -27,8 +27,8 @@
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">
     <div class="dropdown dropleft">
       <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="float-right" id="profile-pic-container" *ngIf="authService.auth.user | async as user">
-          <img id="profile-pic" src="{{user.photoURL}}">
+        <div class="float-right profile-pic-container" *ngIf="authService.auth.user | async as user">
+          <img class="profile-pic" src="{{user.photoURL}}" alt="profile-pic">
         </div>
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

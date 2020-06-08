@@ -79,3 +79,17 @@ a.clickable-object, a.clickable-object:hover {
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem var(--accent-transparent);
 }
+
+/* Profile Picture formatting */
+.profile-pic-container {
+  background: white;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 100%;
+  display: flex;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  overflow:hidden;
+}
