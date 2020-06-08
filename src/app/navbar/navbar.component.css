@@ -8,19 +8,6 @@
   height: var(--navbar-height);
 }
 
-#profile-pic-container {
-  background: white;
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: 100%;
-  display: flex;
-}
-
-#profile-pic {
-  border-radius: 100%;
-  overflow:hidden;
-}
-
 #navbar_title {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
