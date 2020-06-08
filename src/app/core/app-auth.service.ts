@@ -21,6 +21,6 @@ export class AppAuthService {
   }
 
   logout() {
-    this.auth.signOut();
+    return this.auth.signOut();
   }
 }
