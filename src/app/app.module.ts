@@ -23,7 +23,7 @@ import { ContactComponent } from './contact/contact.component';
 import { FaqComponent } from './faq/faq.component';
 import { FooterComponent } from './footer/footer.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
-import { HomeComponent} from './home/home.component';
+import { HomeComponent } from './home/home.component';
 import { MsgSentComponent } from './msg-sent/msg-sent.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -65,6 +65,7 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
     MarkdownModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
