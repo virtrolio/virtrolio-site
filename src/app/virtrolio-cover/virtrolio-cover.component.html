@@ -6,7 +6,7 @@
           <a class="clickable-object" routerLink="pagenotfound">
               <div class="shadow p-3 mb-5 bg-primary rounded" id="virtrolio-outer">
                   <div class="bg-light p-3 mt-4 m-4 rounded vertical-center" id="virtrolio-title">
-                      <h1 align=center>2019-2020</h1>
+                      <h1>2019-2020</h1>
                   </div>
                   <div class="mt-5">
                       <h2 id="usersVirtrolio">User's virtrolio</h2>
@@ -49,6 +49,7 @@
           </div>
           <div class="modal-body" id='friend-link-body'>
               <!-- later we need to replace the placeholder url with their id-->
+              <label for="friend-link-field">Your Link</label>
               <input type="text" #friendLink value="virtrolio.com/placeholder" readonly id="friend-link-field">
               <button type="button" #copyButton class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy</button>
           </div>
