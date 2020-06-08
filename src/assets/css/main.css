@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  /* variables */
+  /* Colors */
   --accent: #fa8072;
   --accent-transparent: rgba(250, 128, 114, 0.5);
   --dark-accent: #e6716d;
   --darkest-accent: #353535;
   --light-grey: #999999;
 
-
+  /* Sizes */
   --footer-height: 7em;
   --navbar-height: 4.5em;
 }
 
 h2 {
-    font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 p {
@@ -26,9 +26,9 @@ p {
 }
 
 .vertical-center {
-  display: flex;            /* Use flexbox for centering */
-  flex-direction: column;   /* Align items vertically (column-direction) */
-  justify-content: center;  /* Align items in the flex direction */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Align items vertically (column-direction) */
+  justify-content: center; /* Align items in the flex direction */
 }
 
 .center-children > * {
@@ -38,16 +38,17 @@ p {
 }
 
 a.clickable-object, a.clickable-object:hover {
-  /* Adds clickable functionality for any object, ensuring that hyperlink text recoloring doesn't impede your artistic freedom */
+  /* Adds clickable functionality for any object, ensuring that hyperlink text recoloring
+   doesn't impede your artistic freedom */
   color: inherit;
   text-decoration: none;
 }
 
 .container, .container-fluid {
   min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
-  /* Set all components' [outermost] containers (or fluid-containers) to an appropriate minimum height which will fill the screen and push the footer down. vh is viewport height */
+  /* Set all components' [outermost] containers (or fluid-containers) to an appropriate minimum height which will fill
+   the screen and push the footer down. vh is viewport height */
 }
-
 
 /* BOOTSTRAP BUTTON COLOUR MODIFICATIONS */
 
@@ -77,4 +78,18 @@ a.clickable-object, a.clickable-object:hover {
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem var(--accent-transparent);
+}
+
+/* Profile Picture formatting */
+.profile-pic-container {
+  background: white;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 100%;
+  display: flex;
+}
+
+.profile-pic {
+  border-radius: 100%;
+  overflow: hidden;
 }
