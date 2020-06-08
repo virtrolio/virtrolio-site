@@ -14,8 +14,9 @@ export class AppAuthService {
   login(routeTo: string) {
     this.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
-        // noinspection JSIgnoredPromiseFromCall
-        this._router.navigate([routeTo])
+        return this._router.navigate([routeTo])
+      } else {
+        return this._router.navigate(["/"])
       }
     })
   }
