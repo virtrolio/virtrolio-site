@@ -1,17 +1,17 @@
 .form-control:focus {
-	border-color: var(--accent);
-	box-shadow: none;
+  border-color: var(--accent);
+  box-shadow: none;
 }
 
 #options > * {
-	margin: 2em 0.5em;
+  margin: 2em 0.5em;
 }
 
 .format-icons {
-	width:1.8em;
-	height:1.8em;
+  width: 1.8em;
+  height: 1.8em;
 }
 
 .btn-outline-dark:hover {
-	background-color: var(--accent);
+  background-color: var(--accent);
 }
