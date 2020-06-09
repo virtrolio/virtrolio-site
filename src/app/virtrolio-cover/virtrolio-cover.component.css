@@ -24,6 +24,7 @@
   /* "User's virtrolio" text on virtrolio cover */
   text-align: center;
   color: white;
+  line-height: 1.5;
 }
 
 #friend-link-body {

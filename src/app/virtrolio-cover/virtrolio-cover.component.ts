@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppAuthService } from '../core/app-auth.service';
 
 @Component({
   selector: 'app-virtrolio-cover',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VirtrolioCoverComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AppAuthService) { }
 
   ngOnInit(): void { }
 
