@@ -10,7 +10,7 @@ describe('MsgSentComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MsgSentComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

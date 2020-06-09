@@ -10,7 +10,7 @@ describe('ViewingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ViewingComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

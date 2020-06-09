@@ -10,7 +10,7 @@ describe('FriendLinkComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FriendLinkComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -9,7 +9,7 @@
             <h1 align=center>2019-2020</h1>
           </div>
           <div class="mt-5">
-            <h2 id="usersVirtrolio">User's virtrolio</h2>
+            <h2 id="users-virtrolio">User's virtrolio</h2>
           </div>
         </div>
       </a>
@@ -35,13 +35,13 @@
 </div>
 
 <!-- Friend Link Modal -->
-<div class="modal fade" id="linkgen" tabindex="-1" role="dialog" aria-labelledby="friendLinkModalCenterTitle"
-  aria-hidden="true">
+<div class="modal fade" id="link-gen" tabindex="-1" role="dialog" aria-labelledby="link-gen-title"
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <!-- Modal Title -->
-        <h5 class="modal-title" id="linkGenTitle">
+        <h5 class="modal-title" id="link-gen-title">
           Here is your Friend Link!
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -52,7 +52,8 @@
         <!-- later we need to replace the placeholder url with their id-->
         <input type="text" #friendLink value="virtrolio.com/placeholder" readonly id="friend-link-field">
         <button type="button" #copyButton class="btn btn-primary"
-          (click)="copyLink(friendLink, copyButton)">Copy</button>
+                (click)="copyLink(friendLink, copyButton)">Copy
+        </button>
       </div>
     </div>
   </div>

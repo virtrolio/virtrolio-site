@@ -10,7 +10,7 @@ describe('FaqComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FaqComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

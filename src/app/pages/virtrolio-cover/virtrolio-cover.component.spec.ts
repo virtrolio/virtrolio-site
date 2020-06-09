@@ -10,7 +10,7 @@ describe('VirtrolioCoverComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ VirtrolioCoverComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
