@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
-import { auth } from "firebase/app";
+import { auth, User } from "firebase/app";
 import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppAuthService {
+  private _user: User;
 
   constructor(private _auth: AngularFireAuth, private _router: Router) {
+    this._auth.user.subscribe((user: User) => this._user = user);
   }
 
   login(routeTo: string) {
@@ -28,14 +30,12 @@ export class AppAuthService {
   }
 
   isLoggedIn() {
-    return this._auth.currentUser !== null
+    return this._user !== null
   }
 
-  async profilePictureLink() {
-    if (this._auth.currentUser) {
-      return (await this._auth.currentUser).photoURL
-    } else {
-      throw new TypeError("User is not logged in")
+  profilePictureLink() {
+    if (this._user) {
+      return (this._user).photoURL
     }
   }
 }
