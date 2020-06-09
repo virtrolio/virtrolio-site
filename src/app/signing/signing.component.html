@@ -1,23 +1,27 @@
 <div class="container py-5 center-children vertical-center">
   <div class="row" id="title-div">
-    <label for="signing-box"><h2>Type your message to [friend name] below.</h2></label>
+    <label for="signing-box">
+      <h2>Type your message to [friend name] below.</h2>
+    </label>
   </div>
   <div class="row">
     <textarea rows="5" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
   </div>
 
   <div class="row" id="options">
-
-    <div class="btn-group mr-2" role="group" aria-label="Font group">
-      <button type="button" class="btn btn-primary">Font</button>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="fontSelectorDropdown" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
+        {{ currentFont }}
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="javascript: void(0)">Arial</a>
-        <a class="dropdown-item" href="javascript: void(0)">Comic Sans</a>
-        <a class="dropdown-item" href="javascript: void(0)">Times New Roman</a>
+      <div class="dropdown-menu" aria-labelledby="fontSelectorDropdown">
+        <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
+        <a class="dropdown-item" (click)="selectFont('Arial')" href="javascript: void(0)">Arial</a>
+        <a class="dropdown-item" (click)="selectFont('Comic Sans MS')" href="javascript: void(0)">Comic Sans MS</a>
+        <a class="dropdown-item" (click)="selectFont('Dancing Script')" href="javascript: void(0)">Dancing Script</a>
+        <a class="dropdown-item" (click)="selectFont('Roboto')" href="javascript: void(0)">Roboto</a>
+        <a class="dropdown-item" (click)="selectFont('Montserrat')" href="javascript: void(0)">Montserrat</a>
+        <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
       </div>
     </div>
 
@@ -36,7 +40,7 @@
 
     <div class="btn-group mr-2" role="group" aria-label="Font group">
       <div>
-        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value="#ffffff" >
+        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value="#ffffff">
       </div>
       <div>
         <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker" value="#000000">
@@ -52,28 +56,27 @@
   <div class="row">
     <markdown id="preview-box" data="{{signingBoxText}}"></markdown>
   </div>
-  
+
 </div>
 
 
-<div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="submitConfirmModalTitle">Are you sure you want to submit?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+<div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="submitConfirmModalTitle">Are you sure you want to submit?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
 </div>
-
-     

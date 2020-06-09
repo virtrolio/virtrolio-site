@@ -8,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class SigningComponent implements OnInit {
   public signingBoxText='';
+  // default font is arial
+  public currentFont='Arial'
   
+  selectFont(font: string) {
+    this.currentFont = font;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

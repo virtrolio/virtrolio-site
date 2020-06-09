@@ -11,6 +11,11 @@
 	text-align: center;
 }
 
+#fontSelectorDropdown {
+	text-align: right;
+	width: 12em;
+}
+
 .format-icons {
 	width:1.8em;
 	height:1.8em;
