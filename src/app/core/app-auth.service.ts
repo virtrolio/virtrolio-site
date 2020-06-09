@@ -29,19 +29,23 @@ export class AppAuthService {
     });
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return this._user !== null
   }
 
-  profilePictureLink() {
+  profilePictureLink(): string {
     if (this._user) {
       return this._user.photoURL
+    } else {
+      return ""
     }
   }
 
-  displayName() {
+  displayName(): string {
     if (this._user) {
       return this._user.displayName
+    } else {
+      return ""
     }
   }
 }
