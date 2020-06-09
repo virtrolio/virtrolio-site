@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
 // Pages
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -14,18 +14,45 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '' ]);
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'friend-link', component: FriendLinkComponent },
-  { path: 'msg-sent', component: MsgSentComponent },
+  {
+    path: 'msg-sent',
+    component: MsgSentComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
+  },
+  {
+    path: 'signing',
+    component: SigningComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
+  },
+  {
+    path: 'viewing',
+    component: ViewingComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
+  },
+  {
+    path: 'virtrolio-cover',
+    component: VirtrolioCoverComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
+  },
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'signing', component: SigningComponent },
-  { path: 'viewing', component: ViewingComponent },
-  { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
 ];
 
