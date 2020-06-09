@@ -21,6 +21,8 @@
         <div class="row"><button class="btn-lg btn-primary" type="button">Export to PDF</button></div>
         <div class="row"><button class="btn-lg btn-primary" type="button" data-toggle="modal"
             data-target="#linkgen">Sharing Link</button></div>
+        <div class="row"><button class="btn-lg btn-primary" type="button" data-toggle="modal"
+          data-target="#sendMessage">Send a Message</button></div>
         <div class="row"><button class="btn-lg btn-primary" type="button" routerLink="settings">Settings</button></div>
       </div>
     </div>
@@ -47,6 +49,28 @@
         <input type="text" #friendLink value="virtrolio.com/placeholder" readonly id="friend-link-field">
         <button type="button" #copyButton class="btn btn-primary"
           (click)="copyLink(friendLink, copyButton)">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Send a Message Modal -->
+<div class="modal fade" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="sendMessageModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- Modal Title -->
+        <h5 class="modal-title" id="sendMessageTitle">You're barking up the wrong tree, bud!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id='send-message-body'>
+        To sign a friend's virtrolio, you need to visit the 'sharing link' which they give you! To access <em>your</em> sharing link, click the 'Sharing Link' button above!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
