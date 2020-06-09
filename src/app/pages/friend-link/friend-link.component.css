@@ -1,0 +1,16 @@
+#pen-graphic {
+  /* Fountain Pen SVG */
+  width: 30em;
+}
+
+#buttons > button {
+  /* For each button */
+  margin: 2em 1em 0;
+  font-size: 1.1em;
+}
+
+#title-text {
+  /* We see you’re trying to sign your friend’s virtrolio... */
+  text-align: center;
+  font-size: 2em;
+}

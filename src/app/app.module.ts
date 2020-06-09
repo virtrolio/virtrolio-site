@@ -5,34 +5,33 @@ import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from "../environments/environment";
-import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from '../environments/environment';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // ngx-markdown
-import { MarkdownModule } from "ngx-markdown";
+import { MarkdownModule } from 'ngx-markdown';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 
-// Components
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { FaqComponent } from './faq/faq.component';
-import { FooterComponent } from './footer/footer.component';
-import { FriendLinkComponent } from './friend-link/friend-link.component';
-import { HomeComponent} from './home/home.component';
-import { MsgSentComponent } from './msg-sent/msg-sent.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SettingsComponent } from './settings/settings.component';
-import { SigningComponent } from "./signing/signing.component";
-import { ViewingComponent } from './viewing/viewing.component';
-import { MessagesComponent } from './viewing/messages/messages.component';
-import { ResponsesListComponent } from './viewing/responses-list/responses-list.component';
-import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
+// Pages
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { FaqComponent } from './pages/faq/faq.component';
+import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { SigningComponent } from './pages/signing/signing.component';
+import { ViewingComponent } from './pages/viewing/viewing.component';
+import { MessagesComponent } from './pages/viewing/messages/messages.component';
+import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 
 
 @NgModule({
@@ -41,11 +40,9 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
     AboutComponent,
     ContactComponent,
     FaqComponent,
-    FooterComponent,
     FriendLinkComponent,
     HomeComponent,
     MsgSentComponent,
-    NavbarComponent,
     PageNotFoundComponent,
     SettingsComponent,
     SigningComponent,
@@ -56,6 +53,7 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
@@ -65,6 +63,7 @@ import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.compo
     MarkdownModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
