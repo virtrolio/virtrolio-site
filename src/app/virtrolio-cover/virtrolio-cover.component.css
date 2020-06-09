@@ -8,7 +8,10 @@
   /* Div enclosing virtrolio (inside <a> tag) */
   height: 100%;
   box-shadow: 5px 10px var(--light-grey);
+}
 
+.bg-primary:hover {
+  background-color: var(--dark-accent) !important;
 }
 
 #virtrolio-title {
