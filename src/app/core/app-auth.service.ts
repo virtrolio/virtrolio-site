@@ -35,7 +35,13 @@ export class AppAuthService {
 
   profilePictureLink() {
     if (this._user) {
-      return (this._user).photoURL
+      return this._user.photoURL
+    }
+  }
+
+  displayName() {
+    if (this._user) {
+      return this._user.displayName
     }
   }
 }
