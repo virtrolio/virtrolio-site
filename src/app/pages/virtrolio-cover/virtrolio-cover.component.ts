@@ -14,8 +14,8 @@ export class VirtrolioCoverComponent implements OnInit {
   copyLink(inputElement, buttonElement) {
     inputElement.select();
     inputElement.setSelectionRange(0, 10000);  /* For mobile devices */
-    document.execCommand("copy");              /* Copy text */
-    buttonElement.innerHTML = "Copied!";       /* Confirm the copy */
+    document.execCommand('copy');              /* Copy text */
+    buttonElement.innerHTML = 'Copied!';       /* Confirm the copy */
   }
 
 }

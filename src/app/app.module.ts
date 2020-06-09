@@ -5,18 +5,18 @@ import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from "../environments/environment";
-import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from '../environments/environment';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // ngx-markdown
-import { MarkdownModule } from "ngx-markdown";
+import { MarkdownModule } from 'ngx-markdown';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from "./core/core.module";
+import { CoreModule } from './core/core.module';
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
@@ -27,7 +27,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { SigningComponent } from "./pages/signing/signing.component";
+import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth-guard";
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
@@ -10,7 +10,7 @@ import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SettingsComponent } from "./pages/settings/settings.component";
+import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
