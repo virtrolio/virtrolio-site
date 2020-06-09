@@ -18,14 +18,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Components
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+// Pages
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FaqComponent } from './faq/faq.component';
-import { FooterComponent } from './footer/footer.component';
 import { FriendLinkComponent } from './friend-link/friend-link.component';
 import { HomeComponent } from './home/home.component';
 import { MsgSentComponent } from './msg-sent/msg-sent.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SigningComponent } from "./signing/signing.component";
