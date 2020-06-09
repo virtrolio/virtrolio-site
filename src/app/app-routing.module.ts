@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ViewingComponent } from './viewing/viewing.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MsgSentComponent } from './msg-sent/msg-sent.component';
-import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
-import { HomeComponent } from './home/home.component';
-import { SigningComponent } from './signing/signing.component';
-import { FriendLinkComponent } from './friend-link/friend-link.component';
-import { SettingsComponent } from "./settings/settings.component";
 import { AboutComponent } from './about/about.component';
-import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
+import { FaqComponent } from './faq/faq.component';
+import { FriendLinkComponent } from './friend-link/friend-link.component';
+import { HomeComponent } from './home/home.component';
+import { MsgSentComponent } from './msg-sent/msg-sent.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SettingsComponent } from "./settings/settings.component";
+import { SigningComponent } from './signing/signing.component';
+import { ViewingComponent } from './viewing/viewing.component';
+import { VirtrolioCoverComponent } from './virtrolio-cover/virtrolio-cover.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,15 +20,16 @@ const routes: Routes = [
   { path: 'friend-link', component: FriendLinkComponent },
   { path: 'msg-sent', component: MsgSentComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: 'settings', component: SettingsComponent},
+  { path: 'settings', component: SettingsComponent },
   { path: 'signing', component: SigningComponent },
   { path: 'viewing', component: ViewingComponent },
   { path: 'virtrolio-cover', component: VirtrolioCoverComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found'}
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
