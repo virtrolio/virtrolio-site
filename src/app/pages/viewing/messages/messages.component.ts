@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../../core/viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 
 @Component({
   selector: 'app-messages',
