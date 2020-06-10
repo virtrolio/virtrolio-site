@@ -38,8 +38,8 @@ const routes: Routes = [
   {
     path: 'signing',
     component: SigningComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'viewing',
