@@ -48,4 +48,12 @@ export class AppAuthService {
       return '';
     }
   }
+
+  uid(): string {
+    if (this.user) {
+      return this.user.uid;
+    } else {
+      return '';
+    }
+  }
 }
