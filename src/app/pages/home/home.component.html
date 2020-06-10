@@ -1,17 +1,14 @@
 <div class="container py-5 vertical-center">
   <div class="row d-flex justify-content-center">
-    <div class="col-sm-12 col-md-8">
+    <div class="col-sm-12 col-md-7">
       <div class="card shadow border p-3">
         <div class="card-body">
           <h2 class="mb-3">What is "virtrolio"?</h2>
-          <p class="lead"><em>Virtrolio</em> stands for ‘virtual portfolio’ and is an online version of those pages in
-            your yearbook that you use to write messages to your friends. You can create your own virtrolio, share it
-            with friends, and have them write messages on it. Whenever you want, you can view your virtrolio or download
-            it.
+          <p class="lead" id="body-text"><em>Virtrolio</em> stands for ‘virtual portfolio’ and is an online version of those pages in
+            your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you can create your own virtrolio, share it
+            with friends, and have them write customized messages for you to keep. Whenever you want, you can view your virtrolio or download it for keepsakes.
           </p>
-          <p class="lead" style="font-weight: 600">Tentative release: Mid-summer 2020.</p>
-          <p class="lead">Stay tuned and contact us at <a href="mailto:virtrolio.team@gmail.com" target="_blank">virtrolio.team@gmail.com</a>
-            if you have any questions.</p>
+          <p class="lead" id="body-bolded">Sign up / Sign in below to start your own virtrolio!</p>
           <div class="row justify-content-center mt-4">
             <div class="col-lg-6 col-md-7 text-center">
               <button type="button" (click)="authService.login('/virtrolio-cover')"
