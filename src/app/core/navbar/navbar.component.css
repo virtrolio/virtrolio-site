@@ -28,6 +28,6 @@
   opacity: 100%;
 }
 
-.profile-pic {
-  border: 2px solid #FFFFFF;
+.profile-pic:hover {
+  opacity: 75%;
 }
