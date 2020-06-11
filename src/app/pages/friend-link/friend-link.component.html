@@ -12,11 +12,10 @@
 
   <!-- Buttons -->
   <div class="row justify-content-center" id="buttons">
-    <button type="button" class="col-sm-4 col-md-3 btn btn-outline-primary" data-toggle="modal"
-            data-target="#rejecc-modal">
-      <!-- Google Sign-in (improper branding) -->
-      Sign in with
-      <img src="../../../assets/images/icons/google.svg" alt="" width="32" height="32">
+    <button type="button" (click)="authService.login('/signing')"
+      class="btn btn-outline-dark google-sign-in-btn col-sm-4 col-md-3">
+      <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
+      <span>Sign in with Google</span>
     </button>
     <button type="button" routerLink="" class="col-sm-4 col-md-3 btn btn-primary">Home Page</button>
   </div>
@@ -24,7 +23,7 @@
 
 <!-- Rejecc Modal -->
 <div class="modal fade" id="rejecc-modal" tabindex="-1" role="dialog" aria-labelledby="rejecc-modal-title"
-     aria-hidden="true">
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
