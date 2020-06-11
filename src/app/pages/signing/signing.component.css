@@ -46,3 +46,21 @@
 	font-size: 1.6em;
 }
 
+markdown {
+	background: #bbbbbb;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	display: block;
+	height: 12em;
+	padding: 2em;
+	overflow-y: auto;
+	overflow-x: auto;
+	word-wrap: break-word;
+	width: 50em;
+  }
+
+#preview-box {
+	border: black;
+	border-width: 0.1em;
+	background-color: #dddddd;
+}
