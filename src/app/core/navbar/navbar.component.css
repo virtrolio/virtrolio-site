@@ -31,3 +31,9 @@
 .profile-pic:hover {
   opacity: 75%;
 }
+
+.navbar-collapse {
+  background: linear-gradient(45deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  padding: 0 1em;
+  border-radius: 1em;
+}
