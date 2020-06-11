@@ -11,7 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // ngx-markdown
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +60,16 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot({
+      // set various markdown options
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          // makes having 2 newlines for a line break unneccessary
+          breaks: true,
+        },
+      },
+    })
   ],
   providers: [],
   bootstrap: [ AppComponent ]

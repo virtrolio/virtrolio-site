@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// noinspection ES6UnusedImports
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 // Pages
@@ -15,6 +16,7 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 
+// noinspection JSUnusedLocalSymbols
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '' ]);
 
 const routes: Routes = [
@@ -26,14 +28,14 @@ const routes: Routes = [
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    // canActivate: [ AngularFireAuthGuard ],
+    // data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'settings',
     component: SettingsComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    // canActivate: [ AngularFireAuthGuard ],
+    // data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'signing',
@@ -44,14 +46,14 @@ const routes: Routes = [
   {
     path: 'viewing',
     component: ViewingComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    // canActivate: [ AngularFireAuthGuard ],
+    // data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    // canActivate: [ AngularFireAuthGuard ],
+    // data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
