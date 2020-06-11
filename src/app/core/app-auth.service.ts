@@ -44,7 +44,7 @@ export class AppAuthService {
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
-    return this.user !== null;
+    return this.user != null;
   }
 
   /**
