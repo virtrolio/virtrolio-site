@@ -14,7 +14,7 @@
           <p class="lead" id="body-bolded">Sign up / Sign in below to start your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
             <button type="button" (click)="authService.login('/virtrolio-cover')"
-              class="btn btn-outline-dark google-sign-in-btn" *ngIf="isLoggedIn else yourVirtrolio">
+              class="btn btn-outline-dark google-sign-in-btn" *ngIf="!authService.isLoggedIn() else yourVirtrolio">
               <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
               <span>Sign in with Google</span>
             </button>
