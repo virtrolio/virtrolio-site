@@ -9,12 +9,18 @@ import { AppAuthService } from '../../core/app-auth.service';
 export class HomeComponent implements OnInit {
   isLoggedIn: boolean;
 
+  checkLogin() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    console.log('Logged in3: ', this.isLoggedIn);
+    return this.isLoggedIn;
+  }
+
   constructor(public authService: AppAuthService) {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    console.log('Logged in: ', this.isLoggedIn);
+    console.log('from ngOnInit: ', this.authService.isLoggedIn());
+    /* This is called onInit, and similar to the first few calls of 'checkLogin()' it returns true even when the user isn't signed in */
   }
 
 }
