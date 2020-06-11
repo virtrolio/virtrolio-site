@@ -4,19 +4,25 @@
       <div class="card shadow border p-3">
         <div class="card-body">
           <h2 class="mb-3">What is "virtrolio"?</h2>
-          <p class="lead" id="body-text"><em>Virtrolio</em> stands for ‘virtual portfolio’ and is an online version of those pages in
-            your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you can create your own virtrolio, share it
-            with friends, and have them write customized messages for you to keep. Whenever you want, you can view your virtrolio or download it for keepsakes.
+          <p class="lead" id="body-text"><em>Virtrolio</em> stands for ‘virtual portfolio’ and is an online version of
+            those pages in
+            your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you
+            can create your own virtrolio, share it
+            with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
+            virtrolio or download it for keepsakes.
           </p>
           <p class="lead" id="body-bolded">Sign up / Sign in below to start your own virtrolio!</p>
           <div class="row justify-content-center mt-4">
             <div class="col-lg-6 col-md-7 text-center">
               <button type="button" (click)="authService.login('/virtrolio-cover')"
-                      class="btn btn-outline-dark google-sign-in-btn" *ngIf="!authService.isLoggedIn()">
+                class="btn btn-outline-dark google-sign-in-btn" *ngIf="isLoggedIn else yourVirtrolio">
                 <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
                 <span>Sign in with Google</span>
               </button>
-              <button type="button" class="btn-lg btn-primary" *ngIf="authService.isLoggedIn()" routerLink="/virtrolio-cover">Your virtrolio</button>
+              <ng-template #yourVirtrolio>
+                <button type="button" class="btn-lg btn-primary"
+                  routerLink="/virtrolio-cover">Your virtrolio</button>
+              </ng-template>
             </div>
           </div>
         </div>
@@ -27,14 +33,10 @@
 
   </div>
   <div class="row pt-5">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger btn-lg mx-auto" data-toggle="modal" data-target="#newUserModal">
-      (Trigger New User Alert)
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel"
-         aria-hidden="true">
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
