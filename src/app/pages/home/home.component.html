@@ -12,10 +12,11 @@
           <div class="row justify-content-center mt-4">
             <div class="col-lg-6 col-md-7 text-center">
               <button type="button" (click)="authService.login('/virtrolio-cover')"
-                      class="btn btn-outline-dark google-sign-in-btn">
+                      class="btn btn-outline-dark google-sign-in-btn" *ngIf="!authService.isLoggedIn()">
                 <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
                 <span>Sign in with Google</span>
               </button>
+              <button type="button" class="btn-lg btn-primary" *ngIf="authService.isLoggedIn()" routerLink="/virtrolio-cover">Your virtrolio</button>
             </div>
           </div>
         </div>
