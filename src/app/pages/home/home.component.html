@@ -12,6 +12,7 @@
             virtrolio or download it for keepsakes.
           </p>
 
+          <!-- Call to sign in and Google sign in button; displays if logged out -->
           <div *ngIf="!authService.isLoggedIn() else yourVirtrolio">
             <p class="lead" id="bolded-body-text">Sign up / Sign in below to start your own virtrolio!</p>
             <div class="row d-flex justify-content-center mt-4">
@@ -25,11 +26,10 @@
 
           <!-- Button to replace 'Sign in with Google' when you're signed in -->
           <ng-template #yourVirtrolio>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center pt-3">
               <button type="button" class="btn-lg btn-primary" routerLink="/virtrolio-cover">Your virtrolio</button>
             </div>
           </ng-template>
-
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- newUserModal -->
 <div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
