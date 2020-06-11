@@ -27,3 +27,7 @@
   color: #FFFFFF;
   opacity: 100%;
 }
+
+.profile-pic:hover {
+  opacity: 75%;
+}

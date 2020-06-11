@@ -45,9 +45,7 @@ export class AppAuthService {
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
-    this.LoggedIn = this.user !== null;
-    console.log('isLoggedIn(): ', this.LoggedIn);
-    return this.LoggedIn;
+    return this.user != null;
   }
 
   /**
