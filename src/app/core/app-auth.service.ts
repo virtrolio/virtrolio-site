@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppAuthService {
   private user: User;
+  private LoggedIn: boolean;
 
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.angularFireAuth.user.subscribe((user: User) => this.user = user);
@@ -44,7 +45,9 @@ export class AppAuthService {
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
-    return this.user !== null;
+    this.LoggedIn = this.user !== null;
+    console.log('isLoggedIn(): ', this.LoggedIn);
+    return this.LoggedIn;
   }
 
   /**
