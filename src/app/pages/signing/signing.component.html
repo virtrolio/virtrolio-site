@@ -5,7 +5,7 @@
     </label>
   </div>
   <div class="row">
-    <textarea rows="5" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
+    <textarea #inputarea rows="5" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
       maxlength='1200'></textarea>
   </div>
 
@@ -26,16 +26,16 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="button-bold">
+    <button type="button" (click)="makeBold(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-bold">
       <b>B</b>
     </button>
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="button-italics">
+    <button type="button" (click)="makeItalics(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
       <i>I</i>
     </button>
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="button-italics">
+    <button type="button" (click)="makeUnderline(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-underline">
       <u>U</u>
     </button>
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="button-italics">
+    <button type="button" (click)="makeStrikethrough(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-strikethrough">
       <s>S</s>
     </button>
 
