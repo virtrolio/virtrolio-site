@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <button type="button" (click)="makeBold(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-bold">
+    <button type="button" (click)="makeBold(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
       <b>B</b>
     </button>
     <button type="button" (click)="makeItalics(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
@@ -41,10 +41,10 @@
 
     <div class="btn-group mr-2" role="group" aria-label="Font group">
       <div>
-        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value="#ffffff">
+        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}} [(ngModel)]='textColor'>
       </div>
       <div>
-        <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker" value="#000000">
+        <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker" value={{backgroundColor}} [(ngModel)]='backgroundColor'>
       </div>
     </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitConfirmModal">
@@ -55,7 +55,7 @@
     <h3 id="preview-header">Preview</h3>
   </div>
   <div class="row">
-    <markdown rows="5" id="preview-text" data="{{ signingBoxText }}"></markdown>
+    <markdown [ngStyle]="{'background-color': backgroundColor, 'color': textColor}" rows="5" id="preview-text" data="{{ signingBoxText }}"></markdown>
   </div>
 </div>
 

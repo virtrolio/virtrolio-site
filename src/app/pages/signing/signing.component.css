@@ -47,10 +47,8 @@
 }
 
 markdown {
-	background: #bbbbbb;
 	border: 2px solid #ddd;
 	border-radius: 8px;
-	display: block;
 	height: 12em;
 	padding: 2em;
 	overflow-y: auto;
