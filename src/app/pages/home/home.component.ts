@@ -7,14 +7,11 @@ import { AppAuthService } from '../../core/app-auth.service';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-  isLoggedIn: boolean;
 
   constructor(public authService: AppAuthService) {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    console.log('Logged in: ', this.isLoggedIn);
   }
 
 }
