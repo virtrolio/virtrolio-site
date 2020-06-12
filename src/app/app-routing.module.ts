@@ -28,14 +28,14 @@ const routes: Routes = [
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'settings',
     component: SettingsComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   {
     path: 'signing',
@@ -52,8 +52,8 @@ const routes: Routes = [
   {
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
