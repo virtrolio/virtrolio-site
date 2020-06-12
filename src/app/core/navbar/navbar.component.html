@@ -14,7 +14,7 @@
         <a class="nav-link" routerLink="">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/virtrolio-cover" *ngIf="authService.isLoggedIn()">Your virtrolio</a>
+        <a class="nav-link" routerLink="/virtrolio-cover" [hidden]="!authService.isLoggedIn()">Your virtrolio</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="about">About</a>
