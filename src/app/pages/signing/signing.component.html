@@ -6,7 +6,7 @@
   </div>
   <div class="d-flex justify-content-center col-12">
     <div class="row">
-      <textarea #inputarea rows="6" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
+      <textarea #signingInputArea rows="6" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
         maxlength='5000'></textarea>
     </div>
     <div class="row">
@@ -32,17 +32,17 @@
       </div>
     </div>
   
-    <button type="button" (click)="makeBold(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
+    <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
       <b>B</b>
     </button>
-    <button type="button" (click)="makeItalics(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
+    <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
       <i>I</i>
     </button>
-    <button type="button" (click)="makeUnderline(inputarea)" class="btn btn-secondary btn-format mr-2"
+    <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
       id="button-underline">
       <u>U</u>
     </button>
-    <button type="button" (click)="makeStrikethrough(inputarea)" class="btn btn-secondary btn-format mr-2"
+    <button type="button" (click)="makeStrikethrough(signingInputArea)" class="btn btn-secondary btn-format mr-2"
       id="button-strikethrough">
       <s>S</s>
     </button>
@@ -71,7 +71,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="submitConfirmModalTitle">Are you sure you want to submit?</h5>
+        <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to submit?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
