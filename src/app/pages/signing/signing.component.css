@@ -58,9 +58,10 @@ markdown {
 	overflow-y: auto;
 	overflow-x: auto;
 	word-wrap: break-word;
-  }
-
-markdown>p {
-	font-family: Arial;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+	color: #fff;
+	text-decoration: none;
+	background-color: var(--accent);
+}
