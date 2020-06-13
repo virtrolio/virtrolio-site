@@ -4,8 +4,8 @@
 }
 
 #cookie-alert {
-  position: absolute;
-  top: 50%;
+  position: fixed;
   left: 50%;
-  transform: translate(-50%, -130%);
+  transform: translate(-50%, -50%);
+  bottom: var(--footer-height);
 }
