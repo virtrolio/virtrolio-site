@@ -6,12 +6,14 @@
   width: 100%;
   z-index: 1;
   height: var(--navbar-height);
+  padding: 0;
 }
 
 #navbar_title {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
   color: white;
+  margin-left: 1em;
 }
 
 #logout-text {
@@ -30,4 +32,18 @@
 
 .profile-pic:hover {
   opacity: 75%;
+}
+
+.profile-pic-container {
+  margin-right: 1em;
+}
+
+.navbar-collapse {
+  background: linear-gradient(45deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  padding: 0 1em;
+  border-radius: 1em;
+}
+
+.navbar-toggler {
+  margin-right: 1em;
 }
