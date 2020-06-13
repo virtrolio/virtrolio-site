@@ -52,6 +52,7 @@ markdown {
 	margin: 1em;
 	padding: 1em;
 	width: 50em;
+	height: 20em;
 	resize: none;
 	font: 16px Arial;
 	border: 0.05em solid var(--light-grey);
