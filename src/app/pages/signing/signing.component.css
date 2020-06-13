@@ -20,9 +20,20 @@
 	width: 2.4em;
 }
 
-.form-control {
+#signing-header {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	font-size: 1.6em;
+}
+
+
+#signing-box {
 	margin: 1em;
-	margin-bottom: 1em;
+	padding: 1em;
+	width: 50em;
+	resize: none;
+	font: 16px Arial;
+	border-radius: 0em;
 }
 
 .form-control:focus {
@@ -30,35 +41,26 @@
 	box-shadow: none;
 }
 
-#signing-box {
-	width: 50em;
-	resize: none;
-}
-
 #preview-header {
-	margin-top: 0.8em;
+	margin-top: 1.0em;
+	margin-bottom: 0em;
 	font-size: 1.2em;
 }
 
-#signing-header {
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-	font-size: 1.6em;
-}
-
 markdown {
-	border: 2px solid #ddd;
-	border-radius: 8px;
-	height: 12em;
-	padding: 2em;
+	margin: 1em;
+	padding: 1em;
+	width: 50em;
+	resize: none;
+	font: 16px Arial;
+	border: 0.1em solid #dddddd;
+	border-radius: 0.25em;
 	overflow-y: auto;
 	overflow-x: auto;
 	word-wrap: break-word;
-	width: 50em;
   }
 
-#preview-box {
-	border: black;
-	border-width: 0.1em;
-	background-color: #dddddd;
+markdown>p {
+	font-family: Arial;
 }
+
