@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
-import { AppAuthService } from '../../core/app-auth.service';
+import { AppAuthService } from '../../../core/app-auth.service';
 
 @Component({
   selector: 'app-responses-list',

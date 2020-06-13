@@ -1,13 +1,13 @@
 <div class="response-list-card d-none d-sm-none d-md-none d-lg-block mt-4">
   <div class="card p-3 border-0">
-    <div class="row user-info" *ngIf="authService.auth.user | async as user">
+    <div class="row user-info" *ngIf="authService.isLoggedIn()">
       <div class="col-lg-3 col-md-4">
         <div class="profile-pic-container">
-          <img class="profile-pic" src="{{user.photoURL}}" alt="profile-pic">
+          <img class="profile-pic" src="{{authService.profilePictureLink()}}" alt="profile-pic">
         </div>
       </div>
       <div class="col-lg-9 col-md-8">
-        <label class="mt-2 username">{{ user.displayName }}</label>
+        <label class="mt-2 username">{{ authService.displayName() }}</label>
       </div>
     </div>
     <div class="dropdown-divider"></div>
@@ -26,14 +26,14 @@
   </div>
 </div>
 <div class="col-12 d-block d-sm-block d-md-block d-lg-none mt-4">
-  <div class="row user-info shadow rounded-pill py-2 my-3" *ngIf="authService.auth.user | async as user">
+  <div class="row user-info shadow rounded-pill py-2 my-3" *ngIf="authService.isLoggedIn()">
     <div class="col-md-1 col-sm-2 col-2">
       <div class="profile-pic-container">
-        <img class="profile-pic" src="{{user.photoURL}}" alt="profile-pic">
+        <img class="profile-pic" src="{{ authService.profilePictureLink() }}" alt="profile-pic">
       </div>
     </div>
     <div class="col-md-9 col-sm-8 col-8">
-      <label class="mt-2 username">{{ user.displayName }}</label>
+      <label class="mt-2 username">{{ authService.displayName() }}</label>
     </div>
     <div class="col-md-2 col-sm-2 col-2">
       <button class="navbar-toggler hamburger-menu float-right" type="button" data-toggle="collapse"
