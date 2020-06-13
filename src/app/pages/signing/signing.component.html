@@ -16,11 +16,11 @@
   </div>
   <div class="row justify-content-center" id="options">
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="fontSelectorDropdown" data-toggle="dropdown"
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
         {{ currentFont }}
       </button>
-      <div class="dropdown-menu" aria-labelledby="fontSelectorDropdown">
+      <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
         <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
         <a class="dropdown-item" (click)="selectFont('Arial')" href="javascript: void(0)">Arial</a>
         <a class="dropdown-item" (click)="selectFont('Comic Sans MS')" href="javascript: void(0)">Comic Sans MS</a>
@@ -57,7 +57,7 @@
           value={{backgroundColor}} [(ngModel)]='backgroundColor'>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitConfirmModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-confirm-modal">
       Send
     </button>
   </div>
@@ -66,7 +66,7 @@
 
 
 
-<div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle"
+<div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="submit-confirm-modal-title"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
