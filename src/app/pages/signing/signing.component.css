@@ -33,6 +33,7 @@
 	width: 50em;
 	resize: none;
 	font: 16px Arial;
+	border-width: 0.05em;
 	border-radius: 0em;
 }
 
@@ -53,15 +54,13 @@ markdown {
 	width: 50em;
 	resize: none;
 	font: 16px Arial;
-	border: 0.1em solid #dddddd;
-	border-radius: 0.25em;
+	border: 0.05em solid var(--light-grey);
+	border-radius: 0.4em;
 	overflow-y: auto;
 	overflow-x: auto;
 	word-wrap: break-word;
 }
 
 .dropdown-item.active, .dropdown-item:active {
-	color: #fff;
-	text-decoration: none;
 	background-color: var(--accent);
 }
