@@ -16,6 +16,7 @@ export class SigningComponent implements OnInit {
   selectFont(font: string) {
     this.currentFont = font;
   }
+  
   makeBold(textbox: HTMLTextAreaElement) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
@@ -23,6 +24,7 @@ export class SigningComponent implements OnInit {
     this.signingBoxText = text.slice(0, start) + '**' + text.slice(start, end) + '**' + text.slice(end);
     textbox.select();
   }
+  
   makeItalics(textbox: HTMLTextAreaElement) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
@@ -30,6 +32,7 @@ export class SigningComponent implements OnInit {
     this.signingBoxText = text.slice(0, start) + '*' + text.slice(start, end) + '*' + text.slice(end);
     textbox.select();
   }
+  
   makeUnderline(textbox: HTMLTextAreaElement) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
@@ -37,6 +40,7 @@ export class SigningComponent implements OnInit {
     this.signingBoxText = text.slice(0, start) + '<u>' + text.slice(start, end) + '</u>' + text.slice(end);
     textbox.select();
   }
+  
   makeStrikethrough(textbox: HTMLTextAreaElement) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
