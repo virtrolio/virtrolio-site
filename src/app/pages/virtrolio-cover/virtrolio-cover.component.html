@@ -9,7 +9,7 @@
             <h1>2019-2020</h1>
           </div>
           <div class="mt-5">
-            <h2 id="usersVirtrolio">Property of:<br>{{authService.displayName()}} </h2>
+            <h2 id="users-virtrolio">Property of:<br>{{authService.displayName()}} </h2>
           </div>
         </div>
       </a>
@@ -18,12 +18,11 @@
     <!-- Side buttons -->
     <div class="col-md-2 col-sm-3 px-2 mt-4 mt-md-0 vertical-center">
       <div id="buttons">
-        <div class="row"><button class="btn-lg btn-primary" type="button">Export to PDF</button></div>
         <div class="row"><button class="btn-lg btn-primary" type="button" data-toggle="modal"
-            data-target="#linkgen">Sharing Link</button></div>
+            data-target="#link-gen">Sharing Link</button></div>
         <div class="row"><button class="btn-lg btn-primary" type="button" data-toggle="modal"
             data-target="#sendMessage">Send a Message</button></div>
-        <div class="row"><button class="btn-lg btn-primary" type="button" routerLink="settings">Settings</button></div>
+        <div class="row"><button class="btn-lg btn-primary" type="button" routerLink="/settings">Settings</button></div>
       </div>
     </div>
 
@@ -32,8 +31,7 @@
 </div>
 
 <!-- Friend Link Modal -->
-<div class="modal fade" id="link-gen" tabindex="-1" role="dialog" aria-labelledby="link-gen-title"
-     aria-hidden="true">
+<div class="modal fade" id="link-gen" tabindex="-1" role="dialog" aria-labelledby="link-gen-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,8 +45,7 @@
         <label for="friend-link-field">Your Link</label>
         <!-- later we need to replace the placeholder url with their id-->
         <input type="text" #friendLink value="virtrolio.com/placeholder" readonly id="friend-link-field">
-        <button type="button" #copyButton class="btn btn-primary"
-                (click)="copyLink(friendLink, copyButton)">Copy
+        <button type="button" #copyButton class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy
         </button>
       </div>
     </div>
@@ -69,7 +66,7 @@
       </div>
       <div class="modal-body" id='send-message-body'>
         To sign a friend's virtrolio, you need to visit the 'sharing link' which they give you! To access <em>your</em>
-        sharing link, click the 'Sharing Link' button above!
+        sharing link, click the 'Sharing Link' button on this page!
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
