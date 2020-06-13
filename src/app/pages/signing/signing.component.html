@@ -1,15 +1,20 @@
-<div class="container py-5 center-children vertical-center">
+<div class="container py-5 d-flex vertical-center">
   <div class="row" id="title-div">
     <label for="signing-box">
       <h2 id="signing-header">Type your message to [friend name] below.</h2>
     </label>
   </div>
-  <div class="row">
-    <textarea #inputarea rows="6" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
-      maxlength='5000'></textarea>
+  <div class="d-flex justify-content-center col-12">
+    <div class="row">
+      <textarea #inputarea rows="6" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
+        maxlength='5000'></textarea>
+    </div>
+    <div class="row">
+      <markdown emoji [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
+        id="preview-text" data="{{ signingBoxText }}"></markdown>
+    </div>
   </div>
-
-  <div class="row" id="options">
+  <div class="row justify-content-center" id="options">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="fontSelectorDropdown" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -26,40 +31,39 @@
         <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
       </div>
     </div>
-
+  
     <button type="button" (click)="makeBold(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
       <b>B</b>
     </button>
     <button type="button" (click)="makeItalics(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
       <i>I</i>
     </button>
-    <button type="button" (click)="makeUnderline(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-underline">
+    <button type="button" (click)="makeUnderline(inputarea)" class="btn btn-secondary btn-format mr-2"
+      id="button-underline">
       <u>U</u>
     </button>
-    <button type="button" (click)="makeStrikethrough(inputarea)" class="btn btn-secondary btn-format mr-2" id="button-strikethrough">
+    <button type="button" (click)="makeStrikethrough(inputarea)" class="btn btn-secondary btn-format mr-2"
+      id="button-strikethrough">
       <s>S</s>
     </button>
-
+  
     <div class="btn-group mr-2" role="group" aria-label="Font group">
       <div>
-        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}} [(ngModel)]='textColor'>
+        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
+          [(ngModel)]='textColor'>
       </div>
       <div>
-        <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker" value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+        <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+          value={{backgroundColor}} [(ngModel)]='backgroundColor'>
       </div>
     </div>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitConfirmModal">
       Send
     </button>
   </div>
-  <div class="row">
-    <h3 id="preview-header">Preview</h3>
-  </div>
-  <div class="row">
-    <markdown emoji [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}" 
-    id="preview-text" data="{{ signingBoxText }}"></markdown>
-  </div>
 </div>
+
+
 
 
 <div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle"

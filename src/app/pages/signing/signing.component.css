@@ -23,7 +23,8 @@
 #signing-header {
 	margin-left: 0.5em;
 	margin-right: 0.5em;
-	font-size: 1.6em;
+  font-size: 1.6em;
+  text-align: center;
 }
 
 
@@ -56,10 +57,10 @@ markdown {
 	resize: none;
 	font: 16px Arial;
 	border: 0.05em solid var(--light-grey);
-	border-radius: 0.4em;
 	overflow-y: auto;
 	overflow-x: auto;
-	word-wrap: break-word;
+  word-wrap: break-word;
+  border-radius: 0em;
 }
 
 .dropdown-item.active, .dropdown-item:active {
