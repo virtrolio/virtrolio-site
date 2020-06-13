@@ -1,17 +1,13 @@
 <app-navbar></app-navbar>
 <div id="navbar-filler"></div>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
-
-<!-- Cookie Modal -->
-<div class="modal fade" id="cookieModal" tabindex="-1" role="dialog" aria-labelledby="cookieModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="modal-title" id="cookieModalLabel">Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of cookies.</span>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<!-- Cookie Alert -->
+<div class="col-12 justify-content-center">
+  <div class="alert alert-primary col-sm-8 align-items-center d-flex" role="alert" id="cookie-alert" *ngIf="showCookieAlert">
+    Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of cookies. See our Terms of Service for more information.
+    <button type="button" class="close" (click)='dismissCookieAlert()'>
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 </div>
+<app-footer></app-footer>
