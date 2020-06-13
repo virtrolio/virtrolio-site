@@ -31,9 +31,9 @@
 #signing-box {
 	margin: 1em;
 	padding: 1em;
-	width: 50em;
+	width: 35em;
 	resize: none;
-	font: 16px Arial;
+	font: 1em Arial;
 	border-width: 0.05em;
 	border-radius: 0em;
 }
@@ -52,7 +52,7 @@
 markdown {
 	margin: 1em;
 	padding: 1em;
-	width: 50em;
+	width: 35em;
 	height: 20em;
 	resize: none;
 	font: 16px Arial;
@@ -66,3 +66,5 @@ markdown {
 .dropdown-item.active, .dropdown-item:active {
 	background-color: var(--accent);
 }
+
+
