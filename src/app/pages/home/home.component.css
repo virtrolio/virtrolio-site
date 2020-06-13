@@ -60,3 +60,12 @@
   left: 0;
   right: 0;
 }
+
+.body-container {
+  margin-top: 3em;
+}
+
+.message-card {
+  width: 25em;
+  height: 25em;
+}
