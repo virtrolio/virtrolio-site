@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// noinspection JSUnusedLocalSymbols
 declare var $: any;
 
 @Component({
@@ -13,8 +14,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     /* Show cookie footer without backdrop */
-    $('#cookieModal').modal({
-      backdrop: false,
-    });
+    // $('#cookieModal').modal({
+    //   backdrop: false,
+    // });
   }
 }
