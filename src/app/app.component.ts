@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       $('#cookieModal').modal({
         backdrop: false,
       });
-      this.cookieService.set('new-user-cookie', 'false');
+      this.cookieService.set('new-user-cookie', 'false', 365);
     }
   }
 }
