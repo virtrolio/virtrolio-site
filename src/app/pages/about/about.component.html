@@ -1,7 +1,6 @@
 <div class="container">
-
     <div id='about-us'>
-        <h1 align=center class='mt-3 mb-3'>About Us</h1>
+        <h1 align=center class='mt-5'>About Us</h1>
         <div class='row'>
             <div class='col-md-4'>
                 <img class='img-fluid' alt='Generic highschoolers' src='./../../assets/images/groupPhotoPlaceholder.png' /> 
@@ -10,53 +9,55 @@
                 <p>
                     We’re a group of undergraduate university students who remember exactly what it was like back in high school, and we especially remember what those last few months of senior year meant to many of us. With the COVID-19 pandemic leading to lockdowns and social distancing, we wanted to give a way for graduating students (and others!) to be able to send each other messages in a medium that they can cherish with them as they continue on in their journeys.
                 </p>
-                <p>
-                    Also a lot of us need programming experience to flex on our resumes to get a job in this economy, so this is for that too.
-                </p>
             </div>
         </div>
     </div>
-    
+    <hr />
     <div id='meet-the-team'>
-        <h1 align="center" class='mt-5'>Meet the Team!</h1>
-        <div class='row'>
-            <div class='col-md-6'>
-                <div class='row d-flex'>
-                    <div class='col-md-4 order-md-2'>
-                        <img src='./../../../assets/images/about-us-developers/dabeer.jpg' class='img-fluid' id='team-image-1' (mouseenter)="team_1_silly()" (mouseleave)="team_1_regular()">
-                    </div>
-                    <div class='col-md-8 order-md-1'>
-                        <p>Dabeer is an exeptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and chemistry. Taking that love of chemistry to the extreme, he is currently studying IBiomed at McMaster University. In his spare time, he loves to practice singing and hang out with his beloved friends!</p>
-                    </div>
-                </div>
+        <h1 align="center" class='mb-4'>Meet the Team!</h1>
+        <div class='row d-flex'>
+            <div class='col-md-2 order-md-2'>
+                <img src='./../../../assets/images/about-us-developers/dabeer.jpg' class='img-fluid' id='team-image-1' (mouseenter)="team_1_silly()" (mouseleave)="team_1_regular()">
             </div>
-            <div class='col-md-6'>
-                <div class='row d-flex'>
-                    <div class='col-md-4'>
-                        <img src='./../../../assets/images/about-us-developers/arvind.jpg' class='img-fluid' id='team-image-2' (mouseenter)="team_2_silly()" (mouseleave)="team_2_regular()">
-                    </div>
-                    <div class='col-md-8'>
-                        <p>Arvind is an exeptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and Mathematics. Taking that love of Mathematics to the extreme, he is currently studying Mathematics at the University of Waterloo. In his spare time, he loves to practice his nunchucks and his taequondoe especially on his beloved friends!</p>
-                    </div>
-                </div>
+            <div class='col-md-7 order-md-3'>
+                <p>Dabeer is an exeptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and chemistry. Taking that love of chemistry to the extreme, he is currently studying IBiomed at McMaster University. In his spare time, he loves to practice singing and hang out with his beloved friends!</p>
             </div>
-
+            <div class='col-md-3 order-md-1'>
+                <p><strong>Contact Dabeer:</strong></p>
+                <ul>
+                    <li>Email: dabeer@gmail.com</li>
+                    <li>Github: The Dabeer</li>
+                    <li>Instagram: @Dabeer</li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <div id='about-us-alternate' class='mb-4 mt-5'>
-
-    
-        <!--Alternate layout version for longer text blurbs-->
-
-        <div class='row'>
-            <div class='col-md-7'>
-                <p>Eric is our fearless technical lead, and we would follow him into hellheim and back if we had to. But not only that, Eric enjoys his bike rides and <i>dank memes</i> like there is no tomorrow. Eric is brilliant, motivated and determined, and everyone except Mr Sykes, who taught Civics and Careers, will agree! Eric is extremely proficient in Angular and other coding languages.</p>
+        <hr />
+        <div class='row d-flex'>
+            <div class='col-md-2 order-md-2'>
+                <img src='./../../../assets/images/about-us-developers/arvind.jpg' class='img-fluid' id='team-image-2' (mouseenter)="team_2_silly()" (mouseleave)="team_2_regular()">
             </div>
-            <div class='col-md-2'>
+            <div class='col-md-7 order-md-1'>
+                <p>Arvind is an exeptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and Mathematics. Taking that love of Mathematics to the extreme, he is currently studying Mathematics at the University of Waterloo. In his spare time, he loves to practice his nunchucks and his taequondoe especially on his beloved friends!</p>
+            </div>
+            <div class='col-md-3 order-md-3'>
+                <p><strong>Contact Arvind:</strong></p>
+                <ul>
+                    <li>Email: arvind@gmail.com</li>
+                    <li>Github: The Arvind</li>
+                    <li>Instagram: @Arvind</li>
+                </ul>
+            </div>
+        </div>
+        <hr />
+        <div class='row d-flex'>
+            <div class='col-md-2 order-md-2'>
                 <img src='./../../../assets/images/about-us-developers/eric.jpg' class='img-fluid' id='team-image-3' alt='Eric' (mouseenter)="team_3_silly()" (mouseleave)="team_3_regular()">
             </div>
-            <div class='col-md-3'>
+            <div class='col-md-7 order-md-3'>
+                <p>Eric is our fearless technical lead, and we would follow him into hellheim and back if we had to. But not only that, Eric enjoys his bike rides and <i>dank memes</i> like there is no tomorrow. Eric is brilliant, motivated and determined, and everyone except Mr Sykes, who taught Civics and Careers, will agree! Eric is extremely proficient in Angular and other coding languages.</p>
+            </div>
+
+            <div class='col-md-3 order-md-1'>
                 <p><strong>Contact Eric:</strong></p>
                 <ul>
                     <li>Email: ericrice@gmail.com</li>
@@ -67,13 +68,14 @@
         </div>
         <hr />
         <div class='row d-flex'>
-            <div class='col-md-7 order-md-3'>
-                <p>Tommy, better known as potatoES by the people of Terraria, Steam and Factorio, is an ABSOLUTE Legend! Tommy is studying Computer Science at the University of Waterloo and lived in the weirdest room in UWP for his first year. He also has been biking and does pushups, which is great strength training and cardio practice. Visit <a href='www.womenshealthmag.com/fitness/a22995307/cardio-exercises/'>Women'sHealthMagazine.com</a> for more info on Tommy's stellar workout.</p>
-            </div>
             <div class='col-md-2 order-md-2'>
                 <img src='./../../../assets/images/about-us-developers/tommy.jpg' class='img-fluid' id='team-image-4' alt='Tommy' (mouseenter)="team_4_silly()" (mouseleave)="team_4_regular()">
             </div>
-            <div class='col-md-3 order-md-1'>
+            <div class='col-md-7 order-md-1'>
+                <p>Tommy, better known as potatoES by the people of Terraria, Steam and Factorio, is an ABSOLUTE Legend! Tommy is studying Computer Science at the University of Waterloo and lived in the weirdest room in UWP for his first year. He also has been biking and does pushups, which is great strength training and cardio practice. Visit <a href='www.womenshealthmag.com/fitness/a22995307/cardio-exercises/'>Women'sHealthMagazine.com</a> for more info on Tommy's stellar workout.</p>
+            </div>
+            
+            <div class='col-md-3 order-md-3'>
                 <p><strong>Contact Tommy:</strong></p>
                 <ul>
                     <li>Email: tommyhuang@gmail.com</li>
@@ -82,5 +84,8 @@
                 </ul>
             </div>
         </div>
+        <br />
+
     </div>
+
 </div>
