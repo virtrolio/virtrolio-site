@@ -2,17 +2,19 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// tslint:disable-next-line:max-line-length
+// noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyB4bucqAGYm0ZZi6xVawtXdA7pDvrcp4PU",
-    authDomain: "virtrolio.firebaseapp.com",
-    databaseURL: "https://virtrolio.firebaseio.com",
-    projectId: "virtrolio",
-    storageBucket: "virtrolio.appspot.com",
-    messagingSenderId: "929821853702",
-    appId: "1:929821853702:web:dfb4740eb6984e49f69b87",
-    measurementId: "G-BT5XXRVZXP"
+    apiKey: 'AIzaSyB4bucqAGYm0ZZi6xVawtXdA7pDvrcp4PU',
+    authDomain: 'virtrolio.firebaseapp.com',
+    databaseURL: 'https://virtrolio.firebaseio.com',
+    projectId: 'virtrolio',
+    storageBucket: 'virtrolio.appspot.com',
+    messagingSenderId: '929821853702',
+    appId: '1:929821853702:web:dfb4740eb6984e49f69b87',
+    measurementId: 'G-BT5XXRVZXP'
   }
 };
 
