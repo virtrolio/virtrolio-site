@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppAuthService } from '../../core/app-auth.service';
 
 @Component({
   selector: 'app-friend-link',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendLinkComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AppAuthService) { }
 
   ngOnInit(): void { }
 
 }
+
+/* *ngIf="authService.isLoggedIn()" */

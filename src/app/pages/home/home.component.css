@@ -1,0 +1,19 @@
+#bolded-body-text {
+  font-weight: 600;
+  text-align: center;
+}
+
+#logo {
+  width: 12em;
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 80%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
