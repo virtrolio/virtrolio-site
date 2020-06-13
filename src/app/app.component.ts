@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 // noinspection JSUnusedLocalSymbols
 declare var $: any;
@@ -11,6 +12,8 @@ declare var $: any;
 
 export class AppComponent implements OnInit {
   title = 'virtrolio-site';
+  constructor(private cookieService: CookieService) {
+  }
 
   ngOnInit(): void {
     /* Show cookie footer without backdrop */
