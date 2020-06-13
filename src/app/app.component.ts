@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+
+// noinspection JSUnusedLocalSymbols
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -6,6 +10,35 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 
-export class AppComponent {
-  title = 'virtrolio-site';
+export class AppComponent implements OnInit {
+  public title = 'virtrolio-site';
+  public showCookieAlert = true; // Displays cookie Alert
+  // tslint:disable-next-line: variable-name
+  private _showCookieAlertValue: string;
+
+  dismissCookieAlert() {
+    this.cookieService.set('new-user-cookie', 'false', 365);
+    this.showCookieAlert = false;
+  }
+
+  constructor(private cookieService: CookieService) {
+  }
+
+  ngOnInit(): void {
+    /* If cookieService.check() returns no cookie found, generate a cookie that expires in 365 days with a value of 'true' */
+    if (this.cookieService.check('new-user-cookie') === false) {
+      this.cookieService.set('new-user-cookie', 'true', 365);
+    }
+
+    this._showCookieAlertValue = this.cookieService.get('new-user-cookie'); /* Get cookie value */
+
+    /* Toggle showCookieAlert boolean based on cookie value */
+    if (this._showCookieAlertValue === 'true') {
+      this.showCookieAlert = true;
+    } else if (this._showCookieAlertValue === 'false') {
+      this.showCookieAlert = false;
+    } else {
+      console.log('Error. New-user-cookie not found or initialized.');
+    }
+  }
 }

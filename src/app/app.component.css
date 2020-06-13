@@ -2,3 +2,14 @@
   /* Fake navbar to push router-outlet content downwards */
   height: var(--navbar-height);
 }
+
+#cookie-alert {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: var(--footer-height);
+}
+
+#cookie-alert-button {
+  padding-bottom: 0.15em;
+}

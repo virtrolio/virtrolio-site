@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppAuthService } from '../../core/app-auth.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +10,8 @@ import { AppAuthService } from '../../core/app-auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authService: AppAuthService) { }
+  constructor(public authService: AppAuthService) {
+  }
 
   ngOnInit(): void {
   }
