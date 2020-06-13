@@ -1,51 +1,82 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from "@angular/fire/auth";
-import { auth, User } from "firebase/app";
-import { Router } from "@angular/router";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth, User } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppAuthService {
-  private _user: User;
+  private user: User;
 
-  constructor(private _auth: AngularFireAuth, private _router: Router) {
-    this._auth.user.subscribe((user: User) => this._user = user);
+  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
+    this.angularFireAuth.user.subscribe((user: User) => this.user = user);
   }
 
-  login(routeTo: string) {
-    this._auth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+  /**
+   * Logs the user into the website using Firebase Authentication and the specified provider.
+   * Upon login, the user will be redirected to a new page as defined in routeTo.
+   * @param routeTo - The routerLink that the user will be redirected to on a successful login.
+   * @returns True if the redirect is successful.
+   */
+  login(routeTo: string){
+    this.angularFireAuth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
-        return this._router.navigate([ routeTo ])
+        return this.router.navigate([ routeTo ]);
       } else {
-        return this._router.navigate([ "/" ])
+        return this.router.navigate([ '/' ]);
       }
-    })
-  }
-
-  logout() {
-    this._auth.signOut().then(() => {
-      return this._router.navigate([ "/" ])
     });
   }
 
-  isLoggedIn(): boolean {
-    return this._user !== null
+  /**
+   * Logs the user out of the website using Firebase Authentication.
+   * Upon successful logout, the user will be redirected to the home page.
+   * @returns True if the redirect is successful.
+   */
+  logout() {
+    this.angularFireAuth.signOut().then(() => {
+      return this.router.navigate([ '/' ]);
+    });
   }
 
+  /**
+   * @returns True if the user is logged in.
+   */
+  isLoggedIn(): boolean {
+    return this.user != null;
+  }
+
+  /**
+   * @returns The URL to the user's profile picture.
+   */
   profilePictureLink(): string {
-    if (this._user) {
-      return this._user.photoURL
+    if (this.user) {
+      return this.user.photoURL;
     } else {
-      return ""
+      return '';
     }
   }
 
+  /**
+   * @returns The Display Name of the user as defined in the account that they use to sign in.
+   */
   displayName(): string {
-    if (this._user) {
-      return this._user.displayName
+    if (this.user) {
+      return this.user.displayName;
     } else {
-      return ""
+      return '';
+    }
+  }
+
+  /**
+   * @returns The user's Firebase Authentication User ID.
+   */
+  uid(): string {
+    if (this.user) {
+      return this.user.uid;
+    } else {
+      return '';
     }
   }
 }

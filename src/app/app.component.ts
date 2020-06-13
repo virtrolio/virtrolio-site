@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+// noinspection JSUnusedLocalSymbols
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -6,6 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'virtrolio-site';
+
+  ngOnInit(): void {
+    /* Show cookie footer without backdrop */
+    // $('#cookieModal').modal({
+    //   backdrop: false,
+    // });
+  }
 }
