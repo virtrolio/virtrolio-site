@@ -12,29 +12,32 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   private imagePaths = [
-    './../../../assets/images/about-us-developers/dabeer.jpg',
-    './../../../assets/images/about-us-developers/dabeer-silly.png',
-    './../../../assets/images/about-us-developers/arvind.jpg',
-    './../../../assets/images/about-us-developers/arvind-silly.jpg',
-    './../../../assets/images/about-us-developers/eric.jpg',
-    './../../../assets/images/about-us-developers/eric-silly.png',
-    './../../../assets/images/about-us-developers/tommy.jpg',
-    './../../../assets/images/about-us-developers/tommy-silly.jpg'
-  ];
-
-  private imageIds = [
-    'team-image-0',
-    'team-image-1',
-    'team-image-2',
-    'team-image-3'
+    'dabeer.jpg',
+    'dabeer-silly.png',
+    'arvind.jpg',
+    'arvind-silly.jpg',
+    'eric.jpg',
+    'eric-silly.png',
+    'tommy.jpg',
+    'tommy-silly.jpg',
+    'janakitti.png',
+    'janakitti-silly.png',
+    'john.png',
+    'john-silly.png',
+    'anthony.png',
+    'anthony-silly.png',
+    'ajit.png',
+    'ajit-silly.png'
   ];
 
   changePhotoSilly(personNumber) {
     console.log(this.imagePaths[personNumber * 2 + 1]);
-    document.getElementById('team-image-' + personNumber.toString()).setAttribute('src', this.imagePaths[personNumber * 2 + 1]);
+    document.getElementById('team-image-' + personNumber.toString()).setAttribute('src', './../../../assets/images/about-us-developers/' +
+      this.imagePaths[personNumber * 2 + 1]);
   }
   changePhotoRegular(personNumber) {
-    document.getElementById('team-image-' + personNumber.toString()).setAttribute('src', this.imagePaths[personNumber * 2]);
+    document.getElementById('team-image-' + personNumber.toString()).setAttribute('src', './../../../assets/images/about-us-developers/' +
+      this.imagePaths[personNumber * 2]);
   }
 
   ngOnInit(): void { }
