@@ -14,11 +14,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    console.log('from ngOnInit: ', this.authService.isLoggedIn());
-    /* This is called onInit, and similar to the first few calls of 'isLoggedIn()' it returns true even when the user isn't signed in */
-=======
->>>>>>> a3a3caace72bc4b4ba1c224c614612974c1cc502
   }
 
 }
