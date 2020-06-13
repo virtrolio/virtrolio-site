@@ -13,8 +13,7 @@ declare var $: any;
 export class AppComponent implements OnInit {
   public title = 'virtrolio-site';
   public showCookieAlert = true; // Displays cookie Alert
-  // tslint:disable-next-line: variable-name
-  private _showCookieAlertValue: string;
+  private showCookieAlertValue: string;
 
   dismissCookieAlert() {
     this.cookieService.set('new-user-cookie', 'false', 365);
@@ -30,12 +29,12 @@ export class AppComponent implements OnInit {
       this.cookieService.set('new-user-cookie', 'true', 365);
     }
 
-    this._showCookieAlertValue = this.cookieService.get('new-user-cookie'); /* Get cookie value */
+    this.showCookieAlertValue = this.cookieService.get('new-user-cookie'); /* Get cookie value */
 
     /* Toggle showCookieAlert boolean based on cookie value */
-    if (this._showCookieAlertValue === 'true') {
+    if (this.showCookieAlertValue === 'true') {
       this.showCookieAlert = true;
-    } else if (this._showCookieAlertValue === 'false') {
+    } else if (this.showCookieAlertValue === 'false') {
       this.showCookieAlert = false;
     } else {
       console.log('Error. New-user-cookie not found or initialized.');
