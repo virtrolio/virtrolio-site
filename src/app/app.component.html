@@ -1,3 +1,11 @@
 <app-navbar></app-navbar>
 <div id="navbar-filler"></div>
 <router-outlet></router-outlet>
+<!-- Cookie non-Modal -->
+<div class="alert alert-primary col-sm-8 align-items-center" role="alert" id="cookie-alert" *ngIf="showCookieAlert">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of cookies. See our Terms of Service for more information.
+</div>
+<app-footer></app-footer>

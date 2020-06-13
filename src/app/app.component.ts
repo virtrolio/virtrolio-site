@@ -12,6 +12,7 @@ declare var $: any;
 
 export class AppComponent implements OnInit {
   public title = 'virtrolio-site';
+  public showCookieAlert = true;
 
   deleteCookie() {
     this.cookieService.delete('new-user-cookie');
@@ -31,6 +32,8 @@ export class AppComponent implements OnInit {
 
     if (this.cookieService.get('new-user-cookie') === 'true') {
       this.cookieService.set('new-user-cookie', 'false', 365);
+    } else {
+      this.showCookieAlert = false;
     }
   }
 }
