@@ -30,10 +30,6 @@ export class AppComponent implements OnInit {
     console.log('Cookie value: ', this.cookieService.get('new-user-cookie'));
 
     if (this.cookieService.get('new-user-cookie') === 'true') {
-      /* Show cookie footer without backdrop */
-      $('#cookieModal').modal({
-        backdrop: false,
-      });
       this.cookieService.set('new-user-cookie', 'false', 365);
     }
   }
