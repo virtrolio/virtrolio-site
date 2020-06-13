@@ -15,6 +15,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { LoginResolver } from './core/login-resolver';
 
 // noinspection JSUnusedLocalSymbols
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '' ]);
@@ -40,14 +41,20 @@ const routes: Routes = [
   {
     path: 'signing',
     component: SigningComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome },
+    resolve: {
+      user: LoginResolver
+    }
   },
   {
     path: 'viewing',
     component: ViewingComponent,
-    // canActivate: [ AngularFireAuthGuard ],
-    // data: { authGuardPipe: redirectUnauthorizedToHome }
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorizedToHome },
+    resolve: {
+      user: LoginResolver
+    }
   },
   {
     path: 'virtrolio-cover',
