@@ -12,8 +12,8 @@
 }
 
 .format-icons {
-	width:1.8em;
-	height:1.8em;
+	width: 1.8em;
+	height: 1.8em;
 }
 
 .btn-format {
@@ -35,7 +35,7 @@
 	resize: none;
 	font: 1em Arial;
 	border-width: 0.05em;
-	border-radius: 0em;
+	border-radius: 0;
 }
 
 .form-control:focus {
@@ -45,7 +45,7 @@
 
 #preview-header {
 	margin-top: 1.0em;
-	margin-bottom: 0em;
+	margin-bottom: 0;
 	font-size: 1.2em;
 }
 
@@ -55,16 +55,15 @@ markdown {
 	width: 35em;
 	height: 20em;
 	resize: none;
-	font: 16px Arial;
+	font: 1em Arial;
 	border: 0.05em solid var(--light-grey);
 	overflow-y: auto;
 	overflow-x: auto;
   word-wrap: break-word;
-  border-radius: 0em;
+  border-radius: 0;
 }
 
 .dropdown-item.active, .dropdown-item:active {
 	background-color: var(--accent);
 }
-
 
