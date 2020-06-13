@@ -17,3 +17,46 @@
   overflow: auto;
   overflow-y: auto;
 }
+
+#home-background {
+  background: var(--accent);
+  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  height: calc(100vh - var(--navbar-height));
+}
+
+#title-container {
+  padding: 30vh 0 0 10vw;
+}
+
+#title-header {
+  font-size: 6em;
+  color: white;
+}
+
+#title-subtitle {
+  font-size: 2em;
+  font-weight: 400;
+  color: white;
+  margin-top: 1em;
+}
+
+#chevron {
+  margin-top: 2em;
+}
+
+#bg-curve {
+  position: relative;
+  max-height: 100vh;
+  max-width: 100%;
+  z-index: 0;
+}
+
+#home-img-background {
+  background: url("../../../assets/images/bg-curve.svg") no-repeat;
+  background-size: 100%;
+  background-position: center bottom;
+  height: calc(100vh - var(--navbar-height));
+  position: absolute;
+  left: 0;
+  right: 0;
+}
