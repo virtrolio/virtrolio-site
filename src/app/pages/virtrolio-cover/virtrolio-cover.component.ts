@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppAuthService } from '../core/app-auth.service';
+import { AppAuthService } from '../../core/app-auth.service';
 
 @Component({
   selector: 'app-virtrolio-cover',
