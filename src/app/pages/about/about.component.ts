@@ -42,3 +42,39 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void { }
 }
+
+// <div class='row d-flex'>
+//             <div class='col-md-2 order-md-2'>
+//                 <img src='./../../../assets/images/about-us-developers/anthony.png' class='img-fluid' id='team-image-6' alt='Anthony' (mouseenter)="changePhotoSilly(6)" (mouseleave)="changePhotoRegular(6)">
+//             </div>
+//             <div class='col-md-7 order-md-3 mt-3 mt-md-0'>
+//                 <p>Anthony description</p>
+//             </div>
+            
+//             <div class='col-md-3 order-md-1'>
+//                 <p><strong>Contact Anthony:</strong></p>
+//                 <ul>
+//                     <li>Email: Anthony@gmail.com</li>
+//                     <li>Github: Anthony</li>
+//                     <li>Instagram: Anthony</li>
+//                 </ul>
+//             </div>
+//         </div>
+//         <hr />
+//         <div class='row d-flex'>
+//             <div class='col-md-2 order-md-2'>
+//                 <img src='./../../../assets/images/about-us-developers/ajit.png' class='img-fluid' id='team-image-7' alt='Ajit' (mouseenter)="changePhotoSilly(7)" (mouseleave)="changePhotoRegular(7)">
+//             </div>
+//             <div class='col-md-7 order-md-1 mt-3 mt-md-0'>
+//                 <p>Ajit description</p>
+//             </div>
+            
+//             <div class='col-md-3 order-md-3'>
+//                 <p><strong>Contact Ajit:</strong></p>
+//                 <ul>
+//                     <li>Email: Ajit@gmail.com</li>
+//                     <li>Github: Ajit</li>
+//                     <li>Instagram: Ajit</li>
+//                 </ul>
+//             </div>
+//         </div>
