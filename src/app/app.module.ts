@@ -10,7 +10,6 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-// ngx-markdown
 // External Libraries
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { CookieService } from 'ngx-cookie-service';
@@ -73,7 +72,6 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
       },
     })
   ],
-  providers: [],
   providers: [ CookieService ],
   bootstrap: [ AppComponent ]
 })
