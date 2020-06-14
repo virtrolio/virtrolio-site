@@ -51,14 +51,6 @@ export class SigningComponent implements OnInit {
     textbox.select();
   }
 
-  chooseFontColour() {
-    $('#colorpicker-font').trigger('click');
-  }
-
-  chooseFillColour() {
-    $('#colorpicker-background').trigger('click');
-  }
-
   constructor() { }
 
   ngOnInit(): void { }

@@ -46,12 +46,12 @@
       id="button-strikethrough">
       <s>S</s>
     </button>
-    <button type="button" (click)="chooseFontColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+    <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
       <img id="icon" src="../../../assets/images/icons/SigningIcon_text-color.svg">
       <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
           [(ngModel)]='textColor'>
     </button>
-    <button type="button" (click)="chooseFillColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+    <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
       <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
       <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
           value={{backgroundColor}} [(ngModel)]='backgroundColor'>
