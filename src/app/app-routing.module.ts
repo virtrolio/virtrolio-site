@@ -26,7 +26,10 @@ const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
 const redirectLoggedOutSigning = () => redirectUnauthorizedTo([ '/friend-link' ]);
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  {
+    path: '', component: HomeComponent,
+    resolve: { user: LoginResolver }
+  },
   { path: 'about', component: AboutComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
