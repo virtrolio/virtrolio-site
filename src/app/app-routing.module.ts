@@ -22,7 +22,8 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
 import { LoginResolver } from './core/login-resolver';
 
 // noinspection JSUnusedLocalSymbols
-const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '/access-denied' ]);
+const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
+const redirectLoggedOutSigning = () => redirectUnauthorizedTo([ '/friend-link' ]);
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,34 +37,34 @@ const routes: Routes = [
     path: 'msg-sent',
     component: MsgSentComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'placeholder', redirectTo: '/expired-link' },
   {
     path: 'settings',
     component: SettingsComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    data: { authGuardPipe: redirectUnauthorized }
   },
   {
     path: 'signing',
     component: SigningComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome },
+    data: { authGuardPipe: redirectLoggedOutSigning },
     resolve: { user: LoginResolver }
   },
   {
     path: 'viewing',
     component: ViewingComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome },
+    data: { authGuardPipe: redirectUnauthorized },
     resolve: { user: LoginResolver }
   },
   {
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorizedToHome }
+    data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
