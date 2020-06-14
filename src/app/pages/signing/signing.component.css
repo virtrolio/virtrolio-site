@@ -93,3 +93,9 @@ markdown {
   visibility: hidden;
   font-size: 0;
 }
+
+.dynamic-color-bar {
+  height: 0.4em; 
+  margin: 0.2em 0.2em; 
+  border-radius: 0.4em;
+}

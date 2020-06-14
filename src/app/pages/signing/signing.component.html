@@ -69,8 +69,7 @@
       <div id="font-color-text">A</div>
       <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
         [(ngModel)]='textColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}"
-        style="height: 0.4em; margin: 0.2em 0.2em; border-radius: 0.4em;">&nbsp;</div>
+      <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
     </button>
     <label class="color-picker-labels" for="colorpicker-background">
       Pick the color of the background
@@ -79,8 +78,7 @@
       <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
       <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
         value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}"
-        style="height: 0.4em; margin: 0.2em 0.2em; border-radius: 0.4em;">&nbsp;</div>
+      <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
     </button>
     <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
       Send
