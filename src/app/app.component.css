@@ -13,3 +13,8 @@
 #cookie-alert-button {
   padding-bottom: 0.15em;
 }
+
+#content-wrapper {
+  /* Div to wrap content; prevents footer collapsing to top while component loads */
+  min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
+}

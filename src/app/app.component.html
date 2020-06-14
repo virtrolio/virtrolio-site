@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <div id="navbar-filler"></div>
-<router-outlet></router-outlet>
+<div id="content-wrapper">
+  <router-outlet></router-outlet>
+</div>
 <!-- Cookie Alert -->
 <div class="col-12 justify-content-center">
   <div class="alert alert-primary col-sm-8 align-items-center d-flex" role="alert" id="cookie-alert" *ngIf="showCookieAlert">

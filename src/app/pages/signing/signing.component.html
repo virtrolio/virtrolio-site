@@ -1,65 +1,74 @@
-<div class="container py-5 center-children vertical-center">
-  <div class="row">
-    <h2>Sending Message to friend.</h2>
+<div class="container py-5 d-flex vertical-center">
+  <div class="row" id="title-div">
+    <label id="signing-header" for="signing-box">
+      Type your message to [friend name] below.
+    </label>
   </div>
-  <div class="row">
-    <textarea rows="8" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'></textarea>
+  <div class="d-flex justify-content-center col-12">
+    <div class="row">
+      <textarea #signingInputArea rows="6" class="form-control" id="signing-box" autofocus [(ngModel)]='signingBoxText'
+        maxlength='5000'></textarea>
+    </div>
+    <div class="row">
+      <markdown emoji [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
+        id="preview-text" data="{{ signingBoxText }}"></markdown>
+    </div>
   </div>
-
-  <div class="row" id="options">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar for formatting text"></div>
-
-    <div class="btn-group mr-2" role="group" aria-label="Font group">
-      <button type="button" class="btn btn-primary">Font</button>
-      <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+  <div class="row justify-content-center" id="options">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
+        {{ currentFont }}
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="javascript: void(0)">Arial</a>
-        <a class="dropdown-item" href="javascript: void(0)">Comic Sans</a>
-        <a class="dropdown-item" href="javascript: void(0)">Times New Roman</a>
+      <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
+        <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
+        <a class="dropdown-item" (click)="selectFont('Arial')" href="javascript: void(0)">Arial</a>
+        <a class="dropdown-item" (click)="selectFont('Comic Sans MS')" href="javascript: void(0)">Comic Sans MS</a>
+        <a class="dropdown-item" (click)="selectFont('Courier New')" href="javascript: void(0)">Courier New</a>
+        <a class="dropdown-item" (click)="selectFont('Dancing Script')" href="javascript: void(0)">Dancing Script</a>
+        <a class="dropdown-item" (click)="selectFont('Montserrat')" href="javascript: void(0)">Montserrat</a>
+        <a class="dropdown-item" (click)="selectFont('Roboto')" href="javascript: void(0)">Roboto</a>
+        <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
       </div>
     </div>
-
-    <button type="button" class="btn btn-outline-dark mr-2" id="button-bold">
-      bold
+  
+    <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
+      <b>B</b>
     </button>
-    <button type="button" class="btn btn-outline-dark mr-2" id="button-italics">
-      italics
+    <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
+      <i>I</i>
     </button>
-
-    <div class="btn-group mr-2" role="group" aria-label="Font group">
-      <div>
-        <input type="color" id="colorpicker mr-2" name="backgroundPicker" value="#ffffff">
-      </div>
-      <div>
-        <input type="color" id="colorpicker mr-2" name="fontColorPicker" value="#000000">
-      </div>
-    </div>
-    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#submitConfirmModal">
-      Submit
+    <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+      id="button-underline">
+      <u>U</u>
     </button>
-  </div>
-  <div class="row">
-    <h3>Preview:</h3>
-  </div>
-  <textarea
-    class="shadow"
-    id="signing-box"
-    autofocus
-  ></textarea>
-  <div class="row">
-    <markdown id="preview-box" data="{{signingBoxText}}"></markdown>
+    <button type="button" (click)="makeStrikethrough(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+      id="button-strikethrough">
+      <s>S</s>
+    </button>
+    <button type="button" (click)="chooseFontColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+      <img id="icon" src="../../../assets/images/icons/SigningIcon_text-color.svg">
+      <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
+          [(ngModel)]='textColor'>
+    </button>
+    <button type="button" (click)="chooseFillColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+      <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+      <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+          value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-confirm-modal">
+      Send
+    </button>
   </div>
 </div>
 
-<div class="modal fade" id="submitConfirmModal" tabindex="-1" role="dialog" aria-labelledby="submitConfirmModalTitle"
-     aria-hidden="true">
+
+<div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="submit-confirm-modal-title"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="submitConfirmModalTitle">Are you sure you want to submit?</h5>
+        <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to submit?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

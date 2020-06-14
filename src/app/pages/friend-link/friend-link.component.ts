@@ -13,5 +13,3 @@ export class FriendLinkComponent implements OnInit {
   ngOnInit(): void { }
 
 }
-
-/* *ngIf="authService.isLoggedIn()" */
