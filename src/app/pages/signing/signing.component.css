@@ -5,16 +5,18 @@
 
 #font-selector-dropdown {
 	text-align: right;
-	width: 12em;
-}
-
-.format-icons {
-	width: 1.8em;
-	height: 1.8em;
+  width: 12em;
+  height: 2.5em;
 }
 
 .btn-format {
-	width: 2.4em;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.btn-send {
+  width: 6em;
+  height: 2.4em;
 }
 
 .title-div {
@@ -84,7 +86,7 @@ markdown {
 }
 
 #dynamic-color-bar {
-  border: 20px solid black !important;
+  border: 1em solid black !important;
 }
 
 #font-color-text {

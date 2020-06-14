@@ -70,7 +70,7 @@
       <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
         [(ngModel)]='textColor'>
       <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}"
-        style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
+        style="height: 0.4em; margin: 0.2em 0.2em; border-radius: 0.4em;">&nbsp;</div>
     </button>
     <label class="color-picker-labels" for="colorpicker-background">
       Pick the color of the background
@@ -80,9 +80,9 @@
       <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
         value={{backgroundColor}} [(ngModel)]='backgroundColor'>
       <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}"
-        style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
+        style="height: 0.4em; margin: 0.2em 0.2em; border-radius: 0.4em;">&nbsp;</div>
     </button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-confirm-modal">
+    <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
       Send
     </button>
   </div>
