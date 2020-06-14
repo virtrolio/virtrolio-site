@@ -65,7 +65,45 @@
   margin-top: 3em;
 }
 
+#login-virtrolio-button {
+  padding: 3em 0 3em 0;
+}
+
 .message-card {
   width: 25em;
   height: 25em;
+  text-align: center;
+}
+
+#card-message {
+  color: white;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+#card-0 {
+  background: var(--accent);
+  margin-bottom: -1em;
+  margin-left: -1em;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  padding: 3em;
+}
+
+#card-1 {
+  background: aquamarine;
+  margin-bottom: -1em;
+  margin-left: -1em;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+#card-2 {
+  background: palegoldenrod;
+  -webkit-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
 }
