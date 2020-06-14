@@ -17,7 +17,8 @@ export class ResponsesListComponent implements OnInit {
   }
 
   showMessage(id) {
-    this.viewingService.isCardView = true;
-    this.vps.scrollToAnchor(id);
+    if (this.viewingService.isCardView) {
+      this.vps.scrollToAnchor(id);
+    }
   }
 }

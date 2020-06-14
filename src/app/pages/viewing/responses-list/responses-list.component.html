@@ -18,7 +18,8 @@
     </ul>
     <div id="author-list">
       <ul class="nav flex-column ml-2">
-        <li class="nav-item mb-1" *ngFor="let response of userMsgData" (click)="showMessage(response.authorid);">
+        <!-- TODO: data-slide-to is currently off by one due to the title slide -->
+        <li class="nav-item mb-1" *ngFor="let response of userMsgData" data-target="#carousel" attr.data-slide-to="{{ response.authorid }}" (click)="showMessage(response.authorid);">
           {{ response.author }}
         </li>
       </ul>
