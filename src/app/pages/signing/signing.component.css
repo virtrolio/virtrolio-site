@@ -68,11 +68,15 @@ markdown {
 }
 
 #icon {
-  display: block;
   width: 1.5em;
   margin: 0 auto;
 }
 
 #icon-wrapper {
   padding: 0;
+}
+
+#colorpicker-font, #colorpicker-background {
+  opacity: 0;
+  position: absolute;
 }
