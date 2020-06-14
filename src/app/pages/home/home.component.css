@@ -41,9 +41,15 @@
   height: calc(100vh - var(--navbar-height));
 }
 
-#background-logo {
+#bg-logo-img {
   position: absolute;
   opacity: 0.1;
+  right: 0;
+}
+
+#feature-img {
+  position: absolute;
+  opacity: 0.5;
   right: 0;
 }
 
