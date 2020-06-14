@@ -1,4 +1,4 @@
-export interface Message {
+export interface VirtrolioMessage {
   backColor: string;
   contents: string;
   fontColor: string;
@@ -10,6 +10,6 @@ export interface Message {
   year: number;
 }
 
-export interface User {
+export interface VirtrolioUser {
   key: string;
 }
