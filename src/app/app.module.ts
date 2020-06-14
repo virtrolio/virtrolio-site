@@ -39,6 +39,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 
 // Services
 import { LoginResolver } from './core/login-resolver';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { LoginResolver } from './core/login-resolver';
     VirtrolioCoverComponent,
     ExpiredLinkComponent,
     AccessDeniedComponent,
-    TermsOfServiceComponent
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

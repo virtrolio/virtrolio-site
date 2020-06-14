@@ -21,6 +21,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 
 // Services
 import { LoginResolver } from './core/login-resolver';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 // noinspection JSUnusedLocalSymbols
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
@@ -44,6 +45,7 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'placeholder', redirectTo: '/expired-link' },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
   {
     path: 'settings',
     component: SettingsComponent,
