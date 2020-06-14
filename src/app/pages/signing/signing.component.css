@@ -67,3 +67,12 @@ markdown {
 	background-color: var(--accent);
 }
 
+#icon {
+  display: block;
+  width: 1.5em;
+  margin: 0 auto;
+}
+
+#icon-wrapper {
+  padding: 0;
+}
