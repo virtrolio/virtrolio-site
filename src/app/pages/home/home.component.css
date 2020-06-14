@@ -3,6 +3,23 @@
   text-align: center;
 }
 
+#disclaimer-text {
+  font-size: 1em;
+  text-align: center;
+}
+
+.home-text {
+
+}
+
+.header-text {
+
+}
+
+.body-text {
+  font-size: 1.2em;
+}
+
 #logo {
   width: 12em;
 }
