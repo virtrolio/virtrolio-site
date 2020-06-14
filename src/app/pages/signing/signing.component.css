@@ -93,3 +93,8 @@ markdown {
 #font-color-text {
   font-size: large;
 }
+
+.color-picker-labels {
+  visibility: hidden;
+  font-size: 0;
+}
