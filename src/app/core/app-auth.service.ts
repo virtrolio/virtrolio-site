@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppAuthService {
   private user: User;
-  private LoggedIn: boolean;
 
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.angularFireAuth.user.subscribe((user: User) => this.user = user);
