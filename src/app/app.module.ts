@@ -33,6 +33,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { LoginResolver } from './core/login-resolver';
 
 
 @NgModule({
@@ -72,7 +73,7 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
       },
     })
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, LoginResolver ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
