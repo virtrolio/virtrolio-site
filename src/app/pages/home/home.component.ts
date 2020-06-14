@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppAuthService } from '../../core/app-auth.service';
+import * as AOS from 'aos';
 
 declare var $: any;
 
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
 }
