@@ -22,8 +22,8 @@ export class AboutComponent implements OnInit {
     'tommy-silly.jpg',
     'janakitti.png',
     'janakitti-silly.png',
-    'john.png',
-    'john-silly.png',
+    'john.jpg',
+    'john-silly.jpg',
   ];
 
   changePhotoSilly(personNumber) {
