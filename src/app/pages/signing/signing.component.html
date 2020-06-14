@@ -1,7 +1,9 @@
 <div class="container py-5 center-children vertical-center">
   <!-- signing boxes -->
   <div class="row">
-    <div class="col-md center-children">
+
+
+    <div class="col-md-6 order-md-1 center-children">
       <div class="row title-div vertical-center">
         <label for="signing-box">
           Type your message to [friend name] below.
@@ -12,7 +14,65 @@
           maxlength='5000'></textarea>
       </div>
     </div>
-    <div class="col-md center-children">
+
+
+    <div class='col-md-12 order-md-3'>
+      <!-- Formatting buttons and color pickers -->
+      <div class="row justify-content-center" id="options">
+        <!-- font selector -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ currentFont }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
+            <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
+            <a class="dropdown-item" (click)="selectFont('Arial')" href="javascript: void(0)">Arial</a>
+            <a class="dropdown-item" (click)="selectFont('Comic Sans MS')" href="javascript: void(0)">Comic Sans MS</a>
+            <a class="dropdown-item" (click)="selectFont('Courier New')" href="javascript: void(0)">Courier New</a>
+            <a class="dropdown-item" (click)="selectFont('Dancing Script')" href="javascript: void(0)">Dancing Script</a>
+            <a class="dropdown-item" (click)="selectFont('Montserrat')" href="javascript: void(0)">Montserrat</a>
+            <a class="dropdown-item" (click)="selectFont('Roboto')" href="javascript: void(0)">Roboto</a>
+            <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
+          </div>
+        </div>
+        <!-- formatting buttons -->
+        <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+          id="button-bold" #b>
+          <b>B</b>
+        </button>
+        <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+          id="button-italics">
+          <i>I</i>
+        </button>
+        <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+          id="button-underline">
+          <u>U</u>
+        </button>
+        <button type="button" (click)="makeStrikethrough(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+          id="button-strikethrough">
+          <s>S</s>
+        </button>
+        <!-- Color pickers for text and background -->
+        <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+          <div id="font-color-text">A</div>
+          <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
+            [(ngModel)]='textColor'>
+          <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
+        </button>
+        <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+          <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+          <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+            value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+          <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
+        </button>
+        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
+          Send
+        </button>
+      </div>
+    </div>
+    
+    <div class="col-md-6 order-md-2 center-children">
       <div class="row title-div vertical-center">
         <label for="preview-text">
           Preview
@@ -23,61 +83,7 @@
           id="preview-text" data="{{ signingBoxText }}"></markdown>
       </div>
     </div>
-  </div>
-
-  <!-- Formatting buttons and color pickers -->
-  <div class="row justify-content-center" id="options">
-    <!-- font selector -->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        {{ currentFont }}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
-        <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
-        <a class="dropdown-item" (click)="selectFont('Arial')" href="javascript: void(0)">Arial</a>
-        <a class="dropdown-item" (click)="selectFont('Comic Sans MS')" href="javascript: void(0)">Comic Sans MS</a>
-        <a class="dropdown-item" (click)="selectFont('Courier New')" href="javascript: void(0)">Courier New</a>
-        <a class="dropdown-item" (click)="selectFont('Dancing Script')" href="javascript: void(0)">Dancing Script</a>
-        <a class="dropdown-item" (click)="selectFont('Montserrat')" href="javascript: void(0)">Montserrat</a>
-        <a class="dropdown-item" (click)="selectFont('Roboto')" href="javascript: void(0)">Roboto</a>
-        <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
-      </div>
-    </div>
-    <!-- formatting buttons -->
-    <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2"
-      id="button-bold" #b>
-      <b>B</b>
-    </button>
-    <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2"
-      id="button-italics">
-      <i>I</i>
-    </button>
-    <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
-      id="button-underline">
-      <u>U</u>
-    </button>
-    <button type="button" (click)="makeStrikethrough(signingInputArea)" class="btn btn-secondary btn-format mr-2"
-      id="button-strikethrough">
-      <s>S</s>
-    </button>
-    <!-- Color pickers for text and background -->
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
-      <div id="font-color-text">A</div>
-      <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
-        [(ngModel)]='textColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
-    </button>
-    <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
-      <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-      <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-        value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
-    </button>
-    <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
-      Send
-    </button>
-  </div>
+    
 </div>
 
 <div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
