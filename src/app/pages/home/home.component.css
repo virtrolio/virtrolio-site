@@ -17,3 +17,7 @@
   overflow: auto;
   overflow-y: auto;
 }
+
+#icon {
+  width: 32px;
+}
