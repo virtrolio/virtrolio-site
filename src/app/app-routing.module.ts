@@ -17,6 +17,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
@@ -56,6 +57,7 @@ const routes: Routes = [
     data: { authGuardPipe: redirectLoggedOutSigning },
     resolve: { user: LoginResolver }
   },
+  { path: 'terms-of-service', component: TermsOfServiceComponent },
   {
     path: 'viewing',
     component: ViewingComponent,
