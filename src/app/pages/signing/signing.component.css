@@ -32,9 +32,10 @@
   width: 40em;
   height: 20em;
 	resize: none;
-	font: 1em Arial;
+  font-size: 1em;
+  font-family: Montserrat, sans-serif;
 	border-width: 0.05em;
-  border-radius: 0;
+  border-radius: 0.25rem;
   box-shadow: var(--signing-shadow);
 }
 
@@ -58,7 +59,7 @@ markdown {
 	overflow-y: auto;
 	overflow-x: auto;
   word-wrap: break-word;
-  border-radius: 0;
+  border-radius: 0.25rem;
   box-shadow: var(--signing-shadow);
 }
 
