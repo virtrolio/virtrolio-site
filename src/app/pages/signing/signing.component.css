@@ -27,15 +27,16 @@
   text-align: center;
 }
 
-
 #signing-box {
 	margin: 1em;
 	padding: 1em;
-	width: 35em;
+  width: 40em;
+  height: 20em;
 	resize: none;
 	font: 1em Arial;
 	border-width: 0.05em;
-	border-radius: 0;
+  border-radius: 0;
+  border-color: var(--light-grey);
 }
 
 .form-control:focus {
