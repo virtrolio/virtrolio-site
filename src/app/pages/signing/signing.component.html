@@ -17,7 +17,7 @@
   <div class="row justify-content-center" id="options">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+        aria-haspopup="true" aria-expanded="false">
         {{ currentFont }}
       </button>
       <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
@@ -31,11 +31,13 @@
         <a class="dropdown-item" (click)="selectFont('Times New Roman')" href="javascript: void(0)">Times New Roman</a>
       </div>
     </div>
-  
-    <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-bold" #b>
+
+    <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+      id="button-bold" #b>
       <b>B</b>
     </button>
-    <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2" id="button-italics">
+    <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+      id="button-italics">
       <i>I</i>
     </button>
     <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
@@ -49,14 +51,16 @@
     <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
       <div id="font-color-text">A</div>
       <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
-          [(ngModel)]='textColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}" style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
+        [(ngModel)]='textColor'>
+      <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}"
+        style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
     </button>
     <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
       <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
       <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-          value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-      <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}" style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
+        value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+      <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}"
+        style="height: 0.5em; margin: 0.1em 0.3em; border-radius: 0.5em;">&nbsp;</div>
     </button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-confirm-modal">
       Send
@@ -65,8 +69,8 @@
 </div>
 
 
-<div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="submit-confirm-modal-title"
-  aria-hidden="true">
+<div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
+  aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
