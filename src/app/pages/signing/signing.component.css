@@ -6,7 +6,7 @@
 	text-align: center;
 }
 
-#fontSelectorDropdown {
+#font-selector-dropdown {
 	text-align: right;
 	width: 12em;
 }
@@ -36,9 +36,16 @@
 	font: 1em Arial;
 	border-width: 0.05em;
   border-radius: 0;
-  border-color: var(--light-grey);
 }
 
+.form-control {
+  border-color: var(--light-grey)
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+	box-shadow: none;
+}
 
 markdown {
 	margin: 0.5em;
