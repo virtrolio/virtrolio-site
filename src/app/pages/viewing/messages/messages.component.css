@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .toggle-switch {
   color: var(--light-grey);
 }
@@ -32,20 +36,16 @@
   background-color: var(--accent);
   color: white;
   height: 70vh;
-  padding-left: 6em;
-  padding-right: 6em;
+  padding: 3em 6em 3em 6em;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow-y: auto;
 }
 
 .message-card {
   background-color: var(--light-grey);
-  height: auto;
-  min-height: 40em;
+  height: 40em;
   padding: 3em 6em 3em 6em;
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 2em;
+  overflow-y: auto;
 }
