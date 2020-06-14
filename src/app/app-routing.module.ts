@@ -49,18 +49,14 @@ const routes: Routes = [
     component: SigningComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorizedToHome },
-    resolve: {
-      user: LoginResolver
-    }
+    resolve: { user: LoginResolver }
   },
   {
     path: 'viewing',
     component: ViewingComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorizedToHome },
-    resolve: {
-      user: LoginResolver
-    }
+    resolve: { user: LoginResolver }
   },
   {
     path: 'virtrolio-cover',
