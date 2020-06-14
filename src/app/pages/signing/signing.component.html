@@ -2,8 +2,8 @@
   <!-- signing boxes -->
   <div class="row">
     <div class="col-md center-children">
-      <div class="row" id="title-div">
-        <label id="signing-header" for="signing-box">
+      <div class="row title-div vertical-center">
+        <label for="signing-box">
           Type your message to [friend name] below.
         </label>
       </div>
@@ -13,15 +13,16 @@
       </div>
     </div>
     <div class="col-md center-children">
-      <label id="preview-header" for="preview-text">
-        Preview
-      </label>
+      <div class="row title-div vertical-center">
+        <label for="preview-text">
+          Preview
+        </label>
+      </div>
       <div class="row">
         <markdown emoji [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
           id="preview-text" data="{{ signingBoxText }}"></markdown>
       </div>
     </div>
-
   </div>
 
   <!-- Formatting buttons and color pickers -->

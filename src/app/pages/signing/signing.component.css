@@ -20,15 +20,15 @@
 	width: 2.4em;
 }
 
-#signing-header {
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-  font-size: 1.6em;
+.title-div {
+  height: 3em;
+  margin: 1em 0.5em 0 0.5em;
   text-align: center;
+  font-size: 1.2em;
 }
 
 #signing-box {
-	margin: 1em;
+  margin: 0.5em;
 	padding: 1em;
   width: 40em;
   height: 20em;
@@ -39,21 +39,11 @@
   border-color: var(--light-grey);
 }
 
-.form-control:focus {
-	border-color: var(--accent);
-	box-shadow: none;
-}
-
-#preview-header {
-	margin-top: 1.0em;
-	margin-bottom: 0;
-	font-size: 1.2em;
-}
 
 markdown {
-	margin: 1em;
+	margin: 0.5em;
 	padding: 1em;
-	width: 35em;
+	width: 40em;
 	height: 20em;
 	resize: none;
 	font: 1em Arial;
