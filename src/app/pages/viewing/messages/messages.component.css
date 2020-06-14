@@ -2,6 +2,13 @@
   color: var(--light-grey);
 }
 
+.custom-control-label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .title-page {
   font-size: 3em;
   font-family: Montserrat, sans-serif;
