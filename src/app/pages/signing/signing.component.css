@@ -89,3 +89,7 @@ markdown {
 #dynamic-color-bar {
   border: 20px solid black !important;
 }
+
+#font-color-text {
+  font-size: large;
+}
