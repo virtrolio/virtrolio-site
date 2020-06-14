@@ -5,7 +5,9 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ExpiredLinkComponent } from './pages/expired-link/expired-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,6 +17,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+
+// Services
 import { LoginResolver } from './core/login-resolver';
 
 // noinspection JSUnusedLocalSymbols
@@ -23,7 +27,9 @@ const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '' ]);
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'expired-link' , component: ExpiredLinkComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'friend-link', component: FriendLinkComponent },
   {
