@@ -22,7 +22,7 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
 import { LoginResolver } from './core/login-resolver';
 
 // noinspection JSUnusedLocalSymbols
-const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '' ]);
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo([ '/access-denied' ]);
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
