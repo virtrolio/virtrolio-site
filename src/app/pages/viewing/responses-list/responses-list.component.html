@@ -19,7 +19,8 @@
     <div id="author-list">
       <ul class="nav flex-column ml-2">
         <!-- TODO: data-slide-to is currently off by one due to the title slide -->
-        <li class="nav-item mb-1" *ngFor="let response of userMsgData" data-target="#carousel" attr.data-slide-to="{{ response.authorid }}" (click)="showMessage(response.authorid);">
+        <li class="nav-item mb-1" *ngFor="let response of userMsgData; let i = index" data-target="#carousel"
+            attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(i);">
           {{ response.author }}
         </li>
       </ul>

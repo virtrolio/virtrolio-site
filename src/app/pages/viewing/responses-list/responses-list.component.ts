@@ -10,6 +10,7 @@ import { AppAuthService } from '../../../core/app-auth.service';
 })
 export class ResponsesListComponent implements OnInit {
   userMsgData;
+
   constructor(public viewingService: ViewingService, private vps: ViewportScroller, public authService: AppAuthService) {}
 
   ngOnInit(): void {

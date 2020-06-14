@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class ViewingService {
   userMsgData = [ {
-    'authorid': '0',
+    'authorid': '112123213',
     'author': 'Rammy',
     'message': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
     'fontfamily': 'Montserrat',
@@ -15,7 +15,7 @@ export class ViewingService {
     'bgcolor': '#55d3f2'
   },
     {
-      'authorid': '1',
+      'authorid': '2123',
       'author': 'Alice',
       'message': 'Have a good summer',
       'fontfamily': 'Courier New',
@@ -24,7 +24,7 @@ export class ViewingService {
       'bgcolor': '#ff6b8b'
     },
     {
-      'authorid': '2',
+      'authorid': '3',
       'author': 'Bob',
       'message': 'Goodbye',
       'fontfamily': 'Montserrat',
@@ -33,7 +33,7 @@ export class ViewingService {
       'bgcolor': '#f76534'
     },
     {
-      'authorid': '3',
+      'authorid': '4',
       'author': 'Isabelle',
       'message': 'The Woodlands School was opened in the year 1969. While the first phase of its present building was under construction, The Woodlands operated within Springfield Public School building. In September, 1970, the schools students and staff moved to the new building, and The Woodlands became a combined elementary and secondary school.',
       'fontfamily': 'Times New Roman',

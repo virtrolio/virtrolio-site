@@ -43,7 +43,7 @@
   </div>
 </div>
 <div class="mt-3" *ngIf="viewingService.isCardView == true">
-  <div class="card message-card" *ngFor="let msg of userMsgData" id="{{msg.authorid}}"
+  <div class="card message-card" *ngFor="let msg of userMsgData; let i = index" id="{{i}}"
        [ngStyle]="{'background': msg.bgcolor}">
     <table>
       <tr class="message"
