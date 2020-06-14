@@ -38,6 +38,7 @@ const routes: Routes = [
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorizedToHome }
   },
+  { path: 'placeholder', redirectTo: '/expired-link' },
   {
     path: 'settings',
     component: SettingsComponent,
