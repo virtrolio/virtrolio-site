@@ -80,4 +80,12 @@ export class AppAuthService {
       return '';
     }
   }
+
+  userExists(uid: string) {
+    this.afs.collection('users').doc(uid).snapshotChanges().subscribe(
+      user => {
+        return user.payload.exists;
+      }
+    );
+  }
 }
