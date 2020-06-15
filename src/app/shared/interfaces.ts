@@ -5,7 +5,6 @@ export interface VirtrolioMessage {
   fontFamily: string;
   from: string;
   to: string;
-  key: string;
   isRead: boolean;
   year: number;
 }
