@@ -20,10 +20,10 @@ export class LinkGenService {
     return key;
   }
 
-  getKey() {
+  async getKey() {
     const user = this.authService.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    userRef.valueChanges().subscribe(
+    return userRef.valueChanges().subscribe(
       userDoc => {
         return userDoc.key;
       }
@@ -33,7 +33,7 @@ export class LinkGenService {
   checkKey(uid: string, key: string) {
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     let correctKey: string;
-    userRef.valueChanges().subscribe(
+    return userRef.valueChanges().subscribe(
       userDoc => {
         correctKey = userDoc.key;
         return key === correctKey;
@@ -45,7 +45,7 @@ export class LinkGenService {
     const user = this.authService.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     const newKey = LinkGenService.generateKey();
-    userRef.update(
+    return userRef.update(
       { key: newKey }
     ).then(() => true);
   }
