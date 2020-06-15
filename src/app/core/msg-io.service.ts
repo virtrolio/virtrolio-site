@@ -32,6 +32,10 @@ export class MsgIoService {
     // this.getMessages('test').subscribe(messages => console.log(messages));
   }
 
+  /**
+   * @returns A blank VirtrolioMessageTemplate, which should be modified the returned template to fill in the user data
+   * and then passed into MsgIoService.sendMessage().
+   */
   createBlankMessage() {
     const emptyMessage: VirtrolioMessageTemplate = {
       backColor: '',
@@ -44,6 +48,13 @@ export class MsgIoService {
     return emptyMessage;
   }
 
+  /**
+   * Getter for all of the messages that were sent to a particular user.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
+   * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
+   * @param uid - The Firebase Authentication user ID that is used to search for messages sent TO this user.
+   * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
+   */
   getMessages(uid: string): Observable<VirtrolioMessage[]> {
     // TODO: Add check for uid exists
     return this.afs.collection('messages', ref => ref.where('to', '==', uid))
@@ -56,6 +67,17 @@ export class MsgIoService {
       );
   }
 
+  /**
+   * Used to send a Virtrolio message (defined by VirtrolioMessageTemplate) by adding it to the Firestore database.
+   * @param messageTemplate - The contents and settings of the message. This should be a VirtrolioMessageTemplate that
+   * was created by MsgIoService.createBlankMessage and then modified to fill in the user data. You should **NOT** try
+   * to pass in a VirtrolioMessageTemplate that you create yourself.
+   * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
+   * @returns true if the operation is successful.
+   * @throws ReferenceError - If either the from or to UIDs are blank.
+   * @throws RangeError - If the message is either blank or longer than maxMessageLength.
+   * @throws Error - If any of the other fields in VirtrolioMessageTemplate are left blank.
+   */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
     // TODO: Add check for sender & recipient exists
     // TODO: Add key check
