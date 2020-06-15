@@ -22,10 +22,11 @@ export class MsgIoService {
     //   contents: 'hi',
     //   fontColor: 'white',
     //   fontFamily: 'Open Sans',
-    //   from: 'BFlbQzLpG4fXxy0AVSyb',
-    //   to: 's7OIMu1mrxZscVX4dx2K5d2XYvf2'
+    //   from: 'test',
+    //   to: 'test'
     // };
     // this.sendMessage(testMessage, '');
+    // this.getMessages('test').subscribe(messages => console.log(messages));
   }
 
   createBlankMessage() {
@@ -41,7 +42,8 @@ export class MsgIoService {
   }
 
   getMessages(uid: string) {
-    return [];
+    // TODO: Add check for uid exists
+    return this.afs.collection('messages', ref => ref.where('to', '==', uid)).valueChanges();
   }
 
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
