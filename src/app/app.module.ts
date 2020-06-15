@@ -34,6 +34,7 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 
 // Services
@@ -57,7 +58,8 @@ import { LoginResolver } from './core/login-resolver';
     ResponsesListComponent,
     VirtrolioCoverComponent,
     ExpiredLinkComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    RejeccComponent
   ],
   imports: [
     BrowserModule,

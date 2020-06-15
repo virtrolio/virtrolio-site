@@ -20,6 +20,7 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
 
 // Services
 import { LoginResolver } from './core/login-resolver';
+import { RejeccComponent } from './pages/rejecc/rejecc.component';
 
 // noinspection JSUnusedLocalSymbols
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
@@ -43,6 +44,7 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'placeholder', redirectTo: '/expired-link' },
+  { path: 'rejecc', component: RejeccComponent },
   {
     path: 'settings',
     component: SettingsComponent,
