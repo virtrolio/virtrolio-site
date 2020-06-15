@@ -83,8 +83,9 @@ export class MsgIoService {
     // TODO: Add key check
     // TODO: Add Font Family check
     // TODO: Add Color check
-    if (messageTemplate.from == null || messageTemplate.to == null) {
-      throw new ReferenceError('User is undefined or null');
+    // TODO: Add check for message filled with whitespace
+    if (messageTemplate.from === '' || messageTemplate.to === '') {
+      throw new ReferenceError('Sender or recipient UID was not provided');
     } else if (messageTemplate.contents.length > this.maxMessageLength) {
       throw new RangeError('Message is too long');
     } else if (messageTemplate.contents.length === 0) {
