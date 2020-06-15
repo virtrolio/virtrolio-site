@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 
@@ -9,8 +10,8 @@ import { Router } from '@angular/router';
 export class AppAuthService {
   private user: User;
 
-  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
-    this.angularFireAuth.user.subscribe((user: User) => this.user = user);
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+    this.afa.user.subscribe((user: User) => this.user = user);
   }
 
   /**
@@ -20,7 +21,7 @@ export class AppAuthService {
    * @returns True if the redirect is successful.
    */
   login(routeTo: string){
-    this.angularFireAuth.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+    this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.router.navigate([ routeTo ]);
       } else {
@@ -35,7 +36,7 @@ export class AppAuthService {
    * @returns True if the redirect is successful.
    */
   logout() {
-    this.angularFireAuth.signOut().then(() => {
+    this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
     });
   }
