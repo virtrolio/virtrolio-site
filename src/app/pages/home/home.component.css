@@ -13,11 +13,13 @@
 }
 
 .header-text {
-
+  font-size: 3em;
+  font-weight: bold;
 }
 
 .body-text {
-  font-size: 1.2em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
 }
 
 #logo {
@@ -39,6 +41,7 @@
   background: var(--accent);
   background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
   height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
 }
 
 #bg-logo-img {
@@ -54,6 +57,7 @@
 }
 
 #title-container {
+  font-family: 'Roboto', sans-serif;
   position: relative;
   padding: 30vh 0 0 10vw;
 }
