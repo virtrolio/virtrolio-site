@@ -12,11 +12,13 @@ export class SigningComponent implements OnInit {
   public signingBoxText = '';
   // fonts and colors
   public currentFont = 'Arial';
+  public currentFontDisplay = 'Arial';
   public backgroundColor = '#ffffff';
   public textColor = '#000000';
 
   selectFont(font: string) {
     this.currentFont = font;
+    this.currentFontDisplay = font.slice(0, font.indexOf(','));
   }
 
   makeBold(textbox: HTMLTextAreaElement) {
