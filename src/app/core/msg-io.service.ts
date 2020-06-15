@@ -43,7 +43,8 @@ export class MsgIoService {
 
   getMessages(uid: string) {
     // TODO: Add check for uid exists
-    return this.afs.collection('messages', ref => ref.where('to', '==', uid)).valueChanges();
+    return this.afs.collection('messages', ref => ref.where('to', '==', uid))
+      .snapshotChanges();
   }
 
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
