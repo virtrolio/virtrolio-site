@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
+import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
 import * as firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
+
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,10 +44,16 @@ export class MsgIoService {
     return emptyMessage;
   }
 
-  getMessages(uid: string) {
+  getMessages(uid: string): Observable<VirtrolioMessage[]> {
     // TODO: Add check for uid exists
     return this.afs.collection('messages', ref => ref.where('to', '==', uid))
-      .snapshotChanges();
+      .snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as VirtrolioDocument;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   }
 
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
@@ -63,7 +72,7 @@ export class MsgIoService {
       throw new Error('A required formatting value is blank');
     }
 
-    const message: VirtrolioMessage = {
+    const message: VirtrolioDocument = {
       ...messageTemplate,
       timestamp: Timestamp.now(),
       isRead: false,
