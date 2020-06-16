@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -81,10 +82,10 @@ export class AppAuthService {
     }
   }
 
-  userExists(uid: string) {
-    this.afs.collection('users').doc(uid).snapshotChanges().subscribe(
-      user => {
-        return user.payload.exists;
+  async userExists(uid: string) {
+    const userRef = this.afs.collection('users').doc(uid);
+    return await userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
+        return userDoc.payload.exists;
       }
     );
   }
