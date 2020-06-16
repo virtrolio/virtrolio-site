@@ -74,8 +74,8 @@ export class MsgIoService {
    * to pass in a VirtrolioMessageTemplate that you create yourself.
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
    * @returns A promise that evaluates to true if the operation is successful.
-   * @throws ReferenceError - If either the from or to UIDs are blank.
    * @throws RangeError - If the message is either blank or longer than maxMessageLength.
+   * @throws Error - If either the from or to UIDs are blank.
    * @throws Error - If any of the other fields in VirtrolioMessageTemplate are left blank.
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
@@ -85,7 +85,7 @@ export class MsgIoService {
     // TODO: Add Color check
     // TODO: Add check for message filled with whitespace
     if (messageTemplate.from === '' || messageTemplate.to === '') {
-      throw new ReferenceError('Sender or recipient UID was not provided');
+      throw new Error('Sender or recipient UID was not provided');
     } else if (messageTemplate.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long');
     } else if (messageTemplate.contents.length === 0) {
