@@ -11,11 +11,7 @@ export class LinkGenService {
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 
-  constructor(private afs: AngularFirestore, private authService: AppAuthService) {
-    // this.checkKey(this.authService.uid(), 'abc').then(
-    //   data => console.log(data)
-    // );
-  }
+  constructor(private afs: AngularFirestore, private authService: AppAuthService) { }
 
   /**
    * Generates a random string of characters of length LinkGenService.keyLength using the characters in
