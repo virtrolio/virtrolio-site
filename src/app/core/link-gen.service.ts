@@ -8,7 +8,8 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LinkGenService {
-  private static readonly keyLength = 7;
+  static readonly keyLength = 7;
+  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 
   constructor(private afs: AngularFirestore, private authService: AppAuthService) {
     // this.checkKey(this.authService.uid(), 'abc').then(
@@ -17,10 +18,9 @@ export class LinkGenService {
   }
 
   private static generateKey() {
-    const options = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
     let key = '';
     for (let i = 0; i < LinkGenService.keyLength; i++) {
-      key += options.charAt(Math.floor(Math.random() * options.length));
+      key += LinkGenService.keyOptions.charAt(Math.floor(Math.random() * LinkGenService.keyOptions.length));
     }
     return key;
   }
