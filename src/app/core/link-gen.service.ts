@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 export class LinkGenService {
 
   constructor(private afs: AngularFirestore, private authService: AppAuthService) {
-    console.log(this.getLink());
+    console.log(this.checkKey(this.authService.uid(), 'abc'));
   }
 
   private static generateKey() {
@@ -36,7 +36,7 @@ export class LinkGenService {
       );
     }).then((userDoc: any) => {
       console.log(userDoc);
-      link += userDoc.key;
+      return userDoc.key;
     });
     return link;
 
