@@ -44,7 +44,7 @@ export class MsgIoService {
    * in MsgIoService.
    * @throws ReferenceError - If the UID does not refer to a valid user.
    */
-  verifyVirtrolioMessageTemplate(message: VirtrolioMessageTemplate): void {
+  verifyMessage(message: VirtrolioMessageTemplate): void {
     if (typeof message.from === 'undefined' || !message.from) {
       throw new Error('Sender UID was not provided');
     } else if (typeof message.to === 'undefined' || !message.to) {
@@ -112,9 +112,9 @@ export class MsgIoService {
    * to pass in a VirtrolioMessageTemplate that you create yourself.
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
    * @returns A promise that evaluates to true if the operation is successful.
-   * @throws RangeError - Thrown by helper method this.verifyVirtrolioMessageTemplate()
-   * @throws Error - Thrown by helper method this.verifyVirtrolioMessageTemplate()
-   * @throws ReferenceError - Thrown by helper method this.verifyVirtrolioMessageTemplate()
+   * @throws RangeError - Thrown by helper method this.verifyMessage()
+   * @throws Error - Thrown by helper method this.verifyMessage()
+   * @throws ReferenceError - Thrown by helper method this.verifyMessage()
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
@@ -122,7 +122,7 @@ export class MsgIoService {
     // TODO: Add check for message filled with whitespace
 
     // Check message object contents for validity
-    this.verifyVirtrolioMessageTemplate(messageTemplate);
+    this.verifyMessage(messageTemplate);
 
     // Verify correct key
     return this.lgs.checkKey(messageTemplate.to, key).then(async keyIsCorrect => {
