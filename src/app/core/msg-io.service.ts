@@ -57,6 +57,9 @@ export class MsgIoService {
    */
   getMessages(uid: string): Observable<VirtrolioMessage[]> {
     // TODO: Add check for uid exists
+    if (typeof uid === 'undefined' || !uid) {
+      throw new Error('Argument UID cannot be blank, null or undefined');
+    }
     return this.afs.collection('messages', ref => ref.where('to', '==', uid))
       .snapshotChanges().pipe(
         map(actions => actions.map(a => {
@@ -84,8 +87,10 @@ export class MsgIoService {
     // TODO: Add Font Family check
     // TODO: Add Color check
     // TODO: Add check for message filled with whitespace
-    if (messageTemplate.from === '' || messageTemplate.to === '') {
-      throw new Error('Sender or recipient UID was not provided');
+    if (typeof messageTemplate.from === 'undefined' || !messageTemplate.from) {
+      throw new Error('Sender UID cannot be blank, null or undefined');
+    } else if (typeof messageTemplate.to === 'undefined' || !messageTemplate.to) {
+      throw new Error('Sender UID cannot be blank, null or undefined');
     } else if (messageTemplate.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long');
     } else if (messageTemplate.contents.length === 0) {

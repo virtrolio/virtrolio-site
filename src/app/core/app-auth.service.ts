@@ -21,7 +21,10 @@ export class AppAuthService {
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @returns True if the redirect is successful.
    */
-  login(routeTo: string){
+  login(routeTo: string) {
+    if (typeof routeTo === 'undefined' || !routeTo) {
+      throw new Error('Route cannot be blank, null or undefined');
+    }
     this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.router.navigate([ routeTo ]);
@@ -83,6 +86,9 @@ export class AppAuthService {
   }
 
   async userExists(uid: string) {
+    if (typeof uid === 'undefined' || !uid) {
+      throw new Error('Argument UID cannot be blank, null or undefined');
+    }
     const userRef = this.afs.collection('users').doc(uid);
     return await userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         return userDoc.payload.exists;
