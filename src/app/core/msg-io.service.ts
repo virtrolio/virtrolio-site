@@ -34,7 +34,16 @@ export class MsgIoService {
     // this.getMessages('test').subscribe(messages => console.log(messages));
   }
 
-  // TODO: Add Documentation
+  /**
+   * Helper method for sendMessage(). Checks the contents of the provided message to verify that there are no errors,
+   * and that all required fields were provided. Throws an error if any field is incorrect or not provided.
+   * @param message - The message to be checked.
+   * @throws Error - If any field is blank, null, undefined or otherwise invalid.
+   * @throws Error - If the method is called while logged out.
+   * @throws RangeError - If the contents of the message exceed the value of the maxMessageLength constant defined
+   * in MsgIoService.
+   * @throws ReferenceError - If the UID does not refer to a valid user.
+   */
   verifyVirtrolioMessageTemplate(message: VirtrolioMessageTemplate): void {
     if (typeof message.from === 'undefined' || !message.from) {
       throw new Error('Sender UID was not provided');
@@ -103,8 +112,9 @@ export class MsgIoService {
    * to pass in a VirtrolioMessageTemplate that you create yourself.
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
    * @returns A promise that evaluates to true if the operation is successful.
-   * @throws RangeError - If the message is either blank or longer than maxMessageLength.
-   * @throws Error - If any string field is blank, null or undefined.
+   * @throws RangeError - Thrown by helper method this.verifyVirtrolioMessageTemplate()
+   * @throws Error - Thrown by helper method this.verifyVirtrolioMessageTemplate()
+   * @throws ReferenceError - Thrown by helper method this.verifyVirtrolioMessageTemplate()
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
