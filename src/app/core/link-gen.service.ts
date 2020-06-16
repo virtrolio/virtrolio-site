@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AppAuthService } from './app-auth.service';
 import { VirtrolioUser } from '../shared/interfaces';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinkGenService {
 
-  constructor(private afs: AngularFirestore, private authService: AppAuthService) { }
+  constructor(private afs: AngularFirestore, private authService: AppAuthService) {
+    console.log(this.getLink());
+  }
 
   private static generateKey() {
     const length = 7;
@@ -20,14 +23,23 @@ export class LinkGenService {
     return key;
   }
 
-  async getKey() {
+  async getLink() {
+    let link = 'https://virtrolio.web.app/friend-link?uid=';
     const user = this.authService.uid();
+    link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    return userRef.valueChanges().subscribe(
-      userDoc => {
-        return userDoc.key;
-      }
-    );
+    link += await new Promise(resolve => {
+      userRef.valueChanges().pipe(take(1)).subscribe(
+        (data: any) => {
+          resolve(data);
+        }
+      );
+    }).then((userDoc: any) => {
+      console.log(userDoc);
+      link += userDoc.key;
+    });
+    return link;
+
   }
 
   checkKey(uid: string, key: string) {
