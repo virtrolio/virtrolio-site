@@ -5,8 +5,9 @@ import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '.
 import * as firebase from 'firebase';
 
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import Timestamp = firebase.firestore.Timestamp;
+import { AppAuthService } from './app-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class MsgIoService {
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private authService: AppAuthService) {
     this.messagesCollection = afs.collection('messages');
     // TODO: Remove Test Message
     // const testMessage = {
@@ -30,6 +31,26 @@ export class MsgIoService {
     // };
     // this.sendMessage(testMessage, '');
     // this.getMessages('test').subscribe(messages => console.log(messages));
+  }
+
+  verifyVirtrolioMessageTemplate(message: VirtrolioMessageTemplate): boolean {
+    if (typeof message.from === 'undefined' || !message.from) {
+      throw new Error('Sender UID was not provided');
+    } else if (typeof message.to === 'undefined' || !message.to) {
+      throw new Error('Sender UID was not provided');
+    } else if (typeof message.contents === 'undefined' || !message.contents) {
+      throw new Error('Message contents were not provided');
+    } else if (typeof message.backColor === 'undefined' || !message.backColor) {
+      throw new Error('Background color was not provided');
+    } else if (typeof message.fontColor === 'undefined' || !message.fontColor) {
+      throw new Error('Font color was not provided');
+    } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
+      throw new Error('Font family was not provided');
+    } else if (message.contents.length > MsgIoService.maxMessageLength) {
+      throw new RangeError('Message is too long');
+    } else {
+      return true;
+    }
   }
 
   /**
@@ -86,21 +107,8 @@ export class MsgIoService {
     // TODO: Add Font Family check
     // TODO: Add Color check
     // TODO: Add check for message filled with whitespace
-    if (typeof messageTemplate.from === 'undefined' || !messageTemplate.from) {
-      throw new Error('Sender UID was not provided');
-    } else if (typeof messageTemplate.to === 'undefined' || !messageTemplate.to) {
-      throw new Error('Sender UID was not provided');
-    } else if (typeof messageTemplate.contents === 'undefined' || !messageTemplate.contents) {
-      throw new Error('Message contents were not provided');
-    } else if (typeof messageTemplate.backColor === 'undefined' || !messageTemplate.backColor) {
-      throw new Error('Background color was not provided');
-    } else if (typeof messageTemplate.fontColor === 'undefined' || !messageTemplate.fontColor) {
-      throw new Error('Font color was not provided');
-    } else if (typeof messageTemplate.fontFamily === 'undefined' || !messageTemplate.fontFamily) {
-      throw new Error('Font family was not provided');
-    } else if (messageTemplate.contents.length > MsgIoService.maxMessageLength) {
-      throw new RangeError('Message is too long');
-    }
+
+    this.verifyVirtrolioMessageTemplate(messageTemplate);
 
     const message: VirtrolioDocument = {
       ...messageTemplate,
