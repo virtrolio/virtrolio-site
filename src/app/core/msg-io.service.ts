@@ -12,8 +12,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MsgIoService {
-  private currentYear = 2020;
-  private maxMessageLength = 5000;
+  private static readonly currentYear = 2020;
+  private static readonly maxMessageLength = 5000;
 
   private messagesCollection: AngularFirestoreCollection;
 
@@ -86,7 +86,7 @@ export class MsgIoService {
     // TODO: Add check for message filled with whitespace
     if (messageTemplate.from === '' || messageTemplate.to === '') {
       throw new ReferenceError('Sender or recipient UID was not provided');
-    } else if (messageTemplate.contents.length > this.maxMessageLength) {
+    } else if (messageTemplate.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long');
     } else if (messageTemplate.contents.length === 0) {
       throw new RangeError('Cannot send empty message');
@@ -99,7 +99,7 @@ export class MsgIoService {
       ...messageTemplate,
       timestamp: Timestamp.now(),
       isRead: false,
-      year: this.currentYear
+      year: MsgIoService.currentYear
     };
 
     return this.messagesCollection.add(message).then(() => true);
