@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LinkGenService {
+  private static readonly keyLength = 7;
 
   constructor(private afs: AngularFirestore, private authService: AppAuthService) {
     // this.checkKey(this.authService.uid(), 'abc').then(
@@ -16,10 +17,9 @@ export class LinkGenService {
   }
 
   private static generateKey() {
-    const length = 7;
     const options = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
     let key = '';
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < LinkGenService.keyLength; i++) {
       key += options.charAt(Math.floor(Math.random() * options.length));
     }
     return key;
@@ -30,13 +30,7 @@ export class LinkGenService {
     const user = this.authService.uid();
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    link += await new Promise(resolve => {
-      userRef.valueChanges().pipe(take(1)).subscribe(
-        (data: any) => {
-          resolve(data);
-        }
-      );
-    }).then((userDoc: any) => {
+    link += await userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
       console.log(userDoc);
       return userDoc.key;
     });
