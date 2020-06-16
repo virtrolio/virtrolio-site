@@ -10,7 +10,9 @@ import { take } from 'rxjs/operators';
 export class LinkGenService {
 
   constructor(private afs: AngularFirestore, private authService: AppAuthService) {
-    console.log(this.checkKey(this.authService.uid(), 'abc'));
+    // this.checkKey(this.authService.uid(), 'abc').then(
+    //   data => console.log(data)
+    // );
   }
 
   private static generateKey() {
@@ -42,15 +44,15 @@ export class LinkGenService {
 
   }
 
-  checkKey(uid: string, key: string) {
+  async checkKey(uid: string, key: string) {
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     let correctKey: string;
-    return userRef.valueChanges().subscribe(
-      userDoc => {
-        correctKey = userDoc.key;
-        return key === correctKey;
-      }
-    );
+    return await userRef.valueChanges().pipe(take(1)).toPromise().then(
+        (userDoc: any) => {
+          correctKey = userDoc.key;
+          return key === correctKey;
+        }
+      );
   }
 
   changeKey() {
