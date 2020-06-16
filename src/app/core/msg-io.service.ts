@@ -59,7 +59,7 @@ export class MsgIoService {
   getMessages(uid: string): Observable<VirtrolioMessage[]> {
     // TODO: Add check for uid exists
     if (typeof uid === 'undefined' || !uid) {
-      throw new Error('Argument UID cannot be blank, null or undefined');
+      throw new Error('Argument UID was not provided');
     }
     return this.afs.collection('messages', ref => ref.where('to', '==', uid))
       .snapshotChanges().pipe(
@@ -79,8 +79,7 @@ export class MsgIoService {
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
    * @returns A promise that evaluates to true if the operation is successful.
    * @throws RangeError - If the message is either blank or longer than maxMessageLength.
-   * @throws Error - If either the from or to UIDs are blank, null or undefined.
-   * @throws Error - If any of the other fields in VirtrolioMessageTemplate are left blank.
+   * @throws Error - If any string field is blank, null or undefined.
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
     // TODO: Add check for sender & recipient exists
@@ -89,16 +88,19 @@ export class MsgIoService {
     // TODO: Add Color check
     // TODO: Add check for message filled with whitespace
     if (typeof messageTemplate.from === 'undefined' || !messageTemplate.from) {
-      throw new Error('Sender UID cannot be blank, null or undefined');
+      throw new Error('Sender UID was not provided');
     } else if (typeof messageTemplate.to === 'undefined' || !messageTemplate.to) {
-      throw new Error('Sender UID cannot be blank, null or undefined');
+      throw new Error('Sender UID was not provided');
+    } else if (typeof messageTemplate.contents === 'undefined' || !messageTemplate.contents) {
+      throw new Error('Message contents were not provided');
+    } else if (typeof messageTemplate.backColor === 'undefined' || !messageTemplate.backColor) {
+      throw new Error('Background color was not provided');
+    } else if (typeof messageTemplate.fontColor === 'undefined' || !messageTemplate.fontColor) {
+      throw new Error('Font color was not provided');
+    } else if (typeof messageTemplate.fontFamily === 'undefined' || !messageTemplate.fontFamily) {
+      throw new Error('Font family was not provided');
     } else if (messageTemplate.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long');
-    } else if (messageTemplate.contents.length === 0) {
-      throw new RangeError('Cannot send empty message');
-    } else if (messageTemplate.backColor.length === 0 || messageTemplate.fontColor.length === 0 ||
-      messageTemplate.fontFamily.length === 0) {
-      throw new Error('A required formatting value is blank');
     }
 
     const message: VirtrolioDocument = {

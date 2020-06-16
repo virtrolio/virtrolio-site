@@ -23,7 +23,7 @@ export class AppAuthService {
    */
   login(routeTo: string) {
     if (typeof routeTo === 'undefined' || !routeTo) {
-      throw new Error('Route cannot be blank, null or undefined');
+      throw new Error('Route was not provided');
     }
     this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
@@ -93,7 +93,7 @@ export class AppAuthService {
    */
   async userExists(uid: string) {
     if (typeof uid === 'undefined' || !uid) {
-      throw new Error('Argument UID cannot be blank, null or undefined');
+      throw new Error('Argument UID was not provided');
     }
     const userRef = this.afs.collection('users').doc(uid);
     return await userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {

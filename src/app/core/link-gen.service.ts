@@ -61,9 +61,9 @@ export class LinkGenService {
   async checkKey(uid: string, key: string) {
     // TODO: Check for invalid user
     if (typeof uid === 'undefined' || !uid) {
-      throw new Error('Argument UID cannot be blank, null or undefined');
+      throw new Error('Argument UID was not provided');
     } else if (typeof key === 'undefined' || !key) {
-      throw new Error('Argument Key cannot be blank, null or undefined');
+      throw new Error('Argument Key was not provided');
     }
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     let correctKey: string;
