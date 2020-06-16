@@ -85,6 +85,12 @@ export class AppAuthService {
     }
   }
 
+  /**
+   * Checks if the provided user exists in the Users collection in the database.
+   * This method should only be called if the user has logged in at least once before.
+   * @param uid - The UID of the user to check
+   * @throws Error - If the argument is blank, null or undefined.
+   */
   async userExists(uid: string) {
     if (typeof uid === 'undefined' || !uid) {
       throw new Error('Argument UID cannot be blank, null or undefined');

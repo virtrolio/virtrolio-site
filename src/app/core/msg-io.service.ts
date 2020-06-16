@@ -54,6 +54,7 @@ export class MsgIoService {
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @param uid - The Firebase Authentication user ID that is used to search for messages sent TO this user.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
+   * @throws Error - If the argument is blank, null or undefined.
    */
   getMessages(uid: string): Observable<VirtrolioMessage[]> {
     // TODO: Add check for uid exists
@@ -78,7 +79,7 @@ export class MsgIoService {
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
    * @returns A promise that evaluates to true if the operation is successful.
    * @throws RangeError - If the message is either blank or longer than maxMessageLength.
-   * @throws Error - If either the from or to UIDs are blank.
+   * @throws Error - If either the from or to UIDs are blank, null or undefined.
    * @throws Error - If any of the other fields in VirtrolioMessageTemplate are left blank.
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {

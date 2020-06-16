@@ -56,6 +56,7 @@ export class LinkGenService {
    * @param key - The key provided by the sender to verify. Should be obtained from the provided 'key' query parameter
    * in the URL.
    * @returns - True if the key is correct, False if the key is incorrect.
+   * @throws Error - If either argument is blank, null or undefined.
    */
   async checkKey(uid: string, key: string) {
     // TODO: Check for invalid user
