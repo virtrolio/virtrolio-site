@@ -21,17 +21,6 @@ export class MsgIoService {
 
   constructor(private afs: AngularFirestore, private authService: AppAuthService, private lgs: LinkGenService) {
     this.messagesCollection = afs.collection('messages');
-    // TODO: Remove Test Message
-    // const testMessage = {
-    //   backColor: 'red',
-    //   contents: 'hi',
-    //   fontColor: 'white',
-    //   fontFamily: 'Open Sans',
-    //   from: 'test',
-    //   to: 'test'
-    // };
-    // this.sendMessage(testMessage, '');
-    // this.getMessages('test').subscribe(messages => console.log(messages));
   }
 
   /**
