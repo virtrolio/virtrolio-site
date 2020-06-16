@@ -63,7 +63,7 @@ export class LinkGenService {
     }
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     let correctKey: string;
-    return await userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
+    return userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         correctKey = userDoc.key;
         return key === correctKey;
       }

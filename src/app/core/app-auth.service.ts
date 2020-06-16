@@ -96,7 +96,7 @@ export class AppAuthService {
       throw new Error('Argument UID was not provided');
     }
     const userRef = this.afs.collection('users').doc(uid);
-    return await userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
+    return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         return userDoc.payload.exists;
       }
     );

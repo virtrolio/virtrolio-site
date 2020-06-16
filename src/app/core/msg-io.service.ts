@@ -117,7 +117,7 @@ export class MsgIoService {
     // Verify correct key
     return this.lgs.checkKey(messageTemplate.to, key).then(async keyIsCorrect => {
       if (keyIsCorrect) {
-        return this.authService.userExists(messageTemplate.from).then(async fromExists => {
+        return await this.authService.userExists(messageTemplate.from).then(async fromExists => {
           if (fromExists) {
             return await this.authService.userExists(messageTemplate.to).then(async toExists => {
               if (toExists) {
