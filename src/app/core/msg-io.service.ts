@@ -73,7 +73,7 @@ export class MsgIoService {
    * was created by MsgIoService.createBlankMessage and then modified to fill in the user data. You should **NOT** try
    * to pass in a VirtrolioMessageTemplate that you create yourself.
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
-   * @returns true if the operation is successful.
+   * @returns A promise that evaluates to true if the operation is successful.
    * @throws ReferenceError - If either the from or to UIDs are blank.
    * @throws RangeError - If the message is either blank or longer than maxMessageLength.
    * @throws Error - If any of the other fields in VirtrolioMessageTemplate are left blank.
