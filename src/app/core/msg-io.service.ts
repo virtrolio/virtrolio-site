@@ -47,9 +47,14 @@ export class MsgIoService {
       throw new Error('Font color was not provided');
     } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
       throw new Error('Font family was not provided');
+    } else if (!this.authService.isLoggedIn()) {
+      throw new Error('Cannot send message while logged out');
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long');
-    } // Return not needed as an error will be thrown if something is wrong
+    } else if (message.from !== this.authService.uid()) {
+      throw new ReferenceError('Sender UID does not match current UID');
+    }
+    // Return not needed as an error will be thrown if something is wrong
   }
 
   /**
@@ -101,7 +106,6 @@ export class MsgIoService {
    * @throws Error - If any string field is blank, null or undefined.
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
-    // TODO: Add check for sender = logged in user
     // TODO: Add key check
     // TODO: Add Font Family check
     // TODO: Add Color check
