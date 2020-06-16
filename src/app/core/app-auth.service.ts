@@ -19,13 +19,13 @@ export class AppAuthService {
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
-   * @returns True if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful.
    */
-  login(routeTo: string) {
+  login(routeTo: string): Promise<boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
-    this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+    return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.router.navigate([ routeTo ]);
       } else {
@@ -37,10 +37,10 @@ export class AppAuthService {
   /**
    * Logs the user out of the website using Firebase Authentication.
    * Upon successful logout, the user will be redirected to the home page.
-   * @returns True if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful.
    */
-  logout() {
-    this.afa.signOut().then(() => {
+  logout(): Promise<boolean> {
+    return this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
     });
   }
@@ -91,7 +91,7 @@ export class AppAuthService {
    * @param uid - The UID of the user to check
    * @throws Error - If the argument is blank, null or undefined.
    */
-  async userExists(uid: string) {
+  async userExists(uid: string): Promise<boolean> {
     if (typeof uid === 'undefined' || !uid) {
       throw new Error('Argument UID was not provided');
     }

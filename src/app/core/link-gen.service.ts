@@ -21,7 +21,7 @@ export class LinkGenService {
    * Generates a random string of characters of length LinkGenService.keyLength using the characters in
    * LinkGenService.keyOptions.
    */
-  private static generateKey() {
+  private static generateKey(): string {
     let key = '';
     for (let i = 0; i < LinkGenService.keyLength; i++) {
       key += LinkGenService.keyOptions.charAt(Math.floor(Math.random() * LinkGenService.keyOptions.length));
@@ -36,7 +36,7 @@ export class LinkGenService {
    * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
    * @returns The sharable signing link for the current user, usable by FriendLinkComponent.
    */
-  async getLink() {
+  async getLink(): Promise<string> {
     let link = 'https://virtrolio.web.app/friend-link?uid=';
     const user = this.authService.uid();
     link += user + '&key=';
@@ -55,10 +55,10 @@ export class LinkGenService {
    * @param uid - The user ID of the user to check the key against. Usually the **recipient** of the message.
    * @param key - The key provided by the sender to verify. Should be obtained from the provided 'key' query parameter
    * in the URL.
-   * @returns - True if the key is correct, False if the key is incorrect.
+   * @returns - A promise evaluating to true if the key is correct, false if the key is incorrect.
    * @throws Error - If either argument is blank, null or undefined.
    */
-  async checkKey(uid: string, key: string) {
+  async checkKey(uid: string, key: string): Promise<boolean> {
     // TODO: Check for invalid user
     if (typeof uid === 'undefined' || !uid) {
       throw new Error('Argument UID was not provided');
@@ -78,9 +78,9 @@ export class LinkGenService {
    * Replaces the current user's key with a new and randomly generated key.
    * No parameters are expected because only the key of the currently logged in user can be changed.
    * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
-   * @returns A promise that evaluates to True if the operation is successful.
+   * @returns A promise that evaluates to true if the operation is successful.
    */
-  changeKey() {
+  changeKey(): Promise<boolean> {
     const user = this.authService.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     const newKey = LinkGenService.generateKey();

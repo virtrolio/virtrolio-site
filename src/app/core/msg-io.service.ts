@@ -3,10 +3,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
 import * as firebase from 'firebase';
-import Timestamp = firebase.firestore.Timestamp;
 
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +36,8 @@ export class MsgIoService {
    * @returns A blank VirtrolioMessageTemplate, which should be modified the returned template to fill in the user data
    * and then passed into MsgIoService.sendMessage().
    */
-  createBlankMessage() {
-    const emptyMessage: VirtrolioMessageTemplate = {
+  createBlankMessage(): VirtrolioMessageTemplate {
+    return {
       backColor: '',
       contents: '',
       fontColor: '',
@@ -45,7 +45,6 @@ export class MsgIoService {
       from: '',
       to: ''
     };
-    return emptyMessage;
   }
 
   /**
@@ -81,7 +80,7 @@ export class MsgIoService {
    * @throws RangeError - If the message is either blank or longer than maxMessageLength.
    * @throws Error - If any string field is blank, null or undefined.
    */
-  sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string) {
+  sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add check for sender & recipient exists
     // TODO: Add key check
     // TODO: Add Font Family check
