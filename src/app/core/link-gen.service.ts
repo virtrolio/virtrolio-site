@@ -59,6 +59,11 @@ export class LinkGenService {
   async checkKey(uid: string, key: string) {
     // TODO: Check for no user/no key
     // TODO: Check for invalid user
+    if (uid === '') {
+      throw new Error('Argument UID cannot be blank');
+    } else if (key === '') {
+      throw new Error('Key cannot be blank');
+    }
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     let correctKey: string;
     return await userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
