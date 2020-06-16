@@ -132,11 +132,11 @@ export class MsgIoService {
                 // Send the message
                 return await this.messagesCollection.add(message).then(() => true);
               } else {
-                throw new Error('Recipient is not registered in the database');
+                throw new Error('Recipient does not exist in the \'users\' database');
               }
             });
           } else {
-            throw new Error('Sender is not registered in the database');
+            throw new Error('Sender does not exist in the \'users\' database');
           }
         });
       } else {

@@ -52,22 +52,28 @@ export class LinkGenService {
    * @param key - The key provided by the sender to verify. Should be obtained from the provided 'key' query parameter
    * in the URL.
    * @returns - A promise evaluating to true if the key is correct, false if the key is incorrect.
-   * @throws Error - If either argument is blank, null or undefined.
+   * @throws Error - If either argument is blank, null or undefined, or if the UID does not exist.
    */
   async checkKey(uid: string, key: string): Promise<boolean> {
-    // TODO: Check for invalid user
     if (typeof uid === 'undefined' || !uid) {
       throw new Error('Argument UID was not provided');
     } else if (typeof key === 'undefined' || !key) {
       throw new Error('Argument Key was not provided');
     }
-    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-    let correctKey: string;
-    return userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
-        correctKey = userDoc.key;
-        return key === correctKey;
+
+    return this.authService.userExists(uid).then(async userExists => {
+      if (userExists) {
+        const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+        let correctKey: string;
+        return await userRef.valueChanges().pipe(take(1)).toPromise().then(async userDoc => {
+            correctKey = userDoc.key;
+            return key === correctKey;
+          }
+        );
+      } else {
+        throw new Error('User does not exist in the \'users\' database');
       }
-    );
+    });
   }
 
   /**
