@@ -48,8 +48,8 @@ export class MsgIoService {
     } else if (!this.authService.isLoggedIn()) {
       throw new Error('Cannot send message while logged out');
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
-      // TODO: Print max length
-      throw new RangeError('Message is too long');
+      throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
+        'and the provided message is ' + message.contents.length + ' characters long.');
     }
     // Return not needed as an error will be thrown if something is wrong
   }
