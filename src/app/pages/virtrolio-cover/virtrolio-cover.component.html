@@ -50,7 +50,7 @@
         </button>
       </div>
       <div class="modal-body" id='friend-link-body'>
-        <label id="friend-link-label" for="friend-link-field">Your Link</label>
+        <label id="friend-link-label" for="friend-link-field">Your Link:</label>
         <!-- later we need to replace the placeholder url with their id-->
         <input type="text" #friendLink value="{{ link }}" readonly id="friend-link-field">
         <button type="button" #copyButton [disabled]="! linkReady" class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy
