@@ -5,7 +5,6 @@ import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
-import { LinkGenService } from './link-gen.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ import { LinkGenService } from './link-gen.service';
 export class AppAuthService {
   private user: User;
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private lgs: LinkGenService) {
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
 
@@ -53,13 +52,17 @@ export class AppAuthService {
   async createUser() {
     this.throwErrorIfLoggedOut('create user');
 
-    const userData: VirtrolioUser = {
-      displayName: this.user.displayName,
-      key: ''
-    };
+    const userRef = this.afs.collection('users').doc(this.uid());
 
-    return await this.afs.collection('users').doc(this.uid()).set({ userData }, { merge: true }).then(async () => {
-      return this.lgs.changeKey();
+    // Create user data only if it doesn't exist already
+    userRef.valueChanges().subscribe(async (user: VirtrolioUser) => {
+      if (!user) { // User data doesn't exist, so create data
+        const userData: VirtrolioUser = {
+          displayName: this.user.displayName,
+          key: ''
+        };
+        await userRef.set({ userData });
+      }
     });
   }
 
