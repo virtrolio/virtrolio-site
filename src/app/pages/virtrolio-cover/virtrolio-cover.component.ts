@@ -8,23 +8,26 @@ import { LinkGenService } from '../../core/link-gen.service';
   styleUrls: ['./virtrolio-cover.component.css']
 })
 export class VirtrolioCoverComponent implements OnInit {
+  public link = 'Generating link...';
+  public linkReady = false;
 
   constructor(public authService: AppAuthService, private lgs: LinkGenService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   copyLink(inputElement, buttonElement) {
     inputElement.select();
-    inputElement.setSelectionRange(0, 10000);  /* For mobile devices */
-    document.execCommand('copy');              /* Copy text */
-    buttonElement.innerHTML = 'Copied!';       /* Confirm the copy */
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    buttonElement.innerHTML = 'Copied!';
   }
 
-  // ITS LINK GEN TIME
-  bar() {
+  setLink() {
     this.lgs.getLink().then(
-      link => console.log(link)
+      link => this.link = link
     );
+    this.linkReady = true;
   }
 
 }

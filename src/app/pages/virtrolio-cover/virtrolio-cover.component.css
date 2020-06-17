@@ -14,6 +14,10 @@
   background-color: var(--dark-accent) !important;
 }
 
+.btn-primary:disabled {
+  background-color: var(--light-grey);
+}
+
 #virtrolio-title {
   /* Title of the virtrolio */
   height: 10em;
@@ -34,12 +38,13 @@
 
 #friend-link-body > * {
   /* Each item inside the friend-link modal body */
-  margin: 0.8em;
+  margin: 0.4em;
 }
 
 #friend-link-field {
   /* Friend link text field (where the link is) */
-  width: 15em;
+  width: 50%;
+  overflow-x: auto;
 }
 
 #buttons > *.row > * {

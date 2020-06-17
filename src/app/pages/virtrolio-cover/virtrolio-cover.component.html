@@ -20,7 +20,7 @@
       <div id="buttons">
         <div class="row">
           <button class="btn-lg btn-primary" type="button" data-toggle="modal"
-            data-target="#link-gen">Sharing Link
+            data-target="#link-gen" (click)="setLink()">Sharing Link
             </button>
           </div>
         <div class="row">
@@ -50,10 +50,10 @@
         </button>
       </div>
       <div class="modal-body" id='friend-link-body'>
-        <label for="friend-link-field">Your Link</label>
+        <label id="friend-link-label" for="friend-link-field">Your Link</label>
         <!-- later we need to replace the placeholder url with their id-->
-        <input type="text" #friendLink value="localhost:4200/placeholder" readonly id="friend-link-field">
-        <button type="button" #copyButton class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy
+        <input type="text" #friendLink value="{{ link }}" readonly id="friend-link-field">
+        <button type="button" #copyButton [disabled]="! linkReady" class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy
         </button>
       </div>
     </div>
