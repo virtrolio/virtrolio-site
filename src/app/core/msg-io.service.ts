@@ -66,16 +66,14 @@ export class MsgIoService {
    * Getter for all of the messages that were sent to a particular user.
    * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
-   * @param uid - The Firebase Authentication user ID that is used to search for messages sent TO this user.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
    * @throws Error - If the argument is blank, null or undefined.
    */
-  getMessages(uid: string): Observable<VirtrolioMessage[]> {
-    // TODO: Add check for uid exists
-    if (typeof uid === 'undefined' || !uid) {
-      throw new Error('Argument UID was not provided');
+  getMessages(): Observable<VirtrolioMessage[]> {
+    if (!this.authService.isLoggedIn()) {
+      throw new Error('Cannot get messages if logged out');
     }
-    return this.afs.collection('messages', ref => ref.where('to', '==', uid))
+    return this.afs.collection('messages', ref => ref.where('to', '==', this.authService.uid()))
       .snapshotChanges().pipe(
         map(actions => actions.map(a => {
           const data = a.payload.doc.data() as VirtrolioDocument;
