@@ -6,11 +6,11 @@ export interface VirtrolioMessageTemplate {
   contents: string;
   fontColor: string;
   fontFamily: string;
-  from: string;
   to: string;
 }
 
 export interface VirtrolioDocument extends VirtrolioMessageTemplate {
+  from: string;
   isRead: boolean;
   year: number;
   timestamp: Timestamp;
