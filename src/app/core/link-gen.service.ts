@@ -42,7 +42,6 @@ export class LinkGenService {
       return userDoc.key;
     });
     return link;
-
   }
 
   /**
@@ -83,6 +82,7 @@ export class LinkGenService {
    * @returns A promise that evaluates to true if the operation is successful.
    */
   changeKey(): Promise<boolean> {
+    // TODO: Make sure new key is unique
     const user = this.authService.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     const newKey = LinkGenService.generateKey();
