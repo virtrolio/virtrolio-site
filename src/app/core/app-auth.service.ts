@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,13 @@ export class AppAuthService {
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
-   * @returns True if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful.
    */
-  login(routeTo: string){
-    this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+  login(routeTo: string): Promise<boolean> {
+    if (typeof routeTo === 'undefined' || !routeTo) {
+      throw new Error('Route was not provided');
+    }
+    return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.router.navigate([ routeTo ]);
       } else {
@@ -33,10 +37,10 @@ export class AppAuthService {
   /**
    * Logs the user out of the website using Firebase Authentication.
    * Upon successful logout, the user will be redirected to the home page.
-   * @returns True if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful.
    */
-  logout() {
-    this.afa.signOut().then(() => {
+  logout(): Promise<boolean> {
+    return this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
     });
   }
@@ -52,6 +56,7 @@ export class AppAuthService {
    * @returns The URL to the user's profile picture.
    */
   profilePictureLink(): string {
+    // TODO: Replace with isLoggedIn()
     if (this.user) {
       return this.user.photoURL;
     } else {
@@ -63,6 +68,8 @@ export class AppAuthService {
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    */
   displayName(): string {
+    // TODO: Replace with isLoggedIn()
+    // TODO: Allow UID as a parameter
     if (this.user) {
       return this.user.displayName;
     } else {
@@ -74,6 +81,7 @@ export class AppAuthService {
    * @returns The user's Firebase Authentication User ID.
    */
   uid(): string {
+    // TODO: Replace with isLoggedIn()
     if (this.user) {
       return this.user.uid;
     } else {
@@ -81,10 +89,19 @@ export class AppAuthService {
     }
   }
 
-  userExists(uid: string) {
-    this.afs.collection('users').doc(uid).snapshotChanges().subscribe(
-      user => {
-        return user.payload.exists;
+  /**
+   * Checks if the provided user exists in the Users collection in the database.
+   * This method should only be called if the user has logged in at least once before.
+   * @param uid - The UID of the user to check
+   * @throws Error - If the argument is blank, null or undefined.
+   */
+  async userExists(uid: string): Promise<boolean> {
+    if (typeof uid === 'undefined' || !uid) {
+      throw new Error('Argument UID was not provided');
+    }
+    const userRef = this.afs.collection('users').doc(uid);
+    return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
+        return userDoc.payload.exists;
       }
     );
   }
