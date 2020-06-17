@@ -19,15 +19,15 @@
     <div class="col-md-2 col-sm-3 px-2 mt-4 mt-md-0 vertical-center">
       <div id="buttons">
         <div class="row">
-          <button class="btn-lg btn-primary" type="button" data-toggle="modal"
-            data-target="#link-gen" (click)="setLink()">Sharing Link
-            </button>
-          </div>
+          <button class="btn-lg btn-primary" type="button" data-toggle="modal" data-target="#link-gen"
+            (click)="setLink()">Sharing Link
+          </button>
+        </div>
         <div class="row">
-          <button class="btn-lg btn-primary" type="button" data-toggle="modal"
-            data-target="#send-message">Send a Message
-            </button>
-          </div>
+          <button class="btn-lg btn-primary" type="button" data-toggle="modal" data-target="#send-message">Send a
+            Message
+          </button>
+        </div>
         <div class="row">
           <button class="btn-lg btn-primary" type="button" routerLink="/settings">Settings</button>
         </div>
@@ -45,7 +45,7 @@
       <div class="modal-header">
         <!-- Modal Title -->
         <h5 class="modal-title" id="link-gen-title">Ahoy, your sharing link has been prepared!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -53,8 +53,18 @@
         <label id="friend-link-label" for="friend-link-field">Your Link:</label>
         <!-- later we need to replace the placeholder url with their id-->
         <input type="text" #friendLink value="{{ link }}" readonly id="friend-link-field">
-        <button type="button" #copyButton [disabled]="! linkReady" class="btn btn-primary" (click)="copyLink(friendLink, copyButton)">Copy
+        <button type="button" #copyButton [disabled]="! linkReady" class="btn btn-primary"
+          (click)="copyLink(friendLink, copyButton)">Copy
         </button>
+        <div class="row">
+          <label for="button-new-link" style="display:none">Click to generate a new link</label>
+          <button class="btn btn-secondary" type="button" id="button-new-link" (click)="warnAndGenerate()">Generate
+            new link
+          </button>
+          <div id="warning-div" *ngIf="warningText == true">
+            Are you sure? Generating a new link will invalidate all older ones! Click generate again to confirm.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +72,7 @@
 
 <!-- Send a Message Modal -->
 <div class="modal fade" id="send-message" tabindex="-1" role="dialog" aria-labelledby="send-message-modal-title"
-     aria-hidden="true">
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">

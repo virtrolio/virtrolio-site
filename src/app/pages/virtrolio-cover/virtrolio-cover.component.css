@@ -34,6 +34,7 @@
 #friend-link-body {
   /* Contents of friend-link modal body */
   text-align: center;
+  padding: 0.5em;
 }
 
 #friend-link-body > * {
@@ -44,8 +45,14 @@
 #friend-link-field {
   /* Friend link text field (where the link is) */
   width: 50%;
+  height: 2em;
   padding: 0.2em;
   overflow-x: auto;
+}
+
+#button-new-link {
+  margin: 1em;
+  padding: 4em;
 }
 
 #buttons > *.row > * {
@@ -58,4 +65,18 @@
 
 #buttons {
   padding-top: 2em;
+}
+
+#button-new-link {
+  height: 3.3em;
+  width: 10em;
+  font-size: 0.7em;
+  padding: 0.1em;
+  margin: auto; /*0.2em 1.5em 0.2em 1.5em;*/
+}
+
+#warning-div {
+  color: #f05555;
+  text-align: center;
+  padding: 0.2em;
 }

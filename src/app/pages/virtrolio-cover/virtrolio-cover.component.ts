@@ -10,6 +10,7 @@ import { LinkGenService } from '../../core/link-gen.service';
 export class VirtrolioCoverComponent implements OnInit {
   public link = 'Generating link...';
   public linkReady = false;
+  public warningText = false;
 
   constructor(public authService: AppAuthService, private lgs: LinkGenService) { }
 
@@ -28,6 +29,21 @@ export class VirtrolioCoverComponent implements OnInit {
       link => this.link = link
     );
     this.linkReady = true;
+  }
+
+  warnAndGenerate() {
+    if (this.warningText) {
+      this.link = 'Generating link...';
+      try {
+        this.lgs.changeKey();
+      } catch (error) {
+        alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com');
+      }
+      this.setLink();
+    }
+
+    this.warningText = !this.warningText;
+    console.log(this.warningText);
   }
 
 }
