@@ -34,7 +34,7 @@ export class MsgIoService {
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
     if (typeof message.to === 'undefined' || !message.to) {
-      throw new Error('Sender UID was not provided');
+      throw new Error('Recipient UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
     } else if (!message.contents.replace(/\s/g, '').length) {
