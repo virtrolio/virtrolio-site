@@ -47,6 +47,10 @@ export class MsgIoService {
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
         'and the provided message is ' + message.contents.length + ' characters long.');
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) {
+      throw new Error('Provided font color is not a valid hex code. Did you forget to include #?');
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) {
+      throw new Error('Provided background color is not a valid hex code. Did you forget to include #?');
     }
     // Return not needed as an error will be thrown if something is wrong
   }
@@ -93,7 +97,6 @@ export class MsgIoService {
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
-    // TODO: Add Color check
 
     const keyError = new Error();
     keyError.name = 'keyError';
