@@ -38,7 +38,6 @@ export class LinkGenService {
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     link += await userRef.valueChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
-      console.log(userDoc);
       return userDoc.key;
     });
     return link;
