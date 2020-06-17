@@ -8,7 +8,7 @@ import { LinkGenService } from '../../core/link-gen.service';
   styleUrls: ['./virtrolio-cover.component.css']
 })
 export class VirtrolioCoverComponent implements OnInit {
-  public link = 'Generating link...';
+  public link = 'Getting your link...';
   public linkReady = false;
   public warningText = false;
 
@@ -33,7 +33,7 @@ export class VirtrolioCoverComponent implements OnInit {
 
   warnAndGenerate() {
     if (this.warningText) {
-      this.link = 'Generating link...';
+      this.link = 'Generating new link...';
       try {
         this.lgs.changeKey();
       } catch (error) {
