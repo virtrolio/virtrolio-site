@@ -69,7 +69,8 @@ const routes: Routes = [
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
