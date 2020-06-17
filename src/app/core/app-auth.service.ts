@@ -56,6 +56,7 @@ export class AppAuthService {
    * @returns The URL to the user's profile picture.
    */
   profilePictureLink(): string {
+    // TODO: Replace with isLoggedIn()
     if (this.user) {
       return this.user.photoURL;
     } else {
@@ -67,6 +68,8 @@ export class AppAuthService {
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    */
   displayName(): string {
+    // TODO: Replace with isLoggedIn()
+    // TODO: Allow UID as a parameter
     if (this.user) {
       return this.user.displayName;
     } else {
@@ -78,6 +81,7 @@ export class AppAuthService {
    * @returns The user's Firebase Authentication User ID.
    */
   uid(): string {
+    // TODO: Replace with isLoggedIn()
     if (this.user) {
       return this.user.uid;
     } else {
