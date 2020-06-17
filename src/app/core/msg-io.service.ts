@@ -100,6 +100,7 @@ export class MsgIoService {
    * @returns A promise that evaluates to true if the operation is successful.
    * @throws RangeError - Thrown by helper method this.verifyMessage()
    * @throws Error - Thrown by helper method this.verifyMessage()
+   * @throws ReferenceError - If the key is incorrect
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
@@ -129,7 +130,7 @@ export class MsgIoService {
           }
         });
       } else {
-        throw new Error('Incorrect key');
+        throw new ReferenceError('Incorrect key');
       }
     });
   }
