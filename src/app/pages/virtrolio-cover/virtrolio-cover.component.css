@@ -44,6 +44,7 @@
 #friend-link-field {
   /* Friend link text field (where the link is) */
   width: 50%;
+  padding: 0.2em;
   overflow-x: auto;
 }
 
