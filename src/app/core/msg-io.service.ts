@@ -40,6 +40,8 @@ export class MsgIoService {
       throw new Error('Sender UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
+    } else if (!message.contents.replace(/\s/g, '').length) {
+      throw new Error('Message contents cannot solely consist of whitespace/blanks');
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
       throw new Error('Background color was not provided');
     } else if (typeof message.fontColor === 'undefined' || !message.fontColor) {
@@ -108,7 +110,6 @@ export class MsgIoService {
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
     // TODO: Add Color check
-    // TODO: Add check for message filled with whitespace
 
     // Check message object contents for validity
     this.verifyMessage(messageTemplate);
@@ -131,11 +132,11 @@ export class MsgIoService {
                 // Send the message
                 return await this.messagesCollection.add(message).then(() => true);
               } else {
-                throw new Error('Recipient is not registered in the database');
+                throw new Error('Recipient does not exist in the \'users\' database');
               }
             });
           } else {
-            throw new Error('Sender is not registered in the database');
+            throw new Error('Sender does not exist in the \'users\' database');
           }
         });
       } else {
