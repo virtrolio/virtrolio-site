@@ -59,13 +59,7 @@ export class MsgIoService {
    * and then passed into MsgIoService.sendMessage().
    */
   createBlankMessage(): VirtrolioMessageTemplate {
-    return {
-      backColor: '',
-      contents: '',
-      fontColor: '',
-      fontFamily: '',
-      to: ''
-    };
+    return new VirtrolioMessageTemplate();
   }
 
   /**
