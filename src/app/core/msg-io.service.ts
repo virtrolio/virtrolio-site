@@ -14,8 +14,8 @@ import { LinkGenService } from './link-gen.service';
   providedIn: 'root'
 })
 export class MsgIoService {
-  private static readonly currentYear = 2020;
-  private static readonly maxMessageLength = 5000;
+  static readonly currentYear = 2020;
+  static readonly maxMessageLength = 5000;
 
   private messagesCollection: AngularFirestoreCollection;
 
@@ -51,6 +51,7 @@ export class MsgIoService {
     } else if (!this.authService.isLoggedIn()) {
       throw new Error('Cannot send message while logged out');
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
+      // TODO: Print max length
       throw new RangeError('Message is too long');
     } else if (message.from !== this.authService.uid()) {
       throw new ReferenceError('Sender UID does not match current UID');
