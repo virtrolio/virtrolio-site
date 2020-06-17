@@ -28,7 +28,6 @@ export class MsgIoService {
    * and that all required fields were provided. Throws an error if any field is incorrect or not provided.
    * @param message - The message to be checked.
    * @throws Error - If any field is blank, null, undefined or otherwise invalid.
-   * @throws Error - If the method is called while logged out.
    * @throws RangeError - If the contents of the message exceed the value of the maxMessageLength constant defined
    * in MsgIoService.
    */
@@ -45,8 +44,6 @@ export class MsgIoService {
       throw new Error('Font color was not provided');
     } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
       throw new Error('Font family was not provided');
-    } else if (!this.authService.isLoggedIn()) {
-      throw new Error('Cannot send message while logged out');
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
         'and the provided message is ' + message.contents.length + ' characters long.');
@@ -70,9 +67,8 @@ export class MsgIoService {
    * @throws Error - If the argument is blank, null or undefined.
    */
   getMessages(): Observable<VirtrolioMessage[]> {
-    if (!this.authService.isLoggedIn()) {
-      throw new Error('Cannot get messages if logged out');
-    }
+    this.authService.throwErrorIfLoggedOut('get your messages');
+
     return this.afs.collection('messages', ref => ref.where('to', '==', this.authService.uid()))
       .snapshotChanges().pipe(
         map(actions => actions.map(a => {
@@ -92,14 +88,21 @@ export class MsgIoService {
    * @returns A promise that evaluates to true if the operation is successful.
    * @throws RangeError - Thrown by helper method this.verifyMessage()
    * @throws Error - Thrown by helper method this.verifyMessage()
-   * @throws ReferenceError - If the key is incorrect
+   * @throws TypeError - If the key is incorrect
+   * @throws ReferenceError - If this method is called when logged out
    */
   sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
     // TODO: Add Font Family check
     // TODO: Add Color check
 
+    const keyError = new Error();
+    keyError.name = 'keyError';
+
     // Check message object contents for validity
     this.verifyMessage(messageTemplate);
+
+    // Verify user is logged in
+    this.authService.throwErrorIfLoggedOut('send a message');
 
     // Verify correct key
     return this.lgs.checkKey(messageTemplate.to, key).then(async keyIsCorrect => {
@@ -122,7 +125,7 @@ export class MsgIoService {
           }
         });
       } else {
-        throw new ReferenceError('Incorrect key');
+        throw new TypeError('Incorrect key');
       }
     });
   }

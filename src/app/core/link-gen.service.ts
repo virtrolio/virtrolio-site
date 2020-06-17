@@ -33,6 +33,8 @@ export class LinkGenService {
    * @returns The sharable signing link for the current user, usable by FriendLinkComponent.
    */
   async getLink(): Promise<string> {
+    this.authService.throwErrorIfLoggedOut('get your sharing link');
+
     let link = 'https://virtrolio.web.app/friend-link?uid=';
     const user = this.authService.uid();
     link += user + '&key=';
@@ -50,7 +52,8 @@ export class LinkGenService {
    * @param key - The key provided by the sender to verify. Should be obtained from the provided 'key' query parameter
    * in the URL.
    * @returns - A promise evaluating to true if the key is correct, false if the key is incorrect.
-   * @throws Error - If either argument is blank, null or undefined, or if the UID does not exist.
+   * @throws Error - If either argument is blank, null or undefined.
+   * @throws ReferenceError - if the UID does not exist.
    */
   async checkKey(uid: string, key: string): Promise<boolean> {
     if (typeof uid === 'undefined' || !uid) {
@@ -69,7 +72,7 @@ export class LinkGenService {
           }
         );
       } else {
-        throw new Error('User does not exist in the \'users\' database');
+        throw new ReferenceError('User does not exist in the \'users\' database');
       }
     });
   }
@@ -82,6 +85,7 @@ export class LinkGenService {
    */
   changeKey(): Promise<boolean> {
     // TODO: Make sure new key is unique
+    this.authService.throwErrorIfLoggedOut('change your key');
     const user = this.authService.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     const newKey = LinkGenService.generateKey();
