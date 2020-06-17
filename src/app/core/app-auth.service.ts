@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { VirtrolioUser } from '../shared/interfaces';
+import { LinkGenService } from './link-gen.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,13 @@ import { take } from 'rxjs/operators';
 export class AppAuthService {
   private user: User;
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private lgs: LinkGenService) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
 
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
+   * Also calls createUser() so that the user's internal data is created at the same time.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @returns A promise evaluating to true if the redirect is successful.
@@ -27,7 +30,9 @@ export class AppAuthService {
     }
     return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
-        return this.router.navigate([ routeTo ]);
+        return this.createUser().then(() => {
+          return this.router.navigate([ routeTo ]);
+        });
       } else {
         return this.router.navigate([ '/' ]);
       }
@@ -42,6 +47,19 @@ export class AppAuthService {
   logout(): Promise<boolean> {
     return this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
+    });
+  }
+
+  async createUser() {
+    this.throwErrorIfLoggedOut('create user');
+
+    const userData: VirtrolioUser = {
+      displayName: this.user.displayName,
+      key: ''
+    };
+
+    return await this.afs.collection('users').doc(this.uid()).set({ userData }, { merge: true }).then(async () => {
+      return this.lgs.changeKey();
     });
   }
 

@@ -21,5 +21,6 @@ export interface VirtrolioMessage extends VirtrolioDocument {
 }
 
 export interface VirtrolioUser {
+  displayName: string;
   key: string;
 }
