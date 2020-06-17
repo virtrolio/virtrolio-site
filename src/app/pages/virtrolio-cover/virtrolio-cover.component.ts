@@ -41,9 +41,7 @@ export class VirtrolioCoverComponent implements OnInit {
       }
       this.setLink();
     }
-
     this.warningText = !this.warningText;
-    console.log(this.warningText);
   }
 
 }
