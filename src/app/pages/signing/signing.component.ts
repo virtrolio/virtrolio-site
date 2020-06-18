@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
@@ -6,7 +6,7 @@ declare var $: any;
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: [ './signing.component.css' ]
+  styleUrls: ['./signing.component.css']
 })
 
 export class SigningComponent implements OnInit {
