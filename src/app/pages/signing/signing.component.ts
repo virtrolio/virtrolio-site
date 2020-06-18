@@ -57,13 +57,10 @@ export class SigningComponent implements OnInit {
     const text = textbox.value;
     this.signingBoxText = text.slice(0, start) + '~~' + text.slice(start, end) + '~~' + text.slice(end);
     textbox.select();
-    console.log(this.uid);
-    console.log(this.key);
   }
 
   // try to get query params from URL
   constructor(private route: ActivatedRoute) {
-    console.log('Called Constructor');
     this.route.queryParams.subscribe(params => {
       this.uid = params['uid'];
       this.key = params['key'];
