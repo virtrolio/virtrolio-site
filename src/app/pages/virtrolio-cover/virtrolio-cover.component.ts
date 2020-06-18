@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppAuthService } from '../../core/app-auth.service';
-import { LinkGenService } from '../../core/link-gen.service';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-virtrolio-cover',
@@ -11,8 +10,7 @@ export class VirtrolioCoverComponent implements OnInit {
   public link = 'Getting your link...';
   public linkReady = false;
   public warningText = false;
-
-  constructor(public authService: AppAuthService, private lgs: LinkGenService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +23,7 @@ export class VirtrolioCoverComponent implements OnInit {
   }
 
   setLink() {
-    this.lgs.getLink().then(
+    this.authService.getLink().then(
       link => this.link = link
     );
     this.linkReady = true;
@@ -35,7 +33,7 @@ export class VirtrolioCoverComponent implements OnInit {
     if (this.warningText) {
       this.link = 'Generating new link...';
       try {
-        this.lgs.changeKey();
+        this.authService.changeKey();
       } catch (error) {
         alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com');
       }

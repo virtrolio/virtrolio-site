@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LinkGenService } from './link-gen.service';
+import { FontService } from './font.service';
 
-describe('LinkGenService', () => {
-  let service: LinkGenService;
+describe('FontService', () => {
+  let service: FontService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LinkGenService);
+    service = TestBed.inject(FontService);
   });
 
   it('should be created', () => {
