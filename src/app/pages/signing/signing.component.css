@@ -87,6 +87,7 @@ markdown {
 }
 
 #font-color-text {
+  margin-bottom: 0;
   font-size: large;
 }
 
@@ -97,6 +98,20 @@ markdown {
 
 .dynamic-color-bar {
   height: 0.4em; 
-  margin: 0.2em 0.2em; 
+  margin: 0.1em 0.2em; 
   border-radius: 0.4em;
+}
+
+#btn-info {
+  margin: 0.5em 0.5em 0.7em;
+  padding: 0em;
+  border-radius: 6em;
+  width: 2em;
+  height: 2em;
+  background-color: #90959A;
+  color: #ffffff;
+}
+
+#btn-info:hover {
+  background-color: #75797A;
 }
