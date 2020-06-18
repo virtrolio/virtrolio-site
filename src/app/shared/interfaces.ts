@@ -42,3 +42,7 @@ export class Font {
     this.doubleBoldWeight = doubleBoldWeight;
   }
 }
+
+export interface Fonts {
+  [key: string]: Font;
+}
