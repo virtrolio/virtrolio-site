@@ -72,7 +72,7 @@
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
         </button>
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
-          Send
+          Sign
         </button>
       </div>
     </div>
@@ -102,7 +102,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to submit?</h5>
+        <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to send this?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -111,7 +111,7 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" routerLink="/msg-sent" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-primary" routerLink="/msg-sent" data-dismiss="modal">Send it!</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -128,10 +128,9 @@
         </button>
       </div>
       <div class="modal-body">
-        You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
+        <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" routerLink="/msg-sent" data-dismiss="modal">Submit</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
