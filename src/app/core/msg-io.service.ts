@@ -89,13 +89,12 @@ export class MsgIoService {
    * was created by MsgIoService.createBlankMessage and then modified to fill in the user data. You should **NOT** try
    * to pass in a VirtrolioMessageTemplate that you create yourself.
    * @param key - The key of the recipient of the message. This should be extracted from the URL provided by the sender.
-   * @returns A promise that evaluates to true if the operation is successful.
    * @throws RangeError - Thrown by helper method this.verifyMessage()
    * @throws Error - Thrown by helper method this.verifyMessage()
    * @throws TypeError - If the key is incorrect
    * @throws ReferenceError - If this method is called when logged out
    */
-  async sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<boolean> {
+  async sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<void> {
     // TODO: Add Font Family check
 
     // Check message object contents for validity
@@ -120,7 +119,6 @@ export class MsgIoService {
 
         // Send the message
         await this.messagesCollection.add(message);
-        return true;
       } else {
         throw new Error('Recipient does not exist in the \'users\' database');
       }

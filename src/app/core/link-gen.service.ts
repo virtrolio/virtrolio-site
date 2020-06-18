@@ -66,7 +66,7 @@ export class LinkGenService {
       if (userExists) {
         const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
         let correctKey: string;
-        return await userRef.valueChanges().pipe(take(1)).toPromise().then(async userDoc => {
+        return userRef.valueChanges().pipe(take(1)).toPromise().then(async userDoc => {
             correctKey = userDoc.key;
             return key === correctKey;
           }
@@ -81,9 +81,8 @@ export class LinkGenService {
    * Replaces the current user's key with a new and randomly generated key.
    * No parameters are expected because only the key of the currently logged in user can be changed.
    * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
-   * @returns A promise that evaluates to true if the operation is successful.
    */
-  changeKey(): Promise<boolean> {
+  changeKey(): Promise<void> {
     // TODO: Make sure new key is unique
     this.authService.throwErrorIfLoggedOut('change your key');
     const user = this.authService.uid();
@@ -91,6 +90,6 @@ export class LinkGenService {
     const newKey = LinkGenService.generateKey();
     return userRef.update(
       { key: newKey }
-    ).then(() => true);
+    );
   }
 }
