@@ -9,7 +9,7 @@ import { VirtrolioUser } from '../shared/interfaces';
 @Injectable({
   providedIn: 'root'
 })
-export class AppAuthService {
+export class AuthService {
 
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     this.afa.user.subscribe((user: User) => this.user = user);
@@ -25,8 +25,8 @@ export class AppAuthService {
    */
   private static generateKey(): string {
     let key = '';
-    for (let i = 0; i < AppAuthService.keyLength; i++) {
-      key += AppAuthService.keyOptions.charAt(Math.floor(Math.random() * AppAuthService.keyOptions.length));
+    for (let i = 0; i < AuthService.keyLength; i++) {
+      key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
     }
     return key;
   }
@@ -210,7 +210,7 @@ export class AppAuthService {
     this.throwErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    const newKey = AppAuthService.generateKey();
+    const newKey = AuthService.generateKey();
     return userRef.update(
       { key: newKey }
     );
