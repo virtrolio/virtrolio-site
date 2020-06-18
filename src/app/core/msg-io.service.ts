@@ -7,7 +7,6 @@ import * as firebase from 'firebase';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AppAuthService } from './app-auth.service';
-import { LinkGenService } from './link-gen.service';
 import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
@@ -19,7 +18,7 @@ export class MsgIoService {
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private authService: AppAuthService, private lgs: LinkGenService) {
+  constructor(private afs: AngularFirestore, private authService: AppAuthService) {
     this.messagesCollection = afs.collection('messages');
   }
 
@@ -104,7 +103,7 @@ export class MsgIoService {
     this.authService.throwErrorIfLoggedOut('send a message');
 
     // Verify correct key
-    const keyIsCorrect = await this.lgs.checkKey(messageTemplate.to, key);
+    const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
     if (keyIsCorrect) {
       const toExists = await this.authService.userExists(messageTemplate.to);
       if (toExists) {
