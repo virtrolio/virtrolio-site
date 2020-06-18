@@ -23,9 +23,14 @@ export class VirtrolioCoverComponent implements OnInit {
   }
 
   setLink() {
-    this.authService.getLink().then(
-      link => this.link = link
-    );
+    try {
+      this.authService.getLink().then(
+        link => this.link = link
+      );
+    } catch (error) {
+      alert('No key or userid was found! If this problem persists, please contact us at virtrolio.team@gmail.com');
+    }
+
     this.linkReady = true;
   }
 
