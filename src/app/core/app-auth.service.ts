@@ -23,16 +23,17 @@ export class AppAuthService {
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @returns A promise evaluating to true if the redirect is successful.
    */
-  login(routeTo: string): Promise<boolean> {
+  async login(routeTo: string): Promise<boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
     return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
-        return this.createUser().then(() => {
+        return this.createUser(userCredentials.user).then(() => {
           return this.router.navigate([ routeTo ]);
         });
       } else {
+        console.log('Login failed');
         return this.router.navigate([ '/' ]);
       }
     });
@@ -53,14 +54,12 @@ export class AppAuthService {
    * Creates a new VirtrolioUser document in the 'users' collection of the database only if the document for the
    * currently logged in user doesn't exist.
    */
-  async createUser(): Promise<void> {
-    this.throwErrorIfLoggedOut('create user');
-
-    const userRef = this.afs.collection('users').doc(this.uid());
+  async createUser(user: User): Promise<void> {
+    const userRef = this.afs.collection('users').doc(user.uid);
 
     // Create user data only if it doesn't exist already
-    userRef.valueChanges().subscribe(async (user: VirtrolioUser) => {
-      if (!user) { // User data doesn't exist, so create data
+    userRef.valueChanges().subscribe(async (userDoc: VirtrolioUser) => {
+      if (!userDoc) { // User data doesn't exist, so create data
         // TODO: Generate key
         const userData: VirtrolioUser = {
           displayName: this.user.displayName,
