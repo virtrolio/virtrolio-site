@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
@@ -15,6 +16,11 @@ export class SigningComponent implements OnInit {
   public currentFontDisplay = 'Arial';
   public backgroundColor = '#ffffff';
   public textColor = '#000000';
+
+  // Query params
+  uid: string;
+  key: string;
+
 
   selectFont(font: string) {
     this.currentFont = font;
@@ -51,9 +57,18 @@ export class SigningComponent implements OnInit {
     const text = textbox.value;
     this.signingBoxText = text.slice(0, start) + '~~' + text.slice(start, end) + '~~' + text.slice(end);
     textbox.select();
+    console.log(this.uid);
+    console.log(this.key);
   }
 
-  constructor() { }
+  // try to get query params from URL
+  constructor(private route: ActivatedRoute) {
+    console.log('Called Constructor');
+    this.route.queryParams.subscribe(params => {
+      this.uid = params['uid'];
+      this.key = params['key'];
+    });
+  }
 
   ngOnInit(): void { }
 }
