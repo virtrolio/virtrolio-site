@@ -1,4 +1,4 @@
-<div class="container py-5 center-children vertical-center">
+<div class="container py-4 center-children vertical-center">
   <div class="row">
     <!-- signing boxes -->
     <div class="col-md-6 order-md-1 center-children">
@@ -81,6 +81,11 @@
       <div class="row title-div vertical-center">
         <label for="preview-text">
           Preview
+          <!-- will tell them we use markdown and html and emojis + give links -->
+          <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
+            data-target="#info-modal">
+            ?
+          </button>
         </label>
       </div>
       <div class="row">
@@ -98,6 +103,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to submit?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" routerLink="/msg-sent" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="info-modal-title">Text formatting! :)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
