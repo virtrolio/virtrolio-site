@@ -52,10 +52,11 @@
       <div class="modal-body" id='friend-link-body'>
         <label id="friend-link-label" for="friend-link-field" style="display:none">Your Link:</label>
         <!-- later we need to replace the placeholder url with their id-->
-        <input type="text" #friendLink value="{{ link }}" readonly (click)="copyLink(friendLink, copyButton)" id="friend-link-field">
-        <button type="button" id="button-copy" #copyButton [disabled]="! linkReady" class="btn btn-primary"
+        <input type="text" class="align-middle" #friendLink value="{{ link }}" readonly (click)="copyLink(friendLink, copyButton)" id="friend-link-field">
+        <button type="button" id="button-copy" #copyButton [disabled]="! linkReady" class="btn btn-primary align-middle"
           (click)="copyLink(friendLink, copyButton)">Copy
         </button>
+        
         <div class="row">
           <label for="button-new-link" style="display:none">Click to generate a new link</label>
           <button class="btn btn-secondary" type="button" id="button-new-link" (click)="warnAndGenerate()">Generate
