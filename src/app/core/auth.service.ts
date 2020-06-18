@@ -76,10 +76,9 @@ export class AuthService {
     // Create user data only if it doesn't exist already
     userRef.valueChanges().subscribe(async (userDoc: VirtrolioUser) => {
       if (!userDoc) { // User data doesn't exist, so create data
-        // TODO: Generate key
         const userData: VirtrolioUser = {
           displayName: this.user.displayName,
-          key: ''
+          key: AuthService.generateKey(),
         };
         await userRef.set({ userData });
       }
