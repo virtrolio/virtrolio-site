@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppAuthService } from '../app-auth.service';
+import { AuthService } from '../auth.service';
 
 declare var $: any;
 
@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public authService: AppAuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
     /* Make hamburger menu collapse on item click */
