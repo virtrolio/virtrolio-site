@@ -44,15 +44,23 @@
 
 #friend-link-field {
   /* Friend link text field (where the link is) */
-  width: 50%;
+  width: 60%;
   height: 2em;
   padding: 0.2em;
   overflow-x: auto;
 }
 
+#button-copy {
+  height: 2em;
+  padding: 0.2em;
+}
+
 #button-new-link {
-  margin: 1em;
-  padding: 4em;
+  height: 2.4em;
+  width: 10em;
+  font-size: 0.8em;
+  padding: 0.2em;
+  margin: auto;
 }
 
 #buttons > *.row > * {
@@ -67,13 +75,6 @@
   padding-top: 2em;
 }
 
-#button-new-link {
-  height: 3.3em;
-  width: 10em;
-  font-size: 0.7em;
-  padding: 0.1em;
-  margin: auto; /*0.2em 1.5em 0.2em 1.5em;*/
-}
 
 #warning-div {
   color: #f05555;
