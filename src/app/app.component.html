@@ -1,26 +1,13 @@
-<div>
-  <div id="page-container">
-    <app-navbar></app-navbar>
-    <div class="py-5">
-      <div class="py-4">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-    <app-footer></app-footer>
+<app-navbar></app-navbar>
+<div id="navbar-filler"></div>
+<router-outlet></router-outlet>
+<!-- Cookie Alert -->
+<div class="col-12 justify-content-center">
+  <div class="alert alert-primary col-sm-8 align-items-center d-flex" role="alert" id="cookie-alert" *ngIf="showCookieAlert">
+    Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of cookies. See our Terms of Service for more information.
+    <button type="button" class="close ml-2" id="cookie-alert-button" (click)='dismissCookieAlert()'>
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 </div>
-
-<!-- 
-<div class="d-none d-block d-sm-block d-md-block d-lg-none">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Device too small</h1>
-      <p class="lead">Please use <strong>virtrolio</strong> on a wider screen for the best experience.</p>
-      <p class="lead">If you're curious as to what this is...<em>virtrolio</em> stands for ‘virtual portfolio’ and is an online version of those pages in your yearbook that you use to write messages to your friends. You can create your own virtrolio, share it with friends, and have them write messages on it. Whenever you want, you can view your virtrolio, download it, and make it private.
-      </p>
-      <p>Tentative release: Mid-summer 2020.</p>
-      <p>Stay tuned and contact us at virtrolio.team@gmail.com if you have any questions.
-      </p>
-    </div>
-  </div>
-</div> -->
+<app-footer></app-footer>

@@ -1,0 +1,52 @@
+.response-list-card {
+  background-color: transparent;
+  position: fixed;
+  width: 16em;
+  z-index: 1;
+}
+
+.response-list-card-relative {
+  background-color: transparent;
+  position: relative;
+  width: auto;
+}
+
+#author-list {
+  height: 10em;
+  overflow-y: scroll;
+}
+
+#author-list-relative-list {
+  height: 5em;
+  overflow-y: scroll;
+}
+
+.profile-pic {
+  background: var(--light-grey);
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 100%;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.response-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.user-info {
+  word-wrap: break-word;
+}
+
+.hamburger-menu {
+  height: auto;
+  width: auto;
+
+}
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+}

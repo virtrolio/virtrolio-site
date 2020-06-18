@@ -1,42 +1,80 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from "../environments/environment";
-import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from '../environments/environment';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// External Libraries
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { CookieService } from 'ngx-cookie-service';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
+
+// Pages
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { FaqComponent } from './pages/faq/faq.component';
+import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { SigningComponent } from './pages/signing/signing.component';
+import { ViewingComponent } from './pages/viewing/viewing.component';
+import { MessagesComponent } from './pages/viewing/messages/messages.component';
+import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { LoginResolver } from './core/login-resolver';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    LoginComponent,
-    PagenotfoundComponent,
-    HomeComponent
+    AboutComponent,
+    ContactComponent,
+    FaqComponent,
+    FriendLinkComponent,
+    HomeComponent,
+    MsgSentComponent,
+    PageNotFoundComponent,
+    SettingsComponent,
+    SigningComponent,
+    ViewingComponent,
+    MessagesComponent,
+    ResponsesListComponent,
+    VirtrolioCoverComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MarkdownModule.forRoot({
+      // set various markdown options
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          // makes having 2 newlines for a line break unneccessary
+          breaks: true,
+        },
+      },
+    })
   ],
-  providers: [],
+  providers: [ CookieService, LoginResolver ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
