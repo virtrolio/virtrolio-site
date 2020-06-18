@@ -1,16 +1,16 @@
 import * as firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
 
-export interface VirtrolioMessageTemplate {
-  backColor: string;
-  contents: string;
-  fontColor: string;
-  fontFamily: string;
-  from: string;
-  to: string;
+export class VirtrolioMessageTemplate {
+  backColor = '';
+  contents = '';
+  fontColor = '';
+  fontFamily = '';
+  to = '';
 }
 
 export interface VirtrolioDocument extends VirtrolioMessageTemplate {
+  from: string;
   isRead: boolean;
   year: number;
   timestamp: Timestamp;
@@ -21,5 +21,6 @@ export interface VirtrolioMessage extends VirtrolioDocument {
 }
 
 export interface VirtrolioUser {
+  displayName: string;
   key: string;
 }

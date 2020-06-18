@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { VirtrolioUser } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AppAuthService {
 
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
+   * Also calls createUser() so that the user's internal data is created at the same time.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @returns A promise evaluating to true if the redirect is successful.
@@ -27,7 +29,9 @@ export class AppAuthService {
     }
     return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
-        return this.router.navigate([ routeTo ]);
+        return this.createUser().then(() => {
+          return this.router.navigate([ routeTo ]);
+        });
       } else {
         return this.router.navigate([ '/' ]);
       }
@@ -46,6 +50,28 @@ export class AppAuthService {
   }
 
   /**
+   * Creates a new VirtrolioUser document in the 'users' collection of the database only if the document for the
+   * currently logged in user doesn't exist.
+   */
+  async createUser(): Promise<void> {
+    this.throwErrorIfLoggedOut('create user');
+
+    const userRef = this.afs.collection('users').doc(this.uid());
+
+    // Create user data only if it doesn't exist already
+    userRef.valueChanges().subscribe(async (user: VirtrolioUser) => {
+      if (!user) { // User data doesn't exist, so create data
+        // TODO: Generate key
+        const userData: VirtrolioUser = {
+          displayName: this.user.displayName,
+          key: ''
+        };
+        await userRef.set({ userData });
+      }
+    });
+  }
+
+  /**
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
@@ -53,40 +79,42 @@ export class AppAuthService {
   }
 
   /**
+   * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
+   * Does nothing if the user is logged in.
+   * The Error is designed in such a way that the error message can be displayed to the user using a Modal.
+   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'
+   * . Should be in present tense and be in user-friendly language.
+   * @throws ReferenceError - If logged out
+   */
+  throwErrorIfLoggedOut(attemptedOperation: string): void {
+    if (!this.isLoggedIn()) {
+      throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
+    }
+  }
+
+  /**
    * @returns The URL to the user's profile picture.
    */
   profilePictureLink(): string {
-    // TODO: Replace with isLoggedIn()
-    if (this.user) {
-      return this.user.photoURL;
-    } else {
-      return '';
-    }
+    this.throwErrorIfLoggedOut('get your profile picture');
+    return this.user.photoURL;
   }
 
   /**
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    */
   displayName(): string {
-    // TODO: Replace with isLoggedIn()
     // TODO: Allow UID as a parameter
-    if (this.user) {
-      return this.user.displayName;
-    } else {
-      return '';
-    }
+    this.throwErrorIfLoggedOut('get your name');
+    return this.user.displayName;
   }
 
   /**
    * @returns The user's Firebase Authentication User ID.
    */
   uid(): string {
-    // TODO: Replace with isLoggedIn()
-    if (this.user) {
-      return this.user.uid;
-    } else {
-      return '';
-    }
+    this.throwErrorIfLoggedOut('get your user ID');
+    return this.user.uid;
   }
 
   /**
