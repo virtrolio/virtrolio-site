@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 // noinspection ES6UnusedImports
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
@@ -23,8 +23,8 @@ import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 
 // noinspection JSUnusedLocalSymbols
-const redirectUnauthorized = () => redirectUnauthorizedTo(['/access-denied']);
-const redirectLoggedOutSigning = () => redirectUnauthorizedTo(['/friend-link']);
+const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
+const redirectLoggedOutSigning = () => redirectUnauthorizedTo([ '/friend-link' ]);
 
 const routes: Routes = [
   {
@@ -36,16 +36,14 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
   {
-    path: 'friend-link',
-    component: FriendLinkComponent,
-    canActivate: ['canActivateSigning'],
+    path: 'friend-link', component: FriendLinkComponent,
     resolve: { user: LoginResolver }
-  },
-  { path: 'invalid-link', component: InvalidLinkComponent },
+   },
+  { path: 'invalid-link' , component: InvalidLinkComponent },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'placeholder', redirectTo: '/invalid-link' },
@@ -53,27 +51,27 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized }
   },
   {
     path: 'signing',
     component: SigningComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectLoggedOutSigning },
     resolve: { user: LoginResolver }
   },
   {
     path: 'viewing',
     component: ViewingComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized },
     resolve: { user: LoginResolver }
   },
   {
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
@@ -81,14 +79,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [
-    {
-      provide: 'canActivateSigning',
-      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => false
-    }
-  ]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }
