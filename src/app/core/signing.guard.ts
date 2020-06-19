@@ -47,7 +47,7 @@ export class SigningGuard implements CanActivate {
         return true;
       } else {
         console.log('3');
-        this.router.navigate(['/friend-link']);
+        this.router.navigate(['/friend-link'], { queryParams: { uid: uid, key: key }});
         return false;
       }
     })
