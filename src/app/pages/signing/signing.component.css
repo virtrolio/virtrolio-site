@@ -19,6 +19,10 @@
   height: 2.5em;
 }
 
+.btn-send:disabled {
+  background-color: var(--light-grey);
+}
+
 .title-div {
   height: 3em;
   margin: 0em 0.5em 0 0.5em;

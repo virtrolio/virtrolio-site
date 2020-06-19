@@ -75,7 +75,8 @@
             value={{backgroundColor}} [(ngModel)]='backgroundColor'>
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
         </button>
-        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal">
+        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
+        [disabled]="!canSend">
           Sign
         </button>
       </div>
