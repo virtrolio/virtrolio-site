@@ -80,7 +80,7 @@ export class AuthService {
           displayName: this.user.displayName,
           key: AuthService.generateKey(),
         };
-        await userRef.set({ userData });
+        await userRef.set(userData);
       }
     });
   }
