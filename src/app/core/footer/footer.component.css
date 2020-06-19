@@ -7,9 +7,22 @@ footer {
   color: white;
   position: relative;
   height: var(--footer-height);
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-copyright {
   background-color: var(--darkest-accent);
+}
+
+footer > * {
+  margin: 0.3em 0;
+}
+
+#legal {
+  text-align: center;
+}
+
+a {
+  color:white;
 }
