@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
 
 declare var $: any;
@@ -13,11 +13,11 @@ declare var $: any;
 export class SigningComponent implements OnInit {
   public signingBoxText = '';
   // fonts and colors for the textboxes
-  public currentFont = 'Arial';
+  public currentFont = 'Arial, sans-serif';
   public currentFontDisplay = 'Arial';
   public backgroundColor = '#ffffff';
   public textColor = '#000000';
-  public canSend = false;
+  public canSend = true;
 
   // colors and values for the character counter
   public charCount = 0;
@@ -84,8 +84,23 @@ export class SigningComponent implements OnInit {
     }
   }
 
+  /**
+   * Creates a new blank message and fills in all the info before sending ti
+   * @param textbox - the textbox where the contents of the message are retrieved from (not the preview box)
+   */
+  createMsg(textbox: HTMLTextAreaElement) {
+    const newMsg = this.msgIo.createBlankMessage();
+    newMsg.backColor = this.backgroundColor;
+    newMsg.fontColor = this.textColor;
+    newMsg.fontFamily = this.currentFont;
+    newMsg.contents = textbox.value;
+    newMsg.to = this.uid;
+
+    this.msgIo.sendMessage(newMsg, this.key).then(() => this.router.navigate(['/msg-sent'])).catch(error => alert(error));
+  }
+
   // try to get query params from URL
-  constructor(private route: ActivatedRoute, private msgIo: MsgIoService) {
+  constructor(private route: ActivatedRoute, private msgIo: MsgIoService, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.uid = params['uid'];
       this.key = params['key'];
