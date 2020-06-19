@@ -70,12 +70,18 @@ export class SigningComponent implements OnInit {
   updateCount(textbox: HTMLTextAreaElement) {
     this.charCount = textbox.value.length;
     if (this.charCount > this.maxCharCount) {
-      this.charCountColor = '#DD1111';
+      this.charCountColor = '#EE1111';
     }
     else {
       this.charCountColor = '#b0b0b0';
     }
-
+    // basic checker for whether or not the user can sign/send the message
+    if (0 < this.charCount && this.charCount <= 5000) {
+      this.canSend = true;
+    }
+    else {
+      this.canSend = false;
+    }
   }
 
   // try to get query params from URL
