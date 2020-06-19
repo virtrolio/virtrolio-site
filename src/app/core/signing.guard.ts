@@ -38,21 +38,17 @@ export class SigningGuard implements CanActivate {
 
     return this.authService.checkKey(uid, key).then(validKey => {
       if (validKey === false) {
-        console.log('1');
         this.router.navigate(['/invalid-link']);
         return false;
       }
       if (this.authService.isLoggedIn()) {
-        console.log('2');
         return true;
       } else {
-        console.log('3');
         this.router.navigate(['/friend-link'], { queryParams: { uid: uid, key: key }});
         return false;
       }
     })
       .catch(error => {
-        console.log('5');
         this.router.navigate(['/invalid-link']);
         return false;
       });
