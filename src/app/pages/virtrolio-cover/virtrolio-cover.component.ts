@@ -32,6 +32,7 @@ export class VirtrolioCoverComponent implements OnInit {
   warnAndGenerate() {
     if (this.warningText) {
       this.link = 'Generating new link...';
+      this.linkReady = false;
       this.authService.changeKey().catch(error => alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com'));
       this.setLink();
     }

@@ -45,16 +45,16 @@
       <div class="modal-header">
         <!-- Modal Title -->
         <h5 class="modal-title" id="link-gen-title">Ahoy, your sharing link has been prepared!</h5>
-        <button type="btn btn-primary" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn btn-primary close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id='friend-link-body'>
         <label id="friend-link-label" for="friend-link-field" style="display:none">Your Link:</label>
         <!-- later we need to replace the placeholder url with their id-->
-        <input type="text" class="align-middle" #friendLink value="{{ link }}" readonly
+        <input type="text" class="align-middle" #friendLink value="{{ link }}" readonly [disabled]="!linkReady"
           (click)="copyLink(friendLink, copyButton)" id="friend-link-field">
-        <button type="button" id="button-copy" #copyButton [disabled]="! linkReady" class="btn btn-primary align-middle"
+        <button type="button" id="button-copy" #copyButton [disabled]="!linkReady" class="btn btn-primary align-middle"
           (click)="copyLink(friendLink, copyButton)">Copy
         </button>
 
