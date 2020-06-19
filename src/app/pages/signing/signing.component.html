@@ -8,8 +8,12 @@
         </label>
       </div>
       <div class="row">
-        <textarea #signingInputArea id="signing-box" class="form-control" autofocus [(ngModel)]='signingBoxText'
-          [ngStyle]="{'font-family': currentFont}" maxlength='5000'></textarea>
+        <textarea #signingInputArea id="signing-box" class="form-control" autofocus
+          (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
+          [ngStyle]="{'font-family': currentFont}"></textarea>
+        <!-- display characters remaining once its over 2000 -->
+        <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">{{ charCount }} /
+          {{ maxCharCount }}</span>
       </div>
     </div>
 
