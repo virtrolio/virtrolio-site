@@ -35,7 +35,10 @@ const routes: Routes = [
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'friend-link', component: FriendLinkComponent },
+  {
+    path: 'friend-link', component: FriendLinkComponent,
+    resolve: { user: LoginResolver }
+   },
   { path: 'invalid-link' , component: InvalidLinkComponent },
   {
     path: 'msg-sent',
