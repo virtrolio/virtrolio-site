@@ -76,7 +76,7 @@
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
         </button>
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
-        [disabled]="!canSend">
+          [disabled]="!canSend">
           Sign
         </button>
       </div>
@@ -102,6 +102,7 @@
   </div>
 </div>
 
+<!-- Message confirmation modal, also checks for invalid messages when they hit sign -->
 <div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
   aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -116,13 +117,15 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="createMsg(signingInputArea)" data-dismiss="modal">Send it!</button>
+        <button type="button" class="btn btn-primary" (click)="createMsg(signingInputArea)" data-dismiss="modal">
+          Send it!</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Information modal when they click on the ? -->
 <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -138,7 +141,8 @@
         <br>
         <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Link to learn markdown</a>
         <br>
-        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Link to emoji library</a>
+        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Link to emoji
+          library</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
