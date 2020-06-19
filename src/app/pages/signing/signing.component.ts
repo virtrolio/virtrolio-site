@@ -17,7 +17,7 @@ export class SigningComponent implements OnInit {
   public currentFontDisplay = 'Arial';
   public backgroundColor = '#ffffff';
   public textColor = '#000000';
-  public canSend = true;
+  public canSend = false;
 
   // colors and values for the character counter
   public charCount = 0;
