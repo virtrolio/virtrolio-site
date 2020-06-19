@@ -37,16 +37,17 @@ export class AuthService {
    * Also calls createUser() so that the user's internal data is created at the same time.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
+   * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
    * @returns A promise evaluating to true if the redirect is successful.
    */
-  async login(routeTo: string): Promise<boolean> {
+  async login(routeTo: string, queryParams?: object): Promise<boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
     return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.createUser(userCredentials.user).then(() => {
-          return this.router.navigate([ routeTo ]);
+          return this.router.navigate([ routeTo ], { queryParams });
         });
       } else {
         console.log('Login failed');
