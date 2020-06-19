@@ -12,7 +12,7 @@ export class FriendLinkComponent implements OnInit {
   key: string;
 
   goToSigning() {
-    this.authService.login('/signing'); // TODO: (when Eric codes it) add , {uid: this.uid, key: this.key} as an input
+    this.authService.login('/signing', {uid: this.uid, key: this.key});
   }
 
   constructor(public authService: AuthService, private route: ActivatedRoute) { }
