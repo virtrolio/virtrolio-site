@@ -23,25 +23,16 @@ export class VirtrolioCoverComponent implements OnInit {
   }
 
   setLink() {
-    try {
-      this.authService.getLink().then(
-        link => this.link = link
-      );
-    } catch (error) {
-      alert('No key or userid was found! If this problem persists, please contact us at virtrolio.team@gmail.com');
-    }
-
+    this.authService.getLink().then(
+      link => this.link = link
+    ).catch(error => alert('No key or userid was found! If this problem persists, please contact us at virtrolio.team@gmail.com'));
     this.linkReady = true;
   }
 
   warnAndGenerate() {
     if (this.warningText) {
       this.link = 'Generating new link...';
-      try {
-        this.authService.changeKey();
-      } catch (error) {
-        alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com');
-      }
+      this.authService.changeKey().catch(error => alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com'));
       this.setLink();
     }
     this.warningText = !this.warningText;
