@@ -7,10 +7,10 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { ExpiredLinkComponent } from './pages/expired-link/expired-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
 import { HomeComponent } from './pages/home/home.component';
+import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SettingsComponent } from './pages/settings/settings.component';
@@ -22,6 +22,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 // Services
 import { LoginResolver } from './core/login-resolver';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { RejeccComponent } from './pages/rejecc/rejecc.component';
 
 // noinspection JSUnusedLocalSymbols
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
@@ -35,17 +36,18 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'expired-link' , component: ExpiredLinkComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'friend-link', component: FriendLinkComponent },
+  { path: 'invalid-link' , component: InvalidLinkComponent },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized }
   },
-  { path: 'placeholder', redirectTo: '/expired-link' },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'placeholder', redirectTo: '/invalid-link' },
+  { path: 'rejecc', component: RejeccComponent },
   {
     path: 'settings',
     component: SettingsComponent,

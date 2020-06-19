@@ -23,7 +23,7 @@ import { CoreModule } from './core/core.module';
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { ExpiredLinkComponent } from './pages/expired-link/expired-link.component';
+import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -34,6 +34,7 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
@@ -58,10 +59,11 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     MessagesComponent,
     ResponsesListComponent,
     VirtrolioCoverComponent,
-    ExpiredLinkComponent,
-    AccessDeniedComponent,
     TermsOfServiceComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    InvalidLinkComponent,
+    AccessDeniedComponent,
+    RejeccComponent
   ],
   imports: [
     BrowserModule,
