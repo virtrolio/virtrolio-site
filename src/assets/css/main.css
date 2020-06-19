@@ -18,12 +18,9 @@ html {
   --navbar-height: 4.5em;
 }
 
-h2 {
-  font-family: Montserrat, sans-serif;
-}
-
-p {
-  font-family: Montserrat, sans-serif;
+div.montserrat p, div.montserrat h1, div.montserrat h2 {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .bg-primary {

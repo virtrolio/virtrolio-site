@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpiredLinkComponent } from './expired-link.component';
+import { InvalidLinkComponent } from './invalid-link.component';
 
-describe('ExpiredLinkComponent', () => {
-  let component: ExpiredLinkComponent;
-  let fixture: ComponentFixture<ExpiredLinkComponent>;
+describe('InvalidLinkComponent', () => {
+  let component: InvalidLinkComponent;
+  let fixture: ComponentFixture<InvalidLinkComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpiredLinkComponent ]
+      declarations: [ InvalidLinkComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExpiredLinkComponent);
+    fixture = TestBed.createComponent(InvalidLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
