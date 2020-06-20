@@ -4,8 +4,9 @@
 }
 
 #meet-the-team > div > div {
-  display: flex; /* Use flexbox for centering */
-  flex-direction: column; /* Align items vertically (column-direction) */
-  justify-content: center; /* Align items in the flex direction */
+  /* For all items within each peron's row -- copy of vertical-center class in main.css */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
   overflow: auto;
 }
