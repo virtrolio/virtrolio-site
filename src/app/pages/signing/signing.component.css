@@ -15,7 +15,7 @@
 
 #char-count-display {
   z-index: 10;
-  position: absolute;  
+  position: absolute;
   bottom: -1em;
   right: 2.0em;
 }
@@ -71,7 +71,7 @@ markdown {
   background-color: var(--light-grey);
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item:active {
 	background-color: var(--accent);
 }
 
@@ -104,14 +104,9 @@ markdown {
   font-size: large;
 }
 
-.color-picker-labels {
-  visibility: hidden;
-  font-size: 0;
-}
-
 .dynamic-color-bar {
-  height: 0.4em; 
-  margin: 0.1em 0.2em; 
+  height: 0.4em;
+  margin: 0.1em 0.2em;
   border-radius: 0.4em;
 }
 
