@@ -80,6 +80,7 @@ export class AuthService {
         const userData: VirtrolioUser = {
           displayName: this.user.displayName,
           key: AuthService.generateKey(),
+          profilePic: this.user.photoURL
         };
         await userRef.set(userData);
       }
@@ -111,9 +112,15 @@ export class AuthService {
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in
    */
-  profilePictureLink(): string {
+  async profilePictureLink(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your profile picture');
-    return this.user.photoURL;
+    // noinspection DuplicatedCode
+    if (uid === this.uid() || typeof uid === 'undefined') {
+      return this.user.photoURL;
+    } else {
+      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+      return (await userRef.valueChanges().pipe(take(1)).toPromise()).profilePic;
+    }
   }
 
   /**
@@ -122,6 +129,7 @@ export class AuthService {
    */
   async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
+    // noinspection DuplicatedCode
     if (uid === this.uid() || typeof uid === 'undefined') {
       return this.user.displayName;
     } else {
