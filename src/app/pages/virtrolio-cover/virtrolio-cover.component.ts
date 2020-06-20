@@ -40,6 +40,10 @@ export class VirtrolioCoverComponent implements OnInit {
     this.linkReady = true;
   }
 
+  /**
+   * Displays a warning message when the user tries to generate a new friend link, or changes the link
+   * on the second click
+   */
   warnAndGenerate() {
     if (this.warningText) {
       this.link = 'Generating new link...';
