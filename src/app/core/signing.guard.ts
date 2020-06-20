@@ -49,10 +49,10 @@ export class SigningGuard implements CanActivate {
         return false;
       }
 
-      this.msgIOService.checkForMessage(SigningGuard.uid).catch(() => {
+      if (this.msgIOService.checkForMessage(SigningGuard.uid)) {
         this.router.navigate(['/rejecc']);
         return false;
-      });
+      }
 
       if (this.authService.isLoggedIn()) {
         return true;
