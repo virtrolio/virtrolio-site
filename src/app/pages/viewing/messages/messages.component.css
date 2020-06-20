@@ -43,9 +43,10 @@
 .message-card {
   background-color: var(--light-grey);
   /*box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);*/
+  max-height: 30em;
   display: inline-block;
   word-break: break-word;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
 }
 
 @media (min-width: 576px) {
@@ -70,4 +71,26 @@
   .card-columns {
     column-count: 2;
   }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  opacity: 0.2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--light-grey);
+  border-radius: 1em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
