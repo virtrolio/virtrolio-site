@@ -35,6 +35,7 @@ export class VirtrolioCoverComponent implements OnInit {
   setLink() {
     this.copyButtonText = 'Copy';
     this.authService.getLink().then(link => this.link = link);
+    this.linkReady = true;
   }
 
   /**
