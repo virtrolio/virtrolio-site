@@ -2,18 +2,40 @@
 <div class="row my-3">
   <div class="col-12">
     <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCardView"
+      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCarouselView"
              (click)="toggleViewStyle()">
-      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCardView">Switch to
-        Cards</label>
-      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCardView">Switch to
+      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch to
         Booklet</label>
+      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch to
+        Cards</label>
+    </div>
+  </div>
+</div>
+
+<!-- Card message view -->
+<div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
+  <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
+    <div class="card-header">
+      <span class="profile-pic-container-small mr-2">
+        <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+      </span>
+      <span class="card-header-text">{{ msg.fromName }}</span>
+    </div>
+    <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
+      <table>
+        <tr class="message"
+            [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
+          <td>
+            <markdown emoji data="{{ msg.contents }}"></markdown>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
 
 <!-- Carousel message view -->
-<div class="viewing-container mb-5" *ngIf="viewService.isCardView === false">
+<div class="viewing-container mb-5" *ngIf="viewService.isCarouselView === true">
   <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -49,27 +71,5 @@
     <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
-  </div>
-</div>
-
-<!-- Card message view -->
-<div class="card-columns mt-3" *ngIf="viewService.isCardView === true">
-  <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
-    <div class="card-header">
-      <span class="profile-pic-container-small mr-2">
-        <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-      </span>
-      <span class="card-header-text">{{ msg.fromName }}</span>
-    </div>
-    <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
-      <table>
-        <tr class="message"
-            [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
-          <td>
-            <markdown emoji data="{{ msg.contents }}"></markdown>
-          </td>
-        </tr>
-      </table>
-    </div>
   </div>
 </div>
