@@ -10,45 +10,41 @@ import { AuthService } from './auth.service';
 })
 
 export class SigningGuard implements CanActivate {
-  uid: string;
-  key: string;
+  static uid = 'invalid';
+  static key = 'invalid';
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
-    this.route.queryParams.subscribe(params => {
-      this.uid = params['uid'];
-      this.key = params['key'];
-    });
-  }
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   // TODO: Documentation here; Extract URL using JavaScript and RegEx
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.route.queryParams.subscribe(params => {
-      this.uid = params['uid'];
-      this.key = params['key'];
-    });
-
-    // console.log('uid and key: ', this.uid, this.key, this.route.snapshot.paramMap.get('uid'), window.location.href);
 
     // TODO: Extract query params using Angular
     const linkStr = window.location.href;
-    const uid = linkStr.match(/(?<=uid=)(.*)(?=&)/)[0];
-    const key = linkStr.match(/(?<=key=)(.*)$/)[0];
 
-    return this.authService.checkKey(uid, key).then(validKey => {
+    try {
+      SigningGuard.uid = linkStr.match(/(?<=uid=)(.*)(?=&)/)[0];
+      SigningGuard.key = linkStr.match(/(?<=key=)(.*)$/)[0];
+    } catch (e) { }
+
+    return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
+        console.log('1');
         this.router.navigate(['/invalid-link']);
         return false;
       }
       if (this.authService.isLoggedIn()) {
+        console.log('2');
         return true;
       } else {
-        this.router.navigate(['/friend-link'], { queryParams: { uid: uid, key: key }});
+        console.log('3');
+        this.router.navigate(['/friend-link'], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
         return false;
       }
     })
       .catch(error => {
+        console.log('4');
         this.router.navigate(['/invalid-link']);
         return false;
       });
