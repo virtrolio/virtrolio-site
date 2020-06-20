@@ -88,9 +88,10 @@ export class MsgIoService {
    * this method. If that property is already true, this method should not be called.
    * The check should be done using the local copy of the message object that is used to display that message.
    * DO NOT get a new copy of the message - that would increase reads.
+   * Assumes the message exists.
    * @param id - The ID of the message to mark as read.
    */
-  async markAsRead(id: string) {
+  async markAsRead(id: string): Promise<void> {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
     );
