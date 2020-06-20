@@ -15,20 +15,23 @@
   <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
+        <div class="carousel-front-page-header px-3 py-2">
+          {{ viewService.messages.length }} responses
+        </div>
         <div class="page">
           <span class="title-page">My Yearbook</span>
         </div>
       </div>
       <div class="carousel-item" *ngFor="let msg of viewService.messages">
+        <div class="carousel-header px-3 py-2">
+          {{ msg.fromName }}
+        </div>
         <div class="page" [ngStyle]="{'background': msg.backColor}">
           <table>
             <tr class="message" [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': msg.fontFamily}">
               <td>
                 <markdown emoji data="{{ msg.contents }}"></markdown>
               </td>
-            </tr>
-            <tr class="message" [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
-              <td>msg.authorname</td>
             </tr>
           </table>
         </div>

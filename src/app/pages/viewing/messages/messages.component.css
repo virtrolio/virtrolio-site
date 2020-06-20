@@ -40,7 +40,16 @@
   overflow-y: auto;
 }
 
+.carousel-header {
+
+}
+
+.carousel-front-page-header {
+
+}
+
 .card-header-text {
+  font-weight: bold;
   margin-top: 0.2em;
 }
 
@@ -92,7 +101,6 @@
     column-count: 2;
   }
 }
-
 
 /* width */
 ::-webkit-scrollbar {
