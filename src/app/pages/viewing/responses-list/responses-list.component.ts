@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../../../core/viewing.service';
+import { ViewingService } from '../../../pages/viewing/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 
@@ -9,16 +9,13 @@ import { AuthService } from '../../../core/auth.service';
   styleUrls: [ './responses-list.component.css' ]
 })
 export class ResponsesListComponent implements OnInit {
-  userMsgData;
 
-  constructor(public viewingService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {}
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.userMsgData = this.viewingService.userMsgData;
-  }
+  ngOnInit(): void { }
 
   showMessage(id) {
-    if (this.viewingService.isCardView) {
+    if (this.viewService.isCardView) {
       this.vps.scrollToAnchor(id);
     }
   }
