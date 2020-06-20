@@ -55,7 +55,7 @@ export class SigningComponent implements OnInit {
   updateCount(textbox: HTMLTextAreaElement) {
     this.charCount = textbox.value.length;
     this.charCountColor = (this.charCount > this.maxCharCount ) ? '#EE1111' : '#b0b0b0';
-    this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount) ? true : false;
+    this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount);
   }
 
   /**
@@ -80,8 +80,8 @@ export class SigningComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute, private msgIo: MsgIoService, private router: Router) {
     this.route.queryParams.subscribe(params => {
-      this.uid = params['uid'];
-      this.key = params['key'];
+      this.uid = params.uid;
+      this.key = params.key;
     });
 
     this.maxCharCount = MsgIoService.maxMessageLength;
