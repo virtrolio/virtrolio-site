@@ -50,7 +50,7 @@
 
         <!-- Formatting buttons -->
         <button type="button" (click)="addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
-          id="button-bold" #b>
+          id="button-bold">
           <b>B</b>
         </button>
         <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
@@ -74,7 +74,7 @@
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
         </button>
         <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
-          <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+          <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
             value={{backgroundColor}} [(ngModel)]='backgroundColor'>
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
