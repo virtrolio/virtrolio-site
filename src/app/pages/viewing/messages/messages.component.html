@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div class="viewing-container mb-5" *ngIf="viewingService.isCardView == false">
+<div class="viewing-container mb-5" *ngIf="viewingService.isCardView === false">
   <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -19,16 +19,16 @@
           <span class="title-page">My Yearbook</span>
         </div>
       </div>
-      <div class="carousel-item" *ngFor="let msg of userMsgData">
-        <div class="page" [ngStyle]="{'background': msg.bgcolor}">
+      <div class="carousel-item" *ngFor="let msg of messages">
+        <div class="page" [ngStyle]="{'background': msg.backColor}">
           <table>
-            <tr class="message"
-                [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-              <td>{{ msg.message }}</td>
+            <tr class="message" [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': msg.fontFamily}">
+              <td>
+                <markdown emoji data="{{ msg.contents }}"></markdown>
+              </td>
             </tr>
-            <tr class="message"
-                [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-              <td>{{ msg.author }}</td>
+            <tr class="message" [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
+              <td>msg.authorname</td>
             </tr>
           </table>
         </div>
@@ -42,17 +42,19 @@
     </a>
   </div>
 </div>
-<div class="mt-3" *ngIf="viewingService.isCardView == true">
-  <div class="card message-card" *ngFor="let msg of userMsgData; let i = index" id="{{i}}"
-       [ngStyle]="{'background': msg.bgcolor}">
+<div class="mt-3" *ngIf="viewingService.isCardView === true">
+  <div class="card message-card" *ngFor="let msg of messages; let i = index" id="{{i}}"
+       [ngStyle]="{'background': msg.backColor}">
     <table>
       <tr class="message"
-          [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-        <td>{{ msg.message }}</td>
+          [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
+        <td>
+          <markdown emoji data="{{ msg.contents }}"></markdown>
+        </td>
       </tr>
       <tr class="message"
-          [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-        <td>{{ msg.author }}</td>
+          [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
+        <td>msg.authorName</td>
       </tr>
     </table>
   </div>

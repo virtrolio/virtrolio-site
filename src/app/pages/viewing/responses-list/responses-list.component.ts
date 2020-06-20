@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
-import { AppAuthService } from '../../../core/app-auth.service';
+import { AuthService } from '../../../core/auth.service';
 
 @Component({
   selector: 'app-responses-list',
@@ -11,7 +11,7 @@ import { AppAuthService } from '../../../core/app-auth.service';
 export class ResponsesListComponent implements OnInit {
   userMsgData;
 
-  constructor(public viewingService: ViewingService, private vps: ViewportScroller, public authService: AppAuthService) {}
+  constructor(public viewingService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.userMsgData = this.viewingService.userMsgData;
