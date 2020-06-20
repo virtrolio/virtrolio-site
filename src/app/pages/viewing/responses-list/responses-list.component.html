@@ -58,7 +58,7 @@
         <div id="author-list-relative">
           <ul class="nav flex-column ml-2">
             <li class="nav-item mb-1" *ngFor="let message of viewService.messages" (click)="showMessage(message.from);">
-              {{ message.fromName }}
+              <a href="javascript: void(0)">{{ message.fromName }}</a>
             </li>
           </ul>
         </div>
