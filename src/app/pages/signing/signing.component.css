@@ -105,6 +105,7 @@ markdown {
 }
 
 .dynamic-color-bar {
+  display: block;
   height: 0.4em;
   margin: 0.1em 0.2em;
   border-radius: 0.4em;

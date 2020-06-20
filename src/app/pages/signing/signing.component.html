@@ -72,14 +72,14 @@
           <label for="colorpicker-font" hidden>Colour picker for font</label>
           <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
             [(ngModel)]='textColor'>
-          <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
+          <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
             value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-          <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
+          <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
         </button>
 
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
