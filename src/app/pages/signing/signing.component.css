@@ -1,3 +1,51 @@
+/* || Signing box, Preview Box */
+
+#signing-box {
+  margin: 0.5em;
+	padding: 1em;
+  width: 40em;
+  height: 20em;
+  resize: none;
+  color: #000000;
+  font-size: 1em;
+	border-width: 0.05em;
+  border-radius: 0.25rem;
+  box-shadow: var(--signing-shadow);
+}
+
+#char-count-display {
+  z-index: 10;
+  position: absolute;  
+  bottom: -1em;
+  right: 2.0em;
+}
+
+.form-control {
+  border-color: var(--light-grey)
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+}
+
+markdown {
+	margin: 0.5em;
+	padding: 1em;
+	width: 40em;
+	height: 20em;
+	resize: none;
+	font: 1em Arial;
+	border: 0.05em solid var(--light-grey);
+	overflow-y: auto;
+	overflow-x: auto;
+  word-wrap: break-word;
+  border-radius: 0.25rem;
+  box-shadow: var(--signing-shadow);
+  line-height: 1.5;
+}
+
+/* || Formatting Tools  */
+
 #options > * {
   margin: 1.4em 0.5em 0.8em;
   box-shadow: var(--signing-shadow);
@@ -21,57 +69,6 @@
 
 .btn-send:disabled {
   background-color: var(--light-grey);
-}
-
-.title-div {
-  height: 3em;
-  margin: 0em 0.5em 0 0.5em;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-#signing-box {
-  margin: 0.5em;
-	padding: 1em;
-  width: 40em;
-  height: 20em;
-  resize: none;
-  color: #000000;
-  font-size: 1em;
-	border-width: 0.05em;
-  border-radius: 0.25rem;
-  box-shadow: var(--signing-shadow);
-}
-
-.form-control {
-  border-color: var(--light-grey)
-}
-
-.form-control:focus {
-  border-color: var(--accent);
-}
-
-#char-count-display {
-  z-index: 10;
-  position: absolute;  
-  bottom: -1em;
-  right: 2.0em;
-}
-
-markdown {
-	margin: 0.5em;
-	padding: 1em;
-	width: 40em;
-	height: 20em;
-	resize: none;
-	font: 1em Arial;
-	border: 0.05em solid var(--light-grey);
-	overflow-y: auto;
-	overflow-x: auto;
-  word-wrap: break-word;
-  border-radius: 0.25rem;
-  box-shadow: var(--signing-shadow);
-  line-height: 1.5;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -112,6 +109,17 @@ markdown {
   margin: 0.1em 0.2em; 
   border-radius: 0.4em;
 }
+
+/* || Typography */
+
+.title-div {
+  height: 3em;
+  margin: 0em 0.5em 0 0.5em;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* || Miscellaneous */
 
 #btn-info {
   margin: 0.5em 0.5em 0.7em;

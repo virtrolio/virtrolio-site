@@ -1,28 +1,28 @@
 <div class="container py-4 center-children vertical-center">
   <div class="row">
-    <!-- signing boxes -->
+    
+    <!-- Signing box, header, and character count -->
     <div class="col-md-6 order-md-1 center-children">
       <div class="row title-div vertical-center">
         <label for="signing-box">
-          <h2>
-            Type your message to<br>[friend name] below.
-          </h2>
+          <b>Type your message to [friend name] below.</b>
         </label>
       </div>
       <div class="row">
         <textarea #signingInputArea id="signing-box" class="form-control" autofocus
           (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
           [ngStyle]="{'font-family': currentFont}"></textarea>
-        <!-- display characters remaining once its over 2000 -->
-        <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">{{ charCount }} /
-          {{ maxCharCount }}</span>
+        <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
+          {{ charCount }} / {{ maxCharCount }}
+        </span>
       </div>
     </div>
 
-    <!-- Formatting buttons and color pickers -->
+    <!-- Formatting Tools -->
     <div class='col-md-12 order-md-3'>
       <div class=" row justify-content-center" id="options">
-        <!-- font selector -->
+        
+        <!-- Font dropdown -->
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,23 +47,25 @@
               Roman</a>
           </div>
         </div>
-        <!-- formatting buttons -->
-        <button type="button" (click)="makeBold(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+
+        <!-- Formatting buttons -->
+        <button type="button" (click)="addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
           id="button-bold" #b>
           <b>B</b>
         </button>
-        <button type="button" (click)="makeItalics(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+        <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
           id="button-italics">
           <i>I</i>
         </button>
-        <button type="button" (click)="makeUnderline(signingInputArea)" class="btn btn-secondary btn-format mr-2"
-          id="button-underline">
+        <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>')"
+          class="btn btn-secondary btn-format mr-2" id="button-underline">
           <u>U</u>
         </button>
-        <button type="button" (click)="makeStrikethrough(signingInputArea)" class="btn btn-secondary btn-format mr-2"
+        <button type="button" (click)="addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
           id="button-strikethrough">
           <s>S</s>
         </button>
+
         <!-- Color pickers for text and background -->
         <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
           <div id="font-color-text">A</div>
@@ -77,22 +79,19 @@
             value={{backgroundColor}} [(ngModel)]='backgroundColor'>
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
         </button>
+
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
-          [disabled]="!canSend">
-          Sign
-        </button>
+          [disabled]="!canSend">Send</button>
       </div>
     </div>
-    <!-- preview box -->
+    
+    <!-- Preview box -->
     <div class="col-md-6 order-md-2 center-children">
       <div class="row title-div vertical-center">
         <label for="preview-text">
           Preview
-          <!-- will tell them we use markdown and html and emojis + give links -->
           <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
-            data-target="#info-modal">
-            ?
-          </button>
+            data-target="#info-modal">?</button>
         </label>
       </div>
       <div class="row">
@@ -104,7 +103,7 @@
   </div>
 </div>
 
-<!-- Message confirmation modal, also checks for invalid messages when they hit sign -->
+<!-- Message confirmation modal -->
 <div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
   aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -143,7 +142,8 @@
         <br>
         <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
         <br>
-        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library of available emojis</a>
+        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
+          of available emojis</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

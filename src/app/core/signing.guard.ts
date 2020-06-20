@@ -9,42 +9,51 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 
+/**
+ * AuthGuard on all /signing pages. Redirects to /friend-link if not signed in, redirect to /invalid-link 
+ * if invalid uid or key.
+ *
+ * @param uid - extracted from url manually using RegEx
+ * @param key - extracted from url manually using RegEx
+ *
+ */
 export class SigningGuard implements CanActivate {
   static uid = 'invalid';
   static key = 'invalid';
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
-  // TODO: Documentation here; Extract URL using JavaScript and RegEx
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    // TODO: Extract query params using Angular
-    const linkStr = window.location.href;
-
+    /**
+     * Regex Extraction of 'uid' and 'key' params
+     *
+     * // TODO: Extract query params using Angular
+     */
     try {
+      const linkStr = window.location.href;
       SigningGuard.uid = linkStr.match(/(?<=uid=)(.*)(?=&)/)[0];
       SigningGuard.key = linkStr.match(/(?<=key=)(.*)$/)[0];
-    } catch (e) { }
+    } catch (e) {
+      this.router.navigate(['/invalid-link']);
+    }
 
+    /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
-        console.log('1');
         this.router.navigate(['/invalid-link']);
         return false;
       }
       if (this.authService.isLoggedIn()) {
-        console.log('2');
         return true;
       } else {
-        console.log('3');
         this.router.navigate(['/friend-link'], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
         return false;
       }
     })
       .catch(error => {
-        console.log('4');
         this.router.navigate(['/invalid-link']);
         return false;
       });
