@@ -33,11 +33,8 @@ export class VirtrolioCoverComponent implements OnInit {
    * Fetches the users friend link, alerts an error on invalid link
    */
   setLink() {
-    this.copyButtonText = 'copy';
-    this.authService.getLink().then(
-      link => this.link = link
-    ).catch(error => alert(error + '\nIf this problem persists, please contact us at virtrolio.team@gmail.com'));
-    this.linkReady = true;
+    this.copyButtonText = 'Copy';
+    this.authService.getLink().then(link => this.link = link);
   }
 
   /**
