@@ -20,7 +20,7 @@
       <div id="buttons">
         <div class="row">
           <button class="btn-lg btn-primary" type="button" data-toggle="modal" data-target="#link-gen"
-            (click)="setLink(); showWarningText=false;">Sharing Link
+                  (click)="setLink(); showWarningText=false;">Sharing Link
           </button>
         </div>
         <div class="row">
@@ -55,9 +55,9 @@
       <div class="modal-body" id='sharing-link-body'>
         <label id="sharing-link-label" for="sharing-link-field" style="display:none">Your Link:</label>
         <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
-          (click)="copyLink(sharingLink)" id="sharing-link-field">
-        <button type="button" id="button-copy" #copyButton [disabled]="!linkReady" class="btn btn-primary align-middle"
-          (click)="copyLink(sharingLink)">{{ copyButtonText }}
+               (click)="copyLink(sharingLink)" id="sharing-link-field">
+        <button type="button" id="button-copy" [disabled]="!linkReady" class="btn btn-primary align-middle"
+                (click)="copyLink(sharingLink)">{{ copyButtonText }}
         </button>
 
         <div class="row">
@@ -77,7 +77,7 @@
 
 <!-- Send a Message Modal -->
 <div class="modal fade" id="send-message" tabindex="-1" role="dialog" aria-labelledby="send-message-modal-title"
-  aria-hidden="true">
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
 
