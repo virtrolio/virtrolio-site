@@ -46,17 +46,16 @@
       id="button-strikethrough">
       <s>S</s>
     </button>
-  
-    <div class="btn-group mr-2" role="group" aria-label="Font group">
-      <div>
-        <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
+    <button type="button" (click)="chooseFontColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+      <img id="icon" src="../../../assets/images/icons/SigningIcon_text-color.svg">
+      <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
           [(ngModel)]='textColor'>
-      </div>
-      <div>
-        <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+    </button>
+    <button type="button" (click)="chooseFillColour()" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+      <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+      <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
           value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-      </div>
-    </div>
+    </button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit-confirm-modal">
       Send
     </button>

@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
-// noinspection JSUnusedLocalSymbols
-declare var $: any;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
 
+/**
+ * Controls 'new user' cookie, displaying an alert if their browser hasn't visited the site before.
+ *
+ * @remarks
+ * Implements the ngx-cookie-service {@link https://www.npmjs.com/package/ngx-cookie-service}
+ *
+ * @param showCookieAlert - boolean controlling alert display
+ * @param showCookieAlertValue - private value extracted from cookie
+ */
 export class AppComponent implements OnInit {
   public title = 'virtrolio-site';
-  public showCookieAlert = true; // Displays cookie Alert
-  // tslint:disable-next-line: variable-name
-  private _showCookieAlertValue: string;
+  public showCookieAlert = true;
+  private showCookieAlertValue: string;
 
+  /** Dismisses cookie alert when X is clicked. Sets cookie to 'false'. */
   dismissCookieAlert() {
     this.cookieService.set('new-user-cookie', 'false', 365);
     this.showCookieAlert = false;
@@ -24,21 +30,23 @@ export class AppComponent implements OnInit {
   constructor(private cookieService: CookieService) {
   }
 
+  /**
+   * OnInit, adds cookie to browser if nonexistent and updates {@param showCookieAlert}
+   * depending on the value of the cookie.
+   */
   ngOnInit(): void {
-    /* If cookieService.check() returns no cookie found, generate a cookie that expires in 365 days with a value of 'true' */
     if (this.cookieService.check('new-user-cookie') === false) {
       this.cookieService.set('new-user-cookie', 'true', 365);
     }
 
-    this._showCookieAlertValue = this.cookieService.get('new-user-cookie'); /* Get cookie value */
+    this.showCookieAlertValue = this.cookieService.get('new-user-cookie');
 
-    /* Toggle showCookieAlert boolean based on cookie value */
-    if (this._showCookieAlertValue === 'true') {
+    if (this.showCookieAlertValue === 'true') {
       this.showCookieAlert = true;
-    } else if (this._showCookieAlertValue === 'false') {
+    } else if (this.showCookieAlertValue === 'false') {
       this.showCookieAlert = false;
     } else {
-      console.log('Error. New-user-cookie not found or initialized.');
+      console.log('Error. New-user-cookie not found or initialized properly.');
     }
   }
 }
