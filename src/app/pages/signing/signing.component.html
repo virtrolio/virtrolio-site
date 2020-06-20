@@ -67,14 +67,16 @@
         </button>
 
         <!-- Color pickers for text and background -->
-        <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <div id="font-color-text">A</div>
+          <label for="colorpicker-font" hidden>Colour picker for font</label>
           <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
             [(ngModel)]='textColor'>
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</div>
         </button>
-        <button type="button" class="btn btn-secondary btn-format mr-2" id="icon-wrapper">
+        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+          <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
             value={{backgroundColor}} [(ngModel)]='backgroundColor'>
           <div class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</div>
