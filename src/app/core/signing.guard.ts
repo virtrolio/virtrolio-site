@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
+import { MsgIoService } from './msg-io.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 /**
- * AuthGuard on all /signing pages. Redirects to /friend-link if not signed in, redirect to /invalid-link 
+ * AuthGuard on all /signing pages. Redirects to /friend-link if not signed in, redirect to /invalid-link
  * if invalid uid or key.
  *
  * @param uid - extracted from url manually using RegEx
@@ -21,7 +22,8 @@ export class SigningGuard implements CanActivate {
   static uid = 'invalid';
   static key = 'invalid';
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,
+              private msgIOService: MsgIoService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -43,9 +45,13 @@ export class SigningGuard implements CanActivate {
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
-        this.router.navigate(['/invalid-link']);
+        this.router.navigate(['/invalid-link'], { queryParams: { signed: 'false' } });
         return false;
       }
+
+      this.msgIOService.checkForMessage(SigningGuard.uid).catch(() => this.router.navigate(['/invalid-link'],
+        { queryParams: { signed: 'true' } }));
+
       if (this.authService.isLoggedIn()) {
         return true;
       } else {
@@ -54,7 +60,7 @@ export class SigningGuard implements CanActivate {
       }
     })
       .catch(error => {
-        this.router.navigate(['/invalid-link']);
+        this.router.navigate(['/invalid-link'], { queryParams: { signed: 'false' } });
         return false;
       });
   }
