@@ -66,7 +66,6 @@
   font-size: 6em;
   color: white;
 }
-
 #title-subtitle {
   font-size: 2em;
   font-weight: 400;
@@ -141,4 +140,29 @@
   -webkit-transform: rotate(10deg);
   -ms-transform: rotate(10deg);
   transform: rotate(10deg);
+}
+
+
+@media only screen and (max-width: 768px) {
+  #title-header {
+    font-size: 10vw;
+    color: white;
+  }
+
+  #title-subtitle {
+    font-size: 6vw;
+    font-weight: 400;
+    color: white;
+    margin-top: 1em;
+  }
+
+  .header-text {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .body-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+  }
 }

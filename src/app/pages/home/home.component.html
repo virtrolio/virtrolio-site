@@ -14,8 +14,8 @@
 <div class="container pt-5 vertical-center body-container">
   <div class="row d-flex justify-content-center">
     <div data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="col-12">
-      <h2 class="mb-3" class="home-text header-text">What is virtrolio?</h2>
-      <p class="lead" class="home-text body-text"><em>Virtrolio</em> is your virtual folio; an online version of
+      <h2 class="mb-3 px-5 home-text header-text">What is virtrolio?</h2>
+      <p class="lead px-5 home-text body-text"><em>Virtrolio</em> is your virtual folio; an online version of
         those pages in
         your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you
         can create your own virtrolio, share it
@@ -23,11 +23,11 @@
         virtrolio or download it for keepsakes.
       </p>
 
-      <div id="login-virtrolio-button">
+      <div class="px-5" id="login-virtrolio-button">
         <!-- Call to sign in and Google sign in button; displays if logged out -->
         <div *ngIf="!authService.isLoggedIn() else yourVirtrolio">
           <!-- Changing this to 'true else yourVirtrolio' induces no flickering-->
-          <p class="lead" id="bolded-body-text">Sign up / Sign in below to start your own virtrolio!</p>
+          <p class="lead" id="bolded-body-text">Sign in below to start your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
             <button type="button" (click)="authService.login('/virtrolio-cover')"
                     class="btn btn-outline-dark google-sign-in-btn">
@@ -53,8 +53,8 @@
   <!--  <div class="row d-flex justify-content-center">
       <img src="../../../assets/images/logo_reg_transparent.png" alt="virtrolio logo" id="logo">
     </div>-->
-  <div class="row py-5 my-5">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 pr-5">
+  <div class="row pt-1 pt-md-5 pb-5 my-5">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-5">
       <div class="card mr-4 mb-5 rounded border-0">
         <h3>Create a virtrolio</h3>
         <p class="lead" class="home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
