@@ -40,13 +40,33 @@
   overflow-y: auto;
 }
 
+.card-header-text {
+  margin-top: 0.2em;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  display: inline-block;
+}
+
 .message-card {
   background-color: var(--light-grey);
   /*box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);*/
-  max-height: 30em;
-  display: inline-block;
+  width: 100%;
   word-break: break-word;
+  max-height: 30em;
   overflow-y: auto;
+}
+
+.profile-pic {
+  background: var(--light-grey);
+  height: 1.8em;
+  width: 1.8em;
+  border-radius: 100%;
 }
 
 @media (min-width: 576px) {
