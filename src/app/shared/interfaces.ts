@@ -28,15 +28,13 @@ export interface VirtrolioUser {
 export class Font {
   fontFamily: string;
   backupFont: string;
-  displayName: string;
   normalWeight: number;
   boldWeight: number;
   doubleBoldWeight: number;
 
-  constructor(fontFamily, backupFont, displayName, normalWeight = 400, boldWeight = 700, doubleBoldWeight = 900) {
+  constructor(fontFamily, backupFont, normalWeight = 400, boldWeight = 700, doubleBoldWeight = 900) {
     this.fontFamily = fontFamily;
     this.backupFont = backupFont;
-    this.displayName = displayName;
     this.normalWeight = normalWeight;
     this.boldWeight = boldWeight;
     this.doubleBoldWeight = doubleBoldWeight;
