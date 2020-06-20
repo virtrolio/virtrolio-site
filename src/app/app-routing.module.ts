@@ -13,15 +13,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
+import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
-import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 
 // noinspection JSUnusedLocalSymbols
