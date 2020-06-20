@@ -122,7 +122,7 @@ export class AuthService {
    */
   async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
-    if (uid === this.uid()) {
+    if (uid === this.uid() || typeof uid === 'undefined') {
       return this.user.displayName;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
@@ -222,13 +222,20 @@ export class AuthService {
     this.throwErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    const oldKey = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
-    let newKey = AuthService.generateKey();
-    while (oldKey === newKey) {
-      newKey = AuthService.generateKey();
+    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
+    if (!('key' in userDoc)) { // This triggers if the key doesn't exist
+      return userRef.update(
+        { key: AuthService.generateKey() }
+      );
+    } else { // If the key does exist, need to make sure the new key is unique
+      const oldKey = userDoc.key;
+      let newKey = AuthService.generateKey();
+      while (oldKey === newKey) {
+        newKey = AuthService.generateKey();
+      }
+      return userRef.update(
+        { key: newKey }
+      );
     }
-    return userRef.update(
-      { key: newKey }
-    );
   }
 }
