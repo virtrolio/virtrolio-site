@@ -213,12 +213,16 @@ export class AuthService {
    * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
    * @throws ReferenceError - If the user is not logged in
    */
-  changeKey(): Promise<void> {
+  async changeKey(): Promise<void> {
     // TODO: Make sure new key is unique
     this.throwErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    const newKey = AuthService.generateKey();
+    const oldKey = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    let newKey = AuthService.generateKey();
+    while (oldKey === newKey) {
+      newKey = AuthService.generateKey();
+    }
     return userRef.update(
       { key: newKey }
     );
