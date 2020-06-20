@@ -3,7 +3,13 @@
     <h1 class="display-4" id="title-text">This sharing link is invalid!</h1>
   </div>
   <div class="row justify-content-center mx-3">
-    <p id="subtitle-text">You are trying to access a sharing link that never existed or doesn't work anymore.<br>If you're trying to sign your friend's virtrolio, make sure to ask for their <em>newest</em> sharing link.</p>
+    <p id="subtitle-text" *ngIf="signed === 'true' else default">You have already signed this person's yearbook. If you want to sign it again,
+      you'll have to ask them to delete your original response first.</p>
+    <ng-template id="subtitle-text" #default>
+      <p>You are trying to access a sharing link that never existed or
+      doesn't work anymore.<br>If you're trying to sign your friend's virtrolio, make sure to ask for their
+      <em>newest</em> sharing link.</p>
+    </ng-template>
   </div>
   <div class="row justify-content-center mx-3 mt-3">
     <img src="../../../assets/images/InvalidLink.svg" alt="black cloud graphic" id="graphic">
