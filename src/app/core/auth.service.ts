@@ -120,7 +120,7 @@ export class AuthService {
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    * @throws ReferenceError - If the user is not logged in
    */
-  async displayName(uid: string): Promise<string> {
+  async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
     if (uid === this.uid()) {
       return this.user.displayName;
