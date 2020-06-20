@@ -160,7 +160,7 @@ export class AuthService {
   async getLink(): Promise<string> {
     this.throwErrorIfLoggedOut('get your sharing link');
 
-    let link = 'https://virtrolio.web.app/friend-link?uid=';
+    let link = 'https://virtrolio.web.app/signing?uid=';
     const user = this.uid();
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);

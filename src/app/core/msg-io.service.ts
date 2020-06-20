@@ -113,7 +113,8 @@ export class MsgIoService {
           from: this.authService.uid(),
           timestamp: Timestamp.now(),
           isRead: false,
-          year: MsgIoService.currentYear
+          year: MsgIoService.currentYear,
+          fromName: this.authService.displayName()
         };
 
         // Send the message

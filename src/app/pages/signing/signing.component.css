@@ -75,6 +75,11 @@ markdown {
 	background-color: var(--accent);
 }
 
+.dropdown-menu {
+  overflow-y: auto;
+  height: 12em;
+}
+
 #icon {
   width: 1.5em;
   margin: 0 auto;
