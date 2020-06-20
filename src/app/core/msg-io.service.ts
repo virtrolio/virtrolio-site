@@ -114,7 +114,7 @@ export class MsgIoService {
           timestamp: Timestamp.now(),
           isRead: false,
           year: MsgIoService.currentYear,
-          fromName: this.authService.displayName()
+          fromName: await this.authService.displayName()
         };
 
         // Send the message
