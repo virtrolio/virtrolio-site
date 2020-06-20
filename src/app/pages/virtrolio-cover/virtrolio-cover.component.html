@@ -1,7 +1,7 @@
 <div class="container-fluid vertical-center montserrat">
   <div class="row d-flex justify-content-center">
 
-    <!-- Div enclosing virtrolio cover -->
+    <!-- Virtrolio cover -->
     <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8 mt-4 mt-md-0" id="virtrolio-outer-div">
       <a class="clickable-object" routerLink="/viewing">
         <div class="p-3 mb-5 bg-primary rounded" id="virtrolio-outer">
@@ -20,7 +20,7 @@
       <div id="buttons">
         <div class="row">
           <button class="btn-lg btn-primary" type="button" data-toggle="modal" data-target="#link-gen"
-            (click)="setLink(); warningText=false;">Sharing Link
+            (click)="setLink(); showWarningText=false;">Sharing Link
           </button>
         </div>
         <div class="row">
@@ -38,24 +38,26 @@
   </div>
 </div>
 
-<!-- Friend Link Modal -->
+<!-- Sharing Link Modal -->
 <div class="modal fade" id="link-gen" tabindex="-1" role="dialog" aria-labelledby="link-gen-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+
+      <!-- Modal Header -->
       <div class="modal-header">
-        <!-- Modal Title -->
         <h5 class="modal-title" id="link-gen-title">Ahoy, your sharing link has been prepared!</h5>
         <button type="button" class="btn btn-primary close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id='friend-link-body'>
-        <label id="friend-link-label" for="friend-link-field" style="display:none">Your Link:</label>
-        <!-- later we need to replace the placeholder url with their id-->
-        <input type="text" class="align-middle" #friendLink value="{{ link }}" readonly [disabled]="!linkReady"
-          (click)="copyLink(friendLink)" id="friend-link-field">
+
+      <!-- Modal Body -->
+      <div class="modal-body" id='sharing-link-body'>
+        <label id="sharing-link-label" for="sharing-link-field" style="display:none">Your Link:</label>
+        <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
+          (click)="copyLink(sharingLink)" id="sharing-link-field">
         <button type="button" id="button-copy" #copyButton [disabled]="!linkReady" class="btn btn-primary align-middle"
-          (click)="copyLink(friendLink)">{{ copyButtonText }}
+          (click)="copyLink(sharingLink)">{{ copyButtonText }}
         </button>
 
         <div class="row">
@@ -63,11 +65,12 @@
           <button class="btn btn-secondary" type="button" id="button-new-link" (click)="warnAndGenerate()">Generate
             new link
           </button>
-          <div id="warning-div" *ngIf="warningText == true">
+          <div id="warning-div" *ngIf="showWarningText">
             Are you sure? Generating a new link will invalidate all older ones! Click generate again to confirm.
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -77,20 +80,26 @@
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+      
+      <!-- Modal Header -->
       <div class="modal-header">
-        <!-- Modal Title -->
         <h5 class="modal-title" id="send-message-modal-title">You're barking up the wrong tree, bud!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+      <!-- Modal Body -->
       <div class="modal-body" id='send-message-body'>
-        To sign a friend's virtrolio, they need to give you their 'sharing link'! To access <em>your</em>
+        To sign a sharing's virtrolio, they need to give you their 'sharing link'! To access <em>your</em>
         sharing link, click the 'Sharing Link' button on this page!
       </div>
+
+      <!-- Modal Footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
+
     </div>
   </div>
 </div>

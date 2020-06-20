@@ -1,3 +1,5 @@
+/* || Virtrolio cover || */
+
 #virtrolio-outer-div {
   /* Div enclosing virtrolio (outside <a> tag) */
   height: 35em;
@@ -31,19 +33,34 @@
   line-height: 1.5;
 }
 
-#friend-link-body {
-  /* Contents of friend-link modal body */
+/* || Side Buttons */
+
+#buttons > *.row > * {
+  /* Each individual button will have these properties: */
+  height: 4em;
+  width: 100%;
+  margin: 1.2em;
+  overflow: auto;
+}
+
+#buttons {
+  padding-top: 2em;
+}
+
+/* | Sharing link */
+
+#sharing-link-body {
   text-align: center;
   padding: 0.5em;
 }
 
-#friend-link-body > * {
-  /* Each item inside the friend-link modal body */
+#sharing-link-body > * {
+  /* Each item inside the sharing-link modal body */
   margin: 0.4em;
 }
 
-#friend-link-field {
-  /* Friend link text field (where the link is) */
+#sharing-link-field {
+  /* Friend link text field */
   width: 60%;
   height: 2em;
   padding: 0.2em;
@@ -62,19 +79,6 @@
   padding: 0.2em;
   margin: auto;
 }
-
-#buttons > *.row > * {
-  /* Each individual button will have these properties: */
-  height: 4em;
-  width: 100%;
-  margin: 1.2em;
-  overflow: auto;
-}
-
-#buttons {
-  padding-top: 2em;
-}
-
 
 #warning-div {
   color: #f05555;

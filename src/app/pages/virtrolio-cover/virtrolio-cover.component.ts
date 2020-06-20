@@ -6,31 +6,34 @@ import { AuthService } from '../../core/auth.service';
   templateUrl: './virtrolio-cover.component.html',
   styleUrls: ['./virtrolio-cover.component.css']
 })
+
+/**
+ * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
+ */
 export class VirtrolioCoverComponent implements OnInit {
-  /** Default values for variables */
+  /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
-  public warningText = false;
-  public copyButtonText = 'copy';
+  public showWarningText = false;
+  public copyButtonText = 'Copy';
 
   constructor(public authService: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   /**
-   * Copy link highlights an inputElement and copies its value to clipboard, updating the button to confirm the copy
-   * @param inputElement - the element to read from and copy its contents
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
    */
   copyLink(inputElement: HTMLInputElement) {
     inputElement.select();
     inputElement.setSelectionRange(0, 10000);
     document.execCommand('copy');
-    this.copyButtonText = 'copied!';
+    this.copyButtonText = 'Copied!';
   }
 
   /**
-   * Fetches the users friend link, alerts an error on invalid link
+   * Fetches the user's sharing link, alerts an error on invalid link
    */
   setLink() {
     this.copyButtonText = 'Copy';
@@ -39,19 +42,18 @@ export class VirtrolioCoverComponent implements OnInit {
   }
 
   /**
-   * Displays a warning message when the user tries to generate a new friend link, or changes the link
-   * on the second click
+   * Toggles between displaying warning text and updating the sharing link in the text box.
    */
   warnAndGenerate() {
-    if (this.warningText) {
+    if (this.showWarningText) {
       this.link = 'Generating new link...';
       this.linkReady = false;
-      this.copyButtonText = 'copy';
+      this.copyButtonText = 'Copy';
       this.authService.changeKey().catch(error => alert(error +
         '\nIf this problem persists, please contact us at virtrolio.team@gmail.com'));
       this.setLink();
     }
-    this.warningText = !this.warningText;
+    this.showWarningText = !this.showWarningText;
   }
 
 }
