@@ -18,7 +18,7 @@
 
 .message {
   text-align: justify;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .author-row {
@@ -42,10 +42,32 @@
 
 .message-card {
   background-color: var(--light-grey);
-  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
-  height: 40em;
-  padding: 3em 6em 3em 6em;
-  display: flex;
-  margin-bottom: 2em;
-  overflow-y: auto;
+  /*box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);*/
+  display: inline-block;
+  word-break: break-word;
+  /*overflow-y: auto;*/
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 2;
+  }
 }

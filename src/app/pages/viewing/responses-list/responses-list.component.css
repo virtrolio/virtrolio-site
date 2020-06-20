@@ -41,10 +41,17 @@
   word-wrap: break-word;
 }
 
+.authorButton {
+}
+
 .hamburger-menu {
   height: auto;
   width: auto;
 
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {

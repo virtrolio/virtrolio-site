@@ -42,8 +42,8 @@
     </a>
   </div>
 </div>
-<div class="mt-3" *ngIf="viewService.isCardView === true">
-  <div class="card message-card" *ngFor="let msg of viewService.messages; let i = index" id="{{i}}"
+<div class="card-columns mt-3" *ngIf="viewService.isCardView === true">
+  <div class="card message-card p-5" *ngFor="let msg of viewService.messages; let i = index" id="{{i}}"
        [ngStyle]="{'background': msg.backColor}">
     <table>
       <tr class="message"
