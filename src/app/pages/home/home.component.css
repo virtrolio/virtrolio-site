@@ -3,21 +3,147 @@
   text-align: center;
 }
 
+#disclaimer-text {
+  font-size: 1em;
+  text-align: center;
+}
+
+.home-text {
+
+}
+
+.header-text {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.body-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+}
+
 #logo {
   width: 12em;
 }
 
-.modal-dialog {
-  position: absolute;
-  top: 80%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10040;
-  overflow: auto;
-  overflow-y: auto;
+#home-background {
+  background: var(--accent);
+  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
 }
 
-#icon {
-  width: 32px;
+#bg-logo-img {
+  position: absolute;
+  opacity: 0.1;
+  right: 0;
+}
+
+#feature-img {
+  position: absolute;
+  opacity: 0.5;
+  right: 0;
+}
+
+#title-container {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  padding: 30vh 0 0 10vw;
+}
+
+#title-header {
+  font-size: 6em;
+  color: white;
+}
+#title-subtitle {
+  font-size: 2em;
+  font-weight: 400;
+  color: white;
+  margin-top: 1em;
+}
+
+#chevron {
+  margin-top: 2em;
+}
+
+#home-img-background {
+  background-size: 100%;
+  background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.body-container {
+  margin-top: 3em;
+}
+
+#login-virtrolio-button {
+  padding: 3em 0 3em 0;
+}
+
+.message-card {
+  width: 25em;
+  height: 25em;
+  text-align: center;
+}
+
+#card-message {
+  color: white;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+#card-0 {
+  background: var(--accent);
+  margin-bottom: -1em;
+  margin-left: -1em;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+  padding: 3em;
+}
+
+#card-1 {
+  background: aquamarine;
+  margin-bottom: -1em;
+  margin-left: -1em;
+  -webkit-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+#card-2 {
+  background: palegoldenrod;
+  -webkit-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+
+@media only screen and (max-width: 768px) {
+  #title-header {
+    font-size: 10vw;
+    color: white;
+  }
+
+  #title-subtitle {
+    font-size: 6vw;
+    font-weight: 400;
+    color: white;
+    margin-top: 1em;
+  }
+
+  .header-text {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .body-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+  }
 }
