@@ -12,10 +12,10 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   private imagePaths = [
-    'dabeer.jpg',
-    'dabeer-silly.png',
     'arvind.jpg',
     'arvind-silly.jpg',
+    'dabeer.jpg',
+    'dabeer-silly.png',
     'eric.jpg',
     'eric-silly.png',
     'tommy.jpg',
