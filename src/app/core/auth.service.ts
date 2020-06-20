@@ -72,19 +72,27 @@ export class AuthService {
    * currently logged in user doesn't exist.
    */
   async createUser(user: User): Promise<void> {
-    const userRef = this.afs.collection('users').doc(user.uid);
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
+    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
 
-    // Create user data only if it doesn't exist already
-    userRef.valueChanges().subscribe(async (userDoc: VirtrolioUser) => {
-      if (!userDoc) { // User data doesn't exist, so create data
-        const userData: VirtrolioUser = {
-          displayName: this.user.displayName,
-          key: AuthService.generateKey(),
-          profilePic: this.user.photoURL
-        };
-        await userRef.set(userData);
+    if (!userDoc) { // User doesn't exist in database
+      const userData: VirtrolioUser = {
+        displayName: this.user.displayName,
+        key: AuthService.generateKey(),
+        profilePic: this.user.photoURL
+      };
+      await userRef.set(userData);
+    } else { // User exists in database, make sure all fields are present
+      if (!('key' in userDoc)) {
+        await userRef.update({ key: AuthService.generateKey() });
       }
-    });
+      if (!('displayName' in userDoc)) {
+        await userRef.update({ displayName: user.displayName });
+      }
+      if (!('profilePic' in userDoc)) {
+        await userRef.update({ profilePic: user.photoURL });
+      }
+    }
   }
 
   /**
