@@ -53,9 +53,9 @@
         <label id="friend-link-label" for="friend-link-field" style="display:none">Your Link:</label>
         <!-- later we need to replace the placeholder url with their id-->
         <input type="text" class="align-middle" #friendLink value="{{ link }}" readonly [disabled]="!linkReady"
-          (click)="copyLink(friendLink, copyButton)" id="friend-link-field">
+          (click)="copyLink(friendLink)" id="friend-link-field">
         <button type="button" id="button-copy" #copyButton [disabled]="!linkReady" class="btn btn-primary align-middle"
-          (click)="copyLink(friendLink, copyButton)">Copy
+          (click)="copyLink(friendLink)">{{ copyButtonText }}
         </button>
 
         <div class="row">
