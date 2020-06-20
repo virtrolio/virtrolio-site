@@ -4,7 +4,7 @@ import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '.
 
 import * as firebase from 'firebase';
 
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import Timestamp = firebase.firestore.Timestamp;
@@ -99,20 +99,15 @@ export class MsgIoService {
 
   /**
    * Checks to see if the current user has already signed another user's virtrolio.
-   * Assumes the UIDs were already checked.
+   * Assumes the UIDs were already checked to be valid.
    * @param toUID - The recipient of the message.
-   * @throws Error - If the current user has already signed the virtrolio of toUID.
+   * @returns true - If the current user has already signed the virtrolio of toUID.
    */
-  async checkForMessage(toUID: string): Promise<void> {
-    await this.afs.collection('messages', ref => ref
+  async checkForMessage(toUID: string): Promise<boolean> {
+    const messages = await this.afs.collection('messages', ref => ref
       .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-      .valueChanges().subscribe(matchingMessages => {
-        if (matchingMessages.length !== 0) {
-          throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
-            'you\'ll have to ask them to delete your original response first.');
-        }
-      }
-    );
+      .valueChanges().pipe(take(1)).toPromise();
+    return messages.length !== 0;
   }
 
   /**
@@ -136,7 +131,10 @@ export class MsgIoService {
     this.authService.throwErrorIfLoggedOut('send a message');
 
     // Verify the yearbook has not already been signed
-    await this.checkForMessage(messageTemplate.to);
+    if (await this.checkForMessage(messageTemplate.to)) {
+      throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
+        ' you\'ll have to ask them to delete your original response first.');
+    }
 
     // Verify correct key
     const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
