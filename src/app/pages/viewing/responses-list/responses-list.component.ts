@@ -17,6 +17,10 @@ export class ResponsesListComponent implements OnInit {
     this.authService.displayName().then((displayName) => {this.displayName = displayName; });
   }
 
+  /**
+   * Scroll to the card with the given id
+   * @param id: id attribute of the card
+   */
   showMessage(id) {
     if (this.viewService.isCardView) {
       this.vps.scrollToAnchor(id);

@@ -1,3 +1,4 @@
+<!-- Toggle switch for message viewing styles -->
 <div class="row my-3">
   <div class="col-12">
     <div class="custom-control custom-switch">
@@ -11,6 +12,7 @@
   </div>
 </div>
 
+<!-- Carousel message view -->
 <div class="viewing-container mb-5" *ngIf="viewService.isCardView === false">
   <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
     <div class="carousel-inner">
@@ -46,9 +48,12 @@
     </a>
   </div>
 </div>
+
+<!-- Card message view -->
 <div class="card-columns mt-3" *ngIf="viewService.isCardView === true">
   <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
     <div class="card-header">
+      <!-- Profile picture of the author -->
       <!--      <span class="profile-pic-container">-->
       <!--        <img class="profile-pic" src="" alt="profile-pic">-->
       <!--      </span>-->

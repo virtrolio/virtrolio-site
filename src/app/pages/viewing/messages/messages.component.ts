@@ -12,6 +12,9 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /**
+   * Swap between message viewing styles styles
+   */
   toggleViewStyle() {
     this.viewService.isCardView = this.viewService.isCardView === false;
   }

@@ -1,3 +1,4 @@
+<!-- Desktop response-list format -->
 <div class="response-list-card d-none d-sm-none d-md-none d-lg-block mt-4">
   <div class="card p-3 border-0">
     <div class="row user-info" *ngIf="authService.isLoggedIn()">
@@ -18,7 +19,6 @@
     </ul>
     <div id="author-list">
       <ul class="nav flex-column ml-2">
-        <!-- TODO: data-slide-to is currently off by one due to the title slide -->
         <!--suppress HtmlUnknownAttribute -->
         <li class="nav-item mb-1" *ngFor="let message of viewService.messages; let i = index" data-target="#carousel"
             attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(i);">
@@ -47,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Mobile response-list format -->
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="response-list-card-relative">
       <div class="card p-3 border-0">
