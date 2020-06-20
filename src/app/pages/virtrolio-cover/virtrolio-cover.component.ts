@@ -4,7 +4,7 @@ import { AuthService } from '../../core/auth.service';
 @Component({
   selector: 'app-virtrolio-cover',
   templateUrl: './virtrolio-cover.component.html',
-  styleUrls: ['./virtrolio-cover.component.css']
+  styleUrls: [ './virtrolio-cover.component.css' ]
 })
 
 /**
