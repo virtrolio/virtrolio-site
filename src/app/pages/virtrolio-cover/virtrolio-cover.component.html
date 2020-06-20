@@ -56,7 +56,7 @@
         <label id="sharing-link-label" for="sharing-link-field" style="display:none">Your Link:</label>
         <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
           (click)="copyLink(sharingLink)" id="sharing-link-field">
-        <button type="button" id="button-copy" #copyButton [disabled]="!linkReady" class="btn btn-primary align-middle"
+        <button type="button" id="button-copy" [disabled]="!linkReady" class="btn btn-primary align-middle"
           (click)="copyLink(sharingLink)">{{ copyButtonText }}
         </button>
 
@@ -80,7 +80,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      
+
       <!-- Modal Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="send-message-modal-title">You're barking up the wrong tree, bud!</h5>
