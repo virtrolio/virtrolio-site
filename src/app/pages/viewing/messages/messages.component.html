@@ -43,12 +43,12 @@
   </div>
 </div>
 <div class="card-columns mt-3" *ngIf="viewService.isCardView === true">
-  <div class="card" *ngFor="let msg of viewService.messages; let i = index" id="{{i}}">
+  <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
     <div class="card-header">
-      <span class="profile-pic-container">
-        <img class="profile-pic" src="" alt="profile-pic">
-      </span>
-      <span class="card-header-text">Hello</span>
+<!--      <span class="profile-pic-container">-->
+<!--        <img class="profile-pic" src="" alt="profile-pic">-->
+<!--      </span>-->
+      <span class="card-header-text">{{ msg.fromName }}</span>
     </div>
     <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
       <table>
