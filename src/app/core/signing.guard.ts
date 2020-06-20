@@ -23,7 +23,7 @@ export class SigningGuard implements CanActivate {
   static key = 'invalid';
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,
-              private msgIOService: MsgIoService) { }
+    private msgIOService: MsgIoService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -49,10 +49,14 @@ export class SigningGuard implements CanActivate {
         return false;
       }
 
-      if (this.msgIOService.checkForMessage(SigningGuard.uid)) {
-        this.router.navigate(['/rejecc']);
-        return false;
-      }
+      this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
+        if (signed === true) {
+          this.router.navigate(['/rejecc']);
+          return false;
+        }
+      }).catch(error => {
+        this.router.navigate(['/invalid-link'])
+      });
 
       if (this.authService.isLoggedIn()) {
         return true;
