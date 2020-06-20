@@ -81,12 +81,14 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  opacity: 0.2;
+  opacity: 0;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--light-grey);
+  background: white;
+  border-color: var(--gray-dark);
+  opacity: 0.5;
   border-radius: 1em;
 }
 
