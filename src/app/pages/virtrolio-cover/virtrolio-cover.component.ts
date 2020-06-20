@@ -33,6 +33,15 @@ export class VirtrolioCoverComponent implements OnInit {
   }
 
   /**
+   * Return display name.
+   */
+  getDisplayName() {
+    return this.authService.displayName().then(displayName => {
+      return displayName;
+    }).catch(error => console.log(error));
+  }
+
+  /**
    * Fetches the user's sharing link, alerts an error on invalid link
    */
   setLink() {
