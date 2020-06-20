@@ -29,11 +29,14 @@ export class VirtrolioCoverComponent implements OnInit {
     this.copyButtonText = 'copied!';
   }
 
+  /**
+   * Fetches the users friend link, alerts an error on invalid link
+   */
   setLink() {
     this.copyButtonText = 'copy';
     this.authService.getLink().then(
       link => this.link = link
-    ).catch(error => alert('No key or userid was found! If this problem persists, please contact us at virtrolio.team@gmail.com'));
+    ).catch(error => alert(error + '\nIf this problem persists, please contact us at virtrolio.team@gmail.com'));
     this.linkReady = true;
   }
 
@@ -42,7 +45,8 @@ export class VirtrolioCoverComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'copy';
-      this.authService.changeKey().catch(error => alert('An invalid key was generated! If this problem persists, please contact us at virtrolio.team@gmail.com'));
+      this.authService.changeKey().catch(error => alert(error +
+        '\nIf this problem persists, please contact us at virtrolio.team@gmail.com'));
       this.setLink();
     }
     this.warningText = !this.warningText;
