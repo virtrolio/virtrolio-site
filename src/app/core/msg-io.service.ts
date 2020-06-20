@@ -104,7 +104,7 @@ export class MsgIoService {
    * @throws Error - If the current user has already signed the virtrolio of toUID.
    */
   async checkForMessage(toUID: string): Promise<void> {
-    await this.afs.collection('messages', ref => ref
+    this.afs.collection('messages', ref => ref
       .where('from', '==', this.authService.uid()).where('to', '==', toUID))
       .valueChanges().subscribe(matchingMessages => {
         if (matchingMessages.length !== 0) {
