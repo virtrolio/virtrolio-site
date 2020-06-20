@@ -19,6 +19,7 @@
     <div id="author-list">
       <ul class="nav flex-column ml-2">
         <!-- TODO: data-slide-to is currently off by one due to the title slide -->
+        <!--suppress HtmlUnknownAttribute -->
         <li class="nav-item mb-1" *ngFor="let message of viewService.messages; let i = index" data-target="#carousel"
             attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(i);">
           <a href="javascript: void(0)">{{ message.fromName }}</a>

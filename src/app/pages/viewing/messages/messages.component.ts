@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../../../pages/viewing/viewing.service';
-import { VirtrolioMessage } from '../../../shared/interfaces';
-import { MsgIoService } from '../../../core/msg-io.service';
+import { ViewingService } from '../viewing.service';
 
 @Component({
   selector: 'app-messages',

@@ -7,8 +7,8 @@ import { VirtrolioMessage } from '../../shared/interfaces';
 })
 export class ViewingService {
   messages: VirtrolioMessage[];
-  isCardView: boolean = false;
-  constructor(private msgio: MsgIoService) {
-    this.msgio.getMessages().subscribe((msgData: VirtrolioMessage[]) => this.messages = msgData);
+  isCardView = false;
+  constructor(private msgIo: MsgIoService) {
+    this.msgIo.getMessages().subscribe((msgData: VirtrolioMessage[]) => this.messages = msgData);
   }
 }

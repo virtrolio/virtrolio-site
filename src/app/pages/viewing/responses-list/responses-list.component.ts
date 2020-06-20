@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../../../pages/viewing/viewing.service';
+import { ViewingService } from '../viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 
@@ -10,6 +10,7 @@ import { AuthService } from '../../../core/auth.service';
 })
 export class ResponsesListComponent implements OnInit {
   public displayName;
+
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {}
 
   ngOnInit(): void {
