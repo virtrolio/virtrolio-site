@@ -118,10 +118,14 @@ export class AuthService {
   /**
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    */
-  displayName(): string {
-    // TODO: Allow UID as a parameter
+  async displayName(uid: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
-    return this.user.displayName;
+    if (uid === this.uid()) {
+      return this.user.displayName;
+    } else {
+      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+      return (await userRef.valueChanges().pipe(take(1)).toPromise()).displayName;
+    }
   }
 
   /**
