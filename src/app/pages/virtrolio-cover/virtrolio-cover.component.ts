@@ -50,7 +50,7 @@ export class VirtrolioCoverComponent implements OnInit {
       this.linkReady = false;
       this.copyButtonText = 'Copy';
       this.authService.changeKey().catch(error => alert(error +
-        '\nIf this problem persists, please contact us at virtrolio.team@gmail.com'));
+        '\nIf this problem persists, please contact us at virtrolio.team@gmail.com')).then(() => this.setLink());
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
