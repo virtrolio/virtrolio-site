@@ -1,5 +1,5 @@
 #navbar-filler {
-  /* Fake navbar to push router-outlet content downwards */
+  /* Transparent div to push router-outlet content downwards */
   height: var(--navbar-height);
 }
 
@@ -15,6 +15,6 @@
 }
 
 #content-wrapper {
-  /* Div to wrap content; prevents footer collapsing to top while component loads */
+  /* Prevents footer collapse to top of screen while component loads */
   min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
 }
