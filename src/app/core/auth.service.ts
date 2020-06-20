@@ -122,7 +122,7 @@ export class AuthService {
    */
   async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
-    if (uid === this.uid()) {
+    if (uid === this.uid() || typeof uid === 'undefined') {
       return this.user.displayName;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
