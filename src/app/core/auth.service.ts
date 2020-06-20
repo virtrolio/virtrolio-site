@@ -171,7 +171,12 @@ export class AuthService {
     const user = this.uid();
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    link += (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    let key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    if (typeof key === 'undefined' || !key) {
+      await this.changeKey();
+      key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    }
+    link += key;
     return link;
   }
 
@@ -214,7 +219,6 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   async changeKey(): Promise<void> {
-    // TODO: Make sure new key is unique
     this.throwErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
