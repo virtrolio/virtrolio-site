@@ -45,12 +45,14 @@ export class SigningGuard implements CanActivate {
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
-        this.router.navigate(['/invalid-link'], { queryParams: { signed: 'false' } });
+        this.router.navigate(['/invalid-link']);
         return false;
       }
 
-      this.msgIOService.checkForMessage(SigningGuard.uid).catch(() => this.router.navigate(['/invalid-link'],
-        { queryParams: { signed: 'true' } }));
+      this.msgIOService.checkForMessage(SigningGuard.uid).catch(() => {
+        this.router.navigate(['/rejecc']);
+        return false;
+      });
 
       if (this.authService.isLoggedIn()) {
         return true;
@@ -60,7 +62,7 @@ export class SigningGuard implements CanActivate {
       }
     })
       .catch(error => {
-        this.router.navigate(['/invalid-link'], { queryParams: { signed: 'false' } });
+        this.router.navigate(['/invalid-link']);
         return false;
       });
   }
