@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Arial';
+  src: url('../fonts/Arial/arial.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Arial/arialbd.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Arial/ariali.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Arial/arialbi.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Comic Sans';
+  src: url('../fonts/Comic Sans/comic.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Comic Sans/comicbd.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Comic Sans/comici.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Comic Sans/comicz.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../fonts/Courier New/cour.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Courier New/courbd.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Courier New/couri.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Courier New/courbi.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('../fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Indie_Flower';
+  src: url('../fonts/Indie_Flower/IndieFlower-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Lobster';
+  src: url('../fonts/Lobster/Lobster-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-Regular.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Merriweather/Merriweather-Bold.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Merriweather/Merriweather-Italic.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Merriweather/Merriweather-BoldItalic.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Montserrat/Montserrat-Italic.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Montserrat/Montserrat-BoldItalic.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Patrick_Hand';
+  src: url('../fonts/Patrick_Hand/PatrickHand-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Permanent_Marker';
+  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Poiret_One';
+  src: url('../fonts/Poiret_One/PoiretOne-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Press_Start_2P';
+  src: url('../fonts/Press_Start_2P/PressStart2P-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf') format('truetype') font-weight-normal,
+       url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype') font-weight-bold,
+       url('../fonts/Roboto/Roboto-Italic.ttf') format('truetype') font-weight-italic,
+       url('../fonts/Roboto/Roboto-BoldItalic.ttf') format('truetype') font-italic font-weight-bold,
+}
+
+@font-face {
+  font-family: 'Sacramento';
+  src: url('../fonts/Sacramento/Sacramento-Regular.ttf') format('truetype') font-weight-normal
+}
+
+@font-face {
+  font-family: 'Special_Elite';
+  src: url('../fonts/Special_Elite/SpecialElite-Regular.ttf') format('truetype') font-weight-normal
+}
+
+
+
+
+
+
+
+
+
+
