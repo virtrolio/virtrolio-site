@@ -11,8 +11,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // External Libraries
-import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { CookieService } from 'ngx-cookie-service';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,9 @@ import { CoreModule } from './core/core.module';
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -32,7 +34,11 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+
+// Services
+import { LoginResolver } from './core/login-resolver';
 
 
 @NgModule({
@@ -50,7 +56,10 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    VirtrolioCoverComponent
+    VirtrolioCoverComponent,
+    InvalidLinkComponent,
+    AccessDeniedComponent,
+    RejeccComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +81,7 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
       },
     })
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, LoginResolver ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

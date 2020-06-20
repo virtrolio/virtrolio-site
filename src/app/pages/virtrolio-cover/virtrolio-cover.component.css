@@ -1,12 +1,17 @@
 #virtrolio-outer-div {
   /* Div enclosing virtrolio (outside <a> tag) */
   height: 35em;
-  padding: 0 4.5%;
+  padding: 0 5%;
 }
 
 #virtrolio-outer {
   /* Div enclosing virtrolio (inside <a> tag) */
   height: 100%;
+  box-shadow: 5px 10px var(--light-grey);
+}
+
+.bg-primary:hover {
+  background-color: var(--dark-accent) !important;
 }
 
 #virtrolio-title {
@@ -19,6 +24,7 @@
   /* "User's virtrolio" text on virtrolio cover */
   text-align: center;
   color: white;
+  line-height: 1.5;
 }
 
 #friend-link-body {
@@ -41,4 +47,9 @@
   height: 4em;
   width: 100%;
   margin: 1.2em;
+  overflow: auto;
+}
+
+#buttons {
+  padding-top: 2em;
 }
