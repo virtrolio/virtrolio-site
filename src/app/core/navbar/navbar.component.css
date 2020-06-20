@@ -1,6 +1,6 @@
 .navbar {
   background: var(--accent);
-  background: linear-gradient(45deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
   position: fixed;
   top: 0;
   width: 100%;
@@ -39,7 +39,7 @@
 }
 
 .navbar-collapse {
-  background: linear-gradient(45deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  background: rgba(255,255,255,0);
   padding: 0 1em;
   border-radius: 1em;
 }
