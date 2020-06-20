@@ -83,6 +83,20 @@ export class MsgIoService {
   }
 
   /**
+   * Marks the specified message as read by changing the isRead property of the message.
+   * To avoid unnecessary writes, the caller of this method should check the isRead property prior to calling
+   * this method. If that property is already true, this method should not be called.
+   * The check should be done using the local copy of the message object that is used to display that message.
+   * DO NOT get a new copy of the message - that would increase reads.
+   * @param id - The ID of the message to mark as read.
+   */
+  async markAsRead(id: string) {
+    await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
+      { isRead: true }
+    );
+  }
+
+  /**
    * Used to send a Virtrolio message (defined by VirtrolioMessageTemplate) by adding it to the Firestore database.
    * @param messageTemplate - The contents and settings of the message. This should be a VirtrolioMessageTemplate that
    * was created by MsgIoService.createBlankMessage and then modified to fill in the user data. You should **NOT** try
@@ -114,7 +128,7 @@ export class MsgIoService {
           timestamp: Timestamp.now(),
           isRead: false,
           year: MsgIoService.currentYear,
-          fromName: this.authService.displayName()
+          fromName: await this.authService.displayName()
         };
 
         // Send the message
