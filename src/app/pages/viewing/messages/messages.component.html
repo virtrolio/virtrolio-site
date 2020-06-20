@@ -18,7 +18,7 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="carousel-front-page-header px-3 py-2">
-          {{ viewService.messages.length }} responses
+          Placeholder
         </div>
         <div class="page">
           <span class="title-page">My Yearbook</span>
@@ -26,7 +26,10 @@
       </div>
       <div class="carousel-item" *ngFor="let msg of viewService.messages">
         <div class="carousel-header px-3 py-2">
-          {{ msg.fromName }}
+          <span class="profile-pic-container-small mr-2">
+            <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+          </span>
+          <span class="card-header-text">{{ msg.fromName }}</span>
         </div>
         <div class="page" [ngStyle]="{'background': msg.backColor}">
           <table>
@@ -53,10 +56,9 @@
 <div class="card-columns mt-3" *ngIf="viewService.isCardView === true">
   <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
     <div class="card-header">
-      <!-- Profile picture of the author -->
-      <!--      <span class="profile-pic-container">-->
-      <!--        <img class="profile-pic" src="" alt="profile-pic">-->
-      <!--      </span>-->
+      <span class="profile-pic-container-small mr-2">
+        <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+      </span>
       <span class="card-header-text">{{ msg.fromName }}</span>
     </div>
     <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
@@ -66,10 +68,6 @@
           <td>
             <markdown emoji data="{{ msg.contents }}"></markdown>
           </td>
-        </tr>
-        <tr class="message"
-            [ngStyle]="{'color': msg.fontColor, 'font-family': msg.fontFamily}">
-          <td>msg.authorName</td>
         </tr>
       </table>
     </div>

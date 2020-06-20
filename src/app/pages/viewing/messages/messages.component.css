@@ -34,14 +34,6 @@
   overflow-y: auto;
 }
 
-.carousel-header {
-
-}
-
-.carousel-front-page-header {
-
-}
-
 .card-header-text {
   font-weight: bold;
   margin-top: 0.2em;
@@ -50,6 +42,19 @@
 .card-header {
   display: flex;
   flex-direction: row;
+}
+
+.carousel-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-pic-container-small {
+  background: rgba(255, 255, 255, 0);
+  height: 2em;
+  width: 2em;
+  border-radius: 100%;
+  display: flex;
 }
 
 .card {

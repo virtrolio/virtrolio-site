@@ -16,7 +16,6 @@ export class ResponsesListComponent implements OnInit {
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
     try {
       this.uid = this.authService.uid();
-      console.log(this.uid);
     } catch (e) { }
     try {
       this.authService.displayName(this.uid).then((displayName) => {this.displayName = displayName; });

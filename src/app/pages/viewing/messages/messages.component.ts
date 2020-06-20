@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
+import { AuthService } from '../../../core/auth.service';
 
 @Component({
   selector: 'app-messages',
@@ -8,7 +9,7 @@ import { ViewingService } from '../viewing.service';
 })
 
 export class MessagesComponent implements OnInit {
-  constructor(public viewService: ViewingService) { }
+  constructor(public viewService: ViewingService, public authService: AuthService) { }
 
   ngOnInit(): void { }
 
