@@ -26,17 +26,6 @@
   width: 12em;
 }
 
-.modal-dialog {
-  position: absolute;
-  top: 80%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10040;
-  overflow: auto;
-  overflow-y: auto;
-}
-
 #home-background {
   background: var(--accent);
   background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
@@ -77,17 +66,9 @@
   margin-top: 2em;
 }
 
-#bg-curve {
-  position: relative;
-  max-height: 100vh;
-  max-width: 100%;
-  z-index: 0;
-}
-
 #home-img-background {
-  background: url("../../../assets/images/bg-curve.svg") no-repeat;
   background-size: 100%;
-  background-position: center bottom;
+  background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
   position: absolute;
