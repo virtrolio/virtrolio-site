@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as AOS from 'aos';
 import { AuthService } from '../../core/auth.service';
-
-declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -14,6 +13,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
 }
