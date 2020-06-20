@@ -88,11 +88,30 @@ export class MsgIoService {
    * this method. If that property is already true, this method should not be called.
    * The check should be done using the local copy of the message object that is used to display that message.
    * DO NOT get a new copy of the message - that would increase reads.
+   * Assumes the message exists.
    * @param id - The ID of the message to mark as read.
    */
-  async markAsRead(id: string) {
+  async markAsRead(id: string): Promise<void> {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
+    );
+  }
+
+  /**
+   * Checks to see if the current user has already signed another user's virtrolio.
+   * Assumes the UIDs were already checked.
+   * @param toUID - The recipient of the message.
+   * @throws Error - If the current user has already signed the virtrolio of toUID.
+   */
+  async checkForMessage(toUID: string): Promise<void> {
+    await this.afs.collection('messages', ref => ref
+      .where('from', '==', this.authService.uid()).where('to', '==', toUID))
+      .valueChanges().subscribe(matchingMessages => {
+        if (matchingMessages.length !== 0) {
+          throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
+            'you\'ll have to ask them to delete your original response first.');
+        }
+      }
     );
   }
 
@@ -115,6 +134,9 @@ export class MsgIoService {
 
     // Verify user is logged in
     this.authService.throwErrorIfLoggedOut('send a message');
+
+    // Verify the yearbook has not already been signed
+    await this.checkForMessage(messageTemplate.to);
 
     // Verify correct key
     const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
