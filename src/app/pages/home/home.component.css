@@ -42,6 +42,8 @@
 #feature-img {
   position: absolute;
   opacity: 0.5;
+  width: 40vw;
+  height: 40vw;
   right: 0;
 }
 
@@ -67,8 +69,8 @@
 }
 
 #home-img-background {
-  background-size: 100%;
   background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
+  background-size: 100%;
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
   position: absolute;
