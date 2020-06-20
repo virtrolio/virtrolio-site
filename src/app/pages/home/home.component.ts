@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppAuthService } from '../../core/app-auth.service';
 import * as AOS from 'aos';
+import { AuthService } from '../../core/auth.service';
 
 declare var $: any;
 
@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authService: AppAuthService) {
+  constructor(public authService: AuthService) {
   }
 
   ngOnInit(): void {
