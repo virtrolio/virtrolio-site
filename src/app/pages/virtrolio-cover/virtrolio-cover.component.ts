@@ -16,10 +16,12 @@ export class VirtrolioCoverComponent implements OnInit {
   public linkReady = false;
   public showWarningText = false;
   public copyButtonText = 'Copy';
-
+  public displayName;
   constructor(public authService: AuthService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.authService.displayName().then((displayName) => {this.displayName = displayName});
+  }
 
   /**
    * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
