@@ -54,6 +54,24 @@ a:hover {
   text-decoration: none;
 }
 
+/* width */
 ::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EEEEEE;
+  opacity: 0.5;
+  border-radius: 1em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
