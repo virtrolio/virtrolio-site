@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
+import { ActivatedRoute, Router  } from '@angular/router';
 
 @Component({
   selector: 'app-responses-list',
@@ -13,7 +14,8 @@ export class ResponsesListComponent implements OnInit {
   public photoUrl;
   public uid;
 
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
+              private route: ActivatedRoute, private router: Router) {
     try {
       this.uid = this.authService.uid();
     } catch (e) { }
@@ -33,10 +35,20 @@ export class ResponsesListComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * Scroll to the card with the given id
+   * Scroll to the card with the given id and update the URL
    * @param id: id attribute of the card
    */
   showMessage(id) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        messageid: id
+      },
+      // Preserve the existing query params in the
+      queryParamsHandling: 'merge',
+      // Update the URL
+      skipLocationChange: false
+    });
     if (this.viewService.isCarouselView) {
       this.vps.scrollToAnchor(id);
     }
