@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-signing',
@@ -23,6 +24,7 @@ export class SigningComponent implements OnInit {
   public charCount = 0;
   public maxCharCount: number;
   public charCountColor = '#bbbbbb';
+  public name = '[friend name]';
 
   private uid: string;
   private key: string;
@@ -78,13 +80,16 @@ export class SigningComponent implements OnInit {
   /**
    * Extract query parameters from ActivatedRoute and maximum message length from MsgIoService
    */
-  constructor(private route: ActivatedRoute, private msgIo: MsgIoService, private router: Router) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
       this.key = params.key;
     });
 
     this.maxCharCount = MsgIoService.maxMessageLength;
+
+    authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
+
   }
 
   ngOnInit(): void { }
