@@ -57,14 +57,14 @@
         </button>
 
         <!-- Color pickers for text and background -->
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+        <button href="javascript: void(0)" type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <span id="font-color-text">A</span>
           <label for="colorpicker-font" hidden>Colour picker for font</label>
           <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
                  [(ngModel)]='textColor'>
           <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
         </button>
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+        <button href="javascript: void(0)" type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
