@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { FontService } from 'src/app/core/font.service';
+import { Font } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-signing',
@@ -31,11 +32,12 @@ export class SigningComponent implements OnInit {
   // font service stuff
   public currentFont = 'Arial, sans-serif';
   public currentFontDisplay = 'Arial';
-  public fontList: fonts.Font[] = [];
-
+  public fontDict;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
-    private router: Router, private fonts: FontService) { }
+              private router: Router, private fonts: FontService) {
+    this.fontDict = FontService.fonts;
+  }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -45,21 +47,16 @@ export class SigningComponent implements OnInit {
       this.uid = params.uid;
       this.key = params.key;
     });
-
     this.maxCharCount = MsgIoService.maxMessageLength;
-
     this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
-
-    // load fonts
-
   }
 
   /**
    * @param font - Font selected from dropdown menu
    */
   selectFont(font: string) {
-    this.currentFont = font;
-    this.currentFontDisplay = font.slice(0, font.indexOf(','));
+    this.currentFont = font + ',' + this.fontDict[font].backupFont;
+    this.currentFontDisplay = this.fontDict[font].fontFamily;
   }
 
   /**
