@@ -10,7 +10,7 @@ export class FontService {
   private static readonly Arial = new Font('Arial', 'sans-serif');
   private static readonly ComicSansMS = new Font('Comic Sans MS', 'sans-serif');
   private static readonly CourierNew = new Font('Courier New', 'monospace');
-  private static readonly DancingScript = new Font('Dancing Script', 'serif');
+  private static readonly DancingScript = new Font('Dancing Script', 'cursive');
   private static readonly Montserrat = new Font('Montserrat', 'sans-serif');
   private static readonly Roboto = new Font('Roboto', 'sans-serif');
   private static readonly Merriweather = new Font('Merriweather', 'serif');
