@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { FontService } from 'src/app/core/font.service';
-import { Font } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-signing',
