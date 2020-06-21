@@ -42,6 +42,12 @@
 .card-header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-header-author {
+  display: flex;
+  flex-direction: row;
 }
 
 .carousel-header {
@@ -72,6 +78,11 @@
 #no-messages {
   font-size: 2em;
   color: var(--light-grey);
+}
+
+.delete-button {
+  display: flex;
+  align-self: flex-end;
 }
 
 @media (min-width: 576px) {
