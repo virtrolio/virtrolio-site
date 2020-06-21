@@ -50,7 +50,7 @@ export class SigningGuard implements CanActivate {
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
-        if (signed === true) {
+        if (signed) {
           this.router.navigate(['/rejecc']);
           return false;
         }
@@ -71,4 +71,3 @@ export class SigningGuard implements CanActivate {
       });
   }
 }
-
