@@ -37,16 +37,17 @@ export class AuthService {
    * Also calls createUser() so that the user's internal data is created at the same time.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
+   * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
    * @returns A promise evaluating to true if the redirect is successful.
    */
-  async login(routeTo: string): Promise<boolean> {
+  async login(routeTo: string, queryParams?: object): Promise<boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
     return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
       if (userCredentials.user) {  // If user is not null
         return this.createUser(userCredentials.user).then(() => {
-          return this.router.navigate([ routeTo ]);
+          return this.router.navigate([ routeTo ], { queryParams });
         });
       } else {
         console.log('Login failed');
@@ -71,18 +72,27 @@ export class AuthService {
    * currently logged in user doesn't exist.
    */
   async createUser(user: User): Promise<void> {
-    const userRef = this.afs.collection('users').doc(user.uid);
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
+    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
 
-    // Create user data only if it doesn't exist already
-    userRef.valueChanges().subscribe(async (userDoc: VirtrolioUser) => {
-      if (!userDoc) { // User data doesn't exist, so create data
-        const userData: VirtrolioUser = {
-          displayName: this.user.displayName,
-          key: AuthService.generateKey(),
-        };
-        await userRef.set({ userData });
+    if (!userDoc) { // User doesn't exist in database
+      const userData: VirtrolioUser = {
+        displayName: this.user.displayName,
+        key: AuthService.generateKey(),
+        profilePic: this.user.photoURL
+      };
+      await userRef.set(userData);
+    } else { // User exists in database, make sure all fields are present
+      if (!('key' in userDoc)) {
+        await userRef.update({ key: AuthService.generateKey() });
       }
-    });
+      if (!('displayName' in userDoc)) {
+        await userRef.update({ displayName: user.displayName });
+      }
+      if (!('profilePic' in userDoc)) {
+        await userRef.update({ profilePic: user.photoURL });
+      }
+    }
   }
 
   /**
@@ -98,7 +108,7 @@ export class AuthService {
    * The Error is designed in such a way that the error message can be displayed to the user using a Modal.
    * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'
    * . Should be in present tense and be in user-friendly language.
-   * @throws ReferenceError - If logged out
+   * @throws ReferenceError - If the user is not logged in
    */
   throwErrorIfLoggedOut(attemptedOperation: string): void {
     if (!this.isLoggedIn()) {
@@ -108,23 +118,37 @@ export class AuthService {
 
   /**
    * @returns The URL to the user's profile picture.
+   * @throws ReferenceError - If the user is not logged in
    */
-  profilePictureLink(): string {
+  async profilePictureLink(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your profile picture');
-    return this.user.photoURL;
+    // noinspection DuplicatedCode
+    if (uid === this.uid() || typeof uid === 'undefined') {
+      return this.user.photoURL;
+    } else {
+      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+      return (await userRef.valueChanges().pipe(take(1)).toPromise()).profilePic;
+    }
   }
 
   /**
    * @returns The Display Name of the user as defined in the account that they use to sign in.
+   * @throws ReferenceError - If the user is not logged in
    */
-  displayName(): string {
-    // TODO: Allow UID as a parameter
+  async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
-    return this.user.displayName;
+    // noinspection DuplicatedCode
+    if (uid === this.uid() || typeof uid === 'undefined') {
+      return this.user.displayName;
+    } else {
+      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+      return (await userRef.valueChanges().pipe(take(1)).toPromise()).displayName;
+    }
   }
 
   /**
    * @returns The user's Firebase Authentication User ID.
+   * @throws ReferenceError - If the user is not logged in
    */
   uid(): string {
     this.throwErrorIfLoggedOut('get your user ID');
@@ -153,17 +177,22 @@ export class AuthService {
    * Generates the shareable signing link for the current user. The signing link has two query parameters that are used
    * by Angular routerLink. The first is 'uid', which is the current user's Firebase Authentication User ID.
    * The second is 'key', which is generated by AppAuthService.changeKey().
-   * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
    * @returns The sharable signing link for the current user, usable by FriendLinkComponent.
+   * @throws ReferenceError - If the user is not logged in
    */
   async getLink(): Promise<string> {
     this.throwErrorIfLoggedOut('get your sharing link');
 
-    let link = 'https://virtrolio.web.app/friend-link?uid=';
+    let link = 'https://virtrolio.web.app/signing?uid=';
     const user = this.uid();
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    link += (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    let key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    if (typeof key === 'undefined' || !key) {
+      await this.changeKey();
+      key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    }
+    link += key;
     return link;
   }
 
@@ -203,15 +232,26 @@ export class AuthService {
    * Replaces the current user's key with a new and randomly generated key.
    * No parameters are expected because only the key of the currently logged in user can be changed.
    * Assumes that the user is logged in (components using this method should be protected using AuthGuard)
+   * @throws ReferenceError - If the user is not logged in
    */
-  changeKey(): Promise<void> {
-    // TODO: Make sure new key is unique
+  async changeKey(): Promise<void> {
     this.throwErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    const newKey = AuthService.generateKey();
-    return userRef.update(
-      { key: newKey }
-    );
+    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
+    if (!('key' in userDoc)) { // This triggers if the key doesn't exist
+      return userRef.update(
+        { key: AuthService.generateKey() }
+      );
+    } else { // If the key does exist, need to make sure the new key is unique
+      const oldKey = userDoc.key;
+      let newKey = AuthService.generateKey();
+      while (oldKey === newKey) {
+        newKey = AuthService.generateKey();
+      }
+      return userRef.update(
+        { key: newKey }
+      );
+    }
   }
 }

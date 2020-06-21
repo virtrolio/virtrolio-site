@@ -4,7 +4,7 @@ import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '.
 
 import * as firebase from 'firebase';
 
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import Timestamp = firebase.firestore.Timestamp;
@@ -83,6 +83,34 @@ export class MsgIoService {
   }
 
   /**
+   * Marks the specified message as read by changing the isRead property of the message.
+   * To avoid unnecessary writes, the caller of this method should check the isRead property prior to calling
+   * this method. If that property is already true, this method should not be called.
+   * The check should be done using the local copy of the message object that is used to display that message.
+   * DO NOT get a new copy of the message - that would increase reads.
+   * Assumes the message exists.
+   * @param id - The ID of the message to mark as read.
+   */
+  async markAsRead(id: string): Promise<void> {
+    await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
+      { isRead: true }
+    );
+  }
+
+  /**
+   * Checks to see if the current user has already signed another user's virtrolio.
+   * Assumes the UIDs were already checked to be valid.
+   * @param toUID - The recipient of the message.
+   * @returns true - If the current user has already signed the virtrolio of toUID.
+   */
+  async checkForMessage(toUID: string): Promise<boolean> {
+    const messages = await this.afs.collection('messages', ref => ref
+      .where('from', '==', this.authService.uid()).where('to', '==', toUID))
+      .valueChanges().pipe(take(1)).toPromise();
+    return messages.length !== 0;
+  }
+
+  /**
    * Used to send a Virtrolio message (defined by VirtrolioMessageTemplate) by adding it to the Firestore database.
    * @param messageTemplate - The contents and settings of the message. This should be a VirtrolioMessageTemplate that
    * was created by MsgIoService.createBlankMessage and then modified to fill in the user data. You should **NOT** try
@@ -102,6 +130,12 @@ export class MsgIoService {
     // Verify user is logged in
     this.authService.throwErrorIfLoggedOut('send a message');
 
+    // Verify the yearbook has not already been signed
+    if (await this.checkForMessage(messageTemplate.to)) {
+      throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
+        ' you\'ll have to ask them to delete your original response first.');
+    }
+
     // Verify correct key
     const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
     if (keyIsCorrect) {
@@ -113,7 +147,9 @@ export class MsgIoService {
           from: this.authService.uid(),
           timestamp: Timestamp.now(),
           isRead: false,
-          year: MsgIoService.currentYear
+          year: MsgIoService.currentYear,
+          fromName: await this.authService.displayName(),
+          fromPic: await this.authService.profilePictureLink()
         };
 
         // Send the message
