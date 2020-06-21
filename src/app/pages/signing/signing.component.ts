@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
 import { AuthService } from 'src/app/core/auth.service';
+import { FontService } from 'src/app/core/font.service';
 
 @Component({
   selector: 'app-signing',
@@ -78,7 +79,7 @@ export class SigningComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
-              private router: Router) { }
+              private router: Router, private fonts: FontService) { }
 
   /**
    * Extract query parameters, maximum message length, and recipient username from appropriate services
@@ -92,5 +93,8 @@ export class SigningComponent implements OnInit {
     this.maxCharCount = MsgIoService.maxMessageLength;
 
     this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
+
+    // load fonts
+
   }
 }
