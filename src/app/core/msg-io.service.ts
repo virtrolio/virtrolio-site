@@ -168,4 +168,15 @@ export class MsgIoService {
       throw new TypeError('Incorrect key');
     }
   }
+
+  /**
+   * Deletes a message PERMANENTLY. The caller of this method is responsible for alerting the user that the deletion is
+   * irreversible.
+   * It is highly suggested that the caller display a confirmation dialog to confirm the deletion before calling this
+   * method, as there is no way to reverse this operation. Not even if you say 'please'.
+   * @param mID - The message/document ID of the message to be deleted.
+   */
+  async deleteMessage(mID: string) {
+    await this.afs.collection('messages').doc(mID).delete();
+  }
 }
