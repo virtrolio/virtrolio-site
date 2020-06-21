@@ -50,9 +50,11 @@ export class MsgIoService {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
         'and the provided message is ' + message.contents.length + ' characters long.');
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
-      throw new Error('Provided font color is not a valid hex code. Did you forget to include #?');
+      throw new Error('Provided font color is not a valid hex code. Did you forget to include \'#\'?' +
+        ' Provided color code: ' + message.fontColor);
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) { // Match for hex code such as: #FFFFFF
-      throw new Error('Provided background color is not a valid hex code. Did you forget to include #?');
+      throw new Error('Provided background color is not a valid hex code. Did you forget to include \'#\'?' +
+        ' Provided color code: ' + message.backColor);
     } else if (!(message.fontFamily in FontService.fonts)) {
       throw new Error('Provided font family is not supported or doesn\'t exist: ' + message.fontFamily);
     }
