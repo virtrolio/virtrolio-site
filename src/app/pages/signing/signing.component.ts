@@ -56,7 +56,7 @@ export class SigningComponent implements OnInit {
    */
   updateCount(textbox: HTMLTextAreaElement) {
     this.charCount = textbox.value.length;
-    this.charCountColor = (this.charCount > this.maxCharCount ) ? '#EE1111' : '#b0b0b0';
+    this.charCountColor = (this.charCount > this.maxCharCount) ? '#EE1111' : '#b0b0b0';
     this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount);
   }
 
@@ -77,10 +77,13 @@ export class SigningComponent implements OnInit {
       .catch(error => alert(error));
   }
 
+  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
+              private router: Router) { }
+
   /**
-   * Extract query parameters from ActivatedRoute and maximum message length from MsgIoService
+   * Extract query parameters, maximum message length, and recipient username from appropriate services
    */
-  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService, private router: Router) {
+  ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
       this.key = params.key;
@@ -88,9 +91,6 @@ export class SigningComponent implements OnInit {
 
     this.maxCharCount = MsgIoService.maxMessageLength;
 
-    authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
-
+    this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
   }
-
-  ngOnInit(): void { }
 }
