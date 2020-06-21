@@ -25,7 +25,7 @@
         <!-- Font dropdown -->
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngStyle]="{'font-family': currentFont}">
             {{ currentFontDisplay }}
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
