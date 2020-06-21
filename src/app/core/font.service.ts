@@ -26,15 +26,15 @@ export class FontService {
     'Comic Sans MS': FontService.ComicSansMS,
     'Courier New': FontService.CourierNew,
     'Dancing Script': FontService.DancingScript,
-    'Montserrat': FontService.Montserrat,
-    'Roboto': FontService.Roboto,
-    'Merriweather': FontService.Merriweather,
-    'Lobster': FontService.Lobster,
     'Indie Flower': FontService.IndieFlower,
+    'Lobster': FontService.Lobster,
+    'Merriweather': FontService.Merriweather,
+    'Montserrat': FontService.Montserrat,
     'Permanent Marker': FontService.PermanentMarker,
-    'Special Elite': FontService.SpecialElite,
+    'Roboto': FontService.Roboto,
     'Poiret One': FontService.PoiretOne,
-    'Press Start 2P': FontService.PressStart2P
+    'Press Start 2P': FontService.PressStart2P,
+    'Special Elite': FontService.SpecialElite
   };
 
   constructor() { }
