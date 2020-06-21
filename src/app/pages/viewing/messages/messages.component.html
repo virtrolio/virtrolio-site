@@ -11,10 +11,10 @@
       <div class="custom-control custom-switch">
         <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCarouselView"
                (click)="toggleViewStyle()">
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch to
-          Booklet</label>
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch to
-          Cards</label>
+        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch
+          to Booklet</label>
+        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch
+          to Cards</label>
       </div>
     </div>
   </div>
@@ -100,10 +100,13 @@
         </button>
       </div>
       <div class="modal-body" id='delete-message-body'>
-        Looks like you're trying to delete a message! Please be sure that this is what you want to do. <b>It is not possible to recover a deleted message</b>
+        Looks like you're trying to delete a message! Please be sure that this is what you want to do. <b>It is not
+        possible to recover a deleted message</b>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteMessage()">Yes, I want to delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteMessage()">Yes, I want to
+          delete
+        </button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>

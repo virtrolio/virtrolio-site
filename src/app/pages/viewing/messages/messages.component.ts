@@ -34,8 +34,10 @@ export class MessagesComponent implements OnInit {
   deleteMessage() {
     try {
       this.viewService.msgIo.deleteMessage(this.messageToDelete);
-    } catch (e) { }
+    } catch (e) {
+    }
   }
+
   /**
    * Swap between message viewing styles styles
    */
