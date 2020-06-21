@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MsgIoService } from '../../core/msg-io.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { FontService } from 'src/app/core/font.service';
+import { Fonts } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-signing',
@@ -31,10 +32,10 @@ export class SigningComponent implements OnInit {
   // font service stuff
   public currentFont = 'Arial, sans-serif';
   public currentFontDisplay = 'Arial';
-  public fontDict;
+  public fontDict: Fonts;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
-              private router: Router, private fonts: FontService) {
+              private router: Router) {
     this.fontDict = FontService.fonts;
   }
 

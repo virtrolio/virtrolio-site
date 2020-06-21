@@ -29,11 +29,7 @@ export class SigningGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    /**
-     * Regex Extraction of 'uid' and 'key' params
-     *
-     * // TODO: Extract query params using Angular
-     */
+    // Regex Extraction of 'uid' and 'key' params
     try {
       const linkStr = window.location.href;
       SigningGuard.uid = linkStr.match(/(?<=uid=)(.*)(?=&)/)[0];

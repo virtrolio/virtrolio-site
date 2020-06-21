@@ -10,8 +10,8 @@
       </div>
       <div class="row">
         <textarea #signingInputArea id="signing-box" class="form-control" autofocus
-          (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
-          [ngStyle]="{'font-family': currentFont}"></textarea>
+                  (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
+                  [ngStyle]="{'font-family': currentFont}"></textarea>
         <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
           {{ charCount }} / {{ maxCharCount }}
         </span>
@@ -25,33 +25,34 @@
         <!-- Font dropdown -->
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngStyle]="{'font-family': currentFont}">
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                  [ngStyle]="{'font-family': currentFont}">
             {{ currentFontDisplay }}
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
             <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
             <span *ngFor="let font of fontDict | keyvalue">
               <a class="dropdown-item" [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
-                (click)="selectFont(font.key)" href="javascript: void(0)">{{font.key}}</a>
+                 (click)="selectFont(font.key)" href="javascript: void(0)">{{font.key}}</a>
             </span>
           </div>
         </div>
 
         <!-- Formatting buttons -->
         <button type="button" (click)="addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
-          id="button-bold">
+                id="button-bold">
           <b>B</b>
         </button>
         <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
-          id="button-italics">
+                id="button-italics">
           <i>I</i>
         </button>
         <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>')"
-          class="btn btn-secondary btn-format mr-2" id="button-underline">
+                class="btn btn-secondary btn-format mr-2" id="button-underline">
           <u>U</u>
         </button>
         <button type="button" (click)="addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
-          id="button-strikethrough">
+                id="button-strikethrough">
           <s>S</s>
         </button>
 
@@ -60,19 +61,20 @@
           <span id="font-color-text">A</span>
           <label for="colorpicker-font" hidden>Colour picker for font</label>
           <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
-            [(ngModel)]='textColor'>
+                 [(ngModel)]='textColor'>
           <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-            value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+                 value={{backgroundColor}} [(ngModel)]='backgroundColor'>
           <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
         </button>
 
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
-          [disabled]="!canSend">Send</button>
+                [disabled]="!canSend">Send
+        </button>
       </div>
     </div>
 
@@ -82,13 +84,14 @@
         <label for="preview-text">
           Preview
           <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
-            data-target="#info-modal">?</button>
+                  data-target="#info-modal">?
+          </button>
         </label>
       </div>
       <div class="row">
         <markdown emoji
-          [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
-          id="preview-text" data="{{ signingBoxText }}"></markdown>
+                  [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
+                  id="preview-text" data="{{ signingBoxText }}"></markdown>
       </div>
     </div>
   </div>
@@ -96,7 +99,7 @@
 
 <!-- Message confirmation modal -->
 <div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
-  aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
+     aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,7 +113,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="createMsg(signingInputArea)" data-dismiss="modal">
-          Send it!</button>
+          Send it!
+        </button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -119,7 +123,7 @@
 
 <!-- Information modal when they click on the ? -->
 <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
-  aria-hidden="true">
+     aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
