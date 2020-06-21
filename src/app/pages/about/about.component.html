@@ -1,13 +1,14 @@
 <div id="about-us" class="jumbotron">
-  <h1 class="mb-5" id="title">About Us</h1>
-  <div class="row justify-content-center pr-5">
+  <h1 id="title">About Us</h1>
+  <div class="row justify-content-center">
     <div class="col-md-4 vertical-center">
       <img class="img-fluid" alt="Team photo of virtrolio developers"
         src="../../../assets/images/logo_reg_transparent.png" />
     </div>
     <div class="col-md-4 mt-3 mt-md-0 vertical-center">
       <p class="text-justify">
-        We’re a group of undergraduate university students who remember exactly what it was like back in high school,
+        We’re a group of undergraduate university students who remember exactly what it was like back in high school
+        (The Woodlands Secondary School, to be exact),
         and we especially remember what those last few months of senior year meant to many of us. With the COVID-19
         pandemic leading to lockdowns and social distancing, we wanted to give a way for graduating students (and
         others!) to be able to send each other messages in a medium that they can cherish with them as they continue on
@@ -54,42 +55,6 @@
     </div>
     <hr />
 
-    <!-- Dabeer's Row-->
-    <div class="row d-flex">
-
-      <!-- Dabeer's Image -->
-      <div class="col-md-2 order-md-2">
-        <img src="{{Dabeer.regularLink}}" class="img-fluid" (mouseenter)="Dabeer.showSilly = !Dabeer.showSilly"
-          *ngIf='Dabeer.showSilly else DabeerSilly'>
-        <ng-template #DabeerSilly>
-          <img src="{{Dabeer.sillyLink}}" class="img-fluid" (mouseleave)="Dabeer.showSilly = !Dabeer.showSilly">
-        </ng-template>
-      </div>
-
-      <!-- Dabeer's Blurb -->
-      <div class="col-md-7 order-md-3 mt-3 mt-md-0">
-        <p class="text-justify">Dabeer is an exeptional person with many talents and a wide variety of interests! He is
-          known to have an undying love for musicals and chemistry. And equally so, he is plenty talented in both
-          departments! Dabeer is currently studying IBiomed at McMaster University. In his spare time, he loves to
-          practice singing, work on personal projects and hang out with his beloved friends! He is especially fond of
-          dropping in on people unexpectedly, but pleasant surprises are always to be expected from Dabeer.</p>
-      </div>
-
-      <!-- Dabeer's Contact Info. -->
-      <div class="col-md-3 order-md-1">
-        <p><strong>Contact Dabeer:</strong></p>
-        <ul>
-          <li>Linkedin: <a href="https://www.linkedin.com/in/dabeerabdulazeez/">View Profile</a></li>
-          <li>Github: <a href="https://github.com/GuyInFridge">GuyInFridge</a></li>
-          <li>Instagram: @GuyInFridge</li>
-          <!-- <li>Email: <a href="mailto:dabeerazeez@gmail.com">dabeerazeez@gmail.com</a></li> -->
-          <li>Personal Website: <a href="https://dabeerazeez.wixsite.com/1p10portfolio">dabeerazeez.wixsite.com</a></li>
-        </ul>
-      </div>
-
-    </div>
-    <hr />
-
     <!-- Eric's Row-->
     <div class="row d-flex">
 
@@ -120,6 +85,42 @@
           <li>Instagram: @the_ricetech</li>
           <li>Snapchat: @NullPointerException</li>
           <!-- <li>Email: <a href="mailto:the.ricetech@gmail.com">the.ricetech@gmail.com</a></li> -->
+        </ul>
+      </div>
+
+    </div>
+    <hr />
+
+    <!-- Dabeer's Row-->
+    <div class="row d-flex">
+
+      <!-- Dabeer's Image -->
+      <div class="col-md-2 order-md-2">
+        <img src="{{Dabeer.regularLink}}" class="img-fluid" (mouseenter)="Dabeer.showSilly = !Dabeer.showSilly"
+          *ngIf='Dabeer.showSilly else DabeerSilly'>
+        <ng-template #DabeerSilly>
+          <img src="{{Dabeer.sillyLink}}" class="img-fluid" (mouseleave)="Dabeer.showSilly = !Dabeer.showSilly">
+        </ng-template>
+      </div>
+
+      <!-- Dabeer's Blurb -->
+      <div class="col-md-7 order-md-3 mt-3 mt-md-0">
+        <p class="text-justify">Dabeer is an exeptional person with many talents and a wide variety of interests! He is
+          known to have an undying love for musicals and chemistry. And equally so, he is plenty talented in both
+          departments! Dabeer is currently studying IBiomed at McMaster University. In his spare time, he loves to
+          practice singing, work on personal projects and hang out with his beloved friends! He is especially fond of
+          dropping in on people unexpectedly, but pleasant surprises are always to be expected from Dabeer.</p>
+      </div>
+
+      <!-- Dabeer's Contact Info. -->
+      <div class="col-md-3 order-md-1">
+        <p><strong>Contact Dabeer:</strong></p>
+        <ul>
+          <li>Linkedin: <a href="https://www.linkedin.com/in/dabeerabdulazeez/">View Profile</a></li>
+          <li>Github: <a href="https://github.com/GuyInFridge">GuyInFridge</a></li>
+          <li>Instagram: @GuyInFridge</li>
+          <!-- <li>Email: <a href="mailto:dabeerazeez@gmail.com">dabeerazeez@gmail.com</a></li> -->
+          <li>Personal Website: <a href="https://dabeerazeez.wixsite.com/1p10portfolio">dabeerazeez.wixsite.com</a></li>
         </ul>
       </div>
 
