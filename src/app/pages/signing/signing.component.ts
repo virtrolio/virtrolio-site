@@ -63,12 +63,20 @@ export class SigningComponent implements OnInit {
    * The following functions add text formatting characters around selected text within textbox.
    * @param textbox - textbox in which user types.
    * @param formatCharacters - formatting character(s) to be placed around the selected text
+   * @param endCharacter - Optional - The ending character, if different from the starting character
    */
-  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string) {
+  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string, endCharacter?: string) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
     const text = textbox.value;
-    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + formatCharacters + text.slice(end);
+
+    // If the end character was not provided, we assume it will be the same as the start character
+    if (typeof endCharacter === 'undefined' || !endCharacter) {
+      endCharacter = formatCharacters;
+    }
+
+    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + endCharacter +
+      text.slice(end);
     textbox.select();
   }
 
