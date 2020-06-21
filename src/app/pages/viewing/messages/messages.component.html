@@ -21,7 +21,7 @@
 
   <!-- Card message view -->
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
-    <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.from }}">
+    <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
       <div class="card-header">
         <div class="card-header-author">
                   <span class="profile-pic-container-small mr-2">

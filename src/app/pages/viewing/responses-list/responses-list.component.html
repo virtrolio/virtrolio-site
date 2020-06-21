@@ -20,9 +20,9 @@
     <div id="author-list">
       <ul class="nav flex-column ml-2">
         <!--suppress HtmlUnknownAttribute -->
-        <li class="nav-item mb-1" *ngFor="let message of viewService.messages; let i = index" data-target="#carousel"
-            attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(i);">
-          <a href="javascript: void(0)">{{ message.fromName }}</a>
+        <li class="nav-item mb-1" *ngFor="let msg of viewService.messages; let i = index" data-target="#carousel"
+            attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(msg.id);">
+          <a href="javascript: void(0)">{{ msg.fromName }}</a>
         </li>
       </ul>
     </div>
@@ -59,8 +59,8 @@
         </ul>
         <div id="author-list-relative">
           <ul class="nav flex-column ml-2">
-            <li class="nav-item mb-1" *ngFor="let message of viewService.messages" (click)="showMessage(message.from);">
-              <a href="javascript: void(0)">{{ message.fromName }}</a>
+            <li class="nav-item mb-1" *ngFor="let msg of viewService.messages" (click)="showMessage(msg.id);">
+              <a href="javascript: void(0)">{{ msg.fromName }}</a>
             </li>
           </ul>
         </div>
