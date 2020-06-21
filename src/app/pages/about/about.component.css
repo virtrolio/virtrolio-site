@@ -14,3 +14,8 @@
 #meet-the-team-title {
   text-align: center;
 }
+
+.jumbotron {
+  padding-top: 2em;
+  padding-bottom: 0;
+}

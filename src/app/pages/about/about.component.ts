@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
     this.Dabeer = new AboutPagePictures('Dabeer', 'https://bit.ly/2zPaOwQ', 'https://bit.ly/2YVsSOn');
     this.Eric = new AboutPagePictures('Eric', 'https://bit.ly/2NemLiC', 'https://bit.ly/3dk383t');
     this.Janakitti = new AboutPagePictures('Janakitti', 'https://bit.ly/3elvYBR', 'https://bit.ly/3hOLPuD');
-    this.John = new AboutPagePictures('John', 'https://bit.ly/312Bllu', 'https://bit.ly/2AUtyvt');
+    this.John = new AboutPagePictures('John', 'https://bit.ly/3emaogl', 'https://bit.ly/2AUtyvt');
     this.Tommy = new AboutPagePictures('Tommy', 'https://bit.ly/3hQOJzo', 'https://bit.ly/3emQ1jf');
   }
 

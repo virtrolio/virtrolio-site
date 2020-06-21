@@ -1,3 +1,11 @@
 .card-align {
-    padding: 1.25rem 2rem;
+  padding: 1.25rem 2rem;
+}
+
+#title {
+  text-align: center;
+}
+
+#bottom-text {
+  text-align: center;
 }
