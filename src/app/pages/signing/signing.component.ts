@@ -17,8 +17,6 @@ import { FontService } from 'src/app/core/font.service';
 export class SigningComponent implements OnInit {
   /** Default values */
   public signingBoxText = '';
-  public currentFont = 'Arial, sans-serif';
-  public currentFontDisplay = 'Arial';
   public backgroundColor = '#ffffff';
   public textColor = '#000000';
   public canSend = false;
@@ -29,6 +27,32 @@ export class SigningComponent implements OnInit {
 
   private uid: string;
   private key: string;
+
+  // font service stuff
+  public currentFont = 'Arial, sans-serif';
+  public currentFontDisplay = 'Arial';
+  public fontList: fonts.Font[] = [];
+
+
+  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
+    private router: Router, private fonts: FontService) { }
+
+  /**
+   * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
+   */
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.uid = params.uid;
+      this.key = params.key;
+    });
+
+    this.maxCharCount = MsgIoService.maxMessageLength;
+
+    this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
+
+    // load fonts
+
+  }
 
   /**
    * @param font - Font selected from dropdown menu
@@ -78,23 +102,4 @@ export class SigningComponent implements OnInit {
       .catch(error => alert(error));
   }
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
-              private router: Router, private fonts: FontService) { }
-
-  /**
-   * Extract query parameters, maximum message length, and recipient username from appropriate services
-   */
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.uid = params.uid;
-      this.key = params.key;
-    });
-
-    this.maxCharCount = MsgIoService.maxMessageLength;
-
-    this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
-
-    // load fonts
-
-  }
 }
