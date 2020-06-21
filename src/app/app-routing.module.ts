@@ -80,7 +80,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [ RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})], // scroll to top when routerLinking
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
