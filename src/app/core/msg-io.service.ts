@@ -32,10 +32,12 @@ export class MsgIoService {
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
     if (typeof message.to === 'undefined' || !message.to) {
+      // This condition (used several times below) checks for undefined, null or empty strings
       throw new Error('Recipient UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
     } else if (!message.contents.replace(/\s/g, '').length) {
+      // Check if a message where all of the whitespace is deleted is blank which = entire message is whitespace
       throw new Error('Message contents cannot solely consist of whitespace/blanks');
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
       throw new Error('Background color was not provided');
@@ -46,9 +48,9 @@ export class MsgIoService {
     } else if (message.contents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
         'and the provided message is ' + message.contents.length + ' characters long.');
-    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) {
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided font color is not a valid hex code. Did you forget to include #?');
-    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) {
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided background color is not a valid hex code. Did you forget to include #?');
     }
     // Return not needed as an error will be thrown if something is wrong
