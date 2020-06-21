@@ -148,7 +148,8 @@ export class MsgIoService {
           timestamp: Timestamp.now(),
           isRead: false,
           year: MsgIoService.currentYear,
-          fromName: await this.authService.displayName()
+          fromName: await this.authService.displayName(),
+          fromPic: await this.authService.profilePictureLink()
         };
 
         // Send the message

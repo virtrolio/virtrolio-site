@@ -15,6 +15,7 @@ export interface VirtrolioDocument extends VirtrolioMessageTemplate {
   year: number;
   timestamp: Timestamp;
   fromName: string;
+  fromPic: string;
 }
 
 export interface VirtrolioMessage extends VirtrolioDocument {
