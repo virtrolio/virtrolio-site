@@ -18,13 +18,22 @@
 </div>
 
 <div class="container">
-  <div id="meet-the-team">
-    <h1 align="center" class="mb-4">Meet the Team!</h1>
+  <div class="mb-3" id="meet-the-team">
+    <h1 class="mb-4" id="meet-the-team-title">Meet the Team!</h1>
+
+    <!-- Arvind's Row-->
     <div class="row d-flex">
+
+      <!-- Arvind's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/arvind.jpg" class="img-fluid" id="team-image-0"
-          (mouseenter)="changePhotoSilly(0)" (mouseleave)="changePhotoRegular(0)">
+        <img src="{{Arvind.regularLink}}" class="img-fluid" (mouseenter)="Arvind.showSilly = !Arvind.showSilly"
+          *ngIf='Arvind.showSilly else ArvindSilly'>
+        <ng-template #ArvindSilly>
+          <img src="{{Arvind.sillyLink}}" class="img-fluid" (mouseleave)="Arvind.showSilly = !Arvind.showSilly">
+        </ng-template>
       </div>
+
+      <!-- Arvind's Blurb -->
       <div class="col-md-7 order-md-3 mt-3 mt-md-0">
         <p class="text-justify">Arvind is Virtrolio's ideator. He is well known for his compassion and spectacular,
           radiant personality that always lifts the spirits of those around him. He is known to have an undying love for
@@ -32,44 +41,68 @@
           at the University of Waterloo. In his spare time, he loves to practice his nunchucks and his tiechwaondoe
           (especially <s>on</s> with his beloved friends)!</p>
       </div>
+
+      <!-- Arvind's Contact Info. -->
       <div class="col-md-3 order-md-1">
         <p><strong>Contact Arvind:</strong></p>
         <ul>
-          <li>Instagram: @_arwind</li>
-          <li>Email: <a href="mailto:arvindn1301@gmail.com">arvindn1301@gmail.com</a></li>
+          <li>Instagram: @_airwind</li>
+          <!-- <li>Email: <a href="mailto:arvindn1301@gmail.com">arvindn1301@gmail.com</a></li> -->
         </ul>
       </div>
+
     </div>
     <hr />
+
+    <!-- Dabeer's Row-->
     <div class="row d-flex">
+
+      <!-- Dabeer's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/dabeer.jpg" class="img-fluid" id="team-image-1"
-          (mouseenter)="changePhotoSilly(1)" (mouseleave)="changePhotoRegular(1)">
+        <img src="{{Dabeer.regularLink}}" class="img-fluid" (mouseenter)="Dabeer.showSilly = !Dabeer.showSilly"
+          *ngIf='Dabeer.showSilly else DabeerSilly'>
+        <ng-template #DabeerSilly>
+          <img src="{{Dabeer.sillyLink}}" class="img-fluid" (mouseleave)="Dabeer.showSilly = !Dabeer.showSilly">
+        </ng-template>
       </div>
-      <div class="col-md-7 order-md-1 mt-3 mt-md-0">
+
+      <!-- Dabeer's Blurb -->
+      <div class="col-md-7 order-md-3 mt-3 mt-md-0">
         <p class="text-justify">Dabeer is an exeptional person with many talents and a wide variety of interests! He is
           known to have an undying love for musicals and chemistry. And equally so, he is plenty talented in both
           departments! Dabeer is currently studying IBiomed at McMaster University. In his spare time, he loves to
           practice singing, work on personal projects and hang out with his beloved friends! He is especially fond of
           dropping in on people unexpectedly, but pleasant surprises are always to be expected from Dabeer.</p>
       </div>
-      <div class="col-md-3 order-md-3">
+
+      <!-- Dabeer's Contact Info. -->
+      <div class="col-md-3 order-md-1">
         <p><strong>Contact Dabeer:</strong></p>
         <ul>
           <li>Linkedin: <a href="https://www.linkedin.com/in/dabeerabdulazeez/">View Profile</a></li>
           <li>Github: <a href="https://github.com/GuyInFridge">GuyInFridge</a></li>
           <li>Instagram: @GuyInFridge</li>
-          <li>Email: <a href="mailto:dabeerazeez@gmail.com">dabeerazeez@gmail.com</a></li>
+          <!-- <li>Email: <a href="mailto:dabeerazeez@gmail.com">dabeerazeez@gmail.com</a></li> -->
           <li>Personal Website: <a href="https://dabeerazeez.wixsite.com/1p10portfolio">dabeerazeez.wixsite.com</a></li>
         </ul>
       </div>
+
     </div>
     <hr />
+
+    <!-- Eric's Row-->
     <div class="row d-flex">
+
+      <!-- Eric's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/eric.jpg" class="img-fluid" id="team-image-2" alt="Eric"
-          (mouseenter)="changePhotoSilly(2)" (mouseleave)="changePhotoRegular(2)">
+        <img src="{{Eric.regularLink}}" class="img-fluid" (mouseenter)="Eric.showSilly = !Eric.showSilly"
+          *ngIf='Eric.showSilly else EricSilly'>
+        <ng-template #EricSilly>
+          <img src="{{Eric.sillyLink}}" class="img-fluid" (mouseleave)="Eric.showSilly = !Eric.showSilly">
+        </ng-template>
       </div>
+
+      <!-- Eric's Blurb -->
       <div class="col-md-7 order-md-3 mt-3 mt-md-0">
         <p class="text-justify">Eric is our fearless technical lead, and we would follow him into hellheim and back if
           we had to. But not only that, Eric enjoys his bike rides and <i>dank memes</i> like there is no tomorrow. Eric
@@ -77,6 +110,8 @@
           Eric is extremely proficient in Angular and other coding languages. To tell the truth, his expertise and
           leadership is highly valued by the team. Eric is currently studying Software Engineering at UOttawa.</p>
       </div>
+
+      <!-- Eric's Contact Info. -->
       <div class="col-md-3 order-md-1">
         <p><strong>Contact Eric:</strong></p>
         <ul>
@@ -84,17 +119,27 @@
           <li>Github: <a href="https://github.com/ricetech">ricetech</a></li>
           <li>Instagram: @the_ricetech</li>
           <li>Snapchat: @NullPointerException</li>
-          <li>Email: <a href="mailto:the.ricetech@gmail.com">the.ricetech@gmail.com</a></li>
+          <!-- <li>Email: <a href="mailto:the.ricetech@gmail.com">the.ricetech@gmail.com</a></li> -->
         </ul>
       </div>
+
     </div>
     <hr />
+
+    <!-- Tommy's Row-->
     <div class="row d-flex">
+
+      <!-- Tommy's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/tommy.jpg" class="img-fluid" id="team-image-3"
-          alt="Tommy" (mouseenter)="changePhotoSilly(3)" (mouseleave)="changePhotoRegular(3)">
+        <img src="{{Tommy.regularLink}}" class="img-fluid" (mouseenter)="Tommy.showSilly = !Tommy.showSilly"
+          *ngIf='Tommy.showSilly else TommySilly'>
+        <ng-template #TommySilly>
+          <img src="{{Tommy.sillyLink}}" class="img-fluid" (mouseleave)="Tommy.showSilly = !Tommy.showSilly">
+        </ng-template>
       </div>
-      <div class="col-md-7 order-md-1 mt-3 mt-md-0">
+
+      <!-- Tommy's Blurb -->
+      <div class="col-md-7 order-md-3 mt-3 mt-md-0">
         <p class="text-justify">Tommy, better known as potatoES by the people of Terraria, Steam and Factorio, is an
           ABSOLUTE Legend! Tommy is studying Computer Science at the University of Waterloo and lived in the weirdest
           room in UWP for his first year. Tommy is also an avid rocketry enthusiast, having been a member of the
@@ -104,22 +149,34 @@
           more info on Tommy's stellar workout.</p>
       </div>
 
-      <div class="col-md-3 order-md-3">
+      <!-- Tommy's Contact Info. -->
+      <div class="col-md-3 order-md-1">
         <p><strong>Contact Tommy:</strong></p>
         <ul>
           <li>Linkedin: <a href="https://www.linkedin.com/in/tommyhuang999">Tommy Huang</a></li>
           <li>Github: <a href="https://github.com/TommyHuang-dev">TommyHuang-dev</a></li>
-          <li>Email: <a href="mailto:tommyhuang999@gmail.com">tommyhuang999@gmail.com</a></li>
+          <!-- <li>Email: <a href="mailto:tommyhuang999@gmail.com">tommyhuang999@gmail.com</a></li> -->
           <li>Personal Website: <a href="https://tommyhuang.net/">tommyhuang.net</a></li>
         </ul>
       </div>
+
     </div>
     <hr />
+
+    <!-- Janakitti's Row-->
     <div class="row d-flex">
+
+      <!-- Janakitti's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/janakitti.png" class="img-fluid border" id="team-image-4"
-          alt="Janakitti" (mouseenter)="changePhotoSilly(4)" (mouseleave)="changePhotoRegular(4)">
+        <img src="{{Janakitti.regularLink}}" class="img-fluid" (mouseenter)="Janakitti.showSilly = !Janakitti.showSilly"
+          *ngIf='Janakitti.showSilly else JanakittiSilly'>
+        <ng-template #JanakittiSilly>
+          <img src="{{Janakitti.sillyLink}}" class="img-fluid"
+            (mouseleave)="Janakitti.showSilly = !Janakitti.showSilly">
+        </ng-template>
       </div>
+
+      <!-- Janakitti's Blurb -->
       <div class="col-md-7 order-md-3 mt-3 mt-md-0">
         <p class="text-justify">Janakitti is the Gandalf of our team at Virtrolio. While a true technical and computer
           wizard at the keyboard and on Powerpoint, Janakitti is also the sac that holds the team together. Janakitti is
@@ -127,6 +184,8 @@
           known to be an extremely talented guitar player! You should also checkout his eccentric website <a
             href="http://janakitti.com">janakitti.com</a></p>
       </div>
+
+      <!-- Janakitti's Contact Info. -->
       <div class="col-md-3 order-md-1">
         <p><strong>Contact Janakitti:</strong></p>
         <ul>
@@ -134,28 +193,38 @@
           <li>Github: <a href="https://github.com/janakitti">Janakitti</a></li>
           <li>Instagram: @janakitti</li>
           <li>Snapchat: @janakitti</li>
-          <li>Email: <a href="mailto:hello@janakitti.com">hello@janakitti.com</a></li>
+          <!-- <li>Email: <a href="mailto:hello@janakitti.com">hello@janakitti.com</a></li> -->
           <li>Personal Website: <a href="http://janakitti.com">janakitti.com</a></li>
         </ul>
       </div>
+
     </div>
     <hr />
+
+    <!-- John's Row-->
     <div class="row d-flex">
+
+      <!-- John's Image -->
       <div class="col-md-2 order-md-2">
-        <img src="./../../../assets/images/about-us-developers/john.jpg" class="img-fluid border" id="team-image-5"
-          alt="John" (mouseenter)="changePhotoSilly(5)" (mouseleave)="changePhotoRegular(5)">
+        <img src="{{John.regularLink}}" class="img-fluid" (mouseenter)="John.showSilly = !John.showSilly"
+          *ngIf='John.showSilly else JohnSilly'>
+        <ng-template #JohnSilly>
+          <img src="{{John.sillyLink}}" class="img-fluid" (mouseleave)="John.showSilly = !John.showSilly">
+        </ng-template>
       </div>
-      <div class="col-md-7 order-md-1 mt-3 mt-md-0">
-        <p class="text-justify">
-          John is the fearless, heroic and noble creator of all the static pages you see on the Virtrolio site. In his
+
+      <!-- John's Blurb -->
+      <div class="col-md-7 order-md-3 mt-3 mt-md-0">
+        <p class="text-justify">John is the fearless, heroic and noble creator of all the static pages you see on the
+          Virtrolio site. In his
           domain, all browsers are welcome (with the exception of IE11) and are served with the very best static pages.
           John is currently studying Computer Science at the University of Waterloo. In his spare time, John enjoys
           baking fresh peanut-butter chocolate chip cookies and watching Masterchef Australia. John has also been taking
-          swimming lessons to improve his swimming skills.
-        </p>
+          swimming lessons to improve his swimming skills.</p>
       </div>
 
-      <div class="col-md-3 order-md-3">
+      <!-- John's Contact Info. -->
+      <div class="col-md-3 order-md-1">
         <p><strong>Contact John:</strong></p>
         <ul>
           <li>Linkedin: <a href="https://www.linkedin.com/in/johnzhou123/">John Zhou</a></li>
@@ -163,7 +232,7 @@
           <li>Instagram: @itsjon.zho</li>
         </ul>
       </div>
+
     </div>
-    <br />
   </div>
 </div>
