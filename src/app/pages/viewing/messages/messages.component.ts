@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { AuthService } from '../../../core/auth.service';
+import { FontService } from '../../../core/font.service';
+import { Fonts } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-messages',
@@ -9,9 +11,12 @@ import { AuthService } from '../../../core/auth.service';
 })
 
 export class MessagesComponent implements OnInit {
-  constructor(public viewService: ViewingService, public authService: AuthService) { }
+  fonts: Fonts;
+  constructor(public viewService: ViewingService, public authService: AuthService, public fontService: FontService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.fonts = FontService.fonts;
+  }
 
   /**
    * Swap between message viewing styles styles
