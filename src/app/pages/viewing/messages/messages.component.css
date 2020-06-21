@@ -69,6 +69,11 @@
   overflow-y: auto;
 }
 
+#no-messages {
+  font-size: 2em;
+  color: var(--light-grey);
+}
+
 @media (min-width: 576px) {
   .card-columns {
     column-count: 1;
