@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { FontService } from './font.service';
 import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
@@ -52,6 +53,8 @@ export class MsgIoService {
       throw new Error('Provided font color is not a valid hex code. Did you forget to include #?');
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided background color is not a valid hex code. Did you forget to include #?');
+    } else if (!(message.fontFamily in FontService.fonts)) {
+      throw new Error('Provided font family is not supported or doesn\'t exist: ' + message.fontFamily);
     }
     // Return not needed as an error will be thrown if something is wrong
   }
