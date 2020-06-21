@@ -129,8 +129,6 @@ export class MsgIoService {
    * @throws ReferenceError - If this method is called when logged out
    */
   async sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<void> {
-    // TODO: Add Font Family check
-
     // Check message object contents for validity
     this.verifyMessage(messageTemplate);
 
