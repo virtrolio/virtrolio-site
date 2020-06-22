@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { FontService } from '../../../core/font.service';
