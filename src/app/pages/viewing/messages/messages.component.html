@@ -1,59 +1,114 @@
-<div class="row my-3">
-  <div class="col-12">
-    <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewingService.isCardView"
-             (click)="toggleViewStyle()">
-      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewingService.isCardView">Switch to
-        Cards</label>
-      <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewingService.isCardView">Switch to
-        Booklet</label>
-    </div>
-  </div>
+<!-- Perform a check to see if the number of messages received is 0 -->
+<div *ngIf="viewService.numMessages === 0; else showMessages" class="m-5" id="no-messages">No messages...
+  <markdown emoji>:sob:</markdown>
 </div>
 
-<div class="viewing-container mb-5" *ngIf="viewingService.isCardView == false">
-  <div id="carouselControls" class="carousel slide border rounded" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="page">
-          <span class="title-page">My Yearbook</span>
-        </div>
-      </div>
-      <div class="carousel-item" *ngFor="let msg of userMsgData">
-        <div class="page" [ngStyle]="{'background': msg.bgcolor}">
-          <table>
-            <tr class="message"
-                [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-              <td>{{ msg.message }}</td>
-            </tr>
-            <tr class="message"
-                [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-              <td>{{ msg.author }}</td>
-            </tr>
-          </table>
-        </div>
+<!-- If the ngIf above fails, this ngTemplate will show -->
+<ng-template #showMessages>
+  <!-- Toggle switch for message viewing styles -->
+  <div class="row my-3">
+    <div class="col-12">
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCarouselView"
+               (click)="toggleViewStyle()">
+        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch
+          to Booklet</label>
+        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch
+          to Cards</label>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </a>
-    <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </a>
   </div>
-</div>
-<div class="mt-3" *ngIf="viewingService.isCardView == true">
-  <div class="card message-card" *ngFor="let msg of userMsgData" id="{{msg.authorid}}"
-       [ngStyle]="{'background': msg.bgcolor}">
-    <table>
-      <tr class="message"
-          [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-        <td>{{ msg.message }}</td>
-      </tr>
-      <tr class="message"
-          [ngStyle]="{'color': msg.fontcolor, 'font-family': msg.fontfamily, 'font-style': msg.fontstyle}">
-        <td>{{ msg.author }}</td>
-      </tr>
-    </table>
+
+  <!-- Card message view -->
+  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
+    <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
+      <div class="card-header">
+        <div class="card-header-author">
+                  <span class="profile-pic-container-small mr-2">
+          <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+        </span>
+          <span class="card-header-text">{{ msg.fromName }}</span>
+        </div>
+
+        <button class="btn delete-button" type="button" data-toggle="modal"
+                data-target="#delete" (click)="setMessageToDelete(msg.id)"><span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
+        <table>
+          <tr class="message"
+              [ngStyle]="{'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
+            <td>
+              <markdown emoji data="{{ msg.contents }}"></markdown>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel message view -->
+  <div class="viewing-container mb-5" *ngIf="viewService.isCarouselView === true">
+    <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-front-page-header px-3 py-2">
+            Placeholder
+          </div>
+          <div class="page">
+            <span class="title-page">My Yearbook</span>
+          </div>
+        </div>
+        <div class="carousel-item" *ngFor="let msg of viewService.messages">
+          <div class="carousel-header px-3 py-2">
+          <span class="profile-pic-container-small mr-2">
+            <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+          </span>
+            <span class="card-header-text">{{ msg.fromName }}</span>
+          </div>
+          <div class="page" [ngStyle]="{'background': msg.backColor}">
+            <table>
+              <tr class="message"
+                  [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
+                <td>
+                  <markdown emoji data="{{ msg.contents }}"></markdown>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</ng-template>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete-message-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- Modal Title -->
+        <h5 class="modal-title" id="delete-message-modal-title">Easy now!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id='delete-message-body'>
+        Looks like you're trying to delete a message! Please be sure that this is what you want to do. <b>It is not
+        possible to recover a deleted message</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteMessage()">Yes, I want to
+          delete
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

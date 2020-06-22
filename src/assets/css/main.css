@@ -82,6 +82,15 @@ a.clickable-object, a.clickable-object:hover {
   box-shadow: 0 0 0 0.2rem var(--accent-transparent);
 }
 
+/* Toggle switch */
+.custom-control-label:before{
+  background-color: white;
+}
+.custom-switch .custom-control-input:checked~.custom-control-label::before{
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* Profile Picture formatting */
 .profile-pic-container {
   background: rgba(255, 255, 255, 0);
