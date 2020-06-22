@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { AuthService } from '../../core/auth.service';
 import { FontService } from '../../core/font.service';
+import { Fonts } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   // font service stuff
   public currentFont = 'Arial, sans-serif';
   public currentFontDisplay = 'Arial';
-  public fontDict;
+  public fontDict: Fonts;
 
   constructor(public authService: AuthService) {
     this.fontDict = FontService.fonts;
