@@ -11,7 +11,7 @@
       <div class="row">
         <textarea #signingInputArea id="signing-box" class="form-control" autofocus
                   (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
-                  [ngStyle]="{'font-family': currentFont}"></textarea>
+                  [ngStyle]="{'font-family': currentFontFamily}"></textarea>
         <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
           {{ charCount }} / {{ maxCharCount }}
         </span>
@@ -26,7 +26,7 @@
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                  [ngStyle]="{'font-family': currentFont}">
+                  [ngStyle]="{'font-family': currentFontFamily}">
             {{ currentFontDisplay }}
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
@@ -89,7 +89,7 @@
       </div>
       <div class="row">
         <markdown emoji
-                  [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
+                  [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFontFamily}"
                   id="preview-text" data="{{ signingBoxText }}"></markdown>
       </div>
     </div>

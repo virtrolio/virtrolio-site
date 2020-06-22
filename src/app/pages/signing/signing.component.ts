@@ -30,8 +30,9 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   // font service stuff
-  public currentFont = 'Arial';
-  public currentFontDisplay = 'Arial';
+  public currentFont = 'Arial'; // Used to select a font from fontDict
+  public currentFontFamily = 'Arial'; // Used to CSS select the font
+  public currentFontDisplay = 'Arial'; // Shown in the Font Dropdown menu
   public fontDict: Fonts;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
@@ -55,7 +56,8 @@ export class SigningComponent implements OnInit {
    * @param font - Font selected from dropdown menu
    */
   selectFont(font: string) {
-    this.currentFont = font + ',' + this.fontDict[font].backupFont;
+    this.currentFont = font;
+    this.currentFontFamily = font + ',' + this.fontDict[font].backupFont;
     this.currentFontDisplay = this.fontDict[font].fontFamily;
   }
 
