@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/auth.service';
+import { AuthService } from 'src/app/core/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-friend-link',
@@ -7,9 +8,19 @@ import { AuthService } from '../../core/auth.service';
   styleUrls: [ './friend-link.component.css' ]
 })
 export class FriendLinkComponent implements OnInit {
+  uid: string;
+  key: string;
 
-  constructor(public authService: AuthService) { }
+  goToSigning() {
+    this.authService.login('/signing', { uid: this.uid, key: this.key });
+  }
 
-  ngOnInit(): void { }
+  constructor(public authService: AuthService, private route: ActivatedRoute) { }
 
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.uid = params.uid;
+      this.key = params.key;
+    });
+  }
 }

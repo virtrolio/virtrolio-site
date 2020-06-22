@@ -23,10 +23,10 @@ import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover
 // Services
 import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
+import { SigningGuard } from './core/signing.guard';
 
 // noinspection JSUnusedLocalSymbols
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
-const redirectLoggedOutSigning = () => redirectUnauthorizedTo([ '/friend-link' ]);
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'friend-link', component: FriendLinkComponent },
+  { path: 'friend-link', component: FriendLinkComponent},
   { path: 'invalid-link' , component: InvalidLinkComponent },
   {
     path: 'msg-sent',
@@ -57,8 +57,7 @@ const routes: Routes = [
   {
     path: 'signing',
     component: SigningComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectLoggedOutSigning },
+    canActivate: [ SigningGuard ],
     resolve: { user: LoginResolver }
   },
   { path: 'terms-of-service', component: TermsOfServiceComponent },
