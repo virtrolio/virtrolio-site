@@ -14,7 +14,7 @@ export class MessagesComponent implements OnInit {
   fonts: Fonts;
   messageToDelete: string;
 
-  constructor(public viewService: ViewingService, public authService: AuthService, public fontService: FontService) { }
+  constructor(public viewService: ViewingService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.fonts = FontService.fonts;
