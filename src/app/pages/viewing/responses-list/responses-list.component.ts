@@ -10,7 +10,7 @@ import { ActivatedRoute, Router  } from '@angular/router';
   styleUrls: [ './responses-list.component.css' ]
 })
 export class ResponsesListComponent implements OnInit {
-  public displayName;
+  public displayName: string;
   public photoUrl;
   public uid;
 
