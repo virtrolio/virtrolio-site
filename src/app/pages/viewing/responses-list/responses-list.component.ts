@@ -12,7 +12,7 @@ import { ActivatedRoute, Router  } from '@angular/router';
 export class ResponsesListComponent implements OnInit {
   public displayName: string;
   public photoUrl: string;
-  public uid;
+  public uid: string;
 
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
               private route: ActivatedRoute, private router: Router) {
