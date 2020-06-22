@@ -1,3 +1,150 @@
 <div class="container">
-  <h1 align=center>FAQ works!</h1>
+  <h1 class='mt-3 mb-3' id="title">Frequently Asked Questions</h1>
+  <br />
+
+  <!-- Section 1: How to use a virtrolio? -->
+  <h2>Signing and Sharing your Virtrolio</h2>
+  <div class="accordion" id="faq-s1">
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q1h">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q1c" aria-expanded="false"
+            aria-controls="s1q1c">
+            How do I sign someone's virtrolio?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q1c" class="collapse" aria-labelledby="s1q1h" data-parent="#faq-s1">
+        <div class="card-body card-align">
+          Ask them for their 'sharing link' (which they can get from their 'Your Virtrolio' page). Then visit that
+          sharing link and sign in if you haven't already. You will then be taken to a wonderful place with many
+          formatting tools to type your customized message.
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q2h">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#s1q2c"
+            aria-expanded="false" aria-controls="s1q2c">
+            How do I delete a message?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q2c" class="collapse" aria-labelledby="s1q2h" data-parent="#faq-s1">
+        <div class="card-body card-align">
+          As per our <a routerLink="/privacy-policy">Privacy Policy</a>, you cannot delete a message once you have sent
+          it. This is to more closely emulate real-life yearbook signing. In order to have your message deleted, you
+          must ask the <em>recipient</em> of your message to delete it.
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q3h">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#s1q3c"
+            aria-expanded="false" aria-controls="s1q3c">
+            How can I sign someone's yearbook more than once?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q3c" class="collapse" aria-labelledby="s1q3h" data-parent="#faq-s1">
+        <div class="card-body card-align">
+          Unfortunately, you can't. You probably wouldn't sign someone's yearbook more than once in real life (unless
+          you just <em>wanted</em> to take space away from other people). As such, we decided that you can send one very
+          special, meaningful message to each of your friends. Make it count!
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class='card'>
+      <div class='card-header' id='s1q4h'>
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q4c" aria-expanded="false"
+            aria-controls="s1q4c">
+            How do I get a new sharing link?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q4c" class="collapse" aria-labelledby="s1q4h" data-parent="#faq-s1">
+        <div class='card-body card-align'>
+          Go to <a routerLink="/virtrolio-cover">your Virtrolio</a> and click on 'Sharing Link,', then generate a new
+          link from there. Be aware—doing so will invalidate all previous links!
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q5h">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q5c" aria-expanded="false"
+            aria-controls="s1q5c">
+            Can I add images, drawings, doodles, or scribbles to my messages?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q5c" class="collapse" aria-labelledby="s1q5h" data-parent="#faq-s1">
+        <div class="card-body card-align">
+          No. Currently, we require more funds to be able to store images and doodles on our service. Feel free to send
+          your friends links to online photo albums, though!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <h2>Miscellaneous</h2>
+  <div class="accordion" id="faq-s2">
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s2q1h">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s2q1c" aria-expanded="false"
+            aria-controls="s2q1c">
+            What do I do if I get messages I don't approve of?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s2q1c" class="collapse" aria-labelledby="s2q1h" data-parent="#faq-s2">
+        <div class="card-body card-align">
+          Delete the messages from your virtrolio; as the recipient, according to our
+          <a routerLink="/privacy-policy">Privacy Policy</a>, you are the only one with the authority to do this. You
+          can also generate a new sharing link to prevent people from misusing your old one. If
+          the problem persists, you can <a href="mailto:virtrolio.team@gmail.com">send us an email</a> and we can take
+          more authoritative action.
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br />
+  <hr />
+  <br />
+  <div class='jumbotron' id="bottom-text">
+    <p>Didn't find what you were looking for? Send us your question with the <a routerLink='/contact'>Contact Us</a>
+      page!</p>
+  </div>
+
 </div>

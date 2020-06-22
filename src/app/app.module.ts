@@ -36,9 +36,11 @@ import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { LoginResolver } from './core/login-resolver';
     MessagesComponent,
     ResponsesListComponent,
     VirtrolioCoverComponent,
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent,
     InvalidLinkComponent,
     AccessDeniedComponent,
     RejeccComponent
