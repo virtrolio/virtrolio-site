@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MsgIoService } from '../../core/msg-io.service';
 import { VirtrolioMessage } from '../../shared/interfaces';
-import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
