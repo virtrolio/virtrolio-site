@@ -30,7 +30,7 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   // font service stuff
-  public currentFont = 'Arial, sans-serif';
+  public currentFont = 'Arial';
   public currentFontDisplay = 'Arial';
   public fontDict: Fonts;
 
