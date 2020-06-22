@@ -79,7 +79,7 @@ a.clickable-object, a.clickable-object:hover {
   box-shadow: 0 0 0 0.2rem var(--accent-transparent);
 }
 
-/* Toggle switch formatting */
+/* Toggle switch */
 .custom-control-label:before{
   background-color: white;
 }
