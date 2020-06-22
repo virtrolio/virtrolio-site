@@ -11,7 +11,7 @@ import { ActivatedRoute, Router  } from '@angular/router';
 })
 export class ResponsesListComponent implements OnInit {
   public displayName: string;
-  public photoUrl;
+  public photoUrl: string;
   public uid;
 
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
