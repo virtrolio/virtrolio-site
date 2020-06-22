@@ -1,8 +1,9 @@
 <div class="container-fluid full-width" id="home-background">
   <div class="container-fluid full-width" id="home-img-background">
+    <!-- For logo in background -->
     <!--    <img data-aos="zoom-in-up" data-aos-duration="1500" src="../../../assets/images/logo_inverted.png" width="1024" height="1024" id="bg-logo-img" alt="Virtrolio Logo">-->
-    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-lg-block d-xl-block"
-         src="../../../assets/images/iso.svg" width="1024" height="1024" id="feature-img" alt="Virtrolio Logo">
+    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-xl-block" src="../../../assets/images/iso.svg"
+         id="feature-img" alt="Virtrolio Logo">
     <div id="title-container">
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay Connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">With your "friends"</h1>
@@ -35,7 +36,8 @@
               <span>Sign in with Google</span>
             </button>
           </div>
-          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you agree to the <a routerLink="">Terms
+          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you agree to the <a
+            routerLink="">Terms
             and Conditions</a>.</p>
         </div>
 
@@ -50,30 +52,114 @@
       </div>
     </div>
   </div>
-  <!--  <div class="row d-flex justify-content-center">
-      <img src="../../../assets/images/logo_reg_transparent.png" alt="virtrolio logo" id="logo">
-    </div>-->
-  <div class="row pt-1 pt-md-5 pb-5 my-5">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-5">
-      <div class="card mr-4 mb-5 rounded border-0">
-        <h3>Create a virtrolio</h3>
-        <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
-          and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign your
-          virtrolio.</p>
+
+  <div class="container py-4 center-children vertical-center">
+    <div class="row">
+      <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
+        <div class="card mr-4 mb-5 rounded border-0">
+          <h3 class="body-header-text">Create a virtrolio</h3>
+          <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
+            and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
+            your
+            virtrolio.</p>
+        </div>
+        <div class="card mr-4 rounded border-0">
+          <h3 class="body-header-text">Sign a virtrolio</h3>
+          <p class="lead home-text body-text">Truly express yourself with an array of message customization tools,
+            including colour pickers, fonts, emojis, and a markdown editor.</p>
+        </div>
       </div>
-      <div class="card mr-4 rounded border-0">
-        <h3>Sign a virtrolio</h3>
-        <p class="lead home-text body-text">Truly express yourself with an array of message customization tools,
-          including colour pickers, fonts, and a markdown editor.</p>
-      </div>
-    </div>
-    <div class="col-4 pl-5 d-none d-lg-block d-xl-block" data-aos="flip-left" data-aos-duration="2000" data-aos-once="true">
-      <div class="card message-card d-flex justify-content-center border-0 shadow" id="card-2">
-        <div class="card message-card d-flex justify-content-center border-0 shadow" id="card-1">
-          <div class="card message-card d-flex justify-content-center border-0 shadow" id="card-0">
-            <p id="card-message">Had an amazing year with you. I'm really gonna miss u. Have a good life. <br> Mike H.
-            </p>
+
+      <!-- Demo Card -->
+      <div class="order-md-2 d-none d-sm-block col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4" data-aos="flip-left"
+           data-aos-duration="2000"
+           data-aos-once="true">
+        <div class="card shadow">
+          <div class="card-header">
+              <span class="profile-pic-container-small mr-2">
+                <img class="profile-pic" src="../../../assets/images/logo_reg.png" alt="profile-pic">
+              </span>
+            <span class="card-header-text">Mike H.</span>
           </div>
+          <markdown class="card-body card-message" emoji
+                    [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
+                    id="preview-text" data="{{ cardText }}"></markdown>
+        </div>
+      </div>
+      <!-- Signing component component -->
+      <div class="order-md-3 d-none d-sm-block col-8">
+        <div class="center-children">
+          <div class="row title-div vertical-center">
+          </div>
+          <div class="row">
+            <label id="signing-box-label" for="signing-box">
+              <b>Give it a try!</b>
+            </label>
+            <textarea #signingInputArea id="signing-box" class="form-control" autofocus
+                      (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
+                      [ngStyle]="{'font-family': currentFont}"></textarea>
+            <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
+          {{ charCount }} / {{ maxCharCount }}
+        </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formatting Tools -->
+      <div class='d-none d-sm-block col-8 order-md-3 mb-5'>
+        <div class="row justify-content-center" id="options">
+
+          <!-- Font dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    [ngStyle]="{'font-family': currentFont}">
+              {{ currentFontDisplay }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
+              <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
+              <span *ngFor="let font of fontDict | keyvalue">
+              <a class="dropdown-item" [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
+                 (click)="selectFont(font.key)" href="javascript: void(0)">{{font.key}}</a>
+            </span>
+            </div>
+          </div>
+
+          <!-- Formatting buttons -->
+          <button type="button" (click)="addFormatting(signingInputArea, '**')"
+                  class="btn btn-secondary btn-format mr-2"
+                  id="button-bold">
+            <b>B</b>
+          </button>
+          <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
+                  id="button-italics">
+            <i>I</i>
+          </button>
+          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>')"
+                  class="btn btn-secondary btn-format mr-2" id="button-underline">
+            <u>U</u>
+          </button>
+          <button type="button" (click)="addFormatting(signingInputArea, '~~')"
+                  class="btn btn-secondary btn-format mr-2"
+                  id="button-strikethrough">
+            <s>S</s>
+          </button>
+
+          <!-- Color pickers for text and background -->
+          <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+            <span id="font-color-text">A</span>
+            <label for="colorpicker-font" hidden>Colour picker for font</label>
+            <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
+                   [(ngModel)]='textColor'>
+            <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
+          </button>
+          <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+            <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
+            <label for="colorpicker-background" hidden>Colour picker for background</label>
+            <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+                   value={{backgroundColor}} [(ngModel)]='backgroundColor'>
+            <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
+          </button>
         </div>
       </div>
     </div>
