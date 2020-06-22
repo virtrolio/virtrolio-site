@@ -39,7 +39,7 @@ export class MessagesComponent implements OnInit {
   }
 
   /**
-   * Swap between message viewing styles styles
+   * Swap between message viewing styles
    */
   toggleViewStyle() {
     this.viewService.isCarouselView = this.viewService.isCarouselView === false;
