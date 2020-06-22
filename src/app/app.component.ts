@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * OnInit, adds cookie to browser if nonexistent and updates {@param showCookieAlert}
+   * OnInit, adds cookie to browser if nonexistent and updates the cookie service to display an alert
    * depending on the value of the cookie.
    */
   ngOnInit(): void {

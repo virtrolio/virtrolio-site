@@ -17,10 +17,11 @@ export class VirtrolioCoverComponent implements OnInit {
   public showWarningText = false;
   public copyButtonText = 'Copy';
   public displayName;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.displayName().then((displayName) => {this.displayName = displayName});
+    this.authService.displayName().then((displayName) => { this.displayName = displayName; });
   }
 
   /**
@@ -32,15 +33,6 @@ export class VirtrolioCoverComponent implements OnInit {
     inputElement.setSelectionRange(0, 10000);
     document.execCommand('copy');
     this.copyButtonText = 'Copied!';
-  }
-
-  /**
-   * Return display name.
-   */
-  getDisplayName() {
-    return this.authService.displayName().then(displayName => {
-      return displayName;
-    }).catch(error => console.log(error));
   }
 
   /**

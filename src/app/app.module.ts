@@ -79,7 +79,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
       markedOptions: {
         provide: MarkedOptions,
         useValue: {
-          // makes having 2 newlines for a line break unneccessary
+          // makes having 2 newlines for a line break unnecessary
           breaks: true,
         },
       },

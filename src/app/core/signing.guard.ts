@@ -31,6 +31,7 @@ export class SigningGuard implements CanActivate {
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,
               private msgIOService: MsgIoService) { }
 
+  // noinspection JSUnusedLocalSymbols
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -56,7 +57,7 @@ export class SigningGuard implements CanActivate {
           this.router.navigate([ '/rejecc' ]);
           return false;
         }
-      }).catch(error => {
+      }).catch(() => {
         this.router.navigate([ '/invalid-link' ]);
       });
 
@@ -67,7 +68,7 @@ export class SigningGuard implements CanActivate {
         return false;
       }
     })
-      .catch(error => {
+      .catch(() => {
         this.router.navigate([ '/invalid-link' ]);
         return false;
       });
