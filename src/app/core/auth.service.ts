@@ -39,7 +39,6 @@ export class AuthService {
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
    * @returns A promise evaluating to true if the redirect is successful.
-   * @throws Error - If the login fails
    */
   async login(routeTo: string, queryParams?: object): Promise<boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
@@ -61,7 +60,6 @@ export class AuthService {
    * Logs the user out of the website using Firebase Authentication.
    * Upon successful logout, the user will be redirected to the home page.
    * @returns A promise evaluating to true if the redirect is successful.
-   * @throws Error - If the logout fails
    */
   logout(): Promise<boolean> {
     return this.afa.signOut().then(() => {
