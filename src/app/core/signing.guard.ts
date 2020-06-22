@@ -32,8 +32,8 @@ export class SigningGuard implements CanActivate {
     // Regex Extraction of 'uid' and 'key' params
     try {
       const linkStr = window.location.href;
-      SigningGuard.uid = linkStr.match(/(?<=uid=)(.*)(?=&)/)[0];
-      SigningGuard.key = linkStr.match(/(?<=key=)(.*)$/)[0];
+      SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
+      SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (e) {
       this.router.navigate(['/invalid-link']);
     }
