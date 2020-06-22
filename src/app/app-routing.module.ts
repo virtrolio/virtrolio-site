@@ -13,8 +13,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
+import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
 
@@ -43,6 +45,8 @@ const routes: Routes = [
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized }
   },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'placeholder', redirectTo: '/invalid-link' },
   { path: 'rejecc', component: RejeccComponent },
   {
     path: 'settings',
@@ -56,6 +60,7 @@ const routes: Routes = [
     canActivate: [ SigningGuard ],
     resolve: { user: LoginResolver }
   },
+  { path: 'terms-of-service', component: TermsOfServiceComponent },
   {
     path: 'viewing',
     component: ViewingComponent,
@@ -67,14 +72,15 @@ const routes: Routes = [
     path: 'virtrolio-cover',
     component: VirtrolioCoverComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})], // scroll to top when routerLinking
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
