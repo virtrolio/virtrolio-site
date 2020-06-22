@@ -30,10 +30,9 @@
             {{ currentFontDisplay }}
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
-            <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
             <span *ngFor="let font of fontDict | keyvalue">
               <a class="dropdown-item" [ngStyle]="{'font-family': font.key}"
-                 (click)="selectFont(font.key)" href="javascript: void(0)">{{font.key}}</a>
+                 (click)="selectFont(font.key)">{{font.key}}</a>
             </span>
           </div>
         </div>
@@ -57,14 +56,14 @@
         </button>
 
         <!-- Color pickers for text and background -->
-        <button href="javascript: void(0)" type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <span id="font-color-text">A</span>
           <label for="colorpicker-font" hidden>Colour picker for font</label>
           <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
                  [(ngModel)]='textColor'>
           <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
         </button>
-        <button href="javascript: void(0)" type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"

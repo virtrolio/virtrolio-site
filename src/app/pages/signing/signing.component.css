@@ -71,6 +71,10 @@ markdown {
   background-color: var(--light-grey);
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 .dropdown-item:active {
 	background-color: var(--accent);
 }
@@ -87,6 +91,7 @@ markdown {
 
 .icon-wrapper {
   padding: 0;
+  cursor: pointer;
 }
 
 #colorpicker-font, #colorpicker-background {

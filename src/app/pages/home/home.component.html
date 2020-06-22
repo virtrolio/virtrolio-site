@@ -117,10 +117,9 @@
               {{ currentFontDisplay }}
             </button>
             <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
-              <!-- javascript: void(0) does nothing, but the href makes the cursor become a clicky thing on hover -->
               <span *ngFor="let font of fontDict | keyvalue">
               <a class="dropdown-item" [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
-                 (click)="selectFont(font.key)" href="javascript: void(0)">{{font.key}}</a>
+                 (click)="selectFont(font.key)">{{font.key}}</a>
             </span>
             </div>
           </div>
