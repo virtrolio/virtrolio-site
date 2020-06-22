@@ -46,7 +46,6 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorized }
   },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'placeholder', redirectTo: '/invalid-link' },
   { path: 'rejecc', component: RejeccComponent },
   {
     path: 'settings',
