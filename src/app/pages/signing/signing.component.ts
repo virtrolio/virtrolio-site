@@ -98,7 +98,7 @@ export class SigningComponent implements OnInit {
     const newMsg = this.msgIo.createBlankMessage();
     newMsg.backColor = this.backgroundColor;
     newMsg.fontColor = this.textColor;
-    newMsg.fontFamily = this.currentFont;
+    newMsg.fontFamily = this.currentFontDisplay;
     newMsg.contents = textbox.value;
     newMsg.to = this.uid;
 
