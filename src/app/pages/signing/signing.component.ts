@@ -31,7 +31,7 @@ export class SigningComponent implements OnInit {
 
   // font service stuff
   public currentFont = 'Arial'; // Used to select a font from fontDict
-  public currentFontFamily = 'Arial'; // Used to CSS select the font
+  public currentFontFamily = 'Arial, sans-serif'; // Used to CSS select the font
   public currentFontDisplay = 'Arial'; // Shown in the Font Dropdown menu
   public fontDict: Fonts;
 
