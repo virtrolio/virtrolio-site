@@ -216,6 +216,7 @@ markdown {
   width: 2.2em;
   height: 2.2em;
   margin: -1.55em 0.05em !important;
+  cursor: pointer;
 }
 
 #font-color-text {
