@@ -16,7 +16,7 @@ export class VirtrolioCoverComponent implements OnInit {
   public linkReady = false;
   public showWarningText = false;
   public copyButtonText = 'Copy';
-  public displayName;
+  public displayName: string;
 
   constructor(public authService: AuthService) { }
 
