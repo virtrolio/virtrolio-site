@@ -42,7 +42,7 @@ export class ResponsesListComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
-        messageid: id
+        messageId: id
       },
       // Preserve the existing query params in the
       queryParamsHandling: 'merge',
