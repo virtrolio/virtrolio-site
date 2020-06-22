@@ -8,7 +8,7 @@ import { Fonts } from '../../shared/interfaces';
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: ['./signing.component.css']
+  styleUrls: [ './signing.component.css' ]
 })
 
 /**
@@ -103,7 +103,7 @@ export class SigningComponent implements OnInit {
     newMsg.to = this.uid;
 
     this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      this.router.navigate(['/msg-sent']))
+      this.router.navigate([ '/msg-sent' ]))
       .catch(error => alert(error));
   }
 
