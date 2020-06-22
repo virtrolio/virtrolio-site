@@ -10,8 +10,8 @@ export class ViewingService {
   numMessages: number;
   isCarouselView = false;
   /**
-  * Retrieve message data from database
-  */
+   * Retrieve message data from database
+   */
   constructor(public msgIo: MsgIoService) {
     this.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       this.messages = messages;
