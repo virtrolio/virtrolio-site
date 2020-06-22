@@ -9,8 +9,10 @@ export class ViewingService {
   messages: VirtrolioMessage[];
   numMessages: number;
   isCarouselView = false;
+  /**
+  * Retrieve message data from database
+  */
   constructor(public msgIo: MsgIoService) {
-    // Subscribe to the array of VirtrolioMessage observables and make data available in messages variable
     this.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       this.messages = messages;
       this.numMessages = messages.length;
