@@ -1,19 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, SecurityContext } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private sanitizer: DomSanitizer) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
+
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 
@@ -156,6 +158,20 @@ export class AuthService {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
       return (await userRef.valueChanges().pipe(take(1)).toPromise()).displayName;
     }
+  }
+
+  /**
+   * Changes the user's display name. The method caller is responsible for confirming that the user actually wishes
+   * to change their name, and for advising the user that a name change is only allowed once every 30 days.
+   * @param newName - the new displayName for the user.
+   */
+  async changeDisplayName(newName: string): Promise<void> {
+    this.throwErrorIfLoggedOut('change your name');
+    const user = this.uid();
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
+    // Remove XSS from displayName
+    newName = this.sanitizer.sanitize(SecurityContext.HTML, newName);
+    return await userRef.update({ displayName: newName });
   }
 
   /**
