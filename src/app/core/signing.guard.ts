@@ -42,33 +42,39 @@ export class SigningGuard implements CanActivate {
       SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (e) {
+      // noinspection JSIgnoredPromiseFromCall
       this.router.navigate([ '/invalid-link' ]);
     }
 
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/invalid-link' ]);
         return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
+          // noinspection JSIgnoredPromiseFromCall
           this.router.navigate([ '/rejecc' ]);
           return false;
         }
       }).catch(() => {
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/invalid-link' ]);
       });
 
       if (this.authService.isLoggedIn()) {
         return true;
       } else {
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/friend-link' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
         return false;
       }
     })
       .catch(() => {
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/invalid-link' ]);
         return false;
       });

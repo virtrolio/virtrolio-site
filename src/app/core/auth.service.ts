@@ -125,12 +125,22 @@ export class AuthService {
   async profilePictureLink(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
-    if (uid === this.uid() || typeof uid === 'undefined') {
+    if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.photoURL;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
       return (await userRef.valueChanges().pipe(take(1)).toPromise()).profilePic;
     }
+  }
+
+  /**
+   * Same as profilePictureLink, except not async to avoid issues with the navbar loading too fast.
+   * This method should <u>**NOT**</u> be called by anything except the navbar. Use profilePictureLink() instead.
+   * @returns The URL to the user's profile picture.
+   * @throws ReferenceError - If the user is not logged in
+   */
+  notAsyncProfilePictureLink(): string {
+    return this.user.photoURL;
   }
 
   /**
@@ -140,7 +150,7 @@ export class AuthService {
   async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
     // noinspection DuplicatedCode
-    if (uid === this.uid() || typeof uid === 'undefined') {
+    if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.displayName;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);

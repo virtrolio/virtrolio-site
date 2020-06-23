@@ -39,6 +39,7 @@ export class ResponsesListComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
+    // noinspection JSIgnoredPromiseFromCall
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
