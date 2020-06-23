@@ -32,10 +32,12 @@ export class MessagesComponent implements OnInit {
    * Wrapper around deleteMessage()
    */
   deleteMessage() {
-    try {
-      this.viewService.msgIo.deleteMessage(this.messageToDelete);
-    } catch (e) {
-    }
+    // noinspection JSIgnoredPromiseFromCall
+    this.viewService.msgIo.deleteMessage(this.messageToDelete).then(() => {
+      // TODO: Add a toast on successful deletion
+    }).catch(e => {
+      // TODO: Add something here
+    });
   }
 
   /**

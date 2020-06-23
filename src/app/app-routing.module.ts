@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// noinspection ES6UnusedImports
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 // Pages
@@ -25,7 +24,6 @@ import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { SigningGuard } from './core/signing.guard';
 
-// noinspection JSUnusedLocalSymbols
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
 
 const routes: Routes = [
