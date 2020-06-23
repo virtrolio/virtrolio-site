@@ -63,6 +63,7 @@
           *ngIf='Eric.showSilly else EricSilly'>
         <ng-template #EricSilly>
           <img alt="Silly picture of Arvind Nagabhirava" src="{{Eric.sillyLink}}" class="img-fluid" (mouseleave)="Eric.showSilly = !Eric.showSilly">
+          <img alt="Silly picture of Eric Chen" src="{{ Eric.sillyLink }}" class="img-fluid" (mouseleave)="Eric.showSilly = !Eric.showSilly">
         </ng-template>
       </div>
 
