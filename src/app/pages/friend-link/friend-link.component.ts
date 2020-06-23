@@ -12,6 +12,7 @@ export class FriendLinkComponent implements OnInit {
   key: string;
 
   goToSigning() {
+    // noinspection JSIgnoredPromiseFromCall
     this.authService.login('/signing', { uid: this.uid, key: this.key });
   }
 

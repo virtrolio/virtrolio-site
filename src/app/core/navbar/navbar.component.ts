@@ -9,7 +9,6 @@ declare var $: any;
   styleUrls: [ './navbar.component.css' ]
 })
 export class NavbarComponent implements OnInit {
-  photoUrl: string;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
