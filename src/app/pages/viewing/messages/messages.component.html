@@ -23,16 +23,22 @@
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
     <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
       <div class="card-header">
-        <div class="card-header-author">
+        <div class="card-header-group">
                   <span class="profile-pic-container-small mr-2">
           <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
         </span>
-          <span class="card-header-text">{{ msg.fromName }}</span>
+          <span class="card-header-text">Janakitti Ratana-Rueangsri-Ratana-Rueangsri</span>
         </div>
-
-        <button class="btn delete-button" type="button" data-toggle="modal"
-                data-target="#delete" (click)="setMessageToDelete(msg.id)"><span aria-hidden="true">&times;</span>
-        </button>
+        <div class="card-header-group">
+          <button class="btn delete-button" type="button" data-toggle=""
+                  data-target="">
+            <img class="delete-icon" src="../../../../assets/images/icons/bookmark.svg">
+          </button>
+          <button class="btn delete-button" type="button" data-toggle="modal"
+                  data-target="#delete" (click)="setMessageToDelete(msg.id)">
+            <img class="delete-icon" src="../../../../assets/images/icons/trash.svg">
+          </button>
+        </div>
       </div>
       <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
         <table>
