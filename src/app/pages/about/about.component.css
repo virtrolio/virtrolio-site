@@ -5,9 +5,9 @@
 
 #meet-the-team > div > div {
   /* For all items within each peron's row -- copy of vertical-center class in main.css */
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: auto;
 }
 
@@ -19,3 +19,19 @@
   padding-top: 2em;
   padding-bottom: 0;
 }
+
+.regular-picture:hover {
+  opacity: 0;
+}
+
+.regular-picture {
+  z-index: 0;
+}
+
+.silly-picture {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
