@@ -93,6 +93,9 @@
           <div class="row">
             <label id="signing-box-label" for="signing-box">
               <b>Give it a try!</b>
+              <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
+                      data-target="#info-modal">?
+              </button>
             </label>
             <textarea #signingInputArea id="signing-box" class="form-control"
                       (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
@@ -159,6 +162,34 @@
             <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Information modal when they click on the ? -->
+<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Virtrolio supports a modified version of <em>Markdown</em> to format text. We also use an emoji library, so you
+        can press (Windows + Period) on a Windows computer or (Command + Control + Space) on a Mac to bring up the emoji
+        keyboard.<br><br><em>Note: not all emojis may be supported; check the link below to make sure!</em> ❤️
+        <br><br>
+        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
+        <br>
+        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
+          of available emojis</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
