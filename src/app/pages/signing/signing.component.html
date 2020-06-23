@@ -5,7 +5,7 @@
     <div class="col-md-6 order-md-1 center-children">
       <div class="row title-div vertical-center">
         <label for="signing-box">
-          <b>Type your message to {{ signService.name }} below.</b>
+          <b>Type your message to {{ name }} below.</b>
         </label>
       </div>
       <div class="row">
@@ -115,7 +115,7 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="signService.createMsg(signingInputArea)"
+        <button type="button" class="btn btn-primary" (click)="sendMsg(signingInputArea)"
                 data-dismiss="modal">
           Send it!
         </button>

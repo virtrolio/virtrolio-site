@@ -16,10 +16,6 @@ export class SigningService {
   public charCount;
   public maxCharCount: number;
   public charCountColor;
-  public name;
-
-  private uid: string;
-  private key: string;
 
   // font service stuff
   public currentFont; // Used to select a font from fontDict
@@ -27,8 +23,7 @@ export class SigningService {
   public currentFontDisplay; // Shown in the Font Dropdown menu
   public fontDict: Fonts;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private msgIo: MsgIoService,
-              private router: Router) {
+  constructor() {
     this.fontDict = FontService.fonts;
     this.maxCharCount = MsgIoService.maxMessageLength;
   }
@@ -43,19 +38,9 @@ export class SigningService {
     this.canSend = false;
     this.charCount = 0;
     this.charCountColor = '#bbbbbb';
-    this.name = '[friend name]';
     this.currentFont = 'Arial'; // Used to select a font from fontDict
     this.currentFontFamily = 'Arial, sans-serif'; // Used to CSS select the font
     this.currentFontDisplay = 'Arial'; // Shown in the Font Dropdown menu
-  }
-
-  setUIDKey(uid: string, key: string) {
-    this.uid = uid;
-    this.key = key;
-  }
-
-  setName(name: string) {
-    this.name = name;
   }
 
   /**
@@ -97,22 +82,4 @@ export class SigningService {
     this.charCountColor = (this.charCount > this.maxCharCount) ? '#EE1111' : '#b0b0b0';
     this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount);
   }
-
-  /**
-   * Creates a new blank message and fills in all the info before sending it
-   * @param textbox - the textbox where the contents of the message are retrieved from (not the preview box)
-   */
-  createMsg(textbox: HTMLTextAreaElement) {
-    const newMsg = this.msgIo.createBlankMessage();
-    newMsg.backColor = this.backgroundColor;
-    newMsg.fontColor = this.textColor;
-    newMsg.fontFamily = this.currentFont;
-    newMsg.contents = textbox.value;
-    newMsg.to = this.uid;
-
-    this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      this.router.navigate([ '/msg-sent' ]))
-      .catch(error => alert(error));
-  }
-
 }
