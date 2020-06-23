@@ -22,16 +22,16 @@ export class FontService {
   private static readonly PressStart2P = new Font('Press Start 2P', 'sans-serif');
 
   static readonly fonts: Fonts = {
-    'Arial': FontService.Arial,
+    Arial: FontService.Arial,
     'Comic Sans MS': FontService.ComicSansMS,
     'Courier New': FontService.CourierNew,
     'Dancing Script': FontService.DancingScript,
     'Indie Flower': FontService.IndieFlower,
-    'Lobster': FontService.Lobster,
-    'Merriweather': FontService.Merriweather,
-    'Montserrat': FontService.Montserrat,
+    Lobster: FontService.Lobster,
+    Merriweather: FontService.Merriweather,
+    Montserrat: FontService.Montserrat,
     'Permanent Marker': FontService.PermanentMarker,
-    'Roboto': FontService.Roboto,
+    Roboto: FontService.Roboto,
     'Poiret One': FontService.PoiretOne,
     'Press Start 2P': FontService.PressStart2P,
     'Special Elite': FontService.SpecialElite

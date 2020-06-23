@@ -16,8 +16,8 @@
   overflow-y: scroll;
 }
 
-#author-list-relative-list {
-  height: 5em;
+#author-list-relative {
+  height: 7em;
   overflow-y: scroll;
 }
 
@@ -47,6 +47,28 @@
 
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+/* width */
 ::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
+  width: 0.5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EEEEEE;
+  opacity: 0.5;
+  border-radius: 1em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }

@@ -13,6 +13,9 @@ html {
   /* Sizes */
   --footer-height: 7em;
   --navbar-height: 4.5em;
+
+  /* Shadows from signing component */
+  --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
 }
 
 div.montserrat p, div.montserrat h1, div.montserrat h2 {
@@ -77,6 +80,15 @@ a.clickable-object, a.clickable-object:hover {
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem var(--accent-transparent);
+}
+
+/* Toggle switch */
+.custom-control-label:before{
+  background-color: white;
+}
+.custom-switch .custom-control-input:checked~.custom-control-label::before{
+  background-color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* Profile Picture formatting */

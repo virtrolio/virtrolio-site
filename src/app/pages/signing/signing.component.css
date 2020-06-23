@@ -1,58 +1,37 @@
-#options > * {
-	margin: 0.5em 0.5em;
-}
-
-#title-div {
-	text-align: center;
-}
-
-#fontSelectorDropdown {
-	text-align: right;
-	width: 12em;
-}
-
-.format-icons {
-	width: 1.8em;
-	height: 1.8em;
-}
-
-.btn-format {
-	width: 2.4em;
-}
-
-#signing-header {
-	margin-left: 0.5em;
-	margin-right: 0.5em;
-  font-size: 1.6em;
-  text-align: center;
-}
-
+/* || Signing box, Preview Box */
 
 #signing-box {
-	margin: 1em;
+  margin: 0.5em;
 	padding: 1em;
-	width: 35em;
-	resize: none;
-	font: 1em Arial;
+  width: 40em;
+  height: 20em;
+  resize: none;
+  color: #000000;
+  font-size: 1em;
 	border-width: 0.05em;
-	border-radius: 0;
+  border-radius: 0.25rem;
+  box-shadow: var(--signing-shadow);
+}
+
+#char-count-display {
+  z-index: 10;
+  position: absolute;
+  bottom: -1em;
+  right: 2.0em;
+}
+
+.form-control {
+  border-color: var(--light-grey)
 }
 
 .form-control:focus {
-	border-color: var(--accent);
-	box-shadow: none;
-}
-
-#preview-header {
-	margin-top: 1.0em;
-	margin-bottom: 0;
-	font-size: 1.2em;
+  border-color: var(--accent);
 }
 
 markdown {
-	margin: 1em;
+	margin: 0.5em;
 	padding: 1em;
-	width: 35em;
+	width: 40em;
 	height: 20em;
 	resize: none;
 	font: 1em Arial;
@@ -60,11 +39,49 @@ markdown {
 	overflow-y: auto;
 	overflow-x: auto;
   word-wrap: break-word;
-  border-radius: 0;
+  border-radius: 0.25rem;
+  box-shadow: var(--signing-shadow);
+  line-height: 1.5;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+/* || Formatting Tools  */
+
+#options > * {
+  margin: 1.4em 0.5em 0.8em;
+  box-shadow: var(--signing-shadow);
+}
+
+#font-selector-dropdown {
+	text-align: right;
+  width: 12em;
+  height: 2.5em;
+}
+
+.btn-format {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.btn-send {
+  width: 6em;
+  height: 2.5em;
+}
+
+.btn-send:disabled {
+  background-color: var(--light-grey);
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item:active {
 	background-color: var(--accent);
+}
+
+.dropdown-menu {
+  overflow-y: auto;
+  height: 12em;
 }
 
 #icon {
@@ -72,11 +89,55 @@ markdown {
   margin: 0 auto;
 }
 
-#icon-wrapper {
+.icon-wrapper {
   padding: 0;
+  cursor: pointer;
 }
 
 #colorpicker-font, #colorpicker-background {
   opacity: 0;
   position: absolute;
+  display: block;
+  z-index: 1;
+  width: 2.2em;
+  height: 2.2em;
+  margin: -1.55em 0.05em !important;
+  cursor: pointer;
+}
+
+#font-color-text {
+  margin-bottom: 0;
+  font-size: large;
+}
+
+.dynamic-color-bar {
+  display: block;
+  height: 0.4em;
+  margin: 0.1em 0.2em;
+  border-radius: 0.4em;
+}
+
+/* || Typography */
+
+.title-div {
+  height: 3em;
+  margin: 0 0.5em 0 0.5em;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* || Miscellaneous */
+
+#btn-info {
+  margin: 0.5em 0.5em 0.7em;
+  padding: 0;
+  border-radius: 6em;
+  width: 2em;
+  height: 2em;
+  background-color: #90959A;
+  color: #ffffff;
+}
+
+#btn-info:hover {
+  background-color: #75797A;
 }

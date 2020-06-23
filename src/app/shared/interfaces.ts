@@ -47,3 +47,17 @@ export class Font {
 export interface Fonts {
   [key: string]: Font;
 }
+
+export class AboutPagePictures {
+  name: string;
+  regularLink: string;
+  sillyLink: string;
+  showSilly: boolean;
+
+  constructor(name: string, regularLink: string, sillyLink: string) {
+    this.name = name;
+    this.regularLink = regularLink;
+    this.sillyLink = sillyLink;
+    this.showSilly = true;
+  }
+}
