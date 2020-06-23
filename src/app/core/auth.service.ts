@@ -125,7 +125,7 @@ export class AuthService {
   async profilePictureLink(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
-    if (uid === this.uid() || typeof uid === 'undefined') {
+    if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.photoURL;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
