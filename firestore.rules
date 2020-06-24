@@ -1,7 +1,11 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
+    match /messages/{message} {
+      allow create, update: if request.resource.data.from == request.auth.uid;
+      allow read, delete: if resource.data.to == request.auth.uid;
+    }
+    match /users/{user} {
       allow read, write: if request.auth != null;
     }
   }
