@@ -13,6 +13,9 @@ html {
   /* Sizes */
   --footer-height: 7em;
   --navbar-height: 4.5em;
+
+  /* Shadows from signing component */
+  --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
 }
 
 div.montserrat p, div.montserrat h1, div.montserrat h2 {

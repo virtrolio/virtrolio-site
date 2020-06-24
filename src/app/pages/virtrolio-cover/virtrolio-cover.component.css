@@ -1,7 +1,9 @@
+/* || Virtrolio cover || */
+
 #virtrolio-outer-div {
   /* Div enclosing virtrolio (outside <a> tag) */
   height: 35em;
-  padding: 0 5%;
+  padding: 1em 5%;
 }
 
 #virtrolio-outer {
@@ -12,6 +14,10 @@
 
 .bg-primary:hover {
   background-color: var(--dark-accent) !important;
+}
+
+.btn-primary:disabled {
+  background-color: var(--light-grey);
 }
 
 #virtrolio-title {
@@ -27,20 +33,7 @@
   line-height: 1.5;
 }
 
-#friend-link-body {
-  /* Contents of friend-link modal body */
-  text-align: center;
-}
-
-#friend-link-body > * {
-  /* Each item inside the friend-link modal body */
-  margin: 0.8em;
-}
-
-#friend-link-field {
-  /* Friend link text field (where the link is) */
-  width: 15em;
-}
+/* || Side Buttons */
 
 #buttons > *.row > * {
   /* Each individual button will have these properties: */
@@ -52,4 +45,43 @@
 
 #buttons {
   padding-top: 2em;
+}
+
+/* | Sharing link */
+
+#sharing-link-body {
+  text-align: center;
+  padding: 0.5em;
+}
+
+#sharing-link-body > * {
+  /* Each item inside the sharing-link modal body */
+  margin: 0.4em;
+}
+
+#sharing-link-field {
+  /* Friend link text field */
+  width: 60%;
+  height: 2em;
+  padding: 0.2em;
+  overflow-x: auto;
+}
+
+#button-copy {
+  width: 4.5em;
+  padding: 0.4em;
+}
+
+#button-new-link {
+  height: 2.4em;
+  width: 10em;
+  font-size: 0.8em;
+  padding: 0.2em;
+  margin: auto;
+}
+
+#warning-div {
+  color: #f05555;
+  text-align: center;
+  padding: 0.4em;
 }

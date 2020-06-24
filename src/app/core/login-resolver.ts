@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class LoginResolver implements Resolve<User> {
   constructor(private angularFireAuth: AngularFireAuth) { }
 
+  // noinspection JSUnusedLocalSymbols
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<User> {
     return this.angularFireAuth.user.pipe(take(1));

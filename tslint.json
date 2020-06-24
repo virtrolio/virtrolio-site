@@ -126,7 +126,10 @@
         "check-operator",
         "check-separator",
         "check-type",
-        "check-typecast"
+        "check-typecast",
+        "check-postbrace",
+        "check-module",
+        "check-rest-spread"
       ]
     },
     "no-conflicting-lifecycle": true,

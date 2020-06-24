@@ -1,0 +1,21 @@
+#title {
+  text-align: center;
+  font-size: 5em;
+}
+
+#meet-the-team > div > div {
+  /* For all items within each peron's row -- copy of vertical-center class in main.css */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  overflow: auto;
+}
+
+#meet-the-team-title {
+  text-align: center;
+}
+
+.jumbotron {
+  padding-top: 2em;
+  padding-bottom: 0;
+}
