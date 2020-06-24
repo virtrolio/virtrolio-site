@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-/* Large logo in the background for when there is no image to feature*/
+/* Large logo in the background for when there is no image to feature */
 #bg-logo-img {
   position: absolute;
   opacity: 0.1;
