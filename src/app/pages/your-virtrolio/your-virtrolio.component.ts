@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 
 @Component({
-  selector: 'app-virtrolio-cover',
-  templateUrl: './virtrolio-cover.component.html',
-  styleUrls: [ './virtrolio-cover.component.css' ]
+  selector: 'app-your-virtrolio',
+  templateUrl: './your-virtrolio.component.html',
+  styleUrls: [ './your-virtrolio.component.css' ]
 })
 
 /**
  * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class VirtrolioCoverComponent implements OnInit {
+export class YourVirtrolioComponent implements OnInit {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
