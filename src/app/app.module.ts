@@ -25,7 +25,7 @@ import { AccessDeniedComponent } from './pages/access-denied/access-denied.compo
 import { ContactComponent } from './pages/contact/contact.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
+import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/signing-auth-redirect.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -49,7 +49,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     AboutComponent,
     ContactComponent,
     FaqComponent,
-    FriendLinkComponent,
+    SigningAuthRedirectComponent,
     HomeComponent,
     MsgSentComponent,
     PageNotFoundComponent,

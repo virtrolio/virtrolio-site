@@ -7,7 +7,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
+import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/signing-auth-redirect.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'friend-link', component: FriendLinkComponent},
+  { path: 'signing-auth-redirect', component: SigningAuthRedirectComponent},
   { path: 'invalid-link' , component: InvalidLinkComponent },
   {
     path: 'msg-sent',
