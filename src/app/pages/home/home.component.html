@@ -6,7 +6,8 @@
          id="feature-img" alt="Virtrolio Logo">
     <div id="title-container">
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay Connected.</h1>
-      <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">With your "friends"</h1>
+      <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
+        apart.</h1>
       <img src="../../../assets/images/icons/chevron-down.svg" id="chevron" alt="down" width="48" height="48">
     </div>
   </div>
@@ -85,6 +86,7 @@
                     id="preview-text" data="{{ cardText }}"></markdown>
         </div>
       </div>
+
       <!-- Signing component component -->
       <div class="order-md-3 d-none d-sm-block col-8">
         <div class="center-children">
@@ -93,8 +95,11 @@
           <div class="row">
             <label id="signing-box-label" for="signing-box">
               <b>Give it a try!</b>
+              <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
+                      data-target="#info-modal">?
+              </button>
             </label>
-            <textarea #signingInputArea id="signing-box" class="form-control" autofocus
+            <textarea #signingInputArea id="signing-box" class="form-control"
                       (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
                       [ngStyle]="{'font-family': currentFont}"></textarea>
             <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
@@ -159,6 +164,34 @@
             <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Information modal when they click on the ? -->
+<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Virtrolio supports a modified version of <em>Markdown</em> to format text. We also use an emoji library, so you
+        can press (Windows + Period) on a Windows computer or (Command + Control + Space) on a Mac to bring up the emoji
+        keyboard.<br><br><em>Note: not all emojis may be supported; check the link below to make sure!</em> ❤️
+        <br><br>
+        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
+        <br>
+        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
+          of available emojis</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
