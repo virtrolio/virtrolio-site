@@ -15,7 +15,7 @@ export class SigningService {
   public maxCharCount: number;
   public charCountColor;
 
-  // font service stuff
+  // Font service variables
   public currentFont; // Used to select a font from fontDict
   public currentFontFamily; // Used to CSS select the font
   public currentFontDisplay; // Shown in the Font Dropdown menu
