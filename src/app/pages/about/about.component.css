@@ -26,12 +26,15 @@
 
 .regular-picture {
   z-index: 0;
+  width: 100%;
 }
 
 .silly-picture {
-  max-height: 100%;
-  max-width: 100%;
   position: absolute;
   z-index: -1;
+  width: 100%;
 }
 
+.image-container {
+  padding: 0;
+}
