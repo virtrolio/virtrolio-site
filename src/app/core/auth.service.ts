@@ -14,6 +14,7 @@ export class AuthService {
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
+
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 

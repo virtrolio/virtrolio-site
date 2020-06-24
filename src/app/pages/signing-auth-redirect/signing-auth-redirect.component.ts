@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-friend-link',
-  templateUrl: './friend-link.component.html',
-  styleUrls: [ './friend-link.component.css' ]
+  templateUrl: './signing-auth-redirect.component.html',
+  styleUrls: [ './signing-auth-redirect.component.css' ]
 })
-export class FriendLinkComponent implements OnInit {
+export class SigningAuthRedirectComponent implements OnInit {
   uid: string;
   key: string;
 

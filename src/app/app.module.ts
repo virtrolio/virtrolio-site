@@ -25,7 +25,7 @@ import { AccessDeniedComponent } from './pages/access-denied/access-denied.compo
 import { ContactComponent } from './pages/contact/contact.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import { FriendLinkComponent } from './pages/friend-link/friend-link.component';
+import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/signing-auth-redirect.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -35,7 +35,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
-import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
 // Services
@@ -49,7 +49,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     AboutComponent,
     ContactComponent,
     FaqComponent,
-    FriendLinkComponent,
+    SigningAuthRedirectComponent,
     HomeComponent,
     MsgSentComponent,
     PageNotFoundComponent,
@@ -58,7 +58,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    VirtrolioCoverComponent,
+    YourVirtrolioComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
     InvalidLinkComponent,
