@@ -150,6 +150,7 @@
 
 .form-control:focus {
   border-color: var(--accent);
+  box-shadow: none;
 }
 
 markdown {
