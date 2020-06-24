@@ -36,9 +36,9 @@ export class SigningService {
     this.canSend = false;
     this.charCount = 0;
     this.charCountColor = '#bbbbbb';
-    this.currentFont = 'Arial'; // Used to select a font from fontDict
-    this.currentFontFamily = 'Arial, sans-serif'; // Used to CSS select the font
-    this.currentFontDisplay = 'Arial'; // Shown in the Font Dropdown menu
+    this.currentFont = 'Arial'; 
+    this.currentFontFamily = 'Arial, sans-serif'; 
+    this.currentFontDisplay = 'Arial'; 
   }
 
   /**
