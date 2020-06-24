@@ -51,7 +51,7 @@ export class SigningService {
   }
 
   /**
-   * The following functions add text formatting characters around selected text within textbox.
+   * Adds markdown formatting characters around selected text within textbox.
    * @param textbox - textbox in which user types.
    * @param formatCharacters - formatting character(s) to be placed around the selected text
    * @param endCharacter - Optional - The ending character, if different from the starting character
