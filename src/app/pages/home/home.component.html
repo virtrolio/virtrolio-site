@@ -30,7 +30,7 @@
           <!-- Changing this to 'true else yourVirtrolio' induces no flickering-->
           <p class="lead" id="bolded-body-text">Sign in below to start your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
-            <button type="button" (click)="authService.login('/virtrolio-cover')"
+            <button type="button" (click)="authService.login('/your-virtrolio')"
                     class="btn btn-outline-dark google-sign-in-btn">
               <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
               <span>Sign in with Google</span>
@@ -43,7 +43,7 @@
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
         <ng-template #yourVirtrolio>
           <div class="d-flex justify-content-center pt-3">
-            <button type="button" class="btn-lg btn-primary" routerLink="/virtrolio-cover" id="your-virtrolio">Go to my
+            <button type="button" class="btn-lg btn-primary" routerLink="/your-virtrolio" id="your-virtrolio">Go to my
               virtrolio
             </button>
           </div>

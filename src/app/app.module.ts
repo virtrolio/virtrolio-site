@@ -35,7 +35,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
-import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 
 // Services
@@ -58,7 +58,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    VirtrolioCoverComponent,
+    YourVirtrolioComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
     InvalidLinkComponent,

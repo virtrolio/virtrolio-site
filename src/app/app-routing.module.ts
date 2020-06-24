@@ -17,7 +17,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
-import { VirtrolioCoverComponent } from './pages/virtrolio-cover/virtrolio-cover.component';
+import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
@@ -66,8 +66,8 @@ const routes: Routes = [
     resolve: { user: LoginResolver }
   },
   {
-    path: 'virtrolio-cover',
-    component: VirtrolioCoverComponent,
+    path: 'your-virtrolio',
+    component: YourVirtrolioComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized },
     resolve: { user: LoginResolver }
