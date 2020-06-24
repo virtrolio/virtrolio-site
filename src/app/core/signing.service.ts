@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Fonts } from '../shared/interfaces';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from './auth.service';
 import { MsgIoService } from './msg-io.service';
 import { FontService } from './font.service';
 
