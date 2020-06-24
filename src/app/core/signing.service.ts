@@ -36,9 +36,9 @@ export class SigningService {
     this.canSend = false;
     this.charCount = 0;
     this.charCountColor = '#bbbbbb';
-    this.currentFont = 'Arial'; 
-    this.currentFontFamily = 'Arial, sans-serif'; 
-    this.currentFontDisplay = 'Arial'; 
+    this.currentFont = 'Arial';
+    this.currentFontFamily = 'Arial, sans-serif';
+    this.currentFontDisplay = 'Arial';
   }
 
   /**
