@@ -11,7 +11,8 @@
 }
 
 .title-page {
-  font-size: 3em;
+  text-align: center;
+  font-size: 1em;
   font-family: Montserrat, sans-serif;
 }
 
@@ -20,51 +21,7 @@
   font-size: 1em;
 }
 
-.table td {
-  overflow-wrap: break-word;
-}
-
-.page {
-  background-color: var(--accent);
-  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
-  color: white;
-  height: 70vh;
-  padding: 3em 6em 3em 6em;
-  display: flex;
-  overflow-y: auto;
-}
-
-.card-header-text {
-  font-weight: bold;
-  font-size: 0.8em;
-  margin: 0.2em 0 0 0.5em;
-}
-
-.card-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.5em 0.5em 0.5em 1em;
-}
-
-.card-header-group {
-  display: flex;
-  flex-direction: row;
-}
-
-.carousel-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.profile-pic-container-small {
-  background: rgba(255, 255, 255, 0);
-  height: 1.5em;
-  width: 1.5em;
-  border-radius: 100%;
-  display: flex;
-}
-
+/* Message Card */
 .card {
   display: inline-block;
 }
@@ -77,23 +34,77 @@
   overflow-y: auto;
 }
 
+.table td {
+  overflow-wrap: break-word;
+}
+
+/* Message Carousel Page */
+.page {
+  background-color: var(--accent);
+  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
+  color: white;
+  height: 70vh;
+  padding: 3em 6em 3em 6em;
+  display: flex;
+  overflow-y: auto;
+}
+
+/* Message Header */
+.msg-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 1em;
+  padding: 0.5em 0.5em 0.5em 1em;
+}
+
+.msg-header-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.msg-header-text {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin: 0.2em 0 0 0.5em;
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.msg-header-date {
+  font-size: 0.7em;
+  margin: 0em 0 0 0.5em;
+}
+
+.profile-pic-container-small {
+  background: rgba(255, 255, 255, 0);
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 100%;
+  display: flex;
+}
+
 #no-messages {
   font-size: 2em;
   color: var(--light-grey);
 }
 
 /* Remove the blue outline around the button when it's clicked */
-.btn:focus, .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
+/*.btn:focus, .btn:active {*/
+/*  outline: none !important;*/
+/*  box-shadow: none !important;*/
+/*}*/
 
-.delete-button {
+.card-button {
   display: flex;
+  float: right;
+  margin-top: 0.3em;
   align-self: flex-end;
 }
 
-.delete-icon {
+.card-icon {
   width: 0.8em;
   height: 0.8em;
 }

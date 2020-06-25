@@ -22,22 +22,43 @@
   <!-- Card message view -->
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
     <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
-      <div class="card-header">
-        <div class="card-header-group">
-                  <span class="profile-pic-container-small mr-2">
-          <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-        </span>
-          <span class="card-header-text">{{ msg.fromName }}</span>
+      <div class="msg-header">
+        <div class="msg-header-group">
+          <table class="header-table">
+            <tr>
+              <td>
+              <span class="profile-pic-container-small mr-2">
+                <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+              </span>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <span class="msg-header-text">{{ msg.fromName }}</span>
+                  </tr>
+                  <tr>
+                    <span class="msg-header-date">{{ msg.timestamp.toDate().toDateString() }}</span>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
         </div>
         <div class="card-header-group">
-          <button class="btn delete-button" type="button" data-toggle=""
-                  data-target="">
-            <img class="delete-icon" src="../../../../assets/images/icons/bookmark.svg">
-          </button>
-          <button class="btn delete-button" type="button" data-toggle="modal"
-                  data-target="#delete" (click)="setMessageToDelete(msg.id)">
-            <img class="delete-icon" src="../../../../assets/images/icons/trash.svg">
-          </button>
+          <table class="header-table">
+            <tr>
+              <td>
+                <button class="btn card-button" type="button" data-toggle=""
+                        data-target="#bookmark">
+                  <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
+                </button>
+                <button class="btn card-button" type="button" data-toggle="modal"
+                        data-target="#delete" (click)="setMessageToDelete(msg.id)">
+                  <img class="card-icon" src="../../../../assets/images/icons/trash.svg">
+                </button>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
       <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
@@ -58,19 +79,56 @@
     <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="carousel-front-page-header px-3 py-2">
-            Placeholder
+          <div class="msg-header">
+            <div class="msg-header-group">
+              <table class="header-table">
+                <tr>
+                  <td>
+                    <span class="profile-pic-container-small mr-2">
+                      <img class="profile-pic" src="../../../../assets/images/logo_reg.png" alt="profile-pic">
+                    </span>
+                  </td>
+                  <td>
+                    <table>
+                      <tr>
+                        <span class="msg-header-text">Vitrolio Team</span>
+                      </tr>
+                      <tr>
+                        <span class="msg-header-date">2 seconds from now</span>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
           <div class="page">
-            <span class="title-page">My Yearbook</span>
+            <span class="title-page vertical-center">Welcome to your Virtrolio! Click on the arrows to navaigate through your book.</span>
           </div>
         </div>
         <div class="carousel-item" *ngFor="let msg of viewService.messages">
-          <div class="carousel-header px-3 py-2">
-          <span class="profile-pic-container-small mr-2">
-            <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-          </span>
-            <span class="card-header-text">{{ msg.fromName }}</span>
+          <div class="msg-header">
+            <div class="msg-header-group">
+              <table class="header-table">
+                <tr>
+                  <td>
+                    <span class="profile-pic-container-small mr-2">
+                      <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+                    </span>
+                  </td>
+                  <td>
+                    <table>
+                      <tr>
+                        <span class="msg-header-text">{{ msg.fromName }}</span>
+                      </tr>
+                      <tr>
+                        <span class="msg-header-date">{{ msg.timestamp.toDate().toDateString() }}</span>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
           <div class="page" [ngStyle]="{'background': msg.backColor}">
             <table>
