@@ -43,5 +43,6 @@ export class FontService {
     'Times New Roman': FontService.TimesNewRoman
   };
 
-  constructor() { }
+  constructor() {
+  }
 }
