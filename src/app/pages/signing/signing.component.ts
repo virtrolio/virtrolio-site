@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, HostListener, OnInit, Injectable } from '@angular/core';
+import { ActivatedRoute, Router, CanDeactivate } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
@@ -7,7 +8,7 @@ import { MsgIoService } from '../../core/msg-io.service';
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: [ './signing.component.css' ]
+  styleUrls: ['./signing.component.css']
 })
 
 /**
@@ -21,7 +22,8 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signService: SigningService,
-              private msgIo: MsgIoService, private router: Router) { }
+              private msgIo: MsgIoService, private router: Router) {
+  }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -33,6 +35,14 @@ export class SigningComponent implements OnInit {
     });
     this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
     this.signService.resetDefaultValues();
+  }
+
+  // @HostListener allows us to guard against browser refresh, close, etc.
+  @HostListener('window:beforeunload')
+  canDeactivate(): Observable<boolean> | boolean {
+    // returning true will navigate without confirmation
+    // returning false will show a confirm dialog before navigating away
+    return !this.signService.signingBoxText;
   }
 
   /**
@@ -48,7 +58,7 @@ export class SigningComponent implements OnInit {
     newMsg.to = this.uid;
 
     this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      this.router.navigate([ '/msg-sent' ]))
+      this.router.navigate(['/msg-sent']))
       .catch(error => alert(error));
   }
 }
