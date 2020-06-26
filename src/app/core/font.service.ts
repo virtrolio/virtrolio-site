@@ -22,7 +22,7 @@ export class FontService {
   private static readonly SpecialElite = new Font('Special Elite', 'sans-serif');
   private static readonly TimesNewRoman = new Font('Times New Roman', 'serif');
   private static readonly PoiretOne = new Font('Poiret One', 'sans-serif');
-  private static readonly PressStart2P = new Font('Press Start 2P', 'sans-serif');
+  private static readonly PressStart = new Font('Press Start', 'sans-serif');
 
   static readonly fonts: Fonts = {
     Arial: FontService.Arial,
@@ -36,7 +36,7 @@ export class FontService {
     'Patrick Hand': FontService.PatrickHand,
     'Permanent Marker': FontService.PermanentMarker,
     'Poiret One': FontService.PoiretOne,
-    'Press Start 2P': FontService.PressStart2P,
+    'Press Start': FontService.PressStart,
     Roboto: FontService.Roboto,
     Sacramento: FontService.Sacramento,
     'Special Elite': FontService.SpecialElite,
