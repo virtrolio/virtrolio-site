@@ -6,6 +6,10 @@
   top: 5em;
   bottom: 5em;
   z-index: 1;
+  overflow: hidden;
+}
+
+.response-list-card:hover {
   overflow: auto;
 }
 
@@ -56,7 +60,7 @@ a:hover {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.2em;
 }
 
 /* Track */
@@ -66,12 +70,7 @@ a:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EEEEEE;
-  opacity: 0.5;
+  background: #EFEFEF;
+  opacity: 0.1;
   border-radius: 1em;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
 }

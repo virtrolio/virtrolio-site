@@ -135,7 +135,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0.2em;
 }
 
 /* Track */
@@ -145,13 +145,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: white;
-  border-color: var(--gray-dark);
-  opacity: 0.5;
+  background: #EFEFEF;
+  opacity: 0.1;
   border-radius: 1em;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
 }
