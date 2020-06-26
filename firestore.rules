@@ -6,7 +6,8 @@ service cloud.firestore {
       // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
       allow read: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
       allow create: if request.resource.data.from == request.auth.uid
-                    && exists(/databases/$(database)/documents/users/$(request.resource.data.to));
+                    && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
+                    && request.resource.data.contents.size() <= 5000;
       allow update: if false;
       allow delete: if resource.data.to == request.auth.uid;
     }
