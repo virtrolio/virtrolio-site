@@ -1,61 +1,8 @@
-@font-face {
-  font-family: 'Courier New';
-  src: url('../fonts/../fonts/CourierNewPSMT.woff2') format('woff2'),
-  url('../fonts/../fonts/CourierNewPSMT.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Courier New';
-  src: url('../fonts/../fonts/CourierNewPS-BoldMT.woff2') format('woff2'),
-  url('../fonts/../fonts/CourierNewPS-BoldMT.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Courier New';
-  src: url('../fonts/CourierNewPS-BoldItalicMT.woff2') format('woff2'),
-  url('../fonts/CourierNewPS-BoldItalicMT.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Comic Sans MS';
-  src: url('../fonts/../fonts/ComicSansMS-BoldItalic.woff2') format('woff2'),
-  url('../fonts/../fonts/ComicSansMS-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Comic Sans MS';
-  src: url('../fonts/ComicSansMS-Bold.woff2') format('woff2'),
-  url('../fonts/ComicSansMS-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Comic Sans MS';
-  src: url('../fonts/ComicSansMS.woff2') format('woff2'),
-  url('../fonts/ComicSansMS.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: 'Arial';
-  src: url('../fonts/Arial-Black.woff2') format('woff2'),
-  url('../fonts/Arial-Black.woff') format('woff');
+  src: url('../fonts/Arial/Arial-Black.woff2') format('woff2'),
+  url('../fonts/Arial/Arial-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -63,8 +10,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../fonts/Arial-BoldMT.woff2') format('woff2'),
-  url('../fonts/Arial-BoldMT.woff') format('woff');
+  src: url('../fonts/Arial/Arial-BoldMT.woff2') format('woff2'),
+  url('../fonts/Arial/Arial-BoldMT.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -72,8 +19,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../fonts/ArialMT.woff2') format('woff2'),
-  url('../fonts/ArialMT.woff') format('woff');
+  src: url('../fonts/Arial/ArialMT.woff2') format('woff2'),
+  url('../fonts/Arial/ArialMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -81,8 +28,8 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../fonts/Arial-ItalicMT.woff2') format('woff2'),
-  url('../fonts/Arial-ItalicMT.woff') format('woff');
+  src: url('../fonts/Arial/Arial-ItalicMT.woff2') format('woff2'),
+  url('../fonts/Arial/Arial-ItalicMT.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -90,116 +37,270 @@
 
 @font-face {
   font-family: 'Arial';
-  src: url('../fonts/Arial-BoldItalicMT.woff2') format('woff2'),
-  url('../fonts/Arial-BoldItalicMT.woff') format('woff');
+  src: url('../fonts/Arial/Arial-BoldItalicMT.woff2') format('woff2'),
+  url('../fonts/Arial/Arial-BoldItalicMT.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url('../fonts/Comic Sans/ComicSansMS-BoldItalic.woff2') format('woff2'),
+  url('../fonts/Comic Sans/ComicSansMS-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Merriweather-BlackItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-Bold.woff2') format('woff2'),
-  url('../fonts/Merriweather-Bold.woff') format('woff');
+  font-family: 'Comic Sans MS';
+  src: url('../fonts/Comic Sans/ComicSansMS-Bold.woff2') format('woff2'),
+  url('../fonts/Comic Sans/ComicSansMS-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Merriweather-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-Italic.woff2') format('woff2'),
-  url('../fonts/Merriweather-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-Regular.woff2') format('woff2'),
-  url('../fonts/Merriweather-Regular.woff') format('woff');
+  font-family: 'Comic Sans MS';
+  src: url('../fonts/Comic Sans/ComicSansMS.woff2') format('woff2'),
+  url('../fonts/Comic Sans/ComicSansMS.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url('../fonts/Merriweather-Black.woff2') format('woff2'),
-  url('../fonts/Merriweather-Black.woff') format('woff');
-  font-weight: 900;
+  font-family: 'Comic Sans MS';
+  src: url('../fonts/Comic Sans/ComicSansMS-Italic.woff2') format('woff2'),
+  url('../fonts/Comic Sans/ComicSansMS-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../fonts/Courier New/CourierNewPS-ItalicMT.woff2') format('woff2'),
+  url('../fonts/Courier New/CourierNewPS-ItalicMT.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../fonts/Courier New/CourierNewPSMT.woff2') format('woff2'),
+  url('../fonts/Courier New/CourierNewPSMT.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../fonts/Courier New/CourierNewPS-BoldMT.woff2') format('woff2'),
+  url('../fonts/Courier New/CourierNewPS-BoldMT.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff2') format('woff2'),
+  url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('../fonts/Dancing_Script/DancingScript-Regular.woff2') format('woff2'),
+  url('../fonts/Dancing_Script/DancingScript-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Indie Flower';
+  src: url('../fonts/Indie_Flower/IndieFlower.woff2') format('woff2'),
+  url('../fonts/Indie_Flower/IndieFlower.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Lobster';
-  src: url('../fonts/Lobster-Regular.woff2') format('woff2'),
-  url('../fonts/Lobster-Regular.woff') format('woff');
+  src: url('../fonts/Lobster/Lobster-Regular.woff2') format('woff2'),
+  url('../fonts/Lobster/Lobster-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Dancing Script';
-  src: url('../fonts/DancingScript-Regular.woff2') format('woff2'),
-  url('../fonts/DancingScript-Regular.woff') format('woff');
-  font-weight: normal;
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-BlackItalic.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-Bold.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Comic Sans MS';
-  src: url('../fonts/ComicSansMS-Italic.woff2') format('woff2'),
-  url('../fonts/ComicSansMS-Italic.woff') format('woff');
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-BoldItalic.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-Italic.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Courier New';
-  src: url('../fonts/CourierNewPS-ItalicMT.woff2') format('woff2'),
-  url('../fonts/CourierNewPS-ItalicMT.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Indie Flower';
-  src: url('../fonts/IndieFlower.woff2') format('woff2'),
-  url('../fonts/IndieFlower.woff') format('woff');
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-Regular.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Special Elite';
-  src: url('../fonts/SpecialElite-Regular.woff2') format('woff2'),
-  url('../fonts/SpecialElite-Regular.woff') format('woff');
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather/Merriweather-Black.woff2') format('woff2'),
+  url('../fonts/Merriweather/Merriweather-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Medium.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-MediumItalic.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-BlackItalic.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Bold.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Italic.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-BoldItalic.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-ExtraBold.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Black.woff2') format('woff2'),
+  url('../fonts/Montserrat/Montserrat-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Patrick Hand';
+  src: url('../fonts/Patrick_Hand/PatrickHand-Regular.woff2') format('woff2'),
+  url('../fonts/Patrick_Hand/PatrickHand-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff2') format('woff2'),
+  url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -207,208 +308,108 @@
 
 @font-face {
   font-family: 'Poiret One';
-  src: url('../fonts/PoiretOne-Regular.woff2') format('woff2'),
-  url('../fonts/PoiretOne-Regular.woff') format('woff');
+  src: url('../fonts/Poiret_One/PoiretOne-Regular.woff2') format('woff2'),
+  url('../fonts/Poiret_One/PoiretOne-Regular.woff') format('woff');
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-ExtraBoldItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat-ExtraBoldItalic.woff') format('woff');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
-  url('../fonts/Montserrat-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Patrick Hand';
-  src: url('../fonts/PatrickHand-Regular.woff2') format('woff2'),
-  url('../fonts/PatrickHand-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
-  url('../fonts/Montserrat-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-MediumItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat-MediumItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat-BlackItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Black.woff2') format('woff2'),
-  url('../fonts/Roboto-Black.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-MediumItalic.woff2') format('woff2'),
-  url('../fonts/Roboto-MediumItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
-  url('../fonts/Roboto-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
-  url('../fonts/Roboto-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Italic.woff2') format('woff2'),
-  url('../fonts/Roboto-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Roboto-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Medium.woff2') format('woff2'),
-  url('../fonts/Roboto-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Roboto-BlackItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Permanent Marker';
-  src: url('../fonts/PermanentMarker-Regular.woff2') format('woff2'),
-  url('../fonts/PermanentMarker-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
-  url('../fonts/Montserrat-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Italic.woff2') format('woff2'),
-  url('../fonts/Montserrat-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-ExtraBold.woff2') format('woff2'),
-  url('../fonts/Montserrat-ExtraBold.woff') format('woff');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Black.woff2') format('woff2'),
-  url('../fonts/Montserrat-Black.woff') format('woff');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Press Start';
-  src: url('../fonts/PressStart2P-Regular.woff2') format('woff2'),
-  url('../fonts/PressStart2P-Regular.woff') format('woff');
+  src: url('../fonts/Press_Start_2P/PressStart2P-Regular.woff2') format('woff2'),
+  url('../fonts/Press_Start_2P/PressStart2P-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Sacramento';
-  src: url('../fonts/Sacramento-Regular.woff2') format('woff2'),
-  url('../fonts/Sacramento-Regular.woff') format('woff');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Black.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-MediumItalic.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Italic.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-BoldItalic.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-BlackItalic.woff2') format('woff2'),
+  url('../fonts/Roboto/Roboto-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sacramento';
+  src: url('../fonts/Sacramento/Sacramento-Regular.woff2') format('woff2'),
+  url('../fonts/Sacramento/Sacramento-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Special Elite';
+  src: url('../fonts/Special_Elite/SpecialElite-Regular.woff2') format('woff2'),
+  url('../fonts/Special_Elite/SpecialElite-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
