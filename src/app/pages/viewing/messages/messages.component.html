@@ -8,14 +8,8 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCarouselView"
-               (click)="toggleViewStyle()">
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch
-          to Booklet</label>
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch
-          to Cards</label>
-      </div>
+      <button class="btn-sm btn-primary" *ngIf="!viewService.isCarouselView" (click)="toggleViewStyle()">Switch to Booklet</button>
+      <button class="btn-sm btn-primary" *ngIf="viewService.isCarouselView" (click)="toggleViewStyle()">Switch to Cards</button>
     </div>
   </div>
 
