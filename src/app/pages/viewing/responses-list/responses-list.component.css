@@ -54,6 +54,14 @@
 
 }
 
+.author-name {
+  color: var(--dark);
+}
+
+.author-name:hover {
+  color: var(--accent);
+}
+
 a:hover {
   text-decoration: none;
 }

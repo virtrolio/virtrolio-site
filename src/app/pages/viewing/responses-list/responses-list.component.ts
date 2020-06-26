@@ -39,18 +39,8 @@ export class ResponsesListComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    // noinspection JSIgnoredPromiseFromCall
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      // Preserve the existing query params in the
-      queryParamsHandling: 'merge',
-      // Update the URL
-      skipLocationChange: false
-    });
-    if (this.viewService.isCarouselView) {
+    if (!this.viewService.isCarouselView) {
+      console.log(id);
       this.vps.scrollToAnchor(id);
     }
   }
