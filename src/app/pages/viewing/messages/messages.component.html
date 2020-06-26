@@ -37,7 +37,7 @@
                     <span class="msg-header-text">{{ msg.fromName }}</span>
                   </tr>
                   <tr>
-                    <span class="msg-header-date">{{ msg.timestamp.toDate().toDateString() }}</span>
+                    <span class="msg-header-date">{{ timeSince(nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
                   </tr>
                 </table>
               </td>
@@ -122,7 +122,7 @@
                         <span class="msg-header-text">{{ msg.fromName }}</span>
                       </tr>
                       <tr>
-                        <span class="msg-header-date">{{ msg.timestamp.toDate().toDateString() }}</span>
+                        <span class="msg-header-date">{{ timeSince(nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
                       </tr>
                     </table>
                   </td>
