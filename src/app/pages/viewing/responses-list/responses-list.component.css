@@ -2,7 +2,11 @@
   background-color: transparent;
   position: fixed;
   width: 16em;
+  height: auto;
+  top: 5em;
+  bottom: 5em;
   z-index: 1;
+  overflow: auto;
 }
 
 .response-list-card-relative {
@@ -12,8 +16,7 @@
 }
 
 #author-list {
-  height: 10em;
-  overflow-y: scroll;
+
 }
 
 #author-list-relative {
