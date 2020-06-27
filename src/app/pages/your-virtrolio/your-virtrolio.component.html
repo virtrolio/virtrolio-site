@@ -52,8 +52,8 @@
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-body" id='sharing-link-body'>
-        <label id="sharing-link-label" for="sharing-link-field" style="display:none">Your Link:</label>
+      <div class="modal-body sharing-link-body">
+        <label for="sharing-link-field">Your Link:</label>
         <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
                (click)="copyLink(sharingLink)" id="sharing-link-field">
         <button type="button" id="button-copy" [disabled]="!linkReady" class="btn btn-primary align-middle"
@@ -90,9 +90,9 @@
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-body" id='send-message-body'>
         To sign a friend's virtrolio, they need to give you their 'sharing link'! To access <em>your</em>
         sharing link, click the 'Sharing Link' button on this page!
+      <div class="modal-body sharing-link-body">
       </div>
 
       <!-- Modal Footer -->
