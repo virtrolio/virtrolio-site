@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-your-virtrolio',
@@ -17,8 +18,11 @@ export class YourVirtrolioComponent implements OnInit {
   public showWarningText = false;
   public copyButtonText = 'Copy';
   public displayName: string;
+  public visitLink: string;
+  private visitLinkUID: string;
+  private visitLinkKEY: string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
     this.authService.displayName().then((displayName) => { this.displayName = displayName; });
@@ -42,6 +46,23 @@ export class YourVirtrolioComponent implements OnInit {
     this.copyButtonText = 'Copy';
     this.authService.getLink().then(link => this.link = link);
     this.linkReady = true;
+  }
+
+  /**
+   * Attempt to navigate by router to link inputted in 'send a message' input field
+   */
+  navigateToLink() {
+    if (this.visitLink) {
+      try {
+        // noinspection JSIgnoredPromiseFromCall
+        this.visitLinkUID = this.visitLink.match(/uid=([^&]*)/)[1];
+        this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
+        window.location.href = 'https://virtrolio.web.app/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
+      } catch (e) {
+        this.router.navigate(['/invalid-link']).catch(e => alert('Something went wrong, see the error below: \n' + e +
+            '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+      }
+    }
   }
 
   /**
