@@ -4,7 +4,7 @@ service cloud.firestore {
     match /messages/{message} {
       // 1st condition: Allow you to read messages sent to you for purposes of viewing.component
       // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
-      allow get: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
+      allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
       allow list: if resource.data.to == request.auth.uid;
       allow create: if request.resource.data.from == request.auth.uid
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
