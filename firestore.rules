@@ -4,9 +4,14 @@ service cloud.firestore {
     match /messages/{message} {
       // 1st condition: Allow you to read messages sent to you for purposes of viewing.component
       // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
-      allow read: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
+      allow get: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
+      allow list: if resource.data.to == request.auth.uid;
       allow create: if request.resource.data.from == request.auth.uid
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
+                    && exists(/databases/$(database)/documents/users/$(request.resource.data.from))
+                    && message.split('.')[0] == request.resource.data.from
+                    && message.split('.')[1] == request.resource.data.to
+                    && !exists(/databases/$(database)/documents/messages/$(message))
                     && request.resource.data.contents.size() <= 5000;
       allow update: if false;
       allow delete: if resource.data.to == request.auth.uid;
