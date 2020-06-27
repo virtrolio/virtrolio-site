@@ -5,10 +5,17 @@
          alt="Virtrolio Logo">
     virtrolio
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+  <!-- Hamburger menu on mobile if logged out -->
+  <button *ngIf="!authService.isLoggedIn()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <!-- Profile pic menu on mobile if logged in -->
+  <div *ngIf="authService.isLoggedIn()" class="float-right profile-pic-container d-block d-sm-block d-md-none" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+       aria-expanded="false" aria-label="Toggle navigation">
+    <img class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}" alt="profile-pic">
+  </div>
+  <!-- Collapsible menu items -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -26,8 +33,15 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
+      <li class="nav-item d-block d-sm-block d-md-none" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link" routerLink="settings">Settings</a>
+      </li>
+      <li class="nav-item d-block d-sm-block d-md-none" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link" (click)="authService.logout()" href="#">Logout</a>
+      </li>
     </ul>
   </div>
+  <!-- Profile pic menu on desktop if logged in -->
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">
     <div class="dropdown dropleft">
       <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
