@@ -59,8 +59,7 @@ export class YourVirtrolioComponent implements OnInit {
         this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
         window.location.href = '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
       } catch (e) {
-        this.router.navigate(['/invalid-link']).catch(e => alert('Something went wrong, see the error below: \n' + e +
-            '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+        this.router.navigate(['/invalid-link']).catch(e => AuthService.displayError(e));
       }
     }
   }

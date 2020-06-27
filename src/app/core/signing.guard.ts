@@ -50,16 +50,14 @@ export class SigningGuard implements CanActivate {
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]).catch(e => alert('Something went wrong, see the error below: \n' + e +
-          '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
         return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
           // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate([ '/rejecc' ]).catch(e => alert('Something went wrong, see the error below: \n' + e +
-            '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+          this.router.navigate([ 'rejecc' ]).catch(e => AuthService.displayError(e));
           return false;
         }
       }).catch(() => {
@@ -72,15 +70,13 @@ export class SigningGuard implements CanActivate {
       } else {
         // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key }} )
-          .catch(e => alert('Something went wrong, see the error below: \n' + e + '\n please contact us at virtrolio.team@gmail.com if this ' +
-            'problem persists.'));
+          .catch(e => AuthService.displayError(e));
         return false;
       }
     })
       .catch(() => {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]).catch(e => alert('Something went wrong, see the error below: \n' + e +
-          '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+        this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
         return false;
       });
   }
