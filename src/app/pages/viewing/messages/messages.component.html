@@ -28,10 +28,12 @@
               <td>
                 <table>
                   <tr>
-                    <span class="msg-header-text">{{ msg.fromName }}</span>
+                    <div class="msg-header-text">
+                      <span>{{ msg.fromName }}</span>
+                    </div>
                   </tr>
                   <tr>
-                    <span class="msg-header-date">{{ timeSince(nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+                    <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
                   </tr>
                 </table>
               </td>
@@ -116,7 +118,7 @@
                         <span class="msg-header-text">{{ msg.fromName }}</span>
                       </tr>
                       <tr>
-                        <span class="msg-header-date">{{ timeSince(nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+                        <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
                       </tr>
                     </table>
                   </td>

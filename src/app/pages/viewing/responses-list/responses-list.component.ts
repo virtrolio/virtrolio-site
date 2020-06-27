@@ -13,7 +13,7 @@ export class ResponsesListComponent implements OnInit {
   public displayName: string;
   public photoUrl: string;
   public uid: string;
-
+  navIsOpen = false;
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
               private route: ActivatedRoute, private router: Router) {
     try {
@@ -34,6 +34,9 @@ export class ResponsesListComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  navOpen(state: boolean) {
+    this.navIsOpen = state;
+  }
   /**
    * Scroll to the card with the given id and update the URL
    * @param id: id attribute of the card
