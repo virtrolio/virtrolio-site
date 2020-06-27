@@ -15,7 +15,7 @@ import { MsgIoService } from '../../core/msg-io.service';
  * click on the 'Send' button.
  */
 export class SigningComponent implements OnInit {
-  public name = 'your friend;
+  public name = 'your friend';
 
   private uid: string;
   private key: string;
