@@ -57,7 +57,7 @@ export class YourVirtrolioComponent implements OnInit {
         // noinspection JSIgnoredPromiseFromCall
         this.visitLinkUID = this.visitLink.match(/uid=([^&]*)/)[1];
         this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
-        window.location.href = 'https://virtrolio.web.app/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
+        window.location.href = '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
       } catch (e) {
         this.router.navigate(['/invalid-link']).catch(e => alert('Something went wrong, see the error below: \n' + e +
             '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
