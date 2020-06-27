@@ -24,11 +24,11 @@ export class AboutComponent implements OnInit {
    */
   constructor() {
     this.Arvind = new AboutPagePictures('Arvind', 'https://bit.ly/3de5LUs', 'https://bit.ly/2V596Pn');
-    this.Dabeer = new AboutPagePictures('Dabeer', 'https://bit.ly/2zPaOwQ', 'https://bit.ly/2YVsSOn');
+    this.Dabeer = new AboutPagePictures('Dabeer', 'https://bit.ly/2zPaOwQ', 'https://bit.ly/3fOt0WT');
     this.Eric = new AboutPagePictures('Eric', 'https://bit.ly/2NemLiC', 'https://bit.ly/3dk383t');
-    this.Janakitti = new AboutPagePictures('Janakitti', 'https://bit.ly/3elvYBR', 'https://bit.ly/3hOLPuD');
+    this.Janakitti = new AboutPagePictures('Janakitti', 'https://bit.ly/3elvYBR', 'https://bit.ly/2B371wA');
     this.John = new AboutPagePictures('John', 'https://bit.ly/3emaogl', 'https://bit.ly/2AUtyvt');
-    this.Tommy = new AboutPagePictures('Tommy', 'https://bit.ly/3hQOJzo', 'https://bit.ly/3emQ1jf');
+    this.Tommy = new AboutPagePictures('Tommy', 'https://bit.ly/3hQOJzo', 'https://bit.ly/3hW09Sk');
   }
 
   ngOnInit(): void { }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FriendLinkComponent } from './friend-link.component';
+import { SigningAuthRedirectComponent } from './signing-auth-redirect.component';
 
 describe('FriendLinkComponent', () => {
-  let component: FriendLinkComponent;
-  let fixture: ComponentFixture<FriendLinkComponent>;
+  let component: SigningAuthRedirectComponent;
+  let fixture: ComponentFixture<SigningAuthRedirectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FriendLinkComponent ]
+      declarations: [ SigningAuthRedirectComponent ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FriendLinkComponent);
+    fixture = TestBed.createComponent(SigningAuthRedirectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

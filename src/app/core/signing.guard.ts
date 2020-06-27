@@ -17,7 +17,7 @@ import { MsgIoService } from './msg-io.service';
 })
 
 /**
- * AuthGuard on all /signing pages. Redirects to /friend-link if not signed in, redirect to /invalid-link
+ * AuthGuard on all /signing pages. Redirects to /signing-auth-redirect if not signed in, redirect to /invalid-link
  * if invalid uid or key.
  *
  * @param uid - extracted from url manually using RegEx
@@ -69,7 +69,7 @@ export class SigningGuard implements CanActivate {
         return true;
       } else {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/friend-link' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
+        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
         return false;
       }
     })
