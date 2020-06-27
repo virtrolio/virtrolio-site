@@ -16,6 +16,7 @@ export class SigningService {
   public charCountColor: string;
 
   // Font service variables
+  public fontDict: Fonts; // Used to store all of the fonts
   public currentFont: string; // Used to select a font from fontDict
   public currentFontFamily: string; // Used to CSS select the font
   public currentFontDisplay: string; // Shown in the Font Dropdown menu
