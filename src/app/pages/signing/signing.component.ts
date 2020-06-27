@@ -17,6 +17,7 @@ import { MsgIoService } from '../../core/msg-io.service';
  */
 export class SigningComponent implements OnInit {
   public name = 'your friend';
+  public sending = false;
 
   private uid: string;
   private key: string;
@@ -41,7 +42,7 @@ export class SigningComponent implements OnInit {
   canDeactivate(): Observable<boolean> | boolean {
     // returning true will navigate without confirmation
     // returning false will show a confirm dialog before navigating away
-    return !this.signingService.signingBoxText;
+    return !this.signingService.signingBoxText || this.sending;
   }
 
   /**
@@ -56,6 +57,8 @@ export class SigningComponent implements OnInit {
     newMsg.contents = textbox.value;
     newMsg.to = this.uid;
 
+    // remove navigation popup
+    this.sending = true;
     this.msgIo.sendMessage(newMsg, this.key).then(() =>
       this.router.navigate(['/msg-sent']))
       .catch(error => alert(error));
