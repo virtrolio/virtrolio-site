@@ -167,7 +167,8 @@ export class MsgIoService {
       };
 
       // Send the message
-      await this.messagesCollection.add(message).catch(error => {
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '.' + message.to);
+      await msgRef.set(message).catch(error => {
         AuthService.displayError(error);
       });
     } else {
