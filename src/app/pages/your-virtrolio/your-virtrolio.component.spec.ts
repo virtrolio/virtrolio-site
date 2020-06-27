@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VirtrolioCoverComponent } from './virtrolio-cover.component';
+import { YourVirtrolioComponent } from './your-virtrolio.component';
 
 describe('VirtrolioCoverComponent', () => {
-  let component: VirtrolioCoverComponent;
-  let fixture: ComponentFixture<VirtrolioCoverComponent>;
+  let component: YourVirtrolioComponent;
+  let fixture: ComponentFixture<YourVirtrolioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VirtrolioCoverComponent ]
+      declarations: [ YourVirtrolioComponent ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VirtrolioCoverComponent);
+    fixture = TestBed.createComponent(YourVirtrolioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
