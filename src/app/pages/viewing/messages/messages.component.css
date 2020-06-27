@@ -33,7 +33,7 @@
   color: white;
   height: 70vh;
   padding: 3em 6em 3em 6em;
-  display: flex;
+
   overflow-y: auto;
 }
 
