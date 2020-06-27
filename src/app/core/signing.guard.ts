@@ -51,7 +51,7 @@ export class SigningGuard implements CanActivate {
       if (validKey === false) {
         // noinspection JSIgnoredPromiseFromCall
       this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
-        return false;
+      return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
