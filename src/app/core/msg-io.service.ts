@@ -1,5 +1,5 @@
 import { Injectable, SecurityContext } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
 import * as firebase from 'firebase';
@@ -114,16 +114,20 @@ export class MsgIoService {
    * @returns true - If the current user has already signed the virtrolio of toUID.
    */
   async checkForMessage(toUID: string): Promise<boolean> {
-    const messages = await this.afs.collection('messages', ref => ref
-      .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-      .valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
-    if (messages) {
-      return messages.length !== 0;
-    } else {
-      return false;
-    }
+    const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
+      .doc(this.authService.uid() + '-' + toUID);
+    const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
+    return !!msgDoc;
+    // const messages = await this.afs.collection('messages', ref => ref
+    //   .where('from', '==', this.authService.uid()).where('to', '==', toUID))
+    //   .valueChanges().pipe(take(1)).toPromise().catch(error => {
+    //     AuthService.displayError(error);
+    //   });
+    // if (messages) {
+    //   return messages.length !== 0;
+    // } else {
+    //   return false;
+    // }
   }
 
   /**
@@ -167,7 +171,7 @@ export class MsgIoService {
       };
 
       // Send the message
-      const msgRef = this.messagesCollection.doc(this.authService.uid() + '.' + message.to);
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to);
       await msgRef.set(message).catch(error => {
         AuthService.displayError(error);
       });
