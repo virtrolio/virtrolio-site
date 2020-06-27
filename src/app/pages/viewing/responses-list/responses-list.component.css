@@ -3,7 +3,7 @@
   height: calc(100% - var(--navbar-height));
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 3000;
   top: var(--navbar-height);
   left: 0;
   background-color: white;
@@ -14,10 +14,15 @@
 
 .sidenav .closebtn {
   position: absolute;
+  color: var(--dark);
   top: 0;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.closebtn:hover {
+  text-decoration: none;
 }
 
 /* Nav width states controlled by navOpen() */
@@ -31,7 +36,8 @@
 
 .hamburger {
   position: fixed;
-  top: calc(var(--navbar-height) + 2em);
+  z-index: 2000;
+  bottom: 2em;
   left: 2em;
   font-size: 1em;
   font-weight: bold;
@@ -120,6 +126,22 @@
 @media screen and (max-width: 720px) {
   .navOpen {
     width: 100%;
+  }
+  .hamburger {
+    position: fixed;
+    z-index: 2000;
+    bottom: 2em;
+    left: -1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    height: 3em;
+    width: 3em;
+    border-radius: 100%;
+    background: var(--accent);
+    opacity: 0.8;
+    cursor: pointer;
   }
 }
 
