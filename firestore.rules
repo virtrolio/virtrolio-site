@@ -14,7 +14,8 @@ service cloud.firestore {
     match /users/{user} {
       allow read: if request.auth != null;
       // Only write to your own user info
-      allow write: if request.auth.uid == user;
+      allow create, delete: if request.auth.uid == user;
+      allow update: if request.auth.uid == user && request.resource.data.field == resource.data.field;
     }
   }
 }
