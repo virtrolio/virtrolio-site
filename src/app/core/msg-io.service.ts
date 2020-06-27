@@ -102,7 +102,9 @@ export class MsgIoService {
   async markAsRead(id: string): Promise<void> {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
-    );
+    ).catch(error => {
+      AuthService.displayError(error);
+    });
   }
 
   /**
@@ -114,8 +116,14 @@ export class MsgIoService {
   async checkForMessage(toUID: string): Promise<boolean> {
     const messages = await this.afs.collection('messages', ref => ref
       .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-      .valueChanges().pipe(take(1)).toPromise();
-    return messages.length !== 0;
+      .valueChanges().pipe(take(1)).toPromise().catch(error => {
+        AuthService.displayError(error);
+      });
+    if (messages) {
+      return messages.length !== 0;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -159,7 +167,9 @@ export class MsgIoService {
       };
 
       // Send the message
-      await this.messagesCollection.add(message);
+      await this.messagesCollection.add(message).catch(error => {
+        AuthService.displayError(error);
+      });
     } else {
       throw new TypeError('Incorrect key');
     }
