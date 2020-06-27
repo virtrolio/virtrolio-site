@@ -1,8 +1,21 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth != null;
+    match /messages/{message} {
+      // 1st condition: Allow you to read messages sent to you for purposes of viewing.component
+      // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
+      allow read: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
+      allow create: if request.resource.data.from == request.auth.uid
+                    && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
+                    && request.resource.data.contents.size() <= 5000;
+      allow update: if false;
+      allow delete: if resource.data.to == request.auth.uid;
+    }
+    match /users/{user} {
+      allow get: if request.auth != null;
+      allow list: if false;
+      // Only write to your own user info
+      allow write: if request.auth.uid == user;
     }
   }
 }
