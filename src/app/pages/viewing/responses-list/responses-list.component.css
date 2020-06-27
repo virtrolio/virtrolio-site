@@ -37,17 +37,25 @@
 .hamburger {
   position: fixed;
   z-index: 2000;
-  bottom: 2em;
-  left: 2em;
+  top: calc(2em + var(--navbar-height));
+  left: -1em;
   font-size: 1em;
   font-weight: bold;
   color: white;
   text-align: center;
   height: 3em;
   width: 3em;
-  border-radius: 100%;
+  border-radius: 2em;
   background: var(--accent);
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.hamburger:hover {
+  left: -0.5em;
+  height: 4em;
+  width: 4em;
+  transition: 0.5s;
 }
 
 /* Side nav contents */
@@ -130,6 +138,7 @@
   .hamburger {
     position: fixed;
     z-index: 2000;
+    top: unset;
     bottom: 2em;
     left: -1em;
     font-size: 1em;
