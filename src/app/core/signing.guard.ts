@@ -57,7 +57,7 @@ export class SigningGuard implements CanActivate {
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
           // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate([ 'rejecc' ]).catch(e => AuthService.displayError(e));
+          this.router.navigate([ '/rejecc' ]).catch(e => AuthService.displayError(e));
           return false;
         }
       }).catch(() => {
