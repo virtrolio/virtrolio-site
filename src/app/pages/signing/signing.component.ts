@@ -41,7 +41,7 @@ export class SigningComponent implements OnInit {
   canDeactivate(): Observable<boolean> | boolean {
     // returning true will navigate without confirmation
     // returning false will show a confirm dialog before navigating away
-    return !this.signService.signingBoxText;
+    return !this.signingService.signingBoxText;
   }
 
   /**
