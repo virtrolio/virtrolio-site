@@ -167,7 +167,8 @@ export class MsgIoService {
         isRead: false,
         year: MsgIoService.currentYear,
         fromName: await this.authService.displayName(),
-        fromPic: await this.authService.profilePictureLink()
+        fromPic: await this.authService.profilePictureLink(),
+        key
       };
 
       // Send the message
