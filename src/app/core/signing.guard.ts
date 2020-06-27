@@ -43,8 +43,7 @@ export class SigningGuard implements CanActivate {
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (e) {
       // noinspection JSIgnoredPromiseFromCall
-      this.router.navigate([ '/invalid-link' ]).catch(e => alert('Something went wrong, see the error below: \n' + e +
-        '\n please contact us at virtrolio.team@gmail.com if this problem persists.'));
+      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
     }
 
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
