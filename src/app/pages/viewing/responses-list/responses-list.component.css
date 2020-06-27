@@ -1,11 +1,11 @@
 /* Side nav container */
 .sidenav {
   height: calc(100% - var(--navbar-height));
-  width: 0;
+  width: 25em;
   position: fixed;
   z-index: 3000;
   top: var(--navbar-height);
-  left: 0;
+  left: -25em;
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
@@ -27,11 +27,11 @@
 
 /* Nav width states controlled by navOpen() */
 .navClosed{
-  width: 0%;
+  left: -25em;
 }
 
 .navOpen {
-  width: 25em;
+  left: 0;
 }
 
 .hamburger {
