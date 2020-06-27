@@ -57,7 +57,7 @@ const routes: Routes = [
     component: SigningComponent,
     canActivate: [ SigningGuard ],
     resolve: { user: LoginResolver },
-    canDeactivate: [PendingChangesGuard]
+    canDeactivate: [ PendingChangesGuard ]
   },
   { path: 'terms-of-service', component: TermsOfServiceComponent },
   {
