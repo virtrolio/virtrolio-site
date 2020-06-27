@@ -16,14 +16,13 @@ import { MsgIoService } from '../../core/msg-io.service';
  * click on the 'Send' button.
  */
 export class SigningComponent implements OnInit {
-  public name = 'your friend;
+  public name = 'your friend';
 
   private uid: string;
   private key: string;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, public signService: SigningService,
-              private msgIo: MsgIoService, private router: Router) {
-  }
+  constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
+              private msgIo: MsgIoService, private router: Router) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -34,7 +33,7 @@ export class SigningComponent implements OnInit {
       this.key = params.key;
     });
     this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
-    this.signService.resetDefaultValues();
+    this.signingService.resetDefaultValues();
   }
 
   // @HostListener allows us to guard against browser refresh, close, etc.
@@ -51,9 +50,9 @@ export class SigningComponent implements OnInit {
    */
   sendMsg(textbox: HTMLTextAreaElement) {
     const newMsg = this.msgIo.createBlankMessage();
-    newMsg.backColor = this.signService.backgroundColor;
-    newMsg.fontColor = this.signService.textColor;
-    newMsg.fontFamily = this.signService.currentFont;
+    newMsg.backColor = this.signingService.backgroundColor;
+    newMsg.fontColor = this.signingService.textColor;
+    newMsg.fontFamily = this.signingService.currentFont;
     newMsg.contents = textbox.value;
     newMsg.to = this.uid;
 

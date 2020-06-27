@@ -5,9 +5,9 @@
 
 #meet-the-team > div > div {
   /* For all items within each peron's row -- copy of vertical-center class in main.css */
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: auto;
 }
 
@@ -18,4 +18,23 @@
 .jumbotron {
   padding-top: 2em;
   padding-bottom: 0;
+}
+
+.regular-picture:hover {
+  opacity: 0;
+}
+
+.regular-picture {
+  z-index: 0;
+  width: 100%;
+}
+
+.silly-picture {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+
+.image-container {
+  padding: 0;
 }

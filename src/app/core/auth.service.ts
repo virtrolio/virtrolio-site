@@ -14,6 +14,7 @@ export class AuthService {
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
+
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 
@@ -29,6 +30,14 @@ export class AuthService {
       key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
     }
     return key;
+  }
+
+  /**
+   * Displays an error to the user using an alert and a human-readable prefix.
+   * @param error - The error to display to the user.
+   */
+  static displayError(error) {
+    alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
   }
 
   // Auth
@@ -54,6 +63,9 @@ export class AuthService {
         console.log('Login failed');
         return this.router.navigate([ '/' ]);
       }
+    }).catch(error => {
+      AuthService.displayError(error);
+      return this.router.navigate(['/access-denied']);
     });
   }
 
@@ -66,6 +78,9 @@ export class AuthService {
   logout(): Promise<boolean> {
     return this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
+    }).catch(error => {
+      AuthService.displayError(error);
+      return this.router.navigate([ '/' ]);
     });
   }
 
@@ -75,7 +90,9 @@ export class AuthService {
    */
   async createUser(user: User): Promise<void> {
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
-    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
+    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+      AuthService.displayError(error);
+    });
 
     if (!userDoc) { // User doesn't exist in database
       const userData: VirtrolioUser = {
@@ -83,16 +100,24 @@ export class AuthService {
         key: AuthService.generateKey(),
         profilePic: this.user.photoURL
       };
-      await userRef.set(userData);
+      await userRef.set(userData).catch(error => {
+        AuthService.displayError(error);
+      });
     } else { // User exists in database, make sure all fields are present
       if (!('key' in userDoc)) {
-        await userRef.update({ key: AuthService.generateKey() });
+        await userRef.update({ key: AuthService.generateKey() }).catch(error => {
+          AuthService.displayError(error);
+        });
       }
       if (!('displayName' in userDoc)) {
-        await userRef.update({ displayName: user.displayName });
+        await userRef.update({ displayName: user.displayName }).catch(error => {
+          AuthService.displayError(error);
+        });
       }
       if (!('profilePic' in userDoc)) {
-        await userRef.update({ profilePic: user.photoURL });
+        await userRef.update({ profilePic: user.photoURL }).catch(error => {
+          AuthService.displayError(error);
+        });
       }
     }
   }
@@ -120,7 +145,7 @@ export class AuthService {
 
   /**
    * @returns The URL to the user's profile picture.
-   * @throws ReferenceError - If the user is not logged in
+   * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
   async profilePictureLink(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your profile picture');
@@ -129,7 +154,14 @@ export class AuthService {
       return this.user.photoURL;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      return (await userRef.valueChanges().pipe(take(1)).toPromise()).profilePic;
+      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+        AuthService.displayError(error);
+      });
+      if (userDoc) {
+        return userDoc.profilePic;
+      } else {
+        throw new ReferenceError('User document doesn\'t exist');
+      }
     }
   }
 
@@ -145,7 +177,7 @@ export class AuthService {
 
   /**
    * @returns The Display Name of the user as defined in the account that they use to sign in.
-   * @throws ReferenceError - If the user is not logged in
+   * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
   async displayName(uid?: string): Promise<string> {
     this.throwErrorIfLoggedOut('get your name');
@@ -154,7 +186,14 @@ export class AuthService {
       return this.user.displayName;
     } else {
       const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      return (await userRef.valueChanges().pipe(take(1)).toPromise()).displayName;
+      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+        AuthService.displayError(error);
+      });
+      if (userDoc) {
+        return userDoc.displayName;
+      } else {
+        throw new ReferenceError('User document doesn\'t exist');
+      }
     }
   }
 
@@ -199,7 +238,12 @@ export class AuthService {
     const user = this.uid();
     link += user + '&key=';
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    let key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
+    let userDoc: VirtrolioUser = await userRef.valueChanges().pipe(take(1)).toPromise();
+    if (!userDoc) {
+      await this.createUser(this.user);
+      userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
+    }
+    let key = userDoc.key;
     if (typeof key === 'undefined' || !key) {
       await this.changeKey();
       key = (await userRef.valueChanges().pipe(take(1)).toPromise()).key;
@@ -228,12 +272,8 @@ export class AuthService {
     return this.userExists(uid).then(async userExists => {
       if (userExists) {
         const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-        let correctKey: string;
-        return userRef.valueChanges().pipe(take(1)).toPromise().then(async userDoc => {
-            correctKey = userDoc.key;
-            return key === correctKey;
-          }
-        );
+        const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
+        return key === userDoc.key;
       } else {
         throw new ReferenceError('User does not exist in the \'users\' database');
       }

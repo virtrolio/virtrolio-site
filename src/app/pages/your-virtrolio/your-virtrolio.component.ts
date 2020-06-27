@@ -1,24 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-virtrolio-cover',
-  templateUrl: './virtrolio-cover.component.html',
-  styleUrls: [ './virtrolio-cover.component.css' ]
+  selector: 'app-your-virtrolio',
+  templateUrl: './your-virtrolio.component.html',
+  styleUrls: [ './your-virtrolio.component.css' ]
 })
 
 /**
  * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class VirtrolioCoverComponent implements OnInit {
+export class YourVirtrolioComponent implements OnInit {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
   public showWarningText = false;
   public copyButtonText = 'Copy';
   public displayName: string;
+  public visitLink: string;
+  private visitLinkUID: string;
+  private visitLinkKEY: string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit(): void {
     this.authService.displayName().then((displayName) => { this.displayName = displayName; });
@@ -42,6 +46,22 @@ export class VirtrolioCoverComponent implements OnInit {
     this.copyButtonText = 'Copy';
     this.authService.getLink().then(link => this.link = link);
     this.linkReady = true;
+  }
+
+  /**
+   * Attempt to navigate by router to link inputted in 'send a message' input field
+   */
+  navigateToLink() {
+    if (this.visitLink) {
+      try {
+        // noinspection JSIgnoredPromiseFromCall
+        this.visitLinkUID = this.visitLink.match(/uid=([^&]*)/)[1];
+        this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
+        window.location.href = '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
+      } catch (e) {
+        this.router.navigate(['/invalid-link']).catch(e => AuthService.displayError(e));
+      }
+    }
   }
 
   /**

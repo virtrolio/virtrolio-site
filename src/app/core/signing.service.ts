@@ -7,19 +7,18 @@ import { FontService } from './font.service';
   providedIn: 'root'
 })
 export class SigningService {
-  public signingBoxText;
-  public backgroundColor;
-  public textColor;
-  public canSend;
-  public charCount;
+  public signingBoxText: string;
+  public backgroundColor: string;
+  public textColor: string;
+  public canSend: boolean;
+  public charCount: number;
   public maxCharCount: number;
-  public charCountColor;
+  public charCountColor: string;
 
-  // Font service variables
-  public currentFont; // Used to select a font from fontDict
-  public currentFontFamily; // Used to CSS select the font
-  public currentFontDisplay; // Shown in the Font Dropdown menu
-  public fontDict: Fonts;
+  // font service stuff
+  public currentFont: string; // Used to select a font from fontDict
+  public currentFontFamily: string; // Used to CSS select the font
+  public currentFontDisplay: string; // Shown in the Font Dropdown menu
 
   constructor() {
     this.fontDict = FontService.fonts;
