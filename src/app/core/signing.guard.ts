@@ -43,21 +43,21 @@ export class SigningGuard implements CanActivate {
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (e) {
       // noinspection JSIgnoredPromiseFromCall
-      this.router.navigate([ '/invalid-link' ]);
+      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
     }
 
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
-        return false;
+      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+      return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
           // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate([ '/rejecc' ]);
+          this.router.navigate([ '/rejecc' ]).catch(e => AuthService.displayError(e));
           return false;
         }
       }).catch(() => {
@@ -69,13 +69,14 @@ export class SigningGuard implements CanActivate {
         return true;
       } else {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
+        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key }} )
+          .catch(e => AuthService.displayError(e));
         return false;
       }
     })
       .catch(() => {
         // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
+        this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
         return false;
       });
   }
