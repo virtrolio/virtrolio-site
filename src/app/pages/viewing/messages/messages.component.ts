@@ -15,7 +15,7 @@ import Timestamp = firestore.Timestamp;
 export class MessagesComponent implements OnInit {
   fonts: Fonts;
   messageToDelete: string;
-  constructor(public viewService: ViewingService, public authService: AuthService) { }
+  constructor(public viewService: ViewingService, public authService: AuthService, private fontService: FontService) { }
 
   ngOnInit(): void {
     this.fonts = FontService.fonts;
@@ -51,6 +51,14 @@ export class MessagesComponent implements OnInit {
       headerTextColor = '#FFFFFF';
     }
     return { bg: '#' + headerColor, text: headerTextColor };
+  }
+
+  checkFont(font: string) {
+    if (font in FontService.fonts) {
+      return font;
+    } else {
+      return 'Arial';
+    }
   }
 
   /**

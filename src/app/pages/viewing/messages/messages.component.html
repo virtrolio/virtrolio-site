@@ -60,7 +60,7 @@
       <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
         <table>
           <tr class="message"
-              [ngStyle]="{'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
+              [ngStyle]="{'color': msg.fontColor, 'font-family': checkFont(fonts[msg.fontFamily].fontFamily) +','+ fonts[msg.fontFamily].backupFont }">
             <td>
               <markdown emoji data="{{ msg.contents }}"></markdown>
             </td>
