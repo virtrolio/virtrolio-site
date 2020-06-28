@@ -6,13 +6,34 @@ service cloud.firestore {
       // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
       allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
       allow list: if resource.data.to == request.auth.uid;
-      allow create: if request.resource.data.from == request.auth.uid
+      allow create: if request.resource.data.hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
+            				'from', 'isRead', 'key', 'fromName', 'fromPic', 'timestamp', 'to', 'year'])
+                    // Param Validity
+                    // > Enforce Message ID format of <fromUID>-<toUID>
                     && message.split('-')[0] == request.resource.data.from
                     && message.split('-')[1] == request.resource.data.to
+                    // > Enforce max message length
                     && request.resource.data.contents.size() <= 5000
+                    // Data Validity
+                    // > Regex string fields to reject if they're only whitespace or blank
+                    && request.resource.data.contents.matches('\\S+')
+                    // > Regex to match hex color code format (#AABBCC)
+                    && request.resource.data.backColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
+                    && request.resource.data.fontColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
+                    && request.resource.data.fontFamily.matches('\\S+')
+                    && request.resource.data.key.matches('\\S+')
+                    && request.resource.data.isRead is bool
+                    && request.resource.data.timestamp is timestamp
+                    && request.resource.data.year is number
+                    && request.resource.data.year >= 2020
+                    // Authentication
+                    && request.resource.data.from == request.auth.uid
+                    // > Check to make sure 'from' hasn't already sent a message to 'to'
+                    // > One message per sender-recipient pair enforced by message ID format
                     && !exists(/databases/$(database)/documents/messages/$(message))
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.from))
+                    // > Check if the correct key is used
                     && request.resource.data.key ==
                     get(/databases/$(database)/documents/users/$(request.resource.data.to)).key;
       allow update: if false;
