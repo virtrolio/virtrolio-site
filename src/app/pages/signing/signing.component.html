@@ -27,8 +27,8 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   [ngStyle]="{'font-family': currentFontFamily}">
-            <span class="float-left">{{currentFontDisplay}}</span>
-            <span class="float-right"><span class="caret"></span></span>
+            <span>{{currentFontDisplay}}</span>
+            <span class="caret"></span>
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
             <span *ngFor="let font of fontDict | keyvalue">
