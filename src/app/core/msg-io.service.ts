@@ -38,7 +38,7 @@ export class MsgIoService {
       throw new Error('Recipient UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
-    } else if (/\S+/.test(message.contents)) {
+    } else if (!/\S+/.test(message.contents)) {
       // Ensure messages does not solely consist of whitespace
       throw new Error('Message contents cannot solely consist of whitespace/blanks');
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
