@@ -49,7 +49,7 @@ export class YourVirtrolioComponent implements OnInit {
   }
 
   /**
-   * Attempt to navigate by router to link inputted in 'send a message' input field
+   * Attempts to navigate by router to a sharing link based on what is inputted in the 'send a message' input field (query params extracted with regEx if possible)
    */
   navigateToLink() {
     if (this.visitLink) {
