@@ -1,5 +1,5 @@
 #graphic {
-  height: 10em;
+  height: 15em;
 }
 
 #buttons > button {
@@ -15,7 +15,7 @@
 /* Mobile */
 @media only screen and (max-width: 768px) {
   #graphic {
-    height: 5em;
+    height: 10em;
   }
 
   #title-text {
