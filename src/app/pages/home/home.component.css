@@ -172,7 +172,7 @@ markdown {
 
 #font-selector-dropdown {
   text-align: right;
-  width: 12em;
+  width: 14em;
   height: 2.5em;
 }
 
@@ -200,7 +200,7 @@ markdown {
 
 .dropdown-menu {
   overflow-y: auto;
-  height: 12em;
+  height: 15em;
 }
 
 #icon {
