@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { PendingChangesGuard } from './core/pending-changes.guard';
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
@@ -55,7 +56,8 @@ const routes: Routes = [
     path: 'signing',
     component: SigningComponent,
     canActivate: [ SigningGuard ],
-    resolve: { user: LoginResolver }
+    resolve: { user: LoginResolver },
+    canDeactivate: [ PendingChangesGuard ]
   },
   { path: 'terms-of-service', component: TermsOfServiceComponent },
   {
@@ -77,7 +79,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})], // scroll to top when routerLinking
+  imports: [ RouterModule.forRoot(routes)], // scroll to top when routerLinking
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {

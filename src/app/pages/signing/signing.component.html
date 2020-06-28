@@ -10,10 +10,11 @@
       </div>
       <div class="row">
         <textarea #signingInputArea id="signing-box" class="form-control" autofocus
-                  (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
-                  [ngStyle]="{'font-family': currentFontFamily}"></textarea>
-        <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
-          {{ charCount }} / {{ maxCharCount }}
+                  (keyup)='signingService.updateCount(signingInputArea)' [(ngModel)]='signingService.signingBoxText'
+                  [ngStyle]="{'font-family': signingService.currentFontFamily}"></textarea>
+        <span id="char-count-display" *ngIf="signingService.charCount >= 2000"
+              [ngStyle]="{'color': signingService.charCountColor}">
+          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
         </span>
       </div>
     </div>
@@ -27,31 +28,34 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   [ngStyle]="{'font-family': currentFontFamily}">
-            <span>{{currentFontDisplay}}</span>
+            <span>{{ signingService.currentFontDisplay }}</span>
             <span class="caret"></span>
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
-            <span *ngFor="let font of fontDict | keyvalue">
+            <span *ngFor="let font of signingService.fontDict | keyvalue">
               <a class="dropdown-item" [ngStyle]="{'font-family': font.key}"
-                 (click)="selectFont(font.key)">{{font.key}}</a>
+                 (click)="signingService.selectFont(font.key)">{{font.key}}</a>
             </span>
           </div>
         </div>
 
         <!-- Formatting buttons -->
-        <button type="button" (click)="addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
+        <button type="button" (click)="signingService.addFormatting(signingInputArea, '**')"
+                class="btn btn-secondary btn-format mr-2"
                 id="button-bold">
           <b>B</b>
         </button>
-        <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
+        <button type="button" (click)="signingService.addFormatting(signingInputArea, '*')"
+                class="btn btn-secondary btn-format mr-2"
                 id="button-italics">
           <i>I</i>
         </button>
-        <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
+        <button type="button" (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
                 class="btn btn-secondary btn-format mr-2" id="button-underline">
           <u>U</u>
         </button>
-        <button type="button" (click)="addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
+        <button type="button" (click)="signingService.addFormatting(signingInputArea, '~~')"
+                class="btn btn-secondary btn-format mr-2"
                 id="button-strikethrough">
           <s>S</s>
         </button>
@@ -60,20 +64,21 @@
         <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <span id="font-color-text">A</span>
           <label for="colorpicker-font" hidden>Colour picker for font</label>
-          <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
-                 [(ngModel)]='textColor'>
-          <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
+          <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker"
+                 value={{signingService.textColor}}
+                 [(ngModel)]='signingService.textColor'>
+          <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.textColor}">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
           <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
           <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-                 value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-          <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
+                 value={{signingService.backgroundColor}} [(ngModel)]='signingService.backgroundColor'>
+          <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.backgroundColor}">&nbsp;</span>
         </button>
 
         <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
-                [disabled]="!canSend">Send
+                [disabled]="!signingService.canSend">Send
         </button>
       </div>
     </div>
@@ -90,8 +95,9 @@
       </div>
       <div class="row">
         <markdown emoji
-                  [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFontFamily}"
-                  id="preview-text" data="{{ signingBoxText }}"></markdown>
+                  [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
+                  'font-family': signingService.currentFontFamily}" id="preview-text"
+                  data="{{ signingService.signingBoxText }}"></markdown>
       </div>
     </div>
   </div>
@@ -112,7 +118,8 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="createMsg(signingInputArea)" data-dismiss="modal">
+        <button type="button" class="btn btn-primary" (click)="sendMsg(signingInputArea)"
+                data-dismiss="modal">
           Send it!
         </button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
