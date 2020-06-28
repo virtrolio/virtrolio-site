@@ -48,24 +48,28 @@
   padding-top: 2em;
 }
 
-/* | Sharing link */
+/* | Sharing & Send a message buttons */
 
-#sharing-link-body {
+.sharing-link-body {
   text-align: center;
   padding: 0.5em;
 }
 
-#sharing-link-body > * {
-  /* Each item inside the sharing-link modal body */
+.sharing-link-body > * {
+  /* Each item inside a sharing-link modal body */
   margin: 0.4em;
 }
 
-#sharing-link-field {
+.sharing-link-body > input {
   /* Friend link text field */
   width: 60%;
   height: 2em;
   padding: 0.2em;
   overflow-x: auto;
+}
+
+.sharing-link-body > label {
+  display: none;
 }
 
 #button-copy {
