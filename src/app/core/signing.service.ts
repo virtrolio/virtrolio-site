@@ -53,22 +53,23 @@ export class SigningService {
   /**
    * Adds markdown formatting characters around selected text within textbox.
    * @param textbox - textbox in which user types.
-   * @param formatCharacters - formatting character(s) to be placed around the selected text
-   * @param endCharacter - Optional - The ending character, if different from the starting character
+   * @param formatChars - formatting character(s) to be placed around the selected text
+   * @param endChars - Optional - The ending character, if different from the starting character
    */
-  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string, endCharacter?: string) {
+  addFormatting(textbox: HTMLTextAreaElement, formatChars: string, endChars?: string) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
     const text = textbox.value;
 
     // If the end character was not provided, we assume it will be the same as the start character
-    if (typeof endCharacter === 'undefined' || !endCharacter) {
-      endCharacter = formatCharacters;
+    if (typeof endChars === 'undefined' || !endChars) {
+      endChars = formatChars;
     }
-
-    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + endCharacter +
+    this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
       text.slice(end);
-    textbox.select();
+
+    textbox.focus();
+
   }
 
   /**
