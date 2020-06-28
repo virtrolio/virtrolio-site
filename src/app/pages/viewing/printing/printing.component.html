@@ -1,0 +1,9 @@
+<div class="row justify-content-center">
+  <div class="col-8 print-container">
+    <div class="message" *ngFor="let msg of viewService.messages;">
+      <markdown emoji data="{{ msg.contents }}"></markdown>
+      <span class="from">{{ msg.fromName }}</span>
+    </div>
+  </div>
+</div>
+

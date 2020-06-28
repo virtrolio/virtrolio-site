@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PrintingComponent } from './pages/viewing/printing/printing.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
@@ -61,6 +62,13 @@ const routes: Routes = [
   {
     path: 'viewing',
     component: ViewingComponent,
+    canActivate: [ AngularFireAuthGuard ],
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
+  },
+  {
+    path: 'export',
+    component: PrintingComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized },
     resolve: { user: LoginResolver }

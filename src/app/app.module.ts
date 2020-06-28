@@ -29,6 +29,7 @@ import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/sign
 import { HomeComponent } from './pages/home/home.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PrintingComponent } from './pages/viewing/printing/printing.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
@@ -63,7 +64,8 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     PrivacyPolicyComponent,
     InvalidLinkComponent,
     AccessDeniedComponent,
-    RejeccComponent
+    RejeccComponent,
+    PrintingComponent
   ],
   imports: [
     BrowserModule,
