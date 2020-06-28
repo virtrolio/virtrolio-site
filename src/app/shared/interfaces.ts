@@ -11,12 +11,12 @@ export class VirtrolioMessageTemplate {
 
 export interface VirtrolioDocument extends VirtrolioMessageTemplate {
   from: string;
-  isRead: boolean;
-  year: number;
-  timestamp: Timestamp;
   fromName: string;
   fromPic: string;
+  isRead: boolean;
   key: string;
+  timestamp: Timestamp;
+  year: number;
 }
 
 export interface VirtrolioMessage extends VirtrolioDocument {
