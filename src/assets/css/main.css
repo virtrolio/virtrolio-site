@@ -11,8 +11,8 @@ html {
   --light-grey: #999999;
 
   /* Sizes */
-  --footer-height: 7em;
-  --navbar-height: 4.5em;
+  --footer-height: 5.5em;
+  --navbar-height: 3em;
 
   /* Shadows from signing component */
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
