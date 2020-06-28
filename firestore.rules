@@ -7,7 +7,7 @@ service cloud.firestore {
       allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
       // Yearbook methodology - only the recipient may see the messages
       allow list: if resource.data.to == request.auth.uid;
-      allow create: if request.resource.data.hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
+      allow create: if request.resource.data.keys().hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
             				'from', 'isRead', 'key', 'fromName', 'fromPic', 'timestamp', 'to', 'year'])
                     // Param Validity
                     // > Enforce Message ID format of <fromUID>-<toUID>
