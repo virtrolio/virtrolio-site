@@ -148,10 +148,10 @@ export class MsgIoService {
     // Verify user is logged in
     this.authService.throwErrorIfLoggedOut('send a message');
 
-    // Verify the yearbook has not already been signed
+    // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
-      throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
-        ' you\'ll have to ask them to delete your original response first.');
+      throw new Error('You have already signed this person\'s virtrolio. If you want to sign it again,' +
+        ' you\'ll have to ask them to delete your original message first.');
     }
 
     // Verify correct key
