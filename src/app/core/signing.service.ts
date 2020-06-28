@@ -68,8 +68,20 @@ export class SigningService {
     this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
       text.slice(end);
 
-    textbox.focus();
-
+    // timeout so that it sets the selection range AFTER the textbox is modified
+    setTimeout(() => {
+      textbox.focus();
+      // special case for underline or if no text was highlighted
+      // underline should always be on the outside (since its html instead of markdown)
+      if (formatChars === '<u>' || start === end) {
+        textbox.setSelectionRange(start + formatChars.length, end + formatChars.length);
+      }
+      // otherwise keep the text highlighted
+      else {
+        textbox.setSelectionRange(start, end + formatChars.length + endChars.length);
+      }
+      // textbox.setSelectionRange(start, 2);
+    }, 0);
   }
 
   /**
