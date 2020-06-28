@@ -130,3 +130,22 @@ a.clickable-object, a.clickable-object:hover {
   margin-left: 0;
   padding-left: 18px;
 }
+
+/* ngx-toastr */
+.toast-success{
+  background: #55c41f;
+  box-shadow: none !important;
+}
+
+.toast-success:hover{
+  background: #3aa307;
+}
+
+.toast-error{
+  background: #c92a2a;
+  box-shadow: none !important;
+}
+
+.toast-error:hover{
+  background: #a60a0a;
+}

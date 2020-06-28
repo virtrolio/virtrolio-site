@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -13,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { ToastrModule } from 'ngx-toastr';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -74,6 +77,9 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
     MarkdownModule.forRoot({
       // set various markdown options
       markedOptions: {

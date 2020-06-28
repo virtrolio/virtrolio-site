@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.7",
+    "@angular/animations": "^9.1.11",
     "@angular/common": "~9.1.7",
     "@angular/compiler": "~9.1.7",
     "@angular/core": "~9.1.7",
@@ -27,6 +27,7 @@
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^3.0.4",
     "ngx-markdown": "^9.1.1",
+    "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "websocket-extensions": "^0.1.4",

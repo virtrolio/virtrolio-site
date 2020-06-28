@@ -5,6 +5,7 @@ import { FontService } from '../../../core/font.service';
 import { Fonts } from '../../../shared/interfaces';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-messages',
@@ -15,7 +16,7 @@ import Timestamp = firestore.Timestamp;
 export class MessagesComponent implements OnInit {
   fonts: Fonts;
   messageToDelete: string;
-  constructor(public viewService: ViewingService, public authService: AuthService, private fontService: FontService) { }
+  constructor(public viewService: ViewingService, public authService: AuthService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.fonts = FontService.fonts;
@@ -75,9 +76,9 @@ export class MessagesComponent implements OnInit {
   deleteMessage() {
     // noinspection JSIgnoredPromiseFromCall
     this.viewService.msgIo.deleteMessage(this.messageToDelete).then(() => {
-      // TODO: Add a toast on successful deletion
+      this.toastr.success('Message deleted successfully', 'Poof!');
     }).catch(e => {
-      // TODO: Add something here
+      this.toastr.error('Message could not be deleted', 'Oops!');
     });
   }
 
@@ -87,5 +88,4 @@ export class MessagesComponent implements OnInit {
   toggleViewStyle() {
     this.viewService.isCarouselView = this.viewService.isCarouselView === false;
   }
-
 }
