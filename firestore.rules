@@ -36,7 +36,7 @@ service cloud.firestore {
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.from))
                     // > Check if the correct key is used
                     && request.resource.data.key ==
-                    get(/databases/$(database)/documents/users/$(request.resource.data.to)).key;
+                    get(/databases/$(database)/documents/users/$(request.resource.data.to)).data.key;
       allow update: if false;
       // Yearbook methodology - sent messages become the property of the recipient
       allow delete: if resource.data.to == request.auth.uid;
