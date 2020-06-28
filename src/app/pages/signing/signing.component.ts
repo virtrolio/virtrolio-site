@@ -37,11 +37,13 @@ export class SigningComponent implements OnInit {
     this.signingService.resetDefaultValues();
   }
 
-  // @HostListener allows us to guard against browser refresh, close, etc.
+  /**
+   * Returns whether or not the user can navigate (safely) away
+   * Returning true will navigate instantly
+   * Returning false will prompt the user to confirm the navigation
+   */
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    // returning true will navigate without confirmation
-    // returning false will show a confirm dialog before navigating away
     return !this.signingService.signingBoxText || this.sending;
   }
 
