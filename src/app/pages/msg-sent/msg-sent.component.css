@@ -1,16 +1,24 @@
 #graphic {
-  /* Paper plane SVG */
-  height: 50vh;
+  height: 10em;
 }
 
 #buttons > button {
-  /* For each button */
   margin: 2em 1em 0;
   font-size: 1.1em;
 }
 
 #title-text {
-  /* "Your friend will receive your message soon!" */
-  text-align: center;
   font-size: 2em;
+  text-align: center;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #graphic {
+    height: 5em;
+  }
+
+  #title-text {
+    font-size: 1.5em;
+  }
 }

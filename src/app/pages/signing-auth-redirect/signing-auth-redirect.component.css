@@ -1,6 +1,5 @@
 #pen-graphic {
-  /* Fountain Pen SVG */
-  width: 30em;
+  height: 10em;
 }
 
 #buttons > button {
@@ -13,4 +12,15 @@
   /* We see you’re trying to sign your friend’s virtrolio... */
   text-align: center;
   font-size: 2em;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #pen-graphic {
+    height: 5em;
+  }
+
+  #title-text {
+    font-size: 1.5em;
+  }
 }
