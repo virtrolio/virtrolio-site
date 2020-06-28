@@ -27,7 +27,7 @@
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                  [ngStyle]="{'font-family': currentFontFamily}">
+                  [ngStyle]="{'font-family': signingService.currentFontFamily}">
             <span>{{ signingService.currentFontDisplay }}</span>
             <span class="caret"></span>
           </button>
