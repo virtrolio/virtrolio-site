@@ -1,5 +1,5 @@
 #graphic {
-  height: 30em;
+  height: 50vh;
 }
 
 .container {
@@ -8,4 +8,5 @@
 
 #title {
   text-align: center;
+  font-size: 4em;
 }
