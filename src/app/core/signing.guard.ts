@@ -41,26 +41,28 @@ export class SigningGuard implements CanActivate {
       const linkStr = window.location.href;
       SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
-    } catch (e) {
+    } catch (error) {
       // noinspection JSIgnoredPromiseFromCall
-      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+      AuthService.displayError(error);
+      this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
     }
 
     /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
         // noinspection JSIgnoredPromiseFromCall
-      this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+      this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
       return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
           // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate([ '/rejecc' ]).catch(e => AuthService.displayError(e));
+          this.router.navigate([ '/rejecc' ]).catch(error => AuthService.displayError(error));
           return false;
         }
-      }).catch(() => {
+      }).catch(error => {
+        AuthService.displayError(error);
         // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/invalid-link' ]);
       });
@@ -74,8 +76,9 @@ export class SigningGuard implements CanActivate {
         return false;
       }
     })
-      .catch(() => {
+      .catch(error => {
         // noinspection JSIgnoredPromiseFromCall
+        AuthService.displayError(error);
         this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
         return false;
       });
