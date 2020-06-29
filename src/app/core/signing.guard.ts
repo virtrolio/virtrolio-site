@@ -42,41 +42,39 @@ export class SigningGuard implements CanActivate {
       SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (error) {
-      // noinspection JSIgnoredPromiseFromCall
       AuthService.displayError(error);
       this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
     }
 
-    /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
+    // User must be signed in
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key }} )
+        .catch(e => AuthService.displayError(e));
+      return false;
+    }
+
+    // Sender must not have previously signed the recipient's virtrolio
     return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
       if (validKey === false) {
-        // noinspection JSIgnoredPromiseFromCall
       this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
       return false;
       }
 
       this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
         if (signed) {
-          // noinspection JSIgnoredPromiseFromCall
           this.router.navigate([ '/rejecc' ]).catch(error => AuthService.displayError(error));
           return false;
         }
       }).catch(error => {
+        // Only possibilities for a Firebase error getting thrown:
+        // 1. Not logged in
+        // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
+        // modifies the source code)
         AuthService.displayError(error);
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
+        this.router.navigate([ '/signing-auth-redirect' ]).catch(navError => AuthService.displayError(navError));
       });
 
-      if (this.authService.isLoggedIn()) {
-        return true;
-      } else {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key }} )
-          .catch(e => AuthService.displayError(e));
-        return false;
-      }
-    })
-      .catch(error => {
+    }).catch(error => {
         // noinspection JSIgnoredPromiseFromCall
         AuthService.displayError(error);
         this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
