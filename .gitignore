@@ -1,6 +1,9 @@
 # Firebase
 # firebase.json
 .firebase
+firestore-debug.log
+/ui-debug.log
+/firebase-debug.log
 
 # compiled output
 /dist
