@@ -2,18 +2,53 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /messages/{message} {
-      // 1st condition: Allow you to read messages sent to you for purposes of viewing.component
-      // 2nd condition: Allow you to read messages sent by you for purposes of checkForMessage()
-      allow read: if resource.data.to == request.auth.uid || resource.data.from == request.auth.uid;
-      allow create: if request.resource.data.from == request.auth.uid
+      // Getting (or searching for) a message is permitted if the user is the sender
+      // Used in MsgIoService.checkForMessage()
+      allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
+      // Yearbook methodology - only the recipient may see the messages
+      allow list: if resource.data.to == request.auth.uid;
+      allow create: if request.resource.data.keys().hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
+            				'from', 'isRead', 'key', 'fromName', 'fromPic', 'timestamp', 'to', 'year'])
+                    // Param Validity
+                    // > Enforce Message ID format of <fromUID>-<toUID>
+                    && message.split('-')[0] == request.resource.data.from
+                    && message.split('-')[1] == request.resource.data.to
+                    // > Enforce max message length
+                    && request.resource.data.contents.size() <= 5000
+                    // Data Validity
+                    // > Regex string fields to reject if they're only whitespace or blank
+                    && request.resource.data.contents.matches('\\S+')
+                    // > Regex to match hex color code format (#AABBCC)
+                    && request.resource.data.backColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
+                    && request.resource.data.fontColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
+                    // > Regex string fields to reject if they're only whitespace or blank
+                    && request.resource.data.fontFamily.matches('\\S+')
+                    && request.resource.data.key.matches('\\S+')
+                    // Verify variable types
+                    && request.resource.data.isRead is bool
+                    && request.resource.data.timestamp is timestamp
+                    && request.resource.data.year is number
+                    && request.resource.data.year >= 2020
+                    // Authentication
+                    && request.resource.data.from == request.auth.uid
+                    // > Check to make sure 'from' hasn't already sent a message to 'to'
+                    // > One message per sender-recipient pair enforced by message ID format
+                    && !exists(/databases/$(database)/documents/messages/$(message))
                     && exists(/databases/$(database)/documents/users/$(request.resource.data.to))
-                    && request.resource.data.contents.size() <= 5000;
+                    && exists(/databases/$(database)/documents/users/$(request.resource.data.from))
+                    // > Check if the correct key is used
+                    && request.resource.data.key ==
+                    get(/databases/$(database)/documents/users/$(request.resource.data.to)).data.key;
       allow update: if false;
+      // Yearbook methodology - sent messages become the property of the recipient
       allow delete: if resource.data.to == request.auth.uid;
     }
     match /users/{user} {
-      allow read: if request.auth != null;
-      // Only write to your own user info
+      // Wide exception necessary for key verification
+      allow get: if request.auth != null;
+      // Prevent scraping of all of the users
+      allow list: if false;
+      // Only write to user's own info
       allow write: if request.auth.uid == user;
     }
   }

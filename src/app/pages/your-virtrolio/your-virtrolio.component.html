@@ -9,7 +9,7 @@
             <h1>2019-2020</h1>
           </div>
           <div class="mt-5">
-            <h2 id="users-virtrolio">Property of:<br>{{ displayName }} </h2>
+            <h2 id="users-virtrolio">{{ displayName }}'s <br> virtrolio </h2>
           </div>
         </div>
       </a>
@@ -52,8 +52,8 @@
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-body" id='sharing-link-body'>
-        <label id="sharing-link-label" for="sharing-link-field" style="display:none">Your Link:</label>
+      <div class="modal-body sharing-link-body">
+        <label for="sharing-link-field">Your Link:</label>
         <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
                (click)="copyLink(sharingLink)" id="sharing-link-field">
         <button type="button" id="button-copy" [disabled]="!linkReady" class="btn btn-primary align-middle"
@@ -66,7 +66,8 @@
             new link
           </button>
           <div id="warning-div" *ngIf="showWarningText">
-            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate again to confirm.
+            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate
+            again to confirm.
           </div>
         </div>
       </div>
@@ -90,9 +91,17 @@
       </div>
 
       <!-- Modal Body -->
-      <div class="modal-body" id='send-message-body'>
-        To sign a friend's virtrolio, they need to give you their 'sharing link'! To access <em>your</em>
-        sharing link, click the 'Sharing Link' button on this page!
+      <div class="modal-body sharing-link-body">
+        <p>
+          To sign a friend's virtrolio, they need to give you their 'sharing link'! You can paste your friend's sharing
+          link below or directly into your browser search bar. To access <em>your</em> sharing link, click the 'Sharing Link' button on this page!
+        </p>
+        <label id="input-sharing-label" for="input-sharing-field" style="display:none">Visit friend link</label>
+        <input type="text" class="align-middle" #inputSharing value="Input your friend's link here"
+               (click)="copyLink(inputSharing)" id="input-sharing-field" [(ngModel)]='visitLink'>
+        <button type="button" id="button-copy" class="btn btn-primary align-middle" data-dismiss="modal" aria-label="Close"
+                (click)="navigateToLink()">Go
+        </button>
       </div>
 
       <!-- Modal Footer -->

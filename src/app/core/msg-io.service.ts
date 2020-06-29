@@ -1,5 +1,5 @@
 import { Injectable, SecurityContext } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
 import * as firebase from 'firebase';
@@ -38,8 +38,8 @@ export class MsgIoService {
       throw new Error('Recipient UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
-    } else if (!message.contents.replace(/\s/g, '').length) {
-      // Check if a message where all of the whitespace is deleted is blank which = entire message is whitespace
+    } else if (!/\S+/.test(message.contents)) {
+      // Ensure messages does not solely consist of whitespace
       throw new Error('Message contents cannot solely consist of whitespace/blanks');
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
       throw new Error('Background color was not provided');
@@ -102,7 +102,9 @@ export class MsgIoService {
   async markAsRead(id: string): Promise<void> {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
-    );
+    ).catch(error => {
+      AuthService.displayError(error);
+    });
   }
 
   /**
@@ -112,10 +114,20 @@ export class MsgIoService {
    * @returns true - If the current user has already signed the virtrolio of toUID.
    */
   async checkForMessage(toUID: string): Promise<boolean> {
-    const messages = await this.afs.collection('messages', ref => ref
-      .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-      .valueChanges().pipe(take(1)).toPromise();
-    return messages.length !== 0;
+    const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
+      .doc(this.authService.uid() + '-' + toUID);
+    const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
+    return !!msgDoc;
+    // const messages = await this.afs.collection('messages', ref => ref
+    //   .where('from', '==', this.authService.uid()).where('to', '==', toUID))
+    //   .valueChanges().pipe(take(1)).toPromise().catch(error => {
+    //     AuthService.displayError(error);
+    //   });
+    // if (messages) {
+    //   return messages.length !== 0;
+    // } else {
+    //   return false;
+    // }
   }
 
   /**
@@ -136,10 +148,10 @@ export class MsgIoService {
     // Verify user is logged in
     this.authService.throwErrorIfLoggedOut('send a message');
 
-    // Verify the yearbook has not already been signed
+    // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
-      throw new Error('You have already signed this person\'s yearbook. If you want to sign it again,' +
-        ' you\'ll have to ask them to delete your original response first.');
+      throw new Error('You have already signed this person\'s virtrolio. If you want to sign it again,' +
+        ' you\'ll have to ask them to delete your original message first.');
     }
 
     // Verify correct key
@@ -155,11 +167,15 @@ export class MsgIoService {
         isRead: false,
         year: MsgIoService.currentYear,
         fromName: await this.authService.displayName(),
-        fromPic: await this.authService.profilePictureLink()
+        fromPic: await this.authService.profilePictureLink(),
+        key
       };
 
       // Send the message
-      await this.messagesCollection.add(message);
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to);
+      await msgRef.set(message).catch(error => {
+        AuthService.displayError(error);
+      });
     } else {
       throw new TypeError('Incorrect key');
     }
