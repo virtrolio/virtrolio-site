@@ -71,7 +71,7 @@ export class MsgIoService {
   }
 
   /**
-   * Getter for all of the messages that were sent to a particular user.
+   * Collects ALL messages from the Firestore messages database that were sent to a particular user.
    * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
@@ -88,6 +88,23 @@ export class MsgIoService {
           return { id, ...data };
         }))
       );
+  }
+
+  /**
+   * Collects a SINGLE message from the Firestore messages database based on a message ID.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
+   * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
+   * @param msgID - The ID of the message to be received.
+   */
+  getMessage(msgID: string): Observable<VirtrolioMessage> {
+    this.authService.throwErrorIfLoggedOut('fetch a message');
+
+    const msgRef: AngularFirestoreDocument<VirtrolioMessage> = this.afs.collection('messages').doc<VirtrolioMessage>(msgID);
+    return msgRef.snapshotChanges().pipe(map(document => {
+      const data = document.payload.data() as VirtrolioDocument;
+      const id = document.payload.id;
+      return { id, ...data };
+    }));
   }
 
   /**
