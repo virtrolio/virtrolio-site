@@ -67,6 +67,7 @@
 .author-container {
   padding: 1em 1em 1em 1em;
   margin-left: 1em;
+  line-height: 1.2em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
