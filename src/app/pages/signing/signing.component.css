@@ -52,9 +52,21 @@ markdown {
 }
 
 #font-selector-dropdown {
-	text-align: right;
-  width: 14em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  width: 12em;
   height: 2.5em;
+}
+
+#font-selector-dropdown span:not(.caret) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#font-selector-dropdown .caret {
+  margin: auto;
 }
 
 .btn-format {
