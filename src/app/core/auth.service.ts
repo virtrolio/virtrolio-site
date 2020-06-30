@@ -123,12 +123,19 @@ export class AuthService {
   }
 
   /**
+   * Should not be used on pages/guards that are not protected by the LoginResolver.
+   * If async functionality is required, use asyncIsLoggedIn() instead.
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
     return this.user != null;
   }
 
+  /**
+   * Identical to isLoggedIn(), except using a promise. Allows the caller to utilize .then() or await.
+   * If the usage of .then() or await by the caller is not required, isLoggedIn() should be used instead.
+   * @returns a Promise evaluating to True if the user is logged in.
+   */
   async asyncIsLoggedIn() {
     const user = await this.afa.user.pipe(take(1)).toPromise();
     return !!user;
