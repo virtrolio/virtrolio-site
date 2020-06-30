@@ -35,7 +35,7 @@ export class SigningGuard implements CanActivate {
       SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
     } catch (error) {
-      AuthService.displayError(error);
+      // Displaying alert is not necessary since an error is only thrown when one of the query params is missing/invalid = invalid link
       this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
     }
 
