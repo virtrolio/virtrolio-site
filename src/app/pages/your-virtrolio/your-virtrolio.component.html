@@ -53,6 +53,7 @@
 
       <!-- Modal Body -->
       <div class="modal-body sharing-link-body">
+        <p>This is <b>your</b> sharing link; only share it with people you trust.</p>
         <label for="sharing-link-field">Your Link:</label>
         <input type="text" class="align-middle" #sharingLink value="{{ link }}" readonly [disabled]="!linkReady"
                (click)="copyLink(sharingLink)" id="sharing-link-field">
@@ -65,7 +66,7 @@
           <button class="btn btn-secondary" type="button" id="button-new-link" (click)="warnAndGenerate()">Generate
             new link
           </button>
-          <div class="mt-2" id="generate-link-desc">
+          <div class="mt-3" id="generate-link-desc">
             <h6>Why would I want to generate a new link?</h6>
             <p>If you want people to stop being able to use your
               old one! Comes in handy if people are signing your virtrolio whom you don't approve of.</p>
