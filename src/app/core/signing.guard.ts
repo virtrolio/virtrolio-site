@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree
-} from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
@@ -47,38 +40,44 @@ export class SigningGuard implements CanActivate {
     }
 
     // User must be signed in
-    if (!this.authService.isLoggedIn()) {
-      this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key }} )
-        .catch(e => AuthService.displayError(e));
-      return false;
-    }
-
-    // Sender must not have previously signed the recipient's virtrolio
-    return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
-      if (validKey === false) {
-      this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
-      return false;
-      }
-
-      this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
-        if (signed) {
-          this.router.navigate([ '/rejecc' ]).catch(error => AuthService.displayError(error));
-          return false;
-        }
-      }).catch(error => {
-        // Only possibilities for a Firebase error getting thrown:
-        // 1. Not logged in
-        // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
-        // modifies the source code)
-        AuthService.displayError(error);
-        this.router.navigate([ '/signing-auth-redirect' ]).catch(navError => AuthService.displayError(navError));
-      });
-
-    }).catch(error => {
-        // noinspection JSIgnoredPromiseFromCall
-        AuthService.displayError(error);
-        this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+    return this.authService.asyncIsLoggedIn().then(isLoggedIn => {
+      if (!isLoggedIn) {
+        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
+          .catch(e => AuthService.displayError(e));
         return false;
-      });
+      } else {
+        // Sender must not have previously signed the recipient's virtrolio
+        return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
+          if (validKey === false) {
+            this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
+            return false;
+          }
+          this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
+            if (signed) {
+              this.router.navigate([ '/rejecc' ]).catch(error => AuthService.displayError(error));
+              return false;
+            } else {
+              return true;
+            }
+          }).catch(error => {
+            // Only possibilities for a Firebase error getting thrown:
+            // 1. Not logged in
+            // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
+            // modifies the source code)
+            console.log(error);
+            AuthService.displayError(error);
+            this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
+              .catch(navError => AuthService.displayError(navError));
+          });
+          return true;
+        }).catch(error => {
+          // noinspection JSIgnoredPromiseFromCall
+          console.log(error);
+          AuthService.displayError(error);
+          this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+          return false;
+        });
+      }
+    });
   }
 }
