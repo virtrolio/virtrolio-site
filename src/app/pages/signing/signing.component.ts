@@ -8,7 +8,7 @@ import { MsgIoService } from '../../core/msg-io.service';
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: ['./signing.component.css']
+  styleUrls: [ './signing.component.css' ]
 })
 
 /**
@@ -53,6 +53,7 @@ export class SigningComponent implements OnInit {
    */
   sendMsg(textbox: HTMLTextAreaElement) {
     const newMsg = this.msgIo.createBlankMessage();
+    let valid = true;
     newMsg.backColor = this.signingService.backgroundColor;
     newMsg.fontColor = this.signingService.textColor;
     newMsg.fontFamily = this.signingService.currentFont;
@@ -62,7 +63,18 @@ export class SigningComponent implements OnInit {
     // remove navigation popup
     this.sending = true;
     this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      this.router.navigate(['/msg-sent'], { queryParams: { name: this.name } }))
-      .catch(error => alert(error));
+      void (0))
+      .catch(error => {
+          alert(error);
+          valid = false;
+        }
+      );
+    // set timeout waits until after the next event to do stuff
+    // hopefully this works :)
+    setTimeout(() => {
+      if (valid) {
+        this.router.navigate([ '/msg-sent' ], { queryParams : {  name: this.name }});
+      }
+    }, 0);
   }
 }
