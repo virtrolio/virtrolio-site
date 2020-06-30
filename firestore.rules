@@ -4,7 +4,7 @@ service cloud.firestore {
     match /messages/{message} {
       // Getting (or searching for) a message is permitted if the user is the sender
       // Used in MsgIoService.checkForMessage()
-      allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
+      allow get: if (message.split('-')[0] == request.auth.uid || resource.data.to == request.auth.uid) && request.auth.uid != null;
       // Yearbook methodology - only the recipient may see the messages
       allow list: if resource.data.to == request.auth.uid;
       allow create: if request.resource.data.keys().hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
