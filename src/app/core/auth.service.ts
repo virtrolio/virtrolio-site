@@ -129,6 +129,11 @@ export class AuthService {
     return this.user != null;
   }
 
+  async asyncIsLoggedIn() {
+    const user = await this.afa.user.pipe(take(1)).toPromise();
+    return !!user;
+  }
+
   /**
    * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
    * Does nothing if the user is logged in.
@@ -138,7 +143,7 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   throwErrorIfLoggedOut(attemptedOperation: string): void {
-    if (!this.isLoggedIn()) {
+    if (!this.asyncIsLoggedIn()) {
       throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
     }
   }
@@ -220,7 +225,7 @@ export class AuthService {
     return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         return userDoc.payload.exists;
       }
-    );
+    ).catch(error => alert(error));
   }
 
   // Link-gen
@@ -260,7 +265,7 @@ export class AuthService {
    * in the URL.
    * @returns - A promise evaluating to true if the key is correct, false if the key is incorrect.
    * @throws Error - If either argument is blank, null or undefined.
-   * @throws ReferenceError - if the UID does not exist.
+   * @throws ReferenceError - if the UID does not exist or the user is logged out.
    */
   async checkKey(uid: string, key: string): Promise<boolean> {
     if (typeof uid === 'undefined' || !uid) {
@@ -268,6 +273,8 @@ export class AuthService {
     } else if (typeof key === 'undefined' || !key) {
       throw new Error('Argument Key was not provided');
     }
+
+    this.throwErrorIfLoggedOut('verify the key that you provided');
 
     return this.userExists(uid).then(async userExists => {
       if (userExists) {
