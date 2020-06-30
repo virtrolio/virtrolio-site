@@ -1,4 +1,7 @@
-# VirtrolioSite
+
+<img src="https://github.com/virtrolio/virtrolio-site/blob/master/src/assets/images/logo_reg.png" width="200px" height="200px">
+
+# Virtrolio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
