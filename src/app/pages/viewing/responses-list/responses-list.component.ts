@@ -20,12 +20,12 @@ export class ResponsesListComponent implements OnInit {
       this.uid = this.authService.uid();
     } catch (e) { }
     try {
-      this.authService.displayName(this.uid).then((displayName) => {this.displayName = displayName; });
+      this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
       this.displayName = 'User';
     }
     try {
-      this.authService.profilePictureLink(this.uid).then((photoUrl) => {this.photoUrl = photoUrl; });
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; });
     } catch (e) {
       // Use the logo as a fallback profile picture
       this.photoUrl = '../../../../assets/images/logo_reg.png';
