@@ -1,5 +1,5 @@
 #graphic {
-  height: 10em;
+  max-width: 50%;
 }
 
 #title-text {
@@ -14,10 +14,6 @@
 
 /* Mobile */
 @media only screen and (max-width: 768px) {
-  #graphic {
-    height: 5em;
-  }
-
   #title-text {
     font-size: 2em;
   }
