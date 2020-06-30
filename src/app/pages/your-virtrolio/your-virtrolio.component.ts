@@ -72,8 +72,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.authService.changeKey().catch(error => alert(error +
-        '\nIf this problem persists, please contact us at virtrolio.team@gmail.com')).then(() => this.setLink());
+      this.authService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
