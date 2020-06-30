@@ -96,9 +96,9 @@ export class AuthService {
 
     if (!userDoc) { // User doesn't exist in database
       const userData: VirtrolioUser = {
-        displayName: this.user.displayName,
+        displayName: user.displayName,
         key: AuthService.generateKey(),
-        profilePic: this.user.photoURL
+        profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
         AuthService.displayError(error);
