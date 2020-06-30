@@ -312,3 +312,12 @@ markdown {
 #btn-info:hover {
   background-color: #75797A;
 }
+
+/* fragment padding for navbar */
+
+#info::before {
+  content: "";
+  display: block;
+  height: 50px;
+  margin: -50px 0 0 0;
+}
