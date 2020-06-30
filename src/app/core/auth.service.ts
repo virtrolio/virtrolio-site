@@ -260,7 +260,7 @@ export class AuthService {
    * in the URL.
    * @returns - A promise evaluating to true if the key is correct, false if the key is incorrect.
    * @throws Error - If either argument is blank, null or undefined.
-   * @throws ReferenceError - if the UID does not exist.
+   * @throws ReferenceError - if the UID does not exist or the user is logged out.
    */
   async checkKey(uid: string, key: string): Promise<boolean> {
     if (typeof uid === 'undefined' || !uid) {
@@ -268,6 +268,8 @@ export class AuthService {
     } else if (typeof key === 'undefined' || !key) {
       throw new Error('Argument Key was not provided');
     }
+
+    this.throwErrorIfLoggedOut('verify the key that you provided');
 
     return this.userExists(uid).then(async userExists => {
       if (userExists) {
