@@ -247,16 +247,6 @@ markdown {
 
 /* || Miscellaneous */
 
-#btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
-  border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
-  color: #ffffff;
-}
-
 #btn-info:hover {
   background-color: #75797A;
 }
@@ -289,12 +279,8 @@ markdown {
 /* || Miscellaneous */
 
 #btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
   border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
+  background-color: var(--accent);
   color: #ffffff;
 }
 
