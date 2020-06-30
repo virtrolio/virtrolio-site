@@ -17,9 +17,10 @@
             You may need additional software to open some of these file types.
             <u>Virtrolio will not make any recommendations on what software to use.</u>
           </p>
-          <p><b>Note: You may only request your data once every 30 days.</b></p>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#download-error-modal">Request
-            Data
+          <p><b>Clicking the button below will generate your data. Please ensure you want to proceed
+          before clicking the button.</b></p>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#download-confirm-modal"
+                  (click)="generateDownloads()">Request Data
           </button>
           <hr/>
           <h2>Delete Your Virtrolio Account</h2>
@@ -35,6 +36,30 @@
             Account
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="download-confirm-modal" tabindex="-1" role="dialog"
+     aria-labelledby="download-confirm-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="download-confirm-modal-label">Data Export</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your data has been prepared. Please use the buttons below to download your data.</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-info" title="Download User Data" [href]="downloadUserData" download="user.json">
+          Download User Data</a>
+        <a class="btn btn-info" title="Download Messages" [href]="downloadMessagesData" download="messages.json">
+          Download Messages</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -61,7 +86,9 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-primary" href="mailto:virtrolio.team@gmail.com" target="_blank">Email Us</a>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                data-toggle="modal" data-target="#delete-error-modal">Close
+        </button>
       </div>
     </div>
   </div>

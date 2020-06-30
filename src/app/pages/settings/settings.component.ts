@@ -10,6 +10,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: [ './settings.component.css' ]
 })
 export class SettingsComponent implements OnInit {
+  downloadMessagesData;
+  downloadUserData;
 
   constructor(private authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
 
@@ -24,8 +26,8 @@ export class SettingsComponent implements OnInit {
     const userData = await this.authService.getUserData();
     const messagesJSON = JSON.stringify(messages);
     const userJSON = JSON.stringify(userData);
-    this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON));
-    this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON));
+    this.downloadMessagesData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON));
+    this.downloadUserData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON));
   }
 
 }
