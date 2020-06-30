@@ -24,8 +24,8 @@ export class SettingsComponent implements OnInit {
   async generateDownloads() {
     const messages = this.msgIoService.getMessages().pipe(take(1)).toPromise();
     const userData = await this.authService.getUserData();
-    const messagesJSON = JSON.stringify(messages);
-    const userJSON = JSON.stringify(userData);
+    const messagesJSON = JSON.stringify(messages, null, 2);
+    const userJSON = JSON.stringify(userData, null, 2);
     this.downloadMessagesData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON));
     this.downloadUserData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON));
   }
