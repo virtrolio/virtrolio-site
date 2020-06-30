@@ -68,7 +68,6 @@ export class SigningService {
 
     this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + endCharacter +
       text.slice(end);
-    this.updateCount(textbox);
     textbox.select();
   }
 
