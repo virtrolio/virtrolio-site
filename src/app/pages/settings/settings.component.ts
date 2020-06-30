@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
    * downloading of the data.
    */
   async generateDownloads() {
-    const messages = this.msgIoService.getMessages().pipe(take(1)).toPromise();
+    const messages = await this.msgIoService.getMessages().pipe(take(1)).toPromise();
     const userData = await this.authService.getUserData();
     const messagesJSON = JSON.stringify(messages, null, 2);
     const userJSON = JSON.stringify(userData, null, 2);
