@@ -10,10 +10,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: [ './settings.component.css' ]
 })
 export class SettingsComponent implements OnInit {
+
+  constructor(private authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
   downloadMessagesData;
   downloadUserData;
 
-  constructor(private authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
+  private static decodeHtml(html) {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  }
 
   ngOnInit(): void { }
 
@@ -23,6 +29,9 @@ export class SettingsComponent implements OnInit {
    */
   async generateDownloads() {
     const messages = await this.msgIoService.getMessages().pipe(take(1)).toPromise();
+    messages.forEach(message => {
+      message.contents = SettingsComponent.decodeHtml(message.contents);
+    });
     const userData = await this.authService.getUserData();
     const messagesJSON = JSON.stringify(messages, null, 2);
     const userJSON = JSON.stringify(userData, null, 2);
