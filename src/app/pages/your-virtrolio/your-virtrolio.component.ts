@@ -44,8 +44,10 @@ export class YourVirtrolioComponent implements OnInit {
    */
   setLink() {
     this.copyButtonText = 'Copy';
-    this.authService.getLink().then(link => this.link = link);
-    this.linkReady = true;
+    this.authService.getLink().then(link => {
+      this.link = link;
+      this.linkReady = true;
+    });
   }
 
   /**
