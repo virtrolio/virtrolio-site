@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
     const end = textbox.selectionEnd;
     const text = textbox.value;
     this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + formatCharacters + text.slice(end);
+    this.updateCount(textbox);
     textbox.select();
   }
 
