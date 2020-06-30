@@ -44,6 +44,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 // Services
 import { LoginResolver } from './core/login-resolver';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { PendingChangesGuard } from './core/pending-changes.guard';
 
 
 @NgModule({
@@ -91,7 +92,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
       },
     })
   ],
-  providers: [ CookieService, LoginResolver ],
+  providers: [ CookieService, LoginResolver, PendingChangesGuard ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

@@ -38,7 +38,7 @@
             </button>
           </div>
           <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you are agreeing to our <a
-            routerLink="/terms-of-service">Terms of Service.</a>.</p>
+            routerLink="/terms-of-service">Terms of Service</a>.</p>
         </div>
 
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
@@ -118,7 +118,8 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     [ngStyle]="{'font-family': currentFont}">
-              {{ currentFontDisplay }}
+              <span>{{ currentFontDisplay }}</span>
+              <span class="caret"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
               <span *ngFor="let font of fontDict | keyvalue">
