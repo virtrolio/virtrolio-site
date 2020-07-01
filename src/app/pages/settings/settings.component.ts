@@ -28,13 +28,17 @@ export class SettingsComponent implements OnInit {
    * downloading of the data.
    */
   async generateDownloads() {
+    // Get data
     const messages = await this.msgIoService.getMessages().pipe(take(1)).toPromise();
+    const userData = await this.authService.getUserData();
+    // Convert encoded text to normal text
     messages.forEach(message => {
       message.contents = SettingsComponent.decodeHtml(message.contents);
     });
-    const userData = await this.authService.getUserData();
+    // Convert data to JSON
     const messagesJSON = JSON.stringify(messages, null, 2);
     const userJSON = JSON.stringify(userData, null, 2);
+    // Set download buttons
     this.downloadMessagesData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON));
     this.downloadUserData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON));
   }
