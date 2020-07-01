@@ -149,3 +149,12 @@ a.clickable-object, a.clickable-object:hover {
 .toast-error:hover{
   background: #a60a0a;
 }
+
+.toast-info{
+  background: #54b4f0;
+  box-shadow: none !important;
+}
+
+.toast-info:hover{
+  background: #258dcf;
+}

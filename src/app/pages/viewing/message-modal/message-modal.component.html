@@ -28,6 +28,7 @@
       <table class="header-table">
         <tr>
           <td>
+            <button type="button" class="btn" (click)="activeModal.close('Close click')">x</button>
             <button class="btn card-button" type="button"
                     (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)">
               <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
