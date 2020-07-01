@@ -51,11 +51,11 @@
             <tr>
               <td>
                 <button class="btn card-button" type="button" (click)="popupMessage(msg)">
-                  <img class="card-icon" src="../../../../assets/images/icons/maximize.svg">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
                 </button>
                 <button class="btn card-button" type="button" data-toggle="modal"
                         data-target="#delete" (click)="viewService.setMessageToDelete(msg.id)">
-                  <img class="card-icon" src="../../../../assets/images/icons/trash.svg">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
                 </button>
               </td>
             </tr>
