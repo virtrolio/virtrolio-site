@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { AuthService } from '../../../core/auth.service';
-import { FontService } from '../../../core/font.service';
-import { Fonts } from '../../../shared/interfaces';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-messages',
@@ -14,13 +12,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class MessagesComponent implements OnInit {
-  fonts: Fonts;
   messageToDelete: string;
-  constructor(public viewService: ViewingService, public authService: AuthService, private toastr: ToastrService) { }
+  currentMessageId: string;
+  isSingleMessageView = false;
+  constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService) {
+    this.route.queryParams.subscribe(params => {
+      this.currentMessageId = params.messageId;
+    });
+  }
 
   ngOnInit(): void {
-    this.fonts = FontService.fonts;
-    this.viewService.nowMillis = Timestamp.now().toMillis();
+    if (this.route.snapshot.queryParams.messageId) {
+      this.isSingleMessageView = true;
+    }
   }
 
   /**
@@ -41,25 +46,18 @@ export class MessagesComponent implements OnInit {
     const bgR = parseInt(backColor.slice(1, 3), 16);
     const bgG = parseInt(backColor.slice(3, 5), 16);
     const bgB = parseInt(backColor.slice(5), 16);
-    const hR = bgR + 20 > 255 ? 255 : bgR + 20;
-    const hG = bgG + 20 > 255 ? 255 : bgG + 20;
-    const hB = bgB + 20 > 255 ? 255 : bgB + 20;
-    const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
     let headerTextColor;
-    if (this.getLightness(hR, hG, hB) > 0.65) {
+    if (this.getLightness(bgR, bgG, bgB) > 0.65) {
       headerTextColor = '#000000';
     } else {
       headerTextColor = '#FFFFFF';
     }
-    return { bg: '#' + headerColor, text: headerTextColor };
-  }
+    const hR = bgR + 20 > 255 ? 255 : bgR + 20;
+    const hG = bgG + 20 > 255 ? 255 : bgG + 20;
+    const hB = bgB + 20 > 255 ? 255 : bgB + 20;
+    const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
 
-  checkFont(font: string) {
-    if (font in FontService.fonts) {
-      return font;
-    } else {
-      return 'Arial';
-    }
+    return { bg: '#' + headerColor, text: headerTextColor };
   }
 
   /**
@@ -80,6 +78,25 @@ export class MessagesComponent implements OnInit {
     }).catch(e => {
       this.toastr.error('Message could not be deleted', 'Oops!');
     });
+  }
+
+  bookmarkMessage(id: string) {
+    this.router.navigate(['/viewing'], {
+      relativeTo: this.route,
+      queryParams: {
+        messageId: id
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  /**
+   * Scroll to the card with the given id and update the URL
+   * @param id: id attribute of the card
+   */
+  showMessage(id) {
+    console.log(id);
+    this.vps.scrollToAnchor(id);
   }
 
   /**

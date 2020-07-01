@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ViewingService } from './viewing.service';
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-viewing',
@@ -6,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [ './viewing.component.css' ]
 })
 export class ViewingComponent implements OnInit {
+  isSingleMessageView = false;
+  constructor(private route: ActivatedRoute, private viewService: ViewingService) {
+  }
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
+  ngOnInit(): void {
+    this.viewService.nowMillis = Timestamp.now().toMillis();
+    if (this.route.snapshot.queryParams.messageId) {
+      this.isSingleMessageView = true;
+    }
+  }
 }

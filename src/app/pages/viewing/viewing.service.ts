@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { MsgIoService } from '../../core/msg-io.service';
-import { VirtrolioMessage } from '../../shared/interfaces';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
+import { Fonts, VirtrolioMessage } from '../../shared/interfaces';
+import { FontService } from '../../core/font.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewingService {
+  fonts: Fonts;
   messages: VirtrolioMessage[];
+  singleMessage: VirtrolioMessage;
   numMessages: number;
   isCarouselView = false;
   nowMillis: number;
@@ -16,10 +17,25 @@ export class ViewingService {
    * Retrieve message data from database
    */
   constructor(public msgIo: MsgIoService) {
+    this.fonts = FontService.fonts;
     this.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       this.messages = messages;
       this.numMessages = messages.length;
     });
+  }
+
+  getMessageById(id: string) {
+    this.msgIo.getMessage(id).subscribe(message => {
+      this.singleMessage = message;
+    });
+  }
+
+  checkFont(font: string) {
+    if (font in FontService.fonts) {
+      return font;
+    } else {
+      return 'Arial';
+    }
   }
 
   /**
@@ -29,6 +45,7 @@ export class ViewingService {
    * @param date message Timestamp as a date
    */
   timeSince(nowMillis: number, millis: number, date: string) {
+    console.log(date);
     const secondsPast = (nowMillis - millis) / 1000;
     if (secondsPast < 60) {
       return Math.round(secondsPast).toString() + 's ago';

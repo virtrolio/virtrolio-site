@@ -1,0 +1,41 @@
+<div class="row justify-content-center mt-5 pb-5">
+  <div class="col-5">
+    <div class="card shadow">
+      <div class="msg-header">
+        <div class="msg-header-group">
+          <table class="header-table">
+            <tr>
+              <td>
+            <span class="profile-pic-container-small mr-2">
+              <img class="profile-pic" src="{{ viewService.singleMessage.fromPic }}" alt="profile-pic">
+            </span>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <div class="msg-header-text">
+                      <span>{{ viewService.singleMessage.fromName }}</span>
+                    </div>
+                  </tr>
+                  <tr>
+                    <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}</span>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="card-body message-card" [ngStyle]="{'background': viewService.singleMessage.backColor}">
+        <table>
+          <tr class="message"
+              [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.checkFont(viewService.fonts[viewService.singleMessage.fontFamily].fontFamily) +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
+            <td>
+              <markdown emoji data="{{ viewService.singleMessage.contents }}"></markdown>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

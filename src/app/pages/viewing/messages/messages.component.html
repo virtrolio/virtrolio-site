@@ -14,16 +14,16 @@
   </div>
 
   <!-- Card message view -->
-  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
+  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false || showMessage(this.currentMessageId)">
     <div class="card shadow" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
       <div class="msg-header" [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
         <div class="msg-header-group">
           <table class="header-table">
             <tr>
               <td>
-              <span class="profile-pic-container-small mr-2">
-                <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-              </span>
+            <span class="profile-pic-container-small mr-2">
+              <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+            </span>
               </td>
               <td>
                 <table>
@@ -44,8 +44,8 @@
           <table class="header-table">
             <tr>
               <td>
-                <button class="btn card-button" type="button" data-toggle=""
-                        data-target="#bookmark">
+                <button class="btn card-button" type="button" data-toggle="modal"
+                        data-target="#bookmark" (click)="bookmarkMessage(msg.id)">
                   <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
                 </button>
                 <button class="btn card-button" type="button" data-toggle="modal"
@@ -60,7 +60,7 @@
       <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
         <table>
           <tr class="message"
-              [ngStyle]="{'color': msg.fontColor, 'font-family': checkFont(fonts[msg.fontFamily].fontFamily) +','+ fonts[msg.fontFamily].backupFont }">
+              [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.checkFont(viewService.fonts[msg.fontFamily].fontFamily) +','+ viewService.fonts[msg.fontFamily].backupFont }">
             <td>
               <markdown emoji data="{{ msg.contents }}"></markdown>
             </td>
@@ -80,9 +80,9 @@
               <table class="header-table">
                 <tr>
                   <td>
-                    <span class="profile-pic-container-small mr-2">
-                      <img class="profile-pic" src="../../../../assets/images/logo_reg.png" alt="profile-pic">
-                    </span>
+                  <span class="profile-pic-container-small mr-2">
+                    <img class="profile-pic" src="../../../../assets/images/logo_reg.png" alt="profile-pic">
+                  </span>
                   </td>
                   <td>
                     <table>
@@ -108,9 +108,9 @@
               <table class="header-table">
                 <tr>
                   <td>
-                    <span class="profile-pic-container-small mr-2">
-                      <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-                    </span>
+                  <span class="profile-pic-container-small mr-2">
+                    <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+                  </span>
                   </td>
                   <td>
                     <table>
@@ -129,7 +129,7 @@
           <div class="page" [ngStyle]="{'background': msg.backColor}">
             <table>
               <tr class="message"
-                  [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
+                  [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
                 <td>
                   <markdown emoji data="{{ msg.contents }}"></markdown>
                 </td>
@@ -173,16 +173,23 @@
   </div>
 </div>
 
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
-    <strong class="mr-auto">Bootstrap</strong>
-    <small>11 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message.
+<div class="modal fade" id="bookmark" tabindex="-1" role="dialog" aria-labelledby="delete-message-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- Modal Title -->
+        <h5 class="modal-title" id="bookmark-message-modal-title">Bookmark this message!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id='bookmark-message-body'>
+        You can now bookmark this page.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
