@@ -18,13 +18,13 @@ export class ViewingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Get the current time to use as time since reference
-    this.viewService.nowMillis = Timestamp.now().toMillis();
     // Determine if the viewing link has messageId query param
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;
     }
     this.viewService.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
+      // Get the current time to use as time since reference
+      this.viewService.nowMillis = Timestamp.now().toMillis();
       this.messageList = [];
       messages.forEach((message) => {
         try {
