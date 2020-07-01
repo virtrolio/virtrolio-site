@@ -18,6 +18,7 @@ import { MsgIoService } from '../../core/msg-io.service';
 export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
+  public embedLink = 'https://bit.ly/3de5LUs';
 
   private uid: string;
   private key: string;

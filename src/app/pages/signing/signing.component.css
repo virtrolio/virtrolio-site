@@ -129,6 +129,20 @@ markdown {
   border-radius: 0.4em;
 }
 
+/* || Embed Photo */
+
+#embed-image-holder {
+  border: 2px solid var(--darkest-accent);
+  width: 10em;
+}
+
+#embed-photo-div {
+  text-align: center;
+  background: var(--accent);
+  border-radius: 5px;
+  color: white;
+}
+
 /* || Typography */
 
 .title-div {

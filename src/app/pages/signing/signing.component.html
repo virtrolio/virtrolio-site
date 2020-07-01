@@ -103,6 +103,23 @@
       </div>
     </div>
   </div>
+
+  <div class="row justify-content-center mt-4 p-2 shadow" id="embed-photo-div">
+    <div class="col-md-6 my-3 px-5 vertical-center">
+      <p><strong>Add a link to a photo!</strong></p>
+      <input type="text" value="Put your link here!" [(ngModel)]='embedLink' id="embed-link-field">
+      <div class="my-3">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#embed-modal">
+          Is your image not showing up?
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
+      <p><strong>Image Preview</strong></p>
+      <img *ngIf="embedLink else noImage" src="{{embedLink}}" id="embed-image-holder">
+      <ng-template #noImage>No image to show!</ng-template>
+    </div>
+  </div>
 </div>
 
 <!-- Message confirmation modal -->
@@ -150,6 +167,46 @@
         <br>
         <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
           of available emojis</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Picture not showing up? Modal -->
+<div class="modal fade" id="embed-modal" tabindex="-1" role="dialog" aria-labelledby="embed-modal-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="embed-modal-title">Can't picture your perfect message?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>In order for us to display your image, we need something called an <b>embed link</b>. This embed link isn't
+          always
+          easy to come by, depending on where you're trying to get the image from.</p>
+        <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for a photo
+          stored on Google
+          Photos!</p>
+        <ol>
+          <li>Upload your photo on Google Photos.</li>
+          <li>Get the 'share link' for your Google photo (click the share button when viewing the photo).<br><em>Note: this
+            'share' link is not the same as the required 'embed link'</em>.
+          </li>
+          <li>Go to <a href="https://www.labnol.org/embed/google/photos/">this website</a> and convert your 'sharing' link
+            into an 'embed' link.
+          </li>
+          <li>The embed link should now work in the preview! Try it out!</li>
+        </ol>
+        <p>
+          Unfortunately, for now you'll have to get these 'embed links' yourself. We will be implementing ways to more
+          generate them from Google Drive / Google Photos / other platforms using the sharing links which these services usually provide to users more easily.
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
