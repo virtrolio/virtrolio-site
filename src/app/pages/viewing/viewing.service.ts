@@ -5,7 +5,6 @@ import { FontService } from '../../core/font.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +16,12 @@ export class ViewingService {
   messageToDelete: string;
   isCarouselView = false;
   nowMillis: number;
+
   /**
    * Retrieve message data from database
    */
   constructor(public msgIo: MsgIoService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService) {
     this.fonts = FontService.fonts;
   }
 
@@ -89,12 +89,12 @@ export class ViewingService {
    */
   bookmarkMessage(id: string) {
     this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark');
-    this.router.navigate(['/viewing'], {
+    this.router.navigate([ '/viewing' ], {
       relativeTo: this.route,
       queryParams: {
         messageId: id
       },
       queryParamsHandling: 'merge'
-    });
+    }).then();
   }
 }

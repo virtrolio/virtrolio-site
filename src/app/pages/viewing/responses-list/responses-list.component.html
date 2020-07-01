@@ -1,5 +1,5 @@
 <div class="hamburger vertical-center shadow" (click)="navOpen(true)">
-  <img src="../../../../assets/images/icons/chevron-right.svg">
+  <img src="../../../../assets/images/icons/chevron-right.svg" alt="response-list">
 </div>
 
 <div id="mySidenav" class="sidenav shadow" [class.navOpen]="navIsOpen">
@@ -16,14 +16,11 @@
         </td>
         <td class="author-col">
           <table>
-            <tr>
-              <div class="msg-header-text">
+            <tr class="msg-header-text">
                 <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
-              </div>
             </tr>
-            <tr>
-              <span
-                class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+            <tr class="msg-header-date">
+              {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
             </tr>
           </table>
         </td>

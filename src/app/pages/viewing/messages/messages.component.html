@@ -32,14 +32,11 @@
               </td>
               <td>
                 <table>
-                  <tr>
-                    <div class="msg-header-text">
-                      <span>{{ msg.fromName }}</span>
-                    </div>
+                  <tr class="msg-header-text">
+                    {{ msg.fromName }}
                   </tr>
-                  <tr>
-                    <span
-                      class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+                  <tr class="msg-header-date">
+                    {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -51,11 +48,11 @@
             <tr>
               <td>
                 <button class="btn card-button" type="button" (click)="popupMessage(msg)">
-                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}" alt="popup">
                 </button>
                 <button class="btn card-button" type="button" data-toggle="modal"
                         data-target="#delete" (click)="viewService.setMessageToDelete(msg.id)">
-                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}" alt="delete">
                 </button>
               </td>
             </tr>
@@ -91,11 +88,11 @@
                   </td>
                   <td>
                     <table>
-                      <tr>
-                        <span class="msg-header-text">Vitrolio Team</span>
+                      <tr class="msg-header-text">
+                        Vitrolio Team
                       </tr>
-                      <tr>
-                        <span class="msg-header-date">You have {{ messageList.length }} messages</span>
+                      <tr class="msg-header-date">
+                        You have {{ messageList.length }} messages
                       </tr>
                     </table>
                   </td>
@@ -120,12 +117,11 @@
                   </td>
                   <td>
                     <table>
-                      <tr>
-                        <span class="msg-header-text">{{ msg.fromName }}</span>
+                      <tr class="msg-header-text">
+                        {{ msg.fromName }}
                       </tr>
-                      <tr>
-                        <span
-                          class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+                      <tr class="msg-header-date">
+                        {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
                       </tr>
                     </table>
                   </td>

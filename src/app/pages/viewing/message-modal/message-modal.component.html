@@ -10,14 +10,11 @@
           </td>
           <td>
             <table>
-              <tr>
-                <div class="msg-header-text">
-                  <span>{{ viewService.currentMessageModal.fromName }}</span>
-                </div>
+              <tr class="msg-header-text">
+                {{ viewService.currentMessageModal.fromName }}
               </tr>
-              <tr>
-                <span
-                  class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, viewService.currentMessageModal.timestamp.toMillis(), viewService.currentMessageModal.timestamp.toDate().toDateString()) }}</span>
+              <tr class="msg-header-date">
+                {{ viewService.timeSince(viewService.nowMillis, viewService.currentMessageModal.timestamp.toMillis(), viewService.currentMessageModal.timestamp.toDate().toDateString()) }}
               </tr>
             </table>
           </td>
@@ -30,10 +27,10 @@
           <td>
             <button class="btn card-button" type="button"
                     (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)">
-              <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
+              <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg" alt="bookmark">
             </button>
             <button type="button" class="btn" (click)="activeModal.close('Close click')">
-              <img class="card-icon" src="../../../../assets/images/icons/exit.svg">
+              <img class="card-icon" src="../../../../assets/images/icons/exit.svg" alt="close">
             </button>
           </td>
         </tr>

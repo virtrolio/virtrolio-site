@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
-import { ActivatedRoute, Router  } from '@angular/router';
 import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
@@ -16,11 +15,12 @@ export class ResponsesListComponent implements OnInit {
   public uid: string;
   navIsOpen = false;
   messageList: VirtrolioMessage[] = [];
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
-              private route: ActivatedRoute, private router: Router) {
+
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
     try {
       this.uid = this.authService.uid();
-    } catch (e) { }
+    } catch (e) {
+    }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
@@ -49,6 +49,7 @@ export class ResponsesListComponent implements OnInit {
   navOpen(state: boolean) {
     this.navIsOpen = state;
   }
+
   /**
    * Scroll to the card with the given id and update the URL
    * @param id: id attribute of the card

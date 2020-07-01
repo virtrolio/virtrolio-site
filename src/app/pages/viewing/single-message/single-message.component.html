@@ -12,13 +12,11 @@
               </td>
               <td>
                 <table>
-                  <tr>
-                    <div class="msg-header-text">
-                      <span>{{ viewService.singleMessage.fromName }}</span>
-                    </div>
+                  <tr class="msg-header-text">
+                    {{ viewService.singleMessage.fromName }}
                   </tr>
-                  <tr>
-                    <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}</span>
+                  <tr class="msg-header-date">
+                    {{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>

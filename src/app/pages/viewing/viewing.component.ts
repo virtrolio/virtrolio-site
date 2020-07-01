@@ -13,6 +13,7 @@ import { VirtrolioMessage } from '../../shared/interfaces';
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
   messageList: VirtrolioMessage[];
+
   constructor(private route: ActivatedRoute, private viewService: ViewingService) {
   }
 
@@ -25,7 +26,7 @@ export class ViewingComponent implements OnInit {
     }
     this.viewService.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       this.messageList = [];
-      messages.forEach((message, index) => {
+      messages.forEach((message) => {
         try {
           // Add message to messageList if verifyMessage succeeds
           this.viewService.msgIo.verifyMessage(message);

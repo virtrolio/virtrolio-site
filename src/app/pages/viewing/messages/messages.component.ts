@@ -18,6 +18,7 @@ export class MessagesComponent implements OnInit {
   currentMessageId: string;
   isSingleMessageView = false;
   messageList: VirtrolioMessage[] = [];
+
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.route.queryParams.subscribe(params => {
@@ -45,10 +46,12 @@ export class MessagesComponent implements OnInit {
    * Generate the lightness value of HSL from RBG
    */
   getLightness(r, g, b) {
-    r /= 255, g /= 255, b /= 255;
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    const l = (max + min) / 2;
-    return l;
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    return (max + min) / 2;
   }
 
   /**
@@ -93,7 +96,7 @@ export class MessagesComponent implements OnInit {
    */
   popupMessage(msg: VirtrolioMessage) {
     this.viewService.currentMessageModal = msg;
-    const modalRef = this.modalService.open(MessageModalComponent);
+    this.modalService.open(MessageModalComponent);
   }
 
   /**
