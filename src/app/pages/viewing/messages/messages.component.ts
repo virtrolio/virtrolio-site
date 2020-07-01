@@ -17,7 +17,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 export class MessagesComponent implements OnInit {
   currentMessageId: string;
   isSingleMessageView = false;
-  messageList: VirtrolioMessage[];
+  messageList: VirtrolioMessage[] = [];
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.route.queryParams.subscribe(params => {
@@ -84,7 +84,6 @@ export class MessagesComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    console.log(id);
     this.vps.scrollToAnchor(id);
   }
 

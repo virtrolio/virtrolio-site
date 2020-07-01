@@ -15,7 +15,7 @@ export class ResponsesListComponent implements OnInit {
   public photoUrl: string;
   public uid: string;
   navIsOpen = false;
-  messageList: VirtrolioMessage[];
+  messageList: VirtrolioMessage[] = [];
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
               private route: ActivatedRoute, private router: Router) {
     try {
