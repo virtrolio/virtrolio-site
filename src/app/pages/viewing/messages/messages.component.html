@@ -59,15 +59,8 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}" (click)="popupMessage(msg)">
-        <table>
-          <tr class="message"
-              [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
-            <td>
-              <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
-            </td>
-          </tr>
-        </table>
+      <div class="card-body message-card message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+        <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
       </div>
     </div>
   </div>
@@ -129,15 +122,8 @@
               </table>
             </div>
           </div>
-          <div class="page" [ngStyle]="{'background': msg.backColor}">
-            <table>
-              <tr class="message"
-                  [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
-                <td>
-                  <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
-                </td>
-              </tr>
-            </table>
+          <div class="card-body page message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+            <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
           </div>
         </div>
       </div>

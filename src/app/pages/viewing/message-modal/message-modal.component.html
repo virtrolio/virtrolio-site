@@ -37,14 +37,7 @@
       </table>
     </div>
   </div>
-  <div class="card-body message-card" [ngStyle]="{'background': viewService.currentMessageModal.backColor}">
-    <table>
-      <tr class="message"
-          [ngStyle]="{'color': viewService.currentMessageModal.fontColor, 'font-family': viewService.fonts[viewService.currentMessageModal.fontFamily].fontFamily +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }">
-        <td>
-          <markdown emoji data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}"></markdown>
-        </td>
-      </tr>
-    </table>
+  <div class="card-body message-card message" [ngStyle]="{'background': viewService.currentMessageModal.backColor, 'color': viewService.currentMessageModal.fontColor, 'font-family': viewService.fonts[viewService.currentMessageModal.fontFamily].fontFamily +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }">
+    <markdown emoji data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}"></markdown>
   </div>
 </div>

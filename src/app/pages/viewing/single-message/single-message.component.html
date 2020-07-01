@@ -24,15 +24,8 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card" [ngStyle]="{'background': viewService.singleMessage.backColor}">
-        <table>
-          <tr class="message"
-              [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
-            <td>
-              <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
-            </td>
-          </tr>
-        </table>
+      <div class="card-body message-card message" [ngStyle]="{'background': viewService.singleMessage.backColor, 'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}">
+        <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
       </div>
     </div>
   </div>
