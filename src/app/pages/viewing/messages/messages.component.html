@@ -46,11 +46,11 @@
               <td>
                 <button class="btn card-button" type="button" data-toggle=""
                         data-target="#bookmark">
-                  <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
+                  <img class="card-icon" [ngStyle]="{'background': generateHeaderColor(msg.backColor).text}" src="../../../../assets/images/icons/bookmark.svg">
                 </button>
                 <button class="btn card-button" type="button" data-toggle="modal"
                         data-target="#delete" (click)="setMessageToDelete(msg.id)">
-                  <img class="card-icon" src="../../../../assets/images/icons/trash.svg">
+                  <img class="card-icon" [ngStyle]="{'background': generateHeaderColor(msg.backColor).text}" src="../../../../assets/images/icons/trash.svg">
                 </button>
               </td>
             </tr>

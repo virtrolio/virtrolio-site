@@ -93,8 +93,10 @@
 }
 
 .card-icon {
-  width: 0.8em;
-  height: 0.8em;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.15em;
+  padding: 0.1em;
 }
 
 @media (min-width: 576px) {
