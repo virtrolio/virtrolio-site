@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   /** Default values */
   public cardText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
   public signingBoxText;
-  public backgroundColor = `#fa8072`;
+  public backgroundColor: string;
   public textColor = '#FFFFFF';
   public canSend = false;
   public charCount = 0;
@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // Initialize Animate on Scroll library
     AOS.init();
+    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
   }
 
   /**

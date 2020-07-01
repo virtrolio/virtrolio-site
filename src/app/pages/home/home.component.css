@@ -1,8 +1,7 @@
 /* || Full Screen Landing */
 
 #home-background {
-  background: var(--accent);
-  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
 }

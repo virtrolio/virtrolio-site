@@ -4,11 +4,13 @@ html {
 
 :root {
   /* Colors */
-  --accent: #fa8072;
+  --accent: #208523; /* #fa8072; */
   --accent-transparent: rgba(250, 128, 114, 0.5);
-  --dark-accent: #e6716d;
+  --dark-accent: #176119; /* #e6716d */
   --darkest-accent: #353535;
   --light-grey: #999999;
+  --navbar-left: rgba(32, 133, 35,0.5); /* rgba(250, 128, 114, 1); */
+  --navbar-right: rgb(68, 142, 87);
 
   /* Sizes */
   --footer-height: 7em;
