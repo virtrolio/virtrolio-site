@@ -77,11 +77,11 @@
           <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.backgroundColor}">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-primary shadow-sm" id="btn-info" data-toggle="modal"
-                data-target="#info-modal">Formatting Help
+                data-target="#info">Formatting Help
         </button>
       </div>
       <div class="row mt-3 justify-content-center">
-        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm-modal"
+        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm"
                 [disabled]="!signingService.canSend" id="send-button">Send
         </button>
       </div>
@@ -105,12 +105,12 @@
 </div>
 
 <!-- Message confirmation modal -->
-<div class="modal fade" id="submit-confirm-modal" tabindex="-1" role="dialog"
-     aria-labelledby="submit-confirm-modal-title" aria-hidden="true">
+<div class="modal fade" id="submit-confirm" tabindex="-1" role="dialog"
+     aria-labelledby="submit-confirm-modal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="submit-confirm-modal-title">Are you sure you want to send this?</h5>
+        <h5 class="modal-title" id="submit-confirm-modal">Are you sure you want to send this?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -130,12 +130,12 @@
 </div>
 
 <!-- Information modal when they click on the ? -->
-<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
+<div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
+        <h5 class="modal-title" id="info-modal">Craft your perfect message!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
