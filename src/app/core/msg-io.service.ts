@@ -33,6 +33,7 @@ export class MsgIoService {
    * in MsgIoService.
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
+    const sanitizedContents = this.sanitizer.sanitize(SecurityContext.HTML, message.contents);
     if (typeof message.to === 'undefined' || !message.to) {
       // This condition (used several times below) checks for undefined, null or empty strings
       throw new Error('Recipient UID was not provided');
@@ -47,9 +48,10 @@ export class MsgIoService {
       throw new Error('Font color was not provided');
     } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
       throw new Error('Font family was not provided');
-    } else if (message.contents.length > MsgIoService.maxMessageLength) {
+    } else if (sanitizedContents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
-        'and the provided message is ' + message.contents.length + ' characters long.');
+        'and the provided message is ' + sanitizedContents.length + ' characters long.\n' +
+        'Remember that some character such as line breaks, emojis and other languages have a length longer than one per character.');
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided font color is not a valid hex code. Did you forget to include \'#\'?' +
         ' Provided color code: ' + message.fontColor);
