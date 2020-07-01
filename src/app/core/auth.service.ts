@@ -40,6 +40,17 @@ export class AuthService {
     alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
   }
 
+  /**
+   * @param uid - Optional - The user ID of the user's data to retrieve. Defaults to the current user.
+   * @returns The Firestore document containing the user's data.
+   */
+  async getUserData(uid: string = this.uid()) {
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+    return await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+      AuthService.displayError(error);
+    });
+  }
+
   // Auth
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
@@ -89,6 +100,7 @@ export class AuthService {
    * currently logged in user doesn't exist.
    */
   async createUser(user: User): Promise<void> {
+    // Not using this.getUserData() because userRef is required
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
       AuthService.displayError(error);
@@ -96,9 +108,9 @@ export class AuthService {
 
     if (!userDoc) { // User doesn't exist in database
       const userData: VirtrolioUser = {
-        displayName: this.user.displayName,
+        displayName: user.displayName,
         key: AuthService.generateKey(),
-        profilePic: this.user.photoURL
+        profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
         AuthService.displayError(error);
@@ -123,6 +135,8 @@ export class AuthService {
   }
 
   /**
+   * Should not be used on pages/guards that are not protected by the LoginResolver.
+   * If async functionality is required, use asyncIsLoggedIn() instead.
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
@@ -130,33 +144,54 @@ export class AuthService {
   }
 
   /**
+   * Identical to isLoggedIn(), except using a promise. Allows the caller to utilize .then() or await.
+   * If the usage of .then() or await by the caller is not required, isLoggedIn() should be used instead.
+   * @returns a Promise evaluating to True if the user is logged in.
+   */
+  async asyncIsLoggedIn() {
+    const user = await this.afa.user.pipe(take(1)).toPromise();
+    return !!user;
+  }
+
+  /**
    * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
    * Does nothing if the user is logged in.
-   * The Error is designed in such a way that the error message can be displayed to the user using a Modal.
-   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'
-   * . Should be in present tense and be in user-friendly language.
+   * The Error is designed in such a way that the error message can be displayed to the user using a Modal or an Alert.
+   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'.
+   * Should be in present tense and be in user-friendly language.
    * @throws ReferenceError - If the user is not logged in
    */
-  throwErrorIfLoggedOut(attemptedOperation: string): void {
-    if (!this.isLoggedIn()) {
+  async asyncThrowErrorIfLoggedOut(attemptedOperation: string): Promise<void> {
+    if (!await this.asyncIsLoggedIn()) {
       throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
     }
   }
+
+  /**
+   * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
+   * Does nothing if the user is logged in.
+   * The Error is designed in such a way that the error message can be displayed to the user using a Modal or an Alert.
+   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'.
+   * Should be in present tense and be in user-friendly language.
+   * @throws ReferenceError - If the user is not logged in
+   */
+  throwErrorIfLoggedOut(attemptedOperation: string): void {
+  if (!this.isLoggedIn()) {
+  throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
+}
+}
 
   /**
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
   async profilePictureLink(uid?: string): Promise<string> {
-    this.throwErrorIfLoggedOut('get your profile picture');
+    await this.asyncThrowErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
     if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.photoURL;
     } else {
-      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
+      const userDoc = await this.getUserData();
       if (userDoc) {
         return userDoc.profilePic;
       } else {
@@ -180,15 +215,12 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
   async displayName(uid?: string): Promise<string> {
-    this.throwErrorIfLoggedOut('get your name');
+    await this.asyncThrowErrorIfLoggedOut('get your name');
     // noinspection DuplicatedCode
     if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.displayName;
     } else {
-      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
+      const userDoc = await this.getUserData(uid);
       if (userDoc) {
         return userDoc.displayName;
       } else {
@@ -220,7 +252,7 @@ export class AuthService {
     return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         return userDoc.payload.exists;
       }
-    );
+    ).catch(error => alert(error));
   }
 
   // Link-gen
@@ -232,7 +264,7 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   async getLink(): Promise<string> {
-    this.throwErrorIfLoggedOut('get your sharing link');
+    await this.asyncThrowErrorIfLoggedOut('get your sharing link');
 
     let link = 'https://virtrolio.web.app/signing?uid=';
     const user = this.uid();
@@ -269,7 +301,7 @@ export class AuthService {
       throw new Error('Argument Key was not provided');
     }
 
-    this.throwErrorIfLoggedOut('verify the key that you provided');
+    await this.asyncThrowErrorIfLoggedOut('verify the key that you provided');
 
     return this.userExists(uid).then(async userExists => {
       if (userExists) {
@@ -289,7 +321,7 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   async changeKey(): Promise<void> {
-    this.throwErrorIfLoggedOut('change your key');
+    await this.asyncThrowErrorIfLoggedOut('change your key');
     const user = this.uid();
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
