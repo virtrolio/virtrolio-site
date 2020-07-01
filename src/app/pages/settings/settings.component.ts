@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(private authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
 
-  private static decodeHtml(html) {
+  private static decodeHtml(html: string) {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
