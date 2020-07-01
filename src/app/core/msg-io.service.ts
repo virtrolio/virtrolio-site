@@ -16,6 +16,7 @@ import Timestamp = firebase.firestore.Timestamp;
 })
 export class MsgIoService {
   static readonly currentYear = 2020;
+  static readonly currentVersion = '2020.0';
   static readonly maxMessageLength = 5000;
 
   private messagesCollection: AngularFirestoreCollection;
@@ -134,7 +135,7 @@ export class MsgIoService {
    */
   async checkForMessage(toUID: string): Promise<boolean> {
     const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
-      .doc(this.authService.uid() + '-' + toUID);
+      .doc(this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion);
     const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
     return !!msgDoc;
     // const messages = await this.afs.collection('messages', ref => ref
@@ -191,7 +192,7 @@ export class MsgIoService {
       };
 
       // Send the message
-      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to);
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
       await msgRef.set(message).catch(error => {
         AuthService.displayError(error);
       });
