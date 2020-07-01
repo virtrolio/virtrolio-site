@@ -138,7 +138,7 @@ markdown {
 
 #embed-photo-div {
   text-align: center;
-  background: var(--accent);
+  background: var(--darkest-accent);
   border-radius: 5px;
   color: white;
 }
@@ -162,4 +162,10 @@ markdown {
 
 #btn-info:hover {
   background-color: #75797A;
+}
+
+#send-button {
+  width: 10em;
+  height: 3em;
+  font-weight: bolder;
 }
