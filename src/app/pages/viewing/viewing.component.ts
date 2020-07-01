@@ -25,15 +25,14 @@ export class ViewingComponent implements OnInit {
     this.viewService.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       // Get the current time to use as time since reference
       this.viewService.nowMillis = Timestamp.now().toMillis();
+      // Clear the messageList
       this.messageList = [];
       messages.forEach((message) => {
         try {
           // Add message to messageList if verifyMessage succeeds
           this.viewService.msgIo.verifyMessage(message);
           this.messageList.push(message);
-        } catch (e) {
-          console.log(e);
-        }
+        } catch (e) { }
       });
     });
   }

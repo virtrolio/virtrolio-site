@@ -20,6 +20,9 @@ export class SingleMessageComponent implements OnInit {
     this.viewService.getMessageById(this.currentMessageId);
   }
 
+  /**
+   * Go to all messaged view
+   */
   goToMessages() {
     // noinspection JSUnusedLocalSymbols
     this.router.navigate([ '/viewing' ]).then(navigate => {

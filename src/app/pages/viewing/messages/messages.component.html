@@ -18,7 +18,7 @@
   </div>
 
   <!-- Card message view -->
-  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false || showMessage(this.currentMessageId)">
+  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
     <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
       <div class="msg-header"
            [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">

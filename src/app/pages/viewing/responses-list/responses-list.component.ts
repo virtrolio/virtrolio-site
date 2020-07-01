@@ -19,8 +19,7 @@ export class ResponsesListComponent implements OnInit {
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
     try {
       this.uid = this.authService.uid();
-    } catch (e) {
-    }
+    } catch (e) { }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
@@ -46,6 +45,10 @@ export class ResponsesListComponent implements OnInit {
     }
   }
 
+  /**
+   * Set the state of the side nav menu
+   * @param state True if nav menu is open
+   */
   navOpen(state: boolean) {
     this.navIsOpen = state;
   }

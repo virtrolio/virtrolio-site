@@ -15,22 +15,13 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 })
 
 export class MessagesComponent implements OnInit {
-  currentMessageId: string;
-  isSingleMessageView = false;
   messageList: VirtrolioMessage[] = [];
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
-    this.route.queryParams.subscribe(params => {
-      this.currentMessageId = params.messageId;
-    });
   }
 
-  ngOnInit(): void {
-    if (this.route.snapshot.queryParams.messageId) {
-      this.isSingleMessageView = true;
-    }
-  }
+  ngOnInit(): void { }
 
   /**
    * Assign messages passed via the [setMessageList] binding
@@ -80,14 +71,6 @@ export class MessagesComponent implements OnInit {
     const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
 
     return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, popup: popupIcon };
-  }
-
-  /**
-   * Scroll to the card with the given id and update the URL
-   * @param id: id attribute of the card
-   */
-  showMessage(id) {
-    this.vps.scrollToAnchor(id);
   }
 
   /**
