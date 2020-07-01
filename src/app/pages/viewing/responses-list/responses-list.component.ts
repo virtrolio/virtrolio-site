@@ -54,8 +54,8 @@ export class ResponsesListComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
+    this.navOpen(false);
     if (!this.viewService.isCarouselView) {
-      console.log(id);
       this.vps.scrollToAnchor(id);
     }
   }
