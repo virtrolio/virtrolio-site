@@ -30,7 +30,7 @@ service cloud.firestore {
                     && request.resource.data.isRead is bool
                     && request.resource.data.timestamp is timestamp
                     && request.resource.data.year is number
-                    && request.resource.data.year >= 2020
+                    && request.resource.data.year == 2020
                     // Authentication
                     && request.resource.data.from == request.auth.uid
                     // > Check to make sure 'from' hasn't already sent a message to 'to'
