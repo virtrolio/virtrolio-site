@@ -149,3 +149,9 @@ markdown {
 #btn-info:hover {
   background-color: #75797A;
 }
+
+#send-button {
+  width: 10em;
+  height: 3em;
+  font-weight: bolder;
+}
