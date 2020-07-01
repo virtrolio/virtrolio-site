@@ -115,6 +115,16 @@
   padding: 0.1em;
 }
 
+@media (min-width: 0px) {
+  .card-columns {
+    column-count: 1;
+  }
+  
+  .card-columns .card {
+    width: 100%;
+  }
+}
+
 @media (min-width: 576px) {
   .card-columns {
     column-count: 1;
