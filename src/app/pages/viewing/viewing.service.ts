@@ -79,7 +79,7 @@ export class ViewingService {
     this.msgIo.deleteMessage(this.messageToDelete).then(() => {
       this.toastr.success('Message deleted successfully', 'Poof!');
     }).catch(e => {
-      this.toastr.error('Message could not be deleted', 'Oops!');
+      this.toastr.error('Message could not be deleted', 'Oops!', { disableTimeOut: true });
     });
   }
 
