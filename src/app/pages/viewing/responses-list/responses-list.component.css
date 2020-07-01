@@ -12,7 +12,7 @@
   padding-top: 2em;
 }
 
-.sidenav .closebtn {
+.sidenav .close-btn {
   position: absolute;
   color: var(--dark);
   top: 0;
@@ -21,7 +21,7 @@
   margin-left: 50px;
 }
 
-.closebtn:hover {
+.close-btn:hover {
   text-decoration: none;
 }
 
