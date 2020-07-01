@@ -22,7 +22,7 @@
     <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
       <div class="msg-header"
            [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
-        <div class="msg-header-group">
+        <div class="msg-header-group pt-1">
           <table class="header-table">
             <tr>
               <td>
