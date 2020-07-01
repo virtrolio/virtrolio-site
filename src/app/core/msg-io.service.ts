@@ -166,7 +166,7 @@ export class MsgIoService {
     this.verifyMessage(messageTemplate);
 
     // Verify user is logged in
-    this.authService.throwErrorIfLoggedOut('send a message');
+    await this.authService.asyncThrowErrorIfLoggedOut('send a message');
 
     // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
