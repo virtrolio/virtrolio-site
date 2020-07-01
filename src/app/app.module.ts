@@ -42,6 +42,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 import { LoginResolver } from './core/login-resolver';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { PendingChangesGuard } from './core/pending-changes.guard';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     PrivacyPolicyComponent,
     InvalidLinkComponent,
     AccessDeniedComponent,
-    RejeccComponent
+    RejeccComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,
