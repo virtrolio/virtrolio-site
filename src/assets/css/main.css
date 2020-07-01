@@ -155,6 +155,21 @@ a.clickable-object, a.clickable-object:hover {
   box-shadow: none !important;
 }
 
-.toast-info:hover{
+.toast-info:hover {
   background: #258dcf;
+}
+
+/* Modal Fixes */
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: auto;
+}
+
+.modal-open[style] {
+  /*Exclusion below is required for the fix*/
+  /*noinspection CssRedundantUnit*/
+  padding-right: 0px !important;
 }
