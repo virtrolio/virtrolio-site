@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-message',
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SingleMessageComponent implements OnInit {
   currentMessageId: string;
 
-  constructor(public viewService: ViewingService, private route: ActivatedRoute) {
+  constructor(public viewService: ViewingService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.currentMessageId = params.messageId;
     });
@@ -18,5 +18,12 @@ export class SingleMessageComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewService.getMessageById(this.currentMessageId);
+  }
+
+  goToMessages() {
+    // noinspection JSUnusedLocalSymbols
+    this.router.navigate([ '/viewing' ]).then(navigate => {
+        window.location.reload();
+    });
   }
 }
