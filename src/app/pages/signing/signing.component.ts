@@ -69,8 +69,7 @@ export class SigningComponent implements OnInit {
           valid = false;
         }
       );
-    // set timeout waits until after the next event to do stuff
-    // hopefully this works :)
+    // Wait until after the next event to navigate
     setTimeout(() => {
       if (valid) {
         this.router.navigate([ '/msg-sent' ], { queryParams : {  name: this.name }});

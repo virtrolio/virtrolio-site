@@ -80,7 +80,6 @@ export class SigningService {
       else {
         textbox.setSelectionRange(start, end + formatChars.length + endChars.length);
       }
-      // textbox.setSelectionRange(start, 2);
     }, 0);
   }
 
