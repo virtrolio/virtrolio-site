@@ -44,9 +44,9 @@
   font-weight: bold;
   color: white;
   text-align: center;
-  height: 3em;
+  height: 6em;
   width: 3em;
-  border-radius: 2em;
+  border-radius: 0.5em;
   background: var(--accent);
   cursor: pointer;
   transition: 0.5s;
@@ -54,8 +54,8 @@
 
 .hamburger:hover {
   left: -0.5em;
-  height: 4em;
-  width: 4em;
+  height: 8em;
+  width: 3em;
   transition: 0.5s;
 }
 
@@ -147,12 +147,19 @@
     font-weight: bold;
     color: white;
     text-align: center;
-    height: 3em;
+    height: 6em;
     width: 3em;
-    border-radius: 100%;
+    border-radius: 0.5em;
     background: var(--accent);
     opacity: 0.8;
     cursor: pointer;
+  }
+
+  .hamburger:hover {
+    left: -0.5em;
+    height: 6em;
+    width: 3em;
+    transition: 0.5s;
   }
 }
 
