@@ -45,4 +45,5 @@
 
 .image-container {
   padding: 0;
+  overflow: hidden;
 }
