@@ -94,8 +94,8 @@ a.clickable-object, a.clickable-object:hover {
 /* Profile Picture formatting */
 .profile-pic-container {
   background: rgba(255, 255, 255, 0);
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 100%;
   display: flex;
 }
