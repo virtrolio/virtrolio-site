@@ -5,16 +5,11 @@
          alt="Virtrolio Logo">
     virtrolio
   </a>
-  <!-- Hamburger menu on mobile if logged out -->
-  <button *ngIf="!authService.isLoggedIn()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+  <!-- Hamburger menu on mobile -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!-- Profile pic menu on mobile if logged in -->
-  <div *ngIf="authService.isLoggedIn()" class="float-right profile-pic-container d-block d-sm-block d-md-none" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-       aria-expanded="false" aria-label="Toggle navigation">
-    <img class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}" alt="profile-pic">
-  </div>
   <!-- Collapsible menu items -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
