@@ -40,6 +40,17 @@ export class AuthService {
     alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
   }
 
+  /**
+   * @param uid - Optional - The user ID of the user's data to retrieve. Defaults to the current user.
+   * @returns The Firestore document containing the user's data.
+   */
+  async getUserData(uid: string = this.uid()) {
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+    return await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+      AuthService.displayError(error);
+    });
+  }
+
   // Auth
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
@@ -89,6 +100,7 @@ export class AuthService {
    * currently logged in user doesn't exist.
    */
   async createUser(user: User): Promise<void> {
+    // Not using this.getUserData() because userRef is required
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
       AuthService.displayError(error);
@@ -96,9 +108,9 @@ export class AuthService {
 
     if (!userDoc) { // User doesn't exist in database
       const userData: VirtrolioUser = {
-        displayName: this.user.displayName,
+        displayName: user.displayName,
         key: AuthService.generateKey(),
-        profilePic: this.user.photoURL
+        profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
         AuthService.displayError(error);
@@ -123,10 +135,22 @@ export class AuthService {
   }
 
   /**
+   * Should not be used on pages/guards that are not protected by the LoginResolver.
+   * If async functionality is required, use asyncIsLoggedIn() instead.
    * @returns True if the user is logged in.
    */
   isLoggedIn(): boolean {
     return this.user != null;
+  }
+
+  /**
+   * Identical to isLoggedIn(), except using a promise. Allows the caller to utilize .then() or await.
+   * If the usage of .then() or await by the caller is not required, isLoggedIn() should be used instead.
+   * @returns a Promise evaluating to True if the user is logged in.
+   */
+  async asyncIsLoggedIn() {
+    const user = await this.afa.user.pipe(take(1)).toPromise();
+    return !!user;
   }
 
   /**
@@ -138,7 +162,7 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   throwErrorIfLoggedOut(attemptedOperation: string): void {
-    if (!this.isLoggedIn()) {
+    if (!this.asyncIsLoggedIn()) {
       throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
     }
   }
@@ -153,10 +177,7 @@ export class AuthService {
     if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.photoURL;
     } else {
-      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
+      const userDoc = await this.getUserData();
       if (userDoc) {
         return userDoc.profilePic;
       } else {
@@ -185,10 +206,7 @@ export class AuthService {
     if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.displayName;
     } else {
-      const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-      const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
+      const userDoc = await this.getUserData(uid);
       if (userDoc) {
         return userDoc.displayName;
       } else {
@@ -220,7 +238,7 @@ export class AuthService {
     return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
         return userDoc.payload.exists;
       }
-    );
+    ).catch(error => alert(error));
   }
 
   // Link-gen
