@@ -7,6 +7,7 @@
   <div class="nav-item mb-2 ml-4 response-title">
     My Responses
   </div>
+  <!--suppress HtmlUnknownAttribute -->
   <div class="author-container" *ngFor="let msg of messageList; let i = index" data-target="#carousel"
        attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(msg.id);">
     <table class="header-table">
@@ -17,7 +18,8 @@
         <td class="author-col">
           <table>
             <tr class="msg-header-text">
-                <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
+                <!--suppress HtmlUnknownTag -->
+              <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
             </tr>
             <tr class="msg-header-date">
               {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
