@@ -296,6 +296,22 @@ markdown {
   }
 }
 
+/* || Scrollbars */
+
+::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EFEFEF;
+  opacity: 0.1;
+  border-radius: 1em;
+}
+
 /* || Miscellaneous */
 
 #btn-info {
