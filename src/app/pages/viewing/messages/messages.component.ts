@@ -4,6 +4,9 @@ import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MessageModalComponent } from '../message-modal/message-modal.component';
+import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-messages',
@@ -12,11 +15,11 @@ import { ViewportScroller } from '@angular/common';
 })
 
 export class MessagesComponent implements OnInit {
-  messageToDelete: string;
   currentMessageId: string;
   isSingleMessageView = false;
+
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.route.queryParams.subscribe(params => {
       this.currentMessageId = params.messageId;
     });
@@ -61,42 +64,21 @@ export class MessagesComponent implements OnInit {
   }
 
   /**
-   * When you click 'x' on a message, messageToDelete will be assigned the value of that message's id
-   * @param mID message id
-   */
-  setMessageToDelete(mID: string) {
-    this.messageToDelete = mID;
-  }
-
-  /**
-   * Wrapper around deleteMessage()
-   */
-  deleteMessage() {
-    // noinspection JSIgnoredPromiseFromCall
-    this.viewService.msgIo.deleteMessage(this.messageToDelete).then(() => {
-      this.toastr.success('Message deleted successfully', 'Poof!');
-    }).catch(e => {
-      this.toastr.error('Message could not be deleted', 'Oops!');
-    });
-  }
-
-  bookmarkMessage(id: string) {
-    this.router.navigate(['/viewing'], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      queryParamsHandling: 'merge'
-    });
-  }
-
-  /**
    * Scroll to the card with the given id and update the URL
    * @param id: id attribute of the card
    */
   showMessage(id) {
     console.log(id);
     this.vps.scrollToAnchor(id);
+  }
+
+  /**
+   * Activate an NgbModal to display the selected message
+   * @param msg VirtrolioMessage object
+   */
+  popupMessage(msg: VirtrolioMessage) {
+    this.viewService.currentMessageModal = msg;
+    const modalRef = this.modalService.open(MessageModalComponent);
   }
 
   /**

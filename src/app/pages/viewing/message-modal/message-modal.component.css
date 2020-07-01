@@ -1,26 +1,15 @@
-.title-page {
-  text-align: center;
-  font-size: 1em;
-  font-family: Montserrat, sans-serif;
-}
-
-.message {
-  text-align: justify;
-  font-size: 1em;
-}
-
 /* Message Card */
 .card {
-  display: inline-block;
+  width: auto;
+  height: 100%;
 }
 
 .message-card {
-  position: relative;
   background-color: var(--light-grey);
   width: 100%;
   word-break: break-word;
   max-height: 30em;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .table td {
@@ -78,48 +67,6 @@
 #no-messages {
   font-size: 2em;
   color: var(--light-grey);
-}
-
- /* Remove the blue outline around the button when it's clicked */
-.btn:focus, .btn:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.card-button {
-  display: flex;
-  float: right;
-  margin-top: 0.3em;
-  align-self: flex-end;
-}
-
-.card-icon {
-  width: 0.8em;
-  height: 0.8em;
-}
-
-@media (min-width: 576px) {
-  .card-columns {
-    column-count: 1;
-  }
-}
-
-@media (min-width: 768px) {
-  .card-columns {
-    column-count: 2;
-  }
-}
-
-@media (min-width: 992px) {
-  .card-columns {
-    column-count: 3;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-columns {
-    column-count: 3;
-  }
 }
 
 /* width */

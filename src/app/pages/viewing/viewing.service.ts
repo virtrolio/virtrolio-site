@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Fonts, VirtrolioMessage } from '../../shared/interfaces';
 import { FontService } from '../../core/font.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +14,16 @@ export class ViewingService {
   fonts: Fonts;
   messages: VirtrolioMessage[];
   singleMessage: VirtrolioMessage;
+  currentMessageModal: VirtrolioMessage;
+  messageToDelete: string;
   numMessages: number;
   isCarouselView = false;
   nowMillis: number;
   /**
    * Retrieve message data from database
    */
-  constructor(public msgIo: MsgIoService) {
+  constructor(public msgIo: MsgIoService, private route: ActivatedRoute,
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.fonts = FontService.fonts;
     this.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       this.messages = messages;
@@ -45,7 +52,6 @@ export class ViewingService {
    * @param date message Timestamp as a date
    */
   timeSince(nowMillis: number, millis: number, date: string) {
-    console.log(date);
     const secondsPast = (nowMillis - millis) / 1000;
     if (secondsPast < 60) {
       return Math.round(secondsPast).toString() + 's ago';
@@ -63,5 +69,39 @@ export class ViewingService {
       // Return the full date if the Timestamp is past a week ago
       return date;
     }
+  }
+
+  /**
+   * When you click 'x' on a message, messageToDelete will be assigned the value of that message's id
+   * @param mID message id
+   */
+  setMessageToDelete(mID: string) {
+    this.messageToDelete = mID;
+  }
+
+  /**
+   * Wrapper around deleteMessage()
+   */
+  deleteMessage() {
+    // noinspection JSIgnoredPromiseFromCall
+    this.msgIo.deleteMessage(this.messageToDelete).then(() => {
+      this.toastr.success('Message deleted successfully', 'Poof!');
+    }).catch(e => {
+      this.toastr.error('Message could not be deleted', 'Oops!');
+    });
+  }
+
+  /**
+   * Append messageId query params to the url
+   * @param id messageId
+   */
+  bookmarkMessage(id: string) {
+    this.router.navigate(['/viewing'], {
+      relativeTo: this.route,
+      queryParams: {
+        messageId: id
+      },
+      queryParamsHandling: 'merge'
+    });
   }
 }

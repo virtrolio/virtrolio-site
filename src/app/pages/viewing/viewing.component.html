@@ -1,6 +1,8 @@
+<!-- Single message view -->
 <div *ngIf="isSingleMessageView; else allMessages">
   <app-single-message></app-single-message>
 </div>
+<!-- Regular all messages view -->
 <ng-template #allMessages>
   <div class="container mb-5">
     <app-responses-list></app-responses-list>

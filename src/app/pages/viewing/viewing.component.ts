@@ -11,11 +11,14 @@ import Timestamp = firestore.Timestamp;
 })
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
+
   constructor(private route: ActivatedRoute, private viewService: ViewingService) {
   }
 
   ngOnInit(): void {
+    // Get the current time to use as time since reference
     this.viewService.nowMillis = Timestamp.now().toMillis();
+    // Determine if the viewing link has messageId query param
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;
     }

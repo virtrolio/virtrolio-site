@@ -1,0 +1,50 @@
+<div class="card shadow">
+  <div class="msg-header">
+    <div class="msg-header-group">
+      <table class="header-table">
+        <tr>
+          <td>
+            <span class="profile-pic-container-small mr-2">
+              <img class="profile-pic" src="{{ viewService.currentMessageModal.fromPic }}" alt="profile-pic">
+            </span>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <div class="msg-header-text">
+                  <span>{{ viewService.currentMessageModal.fromName }}</span>
+                </div>
+              </tr>
+              <tr>
+                <span
+                  class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, viewService.currentMessageModal.timestamp.toMillis(), viewService.currentMessageModal.timestamp.toDate().toDateString()) }}</span>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="card-header-group">
+      <table class="header-table">
+        <tr>
+          <td>
+            <button class="btn card-button" type="button"
+                    (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)">
+              <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card-body message-card" [ngStyle]="{'background': viewService.currentMessageModal.backColor}">
+    <table>
+      <tr class="message"
+          [ngStyle]="{'color': viewService.currentMessageModal.fontColor, 'font-family': viewService.checkFont(viewService.fonts[viewService.currentMessageModal.fontFamily].fontFamily) +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }">
+        <td>
+          <markdown emoji data="{{ viewService.currentMessageModal.contents }}"></markdown>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

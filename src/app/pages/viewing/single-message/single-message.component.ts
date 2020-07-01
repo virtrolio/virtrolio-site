@@ -5,10 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-single-message',
   templateUrl: './single-message.component.html',
-  styleUrls: ['./single-message.component.css']
+  styleUrls: [ './single-message.component.css' ]
 })
 export class SingleMessageComponent implements OnInit {
   currentMessageId: string;
+
   constructor(public viewService: ViewingService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.currentMessageId = params.messageId;
