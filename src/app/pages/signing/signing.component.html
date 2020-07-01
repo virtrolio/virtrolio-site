@@ -107,16 +107,17 @@
   <div class="row justify-content-center mt-4 p-2 shadow" id="embed-photo-div">
     <div class="col-md-6 my-3 px-5 vertical-center">
       <p><strong>Add a link to a photo!</strong></p>
+      <label for="embed-link-field" style="display:none">Insert embed link</label>
       <input type="text" value="Put your link here!" [(ngModel)]='embedLink' id="embed-link-field">
       <div class="my-3">
         <button class="btn btn-secondary" data-toggle="modal" data-target="#embed-modal">
-          How to embed images on your virtrolio
+          How to embed images on your virtrolio message
         </button>
       </div>
     </div>
     <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
       <p><strong>Image Preview</strong></p>
-      <img *ngIf="embedLink else noImage" src="{{embedLink}}" id="embed-image-holder">
+      <img *ngIf="embedLink else noImage" alt="embbed image" src="{{embedLink}}" id="embed-image-holder">
       <ng-template #noImage>No image to show!</ng-template>
     </div>
   </div>
@@ -195,17 +196,20 @@
           Photos!</p>
         <ol>
           <li>Upload your photo on Google Photos.</li>
-          <li>Get the 'share link' for your Google photo (click the share button when viewing the photo).<br><em>Note: this
+          <li>Get the 'share link' for your Google photo (click the share button when viewing the photo).<br><em>Note:
+            this
             'share' link is not the same as the required 'embed link'</em>.
           </li>
-          <li>Go to <a href="https://www.labnol.org/embed/google/photos/">this website</a> and convert your 'sharing' link
+          <li>Go to <a href="https://www.labnol.org/embed/google/photos/">this website</a> and convert your 'sharing'
+            link
             into an 'embed' link.
           </li>
           <li>The embed link should now work in the preview! Try it out!</li>
         </ol>
         <p>
           Unfortunately, for now you'll have to get these 'embed links' yourself. We will be implementing ways to more
-          generate them from Google Drive / Google Photos / other platforms using the sharing links which these services usually provide to users more easily.
+          generate them from Google Drive / Google Photos / other platforms using the sharing links which these services
+          usually provide to users more easily.
         </p>
       </div>
       <div class="modal-footer">
