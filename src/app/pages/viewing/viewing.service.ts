@@ -31,6 +31,12 @@ export class ViewingService {
     });
   }
 
+  decodeHtml(html: string) {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  }
+
   /**
    * Format the timestamp depending on how much time as elapsed
    * @param nowMillis time in milliseconds upon ngOnInit()

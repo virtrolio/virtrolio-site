@@ -31,7 +31,7 @@
           <tr class="message"
               [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
             <td>
-              <markdown emoji data="{{ viewService.singleMessage.contents }}"></markdown>
+              <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
             </td>
           </tr>
         </table>

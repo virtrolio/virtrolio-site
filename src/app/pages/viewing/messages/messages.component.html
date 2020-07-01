@@ -67,7 +67,7 @@
           <tr class="message"
               [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
             <td>
-              <markdown emoji data="{{ msg.contents }}"></markdown>
+              <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
             </td>
           </tr>
         </table>
@@ -138,7 +138,7 @@
               <tr class="message"
                   [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
                 <td>
-                  <markdown emoji data="{{ msg.contents }}"></markdown>
+                  <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
                 </td>
               </tr>
             </table>
