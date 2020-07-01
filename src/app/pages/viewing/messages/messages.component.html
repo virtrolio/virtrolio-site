@@ -59,7 +59,7 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
+      <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}" (click)="popupMessage(msg)">
         <table>
           <tr class="message"
               [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
