@@ -52,6 +52,7 @@
       </div>
       <div class="modal-body">
         <p>Your data has been prepared. Please use the buttons below to download your data.</p>
+        <p><b>{{ exportErrorText }}</b></p> <!-- Error text is also here in case the error modal doesn't show up -->
       </div>
       <div class="modal-footer">
         <a class="btn btn-info" title="Download User Data" [href]="downloadUserData" download="user.json">
@@ -75,7 +76,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Oops! It looks like something went wrong during the data export.</p>
+        <p>Oops! It looks like something went wrong during the data export. Here are the details of the error
+        that you can pass along to our team if required:</p>
+        <p><b>{{ exportErrorText }}</b></p>
         <p><em>Please close this window and try again.</em></p>
         <p>Also, make sure that your internet connection is working properly,
           and that there aren't any firewalls on your computer that could be blocking the download.</p>
