@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 import { ActivatedRoute, Router  } from '@angular/router';
+import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-responses-list',
@@ -14,6 +15,7 @@ export class ResponsesListComponent implements OnInit {
   public photoUrl: string;
   public uid: string;
   navIsOpen = false;
+  messageList: VirtrolioMessage[];
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
               private route: ActivatedRoute, private router: Router) {
     try {
@@ -33,6 +35,16 @@ export class ResponsesListComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  /**
+   * Assign messages passed via the [setMessageList] binding
+   * @param messages list of verified VirtrolioMessages
+   */
+  @Input() set setMessageList(messages: VirtrolioMessage[]) {
+    if (messages) {
+      this.messageList = messages;
+    }
+  }
 
   navOpen(state: boolean) {
     this.navIsOpen = state;

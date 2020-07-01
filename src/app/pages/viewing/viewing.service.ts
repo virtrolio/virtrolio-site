@@ -12,11 +12,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ViewingService {
   fonts: Fonts;
-  messages: VirtrolioMessage[];
   singleMessage: VirtrolioMessage;
   currentMessageModal: VirtrolioMessage;
   messageToDelete: string;
-  numMessages: number;
   isCarouselView = false;
   nowMillis: number;
   /**
@@ -25,24 +23,12 @@ export class ViewingService {
   constructor(public msgIo: MsgIoService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.fonts = FontService.fonts;
-    this.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
-      this.messages = messages;
-      this.numMessages = messages.length;
-    });
   }
 
   getMessageById(id: string) {
     this.msgIo.getMessage(id).subscribe(message => {
       this.singleMessage = message;
     });
-  }
-
-  checkFont(font: string) {
-    if (font in FontService.fonts) {
-      return font;
-    } else {
-      return 'Arial';
-    }
   }
 
   /**

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 export class MessagesComponent implements OnInit {
   currentMessageId: string;
   isSingleMessageView = false;
-
+  messageList: VirtrolioMessage[];
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.route.queryParams.subscribe(params => {
@@ -28,6 +28,16 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;
+    }
+  }
+
+  /**
+   * Assign messages passed via the [setMessageList] binding
+   * @param messages list of verified VirtrolioMessages
+   */
+  @Input() set setMessageList(messages: VirtrolioMessage[]) {
+    if (messages) {
+      this.messageList = messages;
     }
   }
 

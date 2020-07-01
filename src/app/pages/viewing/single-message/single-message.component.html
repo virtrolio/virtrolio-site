@@ -29,7 +29,7 @@
       <div class="card-body message-card" [ngStyle]="{'background': viewService.singleMessage.backColor}">
         <table>
           <tr class="message"
-              [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.checkFont(viewService.fonts[viewService.singleMessage.fontFamily].fontFamily) +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
+              [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
             <td>
               <markdown emoji data="{{ viewService.singleMessage.contents }}"></markdown>
             </td>

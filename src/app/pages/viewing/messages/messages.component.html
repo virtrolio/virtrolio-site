@@ -1,5 +1,5 @@
 <!-- Perform a check to see if the number of messages received is 0 -->
-<div *ngIf="viewService.numMessages === 0; else showMessages" class="m-5" id="no-messages">No messages...
+<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">No messages...
   <markdown emoji>:sob:</markdown>
 </div>
 
@@ -19,7 +19,7 @@
 
   <!-- Card message view -->
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false || showMessage(this.currentMessageId)">
-    <div class="card shadow" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
+    <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
       <div class="msg-header"
            [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
         <div class="msg-header-group">
@@ -65,7 +65,7 @@
       <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
         <table>
           <tr class="message"
-              [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.checkFont(viewService.fonts[msg.fontFamily].fontFamily) +','+ viewService.fonts[msg.fontFamily].backupFont }">
+              [ngStyle]="{'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
             <td>
               <markdown emoji data="{{ msg.contents }}"></markdown>
             </td>
@@ -95,7 +95,7 @@
                         <span class="msg-header-text">Vitrolio Team</span>
                       </tr>
                       <tr>
-                        <span class="msg-header-date">You have {{ viewService.numMessages }} messages</span>
+                        <span class="msg-header-date">You have {{ messageList.length }} messages</span>
                       </tr>
                     </table>
                   </td>
@@ -107,7 +107,7 @@
             <div class="title-text">Welcome to your Virtrolio! Click on the arrows to navigate through your book.</div>
           </div>
         </div>
-        <div class="carousel-item" *ngFor="let msg of viewService.messages">
+        <div class="carousel-item" *ngFor="let msg of messageList">
           <div class="msg-header"
                [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
             <div class="msg-header-group">
