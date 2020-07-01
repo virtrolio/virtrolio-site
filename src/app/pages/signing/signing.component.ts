@@ -53,7 +53,6 @@ export class SigningComponent implements OnInit {
    */
   sendMsg(textbox: HTMLTextAreaElement) {
     const newMsg = this.msgIo.createBlankMessage();
-    let valid = true;
     newMsg.backColor = this.signingService.backgroundColor;
     newMsg.fontColor = this.signingService.textColor;
     newMsg.fontFamily = this.signingService.currentFont;
@@ -62,18 +61,11 @@ export class SigningComponent implements OnInit {
 
     // remove navigation popup
     this.sending = true;
-    this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      void (0))
-      .catch(error => {
-          alert(error);
-          valid = false;
-        }
-      );
-    // Wait until after the next event to navigate
-    setTimeout(() => {
-      if (valid) {
-        this.router.navigate([ '/msg-sent' ], { queryParams : {  name: this.name }});
+    this.msgIo.sendMessage(newMsg, this.key).then(() => {
+      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } });
+    }).catch(error => {
+        alert(error);
       }
-    }, 0);
+    );
   }
 }
