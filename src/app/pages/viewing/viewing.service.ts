@@ -77,9 +77,9 @@ export class ViewingService {
   deleteMessage() {
     // noinspection JSIgnoredPromiseFromCall
     this.msgIo.deleteMessage(this.messageToDelete).then(() => {
-      this.toastr.success('Message deleted successfully', 'Poof!');
+      this.toastr.success('Message deleted successfully', 'Poof!', { positionClass: 'toast-bottom-full-width' });
     }).catch(e => {
-      this.toastr.error('Message could not be deleted', 'Oops!', { disableTimeOut: true });
+      this.toastr.error('Message could not be deleted', 'Oops!', { disableTimeOut: true, positionClass: 'toast-bottom-full-width' });
     });
   }
 
@@ -88,7 +88,7 @@ export class ViewingService {
    * @param id messageId
    */
   bookmarkMessage(id: string) {
-    this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark');
+    this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark', { positionClass: 'toast-bottom-full-width' });
     this.router.navigate([ '/viewing' ], {
       relativeTo: this.route,
       queryParams: {
