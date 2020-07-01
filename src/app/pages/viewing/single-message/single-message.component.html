@@ -1,5 +1,5 @@
-<div class="row justify-content-center mt-5 pb-5">
-  <div class="col-5">
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
     <div class="card shadow">
       <div class="msg-header">
         <div class="msg-header-group">
@@ -12,13 +12,11 @@
               </td>
               <td>
                 <table>
-                  <tr>
-                    <div class="msg-header-text">
-                      <span>{{ viewService.singleMessage.fromName }}</span>
-                    </div>
+                  <tr class="msg-header-text">
+                    {{ viewService.singleMessage.fromName }}
                   </tr>
-                  <tr>
-                    <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}</span>
+                  <tr class="msg-header-date">
+                    {{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -26,16 +24,12 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card" [ngStyle]="{'background': viewService.singleMessage.backColor}">
-        <table>
-          <tr class="message"
-              [ngStyle]="{'color': viewService.singleMessage.fontColor, 'font-family': viewService.checkFont(viewService.fonts[viewService.singleMessage.fontFamily].fontFamily) +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont }">
-            <td>
-              <markdown emoji data="{{ viewService.singleMessage.contents }}"></markdown>
-            </td>
-          </tr>
-        </table>
+      <div class="card-body message-card message" [ngStyle]="{'background': viewService.singleMessage.backColor, 'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}">
+        <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
       </div>
     </div>
   </div>
+</div>
+<div class="row justify-content-center my-5">
+  <button class="btn-sm btn-primary" (click)="goToMessages()">Go to messages</button>
 </div>

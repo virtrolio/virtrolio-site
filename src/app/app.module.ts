@@ -46,6 +46,8 @@ import { LoginResolver } from './core/login-resolver';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
 
 
 @NgModule({
@@ -69,7 +71,8 @@ import { SingleMessageComponent } from './pages/viewing/single-message/single-me
     InvalidLinkComponent,
     AccessDeniedComponent,
     RejeccComponent,
-    SingleMessageComponent
+    SingleMessageComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,8 @@ import { SingleMessageComponent } from './pages/viewing/single-message/single-me
           breaks: true,
         },
       },
-    })
+    }),
+    NgbModule
   ],
   providers: [ CookieService, LoginResolver, PendingChangesGuard ],
   bootstrap: [ AppComponent ]

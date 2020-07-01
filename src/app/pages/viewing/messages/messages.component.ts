@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MessageModalComponent } from '../message-modal/message-modal.component';
+import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-messages',
@@ -12,11 +15,12 @@ import { ViewportScroller } from '@angular/common';
 })
 
 export class MessagesComponent implements OnInit {
-  messageToDelete: string;
   currentMessageId: string;
   isSingleMessageView = false;
+  messageList: VirtrolioMessage[] = [];
+
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
     this.route.queryParams.subscribe(params => {
       this.currentMessageId = params.messageId;
     });
@@ -29,13 +33,25 @@ export class MessagesComponent implements OnInit {
   }
 
   /**
+   * Assign messages passed via the [setMessageList] binding
+   * @param messages list of verified VirtrolioMessages
+   */
+  @Input() set setMessageList(messages: VirtrolioMessage[]) {
+    if (messages) {
+      this.messageList = messages;
+    }
+  }
+
+  /**
    * Generate the lightness value of HSL from RBG
    */
   getLightness(r, g, b) {
-    r /= 255, g /= 255, b /= 255;
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    const l = (max + min) / 2;
-    return l;
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    return (max + min) / 2;
   }
 
   /**
@@ -47,47 +63,23 @@ export class MessagesComponent implements OnInit {
     const bgG = parseInt(backColor.slice(3, 5), 16);
     const bgB = parseInt(backColor.slice(5), 16);
     let headerTextColor;
+    let trashIcon;
+    let popupIcon;
     if (this.getLightness(bgR, bgG, bgB) > 0.65) {
       headerTextColor = '#000000';
+      trashIcon = '../../../../assets/images/icons/trash-black.svg';
+      popupIcon = '../../../../assets/images/icons/maximize-black.svg';
     } else {
       headerTextColor = '#FFFFFF';
+      trashIcon = '../../../../assets/images/icons/trash-white.svg';
+      popupIcon = '../../../../assets/images/icons/maximize-white.svg';
     }
     const hR = bgR + 20 > 255 ? 255 : bgR + 20;
     const hG = bgG + 20 > 255 ? 255 : bgG + 20;
     const hB = bgB + 20 > 255 ? 255 : bgB + 20;
     const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
 
-    return { bg: '#' + headerColor, text: headerTextColor };
-  }
-
-  /**
-   * When you click 'x' on a message, messageToDelete will be assigned the value of that message's id
-   * @param mID message id
-   */
-  setMessageToDelete(mID: string) {
-    this.messageToDelete = mID;
-  }
-
-  /**
-   * Wrapper around deleteMessage()
-   */
-  deleteMessage() {
-    // noinspection JSIgnoredPromiseFromCall
-    this.viewService.msgIo.deleteMessage(this.messageToDelete).then(() => {
-      this.toastr.success('Message deleted successfully', 'Poof!');
-    }).catch(e => {
-      this.toastr.error('Message could not be deleted', 'Oops!');
-    });
-  }
-
-  bookmarkMessage(id: string) {
-    this.router.navigate(['/viewing'], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      queryParamsHandling: 'merge'
-    });
+    return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, popup: popupIcon };
   }
 
   /**
@@ -95,8 +87,16 @@ export class MessagesComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    console.log(id);
     this.vps.scrollToAnchor(id);
+  }
+
+  /**
+   * Activate an NgbModal to display the selected message
+   * @param msg VirtrolioMessage object
+   */
+  popupMessage(msg: VirtrolioMessage) {
+    this.viewService.currentMessageModal = msg;
+    this.modalService.open(MessageModalComponent);
   }
 
   /**

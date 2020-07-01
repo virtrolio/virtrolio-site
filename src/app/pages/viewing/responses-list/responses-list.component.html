@@ -1,13 +1,14 @@
 <div class="hamburger vertical-center shadow" (click)="navOpen(true)">
-  <img src="../../../../assets/images/icons/chevron-right.svg">
+  <img src="../../../../assets/images/icons/chevron-right.svg" alt="response-list">
 </div>
 
 <div id="mySidenav" class="sidenav shadow" [class.navOpen]="navIsOpen">
-  <a href="javascript:void(0)" class="closebtn" (click)="navOpen(false)">&times;</a>
+  <a href="javascript:void(0)" class="close-btn" (click)="navOpen(false)">&times;</a>
   <div class="nav-item mb-2 ml-4 response-title">
     My Responses
   </div>
-  <div class="author-container" *ngFor="let msg of viewService.messages; let i = index" data-target="#carousel"
+  <!--suppress HtmlUnknownAttribute -->
+  <div class="author-container" *ngFor="let msg of messageList; let i = index" data-target="#carousel"
        attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(msg.id);">
     <table class="header-table">
       <tr>
@@ -16,13 +17,12 @@
         </td>
         <td class="author-col">
           <table>
-            <tr>
-              <div class="msg-header-text">
-                <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
-              </div>
+            <tr class="msg-header-text">
+                <!--suppress HtmlUnknownTag -->
+              <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
             </tr>
-            <tr>
-              <span class="msg-header-date">{{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}</span>
+            <tr class="msg-header-date">
+              {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
             </tr>
           </table>
         </td>

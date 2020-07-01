@@ -69,6 +69,17 @@
   color: var(--light-grey);
 }
 
+.card-icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* Remove the blue outline around the button when it's clicked */
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 0.2em;
