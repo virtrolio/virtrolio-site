@@ -4,11 +4,13 @@ service cloud.firestore {
     match /messages/{message} {
       // Getting (or searching for) a message is permitted if the user is the sender
       // Used in MsgIoService.checkForMessage()
-      allow get: if message.split('-')[0] == request.auth.uid && request.auth.uid != null;
+      allow get: if request.auth.uid != null && (message.split('-')[0] == request.auth.uid ||
+                                                 resource.data.to == request.auth.uid);
       // Yearbook methodology - only the recipient may see the messages
       allow list: if resource.data.to == request.auth.uid;
-      allow create: if request.resource.data.keys().hasAll(['backColor', 'contents', 'fontColor', 'fontFamily',
-            				'from', 'isRead', 'key', 'fromName', 'fromPic', 'timestamp', 'to', 'year'])
+      allow create: if request.resource.data.keys().hasAll(['backColor', 'contents', 'fontColor',
+      							'fontFamily', 'from', 'isRead', 'key', 'fromName', 'fromPic', 'timestamp',
+                    'to', 'year'])
                     // Param Validity
                     // > Enforce Message ID format of <fromUID>-<toUID>
                     && message.split('-')[0] == request.resource.data.from
@@ -17,13 +19,13 @@ service cloud.firestore {
                     && request.resource.data.contents.size() <= 5000
                     // Data Validity
                     // > Regex string fields to reject if they're only whitespace or blank
-                    && request.resource.data.contents.matches('\\S+')
+                    && !request.resource.data.contents.matches('^\\s+$')
                     // > Regex to match hex color code format (#AABBCC)
                     && request.resource.data.backColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
                     && request.resource.data.fontColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
                     // > Regex string fields to reject if they're only whitespace or blank
-                    && request.resource.data.fontFamily.matches('\\S+')
-                    && request.resource.data.key.matches('\\S+')
+                    && !request.resource.data.fontFamily.matches('^\\s+$')
+                    && !request.resource.data.key.matches('^\\s+$')
                     // Verify variable types
                     && request.resource.data.isRead is bool
                     && request.resource.data.timestamp is timestamp

@@ -28,7 +28,8 @@
           <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   [ngStyle]="{'font-family': signingService.currentFontFamily}">
-            {{ signingService.currentFontDisplay }}
+            <span>{{ signingService.currentFontDisplay }}</span>
+            <span class="caret"></span>
           </button>
           <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
             <span *ngFor="let font of signingService.fontDict | keyvalue">
