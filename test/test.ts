@@ -1,6 +1,8 @@
 import * as firebase from '@firebase/testing';
 import { suite, test } from '@testdeck/mocha';
 import * as fs from 'fs';
+import { VirtrolioMessage, VirtrolioMessageTemplate } from '../src/app/shared/interfaces';
+import Timestamp = firebase.firestore.Timestamp;
 
 /*
  * ============
@@ -11,6 +13,36 @@ const projectId = 'virtrolio';
 const coverageUrl = `http://localhost:8080/emulator/v1/projects/${projectId}:ruleCoverage.html`;
 
 const rules = fs.readFileSync('firestore.rules', 'utf8');
+
+// Test Data setup
+const f = {
+  uid: 'cFWt1nbf2xyZg2dcMa5hi3yZNQ52',
+  displayName: 'Bob Jones',
+  profilePic: 'https://pixabay.com/get/57e5dd464a54ac14f6d1867dda35367b1c3cdbe25751734b_1920.jpg',
+  key: 'fDuX2pr'
+};
+const t = {
+  uid: '72MHzGjWqzXy20uYzn2oU8j2qqe2',
+  displayName: 'Jones Bob',
+  profilePic: 'https://pixabay.com/get/57e5dd464a54ac14f6d1867dda35367b1c3cdbe25751734b_1920.jpg',
+  key: 'fDuX2pr'
+};
+
+class TestMsgTemplate implements VirtrolioMessage {
+  backColor = '#FFFFFF';
+  contents = '';
+  fontColor = '';
+  fontFamily = '';
+  to = t.uid;
+  from = f.uid;
+  fromName: string;
+  fromPic: string;
+  isRead: boolean;
+  key: string;
+  timestamp: Timestamp;
+  year: number;
+  id: string;
+}
 
 /**
  * Creates a new app with authentication data matching the input.
