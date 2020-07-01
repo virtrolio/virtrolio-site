@@ -1,9 +1,9 @@
 <div class="container-fluid full-width" id="home-background">
   <div class="container-fluid full-width" id="home-img-background">
-    <!-- For logo in background -->
-    <!--    <img data-aos="zoom-in-up" data-aos-duration="1500" src="../../../assets/images/logo_inverted.png" width="1024" height="1024" id="bg-logo-img" alt="Virtrolio Logo">-->
-    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-xl-block" src="../../../assets/images/iso.svg"
-         id="feature-img" alt="Virtrolio Logo">
+        <img class="d-none d-xl-block" data-aos="zoom-in-up" data-aos-duration="1500" src="../../../assets/images/logo_inverted.png" id="bg-logo-img" alt="Virtrolio Logo">
+        <!-- Feature image -->
+<!--    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-xl-block" src="../../../assets/images/iso.svg"-->
+<!--         id="feature-img" alt="Virtrolio Logo">-->
     <div id="title-container">
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay Connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
@@ -40,8 +40,8 @@
               <span>Sign in with Google</span>
             </button>
           </div>
-          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you are agreeing to our <a
-            routerLink="/terms-of-service">Terms of Service.</a><br> We currently do not support other sign-in
+          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you are agreeing to our
+            <a routerLink="/terms-of-service">Terms of Service.</a><br> We currently do not support other sign-in
             providers.
           </p>
         </div>
@@ -109,6 +109,7 @@
             <label id="signing-box-label" for="signing-box">
               <b>Give it a try!</b>
             </label>
+            <p id="preview-instructions">Preview your message above.</p>
             <textarea #signingInputArea id="signing-box" class="form-control"
                       (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
                       [ngStyle]="{'font-family': currentFont}"></textarea>
@@ -128,7 +129,8 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     [ngStyle]="{'font-family': currentFont}">
-              {{ currentFontDisplay }}
+              <span>{{ currentFontDisplay }}</span>
+              <span class="caret"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
               <span *ngFor="let font of fontDict | keyvalue">
@@ -148,7 +150,7 @@
                   id="button-italics">
             <i>I</i>
           </button>
-          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>')"
+          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
                   class="btn btn-secondary btn-format mr-2" id="button-underline">
             <u>U</u>
           </button>

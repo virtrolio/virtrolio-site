@@ -1,7 +1,15 @@
+/* || Title content */
+
 #title {
   text-align: center;
   font-size: 5em;
 }
+
+#title-blurb {
+  border-left: 3px solid var(--dark-accent);
+  padding-left: 2em;
+}
+/* || Meet the team */
 
 #meet-the-team > div > div {
   /* For all items within each peron's row -- copy of vertical-center class in main.css */

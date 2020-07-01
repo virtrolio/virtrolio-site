@@ -12,6 +12,8 @@
   position: absolute;
   opacity: 0.1;
   right: 0;
+  height: 50em;
+  width: 50em;
 }
 
 /* Featured image or pattern */
@@ -125,6 +127,11 @@
   font-size: 1.5em;
 }
 
+#preview-instructions {
+  width: 100%;
+  text-align: center;
+}
+
 #signing-box {
   margin: 0.5em;
   padding: 1em;
@@ -172,9 +179,22 @@ markdown {
 }
 
 #font-selector-dropdown {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: right;
   width: 12em;
   height: 2.5em;
+}
+
+#font-selector-dropdown span:not(.caret) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#font-selector-dropdown .caret {
+  margin: auto;
 }
 
 .btn-format {
@@ -289,7 +309,6 @@ markdown {
 }
 
 /* fragment padding for header */
-
 #info::before {
   content: "";
   display: block;

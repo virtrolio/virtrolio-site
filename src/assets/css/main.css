@@ -18,7 +18,7 @@ html {
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
 }
 
-div.montserrat p, div.montserrat h1, div.montserrat h2 {
+div.montserrat h1, div.montserrat h2 {
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
   sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -129,4 +129,19 @@ a.clickable-object, a.clickable-object:hover {
 .google-sign-in-btn span {
   margin-left: 0;
   padding-left: 18px;
+}
+
+/* Modal Fixes */
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: auto;
+}
+
+.modal-open[style] {
+  /*Exclusion below is required for the fix*/
+  /*noinspection CssRedundantUnit*/
+  padding-right: 0px !important;
 }

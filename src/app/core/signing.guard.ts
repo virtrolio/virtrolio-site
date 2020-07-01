@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree
-} from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
@@ -41,42 +34,50 @@ export class SigningGuard implements CanActivate {
       const linkStr = window.location.href;
       SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
       SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
-    } catch (e) {
-      // noinspection JSIgnoredPromiseFromCall
-      this.router.navigate([ '/invalid-link' ]);
+    } catch (error) {
+      // Displaying alert is not necessary since an error is only thrown when one of the query params is missing/invalid = invalid link
+      this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
     }
 
-    /** Redirection based on authService.checkKey() & authService.isLoggedIn() */
-    return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
-      if (validKey === false) {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
+    // User must be signed in
+    return this.authService.asyncIsLoggedIn().then(isLoggedIn => {
+      if (!isLoggedIn) {
+        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
+          .catch(e => AuthService.displayError(e));
         return false;
-      }
-
-      this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
-        if (signed) {
-          // noinspection JSIgnoredPromiseFromCall
-          this.router.navigate([ '/rejecc' ]);
-          return false;
-        }
-      }).catch(() => {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
-      });
-
-      if (this.authService.isLoggedIn()) {
-        return true;
       } else {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } });
-        return false;
+        // Sender must not have previously signed the recipient's virtrolio
+        return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
+          if (validKey === false) {
+            this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
+            return false;
+          }
+          this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
+            if (signed) {
+              this.router.navigate([ '/rejecc' ]).catch(error => AuthService.displayError(error));
+              return false;
+            } else {
+              return true;
+            }
+          }).catch(error => {
+            // Only possibilities for a Firebase error getting thrown:
+            // 1. Not logged in
+            // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
+            // modifies the source code)
+            console.log(error);
+            AuthService.displayError(error);
+            this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
+              .catch(navError => AuthService.displayError(navError));
+          });
+          return true;
+        }).catch(error => {
+          // noinspection JSIgnoredPromiseFromCall
+          console.log(error);
+          AuthService.displayError(error);
+          this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+          return false;
+        });
       }
-    })
-      .catch(() => {
-        // noinspection JSIgnoredPromiseFromCall
-        this.router.navigate([ '/invalid-link' ]);
-        return false;
-      });
+    });
   }
 }
