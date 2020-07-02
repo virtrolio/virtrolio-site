@@ -107,7 +107,7 @@
         <label id="input-sharing-label" for="input-sharing-field" style="display:none">Visit friend link</label>
         <input type="text" class="align-middle" #inputSharing value="Input your friend's link here"
                (click)="copyLink(inputSharing)" id="input-sharing-field" [(ngModel)]='visitLink'>
-        <button type="button" id="button-copy" class="btn btn-primary align-middle" data-dismiss="modal"
+        <button type="button" id="button-go" class="btn btn-primary align-middle button-modal" data-dismiss="modal"
                 aria-label="Close"
                 (click)="navigateToLink()">Go
         </button>

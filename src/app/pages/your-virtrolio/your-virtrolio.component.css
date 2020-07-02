@@ -67,7 +67,7 @@
   display: none;
 }
 
-#button-copy {
+.button-modal {
   width: 4.5em;
   padding: 0.4em;
 }
