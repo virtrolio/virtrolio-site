@@ -21,6 +21,10 @@
   margin-left: 50px;
 }
 
+.close-btn {
+  cursor: pointer;
+}
+
 .close-btn:hover {
   text-decoration: none;
 }
