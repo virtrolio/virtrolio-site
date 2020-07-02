@@ -42,7 +42,8 @@
       <div id="s1q2c" class="collapse" aria-labelledby="s1q2h" data-parent="#faq-s1">
         <div class="card-body card-align">
           As per our <a routerLink="/privacy-policy">Privacy Policy</a>, you cannot delete a message once you have sent
-          it. This is to more closely emulate real-life yearbook signing. In order to have your message deleted, you
+          it. This is to more closely emulate real-life yearbook signing, in that the virtrolio (and all its messages)
+          will stay with the <em>receiver</em>. In order to have your message deleted, you
           must ask the <em>recipient</em> of your message to delete it.
         </div>
       </div>
@@ -75,26 +76,6 @@
     </div>
 
     <!-- Question -->
-    <div class='card'>
-      <div class='card-header' id='s1q4h'>
-        <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q4c" aria-expanded="false"
-                  aria-controls="s1q4c">
-            How do I get a new sharing link?
-          </button>
-        </h2>
-      </div>
-
-      <!-- Answer -->
-      <div id="s1q4c" class="collapse" aria-labelledby="s1q4h" data-parent="#faq-s1">
-        <div class='card-body card-align'>
-          Go to <a routerLink="/your-virtrolio">your Virtrolio</a> and click on 'Sharing Link', then generate a new
-          link from there. Be aware—doing so will invalidate all previous links!
-        </div>
-      </div>
-    </div>
-
-    <!-- Question -->
     <div class="card">
       <div class="card-header" id="s1q5h">
         <h2 class="mb-0">
@@ -108,34 +89,40 @@
       <!-- Answer -->
       <div id="s1q5c" class="collapse" aria-labelledby="s1q5h" data-parent="#faq-s1">
         <div class="card-body card-align">
-          We're working on adding a button to allow you to do this soon!
-          However, if you know a bit of HTML, you can do it yourself like this:
-          <strong
+          <p>Yes, if you have the images uploaded to some other website (since we do not store images on virtrolio).
+            We're working on adding a menu to allow you to do this soon!</p>
+
+          <p>However, if you know a bit of HTML, you can do it yourself like this: <strong
             style="font-family: Consolas, sans-serif">&lt;img src="insert link URL"&gt;</strong> and you will be able to
-          see it in the preview panel while you sign your message if you do it properly with a URL that works. Not every
-          URL works, even if it does technically lead to an image. The URL must contain ONLY an image.
-          For example, <a target="_blank" href="https://pixers.ca/wall-murals/forest-landscape-52681781">this link</a>
-          will not work but
-          <a target="_blank"
-             href="https://img.pixers.pics/pho_wat(s3:700/FO/52/68/17/81/700_FO52681781_231280298b730b039220871519fde7b7.jpg,700,467,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,417,jpg)/wall-murals-forest-landscape.jpg.jpg">this
-            one</a> will. Usually, a 'usable' URL in this context will have an 'image file extension' at the end of the
-          URL—something like .jpg or .png or .gif. Some people call this type of link an 'embed link', so you could
-          search up how to get the 'embed link' for a photo if you stored it on an online service such as Google Drive
-          or Google Photos.<br><br>
+            see it in the preview panel while you sign your message if you do it properly with a URL that works.</p>
 
-          Also, if you know some more HTML / CSS then you can style your images too (for example, <strong
-          style="font-family: Consolas, sans-serif">&lt;img src="URL" width = 100%&gt;</strong> is very
-          useful for scaling your images to a proper, viewable size). We are working on a more user-friendly menu to be
-          able to insert
-          images into your message if you're not comfortable with this, so watch out for that!<br><br>
+          <p><strong>Note: Not every URL works, and some URLs will only work temporarily, which makes things difficult
+            when you want the messages to last for a long time. We are not responsible if your link breaks and the
+            picture no longer shows up on a message you have sent.</strong> If the URL holding your image stops working,
+            then so will your image, even if you already sent it. The only way a recipient could keep the image if it
+            was on a temporary link is if they printed out their virtrolio or downloaded a type of file that would allow
+            them to view the image (features which we have not implemented yet). As such, we recommend that you link to
+            images which you know will work not only now but also in the future when your friend reads your message.
+            From what has been tested, Google Photos links can expire after a day. Other image sharing / storing
+            services such as Google Drive and Imgur are possible alternatives. Virtrolio is not making any suggestions
+            for software to use in this regard; we are simply making you aware of the options that are out there.</p>
 
-          One thing about inserting images like this: <strong>they are not permanent</strong>.
-          If the URL holding your image stops working, then so will
-          your image, even if you already sent it. The only way a recipient could keep the image is if they printed out
-          their virtrolio or exported to a type of file that would allow them to view the image (a feature which we have
-          not implemented yet). As such, we recommend that
-          you link to images which you know will work not only now but also in the future when your friend reads your
-          message.
+          <p>Even if the URL you use does lead to an image, the URL must contain ONLY an image for it to work in
+            your virtrolio message. For example, <a target="_blank" href="https://bit.ly/2NRCMvu">this link</a> will not
+            work but <a target="_blank" href="https://bit.ly/2BuNxkA">this one</a> will. Usually, a 'usable' URL in this
+            context will have an 'image file extension' at the end of the URL—something like .jpg or .png or .gif. Some
+            people call this type of link an 'embed link', as these links can be used to 'embed' content into a website.
+            To find this link, you could search up how to get the 'embed link' for whatever online service you used to
+            upload and store your photos. For some websites, it is much easier to get this embed link—the website might
+            even provide an easy-to-use button. For other websites, you might need to right-click on an image and try to
+            click 'Open image in new tab' until you get a link which looks like a valid 'embed link' with only the image
+            on it. </p>
+
+          <p>On a related note, if you know some more HTML / CSS then you can style your images too (for example,
+            <strong style="font-family: Consolas, sans-serif">&lt;img src="URL" width = 100%&gt;</strong> is very useful
+            for scaling your images to a proper, viewable size). We are working on a more user-friendly menu to be able
+            to insert images into your message if you're not comfortable with this, so watch out for that!</p>
+
         </div>
       </div>
     </div>
@@ -155,9 +142,30 @@
       <div id="s1q6c" class="collapse" aria-labelledby="s1q6h" data-parent="#faq-s1">
         <div class="card-body card-align">
           After sending your messages, you do not own them anymore, so you cannot download or save them then. If you
-          want to download and save the messages you have <em>received</em>, we currently have the option for you to download all
+          want to download and save the messages you have <em>received</em>, we currently have the option for you to
+          download all
           your data as a .json file (go to your settings page for this option). We are working on a way for you to be
           able download your messages in a more user-friendly format, though, so stay tuned!
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class='card'>
+      <div class='card-header' id='s1q4h'>
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q4c" aria-expanded="false"
+                  aria-controls="s1q4c">
+            How do I get a new sharing link?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div id="s1q4c" class="collapse" aria-labelledby="s1q4h" data-parent="#faq-s1">
+        <div class='card-body card-align'>
+          Go to <a routerLink="/your-virtrolio">your Virtrolio</a> and click on 'Sharing Link', then generate a new
+          link from there. Be aware—doing so will invalidate all previous links!
         </div>
       </div>
     </div>
