@@ -22,7 +22,8 @@
               <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
             </tr>
             <tr class="msg-header-date">
-              {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
+              {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                 msg.timestamp.toDate().toDateString()) }}
             </tr>
           </table>
         </td>

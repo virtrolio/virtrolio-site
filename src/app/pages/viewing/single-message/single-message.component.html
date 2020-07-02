@@ -16,7 +16,8 @@
                     {{ viewService.singleMessage.fromName }}
                   </tr>
                   <tr class="msg-header-date">
-                    {{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(), viewService.singleMessage.timestamp.toDate().toDateString()) }}
+                    {{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(),
+                       viewService.singleMessage.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -24,7 +25,11 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card message" [ngStyle]="{'background': viewService.singleMessage.backColor, 'color': viewService.singleMessage.fontColor, 'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}">
+      <div class="card-body message-card message"
+           [ngStyle]="{'background': viewService.singleMessage.backColor,
+                       'color': viewService.singleMessage.fontColor,
+                       'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily
+                       +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}">
         <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
       </div>
     </div>

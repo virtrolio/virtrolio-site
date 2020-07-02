@@ -21,7 +21,8 @@
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
     <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
       <div class="msg-header"
-           [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
+           [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
+                       'color': generateHeaderColor(msg.backColor).text}">
         <div class="msg-header-group pt-1">
           <table class="header-table">
             <tr>
@@ -36,7 +37,8 @@
                     {{ msg.fromName }}
                   </tr>
                   <tr class="msg-header-date">
-                    {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
+                    {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                       msg.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
