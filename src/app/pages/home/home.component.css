@@ -11,6 +11,8 @@
   position: absolute;
   opacity: 0.1;
   right: 0;
+  height: 50em;
+  width: 50em;
 }
 
 /* Featured image or pattern */
@@ -154,6 +156,7 @@
 
 .form-control:focus {
   border-color: var(--accent);
+  box-shadow: none;
 }
 
 markdown {
@@ -263,16 +266,6 @@ markdown {
 
 /* || Miscellaneous */
 
-#btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
-  border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
-  color: #ffffff;
-}
-
 #btn-info:hover {
   background-color: #75797A;
 }
@@ -301,15 +294,27 @@ markdown {
   }
 }
 
+/* || Scrollbars */
+
+::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EFEFEF;
+  opacity: 0.1;
+  border-radius: 1em;
+}
+
 /* || Miscellaneous */
 
 #btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
   border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
+  background-color: var(--accent);
   color: #ffffff;
 }
 
@@ -317,8 +322,7 @@ markdown {
   background-color: #75797A;
 }
 
-/* fragment padding for navbar */
-
+/* fragment padding for header */
 #info::before {
   content: "";
   display: block;

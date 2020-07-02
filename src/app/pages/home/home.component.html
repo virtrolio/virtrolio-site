@@ -1,11 +1,13 @@
+<!--suppress HtmlUnknownTarget -->
 <div class="container-fluid full-width" id="home-background">
   <div class="container-fluid full-width" id="home-img-background">
-    <!-- For logo in background -->
-    <!--    <img data-aos="zoom-in-up" data-aos-duration="1500" src="../../../assets/images/logo_inverted.png" width="1024" height="1024" id="bg-logo-img" alt="Virtrolio Logo">-->
-    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-xl-block" src="../../../assets/images/iso.svg"
-         id="feature-img" alt="Virtrolio Logo">
+    <img class="d-none d-xl-block" data-aos="zoom-in-up" data-aos-duration="1500"
+         src="../../../assets/images/logo_inverted-no-back.png" id="bg-logo-img" alt="Virtrolio Logo">
+    <!-- Feature image -->
+    <!--    <img data-aos="zoom-in-up" data-aos-duration="1500" class="d-none d-xl-block" src="../../../assets/images/iso.svg"-->
+    <!--         id="feature-img" alt="Virtrolio Logo">-->
     <div id="title-container">
-      <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay Connected.</h1>
+      <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
         apart.</h1>
       <a routerLink="./" fragment="info">
@@ -20,12 +22,11 @@
   <div class="row d-flex justify-content-center">
     <div data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="col-12">
       <h2 class="mb-3 px-5 home-text header-text">What is virtrolio?</h2>
-      <p class="lead px-5 home-text body-text"><em>Virtrolio</em> is your virtual folio; an online version of
-        those pages in
-        your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you
+      <p class="lead px-5 home-text body-text"><em>Virtrolio</em> is your virtual folio - an online version of
+        those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends. In other words, you
         can create your own virtrolio, share it
         with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
-        virtrolio or download it for keepsakes.
+        virtrolio and all the messages you have received from your friends!
       </p>
 
       <div class="px-5" id="login-virtrolio-button">
@@ -40,8 +41,10 @@
               <span>Sign in with Google</span>
             </button>
           </div>
-          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you are agreeing to our <a
-            routerLink="/terms-of-service">Terms of Service</a>.</p>
+          <p class="lead pt-4" id="disclaimer-text">By signing up for our service, you are agreeing to our
+            <a href="/terms-of-service">Terms of Service.</a>
+          </p>
+          <p>At this time, we do not support signing in using providers other than Google.</p>
         </div>
 
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
@@ -60,16 +63,26 @@
     <div class="row">
       <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
         <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">Create a virtrolio</h3>
+          <h3 class="body-header-text">Why use virtrolio?</h3>
+          <p class="lead body-text">Virtrolio offers you an authentic yearbook signing experience, and that means
+            <em>privacy</em>.
+            You can only view virtrolio messages sent directly to you (see our
+            <a href="/privacy-policy">Privacy Policy</a> for more details).
+          </p>
+        </div>
+        <div class="card mr-4 mb-5 rounded border-0">
+          <h3 class="body-header-text">How can I make a virtrolio?</h3>
           <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
             and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
             your
             virtrolio.</p>
         </div>
         <div class="card mr-4 rounded border-0">
-          <h3 class="body-header-text">Sign a virtrolio</h3>
-          <p class="lead home-text body-text">Truly express yourself with an array of message customization tools,
-            including colour pickers, fonts, emojis, and a markdown editor.</p>
+          <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
+          <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
+            customization tools,
+            including <span style="color: #d1155a">colour pickers</span>, <b><i>fonts</i></b>, emojis &#128525;, and a markdown editor—all so that you can truly express
+            yourself.</p>
         </div>
       </div>
 
@@ -85,8 +98,8 @@
             <span class="card-header-text">Mike H.</span>
           </div>
           <markdown class="card-body card-message" emoji
-                    [ngStyle]="{'background-color': backgroundColor, 'color': textColor, 'font-family': currentFont}"
-                    id="preview-text" data="{{ cardText }}"></markdown>
+                    [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
+                    id="preview-text" data="{{ signingService.signingBoxText }}"></markdown>
         </div>
       </div>
 
@@ -98,16 +111,14 @@
           <div class="row">
             <label id="signing-box-label" for="signing-box">
               <b>Give it a try!</b>
-              <button type="button" class="btn btn-secondary shadow-sm" id="btn-info" data-toggle="modal"
-                      data-target="#info-modal">?
-              </button>
             </label>
             <p id="preview-instructions">Preview your message above.</p>
             <textarea #signingInputArea id="signing-box" class="form-control"
-                      (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
-                      [ngStyle]="{'font-family': currentFont}"></textarea>
-            <span id="char-count-display" *ngIf="charCount >= 2000" [ngStyle]="{'color': charCountColor}">
-          {{ charCount }} / {{ maxCharCount }}
+                      (keyup)='keyup(signingInputArea)' [(ngModel)]='inputBoxText'
+                      [ngStyle]="{'font-family': signingService.currentFont}"></textarea>
+            <span id="char-count-display" *ngIf="signingService.charCount >= 2000"
+                  [ngStyle]="{'color': signingService.charCountColor}">
+          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
         </span>
           </div>
         </div>
@@ -121,33 +132,34 @@
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                    [ngStyle]="{'font-family': currentFont}">
-              <span>{{ currentFontDisplay }}</span>
+                    [ngStyle]="{'font-family': signingService.currentFont}">
+              <span>{{ signingService.currentFontDisplay }}</span>
               <span class="caret"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
-              <span *ngFor="let font of fontDict | keyvalue">
+              <span *ngFor="let font of signingService.fontDict | keyvalue">
               <a class="dropdown-item" [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
-                 (click)="selectFont(font.key)">{{font.key}}</a>
+                 (click)="signingService.selectFont(font.key)">{{font.key}}</a>
             </span>
             </div>
           </div>
 
           <!-- Formatting buttons -->
-          <button type="button" (click)="addFormatting(signingInputArea, '**')"
+          <button type="button" (click)="signingService.addFormatting(signingInputArea, '**')"
                   class="btn btn-secondary btn-format mr-2"
                   id="button-bold">
             <b>B</b>
           </button>
-          <button type="button" (click)="addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
+          <button type="button" (click)="signingService.addFormatting(signingInputArea, '*')"
+                  class="btn btn-secondary btn-format mr-2"
                   id="button-italics">
             <i>I</i>
           </button>
-          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
+          <button type="button" (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
                   class="btn btn-secondary btn-format mr-2" id="button-underline">
             <u>U</u>
           </button>
-          <button type="button" (click)="addFormatting(signingInputArea, '~~')"
+          <button type="button" (click)="signingService.addFormatting(signingInputArea, '~~')"
                   class="btn btn-secondary btn-format mr-2"
                   id="button-strikethrough">
             <s>S</s>
@@ -157,16 +169,23 @@
           <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
             <span id="font-color-text">A</span>
             <label for="colorpicker-font" hidden>Colour picker for font</label>
-            <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker" value={{textColor}}
-                   [(ngModel)]='textColor'>
-            <span class="dynamic-color-bar" [ngStyle]="{'background-color': textColor}">&nbsp;</span>
+            <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker"
+                   value={{signingService.textColor}}
+                   [(ngModel)]='signingService.textColor'>
+            <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.textColor}">&nbsp;</span>
           </button>
           <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
             <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
             <label for="colorpicker-background" hidden>Colour picker for background</label>
             <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-                   value={{backgroundColor}} [(ngModel)]='backgroundColor'>
-            <span class="dynamic-color-bar" [ngStyle]="{'background-color': backgroundColor}">&nbsp;</span>
+                   value={{signingService.backgroundColor}} [(ngModel)]='signingService.backgroundColor'>
+            <span class="dynamic-color-bar"
+                  [ngStyle]="{'background-color': signingService.backgroundColor}">&nbsp;</span>
+          </button>
+        </div>
+        <div class="row mt-3 justify-content-center">
+          <button type="button" class="btn btn-primary shadow-sm" id="btn-info" data-toggle="modal"
+                  data-target="#info-modal">Formatting Help
           </button>
         </div>
       </div>
