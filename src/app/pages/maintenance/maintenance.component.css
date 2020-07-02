@@ -1,12 +1,29 @@
-.maintenance-heading {
-  font-family: Montserrat, sans-serif;
-  font-size: 1.5em;
+
+#graphic {
+  height: 10em;
+}
+
+#maintenance-heading {
+  font-size: 1.6em;
   text-align: center;
 }
 
-.maintenance-subheading {
-  font-family: Montserrat, sans-serif;
+#maintenance-subheading {
   font-size: 1.2em;
   text-align: center;
 }
 
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #graphic {
+    height: 5em;
+  }
+
+  #maintenance-heading {
+    font-size: 1.4em;
+  }
+
+  #maintenance-subheading {
+    font-size: 1em;
+  }
+}
