@@ -4,6 +4,7 @@ footer {
   margin-bottom: 0;
   width: 100%;
   background-color: var(--darkest-accent);
+  font-size: 0.8em;
   color: white;
   position: relative;
   height: var(--footer-height);
@@ -21,5 +22,10 @@ footer > * {
 }
 
 a {
-  color:white;
+  color: white;
+}
+
+.social-icon {
+  height: 2em;
+  width: 2em;
 }

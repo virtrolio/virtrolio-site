@@ -16,8 +16,8 @@ html {
   --navbar-right: rgba(251, 91, 91, 1);
 
   /* Sizes */
-  --footer-height: 7em;
-  --navbar-height: 4.5em;
+  --footer-height: 5.5em;
+  --navbar-height: 3em;
 
   /* Shadows from signing component */
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
@@ -99,8 +99,8 @@ a.clickable-object, a.clickable-object:hover {
 /* Profile Picture formatting */
 .profile-pic-container {
   background: rgba(255, 255, 255, 0);
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 100%;
   display: flex;
 }
