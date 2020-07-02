@@ -91,6 +91,6 @@ export class ViewingService {
    * @param id messageId
    */
   bookmarkMessage(id: string) {
-    this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark', { positionClass: 'toast-bottom-full-width' });
+    // this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark', { positionClass: 'toast-bottom-full-width' });
   }
 }
