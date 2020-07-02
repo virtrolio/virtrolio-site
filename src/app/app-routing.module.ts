@@ -25,6 +25,7 @@ import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { SigningGuard } from './core/signing.guard';
 import { PreventURLAccessGuard } from './core/prevent-urlaccess.guard';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
 
@@ -45,6 +46,11 @@ const routes: Routes = [
   {
     path: 'invalid-link',
     component: InvalidLinkComponent,
+    canActivate: [ PreventURLAccessGuard ]
+  },
+  {
+    path: 'maintenance',
+    component: MaintenanceComponent,
     canActivate: [ PreventURLAccessGuard ]
   },
   {
