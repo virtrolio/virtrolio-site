@@ -49,7 +49,7 @@ export class SigningService {
    */
   setHomeDefaultValues() {
     this.signingBoxText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
-    this.backgroundColor = `#fa8072`;
+    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
     this.textColor = '#FFFFFF';
     this.canSend = false;
     this.charCount = 0;
