@@ -38,7 +38,7 @@
                   </tr>
                   <tr class="msg-header-date">
                     {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
-                       msg.timestamp.toDate().toDateString()) }}
+                    msg.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -61,7 +61,8 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+      <div class="card-body message-card message" (click)="popupMessage(msg)"
+           [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
         <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
       </div>
     </div>
@@ -97,7 +98,8 @@
           </div>
           <div class="page title-page vertical-center">
             <div class="title-text">Welcome to your Virtrolio! Click on the buttons below to navigate through
-              your messages.</div>
+              your messages.
+            </div>
           </div>
         </div>
         <div class="carousel-item" *ngFor="let msg of messageList">
@@ -125,7 +127,8 @@
               </table>
             </div>
           </div>
-          <div class="card-body page message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+          <div class="card-body page message" (click)="popupMessage(msg)"
+               [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
             <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
           </div>
         </div>
