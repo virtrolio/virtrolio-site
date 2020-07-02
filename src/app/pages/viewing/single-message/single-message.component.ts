@@ -25,7 +25,7 @@ export class SingleMessageComponent implements OnInit {
    */
   goToMessages() {
     this.router.navigate([ '/viewing' ]).then(() => {
-        window.location.reload();
+      window.location.reload();
     });
   }
 }

@@ -69,15 +69,12 @@ export class SigningGuard implements CanActivate {
               // 1. Not logged in
               // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
               // modifies the source code)
-              console.log(error);
               AuthService.displayError(error);
               this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
                 .catch(navError => AuthService.displayError(navError));
             });
             return true;
           }).catch(error => {
-            // noinspection JSIgnoredPromiseFromCall
-            console.log(error);
             AuthService.displayError(error);
             this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
             return false;

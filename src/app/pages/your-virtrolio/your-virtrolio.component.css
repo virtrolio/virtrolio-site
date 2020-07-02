@@ -5,6 +5,7 @@
   height: 64vh;
   width: 45vh;
   box-shadow: 5px 10px var(--light-grey);
+  cursor: pointer;
 }
 
 .bg-primary:hover {
