@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   downloadUserData;
   exportErrorText: string;
 
-  constructor(private authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
+  constructor(public authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
 
   private static decodeHtml(html: string) {
     const txt = document.createElement('textarea');
