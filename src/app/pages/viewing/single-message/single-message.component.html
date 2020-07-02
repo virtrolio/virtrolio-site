@@ -1,6 +1,8 @@
-<div class="row justify-content-center pt-5">
-  <h1 class="mb-4" id="single-message-title">Here's what {{ viewService.singleMessage.fromName }} sent you </h1>
-  <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
+<div class="pt-5 pb-3" id="bookmark-this-page">
+  <h6>You can bookmark this page if you ever want to come back and view this message!</h6>
+</div>
+<div class="row justify-content-center">
+  <div class="row col-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
     <div class="card shadow">
       <div class="msg-header">
         <div class="msg-header-group">
@@ -37,5 +39,5 @@
   </div>
 </div>
 <div class="row justify-content-center my-5">
-  <button class="btn btn-primary" (click)="goToMessages()">Back to 'all messages'</button>
+  <button class="btn-lg btn-primary" (click)="goToMessages()">Back to 'all messages'</button>
 </div>
