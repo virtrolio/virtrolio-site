@@ -52,7 +52,8 @@ const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
   },
   {
     path: 'signing',
@@ -81,7 +82,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)], // scroll to top when routerLinking
+  imports: [ RouterModule.forRoot(routes,
+    {
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload' // allow re-scroll to same anchor
+    })],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {

@@ -44,12 +44,15 @@ export class YourVirtrolioComponent implements OnInit {
    */
   setLink() {
     this.copyButtonText = 'Copy';
-    this.authService.getLink().then(link => this.link = link);
-    this.linkReady = true;
+    this.authService.getLink().then(link => {
+      this.link = link;
+      this.linkReady = true;
+    });
   }
 
   /**
-   * Attempts to navigate by router to a sharing link based on what is inputted in the 'send a message' input field (query params extracted with regEx if possible)
+   * Attempts to navigate by router to a sharing link based on what is inputted in the 'send a message' input field (query
+   * params extracted with regEx if possible)
    */
   navigateToLink() {
     if (this.visitLink) {
@@ -72,8 +75,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.authService.changeKey().catch(error => alert(error +
-        '\nIf this problem persists, please contact us at virtrolio.team@gmail.com')).then(() => this.setLink());
+      this.authService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
