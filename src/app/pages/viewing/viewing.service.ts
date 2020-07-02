@@ -75,7 +75,6 @@ export class ViewingService {
    * Wrapper around deleteMessage()
    */
   deleteMessage() {
-    // noinspection JSIgnoredPromiseFromCall
     this.msgIo.deleteMessage(this.messageToDelete).then(() => {
       this.toastr.success('Message deleted successfully', 'Poof!', { positionClass: 'toast-bottom-full-width' });
     }).catch(e => {
