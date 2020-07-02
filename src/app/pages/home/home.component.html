@@ -187,7 +187,7 @@
         </div>
         <div class="row mt-3 justify-content-center">
           <button type="button" class="btn btn-primary shadow-sm" id="btn-info" data-toggle="modal"
-                  data-target="#info-modal">Formatting Help
+                  data-target="#format-help">Read this first!
           </button>
         </div>
       </div>
@@ -195,26 +195,39 @@
   </div>
 </div>
 
-<!-- Information modal when they click on the ? -->
-<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-title"
+<!-- Read this first! -->
+<div class="modal fade" id="format-help" tabindex="-1" role="dialog" aria-labelledby="format-help-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
+        <h4 class="modal-title" id="format-help-title">Craft your perfect message!</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Virtrolio supports a modified version of <em>Markdown</em> to format text. We also use an emoji library, so you
-        can press (Windows + Period) on a Windows computer or (Command + Control + Space) on a Mac to bring up the emoji
-        keyboard.<br><br><em>Note: not all emojis may be supported; check the link below to make sure!</em> ❤️
-        <br><br>
-        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
-        <br>
-        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
-          of available emojis</a>
+        <h5>Important Things to Note</h5>
+        <ul>
+          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
+            line') counts as 5 characters.
+          </li>
+          <li>Images can be embedded in messages...in a specific way. See our
+            <a routerLink="/faq" target="_blank">FAQ</a> for details.
+          </li>
+        </ul>
+        <h5>Formatting</h5>
+        <p>
+          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
+          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
+        </p>
+
+        <h5>Emojis</h5>
+        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
+          + Space) on a Mac to bring up the emoji
+          keyboard. Note: not all emojis may be supported; check <a
+            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
+            supported emojis</a> to make sure! ❤</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -222,4 +235,3 @@
     </div>
   </div>
 </div>
-<!--69-->
