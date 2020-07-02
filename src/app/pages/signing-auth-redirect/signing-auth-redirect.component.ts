@@ -13,7 +13,7 @@ export class SigningAuthRedirectComponent implements OnInit {
 
   goToSigning() {
     // noinspection JSIgnoredPromiseFromCall
-    this.authService.login('signing', { uid: this.uid, key: this.key });
+    this.authService.login('/signing', { uid: this.uid, key: this.key });
   }
 
   constructor(public authService: AuthService, private route: ActivatedRoute) { }

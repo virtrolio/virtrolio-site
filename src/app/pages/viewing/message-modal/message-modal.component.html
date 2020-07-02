@@ -14,7 +14,9 @@
                 {{ viewService.currentMessageModal.fromName }}
               </tr>
               <tr class="msg-header-date">
-                {{ viewService.timeSince(viewService.nowMillis, viewService.currentMessageModal.timestamp.toMillis(), viewService.currentMessageModal.timestamp.toDate().toDateString()) }}
+                {{ viewService.timeSince(viewService.nowMillis, 
+                viewService.currentMessageModal.timestamp.toMillis(),
+                viewService.currentMessageModal.timestamp.toDate().toDateString()) }}
               </tr>
             </table>
           </td>

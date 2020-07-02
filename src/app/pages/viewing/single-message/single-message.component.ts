@@ -21,7 +21,7 @@ export class SingleMessageComponent implements OnInit {
   }
 
   /**
-   * Go to all messaged view
+   * Go to 'all messages' view
    */
   goToMessages() {
     // noinspection JSUnusedLocalSymbols

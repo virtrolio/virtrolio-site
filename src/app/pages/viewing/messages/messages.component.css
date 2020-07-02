@@ -41,7 +41,7 @@
 .carousel-controls {
   display: flex;
   justify-content: space-between;
-  padding: 1em 2em 1em 2em;
+  padding: 1em 2em;
 }
 
 .carousel-controls-button {
@@ -83,7 +83,7 @@
 }
 
 .profile-pic-container-small {
-  background: rgba(255, 255, 255, 0);
+  background: #FFFFFF;
   height: 1.7em;
   width: 1.7em;
   border-radius: 100%;
