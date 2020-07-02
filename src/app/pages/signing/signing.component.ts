@@ -62,9 +62,10 @@ export class SigningComponent implements OnInit {
     // remove navigation popup
     this.sending = true;
     this.msgIo.sendMessage(newMsg, this.key).then(() => {
-      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } });
+      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } })
+        .catch(e => AuthService.displayError(e));;
     }).catch(error => {
-        alert(error);
+        AuthService.displayError(error);
       }
     );
   }
