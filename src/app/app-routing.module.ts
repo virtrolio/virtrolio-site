@@ -39,28 +39,28 @@ const routes: Routes = [
   {
     path: 'signing-auth-redirect',
     component: SigningAuthRedirectComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'invalid-link',
     component: InvalidLinkComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'maintenance',
     component: MaintenanceComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    canActivate: [ PreventURLAccessGuard ],
+    // canActivate: [ PreventURLAccessGuard ],
   },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   {
     path: 'rejecc',
     component: RejeccComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'settings',
