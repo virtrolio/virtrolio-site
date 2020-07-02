@@ -46,6 +46,9 @@ export class ViewingService {
    */
   timeSince(nowMillis: number, millis: number, date: string) {
     const secondsPast = (nowMillis - millis) / 1000;
+    if (secondsPast < 1) {
+      return 'Just now';
+    }
     if (secondsPast < 60) {
       return Math.round(secondsPast).toString() + 's ago';
     }
