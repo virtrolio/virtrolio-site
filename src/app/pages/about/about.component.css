@@ -6,7 +6,7 @@
 }
 
 #title-blurb {
-  border-left: 3px solid var(--dark-accent);
+  border-left: 3px solid var(--accent);
   padding-left: 2em;
 }
 /* || Meet the team */
@@ -45,4 +45,5 @@
 
 .image-container {
   padding: 0;
+  overflow: hidden;
 }

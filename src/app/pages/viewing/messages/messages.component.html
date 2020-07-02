@@ -1,5 +1,5 @@
 <!-- Perform a check to see if the number of messages received is 0 -->
-<div *ngIf="viewService.numMessages === 0; else showMessages" class="m-5" id="no-messages">No messages...
+<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">No messages...
   <markdown emoji>:sob:</markdown>
 </div>
 
@@ -8,82 +8,131 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="viewService.isCarouselView"
-               (click)="toggleViewStyle()">
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="!viewService.isCarouselView">Switch
-          to Booklet</label>
-        <label class="custom-control-label toggle-switch" for="customSwitch1" *ngIf="viewService.isCarouselView">Switch
-          to Cards</label>
-      </div>
+      <button class="btn-sm btn-primary" *ngIf="!viewService.isCarouselView" (click)="toggleViewStyle()">Switch to
+        Booklet
+      </button>
+      <button class="btn-sm btn-primary" *ngIf="viewService.isCarouselView" (click)="toggleViewStyle()">Switch to
+        Cards
+      </button>
     </div>
   </div>
 
   <!-- Card message view -->
   <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
-    <div class="card" *ngFor="let msg of viewService.messages;" id="{{ msg.id }}">
-      <div class="card-header">
-        <div class="card-header-author">
-                  <span class="profile-pic-container-small mr-2">
-          <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-        </span>
-          <span class="card-header-text">{{ msg.fromName }}</span>
+    <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
+      <div class="msg-header"
+           [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
+                       'color': generateHeaderColor(msg.backColor).text}">
+        <div class="msg-header-group pt-1">
+          <table class="header-table">
+            <tr>
+              <td>
+            <span class="profile-pic-container-small mr-2">
+              <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+            </span>
+              </td>
+              <td>
+                <table>
+                  <tr class="msg-header-text">
+                    {{ msg.fromName }}
+                  </tr>
+                  <tr class="msg-header-date">
+                    {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                       msg.timestamp.toDate().toDateString()) }}
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
         </div>
-
-        <button class="btn delete-button" type="button" data-toggle="modal"
-                data-target="#delete" (click)="setMessageToDelete(msg.id)"><span aria-hidden="true">&times;</span>
-        </button>
+        <div class="card-header-group">
+          <table class="header-table">
+            <tr>
+              <td>
+                <button class="btn card-button" type="button" (click)="popupMessage(msg)">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}" alt="popup">
+                </button>
+                <button class="btn card-button" type="button" data-toggle="modal"
+                        data-target="#delete" (click)="viewService.setMessageToDelete(msg.id)">
+                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}" alt="delete">
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <div class="card-body message-card" [ngStyle]="{'background': msg.backColor}">
-        <table>
-          <tr class="message"
-              [ngStyle]="{'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
-            <td>
-              <markdown emoji data="{{ msg.contents }}"></markdown>
-            </td>
-          </tr>
-        </table>
+      <div class="card-body message-card message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+        <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
       </div>
     </div>
   </div>
 
   <!-- Carousel message view -->
-  <div class="viewing-container mb-5" *ngIf="viewService.isCarouselView === true">
-    <div id="carousel" class="carousel slide border rounded" data-ride="carousel">
+  <div class="viewing-container mb-5" *ngIf="viewService.isCarouselView == true">
+    <div id="carousel" class="carousel slide border rounded" data-ride="carousel" data-interval="false">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="carousel-front-page-header px-3 py-2">
-            Placeholder
+          <div class="msg-header">
+            <div class="msg-header-group">
+              <table class="header-table">
+                <tr>
+                  <td>
+                  <span class="profile-pic-container-small mr-2">
+                    <img class="profile-pic" src="../../../../assets/images/logo_reg.png" alt="profile-pic">
+                  </span>
+                  </td>
+                  <td>
+                    <table>
+                      <tr class="msg-header-text">
+                        Virtrolio Team
+                      </tr>
+                      <tr class="msg-header-date">
+                        You have {{ messageList.length }} messages
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="page">
-            <span class="title-page">My Yearbook</span>
+          <div class="page title-page vertical-center">
+            <div class="title-text">Welcome to your Virtrolio! Click on the arrows to navigate through your messages.</div>
           </div>
         </div>
-        <div class="carousel-item" *ngFor="let msg of viewService.messages">
-          <div class="carousel-header px-3 py-2">
-          <span class="profile-pic-container-small mr-2">
-            <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
-          </span>
-            <span class="card-header-text">{{ msg.fromName }}</span>
+        <div class="carousel-item" *ngFor="let msg of messageList">
+          <div class="msg-header"
+               [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
+            <div class="msg-header-group">
+              <table class="header-table">
+                <tr>
+                  <td>
+                  <span class="profile-pic-container-small mr-2">
+                    <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+                  </span>
+                  </td>
+                  <td>
+                    <table>
+                      <tr class="msg-header-text">
+                        {{ msg.fromName }}
+                      </tr>
+                      <tr class="msg-header-date">
+                        {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="page" [ngStyle]="{'background': msg.backColor}">
-            <table>
-              <tr class="message"
-                  [ngStyle]="{'background-color': msg.backColor, 'color': msg.fontColor, 'font-family': fonts[msg.fontFamily].fontFamily +','+ fonts[msg.fontFamily].backupFont }">
-                <td>
-                  <markdown emoji data="{{ msg.contents }}"></markdown>
-                </td>
-              </tr>
-            </table>
+          <div class="card-body page message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+            <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </a>
-      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </a>
+    </div>
+    <div class="carousel-controls shadow">
+      <a class="carousel-controls-button" href="#carousel" role="button" data-slide="prev">Prev</a>
+      <a class="carousel-controls-button" href="#carousel" role="button" data-slide="next">Next</a>
     </div>
   </div>
 </ng-template>
@@ -104,8 +153,8 @@
         possible to recover a deleted message</b>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteMessage()">Yes, I want to
-          delete
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="viewService.deleteMessage()">
+          Yes, I want to delete
         </button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
