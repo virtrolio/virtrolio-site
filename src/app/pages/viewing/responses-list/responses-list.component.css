@@ -70,9 +70,9 @@
 }
 
 .author-container {
-  padding: 1em 1em 1em 1em;
-  margin-left: 1em;
+  padding: 1em 1em 1em 2em;
   line-height: 1.2em;
+  border-bottom: 0.05em solid var(--lighter-grey);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
