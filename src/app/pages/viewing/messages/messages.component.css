@@ -161,7 +161,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EFEFEF;
+  background: var(--scrollbar-thumb);
   opacity: 0.1;
   border-radius: 1em;
 }
