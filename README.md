@@ -5,9 +5,6 @@ Virtrolio was founded due to the COVID-19 pandemic closing schools and preventin
 
 Check it out! All you need is a Google Account: https://virtrolio.web.app/
 
-<br>
-<br>
-
 ## How We Built It
 Virtrolio is built using Angular and Bootstrap in the front end, with Firebase for data storage, hosting, and user authentication. Firebase was chosen for its ease of use and integration of various secure login authentication providers.
 
