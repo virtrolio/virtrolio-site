@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   /**
    * When user starts typing, assign inputBoxText by reference to signingBoxText, then update count
-   * @param textbox
+   * @param textbox - The textbox to process.
    */
   keyup(textbox: HTMLTextAreaElement) {
     this.signingService.signingBoxText = this.inputBoxText;
