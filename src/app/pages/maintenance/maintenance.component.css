@@ -1,14 +1,15 @@
-#pnf-graphic {
+
+#graphic {
   height: 10em;
 }
 
-#title-text {
-  font-size: 2.5em;
+#maintenance-heading {
+  font-size: 1.6em;
   text-align: center;
 }
 
-#subtitle-text {
-  font-size: large;
+#maintenance-subheading {
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -18,11 +19,11 @@
     height: 5em;
   }
 
-  #title-text {
-    font-size: 2em;
+  #maintenance-heading {
+    font-size: 1.4em;
   }
 
-  #subtitle-text {
+  #maintenance-subheading {
     font-size: 1em;
   }
 }

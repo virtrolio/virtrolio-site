@@ -40,15 +40,15 @@ import { ResponsesListComponent } from './pages/viewing/responses-list/responses
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
+import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
+import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { PendingChangesGuard } from './core/pending-changes.guard';
-import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
-
 
 @NgModule({
   declarations: [
@@ -72,7 +72,8 @@ import { MessageModalComponent } from './pages/viewing/message-modal/message-mod
     AccessDeniedComponent,
     RejeccComponent,
     SingleMessageComponent,
-    MessageModalComponent
+    MessageModalComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,

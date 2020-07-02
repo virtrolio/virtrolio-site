@@ -12,6 +12,9 @@ html {
   --response-list-hover: #FAFAFA;
   --scrollbar-thumb: #EFEFEF;
 
+  --navbar-left: rgba(250, 128, 114, 1);
+  --navbar-right: rgba(251, 91, 91, 1);
+
   /* Sizes */
   --footer-height: 7em;
   --navbar-height: 4.5em;
