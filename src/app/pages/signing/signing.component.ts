@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signing',
@@ -23,7 +24,7 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router) { }
+              private msgIo: MsgIoService, private router: Router, private title: Title) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -33,7 +34,10 @@ export class SigningComponent implements OnInit {
       this.uid = params.uid;
       this.key = params.key;
     });
-    this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
+    this.authService.displayName(this.uid).then(userName => {
+      this.name = userName;
+      this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
+    }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
   }
 

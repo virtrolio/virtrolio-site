@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-terms-of-service',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TermsOfServiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Terms of Service | Virtrolio');
   }
 
 }
