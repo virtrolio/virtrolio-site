@@ -143,12 +143,8 @@ markdown {
 
 #btn-info {
   border-radius: 6em;
-  background-color: var(--accent);
   color: #ffffff;
-}
-
-#btn-info:hover {
-  background-color: #75797A;
+  box-shadow: var(--signing-shadow);
 }
 
 #send-button {
