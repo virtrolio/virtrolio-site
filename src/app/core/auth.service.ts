@@ -11,14 +11,21 @@ import { VirtrolioUser } from '../shared/interfaces';
 })
 export class AuthService {
 
+  static readonly keyLength = 7;
+  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
+  private user: User;
+
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
 
-  static readonly keyLength = 7;
-  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
-
-  private user: User;
+  /**
+   * Displays an error to the user using an alert and a human-readable prefix.
+   * @param error - The error to display to the user.
+   */
+  static displayError(error) {
+    alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
+  }
 
   /**
    * Generates a random string of characters of length AppAuthService.keyLength using the characters in
@@ -30,14 +37,6 @@ export class AuthService {
       key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
     }
     return key;
-  }
-
-  /**
-   * Displays an error to the user using an alert and a human-readable prefix.
-   * @param error - The error to display to the user.
-   */
-  static displayError(error) {
-    alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
   }
 
   /**

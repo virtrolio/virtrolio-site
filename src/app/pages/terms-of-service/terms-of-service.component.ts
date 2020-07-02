@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-terms-of-service',
   templateUrl: './terms-of-service.component.html',
-  styleUrls: ['./terms-of-service.component.css']
+  styleUrls: [ './terms-of-service.component.css' ]
 })
 export class TermsOfServiceComponent implements OnInit {
 

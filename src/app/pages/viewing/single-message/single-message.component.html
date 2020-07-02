@@ -7,7 +7,7 @@
             <tr>
               <td>
             <span class="profile-pic-container-small mr-2">
-              <img class="profile-pic" src="{{ viewService.singleMessage.fromPic }}" alt="profile-pic">
+              <img alt="profile-pic" class="profile-pic" src="{{ viewService.singleMessage.fromPic }}">
             </span>
               </td>
               <td>
@@ -17,7 +17,7 @@
                   </tr>
                   <tr class="msg-header-date">
                     {{ viewService.timeSince(viewService.nowMillis, viewService.singleMessage.timestamp.toMillis(),
-                       viewService.singleMessage.timestamp.toDate().toDateString()) }}
+                    viewService.singleMessage.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -25,16 +25,16 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card message"
-           [ngStyle]="{'background': viewService.singleMessage.backColor,
+      <div [ngStyle]="{'background': viewService.singleMessage.backColor,
                        'color': viewService.singleMessage.fontColor,
                        'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily
-                       +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}">
-        <markdown emoji data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}"></markdown>
+                       +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}"
+           class="card-body message-card message">
+        <markdown data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}" emoji></markdown>
       </div>
     </div>
   </div>
 </div>
 <div class="row justify-content-center my-5">
-  <button class="btn-sm btn-primary" (click)="goToMessages()">Go to messages</button>
+  <button (click)="goToMessages()" class="btn-sm btn-primary">Go to messages</button>
 </div>

@@ -33,8 +33,6 @@ export class ResponsesListComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
-
   /**
    * Assign messages passed via the [setMessageList] binding
    * @param messages list of verified VirtrolioMessages
@@ -44,6 +42,8 @@ export class ResponsesListComponent implements OnInit {
       this.messageList = messages;
     }
   }
+
+  ngOnInit(): void { }
 
   /**
    * Set the state of the side nav menu
