@@ -80,7 +80,7 @@
 }
 
 .author-container:hover {
-  background: #FAFAFA;
+  background: var(--response-list-hover);
 }
 
 .header-table {
