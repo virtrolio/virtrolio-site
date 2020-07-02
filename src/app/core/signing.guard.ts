@@ -31,7 +31,7 @@ export class SigningGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.maintenance) {
-      this.router.navigate([ '/maintenance' ]);
+      this.router.navigate([ '/maintenance' ]).catch(e => AuthService.displayError(e));
       return false;
     } else {
       // Regex Extraction of 'uid' and 'key' params
