@@ -32,6 +32,7 @@ export class SigningGuard implements CanActivate {
 
     if (this.maintenance) {
       this.router.navigate([ '/maintenance' ]);
+      return false;
     } else {
       // Regex Extraction of 'uid' and 'key' params
       try {
