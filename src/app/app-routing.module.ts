@@ -62,7 +62,8 @@ const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
   },
   {
     path: 'signing',
