@@ -132,3 +132,18 @@ a.clickable-object, a.clickable-object:hover {
   margin-left: 0;
   padding-left: 18px;
 }
+
+/* Modal Fixes */
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: auto;
+}
+
+.modal-open[style] {
+  /*Exclusion below is required for the fix*/
+  /*noinspection CssRedundantUnit*/
+  padding-right: 0px !important;
+}
