@@ -74,7 +74,7 @@
   height: 1em;
 }
 
-/* Remove the blue outline around the button when it's clicked */
+/* Remove the blue outline around the button on the headers when they're clicked */
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;
