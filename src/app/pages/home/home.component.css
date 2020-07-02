@@ -221,6 +221,7 @@ markdown {
 .dropdown-menu {
   overflow-y: auto;
   height: 12em;
+  z-index: 2000;
 }
 
 #icon {
@@ -266,8 +267,9 @@ markdown {
 
 /* || Miscellaneous */
 
-#btn-info:hover {
-  background-color: #75797A;
+#btn-info{
+  box-shadow: var(--signing-shadow);
+  background-color: #6C757D;
 }
 
 @media only screen and (max-width: 768px) {
@@ -314,12 +316,12 @@ markdown {
 
 #btn-info {
   border-radius: 6em;
-  background-color: var(--accent);
+  background-color: #6C757D;
   color: #ffffff;
 }
 
 #btn-info:hover {
-  background-color: #75797A;
+  background-color: #5A6268;
 }
 
 /* fragment padding for header */

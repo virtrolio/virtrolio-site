@@ -95,6 +95,7 @@ markdown {
 .dropdown-menu {
   overflow-y: auto;
   height: 12em;
+  z-index: 2000;
 }
 
 #icon {
