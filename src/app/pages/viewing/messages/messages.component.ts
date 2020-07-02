@@ -16,6 +16,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 
 export class MessagesComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
+  oneMessage = 'messages';
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
@@ -30,6 +31,8 @@ export class MessagesComponent implements OnInit {
   @Input() set setMessageList(messages: VirtrolioMessage[]) {
     if (messages) {
       this.messageList = messages;
+      // Set 'You have x message(s)' text based on number of messages
+      this.messageList.length === 1 ? this.oneMessage = 'message' : this.oneMessage = 'messages';
     }
   }
 

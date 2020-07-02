@@ -2,14 +2,13 @@ import { Injectable, SecurityContext } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
-import * as firebase from 'firebase';
-
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'

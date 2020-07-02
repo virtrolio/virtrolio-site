@@ -38,7 +38,7 @@
                   </tr>
                   <tr class="msg-header-date">
                     {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
-                       msg.timestamp.toDate().toDateString()) }}
+                    msg.timestamp.toDate().toDateString()) }}
                   </tr>
                 </table>
               </td>
@@ -61,7 +61,8 @@
           </table>
         </div>
       </div>
-      <div class="card-body message-card message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+      <div class="card-body message-card message" (click)="popupMessage(msg)"
+           [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
         <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
       </div>
     </div>
@@ -87,7 +88,7 @@
                         Virtrolio Team
                       </tr>
                       <tr class="msg-header-date">
-                        You have {{ messageList.length }} messages
+                        You have {{ messageList.length }} {{ oneMessage }}
                       </tr>
                     </table>
                   </td>
@@ -96,7 +97,9 @@
             </div>
           </div>
           <div class="page title-page vertical-center">
-            <div class="title-text">Welcome to your Virtrolio! Click on the arrows to navigate through your messages.</div>
+            <div class="title-text">Welcome to your Virtrolio! Click on the buttons below to navigate through
+              your messages.
+            </div>
           </div>
         </div>
         <div class="carousel-item" *ngFor="let msg of messageList">
@@ -124,7 +127,8 @@
               </table>
             </div>
           </div>
-          <div class="card-body page message" (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
+          <div class="card-body page message" (click)="popupMessage(msg)"
+               [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
             <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
           </div>
         </div>
@@ -150,13 +154,13 @@
       </div>
       <div class="modal-body" id='delete-message-body'>
         Looks like you're trying to delete a message! Please be sure that this is what you want to do. <b>It is not
-        possible to recover a deleted message</b>
+        possible to recover a deleted message.</b>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="viewService.deleteMessage()">
-          Yes, I want to delete
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="viewService.deleteMessage()">
+          Delete Message
         </button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

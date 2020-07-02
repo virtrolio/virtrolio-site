@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-your-virtrolio',
@@ -22,10 +23,13 @@ export class YourVirtrolioComponent implements OnInit {
   private visitLinkUID: string;
   private visitLinkKEY: string;
 
-  constructor(public authService: AuthService, public router: Router) { }
+  constructor(public authService: AuthService, public router: Router, private title: Title) { }
 
   ngOnInit(): void {
-    this.authService.displayName().then((displayName) => { this.displayName = displayName; });
+    this.authService.displayName().then((displayName) => {
+      this.displayName = displayName;
+      this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
+    });
   }
 
   /**

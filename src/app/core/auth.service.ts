@@ -76,7 +76,7 @@ export class AuthService {
       }
     }).catch(error => {
       AuthService.displayError(error);
-      return this.router.navigate(['/access-denied']);
+      return this.router.navigate([ '/access-denied' ]);
     });
   }
 
@@ -176,10 +176,10 @@ export class AuthService {
    * @throws ReferenceError - If the user is not logged in
    */
   throwErrorIfLoggedOut(attemptedOperation: string): void {
-  if (!this.isLoggedIn()) {
-  throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
-}
-}
+    if (!this.isLoggedIn()) {
+      throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
+    }
+  }
 
   /**
    * @returns The URL to the user's profile picture.
