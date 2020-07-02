@@ -12,7 +12,7 @@
   </button>
   <!-- Collapsible menu items -->
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-2">
       <li class="nav-item">
         <a class="nav-link" routerLink="">Home</a>
       </li>
@@ -28,6 +28,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
+      <div class="dropdown-divider d-block d-sm-block d-md-none"></div>
       <li class="nav-item d-block d-sm-block d-md-none" *ngIf="authService.isLoggedIn()">
         <a class="nav-link" routerLink="settings">Settings</a>
       </li>

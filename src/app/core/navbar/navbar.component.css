@@ -57,6 +57,6 @@
     background: var(--accent);
     background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
     font-weight: bold;
-    padding: 0 0 1em 2em;
+    padding-bottom: 1em;
   }
 }
