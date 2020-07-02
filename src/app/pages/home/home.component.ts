@@ -13,12 +13,14 @@ export class HomeComponent implements OnInit {
 
   // Default blank textbox
   inputBoxText = '';
-  constructor(public authService: AuthService, public signingService: SigningService, private title: Title) { }
+  constructor(public authService: AuthService, public signingService: SigningService, private title: Title) {
+    // Initialize Animate on Scroll library
+    // In constructor instead of ngOnInit to avoid the page breaking when routerLinking to home
+    AOS.init();
+  }
 
   ngOnInit(): void {
     this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
-    // Initialize Animate on Scroll library
-    AOS.init();
     this.signingService.setHomeDefaultValues();
   }
 
