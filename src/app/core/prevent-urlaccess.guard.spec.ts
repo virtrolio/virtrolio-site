@@ -6,7 +6,7 @@ describe('PreventURLAccessGuard', () => {
   let guard: PreventURLAccessGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ });
     guard = TestBed.inject(PreventURLAccessGuard);
   });
 

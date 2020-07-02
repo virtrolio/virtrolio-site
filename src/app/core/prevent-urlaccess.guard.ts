@@ -10,6 +10,7 @@ export class PreventURLAccessGuard implements CanActivate {
 
   constructor(private router: Router) { }
 
+  // noinspection JSUnusedLocalSymbols
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
