@@ -24,6 +24,7 @@ import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.co
 import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { SigningGuard } from './core/signing.guard';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'signing-auth-redirect', component: SigningAuthRedirectComponent},
   { path: 'invalid-link' , component: InvalidLinkComponent },
+  { path: 'maintenance', component: MaintenanceComponent },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
