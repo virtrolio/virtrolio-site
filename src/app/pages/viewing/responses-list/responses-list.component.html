@@ -1,70 +1,33 @@
-<!-- Desktop response-list format -->
-<div class="response-list-card d-none d-sm-none d-md-none d-lg-block mt-4">
-  <div class="card p-3 border-0">
-    <div class="row user-info">
-      <div class="col-lg-3 col-md-4">
-        <div class="profile-pic-container">
-          <img class="profile-pic" src="{{ photoUrl }}" alt="profile-pic">
-        </div>
-      </div>
-      <div class="col-lg-9 col-md-8">
-        <label class="mt-2 username">{{ displayName }}</label>
-      </div>
-    </div>
-    <div class="dropdown-divider"></div>
-    <ul class="nav flex-column ml-2">
-      <li class="nav-item mb-2 response-title">
-        My Responses
-      </li>
-    </ul>
-    <div id="author-list">
-      <ul class="nav flex-column ml-2">
-        <!--suppress HtmlUnknownAttribute -->
-        <li class="nav-item mb-1" *ngFor="let msg of viewService.messages; let i = index" data-target="#carousel"
-            attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(msg.id);">
-          <a href="javascript: void(0)">{{ msg.fromName }}</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<div class="hamburger vertical-center shadow" (click)="navOpen(true)">
+  <img src="../../../../assets/images/icons/chevron-right.svg" alt="response-list">
 </div>
-<div class="col-12 d-block d-sm-block d-md-block d-lg-none mt-4">
-  <div class="row user-info shadow rounded-pill py-2 my-3">
-    <div class="col-md-1 col-sm-2 col-2">
-      <div class="profile-pic-container">
-        <img class="profile-pic" src="{{ photoUrl }}" alt="profile-pic">
-      </div>
-    </div>
-    <div class="col-md-9 col-sm-8 col-8">
-      <label class="mt-2 username">{{ displayName }}</label>
-    </div>
-    <div class="col-md-2 col-sm-2 col-2">
-      <button class="navbar-toggler hamburger-menu float-right" type="button" data-toggle="collapse"
-              data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <img src="../../../../assets/images/icons/hamburger_menu.svg" alt="Hamburger Menu">
-      </button>
-    </div>
-  </div>
 
-  <!-- Mobile response-list format -->
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="response-list-card-relative">
-      <div class="card p-3 border-0">
-        <div class="dropdown-divider"></div>
-        <ul class="nav flex-column ml-2">
-          <li class="nav-item mb-2 response-title">
-            My Responses
-          </li>
-        </ul>
-        <div id="author-list-relative">
-          <ul class="nav flex-column ml-2">
-            <li class="nav-item mb-1" *ngFor="let msg of viewService.messages" (click)="showMessage(msg.id);">
-              <a href="javascript: void(0)">{{ msg.fromName }}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<div id="mySidenav" class="sidenav shadow" [class.navOpen]="navIsOpen">
+  <a class="close-btn" (click)="navOpen(false)">&times;</a>
+  <div class="nav-item mb-2 ml-4 response-title">
+    My Responses
+  </div>
+  <!--suppress HtmlUnknownAttribute -->
+  <div class="author-container" *ngFor="let msg of messageList; let i = index" data-target="#carousel"
+       attr.data-slide-to="{{ i + 1 }}" (click)="showMessage(msg.id);">
+    <table class="header-table">
+      <tr>
+        <td class="profile-pic-col">
+          <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+        </td>
+        <td class="author-col">
+          <table>
+            <tr class="msg-header-text">
+                <!--suppress HtmlUnknownTag -->
+              <a href="javascript: void(0)" class="author-name">{{ msg.fromName }}</a>
+            </tr>
+            <tr class="msg-header-date">
+              {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                 msg.timestamp.toDate().toDateString()) }}
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

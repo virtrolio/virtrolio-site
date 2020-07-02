@@ -26,6 +26,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/aos/dist/aos.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/main.css",
               "src/assets/css/fonts.css",
               "src/styles.css"
