@@ -1,5 +1,5 @@
-import * as firebase from 'firebase';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 export class VirtrolioMessageTemplate {
   backColor = '';
