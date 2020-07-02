@@ -24,8 +24,7 @@ export class SingleMessageComponent implements OnInit {
    * Go to 'all messages' view
    */
   goToMessages() {
-    // noinspection JSUnusedLocalSymbols
-    this.router.navigate([ '/viewing' ]).then(navigate => {
+    this.router.navigate([ '/viewing' ]).then(() => {
         window.location.reload();
     });
   }

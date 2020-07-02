@@ -83,14 +83,6 @@
   background: #FAFAFA;
 }
 
-.msg-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 1em;
-  padding: 0.5em 0.5em 0.5em 1em;
-}
-
 .header-table {
   table-layout: fixed;
   width: 100%;
@@ -113,11 +105,6 @@
   height: 2.5em;
   width: 2.5em;
   border-radius: 100%;
-}
-
-.msg-header-group {
-  display: flex;
-  flex-direction: row;
 }
 
 .author-name {
