@@ -9,9 +9,9 @@ import { SigningService } from '../../core/signing.service';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
+
   // Default blank textbox
   inputBoxText = '';
-
   constructor(public authService: AuthService, public signingService: SigningService) { }
 
   ngOnInit(): void {

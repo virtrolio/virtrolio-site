@@ -8,7 +8,7 @@ import { MsgIoService } from '../../core/msg-io.service';
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: ['./signing.component.css']
+  styleUrls: [ './signing.component.css' ]
 })
 
 /**
@@ -61,8 +61,12 @@ export class SigningComponent implements OnInit {
 
     // remove navigation popup
     this.sending = true;
-    this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      this.router.navigate(['/msg-sent'], { queryParams: { name: this.name } }))
-      .catch(error => alert(error));
+    this.msgIo.sendMessage(newMsg, this.key).then(() => {
+      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } })
+        .catch(e => AuthService.displayError(e));
+    }).catch(error => {
+        AuthService.displayError(error);
+      }
+    );
   }
 }

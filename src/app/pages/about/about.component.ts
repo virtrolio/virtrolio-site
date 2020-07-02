@@ -11,6 +11,7 @@ import { AboutPagePictures } from 'src/app/shared/interfaces';
  * About component, with a short blurb at the top and a row for each contributor.
  */
 export class AboutComponent implements OnInit {
+  Anthony: AboutPagePictures;
   Arvind: AboutPagePictures;
   Dabeer: AboutPagePictures;
   Eric: AboutPagePictures;
@@ -23,6 +24,7 @@ export class AboutComponent implements OnInit {
    * -> bit.ly link shortener
    */
   constructor() {
+    this.Anthony = new AboutPagePictures('Anthony', 'https://bit.ly/31xUsnP', 'https://bit.ly/2YQTn94');
     this.Arvind = new AboutPagePictures('Arvind', 'https://bit.ly/3de5LUs', 'https://bit.ly/2V596Pn');
     this.Dabeer = new AboutPagePictures('Dabeer', 'https://bit.ly/2zPaOwQ', 'https://bit.ly/3fOt0WT');
     this.Eric = new AboutPagePictures('Eric', 'https://bit.ly/2NemLiC', 'https://bit.ly/3dk383t');
