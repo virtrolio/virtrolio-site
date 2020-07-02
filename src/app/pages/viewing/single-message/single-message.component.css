@@ -64,11 +64,6 @@
   display: flex;
 }
 
-#no-messages {
-  font-size: 2em;
-  color: var(--light-grey);
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 0.2em;

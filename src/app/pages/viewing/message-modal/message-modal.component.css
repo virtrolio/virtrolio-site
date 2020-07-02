@@ -64,11 +64,6 @@
   display: flex;
 }
 
-#no-messages {
-  font-size: 2em;
-  color: var(--light-grey);
-}
-
 .card-icon {
   width: 1em;
   height: 1em;
