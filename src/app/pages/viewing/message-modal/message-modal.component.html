@@ -27,10 +27,12 @@
       <table class="header-table">
         <tr>
           <td>
-            <button (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)" class="btn card-button"
-                    type="button">
-              <img alt="bookmark" class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
-            </button>
+            <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: viewService.currentMessageModal.id }">
+              <button (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)" class="btn card-button"
+                      type="button">
+                <img alt="bookmark" class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
+              </button>
+            </a>
             <button (click)="activeModal.close('Close click')" class="btn" type="button">
               <img alt="close" class="card-icon" src="../../../../assets/images/icons/exit.svg">
             </button>

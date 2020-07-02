@@ -92,12 +92,5 @@ export class ViewingService {
    */
   bookmarkMessage(id: string) {
     this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark', { positionClass: 'toast-bottom-full-width' });
-    this.router.navigate([ '/viewing' ], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      queryParamsHandling: 'merge'
-    }).then();
   }
 }
