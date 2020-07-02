@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
-import { ActivatedRoute, Router  } from '@angular/router';
+import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-responses-list',
@@ -13,19 +13,20 @@ export class ResponsesListComponent implements OnInit {
   public displayName: string;
   public photoUrl: string;
   public uid: string;
+  navIsOpen = false;
+  messageList: VirtrolioMessage[] = [];
 
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
-              private route: ActivatedRoute, private router: Router) {
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
     try {
       this.uid = this.authService.uid();
     } catch (e) { }
     try {
-      this.authService.displayName(this.uid).then((displayName) => {this.displayName = displayName; });
+      this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
       this.displayName = 'User';
     }
     try {
-      this.authService.profilePictureLink(this.uid).then((photoUrl) => {this.photoUrl = photoUrl; });
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; });
     } catch (e) {
       // Use the logo as a fallback profile picture
       this.photoUrl = '../../../../assets/images/logo_reg.png';
@@ -35,22 +36,30 @@ export class ResponsesListComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
+   * Assign messages passed via the [setMessageList] binding
+   * @param messages list of verified VirtrolioMessages
+   */
+  @Input() set setMessageList(messages: VirtrolioMessage[]) {
+    if (messages) {
+      this.messageList = messages;
+    }
+  }
+
+  /**
+   * Set the state of the side nav menu
+   * @param state True if nav menu is open
+   */
+  navOpen(state: boolean) {
+    this.navIsOpen = state;
+  }
+
+  /**
    * Scroll to the card with the given id and update the URL
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    // noinspection JSIgnoredPromiseFromCall
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      // Preserve the existing query params in the
-      queryParamsHandling: 'merge',
-      // Update the URL
-      skipLocationChange: false
-    });
-    if (this.viewService.isCarouselView) {
+    this.navOpen(false);
+    if (!this.viewService.isCarouselView) {
       this.vps.scrollToAnchor(id);
     }
   }

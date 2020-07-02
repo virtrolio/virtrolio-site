@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -13,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
+import { ToastrModule } from 'ngx-toastr';
 
 // App
 import { AppRoutingModule } from './app-routing.module';
@@ -37,13 +40,15 @@ import { ResponsesListComponent } from './pages/viewing/responses-list/responses
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
+import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
+import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 // Services
 import { LoginResolver } from './core/login-resolver';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { PendingChangesGuard } from './core/pending-changes.guard';
-import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -66,6 +71,8 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
     InvalidLinkComponent,
     AccessDeniedComponent,
     RejeccComponent,
+    SingleMessageComponent,
+    MessageModalComponent,
     MaintenanceComponent
   ],
   imports: [
@@ -77,6 +84,9 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
     AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
     MarkdownModule.forRoot({
       // set various markdown options
       markedOptions: {
@@ -86,7 +96,8 @@ import { MaintenanceComponent } from './pages/maintenance/maintenance.component'
           breaks: true,
         },
       },
-    })
+    }),
+    NgbModule
   ],
   providers: [ CookieService, LoginResolver, PendingChangesGuard ],
   bootstrap: [ AppComponent ]

@@ -1,0 +1,93 @@
+/* Message Card */
+.card {
+  width: auto;
+  height: 100%;
+}
+
+.message-card {
+  background-color: var(--light-grey);
+  width: 100%;
+  word-break: break-word;
+  max-height: 30em;
+  overflow-y: auto;
+}
+
+.table td {
+  overflow-wrap: break-word;
+}
+
+/* Message Carousel Page */
+.page {
+  background-color: var(--accent);
+  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
+  color: white;
+  height: 70vh;
+  padding: 3em 6em 3em 6em;
+
+  overflow-y: auto;
+}
+
+/* Message Header */
+.msg-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 1em;
+  padding: 0.5em 0.5em 0.5em 1em;
+}
+
+.msg-header-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.msg-header-text {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin: 0.2em 0 0 0.5em;
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.msg-header-date {
+  font-size: 0.7em;
+  margin-left: 0.5em;
+}
+
+.profile-pic-container-small {
+  background: rgba(255, 255, 255, 0);
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 100%;
+  display: flex;
+}
+
+.card-icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* Remove the blue outline around the button on the headers when they're clicked */
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  opacity: 0.1;
+  border-radius: 1em;
+}
