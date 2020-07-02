@@ -1,0 +1,62 @@
+.navbar {
+  background: var(--accent);
+  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: var(--navbar-height);
+  padding: 0;
+}
+
+#navbar_title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  color: white;
+  margin-left: 1em;
+}
+
+#logout-text {
+  color: red;
+}
+
+.navbar-nav li a {
+  color: #FFFFFF;
+  opacity: 75%;
+}
+
+.navbar-nav li:hover a:hover {
+  color: #FFFFFF;
+  opacity: 100%;
+}
+
+.profile-pic {
+  width: 100%;
+}
+
+.profile-pic:hover {
+  opacity: 75%;
+}
+
+.profile-pic-container {
+  margin-right: 1em;
+}
+
+.navbar-collapse {
+  background: rgba(255, 255, 255, 0);
+  padding: 0 1em;
+}
+
+.navbar-toggler {
+  margin-right: 1em;
+}
+
+/* Alternate formatting for mobile navbar */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    background: var(--accent);
+    background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+    font-weight: bold;
+    padding-bottom: 1em;
+  }
+}

@@ -1,0 +1,31 @@
+footer {
+  left: 0;
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: var(--darkest-accent);
+  font-size: 0.8em;
+  color: white;
+  position: relative;
+  height: var(--footer-height);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+footer > * {
+  margin: 0.3em 0;
+}
+
+#legal {
+  text-align: center;
+}
+
+a {
+  color: white;
+}
+
+.social-icon {
+  height: 2em;
+  width: 2em;
+}

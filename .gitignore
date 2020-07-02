@@ -1,6 +1,9 @@
 # Firebase
 # firebase.json
 .firebase
+/firebase-debug.log
+/firestore-debug.log
+/ui-debug.log
 
 # compiled output
 /dist
@@ -48,3 +51,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+.vscode/launch.json

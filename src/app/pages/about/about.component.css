@@ -1,0 +1,49 @@
+/* || Title content */
+
+#title {
+  text-align: center;
+  font-size: 5em;
+}
+
+#title-blurb {
+  border-left: 3px solid var(--accent);
+  padding-left: 2em;
+}
+/* || Meet the team */
+
+#meet-the-team > div > div {
+  /* For all items within each peron's row -- copy of vertical-center class in main.css */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+}
+
+#meet-the-team-title {
+  text-align: center;
+}
+
+.jumbotron {
+  padding-top: 2em;
+  padding-bottom: 0;
+}
+
+.regular-picture:hover {
+  opacity: 0;
+}
+
+.regular-picture {
+  z-index: 0;
+  width: 100%;
+}
+
+.silly-picture {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+}
+
+.image-container {
+  padding: 0;
+  overflow: hidden;
+}

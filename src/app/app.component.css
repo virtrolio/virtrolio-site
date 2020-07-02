@@ -1,4 +1,20 @@
 #navbar-filler {
-  /* Fake navbar to push router-outlet content downwards */
+  /* Transparent div to push router-outlet content downwards */
   height: var(--navbar-height);
+}
+
+#cookie-alert {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: var(--footer-height);
+}
+
+#cookie-alert-button {
+  padding-bottom: 0.15em;
+}
+
+#content-wrapper {
+  /* Prevents footer collapse to top of screen while component loads */
+  min-height: calc(100vh - var(--footer-height) - var(--navbar-height));
 }

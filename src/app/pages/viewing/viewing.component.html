@@ -1,0 +1,16 @@
+<!-- Single message view -->
+<div *ngIf="isSingleMessageView; else allMessages">
+  <app-single-message></app-single-message>
+</div>
+<!-- Regular all messages view -->
+<ng-template #allMessages>
+  <div class="container">
+    <app-responses-list [setMessageList]="messageList"></app-responses-list>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <app-messages [setMessageList]="messageList"></app-messages>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

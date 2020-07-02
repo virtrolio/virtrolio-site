@@ -1,0 +1,13 @@
+.card-align {
+  padding: 1.25rem 2rem;
+}
+
+#title {
+  text-align: center;
+  font-size: 4em;
+  margin-top: 2em;
+}
+
+#bottom-text {
+  text-align: center;
+}

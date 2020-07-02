@@ -1,0 +1,24 @@
+#graphic {
+  height: 15em;
+}
+
+#buttons > button {
+  margin: 2em 1em 0;
+  font-size: 1.1em;
+}
+
+#title-text {
+  font-size: 2em;
+  text-align: center;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #graphic {
+    height: 10em;
+  }
+
+  #title-text {
+    font-size: 1.5em;
+  }
+}

@@ -1,0 +1,26 @@
+#pen-graphic {
+  height: 15em;
+}
+
+#buttons > button {
+  /* For each button */
+  margin: 2em 1em 0;
+  font-size: 1.1em;
+}
+
+#title-text {
+  /* We see you’re trying to sign your friend’s virtrolio... */
+  text-align: center;
+  font-size: 2em;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #pen-graphic {
+    height: 10em;
+  }
+
+  #title-text {
+    font-size: 1.5em;
+  }
+}
