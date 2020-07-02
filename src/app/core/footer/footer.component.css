@@ -18,8 +18,14 @@ footer > * {
 
 #legal {
   text-align: center;
+  font-size: 0.8em;
 }
 
 a {
-  color:white;
+  color: white;
+}
+
+.social-icon {
+  height: 2em;
+  width: 2em;
 }

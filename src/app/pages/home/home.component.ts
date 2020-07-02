@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { AuthService } from '../../core/auth.service';
-import { FontService } from '../../core/font.service';
-import { Fonts } from '../../shared/interfaces';
+import { SigningService } from '../../core/signing.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -10,70 +10,27 @@ import { Fonts } from '../../shared/interfaces';
   styleUrls: [ './home.component.css' ]
 })
 export class HomeComponent implements OnInit {
-  /** Default values */
-  public cardText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
-  public signingBoxText;
-  public backgroundColor: string;
-  public textColor = '#FFFFFF';
-  public canSend = false;
-  public charCount = 0;
-  public maxCharCount: 5000;
-  public charCountColor = '#bbbbbb';
-  public name = '[friend name]';
 
-  // font service stuff
-  public currentFont = 'Arial, sans-serif';
-  public currentFontDisplay = 'Arial';
-  public fontDict: Fonts;
+  // Default blank textbox
+  inputBoxText = '';
 
-  constructor(public authService: AuthService) {
-    this.fontDict = FontService.fonts;
+  constructor(public authService: AuthService, public signingService: SigningService, private title: Title) {
+    // Initialize Animate on Scroll library
+    // In constructor instead of ngOnInit to avoid the page breaking when routerLinking to home
+    AOS.init();
   }
 
   ngOnInit(): void {
-    // Initialize Animate on Scroll library
-    AOS.init();
-    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+    this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
+    this.signingService.setHomeDefaultValues();
   }
 
   /**
-   * @param font - Font selected from dropdown menu
+   * When user starts typing, assign inputBoxText by reference to signingBoxText, then update count
+   * @param textbox - The textbox to process.
    */
-  selectFont(font: string) {
-    this.currentFont = font + ',' + this.fontDict[font].backupFont;
-    this.currentFontDisplay = this.fontDict[font].fontFamily;
+  keyup(textbox: HTMLTextAreaElement) {
+    this.signingService.signingBoxText = this.inputBoxText;
+    this.signingService.updateCount(textbox);
   }
-
-  /**
-   * The following functions add text formatting characters around selected text within textbox.
-   * @param textbox - textbox in which user types.
-   * @param formatCharacters - formatting character(s) to be placed around the selected text
-   * @param endCharacter - Optional - The ending character, if different from the starting character
-   */
-  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string, endCharacter?: string) {
-    const start = textbox.selectionStart;
-    const end = textbox.selectionEnd;
-    const text = textbox.value;
-
-    // If the end character was not provided, we assume it will be the same as the start character
-    if (typeof endCharacter === 'undefined' || !endCharacter) {
-      endCharacter = formatCharacters;
-    }
-
-    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + endCharacter + text.slice(end);
-    this.updateCount(textbox);
-    textbox.select();
-  }
-
-  /**
-   * Update character count value and text colour
-   * @param textbox - textbox in which user types.
-   */
-  updateCount(textbox: HTMLTextAreaElement) {
-    this.cardText = this.signingBoxText;
-    this.charCount = textbox.value.length;
-    this.charCountColor = (this.charCount > this.maxCharCount) ? '#EE1111' : '#b0b0b0';
-    this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount);
-  }
-
 }

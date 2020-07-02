@@ -1,21 +1,23 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-light">
   <a class="navbar-brand" id="navbar_title" routerLink="">
     <!--suppress CheckImageSize -->
-    <img src="../../../assets/images/logo_inverted-circle.png" width="30" height="30" class="d-inline-block align-top"
-         alt="Virtrolio Logo">
+    <img alt="Virtrolio Logo" class="d-inline-block align-top" height="30" src="../../../assets/images/logo_inverted-circle.png"
+         width="30">
     virtrolio
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
+  <!-- Hamburger menu on mobile -->
+  <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNav"
+          data-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <!-- Collapsible menu items -->
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-2">
       <li class="nav-item">
         <a class="nav-link" routerLink="">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/your-virtrolio" [hidden]="!authService.isLoggedIn()">Your virtrolio</a>
+        <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="/your-virtrolio">Your virtrolio</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="about">About</a>
@@ -26,18 +28,26 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
+      <div class="dropdown-divider d-block d-sm-block d-md-none"></div>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
+        <a class="nav-link" routerLink="settings">Settings</a>
+      </li>
+      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
+        <a (click)="authService.logout()" class="nav-link" href="#">Logout</a>
+      </li>
     </ul>
   </div>
+  <!-- Profile pic menu on desktop if logged in -->
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">
     <div class="dropdown dropleft">
-      <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="float-right profile-pic-container" *ngIf="authService.isLoggedIn()">
-          <img class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}" alt="profile-pic">
+      <a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" id="dropdownMenuLink" role="button">
+        <div *ngIf="authService.isLoggedIn()" class="float-right profile-pic-container">
+          <img alt="profile-pic" class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}">
         </div>
       </a>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
         <a class="dropdown-item" routerLink="settings">Settings</a>
-        <a class="dropdown-item" id="logout-text" (click)="authService.logout()" href="#">Logout</a>
+        <a (click)="authService.logout()" class="dropdown-item" href="#" id="logout-text">Logout</a>
       </div>
     </div>
   </div>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { PendingChangesGuard } from './core/pending-changes.guard';
-
 // Pages
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
@@ -19,7 +18,6 @@ import { SigningComponent } from './pages/signing/signing.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
-
 // Services & Guards
 import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
@@ -41,28 +39,28 @@ const routes: Routes = [
   {
     path: 'signing-auth-redirect',
     component: SigningAuthRedirectComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'invalid-link',
     component: InvalidLinkComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'maintenance',
     component: MaintenanceComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    canActivate: [ PreventURLAccessGuard ],
+    // canActivate: [ PreventURLAccessGuard ],
   },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   {
     path: 'rejecc',
     component: RejeccComponent,
-    canActivate: [ PreventURLAccessGuard ]
+    // canActivate: [ PreventURLAccessGuard ]
   },
   {
     path: 'settings',
@@ -100,9 +98,10 @@ const routes: Routes = [
 @NgModule({
   imports: [ RouterModule.forRoot(routes,
     {
+      scrollPositionRestoration: 'enabled', // scroll to top when routerLinking
       anchorScrolling: 'enabled',
-      onSameUrlNavigation: 'reload' // allow re-scroll to same anchor
-    })],
+      onSameUrlNavigation: 'reload'
+    }) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {

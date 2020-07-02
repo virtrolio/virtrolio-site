@@ -5,7 +5,7 @@
         <tr>
           <td>
             <span class="profile-pic-container-small mr-2">
-              <img class="profile-pic" src="{{ viewService.currentMessageModal.fromPic }}" alt="profile-pic">
+              <img alt="profile-pic" class="profile-pic" src="{{ viewService.currentMessageModal.fromPic }}">
             </span>
           </td>
           <td>
@@ -27,23 +27,23 @@
       <table class="header-table">
         <tr>
           <td>
-            <button class="btn card-button" type="button"
-                    (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)">
-              <img class="card-icon" src="../../../../assets/images/icons/bookmark.svg" alt="bookmark">
+            <button (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)" class="btn card-button"
+                    type="button">
+              <img alt="bookmark" class="card-icon" src="../../../../assets/images/icons/bookmark.svg">
             </button>
-            <button type="button" class="btn" (click)="activeModal.close('Close click')">
-              <img class="card-icon" src="../../../../assets/images/icons/exit.svg" alt="close">
+            <button (click)="activeModal.close('Close click')" class="btn" type="button">
+              <img alt="close" class="card-icon" src="../../../../assets/images/icons/exit.svg">
             </button>
           </td>
         </tr>
       </table>
     </div>
   </div>
-  <div class="card-body message-card message"
-       [ngStyle]="{'background': viewService.currentMessageModal.backColor,
+  <div [ngStyle]="{'background': viewService.currentMessageModal.backColor,
                    'color': viewService.currentMessageModal.fontColor,
                    'font-family': viewService.fonts[viewService.currentMessageModal.fontFamily].fontFamily
-                   +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }">
-    <markdown emoji data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}"></markdown>
+                   +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }"
+       class="card-body message-card message">
+    <markdown data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}" emoji></markdown>
   </div>
 </div>

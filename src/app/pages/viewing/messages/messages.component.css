@@ -95,7 +95,7 @@
   color: var(--light-grey);
 }
 
- /* Remove the blue outline around the buttons on the header when they're clicked */
+/* Remove the blue outline around the buttons on the header when they're clicked */
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;

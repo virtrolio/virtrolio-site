@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from './viewing.service';
 import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 import { VirtrolioMessage } from '../../shared/interfaces';
+import { Title } from '@angular/platform-browser';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-viewing',
@@ -14,10 +15,11 @@ export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
   messageList: VirtrolioMessage[];
 
-  constructor(private route: ActivatedRoute, private viewService: ViewingService) {
+  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('View Your Messages | Virtrolio');
     // Determine if the viewing link has messageId query param
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;

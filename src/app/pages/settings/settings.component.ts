@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { take } from 'rxjs/operators';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 
 declare var $: any;
 
@@ -16,7 +16,8 @@ export class SettingsComponent implements OnInit {
   downloadUserData;
   exportErrorText: string;
 
-  constructor(public authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer) { }
+  constructor(public authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer, private title: Title) {
+  }
 
   private static decodeHtml(html: string) {
     const txt = document.createElement('textarea');
@@ -24,7 +25,9 @@ export class SettingsComponent implements OnInit {
     return txt.value;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.title.setTitle('Settings | Virtrolio');
+  }
 
   /**
    * Converts the user's data and messages into JSONs and changes the href of their respective buttons to permit
@@ -44,9 +47,9 @@ export class SettingsComponent implements OnInit {
           message.contents = SettingsComponent.decodeHtml(message.contents);
         });
       } else {
-        messages = [{
+        messages = [ {
           error: 'No messages found'
-        }];
+        } ];
       }
       // Convert data to JSON
       const messagesJSON = JSON.stringify(messages, null, 2);

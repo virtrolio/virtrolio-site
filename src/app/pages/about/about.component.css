@@ -5,10 +5,19 @@
   font-size: 5em;
 }
 
-#title-blurb {
+.title-blurb {
   border-left: 3px solid var(--accent);
   padding-left: 2em;
 }
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #title-blurb {
+    border-left: none;
+    padding-left: 0;
+  }
+}
+
 /* || Meet the team */
 
 #meet-the-team > div > div {

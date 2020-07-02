@@ -16,8 +16,8 @@ html {
   --navbar-right: rgba(251, 91, 91, 1);
 
   /* Sizes */
-  --footer-height: 7em;
-  --navbar-height: 4.5em;
+  --footer-height: 5.5em;
+  --navbar-height: 3em;
 
   /* Shadows from signing component */
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
@@ -88,10 +88,11 @@ a.clickable-object, a.clickable-object:hover {
 }
 
 /* Toggle switch */
-.custom-control-label:before{
+.custom-control-label:before {
   background-color: white;
 }
-.custom-switch .custom-control-input:checked~.custom-control-label::before{
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: var(--accent);
   border-color: var(--accent);
 }
@@ -99,8 +100,8 @@ a.clickable-object, a.clickable-object:hover {
 /* Profile Picture formatting */
 .profile-pic-container {
   background: rgba(255, 255, 255, 0);
-  height: 2.5em;
-  width: 2.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 100%;
   display: flex;
 }
@@ -137,25 +138,25 @@ a.clickable-object, a.clickable-object:hover {
 }
 
 /* ngx-toastr */
-.toast-success{
+.toast-success {
   background: #55c41f;
   box-shadow: none !important;
 }
 
-.toast-success:hover{
+.toast-success:hover {
   background: #3aa307;
 }
 
-.toast-error{
+.toast-error {
   background: #c92a2a;
   box-shadow: none !important;
 }
 
-.toast-error:hover{
+.toast-error:hover {
   background: #a60a0a;
 }
 
-.toast-info{
+.toast-info {
   background: #54b4f0;
   box-shadow: none !important;
 }
