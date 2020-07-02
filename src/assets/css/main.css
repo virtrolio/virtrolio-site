@@ -9,6 +9,8 @@ html {
   --dark-accent: #e6716d;
   --darkest-accent: #353535;
   --light-grey: #999999;
+  --navbar-left: rgba(250, 128, 114, 1);
+  --navbar-right: rgba(251, 91, 91, 1);
 
   /* Sizes */
   --footer-height: 7em;
@@ -129,4 +131,19 @@ a.clickable-object, a.clickable-object:hover {
 .google-sign-in-btn span {
   margin-left: 0;
   padding-left: 18px;
+}
+
+/* Modal Fixes */
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+  overflow: auto;
+}
+
+.modal-open[style] {
+  /*Exclusion below is required for the fix*/
+  /*noinspection CssRedundantUnit*/
+  padding-right: 0px !important;
 }

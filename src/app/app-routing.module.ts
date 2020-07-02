@@ -20,10 +20,12 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 import { ViewingComponent } from './pages/viewing/viewing.component';
 import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 
-// Services
+// Services & Guards
 import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { SigningGuard } from './core/signing.guard';
+import { PreventURLAccessGuard } from './core/prevent-urlaccess.guard';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 
 const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
 
@@ -36,21 +38,38 @@ const routes: Routes = [
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'signing-auth-redirect', component: SigningAuthRedirectComponent},
-  { path: 'invalid-link' , component: InvalidLinkComponent },
+  {
+    path: 'signing-auth-redirect',
+    component: SigningAuthRedirectComponent,
+    canActivate: [ PreventURLAccessGuard ]
+  },
+  {
+    path: 'invalid-link',
+    component: InvalidLinkComponent,
+    canActivate: [ PreventURLAccessGuard ]
+  },
+  {
+    path: 'maintenance',
+    component: MaintenanceComponent,
+    canActivate: [ PreventURLAccessGuard ]
+  },
   {
     path: 'msg-sent',
     component: MsgSentComponent,
-    canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    canActivate: [ PreventURLAccessGuard ],
   },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'rejecc', component: RejeccComponent },
+  {
+    path: 'rejecc',
+    component: RejeccComponent,
+    canActivate: [ PreventURLAccessGuard ]
+  },
   {
     path: 'settings',
     component: SettingsComponent,
     canActivate: [ AngularFireAuthGuard ],
-    data: { authGuardPipe: redirectUnauthorized }
+    data: { authGuardPipe: redirectUnauthorized },
+    resolve: { user: LoginResolver }
   },
   {
     path: 'signing',
@@ -79,7 +98,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)], // scroll to top when routerLinking
+  imports: [ RouterModule.forRoot(routes,
+    {
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload' // allow re-scroll to same anchor
+    })],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {

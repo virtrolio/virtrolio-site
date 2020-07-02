@@ -53,6 +53,7 @@ markdown {
 
 #font-selector-dropdown {
   display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   text-align: right;
@@ -141,15 +142,17 @@ markdown {
 /* || Miscellaneous */
 
 #btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
   border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
+  background-color: var(--accent);
   color: #ffffff;
 }
 
 #btn-info:hover {
   background-color: #75797A;
+}
+
+#send-button {
+  width: 10em;
+  height: 3em;
+  font-weight: bolder;
 }

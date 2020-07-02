@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   /** Default values */
   public cardText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
   public signingBoxText;
-  public backgroundColor = `#fa8072`;
+  public backgroundColor: string;
   public textColor = '#FFFFFF';
   public canSend = false;
   public charCount = 0;
@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // Initialize Animate on Scroll library
     AOS.init();
+    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
   }
 
   /**
@@ -47,12 +48,20 @@ export class HomeComponent implements OnInit {
    * The following functions add text formatting characters around selected text within textbox.
    * @param textbox - textbox in which user types.
    * @param formatCharacters - formatting character(s) to be placed around the selected text
+   * @param endCharacter - Optional - The ending character, if different from the starting character
    */
-  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string) {
+  addFormatting(textbox: HTMLTextAreaElement, formatCharacters: string, endCharacter?: string) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
     const text = textbox.value;
-    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + formatCharacters + text.slice(end);
+
+    // If the end character was not provided, we assume it will be the same as the start character
+    if (typeof endCharacter === 'undefined' || !endCharacter) {
+      endCharacter = formatCharacters;
+    }
+
+    this.signingBoxText = text.slice(0, start) + formatCharacters + text.slice(start, end) + endCharacter + text.slice(end);
+    this.updateCount(textbox);
     textbox.select();
   }
 

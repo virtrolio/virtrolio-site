@@ -8,11 +8,14 @@
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay Connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
         apart.</h1>
-      <img src="../../../assets/images/icons/chevron-down.svg" id="chevron" alt="down" width="48" height="48">
+      <a routerLink="./" fragment="info">
+        <img src="../../../assets/images/icons/chevron-down.svg" id="chevron" alt="down" width="48" height="48">
+      </a>
     </div>
   </div>
 </div>
 
+<a id="info"></a>
 <div class="container pt-5 vertical-center body-container">
   <div class="row d-flex justify-content-center">
     <div data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="col-12">
@@ -99,6 +102,7 @@
                       data-target="#info-modal">?
               </button>
             </label>
+            <p id="preview-instructions">Preview your message above.</p>
             <textarea #signingInputArea id="signing-box" class="form-control"
                       (keyup)='updateCount(signingInputArea)' [(ngModel)]='signingBoxText'
                       [ngStyle]="{'font-family': currentFont}"></textarea>
@@ -139,7 +143,7 @@
                   id="button-italics">
             <i>I</i>
           </button>
-          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>')"
+          <button type="button" (click)="addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
                   class="btn btn-secondary btn-format mr-2" id="button-underline">
             <u>U</u>
           </button>
