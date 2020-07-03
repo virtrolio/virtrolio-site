@@ -21,13 +21,13 @@
 }
 
 .navbar-nav li a {
-  color: #FFFFFF;
-  opacity: 75%;
+  color: #FEFEFE;
+  opacity: 0.75;
 }
 
 .navbar-nav li:hover a:hover {
   color: #FFFFFF;
-  opacity: 100%;
+  opacity: 1;
 }
 
 .profile-pic {
@@ -35,7 +35,7 @@
 }
 
 .profile-pic:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .profile-pic-container {
@@ -56,6 +56,8 @@
   .navbar-collapse {
     background: var(--accent);
     background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+    box-shadow: 0 0.5em 1em -1em black;
+    border-radius: 0 0 1em 1em;
     font-weight: bold;
     padding-bottom: 1em;
   }

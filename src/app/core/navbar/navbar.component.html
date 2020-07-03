@@ -20,7 +20,7 @@
         <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="/your-virtrolio">Your virtrolio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="about">About</a>
+        <a class="nav-link" routerLink="about">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="faq">FAQ</a>
@@ -28,12 +28,12 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
-      <div class="dropdown-divider d-block d-sm-block d-md-none"></div>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
-        <a class="nav-link" routerLink="settings">Settings</a>
+      <li *ngIf="authService.isLoggedIn()" class="dropdown-divider d-block d-sm-block d-md-none"></li>
+      <li class="nav-item d-block d-sm-block d-md-none">
+        <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="settings">Settings</a>
       </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
-        <a (click)="authService.logout()" class="nav-link" href="#">Logout</a>
+      <li class="nav-item d-block d-sm-block d-md-none">
+        <a [hidden]="!authService.isLoggedIn()" (click)="authService.logout()" class="nav-link" href="#">Logout</a>
       </li>
     </ul>
   </div>

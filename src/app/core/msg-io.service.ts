@@ -16,7 +16,7 @@ import Timestamp = firestore.Timestamp;
 export class MsgIoService {
   static readonly currentYear = 2020;
   static readonly currentVersion = '2020.0';
-  static readonly maxMessageLength = 5000;
+  static readonly maxMessageLength = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
 
