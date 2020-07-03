@@ -88,10 +88,11 @@ a.clickable-object, a.clickable-object:hover {
 }
 
 /* Toggle switch */
-.custom-control-label:before{
+.custom-control-label:before {
   background-color: white;
 }
-.custom-switch .custom-control-input:checked~.custom-control-label::before{
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before {
   background-color: var(--accent);
   border-color: var(--accent);
 }
@@ -137,25 +138,25 @@ a.clickable-object, a.clickable-object:hover {
 }
 
 /* ngx-toastr */
-.toast-success{
+.toast-success {
   background: #55c41f;
   box-shadow: none !important;
 }
 
-.toast-success:hover{
+.toast-success:hover {
   background: #3aa307;
 }
 
-.toast-error{
+.toast-error {
   background: #c92a2a;
   box-shadow: none !important;
 }
 
-.toast-error:hover{
+.toast-error:hover {
   background: #a60a0a;
 }
 
-.toast-info{
+.toast-info {
   background: #54b4f0;
   box-shadow: none !important;
 }

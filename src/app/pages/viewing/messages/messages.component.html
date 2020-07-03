@@ -8,27 +8,27 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <button class="btn-sm btn-primary" *ngIf="!viewService.isCarouselView" (click)="toggleViewStyle()">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary">Switch to
         Booklet
       </button>
-      <button class="btn-sm btn-primary" *ngIf="viewService.isCarouselView" (click)="toggleViewStyle()">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary">Switch to
         Cards
       </button>
     </div>
   </div>
 
   <!-- Card message view -->
-  <div class="card-columns mt-3" *ngIf="viewService.isCarouselView === false">
-    <div class="card shadow" *ngFor="let msg of messageList;" id="{{ msg.id }}">
-      <div class="msg-header"
-           [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
-                       'color': generateHeaderColor(msg.backColor).text}">
+  <div *ngIf="viewService.isCarouselView === false" class="card-columns mt-3">
+    <div *ngFor="let msg of messageList;" class="card shadow" id="{{ msg.id }}">
+      <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
+                       'color': generateHeaderColor(msg.backColor).text}"
+           class="msg-header">
         <div class="msg-header-group pt-1">
           <table class="header-table">
             <tr>
               <td>
             <span class="profile-pic-container-small mr-2">
-              <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+              <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
             </span>
               </td>
               <td>
@@ -49,28 +49,28 @@
           <table class="header-table">
             <tr>
               <td>
-                <button class="btn card-button" type="button" (click)="popupMessage(msg)">
-                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}" alt="popup">
+                <button (click)="popupMessage(msg)" class="btn card-button" type="button">
+                  <img alt="popup" class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
                 </button>
-                <button class="btn card-button" type="button" data-toggle="modal"
-                        data-target="#delete" (click)="viewService.setMessageToDelete(msg.id)">
-                  <img class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}" alt="delete">
+                <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
+                        data-toggle="modal" type="button">
+                  <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
                 </button>
               </td>
             </tr>
           </table>
         </div>
       </div>
-      <div class="card-body message-card message" (click)="popupMessage(msg)"
-           [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
-        <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
+      <div (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+           class="card-body message-card message">
+        <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
       </div>
     </div>
   </div>
 
   <!-- Carousel message view -->
-  <div class="viewing-container mb-5" *ngIf="viewService.isCarouselView == true">
-    <div id="carousel" class="carousel slide border rounded" data-ride="carousel" data-interval="false">
+  <div *ngIf="viewService.isCarouselView == true" class="viewing-container mb-5">
+    <div class="carousel slide border rounded" data-interval="false" data-ride="carousel" id="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="msg-header">
@@ -79,7 +79,7 @@
                 <tr>
                   <td>
                   <span class="profile-pic-container-small mr-2">
-                    <img class="profile-pic" src="../../../../assets/images/logo_reg.png" alt="profile-pic">
+                    <img alt="profile-pic" class="profile-pic" src="../../../../assets/images/logo_reg.png">
                   </span>
                   </td>
                   <td>
@@ -102,15 +102,15 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item" *ngFor="let msg of messageList">
-          <div class="msg-header"
-               [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}">
+        <div *ngFor="let msg of messageList" class="carousel-item">
+          <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}"
+               class="msg-header">
             <div class="msg-header-group">
               <table class="header-table">
                 <tr>
                   <td>
                   <span class="profile-pic-container-small mr-2">
-                    <img class="profile-pic" src="{{ msg.fromPic }}" alt="profile-pic">
+                    <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
                   </span>
                   </td>
                   <td>
@@ -127,28 +127,28 @@
               </table>
             </div>
           </div>
-          <div class="card-body page message" (click)="popupMessage(msg)"
-               [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }">
-            <markdown emoji data="{{ viewService.decodeHtml(msg.contents) }}"></markdown>
+          <div (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+               class="card-body page message">
+            <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
           </div>
         </div>
       </div>
     </div>
     <div class="carousel-controls shadow">
-      <a class="carousel-controls-button" href="#carousel" role="button" data-slide="prev">Prev</a>
-      <a class="carousel-controls-button" href="#carousel" role="button" data-slide="next">Next</a>
+      <a class="carousel-controls-button" data-slide="prev" href="#carousel" role="button">Prev</a>
+      <a class="carousel-controls-button" data-slide="next" href="#carousel" role="button">Next</a>
     </div>
   </div>
 </ng-template>
 
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete-message-modal-title"
-     aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="delete-message-modal-title" class="modal fade" id="delete" role="dialog"
+     tabindex="-1">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <!-- Modal Title -->
         <h5 class="modal-title" id="delete-message-modal-title">Easy now!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -157,10 +157,10 @@
         possible to recover a deleted message.</b>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="viewService.deleteMessage()">
+        <button (click)="viewService.deleteMessage()" class="btn btn-danger" data-dismiss="modal" type="button">
           Delete Message
         </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
       </div>
     </div>
   </div>

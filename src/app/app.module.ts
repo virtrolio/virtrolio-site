@@ -4,24 +4,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
-
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-
 // Pages
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
@@ -44,7 +40,6 @@ import { MessageModalComponent } from './pages/viewing/message-modal/message-mod
 import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
-
 // Services
 import { LoginResolver } from './core/login-resolver';
 import { PendingChangesGuard } from './core/pending-changes.guard';

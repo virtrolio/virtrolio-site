@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-access-denied',
   templateUrl: './access-denied.component.html',
-  styleUrls: ['./access-denied.component.css']
+  styleUrls: [ './access-denied.component.css' ]
 })
 export class AccessDeniedComponent implements OnInit {
 
