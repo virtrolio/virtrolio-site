@@ -316,12 +316,12 @@ markdown {
 
 #btn-info {
   border-radius: 6em;
-  background-color: #6C757D;
+  background-color: var(--accent);
   color: #ffffff;
 }
 
 #btn-info:hover {
-  background-color: #5A6268;
+  background-color: var(--dark-accent);
 }
 
 /* fragment padding for header */
