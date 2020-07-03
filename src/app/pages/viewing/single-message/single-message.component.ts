@@ -3,7 +3,9 @@ import { ViewingService } from '../viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-import { VirtrolioMessage } from '../../../shared/interfaces';
+import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-single-message',
@@ -12,16 +14,31 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 })
 export class SingleMessageComponent implements OnInit {
   currentMessageId: string;
-  singleMessage: VirtrolioMessage;
+  singleMessage: VirtrolioMessage = {
+    ...new VirtrolioMessageTemplate(),
+    from: '',
+    fromName: '',
+    fromPic: '',
+    isRead: false,
+    key: '',
+    timestamp: new Timestamp(0, 0),
+    year: 0,
+    id: '',
+  };
+
   constructor(public viewService: ViewingService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService,
               private location: Location) {
+    this.singleMessage.contents = 'Message is loading...';
+    this.singleMessage.backColor = '#FFFFFF';
+    this.singleMessage.fontColor = '#000000';
+    this.singleMessage.fontFamily = 'Arial';
     this.route.queryParams.subscribe(params => {
       this.currentMessageId = params.messageId;
     });
     if (this.route.snapshot.queryParams.showBookmarkAlert) {
       this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark',
         { positionClass: 'toast-bottom-full-width' });
-      this.location.go('/viewing', '?messageId=' + this.currentMessageId );
+      this.location.go('/viewing', '?messageId=' + this.currentMessageId);
     }
   }
 
