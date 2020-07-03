@@ -43,13 +43,12 @@
   position: fixed;
   z-index: 2000;
   top: calc(2em + var(--navbar-height));
-  left: -1em;
+  left: -4em;
   font-size: 1em;
   font-weight: bold;
   color: white;
-  text-align: center;
   height: 6em;
-  width: 3em;
+  width: 6em;
   border-radius: 0.5em;
   background: var(--accent);
   cursor: pointer;
@@ -57,10 +56,13 @@
 }
 
 .hamburger:hover {
-  left: -0.5em;
-  height: 8em;
-  width: 3em;
+  left: -1em;
   transition: 0.5s;
+}
+
+.right-chevron {
+  position: absolute;
+  right: 0.25em;
 }
 
 /* Side nav contents */
@@ -70,9 +72,9 @@
 }
 
 .author-container {
-  padding: 1em 1em 1em 1em;
-  margin-left: 1em;
+  padding: 1em 1em 1em 2em;
   line-height: 1.2em;
+  border-bottom: 0.05em solid var(--lighter-grey);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

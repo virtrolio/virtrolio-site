@@ -46,6 +46,9 @@ export class ViewingService {
    */
   timeSince(nowMillis: number, millis: number, date: string) {
     const secondsPast = (nowMillis - millis) / 1000;
+    if (secondsPast < 1) {
+      return 'Just now';
+    }
     if (secondsPast < 60) {
       return Math.round(secondsPast).toString() + 's ago';
     }
@@ -55,6 +58,9 @@ export class ViewingService {
     if (secondsPast < 86400) {
       return (Math.round(secondsPast / 3600)).toString() + 'h ago';
     }
+    if (secondsPast <= 172800) {
+      return '1 day ago';
+    }
     if (secondsPast <= 604800) {
       return (Math.round(secondsPast / 86400)).toString() + ' days ago';
     }
@@ -62,6 +68,16 @@ export class ViewingService {
       // Return the full date if the Timestamp is past a week ago
       return date;
     }
+  }
+
+  /**
+   * Format the timestamp depending on how much time as elapsed
+   * @param nowMillis time in milliseconds upon ngOnInit()
+   * @param millis message Timestamp in milliseconds
+   * @param date message Timestamp as a date
+   */
+  getDateSent(date: string) {
+    return date;
   }
 
   /**
@@ -88,13 +104,5 @@ export class ViewingService {
    * @param id messageId
    */
   bookmarkMessage(id: string) {
-    this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark', { positionClass: 'toast-bottom-full-width' });
-    this.router.navigate([ '/viewing' ], {
-      relativeTo: this.route,
-      queryParams: {
-        messageId: id
-      },
-      queryParamsHandling: 'merge'
-    }).then();
   }
 }

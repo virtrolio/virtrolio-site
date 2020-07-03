@@ -26,6 +26,13 @@ export class HomeComponent implements OnInit {
   }
 
   /**
+   * Scroll within page without linking to fragments
+   */
+  onClickChevron() {
+    document.getElementById('info').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /**
    * When user starts typing, assign inputBoxText by reference to signingBoxText, then update count
    * @param textbox - The textbox to process.
    */
