@@ -8,10 +8,10 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
         Booklet
       </button>
-      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
         Cards
       </button>
     </div>
@@ -103,15 +103,16 @@
           </div>
         </div>
         <div *ngFor="let msg of messageList" class="carousel-item">
-          <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg, 'color': generateHeaderColor(msg.backColor).text}"
+          <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
+                       'color': generateHeaderColor(msg.backColor).text}"
                class="msg-header">
-            <div class="msg-header-group">
+            <div class="msg-header-group pt-1">
               <table class="header-table">
                 <tr>
                   <td>
-                  <span class="profile-pic-container-small mr-2">
-                    <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
-                  </span>
+            <span class="profile-pic-container-small mr-2">
+              <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+            </span>
                   </td>
                   <td>
                     <table>
@@ -119,15 +120,28 @@
                         {{ msg.fromName }}
                       </tr>
                       <tr class="msg-header-date">
-                        {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(), msg.timestamp.toDate().toDateString()) }}
+                        {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                        msg.timestamp.toDate().toDateString()) }}
                       </tr>
                     </table>
                   </td>
                 </tr>
               </table>
             </div>
+            <div class="card-header-group">
+              <table class="header-table">
+                <tr>
+                  <td>
+                    <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
+                            data-toggle="modal" type="button">
+                      <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+          <div [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
                class="card-body page message">
             <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
           </div>

@@ -18,7 +18,7 @@ service cloud.firestore {
                     // Check for current version number
                     && message.split('-')[2] == "2020.0"
                     // > Enforce max message length
-                    && request.resource.data.contents.size() <= 5000
+                    && request.resource.data.contents.size() <= 15000
                     // Data Validity
                     // > Regex string fields to reject if they're only whitespace or blank
                     && !request.resource.data.contents.matches('^\\s+$')

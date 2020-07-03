@@ -21,13 +21,13 @@
 }
 
 .navbar-nav li a {
-  color: #FFFFFF;
-  opacity: 75%;
+  color: #FEFEFE;
+  opacity: 0.75;
 }
 
 .navbar-nav li:hover a:hover {
   color: #FFFFFF;
-  opacity: 100%;
+  opacity: 1;
 }
 
 .profile-pic {
@@ -35,7 +35,7 @@
 }
 
 .profile-pic:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .profile-pic-container {
