@@ -29,11 +29,11 @@
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="dropdown-divider d-block d-sm-block d-md-none"></li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
-        <a class="nav-link" routerLink="settings">Settings</a>
+      <li class="nav-item d-block d-sm-block d-md-none">
+        <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="settings">Settings</a>
       </li>
-      <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
-        <a (click)="authService.logout()" class="nav-link" href="#">Logout</a>
+      <li class="nav-item d-block d-sm-block d-md-none">
+        <a [hidden]="!authService.isLoggedIn()" (click)="authService.logout()" class="nav-link" href="#">Logout</a>
       </li>
     </ul>
   </div>
