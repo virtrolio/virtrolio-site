@@ -10,9 +10,7 @@
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
         apart.</h1>
-      <a fragment="info" routerLink="./">
-        <img alt="down" height="48" id="chevron" src="../../../assets/images/icons/chevron-down.svg" width="48">
-      </a>
+       <img alt="down" height="48" id="chevron" src="../../../assets/images/icons/chevron-down.svg" width="48" (click)="onClickChevron()">
     </div>
   </div>
 </div>
@@ -21,8 +19,8 @@
 <div class="container pt-5 vertical-center body-container">
   <div class="row d-flex justify-content-center">
     <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
-      <h2 class="mb-3 px-5 home-text header-text">What is virtrolio?</h2>
-      <p class="lead px-5 home-text body-text"><em>Virtrolio</em> is your virtual folio - an online version of
+      <h2 class="mb-3 px-5 home-text header-text">What is a virtrolio?</h2>
+      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
         those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
         In other words, you can create your own virtrolio, share it
         with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
@@ -33,7 +31,7 @@
         <!-- Call to sign in and Google sign in button; displays if logged out -->
         <div *ngIf="!authService.isLoggedIn() else yourVirtrolio">
           <!-- Changing this to 'true else yourVirtrolio' induces no flickering-->
-          <p class="lead" id="bolded-body-text">Sign in below to start your own virtrolio!</p>
+          <p class="lead" id="bolded-body-text">Sign in below to create your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
             <button (click)="authService.login('/your-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
                     type="button">
@@ -52,7 +50,7 @@
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
         <ng-template #yourVirtrolio>
           <div class="justify-content-center text-center pt-1">
-            <p class="lead pb-1">You're already signed in! Click the button to go to Your Virtrolio.</p>
+            <p class="lead pb-1">You're already signed in! Click the button to go to your virtrolio.</p>
           </div>
           <div class="d-flex justify-content-center pt-1">
             <button class="btn-lg btn-primary" id="your-virtrolio" routerLink="/your-virtrolio" type="button">Go to my
@@ -68,10 +66,9 @@
     <div class="row">
       <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
         <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">Why use virtrolio?</h3>
-          <p class="lead body-text">Virtrolio offers you an authentic yearbook signing experience, and that means
-            <em>privacy</em>.
-            You can only view virtrolio messages sent directly to you (see our
+          <h3 class="body-header-text">Why use Virtrolio?</h3>
+          <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
+            that means <em>privacy</em>. You can only view virtrolio messages sent directly to you (see our
             <a href="/privacy-policy">Privacy Policy</a> for more details).
           </p>
         </div>
@@ -79,8 +76,7 @@
           <h3 class="body-header-text">How can I make a virtrolio?</h3>
           <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
             and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
-            your
-            virtrolio.</p>
+            your virtrolio.</p>
         </div>
         <div class="card mr-4 rounded border-0">
           <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
@@ -215,14 +211,27 @@
         </button>
       </div>
       <div class="modal-body">
-        Virtrolio supports a modified version of <em>Markdown</em> to format text. We also use an emoji library, so you
-        can press (Windows + Period) on a Windows computer or (Command + Control + Space) on a Mac to bring up the emoji
-        keyboard.<br><br><em>Note: not all emojis may be supported; check the link below to make sure!</em> ❤️
-        <br><br>
-        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
-        <br>
-        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
-          of available emojis</a>
+        <h5>Important Things to Note</h5>
+        <ul>
+          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
+            line') counts as 5 characters.
+          </li>
+          <li>Images can be embedded in messages...in a specific way. See our
+            <a routerLink="/faq" target="_blank">FAQ</a> for details.
+          </li>
+        </ul>
+        <h5>Formatting</h5>
+        <p>
+          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
+          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
+        </p>
+
+        <h5>Emojis</h5>
+        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
+          + Space) on a Mac to bring up the emoji
+          keyboard. Note: not all emojis may be supported; check <a
+            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
+            supported emojis</a> to make sure! ❤</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
@@ -230,4 +239,3 @@
     </div>
   </div>
 </div>
-<!--69-->
