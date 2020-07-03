@@ -94,7 +94,7 @@ export class SigningService {
       textbox.focus();
       textbox.scrollTop = scroll_pos;
       // special case for underline or if no text was highlighted
-      // underline should always be on the outside (since its html instead of markdown)
+      // underline should always be on the outside (since it's html instead of markdown)
       if (formatChars === '<u>' || start === end) {
         textbox.setSelectionRange(start + formatChars.length, end + formatChars.length);
       }
