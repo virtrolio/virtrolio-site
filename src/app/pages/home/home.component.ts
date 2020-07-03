@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
     this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
     this.signingService.setHomeDefaultValues();
   }
+  
+  onClickChevron() {
+    document.getElementById("info").scrollIntoView({behvaiour: "smooth"});
+  }
 
   /**
    * When user starts typing, assign inputBoxText by reference to signingBoxText, then update count
