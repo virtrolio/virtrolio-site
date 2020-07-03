@@ -71,6 +71,16 @@ export class ViewingService {
   }
 
   /**
+   * Format the timestamp depending on how much time as elapsed
+   * @param nowMillis time in milliseconds upon ngOnInit()
+   * @param millis message Timestamp in milliseconds
+   * @param date message Timestamp as a date
+   */
+  getDateSent(date: string) {
+    return date;
+  }
+
+  /**
    * When you click 'x' on a message, messageToDelete will be assigned the value of that message's id
    * @param mID message id
    */

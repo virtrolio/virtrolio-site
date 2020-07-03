@@ -26,6 +26,14 @@
   white-space: nowrap;
 }
 
+.msg-header-date {
+  font-size: 1em;
+  max-width: 80vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .profile-pic-container-small {
   background: rgba(255, 255, 255, 0);
   height: 4.2em;
