@@ -28,7 +28,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
-      <div class="dropdown-divider d-block d-sm-block d-md-none"></div>
+      <li *ngIf="authService.isLoggedIn()" class="dropdown-divider d-block d-sm-block d-md-none"></li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item d-block d-sm-block d-md-none">
         <a class="nav-link" routerLink="settings">Settings</a>
       </li>
