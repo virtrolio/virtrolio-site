@@ -58,6 +58,9 @@ export class ViewingService {
     if (secondsPast < 86400) {
       return (Math.round(secondsPast / 3600)).toString() + 'h ago';
     }
+    if (secondsPast <= 172800) {
+      return '1 day ago';
+    }
     if (secondsPast <= 604800) {
       return (Math.round(secondsPast / 86400)).toString() + ' days ago';
     }
