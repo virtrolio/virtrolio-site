@@ -78,19 +78,21 @@ export class SigningService {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
     const text = textbox.value;
+    const scrollPos: number = textbox.scrollTop;
 
     // If the end character was not provided, we assume it will be the same as the start character
     if (typeof endChars === 'undefined' || !endChars) {
       endChars = formatChars;
     }
-    this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
+    textbox.value = this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
       text.slice(end);
 
     // timeout so that it sets the selection range AFTER the textbox is modified
     setTimeout(() => {
       textbox.focus();
+      textbox.scrollTop = scrollPos;
       // special case for underline or if no text was highlighted
-      // underline should always be on the outside (since its html instead of markdown)
+      // underline should always be on the outside (since it's html instead of markdown)
       if (formatChars === '<u>' || start === end) {
         textbox.setSelectionRange(start + formatChars.length, end + formatChars.length);
       }
