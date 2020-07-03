@@ -84,9 +84,7 @@ export class SigningService {
     if (typeof endChars === 'undefined' || !endChars) {
       endChars = formatChars;
     }
-    textbox.value = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
-      text.slice(end);
-    this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
+    textbox.value = this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
       text.slice(end);
 
     // timeout so that it sets the selection range AFTER the textbox is modified
