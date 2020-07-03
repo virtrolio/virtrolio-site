@@ -83,7 +83,8 @@
           <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
           <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
             customization tools,
-            including <span style="color: #d1155a">colour pickers</span>, <b><i>fonts</i></b>, emojis 😍, and a markdown
+            including <span style="color: #d1155a">colour pickers</span>, <span
+              style="font-family: 'Comic Sans MS', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
             editor—all so that you can truly express yourself.</p>
         </div>
       </div>
@@ -99,9 +100,11 @@
               </span>
             <span class="card-header-text">Mike H.</span>
           </div>
-          <markdown [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}" class="card-body card-message"
-                    data="{{ signingService.signingBoxText }}"
-                    emoji id="preview-text"></markdown>
+          <markdown
+            [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
+            class="card-body card-message"
+            data="{{ signingService.signingBoxText }}"
+            emoji id="preview-text"></markdown>
         </div>
       </div>
 
@@ -140,26 +143,31 @@
             </button>
             <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
               <span *ngFor="let font of signingService.fontDict | keyvalue">
-              <a (click)="signingService.selectFont(font.key)" [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
+              <a (click)="signingService.selectFont(font.key)"
+                 [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
                  class="dropdown-item">{{font.key}}</a>
             </span>
             </div>
           </div>
 
           <!-- Formatting buttons -->
-          <button (click)="signingService.addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
+          <button (click)="signingService.addFormatting(signingInputArea, '**')"
+                  class="btn btn-secondary btn-format mr-2"
                   id="button-bold" type="button">
             <b>B</b>
           </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
+          <button (click)="signingService.addFormatting(signingInputArea, '*')"
+                  class="btn btn-secondary btn-format mr-2"
                   id="button-italics" type="button">
             <i>I</i>
           </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')" class="btn btn-secondary btn-format mr-2"
+          <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
+                  class="btn btn-secondary btn-format mr-2"
                   id="button-underline" type="button">
             <u>U</u>
           </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
+          <button (click)="signingService.addFormatting(signingInputArea, '~~')"
+                  class="btn btn-secondary btn-format mr-2"
                   id="button-strikethrough" type="button">
             <s>S</s>
           </button>
@@ -175,7 +183,8 @@
           <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
             <img alt="fill color selector" id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
             <label for="colorpicker-background" hidden>Colour picker for background</label>
-            <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
+            <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
+                   name="backgroundColorPicker"
                    type="color" value={{signingService.backgroundColor}}>
             <span [ngStyle]="{'background-color': signingService.backgroundColor}"
                   class="dynamic-color-bar">&nbsp;</span>
