@@ -25,6 +25,9 @@ export class HomeComponent implements OnInit {
     this.signingService.setHomeDefaultValues();
   }
   
+  /**
+  * Scroll within page without linking to fragments
+  */
   onClickChevron() {
     document.getElementById("info").scrollIntoView({behvaiour: "smooth"});
   }
