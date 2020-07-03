@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
     this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
     this.signingService.setHomeDefaultValues();
   }
-  
+
   /**
-  * Scroll within page without linking to fragments
-  */
+   * Scroll within page without linking to fragments
+   */
   onClickChevron() {
-    document.getElementById("info").scrollIntoView({behvaiour: "smooth"});
+    document.getElementById('info').scrollIntoView({ behavior: 'smooth' });
   }
 
   /**
