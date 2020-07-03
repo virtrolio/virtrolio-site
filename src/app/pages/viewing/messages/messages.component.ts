@@ -22,8 +22,6 @@ export class MessagesComponent implements OnInit {
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
   }
 
-  ngOnInit(): void { }
-
   /**
    * Assign messages passed via the [setMessageList] binding
    * @param messages list of verified VirtrolioMessages
@@ -35,6 +33,8 @@ export class MessagesComponent implements OnInit {
       this.messageList.length === 1 ? this.oneMessage = 'message' : this.oneMessage = 'messages';
     }
   }
+
+  ngOnInit(): void { }
 
   /**
    * Generate the lightness value of HSL from RBG

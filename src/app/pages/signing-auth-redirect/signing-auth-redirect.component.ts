@@ -12,12 +12,12 @@ export class SigningAuthRedirectComponent implements OnInit {
   uid: string;
   key: string;
 
+  constructor(public authService: AuthService, private route: ActivatedRoute, private title: Title) { }
+
   goToSigning() {
     // noinspection JSIgnoredPromiseFromCall
     this.authService.login('/signing', { uid: this.uid, key: this.key });
   }
-
-  constructor(public authService: AuthService, private route: ActivatedRoute, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle('Please Sign In. | Virtrolio');

@@ -10,15 +10,15 @@
     <div class="card">
       <div class="card-header" id="s1q1h">
         <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q1c" aria-expanded="false"
-                  aria-controls="s1q1c">
+          <button aria-controls="s1q1c" aria-expanded="false" class="btn btn-link" data-target="#s1q1c"
+                  data-toggle="collapse" type="button">
             How do I sign someone's virtrolio?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s1q1c" class="collapse" aria-labelledby="s1q1h" data-parent="#faq-s1">
+      <div aria-labelledby="s1q1h" class="collapse" data-parent="#faq-s1" id="s1q1c">
         <div class="card-body card-align">
           Ask them for their 'sharing link' (which they can get from their 'Your Virtrolio' page). Then visit that
           sharing link and sign in if you haven't already. You will then be taken to a wonderful place with many
@@ -31,18 +31,19 @@
     <div class="card">
       <div class="card-header" id="s1q2h">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#s1q2c"
-                  aria-expanded="false" aria-controls="s1q2c">
+          <button aria-controls="s1q2c" aria-expanded="false" class="btn btn-link collapsed" data-target="#s1q2c"
+                  data-toggle="collapse" type="button">
             How do I delete a message I sent?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s1q2c" class="collapse" aria-labelledby="s1q2h" data-parent="#faq-s1">
+      <div aria-labelledby="s1q2h" class="collapse" data-parent="#faq-s1" id="s1q2c">
         <div class="card-body card-align">
           As per our <a routerLink="/privacy-policy">Privacy Policy</a>, you cannot delete a message once you have sent
-          it. This is to more closely emulate real-life yearbook signing. In order to have your message deleted, you
+          it. This is to more closely emulate real-life yearbook signing, in that the virtrolio (and all its messages)
+          will stay with the <em>receiver</em>. In order to have your message deleted, you
           must ask the <em>recipient</em> of your message to delete it.
         </div>
       </div>
@@ -52,15 +53,15 @@
     <div class="card">
       <div class="card-header" id="s1q3h">
         <h2 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#s1q3c"
-                  aria-expanded="false" aria-controls="s1q3c">
+          <button aria-controls="s1q3c" aria-expanded="false" class="btn btn-link collapsed" data-target="#s1q3c"
+                  data-toggle="collapse" type="button">
             Can I sign someone's virtrolio more than once?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s1q3c" class="collapse" aria-labelledby="s1q3h" data-parent="#faq-s1">
+      <div aria-labelledby="s1q3h" class="collapse" data-parent="#faq-s1" id="s1q3c">
         <div class="card-body card-align">
           Yes and no. For any one version of the website (for example, if you just created an account with us), then you
           will only be able to send one message to each of your friends. You probably wouldn't
@@ -70,6 +71,82 @@
           special, meaningful message. However, if we make a major update to the website,
           then we will allow for <strong>one extra message to be sent to each of your friends</strong> so that you can
           try out the new update's features.
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q5h">
+        <h2 class="mb-0">
+          <button aria-controls="s1q5c" aria-expanded="false" class="btn btn-link" data-target="#s1q5c"
+                  data-toggle="collapse"
+                  type="button">
+            Can I add images, drawings, doodles, or scribbles to my messages?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div aria-labelledby="s1q5h" class="collapse" data-parent="#faq-s1" id="s1q5c">
+        <div class="card-body card-align">
+          <p>Yes, if you have the images uploaded to some other website (since we do not store images on virtrolio).
+            We're working on adding a menu to allow you to do this soon!</p>
+
+          <p>However, if you know a bit of HTML, you can do it yourself like this: <strong
+            style="font-family: Consolas, sans-serif">&lt;img src="insert link URL"&gt;</strong> and you will be able to
+            see it in the preview panel while you sign your message if you do it properly with a URL that works.</p>
+
+          <p><strong>Note: Not every URL works, and some URLs will only work temporarily, which makes things difficult
+            when you want the messages to last for a long time. We are not responsible if your link breaks and the
+            picture no longer shows up on a message you have sent.</strong> If the URL holding your image stops working,
+            then so will your image, even if you already sent it. The only way a recipient could keep the image if it
+            was on a temporary link is if they printed out their virtrolio or downloaded a type of file that would allow
+            them to view the image (features which we have not implemented yet). As such, we recommend that you link to
+            images which you know will work not only now but also in the future when your friend reads your message.
+            From what has been tested, Google Photos links can expire after a day. Other image sharing / storing
+            services such as Google Drive and Imgur are possible alternatives. Virtrolio is not making any suggestions
+            for software to use in this regard; we are simply making you aware of the options that are out there.</p>
+
+          <p>Even if the URL you use does lead to an image, the URL must contain ONLY an image for it to work in
+            your virtrolio message. For example, <a target="_blank" href="https://bit.ly/2NRCMvu">this link</a> will not
+            work but <a target="_blank" href="https://bit.ly/2BuNxkA">this one</a> will. Usually, a 'usable' URL in this
+            context will have an 'image file extension' at the end of the URL—something like .jpg or .png or .gif. Some
+            people call this type of link an 'embed link', as these links can be used to 'embed' content into a website.
+            To find this link, you could search up how to get the 'embed link' for whatever online service you used to
+            upload and store your photos. For some websites, it is much easier to get this embed link—the website might
+            even provide an easy-to-use button. For other websites, you might need to right-click on an image and try to
+            click 'Open image in new tab' until you get a link which looks like a valid 'embed link' with only the image
+            on it. </p>
+
+          <p>On a related note, if you know some more HTML / CSS then you can style your images too (for example,
+            <strong style="font-family: Consolas, sans-serif">&lt;img src="URL" width = 100%&gt;</strong> is very useful
+            for scaling your images to a proper, viewable size). We are working on a more user-friendly menu to be able
+            to insert images into your message if you're not comfortable with this, so watch out for that!</p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card">
+      <div class="card-header" id="s1q6h">
+        <h2 class="mb-0">
+          <button aria-controls="s1q6c" aria-expanded="false" class="btn btn-link" data-target="#s1q6c"
+                  data-toggle="collapse"
+                  type="button">
+            Can I download my messages in some way? Maybe saving as a word document or a PDF?
+          </button>
+        </h2>
+      </div>
+
+      <!-- Answer -->
+      <div aria-labelledby="s1q6h" class="collapse" data-parent="#faq-s1" id="s1q6c">
+        <div class="card-body card-align">
+          After sending your messages, you do not own them anymore, so you cannot download or save them then. If you
+          want to download and save the messages you have <em>received</em>, we currently have the option for you to
+          download all your data as a .json file (go to your settings page for this option). We are working on a way
+          for you to be able download your messages in a more user-friendly format, though, so stay tuned!
         </div>
       </div>
     </div>
@@ -96,85 +173,17 @@
 
     <!-- Question -->
     <div class="card">
-      <div class="card-header" id="s1q5h">
-        <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q5c" aria-expanded="false"
-                  aria-controls="s1q5c">
-            Can I add images, drawings, doodles, or scribbles to my messages?
-          </button>
-        </h2>
-      </div>
-
-      <!-- Answer -->
-      <div id="s1q5c" class="collapse" aria-labelledby="s1q5h" data-parent="#faq-s1">
-        <div class="card-body card-align">
-          We're working on adding a button to allow you to do this soon!
-          However, if you know a bit of HTML, you can do it yourself like this:
-          <strong
-            style="font-family: Consolas, sans-serif">&lt;img src="insert link URL"&gt;</strong> and you will be able to
-          see it in the preview panel while you sign your message if you do it properly with a URL that works. Not every
-          URL works, even if it does technically lead to an image. The URL must contain ONLY an image.
-          For example, <a target="_blank" href="https://pixers.ca/wall-murals/forest-landscape-52681781">this link</a>
-          will not work but
-          <a target="_blank"
-             href="https://img.pixers.pics/pho_wat(s3:700/FO/52/68/17/81/700_FO52681781_231280298b730b039220871519fde7b7.jpg,700,467,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,417,jpg)/wall-murals-forest-landscape.jpg.jpg">this
-            one</a> will. Usually, a 'usable' URL in this context will have an 'image file extension' at the end of the
-          URL—something like .jpg or .png or .gif. Some people call this type of link an 'embed link', so you could
-          search up how to get the 'embed link' for a photo if you stored it on an online service such as Google Drive
-          or Google Photos.<br><br>
-
-          Also, if you know some more HTML / CSS then you can style your images too (for example, <strong
-          style="font-family: Consolas, sans-serif">&lt;img src="URL" width = 100%&gt;</strong> is very
-          useful for scaling your images to a proper, viewable size). We are working on a more user-friendly menu to be
-          able to insert
-          images into your message if you're not comfortable with this, so watch out for that!<br><br>
-
-          One thing about inserting images like this: <strong>they are not permanent</strong>.
-          If the URL holding your image stops working, then so will
-          your image, even if you already sent it. The only way a recipient could keep the image is if they printed out
-          their virtrolio or exported to a type of file that would allow them to view the image (a feature which we have
-          not implemented yet). As such, we recommend that
-          you link to images which you know will work not only now but also in the future when your friend reads your
-          message.
-        </div>
-      </div>
-    </div>
-
-    <!-- Question -->
-    <div class="card">
-      <div class="card-header" id="s1q6h">
-        <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q6c" aria-expanded="false"
-                  aria-controls="s1q6c">
-            Can I download my messages in some way? Maybe saving as a word document or a PDF?
-          </button>
-        </h2>
-      </div>
-
-      <!-- Answer -->
-      <div id="s1q6c" class="collapse" aria-labelledby="s1q6h" data-parent="#faq-s1">
-        <div class="card-body card-align">
-          After sending your messages, you do not own them anymore, so you cannot download or save them then. If you
-          want to download and save the messages you have <em>received</em>, we currently have the option for you to download all
-          your data as a .json file (go to your settings page for this option). We are working on a way for you to be
-          able download your messages in a more user-friendly format, though, so stay tuned!
-        </div>
-      </div>
-    </div>
-
-    <!-- Question -->
-    <div class="card">
       <div class="card-header" id="s1q7h">
         <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s1q7c" aria-expanded="false"
-                  aria-controls="s1q7c">
+          <button aria-controls="s1q7c" aria-expanded="false" class="btn btn-link" data-target="#s1q7c"
+                  data-toggle="collapse" type="button">
             Why would I want a new sharing link?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s1q7c" class="collapse" aria-labelledby="s1q7h" data-parent="#faq-s1">
+      <div aria-labelledby="s1q7h" class="collapse" data-parent="#faq-s1" id="s1q7c">
         <div class="card-body card-align">
           You can generate a new sharing link if people are sending you messages you do not approve of using your old
           one. This helps prevent spammers and bullies from clogging up your virtrolio.
@@ -193,15 +202,15 @@
     <div class="card">
       <div class="card-header" id="s2q1h">
         <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s2q1c" aria-expanded="false"
-                  aria-controls="s2q1c">
+          <button aria-controls="s2q1c" aria-expanded="false" class="btn btn-link" data-target="#s2q1c"
+                  data-toggle="collapse" type="button">
             What do I do if I get messages I don't approve of?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s2q1c" class="collapse" aria-labelledby="s2q1h" data-parent="#faq-s2">
+      <div aria-labelledby="s2q1h" class="collapse" data-parent="#faq-s2" id="s2q1c">
         <div class="card-body card-align">
           Delete the messages from your virtrolio; as the recipient, according to our
           <a routerLink="/privacy-policy">Privacy Policy</a>, you are the only one with the authority to do this. You
@@ -216,15 +225,15 @@
     <div class="card">
       <div class="card-header" id="s2q3h">
         <h2 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#s2q3c" aria-expanded="false"
-                  aria-controls="s2q3c">
+          <button aria-controls="s2q3c" aria-expanded="false" class="btn btn-link" data-target="#s2q3c"
+                  data-toggle="collapse" type="button">
             Can I sign in with anything other than Google?
           </button>
         </h2>
       </div>
 
       <!-- Answer -->
-      <div id="s2q3c" class="collapse" aria-labelledby="s2q3h" data-parent="#faq-s2">
+      <div aria-labelledby="s2q3h" class="collapse" data-parent="#faq-s2" id="s2q3c">
         <div class="card-body card-align">
           Currently, no. Sorry!
         </div>

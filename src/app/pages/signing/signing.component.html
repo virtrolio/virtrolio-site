@@ -9,11 +9,13 @@
         </label>
       </div>
       <div class="row">
-        <textarea #signingInputArea id="signing-box" class="form-control" autofocus
-                  (keyup)='signingService.updateCount(signingInputArea)' [(ngModel)]='signingService.signingBoxText'
-                  [ngStyle]="{'font-family': signingService.currentFontFamily}"></textarea>
-        <span id="char-count-display" *ngIf="signingService.charCount >= 2000"
-              [ngStyle]="{'color': signingService.charCountColor}">
+        <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
+                  [(ngModel)]='signingService.signingBoxText'
+                  [ngStyle]="{'font-family': signingService.currentFontFamily}"
+                  autofocus class="form-control"
+                  id="signing-box"></textarea>
+        <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
+              id="char-count-display">
           {{ signingService.charCount }} / {{ signingService.maxCharCount }}
         </span>
       </div>
@@ -25,93 +27,91 @@
 
         <!-- Font dropdown -->
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="font-selector-dropdown"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                  [ngStyle]="{'font-family': signingService.currentFontFamily}">
+          <button [ngStyle]="{'font-family': signingService.currentFontFamily}" aria-expanded="false"
+                  aria-haspopup="true"
+                  class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="font-selector-dropdown"
+                  type="button">
             <span>{{ signingService.currentFontDisplay }}</span>
             <span class="caret"></span>
           </button>
-          <div class="dropdown-menu" aria-labelledby="font-selector-dropdown">
+          <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
             <span *ngFor="let font of signingService.fontDict | keyvalue">
-              <a class="dropdown-item" [ngStyle]="{'font-family': font.key}"
-                 (click)="signingService.selectFont(font.key)">{{font.key}}</a>
+              <a (click)="signingService.selectFont(font.key)" [ngStyle]="{'font-family': font.key}"
+                 class="dropdown-item">{{font.key}}</a>
             </span>
           </div>
         </div>
 
         <!-- Formatting buttons -->
-        <button type="button" (click)="signingService.addFormatting(signingInputArea, '**')"
-                class="btn btn-secondary btn-format mr-2"
-                id="button-bold">
+        <button (click)="signingService.addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
+                id="button-bold" type="button">
           <b>B</b>
         </button>
-        <button type="button" (click)="signingService.addFormatting(signingInputArea, '*')"
-                class="btn btn-secondary btn-format mr-2"
-                id="button-italics">
+        <button (click)="signingService.addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
+                id="button-italics" type="button">
           <i>I</i>
         </button>
-        <button type="button" (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
-                class="btn btn-secondary btn-format mr-2" id="button-underline">
+        <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
+                class="btn btn-secondary btn-format mr-2"
+                id="button-underline" type="button">
           <u>U</u>
         </button>
-        <button type="button" (click)="signingService.addFormatting(signingInputArea, '~~')"
-                class="btn btn-secondary btn-format mr-2"
-                id="button-strikethrough">
+        <button (click)="signingService.addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
+                id="button-strikethrough" type="button">
           <s>S</s>
         </button>
 
         <!-- Color pickers for text and background -->
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
+        <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
           <span id="font-color-text">A</span>
           <label for="colorpicker-font" hidden>Colour picker for font</label>
-          <input type="color" class="mr-2" id="colorpicker-font" name="fontColorPicker"
-                 value={{signingService.textColor}}
-                 [(ngModel)]='signingService.textColor'>
-          <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.textColor}">&nbsp;</span>
+          <input [(ngModel)]='signingService.textColor' class="mr-2" id="colorpicker-font" name="fontColorPicker"
+                 type="color" value={{signingService.textColor}}>
+          <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper">
-          <img id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg" alt="fill color selector">
+        <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
+          <img alt="fill color selector" id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
           <label for="colorpicker-background" hidden>Colour picker for background</label>
-          <input type="color" class="mr-2" id="colorpicker-background" name="backgroundColorPicker"
-                 value={{signingService.backgroundColor}} [(ngModel)]='signingService.backgroundColor'>
-          <span class="dynamic-color-bar" [ngStyle]="{'background-color': signingService.backgroundColor}">&nbsp;</span>
+          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
+                 name="backgroundColorPicker" type="color" value={{signingService.backgroundColor}}>
+          <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-primary" id="btn-info" data-toggle="modal"
-                data-target="#info">Formatting Help
+                data-target="#info">Read this first!
         </button>
       </div>
       <div class="row mt-3 justify-content-center">
-        <button type="button" class="btn btn-primary btn-send" data-toggle="modal" data-target="#submit-confirm"
-                [disabled]="!signingService.canSend" id="send-button">Send
+        <button [disabled]="!signingService.canSend" class="btn btn-primary btn-send" data-target="#submit-confirm"
+                data-toggle="modal" id="send-button" type="button">Send
         </button>
       </div>
     </div>
 
     <!-- Preview box -->
     <div class="col-md-6 order-md-2 center-children">
-      <div class="row title-div vertical-center">
+      <div class="row title-div mt-3 mt-md-0 vertical-center">
         <label for="preview-text">
-          Preview
+          <strong>Preview</strong>
         </label>
       </div>
       <div class="row">
-        <markdown emoji
-                  [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
-                  'font-family': signingService.currentFontFamily}" id="preview-text"
-                  data="{{ signingService.signingBoxText }}"></markdown>
+        <markdown [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
+                  'font-family': signingService.currentFontFamily}"
+                  data="{{ signingService.signingBoxText }}" emoji
+                  id="preview-text"></markdown>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Message confirmation modal -->
-<div class="modal fade" id="submit-confirm" tabindex="-1" role="dialog"
-     aria-labelledby="submit-confirm-title" aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="submit-confirm-title" class="modal fade" id="submit-confirm"
+     role="dialog" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="submit-confirm-title">Are you sure you want to send this?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -119,39 +119,52 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="sendMsg(signingInputArea)"
-                data-dismiss="modal">
+        <button (click)="sendMsg(signingInputArea)" class="btn btn-primary" data-dismiss="modal"
+                type="button">
           Send it!
         </button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Information modal when they click on the ? -->
+<!-- Read this first! -->
 <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="info-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="info-title">Craft your perfect message!</h5>
+        <h4 class="modal-title" id="info-title">Craft your perfect message!</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Virtrolio supports a modified version of <em>Markdown</em> to format text. We also use an emoji library, so you
-        can press (Windows + Period) on a Windows computer or (Command + Control + Space) on a Mac to bring up the emoji
-        keyboard.<br><br><em>Note: not all emojis may be supported; check the link below to make sure!</em> ❤️
-        <br><br>
-        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Learn how to type in markdown</a>
-        <br>
-        <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">Visit the library
-          of available emojis</a>
+        <h5>Important Things to Note</h5>
+        <ul>
+          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
+            line') counts as 5 characters.
+          </li>
+          <li>Images can be embedded in messages...in a specific way. See our
+            <a routerLink="/faq" target="_blank">FAQ</a> for details.
+          </li>
+        </ul>
+        <h5>Formatting</h5>
+        <p>
+          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
+          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
+        </p>
+
+        <h5>Emojis</h5>
+        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
+          + Space) on a Mac to bring up the emoji
+          keyboard. Note: not all emojis may be supported; check <a
+            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
+            supported emojis</a> to make sure! ❤</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
       </div>
     </div>
   </div>
