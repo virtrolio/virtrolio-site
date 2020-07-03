@@ -2,26 +2,26 @@
   <div class="single-message-view col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
     <div class="author-card">
       <span class="profile-pic-container-small">
-        <img alt="profile-pic" class="profile-pic" src="{{ viewService.singleMessage.fromPic }}">
+        <img alt="profile-pic" class="profile-pic" src="{{ singleMessage.fromPic }}">
       </span>
     </div>
     <div class="author-card mb-3">
       <table>
         <tr class="row msg-header-text">
-          {{ viewService.singleMessage.fromName }}
+          {{ singleMessage.fromName }}
         </tr>
         <tr class="row msg-header-date">
-          {{ viewService.singleMessage.timestamp.toDate().toDateString() }}
+          {{ singleMessage.timestamp.toDate().toDateString() }}
         </tr>
       </table>
     </div>
     <div class="card shadow message-card">
-      <div [ngStyle]="{'background': viewService.singleMessage.backColor,
-                       'color': viewService.singleMessage.fontColor,
-                       'font-family': viewService.fonts[viewService.singleMessage.fontFamily].fontFamily
-                       +','+ viewService.fonts[viewService.singleMessage.fontFamily].backupFont}"
+      <div [ngStyle]="{'background': singleMessage.backColor,
+                       'color': singleMessage.fontColor,
+                       'font-family': viewService.fonts[singleMessage.fontFamily].fontFamily
+                       +','+ viewService.fonts[singleMessage.fontFamily].backupFont}"
            class="card-body message-card message">
-        <markdown data="{{ viewService.decodeHtml(viewService.singleMessage.contents) }}" emoji></markdown>
+        <markdown data="{{ viewService.decodeHtml(singleMessage.contents) }}" emoji></markdown>
       </div>
     </div>
   </div>

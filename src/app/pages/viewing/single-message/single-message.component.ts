@@ -3,6 +3,7 @@ import { ViewingService } from '../viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
+import { VirtrolioMessage } from '../../../shared/interfaces';
 
 @Component({
   selector: 'app-single-message',
@@ -11,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class SingleMessageComponent implements OnInit {
   currentMessageId: string;
-
+  singleMessage: VirtrolioMessage;
   constructor(public viewService: ViewingService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService,
               private location: Location) {
     this.route.queryParams.subscribe(params => {
@@ -25,7 +26,12 @@ export class SingleMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.viewService.getMessageById(this.currentMessageId);
+    this.viewService.msgIo.getMessage(this.currentMessageId).subscribe((message: VirtrolioMessage) => {
+      try {
+        this.viewService.msgIo.verifyMessage(message);
+        this.singleMessage = message;
+      } catch (e) { }
+    });
   }
 
   /**
