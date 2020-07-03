@@ -269,7 +269,7 @@ markdown {
 
 #btn-info{
   box-shadow: var(--signing-shadow);
-  background-color: #6C757D;
+  background-color: var(--accent);
 }
 
 @media only screen and (max-width: 768px) {
