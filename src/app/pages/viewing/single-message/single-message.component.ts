@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
+import { AuthService } from '../../../core/auth.service';
 
 @Component({
   selector: 'app-single-message',
@@ -47,7 +48,10 @@ export class SingleMessageComponent implements OnInit {
       try {
         this.viewService.msgIo.verifyMessage(message);
         this.singleMessage = message;
-      } catch (e) { }
+      } catch (e) {
+        AuthService.displayError(e);
+        this.router.navigate([ '/viewing' ]);
+      }
     });
   }
 
