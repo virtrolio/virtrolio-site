@@ -21,6 +21,7 @@ export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
   public scrollSyncLoc = 0;
+  public signScrolling = true;
 
   private uid: string;
   private key: string;
@@ -54,11 +55,9 @@ export class SigningComponent implements OnInit {
   }
 
   syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
-    previewBox.element.nativeElement.scrollTop = textbox.scrollTop;
-  }
-
-  syncSigning(previewBox: MarkdownComponent, textbox: HTMLTextAreaElement) {
-    textbox.scrollTop = previewBox.element.nativeElement.scrollTop;
+    const scrollPerc: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
+    const ele = previewBox.element.nativeElement;
+    ele.scrollTop = scrollPerc * ele.scrollHeight - 160;
   }
 
   /**
