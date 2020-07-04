@@ -97,9 +97,8 @@
       </div>
       <div class="row">
         <markdown #previewBoxArea
-                  (scroll)='syncSigning(previewBoxArea, signingInputArea)'
                   [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
-                'font-family': signingService.currentFontFamily}"
+                  'font-family': signingService.currentFontFamily}"
                   data="{{ signingService.signingBoxText }}" emoji
                   id="preview-text"></markdown>
       </div>
