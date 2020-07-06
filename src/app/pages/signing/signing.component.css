@@ -139,8 +139,7 @@ markdown {
 /* || Embed Photo */
 
 #embed-image-holder {
-  border: 2px solid var(--darkest-accent);
-  width: 10em;
+  max-width: 100%;
 }
 
 #embed-photo-div {
