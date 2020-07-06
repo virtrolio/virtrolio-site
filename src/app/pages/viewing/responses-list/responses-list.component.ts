@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ViewingService } from '../viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 import { VirtrolioMessage } from '../../../shared/interfaces';

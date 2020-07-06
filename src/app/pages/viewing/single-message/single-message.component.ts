@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
