@@ -21,6 +21,7 @@ export class SigningComponent implements OnInit {
   public sending = false;
   public embedLink = 'https://bit.ly/3de5LUs';
   public imageWidth = 50;
+  public copyButtonText = 'Copy';
 
   private uid: string;
   private key: string;
@@ -74,5 +75,16 @@ export class SigningComponent implements OnInit {
         AuthService.displayError(error);
       }
     );
+  }
+
+  /**
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
+   */
+  copyLink(inputElement: HTMLInputElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    this.copyButtonText = 'Copied!';
   }
 }
