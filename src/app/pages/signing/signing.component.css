@@ -145,6 +145,10 @@ markdown {
   color: white;
 }
 
+#width-slider {
+  height: 10px;
+}
+
 /* || Typography */
 
 .title-div {

@@ -20,6 +20,7 @@ export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
   public embedLink = 'https://bit.ly/3de5LUs';
+  public imageWidth = 50;
 
   private uid: string;
   private key: string;
