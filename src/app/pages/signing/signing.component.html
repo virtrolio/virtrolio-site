@@ -105,18 +105,31 @@
 
   <div class="row justify-content-center mt-4 p-2 shadow" id="embed-photo-div">
     <div class="col-md-6 my-3 px-5 vertical-center">
-      <p><strong>Add a link to a photo!</strong></p>
-      <label for="embed-link-field" style="display:none">Insert embed link</label>
-      <input type="text" value="Put your link here!" [(ngModel)]='embedLink' id="embed-link-field">
-      <div class="my-3">
-        <button class="btn btn-secondary" data-toggle="modal" data-target="#embed-modal">
-          How to embed images on your virtrolio message
+      <div class="mb-3">
+        <span class="mr-3"><strong>Add a link to a photo!</strong></span>
+        <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-modal">
+          How?
         </button>
+      </div>
+      <div class="input-group">
+        <label for="embed-link-field" style="display:none">Insert embed link</label>
+        <input class="form-control" type="text" placeholder="Put your link here!"
+               [(ngModel)]='embedLink' id="embed-link-field">
+      </div>
+      <div class="my-3">
+        <strong>Your image code</strong><br>
+        <small>Copy this into your message and check the 'Preview'!</small>
+        <div class="input-group my-3">
+          <input type="text" class="form-control" value="<img src='{{embedLink}}' width=100%>">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Copy</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
       <p><strong>Image Preview</strong></p>
-      <img *ngIf="embedLink else noImage" alt="embbed image" src="{{embedLink}}" id="embed-image-holder">
+      <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder">
       <ng-template #noImage>No image to show!</ng-template>
     </div>
   </div>
