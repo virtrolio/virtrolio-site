@@ -2,21 +2,21 @@ import { Injectable, SecurityContext } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
-import * as firebase from 'firebase';
-
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MsgIoService {
   static readonly currentYear = 2020;
-  static readonly maxMessageLength = 5000;
+  static readonly currentVersion = '2020.0';
+  static readonly maxMessageLength = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
 
@@ -33,6 +33,7 @@ export class MsgIoService {
    * in MsgIoService.
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
+    const sanitizedContents = this.sanitizer.sanitize(SecurityContext.HTML, message.contents);
     if (typeof message.to === 'undefined' || !message.to) {
       // This condition (used several times below) checks for undefined, null or empty strings
       throw new Error('Recipient UID was not provided');
@@ -47,9 +48,10 @@ export class MsgIoService {
       throw new Error('Font color was not provided');
     } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
       throw new Error('Font family was not provided');
-    } else if (message.contents.length > MsgIoService.maxMessageLength) {
+    } else if (sanitizedContents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
-        'and the provided message is ' + message.contents.length + ' characters long.');
+        'and the provided message is ' + sanitizedContents.length + ' characters long.\n' +
+        'Remember that some character such as line breaks, emojis and other languages have a length longer than one per character.');
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided font color is not a valid hex code. Did you forget to include \'#\'?' +
         ' Provided color code: ' + message.fontColor);
@@ -132,7 +134,7 @@ export class MsgIoService {
    */
   async checkForMessage(toUID: string): Promise<boolean> {
     const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
-      .doc(this.authService.uid() + '-' + toUID);
+      .doc(this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion);
     const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
     return !!msgDoc;
     // const messages = await this.afs.collection('messages', ref => ref
@@ -163,7 +165,7 @@ export class MsgIoService {
     this.verifyMessage(messageTemplate);
 
     // Verify user is logged in
-    this.authService.throwErrorIfLoggedOut('send a message');
+    await this.authService.asyncThrowErrorIfLoggedOut('send a message');
 
     // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
@@ -189,7 +191,7 @@ export class MsgIoService {
       };
 
       // Send the message
-      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to);
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
       await msgRef.set(message).catch(error => {
         AuthService.displayError(error);
       });

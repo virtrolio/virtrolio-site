@@ -1,3 +1,4 @@
+<!--suppress HtmlUnknownTarget -->
 <div class="container vertical-center montserrat">
   <!-- Title Text-->
   <div class="row py-3 mx-3 justify-content-center" id="title">
@@ -7,16 +8,22 @@
 
   <!-- Fountain Pen SVG -->
   <div class="row mx-2 mt-3 mb-3 justify-content-center">
-    <img alt="Image of pen" src="../../../assets/images/FriendLink-Light.svg" id="pen-graphic">
+    <img alt="Image of pen" id="pen-graphic" src="../../../assets/images/FriendLink-Light.svg">
   </div>
 
   <!-- Buttons -->
-  <div class="row justify-content-center" id="buttons">
-    <button type="button" (click)="goToSigning()"
-      class="btn btn-outline-dark google-sign-in-btn col-sm-4 col-md-3">
-      <img src="../../../assets/images/icons/google.svg" alt="Google Logo" width="23" height="23">
+  <div class="row justify-content-center mb-3" id="buttons">
+    <button (click)="goToSigning()" class="btn btn-outline-dark google-sign-in-btn col-sm-4 col-md-3"
+            type="button">
+      <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
       <span>Sign in with Google</span>
     </button>
-    <button type="button" routerLink="" class="col-sm-4 col-md-3 btn btn-primary">Home Page</button>
+    <button class="col-sm-4 col-md-3 btn btn-primary" routerLink="/" type="button">Home Page</button>
+  </div>
+  <div id="redirect-disclaimer-text" class="text-center">
+    <p class="lead pt-4">By signing up for/signing into our service, you are agreeing to our
+      <a href="/terms-of-service">Terms of Service.</a>
+    </p>
+    <p class="lead">At this time, we do not support signing in using providers other than Google.</p>
   </div>
 </div>

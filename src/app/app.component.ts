@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
 
 /**
@@ -21,13 +21,13 @@ export class AppComponent implements OnInit {
   public showCookieAlert = true;
   private showCookieAlertValue: string;
 
+  constructor(private cookieService: CookieService) {
+  }
+
   /** Dismisses cookie alert when X is clicked. Sets cookie to 'false'. */
   dismissCookieAlert() {
     this.cookieService.set('new-user-cookie', 'false', 365);
     this.showCookieAlert = false;
-  }
-
-  constructor(private cookieService: CookieService) {
   }
 
   /**

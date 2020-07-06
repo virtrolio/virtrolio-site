@@ -1,17 +1,6 @@
-
-.toggle-switch {
-  color: var(--light-grey);
-}
-
-.custom-control-label {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .title-page {
-  font-size: 3em;
+  text-align: center;
+  font-size: 1em;
   font-family: Montserrat, sans-serif;
 }
 
@@ -20,59 +9,85 @@
   font-size: 1em;
 }
 
-.table td {
-  overflow-wrap: break-word;
-}
-
-.page {
-  background-color: var(--accent);
-  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
-  color: white;
-  height: 70vh;
-  padding: 3em 6em 3em 6em;
-  display: flex;
-  overflow-y: auto;
-}
-
-.card-header-text {
-  font-weight: bold;
-  margin-top: 0.2em;
-}
-
-.card-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.card-header-author {
-  display: flex;
-  flex-direction: row;
-}
-
-.carousel-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.profile-pic-container-small {
-  background: rgba(255, 255, 255, 0);
-  height: 2em;
-  width: 2em;
-  border-radius: 100%;
-  display: flex;
-}
-
+/* Message Card */
 .card {
   display: inline-block;
 }
 
 .message-card {
+  position: relative;
   background-color: var(--light-grey);
   width: 100%;
   word-break: break-word;
   max-height: 30em;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.table td {
+  overflow-wrap: break-word;
+}
+
+/* Message Carousel Page */
+.page {
+  background-color: var(--accent);
+  box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
+  color: white;
+  height: 70vh;
+  padding: 1.5em;
   overflow-y: auto;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+}
+
+.carousel-controls-button {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.carousel-controls-button:hover {
+  text-decoration: none;
+}
+
+/* Message Header */
+.msg-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 1em;
+  padding: 0.5em 0.5em 0.5em 1em;
+}
+
+.msg-header-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.msg-header-text {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin: 0.2em 0 0 0.5em;
+  max-width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.msg-header-date {
+  font-size: 0.7em;
+  margin: 0 0 0 0.5em;
+}
+
+.profile-pic-container-small {
+  background: #FFFFFF;
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 100%;
+  display: flex;
 }
 
 #no-messages {
@@ -80,9 +95,34 @@
   color: var(--light-grey);
 }
 
-.delete-button {
+/* Remove the blue outline around the buttons on the header when they're clicked */
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.card-button {
   display: flex;
+  float: right;
+  margin-top: 0;
   align-self: flex-end;
+}
+
+.card-icon {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.15em;
+  padding: 0.1em;
+}
+
+@media (min-width: 0px) {
+  .card-columns {
+    column-count: 1;
+  }
+
+  .card-columns .card {
+    width: 100%;
+  }
 }
 
 @media (min-width: 576px) {
@@ -99,19 +139,19 @@
 
 @media (min-width: 992px) {
   .card-columns {
-    column-count: 2;
+    column-count: 3;
   }
 }
 
 @media (min-width: 1200px) {
   .card-columns {
-    column-count: 2;
+    column-count: 3;
   }
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0.2em;
 }
 
 /* Track */
@@ -121,13 +161,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: white;
-  border-color: var(--gray-dark);
-  opacity: 0.5;
+  background: var(--scrollbar-thumb);
+  opacity: 0.1;
   border-radius: 1em;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
 }

@@ -6,7 +6,7 @@ describe('FontService', () => {
   let service: FontService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ });
     service = TestBed.inject(FontService);
   });
 

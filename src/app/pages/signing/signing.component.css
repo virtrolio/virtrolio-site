@@ -2,13 +2,13 @@
 
 #signing-box {
   margin: 0.5em;
-	padding: 1em;
+  padding: 1em;
   width: 40em;
   height: 20em;
   resize: none;
   color: #000000;
   font-size: 1em;
-	border-width: 0.05em;
+  border-width: 0.05em;
   border-radius: 0.25rem;
   box-shadow: var(--signing-shadow);
 }
@@ -29,15 +29,15 @@
 }
 
 markdown {
-	margin: 0.5em;
-	padding: 1em;
-	width: 40em;
-	height: 20em;
-	resize: none;
-	font: 1em Arial;
-	border: 0.05em solid var(--light-grey);
-	overflow-y: auto;
-	overflow-x: auto;
+  margin: 0.5em;
+  padding: 1em;
+  width: 40em;
+  height: 20em;
+  resize: none;
+  font: 1em Arial;
+  border: 0.05em solid var(--light-grey);
+  overflow-y: auto;
+  overflow-x: auto;
   word-wrap: break-word;
   border-radius: 0.25rem;
   box-shadow: var(--signing-shadow);
@@ -53,6 +53,7 @@ markdown {
 
 #font-selector-dropdown {
   display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   text-align: right;
@@ -88,12 +89,13 @@ markdown {
 }
 
 .dropdown-item:active {
-	background-color: var(--accent);
+  background-color: var(--accent);
 }
 
 .dropdown-menu {
   overflow-y: auto;
-  height: 15em;
+  height: 12em;
+  z-index: 2000;
 }
 
 #icon {
@@ -156,12 +158,14 @@ markdown {
 
 #btn-info {
   border-radius: 6em;
-  background-color: var(--accent);
   color: #ffffff;
+  box-shadow: var(--signing-shadow);
 }
 
-#btn-info:hover {
-  background-color: #75797A;
+#send-button {
+  width: 10em;
+  height: 3em;
+  font-weight: bolder;
 }
 
 #send-button {

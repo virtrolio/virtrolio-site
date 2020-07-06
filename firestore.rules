@@ -15,22 +15,24 @@ service cloud.firestore {
                     // > Enforce Message ID format of <fromUID>-<toUID>
                     && message.split('-')[0] == request.resource.data.from
                     && message.split('-')[1] == request.resource.data.to
+                    // Check for current version number
+                    && message.split('-')[2] == "2020.0"
                     // > Enforce max message length
-                    && request.resource.data.contents.size() <= 5000
+                    && request.resource.data.contents.size() <= 15000
                     // Data Validity
                     // > Regex string fields to reject if they're only whitespace or blank
-                    && request.resource.data.contents.matches('\\S+')
+                    && !request.resource.data.contents.matches('^\\s+$')
                     // > Regex to match hex color code format (#AABBCC)
                     && request.resource.data.backColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
                     && request.resource.data.fontColor.matches('^#(?:[0-9a-fA-F]{3}){1,2}$')
                     // > Regex string fields to reject if they're only whitespace or blank
-                    && request.resource.data.fontFamily.matches('\\S+')
-                    && request.resource.data.key.matches('\\S+')
+                    && !request.resource.data.fontFamily.matches('^\\s+$')
+                    && !request.resource.data.key.matches('^\\s+$')
                     // Verify variable types
                     && request.resource.data.isRead is bool
                     && request.resource.data.timestamp is timestamp
                     && request.resource.data.year is number
-                    && request.resource.data.year >= 2020
+                    && request.resource.data.year == 2020
                     // Authentication
                     && request.resource.data.from == request.auth.uid
                     // > Check to make sure 'from' hasn't already sent a message to 'to'

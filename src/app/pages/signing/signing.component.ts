@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signing',
@@ -24,7 +25,7 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router) { }
+              private msgIo: MsgIoService, private router: Router, private title: Title) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -34,7 +35,10 @@ export class SigningComponent implements OnInit {
       this.uid = params.uid;
       this.key = params.key;
     });
-    this.authService.displayName(this.uid).then(userName => this.name = userName).catch(error => alert(error));
+    this.authService.displayName(this.uid).then(userName => {
+      this.name = userName;
+      this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
+    }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
   }
 
@@ -54,7 +58,6 @@ export class SigningComponent implements OnInit {
    */
   sendMsg(textbox: HTMLTextAreaElement) {
     const newMsg = this.msgIo.createBlankMessage();
-    let valid = true;
     newMsg.backColor = this.signingService.backgroundColor;
     newMsg.fontColor = this.signingService.textColor;
     newMsg.fontFamily = this.signingService.currentFont;
@@ -63,19 +66,12 @@ export class SigningComponent implements OnInit {
 
     // remove navigation popup
     this.sending = true;
-    this.msgIo.sendMessage(newMsg, this.key).then(() =>
-      void (0))
-      .catch(error => {
-          alert(error);
-          valid = false;
-        }
-      );
-    // set timeout waits until after the next event to do stuff
-    // hopefully this works :)
-    setTimeout(() => {
-      if (valid) {
-        this.router.navigate([ '/msg-sent' ], { queryParams : {  name: this.name }});
+    this.msgIo.sendMessage(newMsg, this.key).then(() => {
+      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } })
+        .catch(e => AuthService.displayError(e));
+    }).catch(error => {
+        AuthService.displayError(error);
       }
-    }, 0);
+    );
   }
 }

@@ -1,12 +1,28 @@
 #pnf-graphic {
-  height: 50vh;
+  height: 10em;
 }
 
 #title-text {
+  font-size: 2.5em;
   text-align: center;
 }
 
 #subtitle-text {
   font-size: large;
   text-align: center;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #graphic {
+    height: 5em;
+  }
+
+  #title-text {
+    font-size: 2em;
+  }
+
+  #subtitle-text {
+    font-size: 1em;
+  }
 }

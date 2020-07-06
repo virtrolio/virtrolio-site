@@ -1,8 +1,7 @@
 /* || Full Screen Landing */
 
 #home-background {
-  background: var(--accent);
-  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
 }
@@ -10,8 +9,10 @@
 /* Large logo in the background for when there is no image to feature */
 #bg-logo-img {
   position: absolute;
-  opacity: 0.1;
+  opacity: 0.25;
   right: 0;
+  height: 50em;
+  width: 50em;
 }
 
 /* Featured image or pattern */
@@ -43,6 +44,7 @@
 
 #chevron {
   margin-top: 2em;
+  cursor: pointer;
 }
 
 #home-img-background {
@@ -66,7 +68,7 @@
   text-align: center;
 }
 
-#disclaimer-text {
+#disclaimer-text > p {
   font-size: 1em;
   text-align: center;
 }
@@ -125,6 +127,11 @@
   font-size: 1.5em;
 }
 
+#preview-instructions {
+  width: 100%;
+  text-align: center;
+}
+
 #signing-box {
   margin: 0.5em;
   padding: 1em;
@@ -150,6 +157,7 @@
 
 .form-control:focus {
   border-color: var(--accent);
+  box-shadow: none;
 }
 
 markdown {
@@ -172,6 +180,7 @@ markdown {
 
 #font-selector-dropdown {
   display: flex;
+  display: -webkit-flex;
   justify-content: space-between;
   align-items: center;
   text-align: right;
@@ -212,7 +221,8 @@ markdown {
 
 .dropdown-menu {
   overflow-y: auto;
-  height: 15em;
+  height: 12em;
+  z-index: 2000;
 }
 
 #icon {
@@ -258,20 +268,10 @@ markdown {
 
 /* || Miscellaneous */
 
-#btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
-  border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
-  color: #ffffff;
+#btn-info{
+  box-shadow: var(--signing-shadow);
+  background-color: var(--accent);
 }
-
-#btn-info:hover {
-  background-color: #75797A;
-}
-
 
 @media only screen and (max-width: 768px) {
   #title-header {
@@ -297,18 +297,38 @@ markdown {
   }
 }
 
+/* || Scrollbars */
+
+::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EFEFEF;
+  opacity: 0.1;
+  border-radius: 1em;
+}
+
 /* || Miscellaneous */
 
 #btn-info {
-  margin: 0.5em 0.5em 0.7em;
-  padding: 0;
   border-radius: 6em;
-  width: 2em;
-  height: 2em;
-  background-color: #90959A;
+  background-color: var(--accent);
   color: #ffffff;
 }
 
 #btn-info:hover {
-  background-color: #75797A;
+  background-color: var(--dark-accent);
+}
+
+/* fragment padding for header */
+#info::before {
+  content: "";
+  display: block;
+  height: 50px;
+  margin: -50px 0 0 0;
 }
