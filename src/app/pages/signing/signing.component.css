@@ -98,8 +98,13 @@ markdown {
   z-index: 2000;
 }
 
-#icon {
+#fill-color-icon {
   width: 1.5em;
+  margin: 0 auto;
+}
+
+#image-icon {
+  width: 1.7em;
   margin: 0 auto;
 }
 
@@ -141,8 +146,15 @@ markdown {
 #embed-photo-div {
   text-align: center;
   background: var(--darkest-accent);
-  border-radius: 5px;
   color: white;
+}
+
+#embed-photo-dialog, .modal-content {
+  max-width: 69em;
+}
+
+#embed-modal {
+  z-index: 2000;
 }
 
 #width-slider {
