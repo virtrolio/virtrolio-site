@@ -37,7 +37,14 @@ export class AuthService {
     });
   }
 
-  // Auth
+  /**
+   * @returns The current User object.
+   */
+  getUser(): User {
+    this.throwErrorIfLoggedOut('access your user data');
+    return this.user;
+  }
+
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * Also calls createUser() so that the user's internal data is created at the same time.
