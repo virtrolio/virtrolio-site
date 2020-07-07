@@ -65,8 +65,16 @@
   overflow-x: auto;
 }
 
-.sharing-link-body > label {
+.sharing-link-body > label, #sharing-link-buttons > label {
   display: none;
+}
+
+#sharing-link-buttons {
+  display: block;
+}
+
+#sharing-link-field {
+  background: white;
 }
 
 .button-modal {

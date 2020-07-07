@@ -22,6 +22,7 @@ export class YourVirtrolioComponent implements OnInit {
   public visitLink: string;
   private visitLinkUID: string;
   private visitLinkKEY: string;
+  private navigator: any;
 
   constructor(public authService: AuthService, public router: Router, private title: Title) { }
 
@@ -30,6 +31,8 @@ export class YourVirtrolioComponent implements OnInit {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
+
+    this.navigator = window.navigator;
   }
 
   /**
@@ -68,6 +71,20 @@ export class YourVirtrolioComponent implements OnInit {
       } catch (e) {
         this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
       }
+    }
+  }
+
+  shareLink() {
+    if (this.navigator && this.navigator.share) {
+      this.navigator.share({
+        title: this.displayName + '\'s virtrolio!',
+        text: 'Visit this link to sign their virtrolio and send them a custom message!',
+        url: this.link,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+      alert('Share not supported on this device. Use a mobile device!');
     }
   }
 

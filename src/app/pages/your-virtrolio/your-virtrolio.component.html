@@ -62,11 +62,15 @@
                 type="button">{{ copyButtonText }}
         </button>
 
-        <div class="row">
-          <label for="button-new-link" style="display:none">Click to generate a new link</label>
-          <button (click)="warnAndGenerate()" class="btn btn-secondary" id="button-new-link" type="button">Generate
-            new link
-          </button>
+        <div class="row justify-content-center">
+          <div id="sharing-link-buttons">
+            <label for="button-new-link">Click to generate a new link</label>
+            <button (click)="warnAndGenerate()" class="btn btn-secondary mx-3" id="button-new-link" type="button">
+              Generate new link
+            </button>
+            <label for="button-share">Share</label>
+            <button (click)="shareLink()" class="btn btn-success mr-3" id="button-share" type="button">Share your link</button>
+          </div>
           <div class="mt-3" id="generate-link-desc">
             <h6>Why would I want to generate a new link?</h6>
             <p>If you want people to stop being able to use your
