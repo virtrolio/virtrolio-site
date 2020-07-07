@@ -31,7 +31,7 @@ export class AuthService {
    * Generates a random string of characters of length AppAuthService.keyLength using the characters in
    * AppAuthService.keyOptions.
    */
-  private static generateKey(): string {
+  static generateKey(): string {
     let key = '';
     for (let i = 0; i < AuthService.keyLength; i++) {
       key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
