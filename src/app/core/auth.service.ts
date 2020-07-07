@@ -5,14 +5,13 @@ import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
+import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  static readonly keyLength = 7;
-  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
   private user: User;
 
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
@@ -25,18 +24,6 @@ export class AuthService {
    */
   static displayError(error) {
     alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
-  }
-
-  /**
-   * Generates a random string of characters of length AppAuthService.keyLength using the characters in
-   * AppAuthService.keyOptions.
-   */
-  static generateKey(): string {
-    let key = '';
-    for (let i = 0; i < AuthService.keyLength; i++) {
-      key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
-    }
-    return key;
   }
 
   /**
@@ -108,7 +95,7 @@ export class AuthService {
     if (!userDoc) { // User doesn't exist in database
       const userData: VirtrolioUser = {
         displayName: user.displayName,
-        key: AuthService.generateKey(),
+        key: SharingLinkService.generateKey(),
         profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
@@ -116,7 +103,7 @@ export class AuthService {
       });
     } else { // User exists in database, make sure all fields are present
       if (!('key' in userDoc)) {
-        await userRef.update({ key: AuthService.generateKey() }).catch(error => {
+        await userRef.update({ key: SharingLinkService.generateKey() }).catch(error => {
           AuthService.displayError(error);
         });
       }
@@ -326,13 +313,13 @@ export class AuthService {
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
     if (!('key' in userDoc)) { // This triggers if the key doesn't exist
       return userRef.update(
-        { key: AuthService.generateKey() }
+        { key: SharingLinkService.generateKey() }
       );
     } else { // If the key does exist, need to make sure the new key is unique
       const oldKey = userDoc.key;
-      let newKey = AuthService.generateKey();
+      let newKey = SharingLinkService.generateKey();
       while (oldKey === newKey) {
-        newKey = AuthService.generateKey();
+        newKey = SharingLinkService.generateKey();
       }
       return userRef.update(
         { key: newKey }
