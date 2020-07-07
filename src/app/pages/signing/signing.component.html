@@ -10,6 +10,7 @@
       </div>
       <div class="row">
         <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
+                  (scroll)='syncMarkdown(signingInputArea, previewBoxArea)'
                   [(ngModel)]='signingService.signingBoxText'
                   [ngStyle]="{'font-family': signingService.currentFontFamily}"
                   autofocus class="form-control"
@@ -102,7 +103,8 @@
         </label>
       </div>
       <div class="row">
-        <markdown [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
+        <markdown #previewBoxArea
+                  [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
                   'font-family': signingService.currentFontFamily}"
                   data="{{ signingService.signingBoxText }}" emoji
                   id="preview-text"></markdown>

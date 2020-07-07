@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
+import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-signing',
@@ -22,6 +23,8 @@ export class SigningComponent implements OnInit {
   public embedLink = '';
   public imageWidth = 50;
   public copyButtonText = 'Copy';
+  public scrollSyncLoc = 0;
+  public signScrolling = true;
 
   private uid: string;
   private key: string;
@@ -52,6 +55,12 @@ export class SigningComponent implements OnInit {
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
     return !this.signingService.signingBoxText || this.sending;
+  }
+
+  syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
+    const scrollPerc: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
+    const ele = previewBox.element.nativeElement;
+    ele.scrollTop = scrollPerc * ele.scrollHeight - 160;
   }
 
   /**
