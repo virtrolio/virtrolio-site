@@ -98,8 +98,13 @@ markdown {
   z-index: 2000;
 }
 
-#icon {
+#fill-color-icon {
   width: 1.5em;
+  margin: 0 auto;
+}
+
+#image-icon {
+  width: 1.7em;
   margin: 0 auto;
 }
 
@@ -131,6 +136,31 @@ markdown {
   border-radius: 0.4em;
 }
 
+/* || Embed Photo */
+
+#embed-image-holder {
+  max-width: 100%;
+  color: black;
+}
+
+#embed-photo-div {
+  text-align: center;
+  background: var(--darkest-accent);
+  color: white;
+}
+
+#embed-photo-dialog, .modal-content {
+  max-width: 69em;
+}
+
+#embed-modal {
+  z-index: 2000;
+}
+
+#width-slider {
+  height: 10px;
+}
+
 /* || Typography */
 
 .title-div {
@@ -146,6 +176,12 @@ markdown {
   border-radius: 6em;
   color: #ffffff;
   box-shadow: var(--signing-shadow);
+}
+
+#send-button {
+  width: 10em;
+  height: 3em;
+  font-weight: bolder;
 }
 
 #send-button {

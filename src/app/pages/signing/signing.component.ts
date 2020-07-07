@@ -20,6 +20,9 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
+  public embedLink = '';
+  public imageWidth = 50;
+  public copyButtonText = 'Copy';
   public scrollSyncLoc = 0;
   public signScrolling = true;
 
@@ -81,5 +84,16 @@ export class SigningComponent implements OnInit {
         AuthService.displayError(error);
       }
     );
+  }
+
+  /**
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
+   */
+  copyLink(inputElement: HTMLInputElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    this.copyButtonText = 'Copied!';
   }
 }
