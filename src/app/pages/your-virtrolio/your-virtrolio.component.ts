@@ -3,6 +3,8 @@ import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+declare var $: any;
+
 @Component({
   selector: 'app-your-virtrolio',
   templateUrl: './your-virtrolio.component.html',
@@ -22,7 +24,7 @@ export class YourVirtrolioComponent implements OnInit {
   public visitLink: string;
   private visitLinkUID: string;
   private visitLinkKEY: string;
-  private navigator: any;
+  public navigator: any;
 
   constructor(public authService: AuthService, public router: Router, private title: Title) { }
 
@@ -36,6 +38,13 @@ export class YourVirtrolioComponent implements OnInit {
   }
 
   /**
+   * Check if user can share using a native sharing mechanism (i.e. if they are on mobile)
+   */
+  canShare() {
+    return this.navigator && this.navigator.share;
+  }
+
+  /**
    * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
    * @param inputElement - the element to read from
    */
@@ -44,6 +53,14 @@ export class YourVirtrolioComponent implements OnInit {
     inputElement.setSelectionRange(0, 10000);
     document.execCommand('copy');
     this.copyButtonText = 'Copied!';
+  }
+
+  /**
+   * Closes sharing link modal and opens up desktop sharing modal
+   */
+  openDesktopSharing() {
+    $('#link-gen').modal('hide');
+    $('#share-link-modal').modal('show');
   }
 
   /**
@@ -75,7 +92,7 @@ export class YourVirtrolioComponent implements OnInit {
   }
 
   shareLink() {
-    if (this.navigator && this.navigator.share) {
+    if (this.canShare()) {
       this.navigator.share({
         title: this.displayName + '\'s virtrolio!',
         text: 'Visit this link to sign their virtrolio and send them a custom message!',

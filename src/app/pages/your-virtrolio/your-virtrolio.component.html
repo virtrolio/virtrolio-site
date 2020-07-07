@@ -25,7 +25,8 @@
           </button>
         </div>
         <div class="row">
-          <button (click)="setLink(); showWarningText=false;" class="btn-lg btn-primary" data-target="#link-gen" data-toggle="modal"
+          <button (click)="setLink(); showWarningText=false;" class="btn-lg btn-primary" data-target="#link-gen"
+                  data-toggle="modal"
                   type="button">Sharing Link
           </button>
         </div>
@@ -56,9 +57,11 @@
       <div class="modal-body sharing-link-body">
         <p>This is <b>your</b> sharing link; only share it with people you trust.</p>
         <label for="sharing-link-field">Your Link:</label>
-        <input #sharingLink (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="align-middle" id="sharing-link-field" readonly
+        <input #sharingLink (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="align-middle"
+               id="sharing-link-field" readonly
                type="text" value="{{ link }}">
-        <button (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="btn btn-primary align-middle" id="button-copy"
+        <button (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="btn btn-primary align-middle"
+                id="button-copy"
                 type="button">{{ copyButtonText }}
         </button>
 
@@ -68,8 +71,18 @@
             <button (click)="warnAndGenerate()" class="btn btn-secondary mx-3" id="button-new-link" type="button">
               Generate new link
             </button>
-            <label for="button-share">Share</label>
-            <button (click)="shareLink()" class="btn btn-success mr-3" id="button-share" type="button">Share your link</button>
+            <div *ngIf="canShare() else desktopSharing">
+              <label for="button-share-mobile">Share</label>
+              <button (click)="shareLink()" class="btn btn-success mr-3" id="button-share-mobile" type="button">Share
+                your link
+              </button>
+            </div>
+            <div #desktopSharing>
+              <label for="button-share-desktop">Share</label>
+              <button (click)="openDesktopSharing()" class="btn btn-info mr-3"
+                      id="button-share-desktop" type="button">Share your link
+              </button>
+            </div>
           </div>
           <div class="mt-3" id="generate-link-desc">
             <h6>Why would I want to generate a new link?</h6>
@@ -111,7 +124,8 @@
         <label for="input-sharing-field" id="input-sharing-label" style="display:none">Visit friend link</label>
         <input #inputSharing (click)="copyLink(inputSharing)" [(ngModel)]='visitLink' class="align-middle"
                id="input-sharing-field" type="text" value="Input your friend's link here">
-        <button (click)="navigateToLink()" aria-label="Close" class="btn btn-primary align-middle button-modal" data-dismiss="modal"
+        <button (click)="navigateToLink()" aria-label="Close" class="btn btn-primary align-middle button-modal"
+                data-dismiss="modal"
                 id="button-go"
                 type="button">Go
         </button>
@@ -122,6 +136,39 @@
         <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
       </div>
 
+    </div>
+  </div>
+</div>
+
+<!-- Share your link modal -->
+<div class="modal fade" id="share-link-modal" tabindex="-1" role="dialog" aria-labelledby="share-link-modal"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="share-link-label">Let's send it out!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-center">
+          <div class="btn-group" role="group" aria-label="sharing buttons" id="sharing-buttons">
+            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="facebook-button"
+               href="https://www.facebook.com/sharer/sharer.php?u={{link}}&display=popup">Facebook
+            </a>
+            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="twitter-button"
+               href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&body={{link}}">Twitter
+            </a>
+            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="gmail-button"
+               href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&body={{link}}">Gmail
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

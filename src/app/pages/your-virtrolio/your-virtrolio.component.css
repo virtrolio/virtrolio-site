@@ -65,16 +65,36 @@
   overflow-x: auto;
 }
 
-.sharing-link-body > label, #sharing-link-buttons > label {
+.sharing-link-body > label, #sharing-link-buttons > label, #sharing-link-buttons > div > label {
   display: none;
 }
 
-#sharing-link-buttons {
-  display: block;
+#sharing-link-buttons > div {
+  display: inline-block;
 }
 
 #sharing-link-field {
   background: white;
+}
+
+#share-link-modal {
+  z-index: 2000;
+}
+
+#facebook-button {
+  background-color: #3b5998;
+}
+
+#twitter-button {
+  background-color: #1DA1F2;
+}
+
+#gmail-button {
+  background-color: #B23121;
+}
+
+#sharing-buttons > a {
+  border: 0;
 }
 
 .button-modal {
