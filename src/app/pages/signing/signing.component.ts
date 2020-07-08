@@ -48,6 +48,9 @@ export class SigningComponent implements OnInit {
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
     $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    });
   }
 
   /**

@@ -138,6 +138,10 @@ markdown {
 
 /* || Embed Photo */
 
+#disclaimer-button {
+  color: white;
+}
+
 #embed-image-holder {
   max-width: 100%;
 }

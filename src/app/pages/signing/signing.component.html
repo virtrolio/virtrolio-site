@@ -84,15 +84,14 @@
                 data-target="#embed-photo" (click)="this.copyButtonText = 'Copy'">
           <img alt="image icon" id="image-icon" src="../../../assets/images/icons/SigningIcon_image.svg">
         </button>
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper" data-toggle="popover"
-                title="Emojis" data-html="true" data-content="If you're on a desktop or laptop, click inside your
-                message and press Windows + Period
-                on Windows or Command + Control + Space on a Mac to open your computer's Emoji Keyboard!<br><br>If
-                you're on a phone you should already have an emoji keyboard built into your keyboard! <br><br>
-                Note: not all emojis may be supported; check
-                <a href='https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md' target='_blank'>this
-                link of supported emojis</a> to make sure! ❤">😀
-        </button>
+        <a tabindex="0" role="button" class="btn btn-secondary btn-format mr-2 icon-wrapper vertical-center"
+           data-toggle="popover" data-trigger="focus" title="Emojis" data-html="true" data-content="If you're on a
+           desktop or laptop, click inside your message and press Windows + Period on Windows or Command + Control +
+           Space on a Mac to open your computer's Emoji Keyboard!<br><br>If you're on a phone you should already have an
+           emoji keyboard built into your keyboard! <br><br> Note: not all emojis may be supported; check
+           <a href='https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md' target='_blank'>this link of
+           supported emojis</a> to make sure! ❤">😀
+        </a>
 
         <button type="button" class="btn btn-primary" id="btn-info" data-toggle="modal"
                 data-target="#info">More Info!
@@ -272,8 +271,9 @@
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage>No image to show!</ng-template>
           </div>
-          <button class="btn btn-sm btn-danger" data-toggle="popover"
-                  title="Your Photo Links. Your Responsibility." data-html="true" data-content="<p><strong>Note: By
+          <a class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus" tabindex="0" role="button"
+             title="Your Photo Links. Your Responsibility." data-html="true" id="disclaimer-button"
+             data-content="<p><strong>Note: By
                     using links to photos stored online, your photo's survival is tied to whether the link works or not.
                     That means that—even if the link works for you for right now—if the link does not work on other
                     computers or stops working in the future then the
@@ -285,7 +285,7 @@
                     Virtrolio is not
                     endorsing any services mentioned here, merely making you aware of options available to you.</p>">
             DISCLAIMER
-          </button>
+          </a>
         </div>
       </div>
     </div>
