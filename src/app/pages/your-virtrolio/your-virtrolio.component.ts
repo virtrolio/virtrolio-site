@@ -106,6 +106,26 @@ export class YourVirtrolioComponent implements OnInit {
   }
 
   /**
+   * Share the user's sharing link on the appropriate platform
+   * @param platform - platform on which to post the sharing link
+   * @throws - Error if 'platform' chosen is not supported
+   */
+  postOnSocial(platform: string) {
+    const urlFriendlyLink = 'https%3A//virtrolio.web.app/signing?uid=' + this.authService.uid() + '%26key=' +
+      this.link.match(/key=([^&]*)/)[1];
+
+    if (platform === 'facebook') {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlFriendlyLink, '_blank');
+    } else if (platform === 'twitter') {
+      window.open('https://twitter.com/intent/tweet?url=' + urlFriendlyLink + '&text=Send%20me%20a%20message!', '_blank');
+    } else if (platform === 'gmail') {
+      window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&body=' + urlFriendlyLink, '_blank');
+    } else {
+      throw new Error('Attempted to post to a social media platform we do not yet support!');
+    }
+  }
+
+  /**
    * Toggles between displaying warning text and updating the sharing link in the text box.
    */
   warnAndGenerate() {

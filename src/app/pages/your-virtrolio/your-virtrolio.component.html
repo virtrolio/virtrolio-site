@@ -154,15 +154,15 @@
       <div class="modal-body">
         <div class="row justify-content-center">
           <div class="btn-group" role="group" aria-label="sharing buttons" id="sharing-buttons">
-            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="facebook-button"
-               href="https://www.facebook.com/sharer/sharer.php?u={{link}}&display=popup">Facebook
-            </a>
-            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="twitter-button"
-               href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&body={{link}}">Twitter
-            </a>
-            <a role="button" class="btn btn-lg btn-secondary" target="_blank" id="gmail-button"
-               href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&body={{link}}">Gmail
-            </a>
+            <button role="button" class="btn btn-lg btn-secondary" id="facebook-button"
+               (click)="postOnSocial('facebook')">Facebook
+            </button>
+            <button role="button" class="btn btn-lg btn-secondary" id="twitter-button"
+               (click)="postOnSocial('twitter')">Twitter
+            </button>
+            <button role="button" class="btn btn-lg btn-secondary" id="gmail-button"
+               (click)="postOnSocial('gmail')">Gmail
+            </button>
           </div>
         </div>
       </div>
