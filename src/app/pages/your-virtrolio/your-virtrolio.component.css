@@ -93,7 +93,7 @@
   background-color: #B23121;
 }
 
-#sharing-buttons > a {
+#sharing-buttons > button {
   border: 0;
   width: 7em;
 }
