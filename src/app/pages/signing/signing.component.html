@@ -84,8 +84,18 @@
                 data-target="#embed-photo" (click)="this.copyButtonText = 'Copy'">
           <img alt="image icon" id="image-icon" src="../../../assets/images/icons/SigningIcon_image.svg">
         </button>
+        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper" data-toggle="popover"
+                title="Emojis" data-html="true" data-content="If you're on a desktop or laptop, click inside your
+                message and press Windows + Period
+                on Windows or Command + Control + Space on a Mac to open your computer's Emoji Keyboard!<br><br>If
+                you're on a phone you should already have an emoji keyboard built into your keyboard! <br><br>
+                Note: not all emojis may be supported; check
+                <a href='https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md' target='_blank'>this
+                link of supported emojis</a> to make sure! ❤">😀
+        </button>
+
         <button type="button" class="btn btn-primary" id="btn-info" data-toggle="modal"
-                data-target="#info">Read this first!
+                data-target="#info">More Info!
         </button>
       </div>
       <div class="row mt-3 justify-content-center">
@@ -138,7 +148,7 @@
   </div>
 </div>
 
-<!-- Read this first! -->
+<!-- More Info! -->
 <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="info-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -155,22 +165,14 @@
           <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
             line') counts as 5 characters.
           </li>
-          <li>Images can be embedded in messages...in a specific way. See our
-            <a routerLink="/faq" target="_blank">FAQ</a> for details.
-          </li>
         </ul>
         <h5>Formatting</h5>
         <p>
-          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
-          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
+          Virtrolio supports a modified version of <em>Markdown</em> to format text. We have not included all of
+          Markdown's features as easy to click buttons, so there's still a lot to try out! Learn how to type in markdown
+          <a
+            href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
         </p>
-
-        <h5>Emojis</h5>
-        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
-          + Space) on a Mac to bring up the emoji
-          keyboard. Note: not all emojis may be supported; check <a
-            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
-            supported emojis</a> to make sure! ❤</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
@@ -199,7 +201,9 @@
           <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already
             online.
           </li>
-          <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New Tab'</li>
+          <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New
+            Tab'
+          </li>
           <li>Keep doing this until the website that you are on contains ONLY the image you want to embed, with no other
             buttons or logos
             or anything around it. If you see this sort of page, then copy the URL as that URL will now work as an
@@ -217,7 +221,8 @@
         </ol>
         <p><strong>Note: Since we are using links, then your photo's survival is tied to whether the link works or not.
           That means that in the future if the link stops working then so will the message you wrote that contains the
-          image.</strong> For example, Google Photos is inconsistent in whether its embed links work for others. Other services such
+          image.</strong> For example, Google Photos is inconsistent in whether its embed links work for others. Other
+          services such
           as Imgur or Pinterest can be used to store any images for sharing. Virtrolio is not endorsing any services
           mentioned here, merely making you aware of options available to them.</p>
       </div>

@@ -7,6 +7,8 @@ import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
 import { MarkdownComponent } from 'ngx-markdown';
 
+declare var $: any;
+
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
@@ -45,6 +47,7 @@ export class SigningComponent implements OnInit {
       this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
+    $('[data-toggle="popover"]').popover();
   }
 
   /**
