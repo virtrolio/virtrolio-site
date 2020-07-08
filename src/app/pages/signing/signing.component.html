@@ -192,29 +192,34 @@
       </div>
       <div class="modal-body">
         <p>In order for us to display your image, we need something called an <b>embed link</b>. This embed link isn't
-          always
-          easy to come by, depending on where you're trying to get the image from.</p>
-        <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for a photo
-          stored on Google
-          Photos!</p>
+          always easy to come by, depending on where you're trying to get the image from.</p>
+        <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for most
+          photos that you see on the internet!</p>
         <ol>
-          <li>Upload your photo on Google Photos.</li>
-          <li>Get the 'share link' for your Google photo (click the share button when viewing the photo).<br><em>Note:
-            this
-            'share' link is not the same as the required 'embed link'</em>.
+          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already
+            online.
           </li>
-          <li>Go to <a href="https://www.labnol.org/embed/google/photos/" target="_blank">this website</a> and convert
-            your 'sharing'
-            link
-            into an 'embed' link.
+          <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New Tab'</li>
+          <li>Keep doing this until the website that you are on contains ONLY the image you want to embed, with no other
+            buttons or logos
+            or anything around it. If you see this sort of page, then copy the URL as that URL will now work as an
+            'embed link.'
+            If you don't
+            do this step, your link may not display your photo in your message properly. For example,
+            <a target="_blank" href="https://bit.ly/2NRCMvu">this link</a> will not
+            work but <a target="_blank" href="https://bit.ly/2BuNxkA">this one</a> will (and you can get from one to the
+            other by using the 'Open Image in New Tab' technique just mentioned!).
           </li>
-          <li>The embed link should now work in the preview! Try it out!</li>
+          <li>If you are not able to do the 'Open Image in New Tab' method for some reason (e.g. notably Google Drive
+            doesn't let you do this), then you will have to research 'how to get the embed link' for whatever service
+            (e.g. Google Drive) that you are trying to get the embed link from.
+          </li>
         </ol>
-        <p>
-          Unfortunately, for now you'll have to get these 'embed links' yourself. We will be implementing ways to more
-          generate them from Google Drive / Google Photos / other platforms using the sharing links which these services
-          usually provide to users more easily.
-        </p>
+        <p><strong>Note: Since we are using links, then your photo's survival is tied to whether the link works or not.
+          That means that in the future if the link stops working then so will the message you wrote that contains the
+          image.</strong> For example, Google Photos is inconsistent in whether its embed links work for others. Other services such
+          as Imgur or Pinterest can be used to store any images for sharing. Virtrolio is not endorsing any services
+          mentioned here, merely making you aware of options available to them.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -255,7 +260,8 @@
             <strong>Your image code</strong><br>
             <small>Copy this into your message and check the 'Preview'!</small>
             <div class="input-group my-3">
-              <input #EmbedCode type="text" class="form-control" value="<img src='{{embedLink}}' width={{imageWidth}}%>">
+              <input #EmbedCode type="text" class="form-control"
+                     value="<img src='{{embedLink}}' width={{imageWidth}}%>">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{copyButtonText}}</button>
               </div>
@@ -266,7 +272,7 @@
           <p><strong>Image Preview</strong></p>
           <div class="card">
             <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
-                 [style.width] ="'calc(' + imageWidth + '* 1%)'">
+                 [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage>No image to show!</ng-template>
           </div>
         </div>
