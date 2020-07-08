@@ -147,7 +147,9 @@ markdown {
 }
 
 #embed-image-card {
-  border: 0.0625em solid black;
+  border: 0.0625em solid grey;
+  min-height: calc(1.5em + .75rem + 2px);
+  color: grey;
 }
 
 #embed-link-field {
@@ -164,6 +166,10 @@ markdown {
 
 #embed-modal {
   z-index: 2000;
+}
+
+#image-preview-heading {
+  height: 1.8125em;
 }
 
 #width-slider {
