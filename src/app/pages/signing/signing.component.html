@@ -270,7 +270,7 @@
         </div>
         <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
           <p><strong>Image Preview</strong></p>
-          <div class="card">
+          <div class="card" id="embed-image-card">
             <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage>No image to show!</ng-template>

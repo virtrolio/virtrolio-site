@@ -140,13 +140,14 @@ markdown {
 
 #embed-image-holder {
   max-width: 100%;
-  color: black;
+}
+
+#embed-image-card {
+  border: 0.0625em solid black;
 }
 
 #embed-photo-div {
   text-align: center;
-  background: var(--darkest-accent);
-  color: white;
 }
 
 #embed-photo-dialog, .modal-content {
