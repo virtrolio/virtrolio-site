@@ -95,6 +95,7 @@
 
 #sharing-buttons > a {
   border: 0;
+  width: 7em;
 }
 
 .button-modal {
