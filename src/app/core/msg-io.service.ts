@@ -9,6 +9,7 @@ import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
+import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class MsgIoService {
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer) {
+  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer,
+              private sharingLinkService: SharingLinkService) {
     this.messagesCollection = afs.collection('messages');
   }
 
@@ -174,7 +176,7 @@ export class MsgIoService {
     }
 
     // Verify correct key
-    const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
+    const keyIsCorrect = await this.sharingLinkService.checkKey(messageTemplate.to, key);
     if (keyIsCorrect) {
       // Remove XSS content from message contents
       messageTemplate.contents = this.sanitizer.sanitize(SecurityContext.HTML, messageTemplate.contents);
