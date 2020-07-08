@@ -219,12 +219,6 @@
             (e.g. Google Drive) that you are trying to get the embed link from.
           </li>
         </ol>
-        <p><strong>Note: Since we are using links, then your photo's survival is tied to whether the link works or not.
-          That means that in the future if the link stops working then so will the message you wrote that contains the
-          image.</strong> For example, Google Photos is inconsistent in whether its embed links work for others. Other
-          services such
-          as Imgur or Pinterest can be used to store any images for sharing. Virtrolio is not endorsing any services
-          mentioned here, merely making you aware of options available to them.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -274,7 +268,23 @@
           </div>
         </div>
         <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
-          <p><strong>Image Preview</strong></p>
+          <div class="mb-3">
+            <span class="mx-3"><strong>Image Preview</strong></span>
+            <button class="btn btn-sm btn-danger" data-toggle="popover"
+                    title="Your Photo Links. Your Responsibility." data-html="true" data-content="<p><strong>Note: By
+                    using links to photos stored online, your photo's survival is tied to whether the link works or not.
+                    That means that—even if the link works for you for right now—if the link does not work on other
+                    computers or stops working in the future then the
+                    message you wrote that contains the
+                    image will not display it properly.</strong></p><p>For example, Google Photos is inconsistent in
+                    whether
+                    its embed links can be viewed by other users. Other
+                    services such as Google Drive or Imgur or Pinterest can be used to store any images for sharing.
+                    Virtrolio is not
+                    endorsing any services mentioned here, merely making you aware of options available to you.</p>">
+                    DISCLAIMER
+            </button>
+          </div>
           <div class="card" id="embed-image-card">
             <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
