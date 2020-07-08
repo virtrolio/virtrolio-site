@@ -160,19 +160,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5>Important Things to Note</h5>
-        <ul>
-          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-            line') counts as 5 characters.
-          </li>
-        </ul>
-        <h5>Formatting</h5>
+        <h5>Additional Formatting Tools</h5>
         <p>
           Virtrolio supports a modified version of <em>Markdown</em> to format text. We have not included all of
           Markdown's features as easy to click buttons, so there's still a lot to try out! Learn how to type in markdown
-          <a
-            href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
+          <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>.
         </p>
+        <p><em>Note: Not all Markdown features will work with Virtrolio messages.</em></p>
+        <h5>Something to Note</h5>
+        <p>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
+          line') counts as 5 characters. Don't worry, we've given you {{signingService.maxCharCount}} characters to work
+          with!</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
@@ -268,10 +266,14 @@
           </div>
         </div>
         <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
-          <div class="mb-3">
-            <span class="mx-3"><strong>Image Preview</strong></span>
-            <button class="btn btn-sm btn-danger" data-toggle="popover"
-                    title="Your Photo Links. Your Responsibility." data-html="true" data-content="<p><strong>Note: By
+          <p class="mx-3"><strong>Image Preview</strong></p>
+          <div class="card my-3" id="embed-image-card">
+            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
+                 [style.width]="'calc(' + imageWidth + '* 1%)'">
+            <ng-template #noImage>No image to show!</ng-template>
+          </div>
+          <button class="btn btn-sm btn-danger" data-toggle="popover"
+                  title="Your Photo Links. Your Responsibility." data-html="true" data-content="<p><strong>Note: By
                     using links to photos stored online, your photo's survival is tied to whether the link works or not.
                     That means that—even if the link works for you for right now—if the link does not work on other
                     computers or stops working in the future then the
@@ -282,14 +284,8 @@
                     services such as Google Drive or Imgur or Pinterest can be used to store any images for sharing.
                     Virtrolio is not
                     endorsing any services mentioned here, merely making you aware of options available to you.</p>">
-                    DISCLAIMER
-            </button>
-          </div>
-          <div class="card" id="embed-image-card">
-            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
-                 [style.width]="'calc(' + imageWidth + '* 1%)'">
-            <ng-template #noImage>No image to show!</ng-template>
-          </div>
+            DISCLAIMER
+          </button>
         </div>
       </div>
     </div>

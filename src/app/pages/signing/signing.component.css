@@ -146,6 +146,10 @@ markdown {
   border: 0.0625em solid black;
 }
 
+#embed-link-field {
+  border: 0.1em solid var(--accent);
+  border-radius: 0.2em;
+}
 #embed-photo-div {
   text-align: center;
 }
