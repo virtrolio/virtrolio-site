@@ -8,22 +8,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class SharingLinkService {
-  static readonly keyLength = 7;
-  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
 
   constructor(private authService: AuthService, private afs: AngularFirestore) { }
-
-  /**
-   * Generates a random string of characters of length AppAuthService.keyLength using the characters in
-   * AppAuthService.keyOptions.
-   */
-  static generateKey(): string {
-    let key = '';
-    for (let i = 0; i < SharingLinkService.keyLength; i++) {
-      key += SharingLinkService.keyOptions.charAt(Math.floor(Math.random() * SharingLinkService.keyOptions.length));
-    }
-    return key;
-  }
 
   /**
    * Generates the shareable signing link for the current user. The signing link has two query parameters that are used
@@ -96,13 +82,13 @@ export class SharingLinkService {
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
     if (!('key' in userDoc)) { // This triggers if the key doesn't exist
       return userRef.update(
-        { key: SharingLinkService.generateKey() }
+        { key: AuthService.generateKey() }
       );
     } else { // If the key does exist, need to make sure the new key is unique
       const oldKey = userDoc.key;
-      let newKey = SharingLinkService.generateKey();
+      let newKey = AuthService.generateKey();
       while (oldKey === newKey) {
-        newKey = SharingLinkService.generateKey();
+        newKey = AuthService.generateKey();
       }
       return userRef.update(
         { key: newKey }
