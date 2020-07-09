@@ -61,10 +61,15 @@ export class SigningComponent implements OnInit {
     return !this.signingService.signingBoxText || this.sending;
   }
 
+  /**
+   * Syncs the scroll bar positions of the textbox and previewbox
+   * @param textbox - the box that the user can type into
+   * @param previewBox - the markdown preview
+   */
   syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
-    const scrollPerc: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
-    const ele = previewBox.element.nativeElement;
-    ele.scrollTop = scrollPerc * ele.scrollHeight - 160;
+    const scrollPercentage: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
+    const markdownElement = previewBox.element.nativeElement;
+    markdownElement.scrollTop = scrollPercentage * markdownElement.scrollHeight - 160;
   }
 
   /**
