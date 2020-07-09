@@ -5,6 +5,8 @@ import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
+import { Location } from '@angular/common';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ export class AuthService {
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
   private user: User;
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
+              private deviceDetectorService: DeviceDetectorService) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
 
@@ -86,26 +89,40 @@ export class AuthService {
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
-   * @returns A promise evaluating to true if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful (only returned on desktop devices).
    * @throws Error - If the login fails
    */
-  async login(routeTo: string, queryParams?: object): Promise<boolean> {
+  async login(routeTo: string, queryParams?: object): Promise<void | boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
-    return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
-      if (userCredentials.user) {  // If user is not null
-        return this.createUser(userCredentials.user).then(() => {
-          return this.router.navigate([ routeTo ], { queryParams });
-        });
-      } else {
-        console.log('Login failed');
-        return this.router.navigate([ '/' ]);
-      }
-    }).catch(error => {
-      AuthService.displayError(error);
-      return this.router.navigate([ '/access-denied' ]);
-    });
+    // Prepare sign-in provider(s)
+    const googleAuthProvider = new auth.GoogleAuthProvider();
+
+    // Check device type
+    if (this.deviceDetectorService.isDesktop()) { // Device is desktop, so use sign-in with popup
+      return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+        if (userCredentials.user) {  // If user is not null
+          return this.createUser(userCredentials.user).then(() => {
+            return this.router.navigate([ routeTo ], { queryParams });
+          });
+        } else {
+          console.log('Login failed');
+          return this.router.navigate([ '/' ]);
+        }
+      }).catch(error => {
+        AuthService.displayError(error);
+        return this.router.navigate([ '/access-denied' ]);
+      });
+    } else { // Device is phone/tablet, so use sign-in with redirect
+      const redirectPath = AuthService.parseQueryParams(routeTo, queryParams);
+      this.location.go(redirectPath);
+      // Sign-in with Redirect is necessary to support popup browsers which do not have support for multiple tabs)
+      return this.afa.signInWithRedirect(googleAuthProvider).catch(error => {
+        AuthService.displayError(error);
+        return this.router.navigate([ '/access-denied' ]);
+      });
+    }
   }
 
   /**
