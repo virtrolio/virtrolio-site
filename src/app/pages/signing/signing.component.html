@@ -1,4 +1,10 @@
 <div class="container py-4 center-children vertical-center">
+  <div class="row d-show d-md-none">
+    <div class="col-12 alert alert-primary" id="signing-experience-alert">
+      The Virtrolio signing experience is better on a desktop or laptop computer! <strong><u>
+      <a data-toggle="modal" data-target="#signingExperience">Why?</a></u></strong>
+    </div>
+  </div>
   <div class="row">
 
     <!-- Signing box, header, and character count -->
@@ -287,6 +293,21 @@
             DISCLAIMER
           </a>
         </div>
+<!-- Signing Experience  -->
+<div class="modal fade" id="signingExperience" tabindex="-1" role="dialog" aria-labelledby="info-title"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="experience-title">Do I need a larger screen to use Virtrolio?</h4>        
+        For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but we
+        suggest that you
+        try <em>signing</em> messages on a desktop or laptop computer instead of a phone or tablet. This is because
+        not only is it easier to write out a message when you have a larger screen, but some of the components (like
+        the colour pickers) are not as good-looking or easy to use on mobile.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
       </div>
     </div>
   </div>

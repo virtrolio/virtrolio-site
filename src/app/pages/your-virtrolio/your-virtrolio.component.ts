@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { SharingLinkService } from '../../core/sharing-link.service';
 
 @Component({
   selector: 'app-your-virtrolio',
@@ -23,7 +24,8 @@ export class YourVirtrolioComponent implements OnInit {
   private visitLinkUID: string;
   private visitLinkKEY: string;
 
-  constructor(public authService: AuthService, public router: Router, private title: Title) { }
+  constructor(public authService: AuthService, private sharingLinkService: SharingLinkService,
+              public router: Router, private title: Title) { }
 
   ngOnInit(): void {
     this.authService.displayName().then((displayName) => {
@@ -48,7 +50,7 @@ export class YourVirtrolioComponent implements OnInit {
    */
   setLink() {
     this.copyButtonText = 'Copy';
-    this.authService.getLink().then(link => {
+    this.sharingLinkService.getLink().then(link => {
       this.link = link;
       this.linkReady = true;
     });
@@ -79,7 +81,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.authService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
+      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;

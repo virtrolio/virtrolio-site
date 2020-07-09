@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
 import { MsgIoService } from './msg-io.service';
+import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class SigningGuard implements CanActivate {
   private readonly maintenance = false;
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,
-              private msgIOService: MsgIoService) { }
+              private msgIOService: MsgIoService, private sharingLinkService: SharingLinkService) { }
 
   // noinspection JSUnusedLocalSymbols
   canActivate(
@@ -52,7 +53,7 @@ export class SigningGuard implements CanActivate {
           return false;
         } else {
           // Sender must not have previously signed the recipient's virtrolio
-          return this.authService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
+          return this.sharingLinkService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
             if (validKey === false) {
               this.router.navigate([ '/invalid-link' ]).catch(error => AuthService.displayError(error));
               return false;
