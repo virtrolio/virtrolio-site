@@ -69,6 +69,10 @@
   display: none;
 }
 
+#sharing-link-field {
+  background: white;
+}
+
 .button-modal {
   width: 4.5em;
   padding: 0.4em;
