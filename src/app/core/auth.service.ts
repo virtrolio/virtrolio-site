@@ -40,6 +40,28 @@ export class AuthService {
   }
 
   /**
+   * Combines the desired routerLink and queryParams into one string, adding all necessary ?, = and &.
+   * Used to create a path param for this.location.go().
+   * @param path - the desired routerLink
+   * @param queryParams - all query params to be added onto the routerLink
+   */
+  static parseQueryParams(path: string, queryParams: object): string {
+    let redirectPath = path;
+    if (queryParams) {
+      redirectPath += '?';
+      for (const param in queryParams) {
+        if (queryParams.hasOwnProperty(param)) {
+          redirectPath += param + '=' + queryParams[param] + '&';
+        }
+      }
+      // Remove the extra ampersand at the end
+      return redirectPath.slice(0, -1);
+    } else {
+      return path;
+    }
+  }
+
+  /**
    * @param uid - Optional - The user ID of the user's data to retrieve. Defaults to the current user.
    * @returns The Firestore document containing the user's data.
    */
