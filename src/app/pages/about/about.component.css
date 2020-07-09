@@ -25,7 +25,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: auto;
 }
 
 #meet-the-team-title {
@@ -63,4 +62,8 @@
 
 .image-container, .image-container > img {
   overflow: hidden !important;
+}
+
+ul {
+  word-break: break-word;
 }
