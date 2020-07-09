@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -92,7 +93,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         },
       },
     }),
-    NgbModule
+    NgbModule,
+    DeviceDetectorModule
   ],
   providers: [ CookieService, LoginResolver, PendingChangesGuard ],
   bootstrap: [ AppComponent ]
