@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
@@ -6,6 +6,8 @@ import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
 import { MarkdownComponent } from 'ngx-markdown';
+
+declare var $: any;
 
 @Component({
   selector: 'app-signing',
@@ -20,8 +22,9 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
-  public scrollSyncLoc = 0;
-  public signScrolling = true;
+  public embedLink = '';
+  public imageWidth = 50;
+  public copyButtonText = 'Copy';
 
   private uid: string;
   private key: string;
@@ -42,6 +45,10 @@ export class SigningComponent implements OnInit {
       this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
+    $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    });
   }
 
   /**
@@ -54,15 +61,10 @@ export class SigningComponent implements OnInit {
     return !this.signingService.signingBoxText || this.sending;
   }
 
-  /**
-   * Syncs the scroll percentage of the preview box to the textbox, so that both will scroll when the textbox is scrolled
-   * @param textbox - the main textbox where the user types into
-   * @param previewBox - the preview box that utilizes the markdown
-   */
   syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
-    const scrollPercentage: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
-    const markdownElement = previewBox.element.nativeElement;
-    markdownElement.scrollTop = scrollPercentage * markdownElement.scrollHeight - 160;
+    const scrollPerc: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
+    const ele = previewBox.element.nativeElement;
+    ele.scrollTop = scrollPerc * ele.scrollHeight - 160;
   }
 
   /**
@@ -86,5 +88,16 @@ export class SigningComponent implements OnInit {
         AuthService.displayError(error);
       }
     );
+  }
+
+  /**
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
+   */
+  copyLink(inputElement: HTMLInputElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    this.copyButtonText = 'Copied!';
   }
 }
