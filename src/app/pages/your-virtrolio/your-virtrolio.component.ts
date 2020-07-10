@@ -32,7 +32,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
-    this.authService.redirectLoginProcessing().catch(error => AuthService.displayError(error));
+    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
   }
 
   /**

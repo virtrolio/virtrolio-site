@@ -86,7 +86,7 @@ export class AuthService {
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * User data creation is handled ONLY for desktop devices.
-   * Any page calling login **must** call AuthService.redirectLoginProcessing() in ngOnInit() of the page that it redirects to.
+   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it redirects to.
    * Otherwise, mobile users will not be able to create a user.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
@@ -186,7 +186,7 @@ export class AuthService {
    * Should be called on any page that could potentially be a page that the user is redirected to after calling AuthService.login().
    * User creation for devices using signInWithPopup() (desktops) is handled in AuthService.login().
    */
-  async redirectLoginProcessing(): Promise<void> {
+  async redirectLoginUserCreation(): Promise<void> {
     const userCredentials = await this.afa.getRedirectResult();
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
