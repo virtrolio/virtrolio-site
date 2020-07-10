@@ -5,6 +5,9 @@ import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
+import { MarkdownComponent } from 'ngx-markdown';
+
+declare var $: any;
 
 @Component({
   selector: 'app-signing',
@@ -19,6 +22,9 @@ import { Title } from '@angular/platform-browser';
 export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
+  public embedLink = '';
+  public imageWidth = 50;
+  public copyButtonText = 'Copy';
 
   private uid: string;
   private key: string;
@@ -30,6 +36,7 @@ export class SigningComponent implements OnInit {
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
    */
   ngOnInit(): void {
+    this.authService.redirectLoginProcessing().catch(error => AuthService.displayError(error));
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
       this.key = params.key;
@@ -39,7 +46,10 @@ export class SigningComponent implements OnInit {
       this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
-    this.authService.redirectLoginProcessing().catch(error => AuthService.displayError(error));
+    $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    });
   }
 
   /**
@@ -50,6 +60,17 @@ export class SigningComponent implements OnInit {
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
     return !this.signingService.signingBoxText || this.sending;
+  }
+
+  /**
+   * Syncs the scroll bar positions of the textbox and previewbox
+   * @param textbox - the box that the user can type into
+   * @param previewBox - the markdown preview
+   */
+  syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
+    const scrollPercentage: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
+    const markdownElement = previewBox.element.nativeElement;
+    markdownElement.scrollTop = scrollPercentage * markdownElement.scrollHeight - 160;
   }
 
   /**
@@ -73,5 +94,16 @@ export class SigningComponent implements OnInit {
         AuthService.displayError(error);
       }
     );
+  }
+
+  /**
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
+   */
+  copyLink(inputElement: HTMLInputElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    this.copyButtonText = 'Copied!';
   }
 }

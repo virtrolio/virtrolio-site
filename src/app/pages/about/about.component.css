@@ -25,11 +25,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: auto;
 }
 
 #meet-the-team-title {
   text-align: center;
+}
+
+#meet-the-team {
+  margin-bottom: 2em;
 }
 
 .jumbotron {
@@ -55,4 +58,12 @@
 .image-container {
   padding: 0;
   overflow: hidden;
+}
+
+.image-container, .image-container > img {
+  overflow: hidden !important;
+}
+
+ul {
+  word-break: break-word;
 }
