@@ -39,6 +39,7 @@ export class SigningComponent implements OnInit {
       this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
+    this.authService.redirectLoginProcessing().catch(error => AuthService.displayError(error));
   }
 
   /**
