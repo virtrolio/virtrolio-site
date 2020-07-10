@@ -71,33 +71,34 @@
           </div>
         </div>
 
-        <div class="row justify-content-center">
-          <div class="w-100" id="sharing-link-buttons">
-            <div *ngIf="canShare() else desktopSharing">
-              <label for="button-share-mobile">Share</label>
-              <button (click)="shareLink()" class="btn btn-success col-sm-5 mx-1" id="button-share-mobile"
-                      type="button">Share your link
-              </button>
-            </div>
-            <ng-template #desktopSharing>
-              <label for="button-share-desktop">Share</label>
-              <button (click)="openDesktopSharing()" class="btn btn-info col-sm-5 mx-1"
-                      id="button-share-desktop" type="button">Share your link
-              </button>
-            </ng-template>
-            <label for="button-new-link">Click to generate a new link</label>
-            <button (click)="warnAndGenerate()" class="btn btn-secondary col-sm-6 mx-1" id="button-new-link" type="button">
-              Generate new link
+        <div class="row justify-content-center" id="sharing-link-buttons">
+          <div *ngIf="canShare() else desktopSharing">
+            <label for="button-share-mobile">Share</label>
+            <button (click)="shareLink()" class="btn btn-success col-sm-5 mx-sm-1 my-2 my-sm-0" id="button-share-mobile"
+                    type="button">Share your link
             </button>
+          </div>
+          <ng-template #desktopSharing>
+            <label for="button-share-desktop">Share</label>
+            <button (click)="openDesktopSharing()" class="btn btn-info col-sm-5 mx-sm-1 my-2 my-sm-0"
+                    id="button-share-desktop" type="button">Share your link
+            </button>
+          </ng-template>
+          <label for="button-new-link">Click to generate a new link</label>
+          <button (click)="warnAndGenerate()" class="btn btn-secondary col-12 col-sm-5 mx-1 my-2 my-sm-0" id="button-new-link" type="button">
+            Generate new link
+          </button>
+        </div>
+
+        <div class="row">
+          <div *ngIf="showWarningText" id="warning-div">
+            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate
+            again to confirm.
           </div>
           <div class="mt-3" id="generate-link-desc">
             <h6>Why would I want to generate a new link?</h6>
             <p>If you want people to stop being able to use your
               old one! Comes in handy if people are signing your virtrolio whom you don't approve of.</p>
-          </div>
-          <div *ngIf="showWarningText" id="warning-div">
-            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate
-            again to confirm.
           </div>
         </div>
       </div>
@@ -165,18 +166,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row justify-content-center">
-          <div class="btn-group" role="group" aria-label="sharing buttons" id="sharing-buttons">
-            <button role="button" class="btn btn-lg btn-secondary" id="facebook-button"
-               (click)="postOnSocial('facebook')">Facebook
-            </button>
-            <button role="button" class="btn btn-lg btn-secondary" id="twitter-button"
-               (click)="postOnSocial('twitter')">Twitter
-            </button>
-            <button role="button" class="btn btn-lg btn-secondary" id="gmail-button"
-               (click)="postOnSocial('gmail')">Gmail
-            </button>
-          </div>
+        <div class="row justify-content-center px-4" id="sharing-buttons">
+          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="facebook-button"
+             (click)="postOnSocial('facebook')">Facebook
+          </button>
+          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="twitter-button"
+             (click)="postOnSocial('twitter')">Twitter
+          </button>
+          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="gmail-button"
+             (click)="postOnSocial('gmail')">Gmail
+          </button>
         </div>
       </div>
       <div class="modal-footer">
