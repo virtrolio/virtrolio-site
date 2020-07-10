@@ -48,7 +48,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="link-gen-title">Ahoy, your sharing link has been prepared!</h5>
-        <button aria-label="Close" class="btn btn-primary close" data-dismiss="modal" type="button">
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -57,13 +57,19 @@
       <div class="modal-body sharing-link-body">
         <p>This is <b>your</b> sharing link; only share it with people you trust.</p>
         <label for="sharing-link-field">Your Link:</label>
-        <input #sharingLink (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="align-middle"
-               id="sharing-link-field" readonly
-               type="text" value="{{ link }}">
-        <button (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="btn btn-primary align-middle"
-                id="button-copy"
-                type="button">{{ copyButtonText }}
-        </button>
+        <div class="align-items-center my-3">
+          <div class="input-group mb-3">
+            <input #sharingLink (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="form-control"
+                   id="sharing-link-field" readonly
+                   type="text" value="{{ link }}">
+            <div class="input-group-append">
+              <button (click)="copyLink(sharingLink)" [disabled]="!linkReady" class="btn btn-primary align-middle"
+                      id="button-copy"
+                      type="button">{{ copyButtonText }}
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div class="row justify-content-center">
           <div class="w-100" id="sharing-link-buttons">
@@ -121,14 +127,21 @@
           link below or directly into your browser search bar. To access <em>your</em> sharing link, click the 'Sharing
           Link' button on this page!
         </p>
-        <label for="input-sharing-field" id="input-sharing-label" style="display:none">Visit friend link</label>
-        <input #inputSharing (click)="copyLink(inputSharing)" [(ngModel)]='visitLink' class="align-middle"
-               id="input-sharing-field" type="text" value="Input your friend's link here">
-        <button (click)="navigateToLink()" aria-label="Close" class="btn btn-primary align-middle button-modal"
-                data-dismiss="modal"
-                id="button-go"
-                type="button">Go
-        </button>
+        <div class="align-items-center my-3">
+          <div class="input-group">
+            <label for="input-sharing-field" id="input-sharing-label" style="display:none">Visit friend link</label>
+            <input #inputSharing (click)="copyLink(inputSharing)" [(ngModel)]='visitLink' class="form-control"
+                   id="input-sharing-field" type="text" placeholder="Input your friend's link here"
+                   aria-label="sign-friend">
+            <div class="input-group-append">
+              <button (click)="navigateToLink()" aria-label="Close" class="btn btn-primary align-middle button-modal"
+                      data-dismiss="modal"
+                      id="button-go"
+                      type="button">Go
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Modal Footer -->
