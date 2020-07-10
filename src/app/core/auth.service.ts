@@ -180,6 +180,19 @@ export class AuthService {
   }
 
   /**
+   * Handles the user creation if the user was signed in using signInWithRedirect() (called on mobile devices) instead of signInWithPopup().
+   * Should be called on any page that could potentially be a page that the user is redirected to after calling AuthService.login().
+   * User creation for devices using signInWithPopup() (desktops) is handled in AuthService.login().
+   */
+  async redirectLoginProcessing(): Promise<void> {
+    const userCredentials = await this.afa.getRedirectResult();
+    // user will be null if signInWithRedirect wasn't called right before
+    if (userCredentials.user) {
+      await this.createUser(userCredentials.user);
+    }
+  }
+
+  /**
    * Should not be used on pages/guards that are not protected by the LoginResolver.
    * If async functionality is required, use asyncIsLoggedIn() instead.
    * @returns True if the user is logged in.
