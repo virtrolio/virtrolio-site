@@ -71,17 +71,17 @@
         <!-- Color pickers for text and background -->
         <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
           <span id="font-color-text">A</span>
-          <label for="colorpicker-font" hidden>Colour picker for font</label>
-          <input [(ngModel)]='signingService.textColor' class="mr-2" id="colorpicker-font" name="fontColorPicker"
+          <label for="color-picker-font" hidden>Colour picker for font</label>
+          <input [(ngModel)]='signingService.textColor' class="mr-2" id="color-picker-font" name="fontColorPicker"
                  type="color" value={{signingService.textColor}}>
           <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
         <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
           <img alt="fill color selector" id="fill-color-icon"
                src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-          <label for="colorpicker-background" hidden>Colour picker for background</label>
-          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
-                 name="backgroundColorPicker" type="color" value={{signingService.backgroundColor}}>
+          <label for="color-picker-background" hidden>Colour picker for background</label>
+          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="color-picker-background"
+                 name="backgroundcolor-picker" type="color" value={{signingService.backgroundColor}}>
           <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
 
@@ -260,9 +260,9 @@
           </div>
           <div class="my-3">
             <strong>Your image code</strong><br>
-            <small>Copy this into your message and check the 'Preview'!</small>
+            <label for="embed-code-field"><small>Copy this into your message and check the 'Preview'!</small></label>
             <div class="input-group my-3">
-              <input #EmbedCode type="text" class="form-control"
+              <input #EmbedCode type="text" class="form-control" id="embed-code-field"
                      value="<img src='{{embedLink}}' width={{imageWidth}}%>">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{copyButtonText}}</button>

@@ -117,7 +117,7 @@ markdown {
   cursor: pointer;
 }
 
-#colorpicker-font, #colorpicker-background {
+#color-picker-font, #color-picker-background {
   opacity: 0;
   position: absolute;
   display: block;
