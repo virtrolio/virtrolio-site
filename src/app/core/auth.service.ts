@@ -85,7 +85,9 @@ export class AuthService {
 
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
-   * Also calls createUser() so that the user's internal data is created at the same time.
+   * User data creation is handled ONLY for desktop devices.
+   * Any page calling login **must** call AuthService.redirectLoginProcessing() in ngOnInit() of the page that it redirects to.
+   * Otherwise, mobile users will not be able to create a user.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
