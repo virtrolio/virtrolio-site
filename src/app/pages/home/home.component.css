@@ -64,7 +64,8 @@
 
 .demo-image {
   overflow: hidden;
-  position: absolute;
+  position: relative;
+  height: 100%;
   left: 0;
   right: 0;
 }
@@ -91,21 +92,26 @@
   background-size: cover;
 }
 
-#demo-text-container {
+#viewing-demo-text-container {
   font-family: 'Roboto', sans-serif;
-  position: absolute;
+  position: relative;
   height: 100%;
-  left: 0;
-  padding: 30vh 1vw 0 5vw;
+
 }
 
-#demo-title {
+#signing-demo-text-container {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  height: 100%;
+}
+
+.demo-title {
   font-size: 2em;
   font-weight: 400;
   color: var(--accent);
   padding: 0.5em 1em;
-  border-radius: 10em;
-  background: white;
+  border-radius: 0em;
+  background-color: white;
 }
 
 /* || Body-Specific */

@@ -58,61 +58,62 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="container py-4 center-children vertical-center">
-    <div class="row">
-      <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
-        <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">Why use Virtrolio?</h3>
-          <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
-            that means <em>privacy</em>. You can only view virtrolio messages sent directly to you (see our
-            <a href="/privacy-policy">Privacy Policy</a> for more details).
-          </p>
-        </div>
-        <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">How can I make a virtrolio?</h3>
-          <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
-            and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
-            your virtrolio.</p>
-        </div>
-        <div class="card mr-4 rounded border-0">
-          <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
-          <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
-            customization tools,
-            including <span style="color: #d1155a">colour pickers</span>, <span
-              style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
-            editor—all so that you can truly express yourself.</p>
-        </div>
+<div class="full-width demo-section" id="viewing-demo">
+  <div data-aos="fade-left" data-aos-duration="2000" data-aos-once="true" class="full-width demo-image center-children" id="viewing-demo-image">
+  </div>
+</div>
+
+<div class="container py-4 center-children vertical-center">
+  <div class="row">
+    <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
+      <div class="card mr-4 mb-5 rounded border-0">
+        <h3 class="body-header-text">Why use Virtrolio?</h3>
+        <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
+          that means <em>privacy</em>. You can only view virtrolio messages sent directly to you (see our
+          <a href="/privacy-policy">Privacy Policy</a> for more details).
+        </p>
       </div>
+      <div class="card mr-4 mb-5 rounded border-0">
+        <h3 class="body-header-text">How can I make a virtrolio?</h3>
+        <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
+          and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
+          your virtrolio.</p>
+      </div>
+      <div class="card mr-4 rounded border-0">
+        <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
+        <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
+          customization tools,
+          including <span style="color: #d1155a">colour pickers</span>, <span
+            style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
+          editor—all so that you can truly express yourself.</p>
+      </div>
+    </div>
 
-      <!-- Demo Card -->
-      <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4" data-aos="flip-left"
-           data-aos-duration="2000"
-           data-aos-once="true">
-        <div class="card shadow">
-          <div class="card-header">
+    <!-- Demo Card -->
+    <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4 d-none d-md-block" data-aos="flip-left"
+         data-aos-duration="2000"
+         data-aos-once="true">
+      <div class="card shadow">
+        <div class="card-header">
               <span class="profile-pic-container-small mr-2">
                 <img alt="profile-pic" class="profile-pic" src="../../../assets/images/logo_reg.png">
               </span>
-            <span class="card-header-text">Mike H.</span>
-          </div>
-          <markdown
-            [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
-            class="card-body card-message"
-            data="{{ signingService.signingBoxText }}"
-            emoji id="preview-text"></markdown>
+          <span class="card-header-text">Mike H.</span>
         </div>
+        <markdown
+          [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
+          class="card-body card-message"
+          data="{{ signingService.signingBoxText }}"
+          emoji id="preview-text"></markdown>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid full-width demo-section" id="viewing-demo">
-  <div data-aos="fade-left" data-aos-duration="2000" data-aos-once="true" class="container-fluid full-width demo-image" id="viewing-demo-image">
-    <div id="demo-text-container">
-      <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="vertical-center shadow" id="demo-title">Sample text right here
-      </h1>
-    </div>
+<div class="full-width demo-section" id="signing-demo">
+  <div data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" class="full-width demo-image center-children" id="signing-demo-image">
   </div>
 </div>
 
@@ -120,24 +121,6 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
       <h2 class="mb-3 px-5 home-text header-text">Sample Text</h2>
-      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
-        those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
-        In other words, you can create your own virtrolio, share it
-        with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
-        virtrolio and all the messages you have received from your friends!
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid full-width demo-section" id="signing-demo">
-  <div data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" class="container-fluid full-width demo-image" id="signing-demo-image">
-  </div>
-</div>
-
-<div class="container py-1 vertical-center">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
       <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
         those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
         In other words, you can create your own virtrolio, share it
