@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import faqContent from './faqContent.json';
 
 @Component({
   selector: 'app-faq',
@@ -7,6 +8,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: [ './faq.component.css' ]
 })
 export class FaqComponent implements OnInit {
+  public faqContent = faqContent;
 
   constructor(private title: Title) { }
 
