@@ -14,8 +14,7 @@ import contributors from './contributors.json';
 export class AboutComponent implements OnInit {
   public contributors = contributors;
 
-  constructor(private title: Title) {
-  }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle('About Us | Virtrolio');
