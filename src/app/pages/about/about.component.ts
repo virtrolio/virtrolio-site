@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import contributors from './contributors.json';
+import { Contributor } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-about',
@@ -12,7 +13,7 @@ import contributors from './contributors.json';
  * About component, with a short blurb at the top and a row for each contributor.
  */
 export class AboutComponent implements OnInit {
-  public contributors = contributors;
+  public contributors: Contributor[] = contributors;
 
   constructor(private title: Title) { }
 
