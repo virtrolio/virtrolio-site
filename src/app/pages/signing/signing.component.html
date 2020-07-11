@@ -16,6 +16,7 @@
       </div>
       <div class="row">
         <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
+                  (scroll)='syncMarkdown(signingInputArea, previewBoxArea)'
                   [(ngModel)]='signingService.signingBoxText'
                   [ngStyle]="{'font-family': signingService.currentFontFamily}"
                   autofocus class="form-control"
@@ -70,16 +71,17 @@
         <!-- Color pickers for text and background -->
         <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
           <span id="font-color-text">A</span>
-          <label for="colorpicker-font" hidden>Colour picker for font</label>
-          <input [(ngModel)]='signingService.textColor' class="mr-2" id="colorpicker-font" name="fontColorPicker"
+          <label for="color-picker-font" hidden>Colour picker for font</label>
+          <input [(ngModel)]='signingService.textColor' class="mr-2" id="color-picker-font" name="fontColorPicker"
                  type="color" value={{signingService.textColor}}>
           <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
         <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-          <img alt="fill color selector" id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-          <label for="colorpicker-background" hidden>Colour picker for background</label>
-          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
-                 name="backgroundColorPicker" type="color" value={{signingService.backgroundColor}}>
+          <img alt="fill color selector" id="fill-color-icon"
+               src="../../../assets/images/icons/SigningIcon_fill-color.svg">
+          <label for="color-picker-background" hidden>Colour picker for background</label>
+          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="color-picker-background"
+                 name="background-color-picker" type="color" value={{signingService.backgroundColor}}>
           <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
         <button type="button" class="btn btn-primary" id="btn-info" data-toggle="modal"
@@ -101,8 +103,8 @@
         </label>
       </div>
       <div class="row">
-        <markdown [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
-                  'font-family': signingService.currentFontFamily}"
+        <markdown #previewBoxArea
+                  [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,                  'font-family': signingService.currentFontFamily}"
                   data="{{ signingService.signingBoxText }}" emoji
                   id="preview-text"></markdown>
       </div>
