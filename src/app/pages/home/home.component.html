@@ -103,136 +103,47 @@
             emoji id="preview-text"></markdown>
         </div>
       </div>
-
-      <!-- Signing component -->
-      <div class="col-md-8 order-md-3">
-        <div class="center-children">
-          <div class="row title-div vertical-center">
-          </div>
-          <div class="row">
-            <label for="signing-box" id="signing-box-label">
-              <b>Give it a try!</b>
-            </label>
-            <p id="preview-instructions">Preview your message above.</p>
-            <textarea #signingInputArea (keyup)='keyup(signingInputArea)' [(ngModel)]='inputBoxText'
-                      [ngStyle]="{'font-family': signingService.currentFont}" class="form-control"
-                      id="signing-box"></textarea>
-            <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
-                  id="char-count-display">
-          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
-        </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Formatting Tools -->
-      <div class='col-md-12 order-md-4'>
-        <div class="row justify-content-center" id="options">
-
-          <!-- Font dropdown -->
-          <div class="dropdown">
-            <button [ngStyle]="{'font-family': signingService.currentFont}" aria-expanded="false" aria-haspopup="true"
-                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="font-selector-dropdown"
-                    type="button">
-              <span>{{ signingService.currentFontDisplay }}</span>
-              <span class="caret"></span>
-            </button>
-            <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-              <span *ngFor="let font of signingService.fontDict | keyvalue">
-              <a (click)="signingService.selectFont(font.key)"
-                 [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
-                 class="dropdown-item">{{font.key}}</a>
-            </span>
-            </div>
-          </div>
-
-          <!-- Formatting buttons -->
-          <button (click)="signingService.addFormatting(signingInputArea, '**')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-bold" type="button">
-            <b>B</b>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '*')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-italics" type="button">
-            <i>I</i>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-underline" type="button">
-            <u>U</u>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '~~')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-strikethrough" type="button">
-            <s>S</s>
-          </button>
-
-          <!-- Color pickers for text and background -->
-          <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-            <span id="font-color-text">A</span>
-            <label for="colorpicker-font" hidden>Colour picker for font</label>
-            <input [(ngModel)]='signingService.textColor' class="mr-2" id="colorpicker-font" name="fontColorPicker"
-                   type="color" value={{signingService.textColor}}>
-            <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
-          </button>
-          <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-            <img alt="fill color selector" id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-            <label for="colorpicker-background" hidden>Colour picker for background</label>
-            <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
-                   name="backgroundColorPicker"
-                   type="color" value={{signingService.backgroundColor}}>
-            <span [ngStyle]="{'background-color': signingService.backgroundColor}"
-                  class="dynamic-color-bar">&nbsp;</span>
-          </button>
-        </div>
-        <div class="row mt-3 justify-content-center">
-          <button class="btn btn-primary" data-target="#info-modal" data-toggle="modal" id="btn-info"
-                  type="button">Read this first!
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
-<!-- Information modal when they click on the ? -->
-<div aria-hidden="true" aria-labelledby="info-modal-title" class="modal fade" id="info-modal" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5>Important Things to Note</h5>
-        <ul>
-          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-            line') counts as 5 characters.
-          </li>
-          <li>Images can be embedded in messages...in a specific way. See our
-            <a routerLink="/faq" target="_blank">FAQ</a> for details.
-          </li>
-        </ul>
-        <h5>Formatting</h5>
-        <p>
-          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
-          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
-        </p>
+<div class="container-fluid full-width demo-section" id="viewing-demo">
+  <div data-aos="fade-left" data-aos-duration="2000" data-aos-once="true" class="container-fluid full-width demo-image" id="viewing-demo-image">
+    <div id="demo-text-container">
+      <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" class="vertical-center shadow" id="demo-title">Sample text right here
+      </h1>
+    </div>
+  </div>
+</div>
 
-        <h5>Emojis</h5>
-        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
-          + Space) on a Mac to bring up the emoji
-          keyboard. Note: not all emojis may be supported; check <a
-            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
-            supported emojis</a> to make sure! ❤</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-      </div>
+<div class="container py-1 vertical-center">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+      <h2 class="mb-3 px-5 home-text header-text">Sample Text</h2>
+      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
+        those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
+        In other words, you can create your own virtrolio, share it
+        with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
+        virtrolio and all the messages you have received from your friends!
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid full-width demo-section" id="signing-demo">
+  <div data-aos="fade-right" data-aos-duration="2000" data-aos-once="true" class="container-fluid full-width demo-image" id="signing-demo-image">
+  </div>
+</div>
+
+<div class="container py-1 vertical-center">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
+        those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
+        In other words, you can create your own virtrolio, share it
+        with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
+        virtrolio and all the messages you have received from your friends!
+      </p>
     </div>
   </div>
 </div>
