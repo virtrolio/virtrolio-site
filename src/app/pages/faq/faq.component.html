@@ -2,15 +2,15 @@
   <h1 class="mt-3 mb-3" id="title">Frequently Asked Questions</h1>
   <br/>
 
-  <div class="accordion mb-3" id="section-header{{i}}" *ngFor="let section of faqContent; let i = index">
+  <div class="accordion mb-3" id="section-header{{s}}" *ngFor="let section of faqContent; let s = index">
     <!-- Each section-->
     <h2>{{section.sectionTitle}}</h2>
 
     <!-- Each question per section -->
-    <div class="card" *ngFor="let question of section.questions; let j = index">
-      <div class="card-header" id="question{{i}}-{{j}}">
+    <div class="card" *ngFor="let question of section.questions; let q = index">
+      <div class="card-header" id="question{{s}}-{{q}}">
         <h2 class="mb-0">
-          <button [attr.aria-controls]="'answer'+i+'-'+j" aria-expanded="false" class="btn btn-link" [attr.data-target]="'#answer'+i+'-'+j"
+          <button [attr.aria-controls]="'answer'+s+'-'+q" aria-expanded="false" class="btn btn-link" [attr.data-target]="'#answer'+s+'-'+q"
                   data-toggle="collapse" type="button">
             {{question.question}}
           </button>
@@ -18,7 +18,7 @@
       </div>
 
       <!-- Each answer per question -->
-      <div aria-labelledby="question" class="collapse" [attr.data-parent]="'#section-header'+i" id="answer{{i}}-{{j}}">
+      <div aria-labelledby="question" class="collapse" [attr.data-parent]="'#section-header'+s" id="answer{{s}}-{{q}}">
         <div class="card-body card-align" [innerHTML]="question.answer"></div>
       </div>
     </div>
