@@ -9,7 +9,7 @@ import { FAQSection } from '../../shared/interfaces';
   styleUrls: [ './faq.component.css' ]
 })
 export class FaqComponent implements OnInit {
-  public faqContent = faqContent;
+  public faqContent: FAQSection[] = faqContent;
 
   constructor(private title: Title) { }
 
