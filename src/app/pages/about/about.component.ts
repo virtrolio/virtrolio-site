@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutPagePictures } from 'src/app/shared/interfaces';
 import { Title } from '@angular/platform-browser';
+import contributors from './contributors.json';
 
 @Component({
   selector: 'app-about',
@@ -19,6 +20,7 @@ export class AboutComponent implements OnInit {
   Janakitti: AboutPagePictures;
   John: AboutPagePictures;
   Tommy: AboutPagePictures;
+  public contributors = contributors;
 
   /**
    * Image links taken from Google Photos -> @link {https://www.labnol.org/embed/google/photos/} embed code generator
