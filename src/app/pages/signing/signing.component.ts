@@ -5,7 +5,6 @@ import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
-import { MarkdownComponent } from 'ngx-markdown';
 
 declare var $: any;
 
@@ -60,17 +59,6 @@ export class SigningComponent implements OnInit {
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
     return !this.signingService.signingBoxText || this.sending;
-  }
-
-  /**
-   * Syncs the scroll bar positions of the textbox and previewbox
-   * @param textbox - the box that the user can type into
-   * @param previewBox - the markdown preview
-   */
-  syncMarkdown(textbox: HTMLTextAreaElement, previewBox: MarkdownComponent) {
-    const scrollPercentage: number = (textbox.scrollTop + 160) / textbox.scrollHeight;
-    const markdownElement = previewBox.element.nativeElement;
-    markdownElement.scrollTop = scrollPercentage * markdownElement.scrollHeight - 160;
   }
 
   /**

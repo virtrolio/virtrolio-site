@@ -16,7 +16,6 @@
       </div>
       <div class="row">
         <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
-                  (scroll)='syncMarkdown(signingInputArea, previewBoxArea)'
                   [(ngModel)]='signingService.signingBoxText'
                   [ngStyle]="{'font-family': signingService.currentFontFamily}"
                   autofocus class="form-control"
