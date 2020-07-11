@@ -3,6 +3,9 @@ import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 import { VirtrolioMessage } from '../../../shared/interfaces';
+import { CookieService } from 'ngx-cookie-service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-responses-list',
@@ -15,8 +18,9 @@ export class ResponsesListComponent implements OnInit {
   public uid: string;
   navIsOpen = false;
   messageList: VirtrolioMessage[] = [];
-
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
+  public showNewToViewing = true;
+  private showNewToViewingValue: string;
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService, private cookieService: CookieService) {
     try {
       this.uid = this.authService.uid();
     } catch (e) { }
@@ -43,13 +47,31 @@ export class ResponsesListComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.cookieService.check('viewing-cookie') === false) {
+      this.cookieService.set('viewing-cookie', 'true', 365);
+    }
+
+    this.showNewToViewingValue = this.cookieService.get('viewing-cookie');
+
+    if (this.showNewToViewingValue === 'true') {
+      this.showNewToViewing = true;
+    } else if (this.showNewToViewingValue === 'false') {
+      this.showNewToViewing = false;
+    } else {
+      console.log('Error. Viewing-cookie not found or initialized properly.');
+    }
+  }
 
   /**
    * Toggle the state of the side nav menu
    */
   navToggle() {
     this.navIsOpen = !this.navIsOpen;
+    if (this.showNewToViewing) {
+      this.cookieService.set('viewing-cookie', 'false', 365);
+      this.showNewToViewing = false;
+    }
   }
 
   /**

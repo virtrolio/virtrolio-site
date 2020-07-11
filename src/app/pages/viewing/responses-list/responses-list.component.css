@@ -32,7 +32,7 @@
   position: absolute;
   height: 6em;
   width: 2em;
-  top: calc(2em + var(--navbar-height));
+  top: calc(2em);
   right: -2em;
   font-size: 1em;
   font-weight: bold;
@@ -45,8 +45,8 @@
 }
 
 .hamburger:hover {
+  transform: translate(1em,0);
   width: 3em;
-  right: -3em;
   transition: 0.5s;
 }
 
@@ -115,7 +115,7 @@
 
 .chevron {
   position: absolute;
-  float: right;
+  right: 0;
 }
 
 /* List contents */
@@ -186,6 +186,50 @@
   .sidenav a {
     font-size: 18px;
   }
+}
+
+.flashy-hamburger {
+  -webkit-animation: FlashyHamburger 2s ease infinite;
+  -moz-animation: FlashyHamburger 2s ease infinite;
+  animation: FlashyHamburger 2s ease infinite;
+}
+
+@-webkit-keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@-moz-keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+
+.flashy-hamburger-mobile {
+  -webkit-animation: FlashyHamburgerMobile 2s ease infinite;
+  -moz-animation: FlashyHamburgerMobile 2s ease infinite;
+  animation: FlashyHamburgerMobile 2s ease infinite;
+}
+
+@-webkit-keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@-moz-keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
 }
 
 /* || SCROLLBAR */

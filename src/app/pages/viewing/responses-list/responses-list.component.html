@@ -1,6 +1,6 @@
 <div class="d-none d-md-block">
   <div [class.nav-open]="navIsOpen" class="side-nav-container">
-    <div *ngIf="messageList.length !== 0" (click)="navToggle()" class="hamburger vertical-center shadow">
+    <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger]="showNewToViewing" class="hamburger vertical-center shadow">
       <img *ngIf="!navIsOpen" class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-right.svg">
       <img *ngIf="navIsOpen" class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-left.svg">
     </div>
@@ -36,8 +36,8 @@
   </div>
 </div>
 <div class="d-block d-md-none">
-  <div *ngIf="messageList.length !== 0" (click)="navToggle()" class="hamburger-mobile vertical-center shadow">
-    <img class="right-chevron" alt="response-list" src="../../../../assets/images/icons/chevron-right.svg">
+  <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger-mobile]="showNewToViewing" class="hamburger-mobile vertical-center shadow">
+    <img class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-right.svg">
   </div>
 
   <div [class.nav-mobile-open]="navIsOpen" class="sidenav-mobile shadow">
