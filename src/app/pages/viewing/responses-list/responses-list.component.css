@@ -88,10 +88,9 @@
 /* Button component */
 .hamburger-mobile {
   position: fixed;
-  height: 6em;
+  height: 3em;
   width: 3em;
-  top: unset;
-  bottom: 2em;
+  top: calc(var(--navbar-height) + 5em);
   left: -1em;
   font-size: 1em;
   font-weight: bold;
