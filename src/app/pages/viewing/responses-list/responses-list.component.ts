@@ -46,11 +46,10 @@ export class ResponsesListComponent implements OnInit {
   ngOnInit(): void { }
 
   /**
-   * Set the state of the side nav menu
-   * @param state True if nav menu is open
+   * Toggle the state of the side nav menu
    */
-  navOpen(state: boolean) {
-    this.navIsOpen = state;
+  navToggle() {
+    this.navIsOpen = !this.navIsOpen;
   }
 
   /**
@@ -58,7 +57,7 @@ export class ResponsesListComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    this.navOpen(false);
+    this.navToggle();
     if (!this.viewService.isCarouselView) {
       this.vps.scrollToAnchor(id);
     }
