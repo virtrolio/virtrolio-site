@@ -5,6 +5,8 @@ import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
+import { Location } from '@angular/common';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ export class AuthService {
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
   private user: User;
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
+              private deviceDetectorService: DeviceDetectorService) {
     this.afa.user.subscribe((user: User) => this.user = user);
   }
 
@@ -40,6 +43,28 @@ export class AuthService {
   }
 
   /**
+   * Combines the desired routerLink and queryParams into one string, adding all necessary ?, = and &.
+   * Used to create a path param for this.location.go().
+   * @param path - the desired routerLink
+   * @param queryParams - all query params to be added onto the routerLink
+   */
+  static parseQueryParams(path: string, queryParams: object): string {
+    let redirectPath = path;
+    if (queryParams) {
+      redirectPath += '?';
+      for (const param in queryParams) {
+        if (queryParams.hasOwnProperty(param)) {
+          redirectPath += param + '=' + queryParams[param] + '&';
+        }
+      }
+      // Remove the extra ampersand at the end
+      return redirectPath.slice(0, -1);
+    } else {
+      return path;
+    }
+  }
+
+  /**
    * @param uid - Optional - The user ID of the user's data to retrieve. Defaults to the current user.
    * @returns The Firestore document containing the user's data.
    */
@@ -60,30 +85,46 @@ export class AuthService {
 
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
-   * Also calls createUser() so that the user's internal data is created at the same time.
+   * User data creation is handled ONLY for desktop devices.
+   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it redirects to.
+   * Otherwise, mobile users will not be able to create a user.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
-   * @returns A promise evaluating to true if the redirect is successful.
+   * @returns A promise evaluating to true if the redirect is successful (only returned on desktop devices).
    * @throws Error - If the login fails
    */
-  async login(routeTo: string, queryParams?: object): Promise<boolean> {
+  async login(routeTo: string, queryParams?: object): Promise<void | boolean> {
     if (typeof routeTo === 'undefined' || !routeTo) {
       throw new Error('Route was not provided');
     }
-    return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
-      if (userCredentials.user) {  // If user is not null
-        return this.createUser(userCredentials.user).then(() => {
-          return this.router.navigate([ routeTo ], { queryParams });
-        });
-      } else {
-        console.log('Login failed');
-        return this.router.navigate([ '/' ]);
-      }
-    }).catch(error => {
-      AuthService.displayError(error);
-      return this.router.navigate([ '/access-denied' ]);
-    });
+    // Prepare sign-in provider(s)
+    const googleAuthProvider = new auth.GoogleAuthProvider();
+
+    // Check device type
+    if (this.deviceDetectorService.isDesktop()) { // Device is desktop, so use sign-in with popup
+      return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
+        if (userCredentials.user) {  // If user is not null
+          return this.createUser(userCredentials.user).then(() => {
+            return this.router.navigate([ routeTo ], { queryParams });
+          });
+        } else {
+          console.log('Login failed');
+          return this.router.navigate([ '/' ]);
+        }
+      }).catch(error => {
+        AuthService.displayError(error);
+        return this.router.navigate([ '/access-denied' ]);
+      });
+    } else { // Device is phone/tablet, so use sign-in with redirect
+      const redirectPath = AuthService.parseQueryParams(routeTo, queryParams);
+      this.location.go(redirectPath);
+      // Sign-in with Redirect is necessary to support popup browsers which do not have support for multiple tabs)
+      return this.afa.signInWithRedirect(googleAuthProvider).catch(error => {
+        AuthService.displayError(error);
+        return this.router.navigate([ '/access-denied' ]);
+      });
+    }
   }
 
   /**
@@ -137,6 +178,19 @@ export class AuthService {
           AuthService.displayError(error);
         });
       }
+    }
+  }
+
+  /**
+   * Handles the user creation if the user was signed in using signInWithRedirect() (called on mobile devices) instead of signInWithPopup().
+   * Should be called on any page that could potentially be a page that the user is redirected to after calling AuthService.login().
+   * User creation for devices using signInWithPopup() (desktops) is handled in AuthService.login().
+   */
+  async redirectLoginUserCreation(): Promise<void> {
+    const userCredentials = await this.afa.getRedirectResult();
+    // user will be null if signInWithRedirect wasn't called right before
+    if (userCredentials.user) {
+      await this.createUser(userCredentials.user);
     }
   }
 
