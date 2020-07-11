@@ -11,13 +11,13 @@ import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/sign
 import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
+import { MyVirtrolioComponent } from './pages/my-virtrolio/my-virtrolio.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { SigningComponent } from './pages/signing/signing.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
-import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
 // Services & Guards
 import { LoginResolver } from './core/login-resolver';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
@@ -85,8 +85,8 @@ const routes: Routes = [
     resolve: { user: LoginResolver }
   },
   {
-    path: 'your-virtrolio',
-    component: YourVirtrolioComponent,
+    path: 'my-virtrolio',
+    component: MyVirtrolioComponent,
     canActivate: [ AngularFireAuthGuard ],
     data: { authGuardPipe: redirectUnauthorized },
     resolve: { user: LoginResolver }

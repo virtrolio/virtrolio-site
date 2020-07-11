@@ -35,7 +35,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
 import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
-import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
+import { MyVirtrolioComponent } from './pages/my-virtrolio/my-virtrolio.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
 import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
@@ -61,7 +61,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ViewingComponent,
     MessagesComponent,
     ResponsesListComponent,
-    YourVirtrolioComponent,
+    MyVirtrolioComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
     InvalidLinkComponent,
