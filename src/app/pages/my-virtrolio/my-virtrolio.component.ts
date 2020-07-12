@@ -115,7 +115,7 @@ export class MyVirtrolioComponent implements OnInit {
     const urlFriendlyLink = 'https%3A//virtrolio.web.app/signing?uid=' + this.authService.uid() + '%26key=' +
       this.link.match(/key=([^&]*)/)[1];
 
-    const bodyText = 'Send%20me%20a%20message!%20';
+    const bodyText = 'Sign%20my%20virtual%20yearbook!';
 
     if (platform === 'facebook') {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlFriendlyLink, '_blank');
@@ -123,9 +123,9 @@ export class MyVirtrolioComponent implements OnInit {
       window.open('https://twitter.com/intent/tweet?url=' + urlFriendlyLink + '&text=' + bodyText, '_blank');
     } else if (platform === 'email') {
       window.open('mailto:?subject=' + 'Virtrolio%20-%20Online%20Yearbook%20Signing!'
-        + '&body=' + bodyText + urlFriendlyLink, '_blank');
+        + '&body=' + bodyText + '%0D%0A' + urlFriendlyLink, '_blank');
     } else {
-      AuthService.displayError('Attempted to post to a social media platform we do not yet support!');
+      AuthService.displayError('Attempted to post to a social media platform we do not yet support: ' + platform);
     }
   }
 
