@@ -82,36 +82,37 @@
   animation: SectionGradientAnimation 10s ease infinite;
 }
 
-#viewing-demo-image {
+.viewing-demo-image {
   background: url("../../../assets/images/viewing-demo.svg") no-repeat center;
   background-size: cover;
 }
 
-#signing-demo-image {
+.signing-demo-image {
   background: url("../../../assets/images/signing-demo.svg") no-repeat center;
   background-size: cover;
 }
 
-#viewing-demo-text-container {
+.viewing-demo-text-container {
   font-family: 'Roboto', sans-serif;
-  position: relative;
+  position: absolute;
+  left: 0;
+  text-align: left;
   height: 100%;
-
 }
 
-#signing-demo-text-container {
+.signing-demo-text-container {
   font-family: 'Roboto', sans-serif;
-  position: relative;
+  position: absolute;
+  right: 0;
+  text-align: right;
   height: 100%;
 }
 
 .demo-title {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 400;
-  color: var(--accent);
-  padding: 0.5em 1em;
-  border-radius: 0em;
-  background-color: white;
+  color: white;
+  text-shadow: 0.1em 0.1em 0.6em black;
 }
 
 /* || Body-Specific */
