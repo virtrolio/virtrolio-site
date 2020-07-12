@@ -7,15 +7,15 @@ import { SharingLinkService } from '../../core/sharing-link.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-your-virtrolio',
-  templateUrl: './your-virtrolio.component.html',
-  styleUrls: [ './your-virtrolio.component.css' ]
+  selector: 'app-my-virtrolio',
+  templateUrl: './my-virtrolio.component.html',
+  styleUrls: [ './my-virtrolio.component.css' ]
 })
 
 /**
- * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
+ * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class YourVirtrolioComponent implements OnInit {
+export class MyVirtrolioComponent implements OnInit {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
@@ -35,7 +35,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
-
+    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
     this.navigator = window.navigator;
   }
 
