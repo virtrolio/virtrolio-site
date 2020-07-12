@@ -55,5 +55,13 @@ service cloud.firestore {
       // Only write to user's own info
       allow write: if request.auth.uid == user;
     }
+    match /beta/{item} {
+          // For Beta Tester verification
+          allow get: if request.auth != null;
+          // Prevent scraping of beta data
+          allow list: if false;
+          // Data modification is not permitted
+          allow write: if false;
+    }
   }
 }
