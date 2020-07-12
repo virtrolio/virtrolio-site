@@ -21,14 +21,25 @@ export class AppComponent implements OnInit {
   public title = 'virtrolio-site';
   public showCookieAlert = true;
   private showCookieAlertValue: string;
+  public showChangelog = true;
+  public showChangelogValue: string;
 
   constructor(private cookieService: CookieService) {
   }
 
-  /** Dismisses cookie alert when X is clicked. Sets cookie to 'false'. */
-  dismissCookieAlert() {
-    this.cookieService.set('new-user-cookie', 'false', 365);
-    this.showCookieAlert = false;
+  /**
+   * Changes a cookie to 'false' and changes the corresponding cookie value variable to false as well
+   * @param cookie - cookie to be set to false
+   */
+  falsifyCookie(cookie: string) {
+    if (cookie === 'new-user-cookie') {
+      this.cookieService.set('new-user-cookie', 'false', 365);
+      this.showCookieAlert = false;
+    } else if (cookie === 'changelog-cookie') {
+      this.cookieService.set('changelog-cookie', 'false', 365);
+      this.showChangelog = false;
+    }
+
   }
 
   /**
@@ -48,6 +59,20 @@ export class AppComponent implements OnInit {
       this.showCookieAlert = false;
     } else {
       AuthService.displayError('Error. New-user-cookie not found or initialized properly.');
+    }
+
+    if (this.cookieService.check('changelog-cookie') === false) {
+      this.cookieService.set('changelog-cookie', 'true', 365);
+    }
+
+    this.showChangelogValue = this.cookieService.get('changelog-cookie');
+
+    if (this.showChangelogValue === 'true') {
+      this.showCookieAlert = true;
+    } else if (this.showChangelogValue === 'false') {
+      this.showCookieAlert = false;
+    } else {
+      AuthService.displayError('Error. changelog-cookie not found or initialized properly.');
     }
   }
 }
