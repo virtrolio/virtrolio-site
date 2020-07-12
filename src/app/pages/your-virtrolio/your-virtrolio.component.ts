@@ -62,7 +62,7 @@ export class YourVirtrolioComponent implements OnInit {
    */
   openDesktopSharing() {
     $('#link-gen').modal('hide');
-    $('#share-link-modal').modal('show');
+    $('#share-link-social').modal('show');
   }
 
   /**
