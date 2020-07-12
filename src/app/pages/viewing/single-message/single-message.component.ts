@@ -37,7 +37,7 @@ export class SingleMessageComponent implements OnInit {
       this.currentMessageId = params.messageId;
     });
     if (this.route.snapshot.queryParams.showBookmarkAlert) {
-      this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark',
+      this.toastr.info('This page can now be bookmarked so you can view this message later!', 'Bookmark',
         { positionClass: 'toast-bottom-full-width' });
       this.location.go('/viewing', '?messageId=' + this.currentMessageId);
     }
