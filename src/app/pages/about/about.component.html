@@ -49,10 +49,20 @@
         <div class="col-md-3 order-md-1 vertical-center">
           <p><strong>Contact {{contributor.name}}</strong></p>
           <ul>
-            <li>Github: <a href="https://github.com/{{contributor.social.github}}" target="_blank">{{contributor.social.github}}</a></li>
-            <li>Instagram: <a href="https://www.instagram.com/{{contributor.social.instagram}}" target="_blank" *ngIf="contributor.social.instagram">@{{contributor.social.instagram}}</a></li>
-            <li>LinkedIn: <a href="{{contributor.social.linkedIn}}" target="_blank">{{contributor.name}}</a></li>
-            <li>Website: <a href="https://{{contributor.social.website}}" target="_blank">{{contributor.social.website}}</a></li>
+            <li *ngIf="contributor.social.github">Github:
+              <a href="https://github.com/{{contributor.social.github}}"
+                 target="_blank">{{contributor.social.github}}</a>
+            </li>
+            <li *ngIf="contributor.social.instagram">Instagram:
+              <a href="https://www.instagram.com/{{contributor.social.instagram}}"
+                 target="_blank" *ngIf="contributor.social.instagram">@{{contributor.social.instagram}}</a>
+            </li>
+            <li *ngIf="contributor.social.linkedIn">LinkedIn:
+              <a href="{{contributor.social.linkedIn}}" target="_blank">{{contributor.name}}</a>
+            </li>
+            <li *ngIf="contributor.social.website">Website:
+              <a href="https://{{contributor.social.website}}" target="_blank">{{contributor.social.website}}</a>
+            </li>
           </ul>
         </div>
       </div>
