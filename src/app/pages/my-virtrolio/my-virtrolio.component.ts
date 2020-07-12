@@ -100,9 +100,10 @@ export class MyVirtrolioComponent implements OnInit {
         text: 'Visit this link to sign their virtrolio and send them a custom message!',
         url: this.link,
       })
-        .catch((error) => AuthService.displayError(error));
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
     } else {
-      AuthService.displayError('Share not supported on this device. Use a mobile device!');
+      alert('Share not supported on this device. Use a mobile device!');
     }
   }
 
