@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { SharingLinkService } from '../../core/sharing-link.service';
 
 @Component({
-  selector: 'app-your-virtrolio',
-  templateUrl: './your-virtrolio.component.html',
-  styleUrls: [ './your-virtrolio.component.css' ]
+  selector: 'app-my-virtrolio',
+  templateUrl: './my-virtrolio.component.html',
+  styleUrls: [ './my-virtrolio.component.css' ]
 })
 
 /**
- * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
+ * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class YourVirtrolioComponent implements OnInit {
+export class MyVirtrolioComponent implements OnInit {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
@@ -23,13 +24,15 @@ export class YourVirtrolioComponent implements OnInit {
   private visitLinkUID: string;
   private visitLinkKEY: string;
 
-  constructor(public authService: AuthService, public router: Router, private title: Title) { }
+  constructor(public authService: AuthService, private sharingLinkService: SharingLinkService,
+              public router: Router, private title: Title) { }
 
   ngOnInit(): void {
     this.authService.displayName().then((displayName) => {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
+    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
   }
 
   /**
@@ -48,7 +51,7 @@ export class YourVirtrolioComponent implements OnInit {
    */
   setLink() {
     this.copyButtonText = 'Copy';
-    this.authService.getLink().then(link => {
+    this.sharingLinkService.getLink().then(link => {
       this.link = link;
       this.linkReady = true;
     });
@@ -79,7 +82,7 @@ export class YourVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.authService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
+      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
