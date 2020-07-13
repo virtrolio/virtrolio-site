@@ -142,6 +142,7 @@
         You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
       </div>
       <div class="modal-footer">
+        <app-disclaimer-button></app-disclaimer-button>
         <button (click)="sendMsg(signingInputArea)" class="btn btn-primary" data-dismiss="modal"
                 type="button">
           Send it!
@@ -277,21 +278,7 @@
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage><span>No image to show!</span></ng-template>
           </div>
-          <a class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus" tabindex="0" role="button"
-             title="Your Photo Links. Your Responsibility." data-html="true" id="disclaimer-button"
-             data-content="<p><strong>Note: By
-                    using links to photos stored online, your photo's survival is tied to whether the link works or not.
-                    That means that—even if the link works for you for right now—if the link does not work on other
-                    computers or stops working in the future then the
-                    message you wrote that contains the
-                    image will not display it properly.</strong></p><p>For example, Google Photos is inconsistent in
-                    whether
-                    its embed links can be viewed by other users. Other
-                    services such as Google Drive or Imgur or Pinterest can be used to store any images for sharing.
-                    Virtrolio is not
-                    endorsing any services mentioned here, merely making you aware of options available to you.</p>">
-            DISCLAIMER
-          </a>
+          <app-disclaimer-button></app-disclaimer-button>
         </div>
       </div>
     </div>
