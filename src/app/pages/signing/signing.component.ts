@@ -30,6 +30,7 @@ export class SigningComponent implements OnInit {
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
    */
   ngOnInit(): void {
+    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
       this.key = params.key;
