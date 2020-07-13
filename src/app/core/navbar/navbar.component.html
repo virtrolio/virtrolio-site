@@ -28,9 +28,6 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="contact">Contact Us</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" role="button" data-toggle="modal" data-target="#changelog">What's New?</a>
-      </li>
       <li *ngIf="authService.isLoggedIn()" class="dropdown-divider d-block d-sm-block d-md-none"></li>
       <li class="nav-item d-block d-sm-block d-md-none">
         <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="settings">Settings</a>
@@ -55,23 +52,4 @@
     </div>
   </div>
 </nav>
-
-<div class="modal fade" id="changelog" tabindex="-1" role="dialog" aria-labelledby="changelogLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="changelogLabel">Surprise! New Features!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        New features, fixes, and updates will be posted here whenever we update the website!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
