@@ -100,9 +100,9 @@ export class MyVirtrolioComponent implements OnInit {
         text: 'Visit this link to sign their virtrolio and send them a custom message!',
         url: this.link,
       })
-        .catch((error) => AuthService.displayError('Error sharing' + error));
+        .catch((error) => AuthService.displayError('Sharing Error: ' + error));
     } else {
-      AuthService.displayError('Share not supported on this device: ' + navigator.userAgent + 'Use a mobile device!');
+      AuthService.displayError('Sharing Error: Native Share not supported on this browser: ' + navigator.userAgent);
     }
   }
 
@@ -124,7 +124,7 @@ export class MyVirtrolioComponent implements OnInit {
       window.open('mailto:?subject=' + 'Virtrolio%20-%20Online%20Yearbook%20Signing!'
         + '&body=' + bodyText + '%0D%0A' + urlFriendlyLink, '_blank');
     } else {
-      AuthService.displayError('Attempted to post to a social media platform we do not yet support: ' + platform);
+      AuthService.displayError('Sharing Error: Unsupported social media platform: ' + platform);
     }
   }
 
