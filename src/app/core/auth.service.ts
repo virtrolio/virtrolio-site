@@ -109,7 +109,7 @@ export class AuthService {
             return this.router.navigate([ routeTo ], { queryParams });
           });
         } else {
-          console.log('Login failed');
+          AuthService.displayError('Null User Credentials on login: ' + userCredentials);
           return this.router.navigate([ '/' ]);
         }
       }).catch(error => {
