@@ -245,10 +245,11 @@ export class AuthService {
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async profilePictureLink(uid?: string): Promise<string> {
+  async profilePictureLink(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.photoURL;
     } else {
       const userDoc = await this.getUserData(uid);
@@ -274,10 +275,11 @@ export class AuthService {
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async displayName(uid?: string): Promise<string> {
+  async displayName(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your name');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.displayName;
     } else {
       const userDoc = await this.getUserData(uid);
