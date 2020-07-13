@@ -152,7 +152,7 @@ markdown {
 
 #embed-image-card {
   border: 0.0625em solid grey;
-  min-height: calc(1.5em + .75rem + 2px);
+  min-height: 2.375em;
   color: grey;
 }
 
