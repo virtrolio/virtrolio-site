@@ -41,6 +41,7 @@ export class MyVirtrolioComponent implements OnInit {
 
   /**
    * Check if user can share using a native sharing mechanism (i.e. if they are on mobile)
+   * @returns - Whether the user has a native sharing mechanism available
    */
   canShare() {
     return this.navigator && this.navigator.share;
@@ -60,7 +61,7 @@ export class MyVirtrolioComponent implements OnInit {
   /**
    * Closes sharing link modal and opens up desktop sharing modal
    */
-  openDesktopSharing() {
+  openShareLinkSocialModal() {
     $('#link-gen').modal('hide');
     $('#share-link-social').modal('show');
   }
