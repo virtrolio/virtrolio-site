@@ -242,6 +242,7 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the profile picture of. Defaults to the current user if not provided.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
@@ -272,6 +273,7 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the display name of. Defaults to the current user if not provided.
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
