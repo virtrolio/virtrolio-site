@@ -251,7 +251,7 @@ export class AuthService {
     if (typeof uid === 'undefined' || uid === this.uid()) {
       return this.user.photoURL;
     } else {
-      const userDoc = await this.getUserData();
+      const userDoc = await this.getUserData(uid);
       if (userDoc) {
         return userDoc.profilePic;
       } else {
