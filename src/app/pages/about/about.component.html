@@ -33,35 +33,35 @@
 
         <!-- Each Image -->
         <div class="col-md-2 order-md-2 image-container vertical-center">
-          <img alt="Picture of {{contributor.name}}" class="img-fluid regular-picture" src="{{ contributor.images.regular }}">
-          <img alt="Silly picture of {{contributor.name}}" class="img-fluid silly-picture" src="{{ contributor.images.silly }}">
+          <img alt="Picture of {{ contributor.name }}" class="img-fluid regular-picture" src="{{ contributor.images.regular }}">
+          <img alt="Silly picture of {{ contributor.name }}" class="img-fluid silly-picture" src="{{ contributor.images.silly }}">
         </div>
 
         <!-- Each Blurb -->
         <div class="col-md-7 order-md-3 mt-3 mt-md-0 vertical-center">
           <p class="text-justify" [innerHTML]="contributor.blurb"></p>
           <p>
-            <a href="{{contributor.sharingLink}}" target="_blank">Click here to sign {{contributor.name}}'s virtrolio.</a>
+            <a href="{{ contributor.sharingLink }}" target="_blank">Click here to sign {{ contributor.name }}'s virtrolio.</a>
           </p>
         </div>
 
         <!-- Each Contact Info. -->
         <div class="col-md-3 order-md-1 vertical-center">
-          <p><strong>Contact {{contributor.name}}</strong></p>
+          <p><strong>Contact {{ contributor.name }}</strong></p>
           <ul>
             <li *ngIf="contributor.social.github">GitHub:
-              <a href="https://github.com/{{contributor.social.github}}"
-                 target="_blank">{{contributor.social.github}}</a>
+              <a href="https://github.com/{{ contributor.social.github }}"
+                 target="_blank">{{ contributor.social.github }}</a>
             </li>
             <li *ngIf="contributor.social.instagram">Instagram:
-              <a href="https://www.instagram.com/{{contributor.social.instagram}}"
-                 target="_blank" *ngIf="contributor.social.instagram">@{{contributor.social.instagram}}</a>
+              <a href="https://www.instagram.com/{{ contributor.social.instagram }}"
+                 target="_blank" *ngIf="contributor.social.instagram">@{{ contributor.social.instagram }}</a>
             </li>
             <li *ngIf="contributor.social.linkedIn">LinkedIn:
-              <a href="{{contributor.social.linkedIn}}" target="_blank">{{contributor.name}}</a>
+              <a href="{{ contributor.social.linkedIn }}" target="_blank">{{ contributor.name }}</a>
             </li>
             <li *ngIf="contributor.social.website">Website:
-              <a href="https://{{contributor.social.website}}" target="_blank">{{contributor.social.website}}</a>
+              <a href="https://{{ contributor.social.website }}" target="_blank">{{ contributor.social.website }}</a>
             </li>
           </ul>
         </div>
