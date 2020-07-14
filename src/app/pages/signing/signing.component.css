@@ -177,6 +177,10 @@ markdown {
   height: 0.625em;
 }
 
+#width-slider-field {
+  width: 4em;
+}
+
 /* || Typography */
 
 .title-div {

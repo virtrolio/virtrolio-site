@@ -62,6 +62,17 @@ export class SigningComponent implements OnInit {
   }
 
   /**
+   * Resets image width slider value to 100 or 0 if the user tries to input a number that's too large
+   */
+  checkSliderValue() {
+    if (this.imageWidth > 100) {
+      this.imageWidth = 100;
+    } else if (this.imageWidth < 0) {
+      this.imageWidth = 0;
+    }
+  }
+
+  /**
    * Creates a new blank message and fills in all the info before sending it
    * @param textbox - the textbox where the contents of the message are retrieved from (not the preview box)
    */

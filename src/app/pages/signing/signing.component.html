@@ -256,7 +256,10 @@
                    [(ngModel)]='embedLink' id="embed-link-field">
           </div>
           <div class="mt-3">
-            <label for="width-slider" class="mx-2">Image Size (%)</label>
+            <label for="width-slider-field" style="display: none">Image Size (%)</label>
+            <label for="width-slider" class="mx-2">Image Size (%):</label>
+            <input [(ngModel)]="imageWidth" type="number" id="width-slider-field" min="0" max="100"
+                   (keyup)="checkSliderValue()">
             <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider" min="0" max="100">
             <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
           </div>
