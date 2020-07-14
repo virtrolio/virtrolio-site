@@ -263,7 +263,7 @@ export class AuthService {
   }
 
   /**
-   * Same as profilePictureLink, except not async to avoid issues with the navbar loading too fast.
+   * Same as profilePictureLink, except not async to avoid the navbar trying to load the picture before the async call completes.
    * This method should <u>**NOT**</u> be called by anything except the navbar. Use profilePictureLink() instead.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in
