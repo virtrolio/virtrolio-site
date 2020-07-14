@@ -18,8 +18,10 @@
 }
 
 .profile-pic {
-  width: 1.1em;
-  margin: 0.2em;
+  vertical-align: center;
+  width: 1.4em;
+  height: 1.4em;
+  margin: 0.2em 0.2em 0.4em;
 }
 
 #char-count-display {
