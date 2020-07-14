@@ -79,11 +79,8 @@
             </button>
           </div>
           <ng-template #desktopSharing>
-<!--            <label for="button-share-desktop">Share</label>-->
-<!--            <button (click)="openShareLinkSocialModal()" class="btn btn-info col-sm-5 mx-sm-1 my-2 my-sm-0"-->
-<!--                    id="button-share-desktop" type="button">Share your link-->
-<!--            </button>-->
             <div class="row w-100" id="sharing-buttons">
+              <div><h6>Use the buttons below to share your link!</h6></div>
               <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="facebook-button"
                       (click)="postOnSocial('facebook')">
                 <img src="../../../assets/images/icons/facebook.svg" alt="Share with Facebook" class="mr-2">
@@ -99,6 +96,7 @@
                 <img src="../../../assets/images/icons/mail.svg" alt="Share with Email" class="mr-2">
                 <span class="mr-1">Email</span>
               </button>
+              <hr/>
             </div>
           </ng-template>
           <label for="button-new-link">Click to generate a new link</label>
@@ -170,38 +168,3 @@
     </div>
   </div>
 </div>
-
-<!--&lt;!&ndash; Share your link modal &ndash;&gt;-->
-<!--<div class="modal fade" id="share-link-social" tabindex="-1" role="dialog" aria-labelledby="share-link-social"-->
-<!--     aria-hidden="true">-->
-<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="share-link-label">Send your Sharing Link</h5>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <p>Pick a button below to send your Sharing Link to your friends.</p>-->
-<!--        <div class="row justify-content-center px-4" id="sharing-buttons">-->
-<!--          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="facebook-button"-->
-<!--             (click)="postOnSocial('facebook')">-->
-<!--            <img src="../../../assets/images/icons/facebook.svg" alt="Share with Facebook" class="mr-1">&nbsp;Facebook-->
-<!--          </button>-->
-<!--          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="twitter-button"-->
-<!--             (click)="postOnSocial('twitter')">-->
-<!--            <img src="../../../assets/images/icons/twitter.svg" alt="Share with Twitter" class="mr-1">&nbsp;Twitter-->
-<!--          </button>-->
-<!--          <button role="button" class="btn btn-lg col-sm-3 mx-sm-2 my-2 my-sm-0 btn-secondary" id="email-button"-->
-<!--             (click)="postOnSocial('email')">-->
-<!--            <img src="../../../assets/images/icons/mail.svg" alt="Share with Email">&nbsp;&nbsp;Email-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
