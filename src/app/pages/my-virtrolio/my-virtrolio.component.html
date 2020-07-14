@@ -83,18 +83,21 @@
 <!--            <button (click)="openShareLinkSocialModal()" class="btn btn-info col-sm-5 mx-sm-1 my-2 my-sm-0"-->
 <!--                    id="button-share-desktop" type="button">Share your link-->
 <!--            </button>-->
-            <div id="sharing-buttons">
-              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-1 my-2" id="facebook-button"
+            <div class="row w-100" id="sharing-buttons">
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="facebook-button"
                       (click)="postOnSocial('facebook')">
-                <img src="../../../assets/images/icons/facebook.svg" alt="Share with Facebook" class="mr-1">&nbsp;Facebook
+                <img src="../../../assets/images/icons/facebook.svg" alt="Share with Facebook" class="mr-2">
+                <span class="mr-1">Facebook</span>
               </button>
-              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-1 my-2" id="twitter-button"
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="twitter-button"
                       (click)="postOnSocial('twitter')">
-                <img src="../../../assets/images/icons/twitter.svg" alt="Share with Twitter" class="mr-1">&nbsp;Twitter
+                <img src="../../../assets/images/icons/twitter.svg" alt="Share with Twitter" class="mr-2">
+                <span>Twitter</span>
               </button>
-              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-1 my-2" id="email-button"
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="email-button"
                       (click)="postOnSocial('email')">
-                <img src="../../../assets/images/icons/mail.svg" alt="Share with Email">&nbsp;&nbsp;Email
+                <img src="../../../assets/images/icons/mail.svg" alt="Share with Email" class="mr-2">
+                <span class="mr-1">Email</span>
               </button>
             </div>
           </ng-template>

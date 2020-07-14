@@ -95,6 +95,11 @@
 
 #sharing-buttons > button {
   border: 0;
+  font-size: 0.8em;
+}
+
+#sharing-buttons > button > img {
+  height: 80%;
 }
 
 .button-modal {
