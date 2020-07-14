@@ -82,7 +82,7 @@ export class AuthService {
    */
   errorLogout(error) {
     AuthService.displayError(error);
-    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ]));
+    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ])).catch(soError => AuthService.displayError(soError));
   }
 
   /**
@@ -120,17 +120,16 @@ export class AuthService {
             return this.router.navigate([ routeTo ], { queryParams });
           });
         } else {
-          AuthService.displayError('Null User Credentials on login: ' + userCredentials);
-          return this.router.navigate([ '/' ]);
+          return this.errorLogout('Null User Credentials on login: ' + userCredentials);
         }
       }).catch(error => {
         if (error.message === AuthService.notBetaErrorMessage) {
           return this.afa.signOut().then(() => {
             return this.router.navigate([ '/access-denied-beta' ]);
           });
+        } else {
+          return this.errorLogout(error);
         }
-        AuthService.displayError(error);
-        return this.router.navigate([ '/access-denied' ]);
       });
     } else { // Device is phone/tablet, so use sign-in with redirect
       const redirectPath = AuthService.parseQueryParams(routeTo, queryParams);
@@ -219,7 +218,7 @@ export class AuthService {
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
       await this.createUser(userCredentials.user).catch(error => {
-        AuthService.displayError(error);
+        return this.errorLogout(error);
       });
     }
   }
