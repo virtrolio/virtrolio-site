@@ -77,6 +77,15 @@ export class AuthService {
   }
 
   /**
+   * Displays an error using an alert, then logs the user out, and then redirects them to the access-denied page.
+   * @param error - The error to be displayed
+   */
+  errorLogout(error) {
+    AuthService.displayError(error);
+    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ]));
+  }
+
+  /**
    * @returns The current User object.
    */
   getUser(): User {
