@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { VirtrolioUser } from '../shared/interfaces';
+import { BetaUsers, VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -15,6 +15,7 @@ export class AuthService {
 
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
+  static readonly notBetaErrorMessage = 'Auth Error: Current user is not a beta tester and is not permitted to access the beta website';
   private user: User;
 
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
@@ -114,6 +115,11 @@ export class AuthService {
           return this.router.navigate([ '/' ]);
         }
       }).catch(error => {
+        if (error.message === AuthService.notBetaErrorMessage) {
+          return this.afa.signOut().then(() => {
+            return this.router.navigate([ '/access-denied-beta' ]);
+          });
+        }
         AuthService.displayError(error);
         return this.router.navigate([ '/access-denied' ]);
       });
@@ -148,6 +154,18 @@ export class AuthService {
    * currently logged in user doesn't exist.
    */
   async createUser(user: User): Promise<void> {
+    // Beta Tester Verification
+    const betaRef: AngularFirestoreDocument<BetaUsers> = this.afs.collection('beta').doc<BetaUsers>('beta-testers');
+    const betaTestersList = await betaRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+      AuthService.displayError(error);
+    });
+
+    if (!betaTestersList) {
+      throw new ReferenceError('Auth Error: Failed to get list of beta testers');
+    } else if (betaTestersList.users.indexOf(user.uid) === -1) {
+      throw new Error(AuthService.notBetaErrorMessage);
+    }
+
     // Not using this.getUserData() because userRef is required
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
