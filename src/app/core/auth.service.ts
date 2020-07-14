@@ -160,12 +160,14 @@ export class AuthService {
   /**
    * Creates a new VirtrolioUser document in the 'users' collection of the database only if the document for the
    * currently logged in user doesn't exist.
+   * @throws ReferenceError - If the Firestore documents for the user or list of beta testers is missing
+   * @throws Error - If a write to Firestore fails
    */
   async createUser(user: User): Promise<void> {
     // Beta Tester Verification
     const betaRef: AngularFirestoreDocument<BetaUsers> = this.afs.collection('beta').doc<BetaUsers>('beta-testers');
     const betaTestersList = await betaRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      AuthService.displayError(error);
+      throw new Error('User Creation Error:' + error);
     });
 
     if (!betaTestersList) {
@@ -177,7 +179,7 @@ export class AuthService {
     // Not using this.getUserData() because userRef is required
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      AuthService.displayError(error);
+      throw new Error('User Creation Error:' + error);
     });
 
     if (!userDoc) { // User doesn't exist in database
@@ -187,22 +189,22 @@ export class AuthService {
         profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
-        AuthService.displayError(error);
+        throw new Error('User Creation Error:' + error);
       });
     } else { // User exists in database, make sure all fields are present
       if (!('key' in userDoc)) {
         await userRef.update({ key: AuthService.generateKey() }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
       if (!('displayName' in userDoc)) {
         await userRef.update({ displayName: user.displayName }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
       if (!('profilePic' in userDoc)) {
         await userRef.update({ profilePic: user.photoURL }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
     }
