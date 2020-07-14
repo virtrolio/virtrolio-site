@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { SharingLinkService } from '../../core/sharing-link.service';
 
-declare var $: any;
-
 @Component({
   selector: 'app-my-virtrolio',
   templateUrl: './my-virtrolio.component.html',
