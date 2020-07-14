@@ -209,7 +209,9 @@ export class AuthService {
     const userCredentials = await this.afa.getRedirectResult();
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
-      await this.createUser(userCredentials.user);
+      await this.createUser(userCredentials.user).catch(error => {
+        AuthService.displayError(error);
+      });
     }
   }
 
