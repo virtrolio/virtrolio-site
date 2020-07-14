@@ -80,7 +80,7 @@
                src="../../../assets/images/icons/SigningIcon_fill-color.svg">
           <label for="color-picker-background" hidden>Colour picker for background</label>
           <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="color-picker-background"
-                 name="backgroundcolor-picker" type="color" value={{signingService.backgroundColor}}>
+                 name="background-color-picker" type="color" value={{signingService.backgroundColor}}>
           <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
 
@@ -264,9 +264,9 @@
             <label for="embed-code-field"><small>Copy this into your message and check the 'Preview'!</small></label>
             <div class="input-group my-3">
               <input #EmbedCode type="text" class="form-control" id="embed-code-field"
-                     value="<img src='{{embedLink}}' width={{imageWidth}}%>">
+                     value="<img src='{{ embedLink }}' width={{ imageWidth }}%>">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{copyButtonText}}</button>
+                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{ copyButtonText }}</button>
               </div>
             </div>
           </div>
@@ -274,7 +274,7 @@
         <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
           <p id="image-preview-heading" class="mx-3 mt-md-3"><strong>Image Preview</strong></p>
           <div class="card my-3 vertical-center" id="embed-image-card">
-            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
+            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{ embedLink }}" id="embed-image-holder"
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage><span>No image to show!</span></ng-template>
           </div>
