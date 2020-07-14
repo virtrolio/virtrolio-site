@@ -18,10 +18,10 @@
 }
 
 .profile-pic {
-  vertical-align: center;
+  vertical-align: middle;
   width: 1.4em;
   height: 1.4em;
-  margin: 0.2em 0.2em 0.4em;
+  margin: 0 0.2em;
 }
 
 #char-count-display {
@@ -187,10 +187,12 @@ markdown {
 /* || Typography */
 
 .title-div {
-  height: 3em;
+  height: 3.5em;
   margin: 0 0.5em 0 0.5em;
   text-align: center;
   font-size: 1.2em;
+  overflow: auto;
+  line-height: normal;
 }
 
 /* || Miscellaneous */
@@ -211,4 +213,14 @@ markdown {
   width: 10em;
   height: 3em;
   font-weight: bolder;
+}
+
+/* mobile adjustments */
+@media screen and (max-width: 720px) {
+  .title-div {
+    height: 4.5em;
+    text-align: center;
+    font-size: 1.1em;
+    overflow: auto;
+  }
 }
