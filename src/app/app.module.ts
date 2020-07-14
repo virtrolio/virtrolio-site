@@ -23,6 +23,7 @@ import { CoreModule } from './core/core.module';
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/disclaimer-anchor.component';
 import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -53,6 +54,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     AppComponent,
     AboutComponent,
     ContactComponent,
+    DisclaimerAnchorComponent,
     DisclaimerButtonComponent,
     FaqComponent,
     HomeComponent,
