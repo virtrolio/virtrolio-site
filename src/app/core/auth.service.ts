@@ -109,7 +109,7 @@ export class AuthService {
             return this.router.navigate([ routeTo ], { queryParams });
           });
         } else {
-          console.log('Login failed');
+          AuthService.displayError('Null User Credentials on login: ' + userCredentials);
           return this.router.navigate([ '/' ]);
         }
       }).catch(error => {
@@ -242,16 +242,18 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the profile picture of. Defaults to the current user if not provided.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async profilePictureLink(uid?: string): Promise<string> {
+  async profilePictureLink(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.photoURL;
     } else {
-      const userDoc = await this.getUserData();
+      const userDoc = await this.getUserData(uid);
       if (userDoc) {
         return userDoc.profilePic;
       } else {
@@ -271,13 +273,15 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the display name of. Defaults to the current user if not provided.
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async displayName(uid?: string): Promise<string> {
+  async displayName(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your name');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.displayName;
     } else {
       const userDoc = await this.getUserData(uid);
