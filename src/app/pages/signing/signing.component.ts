@@ -31,12 +31,6 @@ export class SigningComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
               private msgIo: MsgIoService, private router: Router, private title: Title) {
-    try {
-      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; console.log(photoUrl); });
-    } catch (e) {
-      // default picture is the logo
-      this.photoUrl = '../../../../assets/images/logo_reg.png';
-    }
   }
 
   /**
@@ -57,6 +51,12 @@ export class SigningComponent implements OnInit {
     $('.popover-dismiss').popover({
       trigger: 'focus'
     });
+    try {
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; console.log(photoUrl); });
+    } catch (e) {
+      // default picture is the logo
+      this.photoUrl = '../../../../assets/images/logo_reg.png';
+    }
   }
 
   /**
