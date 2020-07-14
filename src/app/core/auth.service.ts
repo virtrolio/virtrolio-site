@@ -160,6 +160,7 @@ export class AuthService {
   /**
    * Creates a new VirtrolioUser document in the 'users' collection of the database only if the document for the
    * currently logged in user doesn't exist.
+   * @param user: The user object returned by the Firebase Authentication login process.
    * @throws ReferenceError - If the Firestore documents for the user or list of beta testers is missing
    * @throws Error - If a write to Firestore fails
    */
