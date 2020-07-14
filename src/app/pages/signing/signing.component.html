@@ -255,15 +255,31 @@
             <input class="form-control" type="text" placeholder="Put your link here!"
                    [(ngModel)]='embedLink' id="embed-link-field">
           </div>
-          <div class="mt-3">
-            <label for="width-slider-field" style="display: none">Image Size (%)</label>
-            <label for="width-slider" class="mx-2">Image Size (%):</label>
+
+          <!-- Image size slider options -->
+          <div class="mt-3 d-none d-sm-block">
+            <label for="width-slider-field" style="display: none">Size (%)</label>
+            <label for="width-slider" class="mx-2">Size (%):</label>
             <input [(ngModel)]="imageWidth" type="number" id="width-slider-field" min="0" max="100"
                    (keyup)="checkSliderValue()">
             <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider" min="0" max="100">
             <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
           </div>
-          <div class="my-3">
+          <!-- Small screen layout -->
+          <div class="row mt-4 d-sm-none">
+            <div class="col-sm-6">
+              <label for="width-slider-field" class="mx-2">Size (%)</label>
+              <input [(ngModel)]="imageWidth" type="number" id="width-slider-field" min="0" max="100"
+                     (keyup)="checkSliderValue()">
+            </div>
+            <div class="my-2 my-sm-0 col-sm-6">
+              <label for="width-slider" style="display: none">Size (%):</label>
+              <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider" min="0" max="100">
+              <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
+            </div>
+          </div>
+
+          <div class="mt-3">
             <strong>Your image code</strong><br>
             <label for="embed-code-field"><small>Copy this into your message and check the 'Preview'!</small></label>
             <div class="input-group my-3">

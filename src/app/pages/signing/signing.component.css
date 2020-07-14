@@ -175,10 +175,11 @@ markdown {
 
 #width-slider {
   height: 0.625em;
+  width: 6em;
 }
 
 #width-slider-field {
-  width: 4em;
+  width: 3.5em;
 }
 
 /* || Typography */
