@@ -86,6 +86,10 @@ export class MyVirtrolioComponent implements OnInit {
     }
   }
 
+  /**
+   * Share 'sharing link' using device native sharing mechanism. Should only be available on the front end to the user if they have a native
+   * sharing mechanism.
+   */
   shareLink() {
     if (this.canShare()) {
       this.navigator.share({
