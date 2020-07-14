@@ -24,12 +24,20 @@ export class SigningComponent implements OnInit {
   public embedLink = '';
   public imageWidth = 50;
   public copyButtonText = 'Copy';
+  public photoUrl = '';
 
   private uid: string;
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router, private title: Title) { }
+              private msgIo: MsgIoService, private router: Router, private title: Title) {
+    try {
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; console.log(photoUrl); });
+    } catch (e) {
+      // default picture is the logo
+      this.photoUrl = '../../../../assets/images/logo_reg.png';
+    }
+  }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
