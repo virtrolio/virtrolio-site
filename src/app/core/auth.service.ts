@@ -221,7 +221,13 @@ export class AuthService {
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
       await this.createUser(userCredentials.user).catch(error => {
-        return this.errorLogout(error);
+        if (error.message === AuthService.notBetaErrorMessage) {
+          return this.afa.signOut().then(() => {
+            return this.router.navigate([ '/access-denied-beta' ]);
+          });
+        } else {
+          return this.errorLogout(error);
+        }
       });
     }
   }
