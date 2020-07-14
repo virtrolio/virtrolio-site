@@ -59,7 +59,7 @@ export class ResponsesListComponent implements OnInit {
     } else if (this.showNewToViewingValue === 'false') {
       this.showNewToViewing = false;
     } else {
-      console.log('Error. Viewing-cookie not found or initialized properly.');
+     AuthService.displayError('Viewing-cookie not found or initialized properly.');
     }
   }
 
