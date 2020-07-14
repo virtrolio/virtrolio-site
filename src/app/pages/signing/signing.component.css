@@ -17,6 +17,11 @@
   box-shadow: var(--signing-shadow);
 }
 
+.profile-pic {
+  width: 1.1em;
+  margin: 0.2em;
+}
+
 #char-count-display {
   z-index: 10;
   position: absolute;
