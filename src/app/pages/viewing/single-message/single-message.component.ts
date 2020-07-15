@@ -50,6 +50,7 @@ export class SingleMessageComponent implements OnInit {
         this.singleMessage = message;
       } catch (e) {
         AuthService.displayError(e);
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/viewing' ]);
       }
     });

@@ -5,8 +5,6 @@ import { AuthService } from '../../../core/auth.service';
 import { VirtrolioMessage } from '../../../shared/interfaces';
 import { CookieService } from 'ngx-cookie-service';
 
-declare var $: any;
-
 @Component({
   selector: 'app-responses-list',
   templateUrl: './responses-list.component.html',
@@ -20,7 +18,8 @@ export class ResponsesListComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   public showNewToViewing = true;
   private showNewToViewingValue: string;
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService, private cookieService: CookieService) {
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
+              private cookieService: CookieService) {
     try {
       this.uid = this.authService.uid();
     } catch (e) { }
