@@ -169,6 +169,10 @@ markdown {
   z-index: 2000;
 }
 
+#embed-help {
+  z-index: 2001;
+}
+
 #image-preview-heading {
   height: 1.8125em;
 }
