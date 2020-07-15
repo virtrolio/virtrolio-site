@@ -72,8 +72,6 @@ export class ViewingService {
 
   /**
    * Format the timestamp depending on how much time as elapsed
-   * @param nowMillis time in milliseconds upon ngOnInit()
-   * @param millis message Timestamp in milliseconds
    * @param date message Timestamp as a date
    */
   getDateSent(date: string) {

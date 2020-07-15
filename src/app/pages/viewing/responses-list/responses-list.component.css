@@ -249,3 +249,8 @@
   opacity: 0.1;
   border-radius: 1em;
 }
+
+.subtle-link, .subtle-link:hover {
+  color: #000000;
+  text-decoration: none;
+}
