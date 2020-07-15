@@ -156,7 +156,7 @@
 }
 
 .profile-pic-container {
-  background: var(--lighter-grey);
+  background: white;
   height: 2.5em;
   width: 2.5em;
   border-radius: 100%;
