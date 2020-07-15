@@ -178,7 +178,7 @@ markdown {
   width: 6em;
 }
 
-#width-slider-field {
+#width-slider-field-lg, #width-slider-field-sm {
   width: 3.5em;
 }
 
