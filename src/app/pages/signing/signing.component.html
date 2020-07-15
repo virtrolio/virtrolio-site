@@ -3,7 +3,7 @@
   <div class="row" *ngIf="deviceDetector.isMobile()">
     <div class="col-12 alert alert-primary" id="signing-experience-alert">
       The Virtrolio signing experience is better on a desktop or laptop computer! <strong><u>
-      <a data-toggle="modal" data-target="#signingExperience">Why?</a></u></strong>
+      <a data-toggle="modal" data-target="#signing-experience">Why?</a></u></strong>
     </div>
   </div>
   <div class="row">
@@ -189,12 +189,12 @@
 </div>
 
 <!-- Picture not showing up? Modal -->
-<div class="modal fade" id="embed-modal" tabindex="-1" role="dialog" aria-labelledby="embed-modal-title"
+<div class="modal fade" id="embed-help" tabindex="-1" role="dialog" aria-labelledby="embed-help-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content shadow-lg">
       <div class="modal-header">
-        <h5 class="modal-title" id="embed-modal-title">Can't picture your perfect message?</h5>
+        <h5 class="modal-title" id="embed-help-title">Can't picture your perfect message?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -235,7 +235,7 @@
 </div>
 
 <!-- Embed Photo Modal -->
-<div class="modal fade" id="embed-photo" tabindex="-1" role="dialog" aria-labelledby="embed-photo-label"
+<div class="modal fade" id="embed-photo" tabindex="-1" role="dialog" aria-labelledby="embed-photo-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" id="embed-photo-dialog" role="document">
     <div class="modal-content">
@@ -249,7 +249,7 @@
         <div class="col-md-6 my-3 px-lg-5 px-3 vertical-center">
           <div class="mb-3">
             <span class="mr-3"><strong>Add a link to a photo!</strong></span>
-            <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-modal">
+            <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-help">
               Need help?
             </button>
           </div>
@@ -309,7 +309,7 @@
 </div>
 
 <!-- Signing Experience  -->
-<div class="modal fade" id="signingExperience" tabindex="-1" role="dialog" aria-labelledby="info-title"
+<div class="modal fade" id="signing-experience" tabindex="-1" role="dialog" aria-labelledby="experience-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
