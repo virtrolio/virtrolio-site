@@ -21,8 +21,8 @@
             </td>
             <td class="author-col">
               <table>
-                <tr class="msg-header-text author-name" href="javascript: void(0)">
-                  {{ msg.fromName }}
+                <tr class="msg-header-text author-name">
+                  <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
                 </tr>
                 <tr class="msg-header-date">
                   {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
@@ -58,8 +58,8 @@
           </td>
           <td class="author-col">
             <table>
-              <tr class="msg-header-text author-name" href="javascript: void(0)">
-                {{ msg.fromName }}
+              <tr class="msg-header-text author-name">
+                <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
               </tr>
               <tr class="msg-header-date">
                 {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
