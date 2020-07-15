@@ -15,11 +15,13 @@
 }
 
 .message-card {
+  position: relative;
   background-color: var(--light-grey);
   width: 100%;
   word-break: break-word;
   max-height: 30em;
-  overflow-y: auto;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .table td {
@@ -32,9 +34,23 @@
   box-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
   color: white;
   height: 70vh;
-  padding: 3em 6em 3em 6em;
-
+  padding: 1.5em;
   overflow-y: auto;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+}
+
+.carousel-controls-button {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.carousel-controls-button:hover {
+  text-decoration: none;
 }
 
 /* Message Header */
@@ -63,11 +79,11 @@
 
 .msg-header-date {
   font-size: 0.7em;
-  margin: 0em 0 0 0.5em;
+  margin: 0 0 0 0.5em;
 }
 
 .profile-pic-container-small {
-  background: rgba(255, 255, 255, 0);
+  background: #FFFFFF;
   height: 1.7em;
   width: 1.7em;
   border-radius: 100%;
@@ -79,22 +95,34 @@
   color: var(--light-grey);
 }
 
-/* Remove the blue outline around the button when it's clicked */
-/*.btn:focus, .btn:active {*/
-/*  outline: none !important;*/
-/*  box-shadow: none !important;*/
-/*}*/
+/* Remove the blue outline around the buttons on the header when they're clicked */
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 .card-button {
   display: flex;
   float: right;
-  margin-top: 0.3em;
+  margin-top: 0;
   align-self: flex-end;
 }
 
 .card-icon {
-  width: 0.8em;
-  height: 0.8em;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0.15em;
+  padding: 0.1em;
+}
+
+@media (min-width: 0px) {
+  .card-columns {
+    column-count: 1;
+  }
+
+  .card-columns .card {
+    width: 100%;
+  }
 }
 
 @media (min-width: 576px) {
@@ -133,7 +161,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EFEFEF;
+  background: var(--scrollbar-thumb);
   opacity: 0.1;
   border-radius: 1em;
 }

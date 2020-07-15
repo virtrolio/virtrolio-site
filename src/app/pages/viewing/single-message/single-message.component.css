@@ -1,0 +1,60 @@
+.message-card {
+  width: 100%;
+  height: 70vh;
+}
+
+.author-card {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.message-card {
+  background-color: var(--light-grey);
+  width: 100%;
+  word-break: break-word;
+  overflow-y: auto;
+}
+
+.msg-header-text {
+  font-weight: bold;
+  font-size: 1.6em;
+  max-width: 80vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.msg-header-date {
+  font-size: 1em;
+  max-width: 80vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-pic-container-small {
+  background: rgba(255, 255, 255, 0);
+  height: 4.2em;
+  width: 4.2em;
+  border-radius: 100%;
+  display: flex;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  opacity: 0.1;
+  border-radius: 1em;
+}

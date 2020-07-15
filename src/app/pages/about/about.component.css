@@ -6,17 +6,16 @@
 }
 
 #title-blurb {
-  border-left: 3px solid var(--dark-accent);
+  border-left: 3px solid var(--accent);
   padding-left: 2em;
 }
-/* || Meet the team */
 
-#meet-the-team > div > div {
-  /* For all items within each peron's row -- copy of vertical-center class in main.css */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: auto;
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #title-blurb {
+    border-left: none;
+    padding-left: 0;
+  }
 }
 
 #meet-the-team-title {
@@ -45,4 +44,17 @@
 
 .image-container {
   padding: 0;
+  overflow: hidden;
+}
+
+.image-container, .image-container > img {
+  overflow: hidden !important;
+}
+
+ul {
+  word-break: break-word;
+}
+
+#special {
+  flex-direction: row !important;
 }

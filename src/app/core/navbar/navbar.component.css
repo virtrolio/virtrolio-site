@@ -1,6 +1,6 @@
 .navbar {
   background: var(--accent);
-  background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
   position: fixed;
   top: 0;
   width: 100%;
@@ -21,17 +21,21 @@
 }
 
 .navbar-nav li a {
-  color: #FFFFFF;
-  opacity: 75%;
+  color: #FEFEFE;
+  opacity: 0.75;
 }
 
 .navbar-nav li:hover a:hover {
   color: #FFFFFF;
-  opacity: 100%;
+  opacity: 1;
+}
+
+.profile-pic {
+  width: 100%;
 }
 
 .profile-pic:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .profile-pic-container {
@@ -39,12 +43,18 @@
 }
 
 .navbar-collapse {
-  background: rgba(255,255,255,0);
+  background: rgba(255, 255, 255, 0);
   padding: 0 1em;
 }
 
 .navbar-toggler {
   margin-right: 1em;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler-icon {
+  /* Replace the hamburger icon image with a custom SVG that has custom colours */
+  background-image: url(../../../assets/images/hamburger-icon-custom-white.svg);
 }
 
 /* Alternate formatting for mobile navbar */
@@ -52,7 +62,16 @@
   .navbar-collapse {
     background: var(--accent);
     background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+    box-shadow: 0 0.5em 1em -1em black;
+    border-radius: 0 0 1em 1em;
     font-weight: bold;
-    padding: 0 0 1em 2em;
+    padding-bottom: 1em;
   }
+}
+
+.navbar-beta-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.6em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 0 0;
 }

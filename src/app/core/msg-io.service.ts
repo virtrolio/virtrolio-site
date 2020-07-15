@@ -1,26 +1,28 @@
 import { Injectable, SecurityContext } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
-
-import * as firebase from 'firebase';
 
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase/app';
+import Timestamp = firestore.Timestamp;
+import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MsgIoService {
   static readonly currentYear = 2020;
-  static readonly maxMessageLength = 5000;
+  static readonly currentVersion = '2020.0';
+  static readonly maxMessageLength = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer) {
+  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer,
+              private sharingLinkService: SharingLinkService) {
     this.messagesCollection = afs.collection('messages');
   }
 
@@ -33,13 +35,14 @@ export class MsgIoService {
    * in MsgIoService.
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
+    const sanitizedContents = this.sanitizer.sanitize(SecurityContext.HTML, message.contents);
     if (typeof message.to === 'undefined' || !message.to) {
       // This condition (used several times below) checks for undefined, null or empty strings
       throw new Error('Recipient UID was not provided');
     } else if (typeof message.contents === 'undefined' || !message.contents) {
       throw new Error('Message contents were not provided');
-    } else if (!message.contents.replace(/\s/g, '').length) {
-      // Check if a message where all of the whitespace is deleted is blank which = entire message is whitespace
+    } else if (!/\S+/.test(message.contents)) {
+      // Ensure messages does not solely consist of whitespace
       throw new Error('Message contents cannot solely consist of whitespace/blanks');
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
       throw new Error('Background color was not provided');
@@ -47,9 +50,10 @@ export class MsgIoService {
       throw new Error('Font color was not provided');
     } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
       throw new Error('Font family was not provided');
-    } else if (message.contents.length > MsgIoService.maxMessageLength) {
+    } else if (sanitizedContents.length > MsgIoService.maxMessageLength) {
       throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
-        'and the provided message is ' + message.contents.length + ' characters long.');
+        'and the provided message is ' + sanitizedContents.length + ' characters long.\n' +
+        'Remember that some character such as line breaks, emojis and other languages have a length longer than one per character.');
     } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
       throw new Error('Provided font color is not a valid hex code. Did you forget to include \'#\'?' +
         ' Provided color code: ' + message.fontColor);
@@ -71,7 +75,7 @@ export class MsgIoService {
   }
 
   /**
-   * Getter for all of the messages that were sent to a particular user.
+   * Collects ALL messages from the Firestore messages database that were sent to a particular user.
    * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
@@ -88,6 +92,23 @@ export class MsgIoService {
           return { id, ...data };
         }))
       );
+  }
+
+  /**
+   * Collects a SINGLE message from the Firestore messages database based on a message ID.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
+   * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
+   * @param msgID - The ID of the message to be received.
+   */
+  getMessage(msgID: string): Observable<VirtrolioMessage> {
+    this.authService.throwErrorIfLoggedOut('fetch a message');
+
+    const msgRef: AngularFirestoreDocument<VirtrolioMessage> = this.afs.collection('messages').doc<VirtrolioMessage>(msgID);
+    return msgRef.snapshotChanges().pipe(map(document => {
+      const data = document.payload.data() as VirtrolioDocument;
+      const id = document.payload.id;
+      return { id, ...data };
+    }));
   }
 
   /**
@@ -114,16 +135,20 @@ export class MsgIoService {
    * @returns true - If the current user has already signed the virtrolio of toUID.
    */
   async checkForMessage(toUID: string): Promise<boolean> {
-    const messages = await this.afs.collection('messages', ref => ref
-      .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-      .valueChanges().pipe(take(1)).toPromise().catch(error => {
-        AuthService.displayError(error);
-      });
-    if (messages) {
-      return messages.length !== 0;
-    } else {
-      return false;
-    }
+    const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
+      .doc(this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion);
+    const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
+    return !!msgDoc;
+    // const messages = await this.afs.collection('messages', ref => ref
+    //   .where('from', '==', this.authService.uid()).where('to', '==', toUID))
+    //   .valueChanges().pipe(take(1)).toPromise().catch(error => {
+    //     AuthService.displayError(error);
+    //   });
+    // if (messages) {
+    //   return messages.length !== 0;
+    // } else {
+    //   return false;
+    // }
   }
 
   /**
@@ -142,7 +167,7 @@ export class MsgIoService {
     this.verifyMessage(messageTemplate);
 
     // Verify user is logged in
-    this.authService.throwErrorIfLoggedOut('send a message');
+    await this.authService.asyncThrowErrorIfLoggedOut('send a message');
 
     // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
@@ -151,7 +176,7 @@ export class MsgIoService {
     }
 
     // Verify correct key
-    const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
+    const keyIsCorrect = await this.sharingLinkService.checkKey(messageTemplate.to, key);
     if (keyIsCorrect) {
       // Remove XSS content from message contents
       messageTemplate.contents = this.sanitizer.sanitize(SecurityContext.HTML, messageTemplate.contents);
@@ -163,11 +188,13 @@ export class MsgIoService {
         isRead: false,
         year: MsgIoService.currentYear,
         fromName: await this.authService.displayName(),
-        fromPic: await this.authService.profilePictureLink()
+        fromPic: await this.authService.profilePictureLink(),
+        key
       };
 
       // Send the message
-      await this.messagesCollection.add(message).catch(error => {
+      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
+      await msgRef.set(message).catch(error => {
         AuthService.displayError(error);
       });
     } else {

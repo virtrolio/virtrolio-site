@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import faqContent from './faq.content.json';
+import { FAQSection } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-faq',
@@ -6,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [ './faq.component.css' ]
 })
 export class FaqComponent implements OnInit {
+  public faqContent: FAQSection[] = faqContent;
 
-  constructor() { }
+  constructor(private title: Title) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.title.setTitle('Frequently Asked Questions | Virtrolio');
+  }
 
 }
