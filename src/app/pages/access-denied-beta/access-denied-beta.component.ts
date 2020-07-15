@@ -11,7 +11,7 @@ export class AccessDeniedBetaComponent implements OnInit {
   constructor(private title: Title) { }
 
   ngOnInit(): void {
-    this.title.setTitle('Access Denied (Not a Beta Tester) | Virtrolio');
+    this.title.setTitle('Beta Website Access Denied | Virtrolio');
   }
 
 }
