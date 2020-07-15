@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ViewingService } from '../viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 
 @Component({
   selector: 'app-message-modal',
