@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Arvind Nagabhirava",
+    "images": {
+      "regular": "https://bit.ly/3de5LUs",
+      "silly": "https://bit.ly/2V596Pn"
+    },
+    "blurb": "Arvind is Virtrolio's ideator. He is well known for his compassion and spectacular,\n radiant personality that always lifts the spirits of those around him. He is known to have an undying love for\n          sports and mathematics. He is currently studying Computer Science\n          at the University of Waterloo. In his spare time, he loves to practice his nunchucks and his taekwondo\n (especially <s>on</s> with his beloved friends)!",
+    "sharingLink": "/signing?uid=cEct1nbdddV3gpdcMqhci3yYNef2&key=inShambles",
+    "social": {
+      "github": "",
+      "instagram": "_airwind",
+      "linkedIn": "https://www.linkedin.com/in/arvindn01/",
+      "website": ""
+    }
+  },
+
+  {
+    "name": "Eric Chen",
+    "images": {
+      "regular": "https://bit.ly/2NemLiC",
+      "silly": "https://bit.ly/3dk383t"
+    },
+    "blurb": "Eric is our fearless technical lead, and we would follow him into hellheim and back if we had to. Not only that, Eric enjoys his bike rides and <i>dank memes</i> like there is no tomorrow. Eric is brilliant, motivated, and occasionally transforms into the real-life embodiment of the angery-react emoji. Eric is extremely proficient in all things tech. To tell the truth, his expertise and leadership is highly valued by the team. Eric is currently studying Software Engineering at uOttawa.",
+    "sharingLink": "/signing?uid=s7OIMu1mrxZscVX4dx2K5d2XYvf2&key=maximumAngery",
+    "social": {
+      "github": "ricetech",
+      "instagram": "the_ricetech",
+      "linkedIn": "https://www.linkedin.com/in/ericchen08/",
+      "website": ""
+    }
+  },
+
+  {
+    "name": "Dabeer Abdul-Azeez",
+    "images": {
+      "regular": "https://bit.ly/2zPaOwQ",
+      "silly": "https://bit.ly/3fOt0WT"
+    },
+    "blurb": "Dabeer is an exceptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and math. And he is plenty talented in both departments! Dabeer is currently studying in the iBiomed program at McMaster University. In his spare time, he loves to practice singing, work on personal projects, and hang out with his beloved friends! He is especially fond of dropping in on people unexpectedly, but pleasant surprises are always to be expected from Dabeer.",
+    "sharingLink": "/signing?uid=yluDqypoiiWtlj8M86x7HLp699r1&key=badaBoomBadaBing",
+    "social": {
+      "github": "GuyInFridge",
+      "instagram": "GuyInFridge",
+      "linkedIn": "https://www.linkedin.com/in/dabeerabdulazeez/",
+      "website": "dabeerazeez.wixsite.com/1p10portfolio"
+    }
+  },
+
+  {
+    "name": "Tommy Huang",
+    "images": {
+      "regular": "https://bit.ly/3hQOJzo",
+      "silly": "https://bit.ly/3hW09Sk"
+    },
+    "blurb": "Tommy—better known as potatoes~~~~ by the people of Dota 2, Terraria, and Factorio—is an ABSOLUTE Legend! He is studying Computer Science at the University of Waterloo and lived in the weirdest room in UWP for his first year. Tommy is an avid rocketry enthusiast, having been a member of the rocketry team in high school and now at UW! He also has been biking o u t s i d e, which has been a fairly scary experience.",
+    "sharingLink": "/signing?uid=01GHzGKQMzXxU0oYDnvoU8jtvdr2&key=GOOSE",
+    "social": {
+      "github": "TommyHuang-dev",
+      "instagram": "",
+      "linkedIn": "https://www.linkedin.com/in/tommyhuang999",
+      "website": "tommyhuang.net"
+    }
+  },
+
+  {
+    "name": "Janakitti Ratana-Rueangsri",
+    "images": {
+      "regular": "https://bit.ly/3elvYBR",
+      "silly": "https://bit.ly/2B371wA"
+    },
+    "blurb": "Janakitti is the Gandalf of our team at Virtrolio. While a true technical and creative wizard on the keyboard and on Powerpoint, Janakitti is more importantly the rope that ties the sac together. He is currently studying Software Engineering at the University of Waterloo. In his spare time, Janakitti is known to be an extremely talented guitar player! You should also check out his extravagant website at janakitti.com",
+    "sharingLink": "/signing?uid=hTYLpcLKneOLsonAX5ZirLphc6h2&key=wizard",
+    "social": {
+      "github": "janakitti",
+      "instagram": "janakitti",
+      "linkedIn": "https://www.linkedin.com/in/janakittiratana/",
+      "website": "janakitti.com"
+    }
+  },
+
+  {
+    "name": "Anthony Wang",
+    "images": {
+      "regular": "https://bit.ly/31xUsnP",
+      "silly": "https://bit.ly/2YQTn94"
+    },
+    "blurb": "Anthony is the daring bug squasher and legal eagle at Virtrolio. While known for his spectacular puns and passion for extremely long hikes, he also enjoys building things ~with love~! Anthony is currently studying Software Engineering at the University of Waterloo. In his spare time, he likes to play the piano and travel (RIP). He also writes about math things, lands planes, and has made it out of REV alive.",
+    "sharingLink": "/signing?uid=fW6IT848K7SFUVbesGBzP67JIGl2&key=YpTyd3w",
+    "social": {
+      "github": "Anthonyftwang",
+      "instagram": "itsanthonywang",
+      "linkedIn": "https://www.linkedin.com/in/anthonyftwang",
+      "website": ""
+    }
+  },
+
+  {
+    "name": "Jonathan Papineau",
+    "images": {
+      "regular": "https://bit.ly/3flxzIr",
+      "silly": "https://bit.ly/2ZgD9Gh"
+    },
+    "blurb": "Jonathan is the wandering sage for the backend of Virtrolio. If there was ever a problem with an async function or RegEx, this guy knew the answer! He's currently studying Computer Science at uOttawa and is part of the university's rocketry team. While he could stay in front of a computer all day long, he, on occasion, fancies wandering out of his man cave to do some cross-country skiing in the winter, or some water skiing and swimming in the summer. Oh, also he thinks that Vim is awesome.",
+    "sharingLink": "/signing?uid=JqE7OUrEaMTHtbEMBaJoakE1MHI3&key=PapaJohn",
+    "social": {
+      "github": "jonapap",
+      "instagram": "",
+      "linkedIn": "https://www.linkedin.com/in/jonathan-papineau/",
+      "website": ""
+    }
+  },
+
+  {
+    "name": "John Zhou",
+    "images": {
+      "regular": "https://bit.ly/3emaogl",
+      "silly": "https://bit.ly/2AUtyvt"
+    },
+    "blurb": "John is the fearless, heroic and noble soul who helped create the About and FAQ pages you see on the Virtrolio site. In his domain, all browsers are welcome (with the exception of IE11) and are served with the very best static pages. John is currently studying Computer Science at the University of Waterloo. In his spare time, John enjoys baking fresh peanut-butter chocolate chip cookies and watching MasterChef Australia. John has also been taking swimming lessons to improve his swimming skills.",
+    "sharingLink": "/signing?uid=0VKjHqwTRwNddcKkDHKyuy1wNTu2&key=itsjohnzhou",
+    "social": {
+      "github": "johnzhoudev",
+      "instagram": "itsjon.zho",
+      "linkedIn": "https://www.linkedin.com/in/johnzhou123/",
+      "website": ""
+    }
+  }
+]

@@ -5,7 +5,10 @@ import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { MarkdownComponent } from 'ngx-markdown';
+
+declare var $: any;
 
 @Component({
   selector: 'app-signing',
@@ -20,12 +23,15 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class SigningComponent implements OnInit {
   public name = 'your friend';
   public sending = false;
+  public embedLink = '';
+  public imageWidth = 50;
+  public copyButtonText = 'Copy';
 
   private uid: string;
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router, private title: Title) { }
+              private msgIo: MsgIoService, private router: Router, private title: Title, public deviceDetector: DeviceDetectorService) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -41,6 +47,10 @@ export class SigningComponent implements OnInit {
       this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
     }).catch(error => alert(error));
     this.signingService.resetDefaultValues();
+    $('[data-toggle="popover"]').popover();
+    $('.popover-dismiss').popover({
+      trigger: 'focus'
+    });
   }
 
   /**
@@ -65,6 +75,17 @@ export class SigningComponent implements OnInit {
   }
 
   /**
+   * Resets image width slider value to 100 or 0 if the user tries to input a number that's too large
+   */
+  checkSliderValue() {
+    if (this.imageWidth > 100) {
+      this.imageWidth = 100;
+    } else if (this.imageWidth < 0) {
+      this.imageWidth = 0;
+    }
+  }
+
+  /**
    * Creates a new blank message and fills in all the info before sending it
    * @param textbox - the textbox where the contents of the message are retrieved from (not the preview box)
    */
@@ -85,5 +106,16 @@ export class SigningComponent implements OnInit {
         AuthService.displayError(error);
       }
     );
+  }
+
+  /**
+   * Selects an inputElement's field and copies its contents to the clipboard, updating the button to confirm the copy
+   * @param inputElement - the element to read from
+   */
+  copyLink(inputElement: HTMLInputElement) {
+    inputElement.select();
+    inputElement.setSelectionRange(0, 10000);
+    document.execCommand('copy');
+    this.copyButtonText = 'Copied!';
   }
 }

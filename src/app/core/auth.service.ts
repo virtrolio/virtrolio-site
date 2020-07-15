@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { VirtrolioUser } from '../shared/interfaces';
+import { BetaUsers, VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
@@ -15,6 +15,7 @@ export class AuthService {
 
   static readonly keyLength = 7;
   static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
+  static readonly notBetaErrorMessage = 'Auth Error: Current user is not a beta tester and is not permitted to access the beta website';
   private user: User;
 
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
@@ -76,6 +77,15 @@ export class AuthService {
   }
 
   /**
+   * Displays an error using an alert, then logs the user out, and then redirects them to the access-denied page.
+   * @param error - The error to be displayed
+   */
+  errorLogout(error) {
+    AuthService.displayError(error);
+    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ])).catch(soError => AuthService.displayError(soError));
+  }
+
+  /**
    * @returns The current User object.
    */
   getUser(): User {
@@ -86,7 +96,8 @@ export class AuthService {
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * User data creation is handled ONLY for desktop devices.
-   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it redirects to.
+   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it redirects to, which is
+   * the routeTo param.
    * Otherwise, mobile users will not be able to create a user.
    * Upon login, the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
@@ -109,12 +120,16 @@ export class AuthService {
             return this.router.navigate([ routeTo ], { queryParams });
           });
         } else {
-          console.log('Login failed');
-          return this.router.navigate([ '/' ]);
+          return this.errorLogout('Null User Credentials on login: ' + userCredentials);
         }
       }).catch(error => {
-        AuthService.displayError(error);
-        return this.router.navigate([ '/access-denied' ]);
+        if (error.message === AuthService.notBetaErrorMessage) {
+          return this.afa.signOut().then(() => {
+            return this.router.navigate([ '/access-denied-beta' ]);
+          });
+        } else {
+          return this.errorLogout(error);
+        }
       });
     } else { // Device is phone/tablet, so use sign-in with redirect
       const redirectPath = AuthService.parseQueryParams(routeTo, queryParams);
@@ -145,12 +160,27 @@ export class AuthService {
   /**
    * Creates a new VirtrolioUser document in the 'users' collection of the database only if the document for the
    * currently logged in user doesn't exist.
+   * @param user: The user object returned by the Firebase Authentication login process.
+   * @throws ReferenceError - If the Firestore documents for the user or list of beta testers is missing
+   * @throws Error - If a write to Firestore fails
    */
   async createUser(user: User): Promise<void> {
+    // Beta Tester Verification
+    const betaRef: AngularFirestoreDocument<BetaUsers> = this.afs.collection('beta').doc<BetaUsers>('beta-testers');
+    const betaTestersList = await betaRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
+      throw new Error('User Creation Error:' + error);
+    });
+
+    if (!betaTestersList) {
+      throw new ReferenceError('Auth Error: Failed to get list of beta testers');
+    } else if (betaTestersList.users.indexOf(user.uid) === -1) {
+      throw new Error(AuthService.notBetaErrorMessage);
+    }
+
     // Not using this.getUserData() because userRef is required
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      AuthService.displayError(error);
+      throw new Error('User Creation Error:' + error);
     });
 
     if (!userDoc) { // User doesn't exist in database
@@ -160,22 +190,22 @@ export class AuthService {
         profilePic: user.photoURL
       };
       await userRef.set(userData).catch(error => {
-        AuthService.displayError(error);
+        throw new Error('User Creation Error:' + error);
       });
     } else { // User exists in database, make sure all fields are present
       if (!('key' in userDoc)) {
         await userRef.update({ key: AuthService.generateKey() }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
       if (!('displayName' in userDoc)) {
         await userRef.update({ displayName: user.displayName }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
       if (!('profilePic' in userDoc)) {
         await userRef.update({ profilePic: user.photoURL }).catch(error => {
-          AuthService.displayError(error);
+          throw new Error('User Creation Error:' + error);
         });
       }
     }
@@ -190,7 +220,15 @@ export class AuthService {
     const userCredentials = await this.afa.getRedirectResult();
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
-      await this.createUser(userCredentials.user);
+      await this.createUser(userCredentials.user).catch(error => {
+        if (error.message === AuthService.notBetaErrorMessage) {
+          return this.afa.signOut().then(() => {
+            return this.router.navigate([ '/access-denied-beta' ]);
+          });
+        } else {
+          return this.errorLogout(error);
+        }
+      });
     }
   }
 
@@ -242,16 +280,18 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the profile picture of. Defaults to the current user if not provided.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async profilePictureLink(uid?: string): Promise<string> {
+  async profilePictureLink(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your profile picture');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.photoURL;
     } else {
-      const userDoc = await this.getUserData();
+      const userDoc = await this.getUserData(uid);
       if (userDoc) {
         return userDoc.profilePic;
       } else {
@@ -261,7 +301,7 @@ export class AuthService {
   }
 
   /**
-   * Same as profilePictureLink, except not async to avoid issues with the navbar loading too fast.
+   * Same as profilePictureLink, except not async to avoid the navbar trying to load the picture before the async call completes.
    * This method should <u>**NOT**</u> be called by anything except the navbar. Use profilePictureLink() instead.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in
@@ -271,13 +311,15 @@ export class AuthService {
   }
 
   /**
+   * @param uid - The uid to get the display name of. Defaults to the current user if not provided.
    * @returns The Display Name of the user as defined in the account that they use to sign in.
    * @throws ReferenceError - If the user is not logged in or doesn't exist
    */
-  async displayName(uid?: string): Promise<string> {
+  async displayName(uid: string = this.uid()): Promise<string> {
     await this.asyncThrowErrorIfLoggedOut('get your name');
     // noinspection DuplicatedCode
-    if (typeof uid === 'undefined' || uid === this.uid()) {
+    if (uid === this.uid()) {
+      // Avoid unnecessary database reads by getting current user data directly from Firebase Authentication
       return this.user.displayName;
     } else {
       const userDoc = await this.getUserData(uid);
