@@ -21,8 +21,11 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/disclaimer-anchor.component';
+import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
@@ -48,10 +51,13 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
 
 @NgModule({
   declarations: [
+    AccessDeniedBetaComponent,
     AccessDeniedComponent,
     AppComponent,
     AboutComponent,
     ContactComponent,
+    DisclaimerAnchorComponent,
+    DisclaimerButtonComponent,
     FaqComponent,
     HomeComponent,
     MessagesComponent,
