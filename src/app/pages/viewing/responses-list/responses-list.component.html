@@ -21,9 +21,8 @@
             </td>
             <td class="author-col">
               <table>
-                <tr class="msg-header-text">
-                  <!--suppress HtmlUnknownTag -->
-                  <a class="author-name" href="javascript: void(0)">{{ msg.fromName }}</a>
+                <tr class="msg-header-text author-name" href="javascript: void(0)">
+                  {{ msg.fromName }}
                 </tr>
                 <tr class="msg-header-date">
                   {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
@@ -53,13 +52,14 @@
       <table class="header-table">
         <tr>
           <td class="profile-pic-col">
-            <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+            <div class="profile-pic-container">
+              <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+            </div>
           </td>
           <td class="author-col">
             <table>
-              <tr class="msg-header-text">
-                <!--suppress HtmlUnknownTag -->
-                <a class="author-name" href="javascript: void(0)">{{ msg.fromName }}</a>
+              <tr class="msg-header-text author-name" href="javascript: void(0)">
+                {{ msg.fromName }}
               </tr>
               <tr class="msg-header-date">
                 {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
