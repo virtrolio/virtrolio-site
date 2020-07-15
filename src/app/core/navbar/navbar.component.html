@@ -42,7 +42,7 @@
     <div class="dropdown dropleft">
       <a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" id="dropdownMenuLink" role="button">
         <div *ngIf="authService.isLoggedIn()" class="float-right profile-pic-container">
-          <img alt="profile-pic" class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}">
+          <img alt="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}">
         </div>
       </a>
       <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
