@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 declare var $: any;
 
@@ -30,8 +31,7 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router, private title: Title) {
-  }
+              private msgIo: MsgIoService, private router: Router, private title: Title, public deviceDetector: DeviceDetectorService) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
@@ -67,6 +67,17 @@ export class SigningComponent implements OnInit {
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
     return !this.signingService.signingBoxText || this.sending;
+  }
+
+  /**
+   * Resets image width slider value to 100 or 0 if the user tries to input a number that's too large
+   */
+  checkSliderValue() {
+    if (this.imageWidth > 100) {
+      this.imageWidth = 100;
+    } else if (this.imageWidth < 0) {
+      this.imageWidth = 0;
+    }
   }
 
   /**

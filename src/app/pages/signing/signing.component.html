@@ -1,8 +1,9 @@
+<!--suppress HtmlUnknownTarget -->
 <div class="container py-4 center-children vertical-center">
-  <div class="row d-show d-md-none">
+  <div class="row" *ngIf="deviceDetector.isMobile()">
     <div class="col-12 alert alert-primary" id="signing-experience-alert">
       The Virtrolio signing experience is better on a desktop or laptop computer! <strong><u>
-      <a data-toggle="modal" data-target="#signingExperience">Why?</a></u></strong>
+      <a data-toggle="modal" data-target="#signing-experience">Why?</a></u></strong>
     </div>
   </div>
   <div class="row">
@@ -82,7 +83,7 @@
                src="../../../assets/images/icons/SigningIcon_fill-color.svg">
           <label for="color-picker-background" hidden>Colour picker for background</label>
           <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="color-picker-background"
-                 name="backgroundcolor-picker" type="color" value={{signingService.backgroundColor}}>
+                 name="background-color-picker" type="color" value={{signingService.backgroundColor}}>
           <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
         </button>
 
@@ -140,11 +141,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        You can only submit one message to a friend’s virtrolio per account, so be absolutely certain!
+      <div class="modal-body" style="text-align: center">
+        <p>You can only submit one message to a friend’s virtrolio per account, so be absolutely certain! By sending a
+          message you agree to our <a href="/terms-of-service" target="_blank">Terms of Service</a> and this
+          <app-disclaimer-anchor></app-disclaimer-anchor>.</p>
+        <div class="row justify-content-center"></div>
       </div>
       <div class="modal-footer">
-        <app-disclaimer-button></app-disclaimer-button>
         <button (click)="sendMsg(signingInputArea)" class="btn btn-primary" data-dismiss="modal"
                 type="button">
           Send it!
@@ -177,7 +180,7 @@
         <p><em>Note: Not all Markdown features will work with Virtrolio messages.</em></p>
         <h5>Something to Note</h5>
         <p>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-          line') counts as 5 characters. Don't worry, we've given you {{signingService.maxCharCount}} characters to work
+          line') counts as 5 characters. Don't worry, we've given you {{ signingService.maxCharCount }} characters to work
           with!</p>
       </div>
       <div class="modal-footer">
@@ -188,12 +191,12 @@
 </div>
 
 <!-- Picture not showing up? Modal -->
-<div class="modal fade" id="embed-modal" tabindex="-1" role="dialog" aria-labelledby="embed-modal-title"
+<div class="modal fade" id="embed-help" tabindex="-1" role="dialog" aria-labelledby="embed-help-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content shadow-lg">
       <div class="modal-header">
-        <h5 class="modal-title" id="embed-modal-title">Can't picture your perfect message?</h5>
+        <h5 class="modal-title" id="embed-help-title">Can't picture your perfect message?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -204,7 +207,7 @@
         <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for most
           photos that you see on the internet!</p>
         <ol>
-          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already
+          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already publicly-viewable
             online.
           </li>
           <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New
@@ -234,7 +237,7 @@
 </div>
 
 <!-- Embed Photo Modal -->
-<div class="modal fade" id="embed-photo" tabindex="-1" role="dialog" aria-labelledby="embed-photo-label"
+<div class="modal fade" id="embed-photo" tabindex="-1" role="dialog" aria-labelledby="embed-photo-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" id="embed-photo-dialog" role="document">
     <div class="modal-content">
@@ -248,7 +251,7 @@
         <div class="col-md-6 my-3 px-lg-5 px-3 vertical-center">
           <div class="mb-3">
             <span class="mr-3"><strong>Add a link to a photo!</strong></span>
-            <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-modal">
+            <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-help">
               Need help?
             </button>
           </div>
@@ -257,18 +260,38 @@
             <input class="form-control" type="text" placeholder="Put your link here!"
                    [(ngModel)]='embedLink' id="embed-link-field">
           </div>
-          <div class="mt-3">
-            <label for="width-slider" class="mx-2">Image Size (%)</label>
-            <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider" min="0" max="100">
+
+          <!-- Image size slider options -->
+          <div class="mt-3 d-none d-sm-block">
+            <label for="width-slider-field-lg" style="display: none">Size (%)</label>
+            <label for="width-slider-lg" class="mx-2">Size (%):</label>
+            <input [(ngModel)]="imageWidth" type="number" id="width-slider-field-lg" min="0" max="100"
+                   (keyup)="checkSliderValue()">
+            <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider-lg" min="0" max="100">
+            <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
           </div>
-          <div class="my-3">
+          <!-- Small screen layout -->
+          <div class="row mt-4 d-sm-none">
+            <div class="col-sm-6">
+              <label for="width-slider-field-sm" class="mx-2">Size (%)</label>
+              <input [(ngModel)]="imageWidth" type="number" id="width-slider-field-sm" min="0" max="100"
+                     (keyup)="checkSliderValue()">
+            </div>
+            <div class="my-2 my-sm-0 col-sm-6">
+              <label for="width-slider-sm" style="display: none">Size (%):</label>
+              <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider-sm" min="0" max="100">
+              <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
+            </div>
+          </div>
+
+          <div class="mt-3">
             <strong>Your image code</strong><br>
             <label for="embed-code-field"><small>Copy this into your message and check the 'Preview'!</small></label>
             <div class="input-group my-3">
               <input #EmbedCode type="text" class="form-control" id="embed-code-field"
-                     value="<img src='{{embedLink}}' width={{imageWidth}}%>">
+                     value="<img src='{{ embedLink }}' width={{ imageWidth }}%>">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{copyButtonText}}</button>
+                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{ copyButtonText }}</button>
               </div>
             </div>
           </div>
@@ -276,11 +299,11 @@
         <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
           <p id="image-preview-heading" class="mx-3 mt-md-3"><strong>Image Preview</strong></p>
           <div class="card my-3 vertical-center" id="embed-image-card">
-            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{embedLink}}" id="embed-image-holder"
+            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{ embedLink }}" id="embed-image-holder"
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage><span>No image to show!</span></ng-template>
           </div>
-          <app-disclaimer-button></app-disclaimer-button>
+          <div class="row justify-content-center"><app-disclaimer-button></app-disclaimer-button></div>
         </div>
       </div>
     </div>
@@ -288,12 +311,15 @@
 </div>
 
 <!-- Signing Experience  -->
-<div class="modal fade" id="signingExperience" tabindex="-1" role="dialog" aria-labelledby="info-title"
+<div class="modal fade" id="signing-experience" tabindex="-1" role="dialog" aria-labelledby="experience-title"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="experience-title">Do I need a larger screen to use Virtrolio?</h4>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         <p>For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but we

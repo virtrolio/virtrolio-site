@@ -176,12 +176,21 @@ markdown {
   z-index: 2000;
 }
 
+#embed-help {
+  z-index: 2001;
+}
+
 #image-preview-heading {
   height: 1.8125em;
 }
 
-#width-slider {
+#width-slider-lg, #width-slider-sm {
   height: 0.625em;
+  width: 6em;
+}
+
+#width-slider-field-lg, #width-slider-field-sm {
+  width: 3.5em;
 }
 
 /* || Typography */
@@ -213,6 +222,10 @@ markdown {
   width: 10em;
   height: 3em;
   font-weight: bolder;
+}
+
+.btn-info {
+  background-color: #0075ff !important;
 }
 
 /* mobile adjustments */

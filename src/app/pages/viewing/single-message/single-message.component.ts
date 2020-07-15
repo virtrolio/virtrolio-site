@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewingService } from '../viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
@@ -37,7 +37,7 @@ export class SingleMessageComponent implements OnInit {
       this.currentMessageId = params.messageId;
     });
     if (this.route.snapshot.queryParams.showBookmarkAlert) {
-      this.toastr.info('You can now bookmark this page to view this message later', 'Bookmark',
+      this.toastr.info('This page can now be bookmarked so you can view this message later!', 'Bookmark',
         { positionClass: 'toast-bottom-full-width' });
       this.location.go('/viewing', '?messageId=' + this.currentMessageId);
     }
@@ -50,6 +50,7 @@ export class SingleMessageComponent implements OnInit {
         this.singleMessage = message;
       } catch (e) {
         AuthService.displayError(e);
+        // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/viewing' ]);
       }
     });
