@@ -4,6 +4,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
 import { RouterModule, Routes } from '@angular/router';
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FaqComponent } from './pages/faq/faq.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
     resolve: { user: LoginResolver }
   },
   { path: 'about', component: AboutComponent },
+  { path: 'access-denied-beta', component: AccessDeniedBetaComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
