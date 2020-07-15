@@ -71,19 +71,49 @@
           </div>
         </div>
 
-        <div class="row">
-          <label for="button-new-link" style="display:none">Click to generate a new link</label>
-          <button (click)="warnAndGenerate()" class="btn btn-secondary" id="button-new-link" type="button">Generate
-            new link
+        <div class="row justify-content-center" id="sharing-link-buttons">
+          <div *ngIf="canShare() else desktopSharing">
+            <label for="button-share-mobile">Share</label>
+            <button (click)="shareLink()" class="btn btn-success col-sm-5 mx-sm-1 my-2 my-sm-0" id="button-share-mobile"
+                    type="button">Share your link
+            </button>
+          </div>
+          <ng-template #desktopSharing>
+            <div class="row w-100" id="sharing-buttons">
+              <div><h6>Use the buttons below to share your link!</h6></div>
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="facebook-button"
+                      (click)="postOnSocial('facebook')">
+                <img src="../../../assets/images/icons/facebook.svg" alt="Share with Facebook" class="mr-2">
+                <span class="mr-1">Facebook</span>
+              </button>
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="twitter-button"
+                      (click)="postOnSocial('twitter')">
+                <img src="../../../assets/images/icons/twitter.svg" alt="Share with Twitter" class="mr-2">
+                <span>Twitter</span>
+              </button>
+              <button role="button" class="btn btn-secondary col-sm-3 mx-sm-3 my-2" id="email-button"
+                      (click)="postOnSocial('email')">
+                <img src="../../../assets/images/icons/mail.svg" alt="Share with Email" class="mr-2">
+                <span class="mr-1">Email</span>
+              </button>
+              <hr/>
+            </div>
+          </ng-template>
+          <label for="button-new-link">Click to generate a new link</label>
+          <button (click)="warnAndGenerate()" class="btn btn-secondary col-12 col-sm-5 mx-1 my-2" id="button-new-link" type="button">
+            Generate new link
           </button>
+        </div>
+
+        <div class="row">
+          <div *ngIf="showWarningText" id="warning-div">
+            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate
+            again to confirm.
+          </div>
           <div class="mt-3" id="generate-link-desc">
             <h6>Why would I want to generate a new link?</h6>
             <p>If you want people to stop being able to use your
               old one! Comes in handy if people are signing your virtrolio whom you don't approve of.</p>
-          </div>
-          <div *ngIf="showWarningText" id="warning-div">
-            Are you sure? Generating a new link will invalidate any other links that you have generated! Click generate
-            again to confirm.
           </div>
         </div>
       </div>

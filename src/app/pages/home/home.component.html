@@ -30,6 +30,14 @@
           <!-- Changing this to 'true else MyVirtrolio' induces no flickering-->
           <p class="lead" id="bolded-body-text">Sign in below to create your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
+            <p class="lead" style="color: red"><strong>WARNING: You are trying to sign into the beta website.</strong>
+            </p>
+            <p class="lead" style="color: red">This version of the website is only accessible to beta testers, and
+              contains features that are not fully functional yet.</p>
+            <p class="lead" style="color: red; font-weight: 600">If you are not a beta tester, please use the public
+              website instead, which you can access by <a href="https://virtrolio.web.app">clicking here</a>.</p>
+          </div>
+          <div class="row d-flex justify-content-center mt-4">
             <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
                     type="button">
               <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">

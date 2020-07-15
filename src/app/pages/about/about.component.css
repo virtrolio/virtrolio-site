@@ -18,21 +18,8 @@
   }
 }
 
-/* || Meet the team */
-
-#meet-the-team > div > div {
-  /* For all items within each peron's row -- copy of vertical-center class in main.css */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 #meet-the-team-title {
   text-align: center;
-}
-
-#meet-the-team {
-  margin-bottom: 2em;
 }
 
 .jumbotron {
@@ -66,4 +53,8 @@
 
 ul {
   word-break: break-word;
+}
+
+#special {
+  flex-direction: row !important;
 }
