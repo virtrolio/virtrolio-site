@@ -5,8 +5,6 @@ import { AuthService } from '../../../core/auth.service';
 import { VirtrolioMessage } from '../../../shared/interfaces';
 import { CookieService } from 'ngx-cookie-service';
 
-declare var $: any;
-
 @Component({
   selector: 'app-responses-list',
   templateUrl: './responses-list.component.html',
