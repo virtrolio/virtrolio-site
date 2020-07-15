@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/core/auth.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 declare var $: any;
 
@@ -29,7 +30,7 @@ export class SigningComponent implements OnInit {
   private key: string;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router, private title: Title) { }
+              private msgIo: MsgIoService, private router: Router, private title: Title, public deviceDetector: DeviceDetectorService) { }
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
