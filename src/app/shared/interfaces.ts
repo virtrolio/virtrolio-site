@@ -29,6 +29,10 @@ export interface VirtrolioUser {
   profilePic: string;
 }
 
+export interface BetaUsers {
+  users: string[];
+}
+
 export class Font {
   fontFamily: string;
   backupFont: string;
