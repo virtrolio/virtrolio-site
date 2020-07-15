@@ -5,15 +5,15 @@ import { Title } from '@angular/platform-browser';
 import { SharingLinkService } from '../../core/sharing-link.service';
 
 @Component({
-  selector: 'app-your-virtrolio',
-  templateUrl: './your-virtrolio.component.html',
-  styleUrls: [ './your-virtrolio.component.css' ]
+  selector: 'app-my-virtrolio',
+  templateUrl: './my-virtrolio.component.html',
+  styleUrls: [ './my-virtrolio.component.css' ]
 })
 
 /**
- * 'Your virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
+ * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class YourVirtrolioComponent implements OnInit {
+export class MyVirtrolioComponent implements OnInit {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
@@ -23,6 +23,7 @@ export class YourVirtrolioComponent implements OnInit {
   public visitLink: string;
   private visitLinkUID: string;
   private visitLinkKEY: string;
+  public navigator: any;
 
   constructor(public authService: AuthService, private sharingLinkService: SharingLinkService,
               public router: Router, private title: Title) { }
@@ -32,6 +33,16 @@ export class YourVirtrolioComponent implements OnInit {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
+    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
+    this.navigator = window.navigator;
+  }
+
+  /**
+   * Check if user can share using a native sharing mechanism (i.e. if they are on mobile)
+   * @returns - True if the user has a native sharing mechanism available
+   */
+  canShare() {
+    return this.navigator && this.navigator.share;
   }
 
   /**
@@ -70,6 +81,45 @@ export class YourVirtrolioComponent implements OnInit {
       } catch (e) {
         this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
       }
+    }
+  }
+
+  /**
+   * Share 'sharing link' using device native sharing mechanism. Should only be available on the front end to the user if they have a native
+   * sharing mechanism.
+   */
+  shareLink() {
+    if (this.canShare()) {
+      this.navigator.share({
+        title: this.displayName + '\'s virtrolio!',
+        text: 'Visit this link to sign their virtrolio and send them a custom message!',
+        url: this.link,
+      })
+        .catch((error) => AuthService.displayError('Sharing Error: ' + error));
+    } else {
+      AuthService.displayError('Sharing Error: Native Share not supported on this browser: ' + navigator.userAgent);
+    }
+  }
+
+  /**
+   * Share the user's sharing link on the appropriate platform
+   * @param platform - platform on which to post the sharing link
+   */
+  postOnSocial(platform: string) {
+    const urlFriendlyLink = 'https%3A//virtrolio.web.app/signing?uid=' + this.authService.uid() + '%26key=' +
+      this.link.match(/key=([^&]*)/)[1];
+
+    const bodyText = 'Sign%20my%20virtual%20yearbook!';
+
+    if (platform === 'facebook') {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlFriendlyLink, '_blank');
+    } else if (platform === 'twitter') {
+      window.open('https://twitter.com/intent/tweet?url=' + urlFriendlyLink + '&text=' + bodyText, '_blank');
+    } else if (platform === 'email') {
+      window.open('mailto:?subject=' + 'Virtrolio%20-%20Online%20Yearbook%20Signing!'
+        + '&body=' + bodyText + '%0D%0A' + urlFriendlyLink, '_blank');
+    } else {
+      AuthService.displayError('Sharing Error: Unsupported social media platform: ' + platform);
     }
   }
 

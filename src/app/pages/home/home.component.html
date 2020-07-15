@@ -26,11 +26,19 @@
 
       <div class="px-5" id="login-virtrolio-button">
         <!-- Call to sign in and Google sign in button; displays if logged out -->
-        <div *ngIf="!authService.isLoggedIn() else yourVirtrolio">
-          <!-- Changing this to 'true else yourVirtrolio' induces no flickering-->
+        <div *ngIf="!authService.isLoggedIn() else MyVirtrolio">
+          <!-- Changing this to 'true else MyVirtrolio' induces no flickering-->
           <p class="lead" id="bolded-body-text">Sign in below to create your own virtrolio!</p>
           <div class="row d-flex justify-content-center mt-4">
-            <button (click)="authService.login('/your-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
+            <p class="lead" style="color: red"><strong>WARNING: You are trying to sign into the beta website.</strong>
+            </p>
+            <p class="lead" style="color: red">This version of the website is only accessible to beta testers, and
+              contains features that are not fully functional yet.</p>
+            <p class="lead" style="color: red; font-weight: 600">If you are not a beta tester, please use the public
+              website instead, which you can access by <a href="https://virtrolio.web.app">clicking here</a>.</p>
+          </div>
+          <div class="row d-flex justify-content-center mt-4">
+            <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
                     type="button">
               <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
               <span>Sign in with Google</span>
@@ -45,12 +53,12 @@
         </div>
 
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
-        <ng-template #yourVirtrolio>
+        <ng-template #MyVirtrolio>
           <div class="justify-content-center text-center pt-1">
             <p class="lead pb-1">You're already signed in! Click the button to go to your virtrolio.</p>
           </div>
           <div class="d-flex justify-content-center pt-1">
-            <button class="btn-lg btn-primary" id="your-virtrolio" routerLink="/your-virtrolio" type="button">Go to my
+            <button class="btn-lg btn-primary" id="my-virtrolio" routerLink="/my-virtrolio" type="button">Go to my
               virtrolio
             </button>
           </div>
