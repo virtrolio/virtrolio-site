@@ -173,7 +173,7 @@ markdown {
   height: 1.8125em;
 }
 
-#width-slider {
+#width-slider-lg, #width-slider-sm {
   height: 0.625em;
   width: 6em;
 }
