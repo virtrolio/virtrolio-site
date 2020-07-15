@@ -20,7 +20,8 @@ export class ResponsesListComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   public showNewToViewing = true;
   private showNewToViewingValue: string;
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService, private cookieService: CookieService) {
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
+              private cookieService: CookieService) {
     try {
       this.uid = this.authService.uid();
     } catch (e) { }
