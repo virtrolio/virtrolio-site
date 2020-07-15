@@ -1,59 +1,241 @@
-.response-list-card {
-  background-color: transparent;
+/* || DESKTOP */
+/* Side nav container - houses list and tab button */
+.side-nav-container {
+  height: calc(100% - var(--navbar-height));
   position: fixed;
-  width: 16em;
-  z-index: 1;
+  left: -25em;
+  z-index: 3000;
+  transition: 0.5s;
 }
 
-.response-list-card-relative {
-  background-color: transparent;
-  position: relative;
-  width: auto;
+/* List component */
+.sidenav {
+  width: 25em;
+  height: 100%;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 2em;
+  z-index: 3002;
 }
 
-#author-list {
-  height: 10em;
-  overflow-y: scroll;
+.sidenav .close-btn {
+  position: absolute;
+  color: var(--dark);
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
-#author-list-relative {
-  height: 7em;
-  overflow-y: scroll;
+/* Button component */
+.hamburger {
+  position: absolute;
+  height: 6em;
+  width: 2em;
+  top: 2em;
+  right: -2em;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background: var(--accent);
+  border-radius: 0 0.5em 0.5em 0;
+  cursor: pointer;
+  transition: 0.5s;
+  z-index: 3001;
 }
 
-.profile-pic {
-  background: var(--light-grey);
+.hamburger:hover {
+  transform: translate(1em,0);
+  width: 3em;
+  transition: 0.5s;
+}
+
+/* Conditionally-activated class */
+.nav-open {
+  left: 0;
+}
+
+/* || MOBILE */
+/* List component */
+.sidenav-mobile {
+  position: fixed;
+  height: calc(100% - var(--navbar-height));
+  width: 25em;
+  top: var(--navbar-height);
+  left: -25em;
+  padding-top: 2em;
+  background-color: white;
+  overflow-x: hidden;
+  z-index: 3000;
+  transition: 0.5s;
+}
+
+.sidenav-mobile .close-btn {
+  position: absolute;
+  color: var(--dark);
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Conditionally-activated class */
+.nav-mobile-open {
+  left: 0;
+  width: 100%;
+}
+
+/* Button component */
+.hamburger-mobile {
+  position: fixed;
+  height: 3em;
+  width: 3em;
+  top: calc(var(--navbar-height) + 5em);
+  left: -1em;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  border-radius: 0.5em;
+  background: var(--accent);
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* || SHARED */
+/* Buttons */
+.close-btn {
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  text-decoration: none;
+}
+
+.chevron {
+  position: absolute;
+  right: 0;
+}
+
+/* List contents */
+.response-title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.author-container {
+  padding: 1em 1em 1em 2em;
+  line-height: 1.2em;
+  border-bottom: 0.05em solid var(--lighter-grey);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer
+}
+
+.author-container:hover {
+  background: var(--response-list-hover);
+}
+
+.header-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.profile-pic-col {
+  width: 2.5em;
+}
+
+.author-col {
+  left: 1em;
+  padding-left: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-pic-container {
+  background: white;
   height: 2.5em;
   width: 2.5em;
   border-radius: 100%;
 }
 
-.username {
+.author-name {
   font-weight: bold;
+  font-size: 1em;
+  margin: 0.2em 0 0 0;
+  color: var(--dark);
 }
 
-.response-title {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.user-info {
-  word-wrap: break-word;
-}
-
-.hamburger-menu {
-  height: auto;
-  width: auto;
-
-}
-
-a:hover {
+.author-name:hover {
   text-decoration: none;
 }
 
+.msg-header-date {
+  font-size: 0.7em;
+  margin: 0;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.flashy-hamburger {
+  -webkit-animation: FlashyHamburger 2s ease infinite;
+  -moz-animation: FlashyHamburger 2s ease infinite;
+  animation: FlashyHamburger 2s ease infinite;
+}
+
+@-webkit-keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@-moz-keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@keyframes FlashyHamburger {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(1em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+
+.flashy-hamburger-mobile {
+  -webkit-animation: FlashyHamburgerMobile 2s ease infinite;
+  -moz-animation: FlashyHamburgerMobile 2s ease infinite;
+  animation: FlashyHamburgerMobile 2s ease infinite;
+}
+
+@-webkit-keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@-moz-keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+@keyframes FlashyHamburgerMobile {
+  0%{transform: translate(0,0); width: 2em;}
+  50%{transform: translate(0.2em,0); width: 3em;}
+  100%{transform: translate(0,0); width: 2em;}
+}
+
+/* || SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.2em;
 }
 
 /* Track */
@@ -63,12 +245,7 @@ a:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EEEEEE;
-  opacity: 0.5;
+  background: var(--scrollbar-thumb);
+  opacity: 0.1;
   border-radius: 1em;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
 }

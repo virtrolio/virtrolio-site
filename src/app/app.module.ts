@@ -1,80 +1,94 @@
 // Angular
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 // Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
-
+import { ToastrModule } from 'ngx-toastr';
 // App
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
+import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/disclaimer-anchor.component';
+import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/signing-auth-redirect.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { SigningComponent } from './pages/signing/signing.component';
-import { ViewingComponent } from './pages/viewing/viewing.component';
+import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
 import { MessagesComponent } from './pages/viewing/messages/messages.component';
-import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { MsgSentComponent } from './pages/msg-sent/msg-sent.component';
+import { MyVirtrolioComponent } from './pages/my-virtrolio/my-virtrolio.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
-import { YourVirtrolioComponent } from './pages/your-virtrolio/your-virtrolio.component';
+import { ResponsesListComponent } from './pages/viewing/responses-list/responses-list.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { SigningAuthRedirectComponent } from './pages/signing-auth-redirect/signing-auth-redirect.component';
+import { SigningComponent } from './pages/signing/signing.component';
+import { SingleMessageComponent } from './pages/viewing/single-message/single-message.component';
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
-
+import { ViewingComponent } from './pages/viewing/viewing.component';
 // Services
 import { LoginResolver } from './core/login-resolver';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PendingChangesGuard } from './core/pending-changes.guard';
-
 
 @NgModule({
   declarations: [
+    AccessDeniedBetaComponent,
+    AccessDeniedComponent,
     AppComponent,
     AboutComponent,
     ContactComponent,
+    DisclaimerAnchorComponent,
+    DisclaimerButtonComponent,
     FaqComponent,
-    SigningAuthRedirectComponent,
     HomeComponent,
-    MsgSentComponent,
-    PageNotFoundComponent,
-    SettingsComponent,
-    SigningComponent,
-    ViewingComponent,
     MessagesComponent,
-    ResponsesListComponent,
-    YourVirtrolioComponent,
-    TermsOfServiceComponent,
-    PrivacyPolicyComponent,
+    MsgSentComponent,
+    MyVirtrolioComponent,
     InvalidLinkComponent,
-    AccessDeniedComponent,
-    RejeccComponent
+    MessageModalComponent,
+    MaintenanceComponent,
+    PageNotFoundComponent,
+    PrivacyPolicyComponent,
+    RejeccComponent,
+    ResponsesListComponent,
+    SettingsComponent,
+    SigningAuthRedirectComponent,
+    SigningComponent,
+    SingleMessageComponent,
+    TermsOfServiceComponent,
+    ViewingComponent
   ],
   imports: [
-    BrowserModule,
-    CoreModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AppRoutingModule,
+    BrowserAnimationsModule, // required animations module
+    BrowserModule,
+    CommonModule,
+    CoreModule,
+    DeviceDetectorModule,
+    FormsModule,
     MarkdownModule.forRoot({
       // set various markdown options
       markedOptions: {
@@ -84,7 +98,9 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
           breaks: true,
         },
       },
-    })
+    }),
+    NgbModule,
+    ToastrModule.forRoot()
   ],
   providers: [ CookieService, LoginResolver, PendingChangesGuard ],
   bootstrap: [ AppComponent ]
