@@ -49,6 +49,12 @@
 
 .navbar-toggler {
   margin-right: 1em;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler-icon {
+  /* Replace the hamburger icon image with a custom SVG that has custom colours */
+  background-image: url(../../../assets/images/hamburger-icon-custom-white.svg);
 }
 
 /* Alternate formatting for mobile navbar */

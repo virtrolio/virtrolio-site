@@ -43,16 +43,29 @@ export interface Fonts {
   [key: string]: Font;
 }
 
-export class AboutPagePictures {
+export interface Contributor {
   name: string;
-  regularLink: string;
-  sillyLink: string;
-  showSilly: boolean;
-
-  constructor(name: string, regularLink: string, sillyLink: string) {
-    this.name = name;
-    this.regularLink = regularLink;
-    this.sillyLink = sillyLink;
-    this.showSilly = true;
-  }
+  images: {
+    regular: string,
+    silly: string
+  };
+  blurb: string;
+  sharingLink: string;
+  social: {
+    github: string,
+    instagram: string,
+    linkedIn: string,
+    website: string
+  };
 }
+
+export interface FAQQuestion {
+  question: string;
+  answer: string;
+}
+
+export interface FAQSection {
+  sectionTitle: string;
+  questions: FAQQuestion[];
+}
+

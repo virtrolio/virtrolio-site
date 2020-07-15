@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
     } else if (this.showCookieAlertValue === 'false') {
       this.showCookieAlert = false;
     } else {
-      console.log('Error. New-user-cookie not found or initialized properly.');
+      AuthService.displayError('Error. New-user-cookie not found or initialized properly.');
     }
   }
 }
