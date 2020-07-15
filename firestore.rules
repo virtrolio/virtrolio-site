@@ -16,7 +16,7 @@ service cloud.firestore {
                     && message.split('-')[0] == request.resource.data.from
                     && message.split('-')[1] == request.resource.data.to
                     // Check for current version number
-                    && message.split('-')[2] == "2020.1"
+                    && (message.split('-')[2] == "2020.1" || message.split('-')[2] == "2020.0")
                     // > Enforce max message length
                     && request.resource.data.contents.size() <= 15000
                     // Data Validity
