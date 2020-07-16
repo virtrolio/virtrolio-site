@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import changelog from './changelog.json';
 
 declare var $: any;
 
@@ -9,6 +10,8 @@ declare var $: any;
   styleUrls: [ './navbar.component.css' ]
 })
 export class NavbarComponent implements OnInit {
+  public changelog = changelog;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {

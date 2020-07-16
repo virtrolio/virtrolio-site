@@ -68,7 +68,15 @@
         </button>
       </div>
       <div class="modal-body" id="changelog-body">
-        New features, fixes, and updates will be posted here whenever we update the website!
+        <p>New features, fixes, and updates will be posted here whenever we update the website!</p>
+        <div *ngFor="let version of changelog">
+          <p><strong>{{version.versionNumber}}</strong></p>
+          <ul>
+            <li *ngFor="let newItem of version.newItems"><span class="changelog-new">[NEW]</span> {{newItem}}</li>
+            <li *ngFor="let update of version.updates"><span class="changelog-upd">[UPD]</span> {{update}}</li>
+            <li *ngFor="let fix of version.fixes"><span class="changelog-fix">[FIX]</span> {{fix}}</li>
+          </ul>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

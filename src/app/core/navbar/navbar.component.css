@@ -81,3 +81,21 @@
   max-height: 25em;
   overflow: auto;
 }
+
+.changelog-new {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.changelog-upd {
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+.changelog-fix {
+  color: red;
+  font-weight: bold;
+}
+
+
+
