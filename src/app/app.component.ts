@@ -61,6 +61,8 @@ export class AppComponent implements OnInit {
       AuthService.displayError('Error. New-user-cookie not found or initialized properly.');
     }
 
+    // TODO: Make this changelog cookie display the changelog only if it's the browser's first time visiting a specific update
+    // Currently this operates exactly like the cookie alert cookie above
     if (this.cookieService.check('changelog-cookie') === false) {
       this.cookieService.set('changelog-cookie', 'true', 365);
     }
