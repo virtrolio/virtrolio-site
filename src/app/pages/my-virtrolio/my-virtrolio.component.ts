@@ -91,8 +91,8 @@ export class MyVirtrolioComponent implements OnInit {
   shareLink() {
     if (this.canShare()) {
       this.navigator.share({
-        title: this.displayName + '\'s virtrolio!',
-        text: 'Visit this link to sign their virtrolio and send them a custom message!',
+        title: this.displayName + 'made a virtrolio!',
+        text: 'Sign my virtual yearbook!',
         url: this.link,
       })
         .catch((error) => AuthService.displayError('Sharing Error: ' + error));
