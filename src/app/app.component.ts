@@ -68,9 +68,9 @@ export class AppComponent implements OnInit {
     this.showChangelogValue = this.cookieService.get('changelog-cookie');
 
     if (this.showChangelogValue === 'true') {
-      this.showCookieAlert = true;
+      this.showChangelog = true;
     } else if (this.showChangelogValue === 'false') {
-      this.showCookieAlert = false;
+      this.showChangelog = false;
     } else {
       AuthService.displayError('Error. changelog-cookie not found or initialized properly.');
     }
