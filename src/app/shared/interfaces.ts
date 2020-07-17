@@ -73,3 +73,15 @@ export interface FAQSection {
   questions: FAQQuestion[];
 }
 
+export interface ChangelogItem {
+  type: string;
+  typeCSS: string;
+  location: string;
+  content: string;
+}
+
+export interface ChangelogVersion {
+  versionNumber: string;
+  items: ChangelogItem[];
+}
+
