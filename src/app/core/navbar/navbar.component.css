@@ -82,16 +82,18 @@
   overflow: auto;
 }
 
+/* These format the changelog items and are used conditionally, so suppression is necessary */
+/*noinspection CssUnusedSymbol*/
 .changelog-new {
   color: var(--accent);
   font-weight: bold;
 }
-
+/*noinspection CssUnusedSymbol*/
 .changelog-upd {
   color: dodgerblue;
   font-weight: bold;
 }
-
+/*noinspection CssUnusedSymbol*/
 .changelog-fix {
   color: red;
   font-weight: bold;
