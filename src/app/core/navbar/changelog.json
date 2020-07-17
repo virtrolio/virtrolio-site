@@ -1,20 +1,13 @@
 [
   {
-    "versionNumber": "1.1.0",
-    "newItems": [
-      "Insert new item",
-      "Insert new item 2",
-      "Insert new item 3"
-    ],
-    "updates": [
-      "Insert new item",
-      "Insert new item 2",
-      "Insert new item 3"
-    ],
-    "fixes": [
-      "Insert fix",
-      "Insert fix 2",
-      "Insert fix 3"
+    "versionNumber": "v1.1.0",
+    "items": [
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "location": "Sitewide",
+        "content": "Added Interactive menu for embedding images on the signing page"
+      }
     ]
   }
 ]
