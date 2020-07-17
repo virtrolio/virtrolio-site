@@ -70,10 +70,11 @@
         </button>
       </div>
       <div class="modal-body" id="changelog-body">
-        <p>New features, fixes, and updates will be posted here whenever we update the website! Note: Whenever we
+        <p>New features, fixes, and updates will be posted here whenever we update the website!</p>
+        <p><small>Note: Whenever we
           release a minor or major update to the website (aka if the first or second number in the version number
-          increments, e.g. 1.1.0 -> 1.2.0 or 1.1.0 -> 2.1.0 but NOT 1.1.0. -> 1.1.1) you will be able to send another
-          message to your friend's virtrolio, even if you've sent one already!</p>
+          increments, e.g. 1.1.0 -> 2.1.0 or 1.1.0 -> 1.2.0 but NOT 1.1.0. -> 1.1.1) you will be able to send another
+          message to your friend's virtrolio, even if you've sent one already!</small></p>
         <div *ngFor="let version of changelog">
           <p><strong>{{version.versionNumber}}</strong></p>
           <ul>
