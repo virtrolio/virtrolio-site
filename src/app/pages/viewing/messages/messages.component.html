@@ -134,14 +134,16 @@
                 </tr>
               </table>
             </div>
-            <div class="card-header-group">
+            <div class="card-header-group vertical-center">
               <table class="header-table">
                 <tr>
                   <td>
-                    <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
-                            data-toggle="modal" type="button">
-                      <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
-                    </button>
+                    <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                      <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
+                              type="button">
+                        <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
+                      </button>
+                    </a>
                   </td>
                 </tr>
               </table>
