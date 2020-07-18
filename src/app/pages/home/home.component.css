@@ -15,15 +15,6 @@
   width: 50em;
 }
 
-/* Featured image or pattern */
-#feature-img {
-  position: absolute;
-  opacity: 0.5;
-  width: 40vw;
-  height: 40vw;
-  right: 0;
-}
-
 #title-container {
   font-family: 'Roboto', sans-serif;
   position: relative;
@@ -85,10 +76,6 @@
 .body-text {
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
-}
-
-#logo {
-  width: 12em;
 }
 
 #login-virtrolio-button {
