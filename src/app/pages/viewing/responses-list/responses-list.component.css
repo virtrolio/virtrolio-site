@@ -98,7 +98,7 @@
   text-align: center;
   border-radius: 0.5em;
   background: var(--accent);
-  opacity: 0.8;
+  opacity: 1;
   cursor: pointer;
   z-index: 2000;
 }
