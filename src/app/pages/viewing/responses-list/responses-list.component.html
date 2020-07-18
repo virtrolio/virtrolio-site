@@ -37,38 +37,40 @@
   </div>
 </div>
 <div class="d-block d-md-none">
-  <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger-mobile]="showNewToViewing" class="hamburger-mobile vertical-center shadow">
-    <img class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-right.svg">
-  </div>
-
-  <div [class.nav-mobile-open]="navIsOpen" class="sidenav-mobile shadow">
-    <a (click)="navToggle()" class="close-btn">&times;</a>
-    <div class="nav-item mb-2 ml-4 response-title">
-      My Messages
+  <div [class.nav-mobile-open]="navIsOpen" class="side-nav-container-mobile">
+    <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger-mobile]="showNewToViewing" class="hamburger-mobile vertical-center shadow">
+      <img class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-right.svg">
     </div>
-    <!--suppress HtmlUnknownAttribute -->
-    <div (click)="showMessage(msg.id);" *ngFor="let msg of messageList; let i = index" attr.data-slide-to="{{ i + 1 }}"
-         class="author-container" data-target="#carousel">
-      <table class="header-table">
-        <tr>
-          <td class="profile-pic-col">
-            <div class="profile-pic-container">
-              <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
-            </div>
-          </td>
-          <td class="author-col">
-            <table>
-              <tr class="msg-header-text author-name">
-                <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
-              </tr>
-              <tr class="msg-header-date">
-                {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
-                msg.timestamp.toDate().toDateString()) }}
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+
+    <div class="sidenav-mobile shadow">
+      <a (click)="navToggle()" class="close-btn">&times;</a>
+      <div class="nav-item mb-2 ml-4 response-title">
+        My Messages
+      </div>
+      <!--suppress HtmlUnknownAttribute -->
+      <div (click)="showMessage(msg.id);" *ngFor="let msg of messageList; let i = index" attr.data-slide-to="{{ i + 1 }}"
+           class="author-container" data-target="#carousel">
+        <table class="header-table">
+          <tr>
+            <td class="profile-pic-col">
+              <div class="profile-pic-container">
+                <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+              </div>
+            </td>
+            <td class="author-col">
+              <table>
+                <tr class="msg-header-text author-name">
+                  <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
+                </tr>
+                <tr class="msg-header-date">
+                  {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
+                  msg.timestamp.toDate().toDateString()) }}
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

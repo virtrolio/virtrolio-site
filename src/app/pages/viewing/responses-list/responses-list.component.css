@@ -56,18 +56,23 @@
 }
 
 /* || MOBILE */
-/* List component */
-.sidenav-mobile {
-  position: fixed;
+
+.side-nav-container-mobile {
   height: calc(100% - var(--navbar-height));
-  width: 25em;
-  top: var(--navbar-height);
-  left: -25em;
-  padding-top: 2em;
-  background-color: white;
-  overflow-x: hidden;
+  position: fixed;
+  right: 100vw;
   z-index: 3000;
   transition: 0.5s;
+}
+
+/* List component */
+.sidenav-mobile {
+  width: 100vw;
+  height: 100%;
+  background-color: white;
+  overflow-x: hidden;
+  padding-top: 2em;
+  z-index: 3002;
 }
 
 .sidenav-mobile .close-btn {
@@ -81,26 +86,24 @@
 
 /* Conditionally-activated class */
 .nav-mobile-open {
-  left: 0;
-  width: 100%;
+  right: 0;
 }
 
 /* Button component */
 .hamburger-mobile {
-  position: fixed;
+  position: absolute;
   height: 3em;
-  width: 3em;
-  top: calc(var(--navbar-height) + 5em);
-  left: -1em;
+  width: 2em;
+  top: 3em;
+  right: -2em;
   font-size: 1em;
   font-weight: bold;
   color: white;
-  text-align: center;
-  border-radius: 0.5em;
   background: var(--accent);
-  opacity: 1;
+  border-radius: 0 0.5em 0.5em 0;
   cursor: pointer;
-  z-index: 2000;
+  transition: 0.5s;
+  z-index: 3001;
 }
 
 /* || SHARED */
@@ -218,17 +221,17 @@
 
 @-webkit-keyframes FlashyHamburgerMobile {
   0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.2em,0); width: 3em;}
+  50%{transform: translate(0.4em,0); width: 3em;}
   100%{transform: translate(0,0); width: 2em;}
 }
 @-moz-keyframes FlashyHamburgerMobile {
   0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.2em,0); width: 3em;}
+  50%{transform: translate(0.4em,0); width: 3em;}
   100%{transform: translate(0,0); width: 2em;}
 }
 @keyframes FlashyHamburgerMobile {
   0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.2em,0); width: 3em;}
+  50%{transform: translate(0.4em,0); width: 3em;}
   100%{transform: translate(0,0); width: 2em;}
 }
 
