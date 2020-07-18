@@ -52,6 +52,12 @@
                 <button (click)="popupMessage(msg)" class="btn card-button" type="button">
                   <img alt="popup" class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
                 </button>
+                <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                  <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
+                          type="button">
+                    <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
+                  </button>
+                </a>
                 <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
                         data-toggle="modal" type="button">
                   <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
