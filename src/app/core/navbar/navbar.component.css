@@ -85,7 +85,7 @@
 /* These format the changelog items and are used conditionally, so suppression is necessary */
 /*noinspection CssUnusedSymbol*/
 .changelog-new {
-  color: var(--accent);
+  color: #41af14;
   font-weight: bold;
 }
 /*noinspection CssUnusedSymbol*/
