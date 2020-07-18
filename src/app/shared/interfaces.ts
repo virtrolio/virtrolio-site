@@ -82,6 +82,7 @@ export interface ChangelogItem {
 
 export interface ChangelogVersion {
   versionNumber: string;
+  releaseDate: string;
   items: ChangelogItem[];
 }
 
