@@ -61,6 +61,7 @@
   right: 0;
 }
 
+
 #viewing-demo {
   background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
 }
@@ -109,7 +110,7 @@
 /* || Body-Specific */
 
 .body-container {
-  margin-top: 3em;
+  margin: 5em 0;
 }
 
 #bolded-body-text {
