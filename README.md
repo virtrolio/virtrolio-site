@@ -1,4 +1,4 @@
-<img align="left" src="https://github.com/virtrolio/virtrolio-site/blob/master/src/assets/images/logo_reg.png" width="200px" height="200px" alt="Virtrolio Logo">
+<img src="https://github.com/virtrolio/virtrolio-site/blob/beta-main/src/assets/images/logo_reg_transparent.png" width="200px" height="200px" style="float: left;" alt="Virtrolio Logo">
 
 # Virtrolio
 Virtrolio was founded due to the COVID-19 pandemic closing schools and preventing students from signing each other's yearbooks. Virtrolio is a web service that lets you privately send messages to a friend or colleague and allows only them to view the messages that are destined for them. With the help of some HTML, CSS, TypeScript, love, sweat, and tears, we've combined the fun, privacy, and intimacy of yearbook signing with digital features such as fonts, colors, emojis and more! 
