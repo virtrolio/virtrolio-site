@@ -6,7 +6,8 @@ Virtrolio was founded due to the COVID-19 pandemic closing schools and preventin
 Check it out! All you need is a Google Account: https://virtrolio.web.app/
 
 ## How We Built It
-Virtrolio is built using Angular and Bootstrap in the front end, with Firebase for data storage, hosting, and user authentication. Firebase was chosen for its ease of use and integration of various secure login authentication providers.
+Virtrolio is built using Angular and Bootstrap in the front end, with Firebase for data storage, hosting, and user authentication. Firebase was chosen for its ease of use and integration of various secure login authentication providers. If you would like to help us further improve virtrolio, feel free to create a pull request.
 
 ## Our Goal
 The goal of virtrolio is to allow users to write memorable messages to one another. We hope to give everyone the chance to do this, even if they cannot physically be together.
+
