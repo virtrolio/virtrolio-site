@@ -11,3 +11,19 @@ Virtrolio is built using Angular and Bootstrap in the front end, with Firebase f
 ## Our Goal
 The goal of virtrolio is to allow users to write memorable messages to one another. We hope to give everyone the chance to do this, even if they cannot physically be together.
 
+## Libraries and Tools Used
+Here is a list of some of the libraries and tools that we used.
+
+| Library | Description | Link |
+|---|---|---|
+| aos | An Angular library that animates page elements as the user scrolls. It is used primarily on the home page. | https://www.npmjs.com/package/aos |
+| Bootstrap  | An open source toolkit which helps quickly design responsive sites. It was used extensively to create the layout and look of the site. | https://getbootstrap.com/ |
+| Firebase | A service provided by Google which hosts Virtrolio's backend data storage and user verification. | https://firebase.google.com/ |
+| jQuery | A javascript library which simplifies HTML animations and event handling. | https://jquery.com/ |
+| ngx-cookie-service | An Angular library which helps create and use cookies. It allows various information to be saved between user sessions. | https://developer.aliyun.com/mirror/npm/package/ngx-cookie-service |
+| ngx-device-detector | An Angular library which helps identify browser and device information. | https://www.npmjs.com/package/ngx-device-detector |
+| ngx-markdown | An Angular library that contains various other libraries involved in rendering text. Virtrolio uses *Marked* to parse Markdown and HTML, and Emoji-Toolkit for emoji support.  | https://www.npmjs.com/package/ngx-markdown |
+| ngx-toastr | An Angular library used for pop-ups, page bookmarks, and deleting messages. It also excels at creating amazing french toast 10/10 would recommend. | https://www.npmjs.com/package/ngx-toastr |
+| RxJS | A library to help create asynchronous functions, such as those used when retrieving a user's messages. | https://rxjs-dev.firebaseapp.com/ |
+| tslib | A runtime library that contains Typescript helper functions | https://www.npmjs.com/package/tslib |
+
