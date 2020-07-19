@@ -128,6 +128,12 @@
   font-weight: bold;
 }
 
+.ready-text {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
 .body-header-text {
   font-size: 1.2em;
 }

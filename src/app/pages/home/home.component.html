@@ -152,13 +152,34 @@
 <div class="py-1 vertical-center body-container">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
-      <h2 class="mb-3 px-5 home-text header-text">Sample Text</h2>
-      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
-        those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
-        In other words, you can create your own virtrolio, share it
-        with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
-        virtrolio and all the messages you have received from your friends!
-      </p>
+      <div class="px-5" id="login-virtrolio-button-bottom">
+        <!-- Call to sign in and Google sign in button; displays if logged out -->
+        <div *ngIf="!authService.isLoggedIn() else MyVirtrolio">
+          <div class="justify-content-center text-center pt-1">
+            <h3 class="mb-1 px-5 home-text ready-text">Ready to get signing?</h3>
+            <p class="lead pb-1">Sign in and get your virtrolio!</p>
+          </div>
+          <div class="row d-flex justify-content-center mt-4">
+            <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
+                    type="button">
+              <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
+              <span>Sign in with Google</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Button to replace 'Sign in with Google' when you're signed in -->
+        <ng-template #MyVirtrolio>
+          <div class="justify-content-center text-center pt-1">
+            <p class="lead pb-1">You're already signed in! Click the button to go to your virtrolio.</p>
+          </div>
+          <div class="d-flex justify-content-center pt-1">
+            <button class="btn-lg btn-primary" id="my-virtrolio-bottom" routerLink="/my-virtrolio" type="button">Go to my
+              virtrolio
+            </button>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
