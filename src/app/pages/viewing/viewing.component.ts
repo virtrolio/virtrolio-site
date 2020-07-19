@@ -5,6 +5,7 @@ import { firestore } from 'firebase/app';
 import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
 import Timestamp = firestore.Timestamp;
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-viewing',
@@ -14,8 +15,9 @@ import Timestamp = firestore.Timestamp;
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
   messageList: VirtrolioMessage[];
+  invalidMessageCount = 0;
 
-  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) {
+  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +36,9 @@ export class ViewingComponent implements OnInit {
           // Add message to messageList if verifyMessage succeeds
           this.viewService.msgIo.verifyMessage(message);
           this.messageList.push(message);
-        } catch (e) { }
+        } catch (e) {
+          this.invalidMessageCount += 1;
+        }
       });
     });
   }
