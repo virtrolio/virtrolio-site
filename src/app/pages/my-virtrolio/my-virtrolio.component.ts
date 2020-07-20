@@ -91,7 +91,7 @@ export class MyVirtrolioComponent implements OnInit {
   shareLink() {
     if (this.canShare()) {
       this.navigator.share({
-        title: this.displayName + 'made a virtrolio!',
+        title: this.displayName + '\'s virtrolio for' + MsgIoService.currentYear + '!',
         text: 'Sign my virtual yearbook!',
         url: this.link,
       })
