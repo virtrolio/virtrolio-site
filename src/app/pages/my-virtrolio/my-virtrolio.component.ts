@@ -3,6 +3,7 @@ import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { SharingLinkService } from '../../core/sharing-link.service';
+import { MsgIoService } from '../../core/msg-io.service';
 
 @Component({
   selector: 'app-my-virtrolio',
