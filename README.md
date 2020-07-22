@@ -6,7 +6,7 @@ Virtrolio was founded due to the COVID-19 pandemic closing schools and preventin
 Check it out! All you need is a Google Account: https://virtrolio.web.app/
 
 ## How We Built It
-Virtrolio is built using Angular and Bootstrap in the front end, with Firebase for data storage, hosting, and user authentication. Firebase was chosen for its ease of use and integration of various secure login authentication providers. If you would like to help us further improve virtrolio, feel free to create a pull request.
+Virtrolio is built using Angular and Bootstrap in the front end, with Firebase for data storage, hosting, and user authentication. Firebase was chosen for its ease of use and integration of various secure login authentication providers. If you would like to help us further improve Virtrolio, feel free to fork our repository and create a pull request.
 
 ## Our Goal
 The goal of virtrolio is to allow users to write memorable messages to one another. We hope to give everyone the chance to do this, even if they cannot physically be together.
@@ -26,4 +26,3 @@ Here is a list of some of the libraries and tools that we used.
 | [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) | An Angular library used for pop-ups, page bookmarks, and deleting messages. It also excels at creating amazing french toast 10/10 would recommend. |
 | [RxJS](https://rxjs-dev.firebaseapp.com/) | A library to help create asynchronous functions, such as those used when retrieving a user's messages. |
 | [tslib](https://www.npmjs.com/package/tslib) | A runtime library that contains Typescript helper functions |
-
