@@ -115,22 +115,25 @@
         </div>
 
         <!-- Demo Card -->
-        <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4 d-none d-md-block" data-aos="flip-left"
-             data-aos-duration="2000"
-             data-aos-once="true">
-          <div class="card shadow">
-            <div class="card-header">
+        <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4 d-none d-md-block">
+          <div class="vertical-center card-container">
+            <div class="card shadow" data-aos="flip-left"
+                 data-aos-duration="2000"
+                 data-aos-once="true">
+              <div class="card-header">
               <span class="profile-pic-container-small mr-2">
                 <img alt="profile-pic" class="profile-pic" src="../../../assets/images/logo_reg.png">
               </span>
-              <span class="card-header-text">Mike H.</span>
+                <span class="card-header-text">Mike H.</span>
+              </div>
+              <markdown
+                [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
+                class="card-body card-message"
+                data="{{ signingService.signingBoxText }}"
+                emoji id="preview-text"></markdown>
             </div>
-            <markdown
-              [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
-              class="card-body card-message"
-              data="{{ signingService.signingBoxText }}"
-              emoji id="preview-text"></markdown>
           </div>
+
         </div>
       </div>
     </div>
