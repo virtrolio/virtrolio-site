@@ -104,7 +104,7 @@
   font-size: 3em;
   font-weight: 400;
   color: white;
-  text-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.5);
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
   white-space: normal;
 }
 
@@ -196,22 +196,6 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
   }
-
-  #demo-text-container {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    height: 100%;
-    margin: 1em 1em;
-  }
-
-  #demo-title {
-    font-size: 6vw;
-    font-weight: 400;
-    color: var(--accent);
-    padding: 0.5em 1em;
-    border-radius: 10em;
-    background: white;
-  }
 }
 
 /* || Scrollbars */
@@ -253,17 +237,37 @@
 
 /* || Animations */
 @-webkit-keyframes SectionGradientAnimation {
-  0%{background-position:0% 0%}
-  50%{background-position:93% 100%}
-  100%{background-position:0% 0%}
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }
+
 @-moz-keyframes SectionGradientAnimation {
-  0%{background-position:0% 0%}
-  50%{background-position:93% 100%}
-  100%{background-position:0% 0%}
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }
+
 @keyframes SectionGradientAnimation {
-  0%{background-position:0% 0%}
-  50%{background-position:93% 100%}
-  100%{background-position:0% 0%}
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }
