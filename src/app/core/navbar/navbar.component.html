@@ -64,7 +64,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="changelogLabel">Surprise! New Features!</h5>
+        <h5 class="modal-title" id="changelogLabel">Changelog</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -78,11 +78,11 @@
           longer send more than one message. Keep an eye on this changelog as we will mention here if we ever do give
           you another message opportunity.</small></p>
         <div *ngFor="let version of changelog">
-          <p><strong>v{{version.versionNumber}} | {{version.releaseDate}}</strong></p>
+          <p><strong>v{{ version.versionNumber }} | {{ version.releaseDate }}</strong></p>
           <ul>
             <li *ngFor="let item of version.items">
-              <span [attr.class]="item.typeCSS">[{{item.type}}]</span>&nbsp;<u>{{item.location}}</u>:
-              {{item.content}}
+              <span [attr.class]="item.typeCSS">[{{ item.type }}]</span>&nbsp;<u>{{ item.location }}</u>:
+              {{ item.content }}
             </li>
           </ul>
         </div>
