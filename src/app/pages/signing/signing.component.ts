@@ -27,6 +27,8 @@ export class SigningComponent implements OnInit {
   public copyButtonText = 'Copy';
   public photoUrl = '';
 
+  public signerName = '';
+  public signerPhotoUrl = '';
   private uid: string;
   private key: string;
 
@@ -37,6 +39,7 @@ export class SigningComponent implements OnInit {
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
    */
   ngOnInit(): void {
+    // set variables
     this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
@@ -52,10 +55,22 @@ export class SigningComponent implements OnInit {
       trigger: 'focus'
     });
     try {
-      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; console.log(photoUrl); });
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; });
     } catch (e) {
       // default picture is the logo
       this.photoUrl = '../../../../assets/images/logo_reg.png';
+    }
+    try {
+      this.authService.profilePictureLink().then((signerphotoUrl) => { this.signerPhotoUrl = signerphotoUrl; });
+    } catch (e) {
+      // default picture is the logo
+      this.signerPhotoUrl = '../../../../assets/images/logo_reg.png';
+    }
+    try {
+      this.authService.displayName().then((signerName) => { this.signerName = signerName; console.log(this.signerName)});
+    } catch (e) {
+      // default name is blank
+      this.signerName = '';
     }
   }
 
@@ -113,4 +128,46 @@ export class SigningComponent implements OnInit {
     document.execCommand('copy');
     this.copyButtonText = 'Copied!';
   }
+
+  /**
+   * Generate a darkened version of backColor, returning this new header color and the appropriate header text color
+   * @param backColor: background color of the message
+   */
+  generateHeaderColor(backColor: string) {
+    const bgR = parseInt(backColor.slice(1, 3), 16);
+    const bgG = parseInt(backColor.slice(3, 5), 16);
+    const bgB = parseInt(backColor.slice(5), 16);
+    let headerTextColor;
+    let trashIcon;
+    let popupIcon;
+    if (this.getLightness(bgR, bgG, bgB) > 0.65) {
+      headerTextColor = '#000000';
+      trashIcon = '../../../../assets/images/icons/trash-black.svg';
+      popupIcon = '../../../../assets/images/icons/maximize-black.svg';
+    } else {
+      headerTextColor = '#FFFFFF';
+      trashIcon = '../../../../assets/images/icons/trash-white.svg';
+      popupIcon = '../../../../assets/images/icons/maximize-white.svg';
+    }
+    const hR = bgR + 20 > 255 ? 255 : bgR + 20;
+    const hG = bgG + 20 > 255 ? 255 : bgG + 20;
+    const hB = bgB + 20 > 255 ? 255 : bgB + 20;
+    const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
+
+    return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, popup: popupIcon };
+  }
+
+  /**
+   * Generate the lightness value of HSL from RBG
+   */
+  getLightness(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    return (max + min) / 2;
+  }
+
+
 }

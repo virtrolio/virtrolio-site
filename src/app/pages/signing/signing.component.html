@@ -115,6 +115,28 @@
     <!-- Preview box -->
     <div class="col-md-6 order-md-2 center-children">
       <div class="row title-div mt-3 mt-md-0 vertical-center">
+        <div [ngStyle]="{'background': generateHeaderColor(signingService.backgroundColor).bg,
+                       'color': generateHeaderColor(signingService.backgroundColor).text}"
+             class="msg-header">
+          <div class="msg-header-group pt-1">
+            <table class="header-table">
+              <tr>
+                <td>
+            <span class="profile-pic-container-small mr-2">
+              <img alt="profile-pic" class="profile-pic" src="{{ signerPhotoUrl }}">
+            </span>
+                </td>
+                <td>
+                  <table>
+                    <tr class="msg-header-text">
+                      {{ signerName }}
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
         <label for="preview-text">
           <strong>Preview</strong>
         </label>
