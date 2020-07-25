@@ -27,7 +27,8 @@
       <table class="header-table">
         <tr>
           <td>
-            <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: viewService.currentMessageModal.id, showBookmarkAlert: true }">
+            <a target="_blank" [routerLink]="['/viewing']"
+               [queryParams]="{ messageId: viewService.currentMessageModal.id, showBookmarkAlert: true }">
               <button (click)="viewService.bookmarkMessage(viewService.currentMessageModal.id)" class="btn card-button"
                       type="button">
                 <img alt="bookmark" class="card-icon" src="../../../../assets/images/icons/bookmark-black.svg">

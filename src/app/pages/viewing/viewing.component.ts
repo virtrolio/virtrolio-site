@@ -5,7 +5,6 @@ import { firestore } from 'firebase/app';
 import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
 import Timestamp = firestore.Timestamp;
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-viewing',
@@ -17,7 +16,7 @@ export class ViewingComponent implements OnInit {
   messageList: VirtrolioMessage[];
   invalidMessageCount = 0;
 
-  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title, private toastr: ToastrService) {
+  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) {
   }
 
   ngOnInit(): void {

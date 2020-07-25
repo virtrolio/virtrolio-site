@@ -8,7 +8,8 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch
+        to
         Booklet
       </button>
       <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
@@ -52,7 +53,8 @@
                 <button (click)="popupMessage(msg)" class="btn card-button" type="button">
                   <img alt="popup" class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
                 </button>
-                <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                <a target="_blank" [routerLink]="['/viewing']"
+                   [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
                   <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
                           type="button">
                     <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
@@ -67,7 +69,8 @@
           </table>
         </div>
       </div>
-      <div (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+      <div (click)="popupMessage(msg)"
+           [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
            class="card-body message-card message">
         <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
       </div>
@@ -138,7 +141,8 @@
               <table class="header-table">
                 <tr>
                   <td>
-                    <a target="_blank" [routerLink]="['/viewing']" [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                    <a target="_blank" [routerLink]="['/viewing']"
+                       [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
                       <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
                               type="button">
                         <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
@@ -149,8 +153,9 @@
               </table>
             </div>
           </div>
-          <div [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
-               class="card-body page message">
+          <div
+            [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+            class="card-body page message">
             <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
           </div>
         </div>

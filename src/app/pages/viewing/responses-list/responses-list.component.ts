@@ -18,11 +18,13 @@ export class ResponsesListComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   public showNewToViewing = true;
   private showNewToViewingValue: string;
+
   constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
               private cookieService: CookieService) {
     try {
       this.uid = this.authService.uid();
-    } catch (e) { }
+    } catch (e) {
+    }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
@@ -58,7 +60,7 @@ export class ResponsesListComponent implements OnInit {
     } else if (this.showNewToViewingValue === 'false') {
       this.showNewToViewing = false;
     } else {
-     AuthService.displayError('Viewing-cookie not found or initialized properly.');
+      AuthService.displayError('Viewing-cookie not found or initialized properly.');
     }
   }
 

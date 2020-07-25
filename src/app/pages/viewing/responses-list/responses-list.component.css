@@ -45,7 +45,7 @@
 }
 
 .hamburger:hover {
-  transform: translate(1em,0);
+  transform: translate(1em, 0);
   width: 3em;
   transition: 0.5s;
 }
@@ -191,6 +191,7 @@
   }
 }
 
+/*noinspection CssUnusedSymbol*/
 .flashy-hamburger {
   -webkit-animation: FlashyHamburger 2s ease infinite;
   -moz-animation: FlashyHamburger 2s ease infinite;
@@ -198,21 +199,51 @@
 }
 
 @-webkit-keyframes FlashyHamburger {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(1em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
-}
-@-moz-keyframes FlashyHamburger {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(1em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
-}
-@keyframes FlashyHamburger {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(1em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(1em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
 }
 
+@-moz-keyframes FlashyHamburger {
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(1em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+}
+
+@keyframes FlashyHamburger {
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(1em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+}
+
+/*noinspection CssUnusedSymbol*/
 .flashy-hamburger-mobile {
   -webkit-animation: FlashyHamburgerMobile 2s ease infinite;
   -moz-animation: FlashyHamburgerMobile 2s ease infinite;
@@ -220,19 +251,48 @@
 }
 
 @-webkit-keyframes FlashyHamburgerMobile {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.4em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(0.4em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
 }
+
 @-moz-keyframes FlashyHamburgerMobile {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.4em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(0.4em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
 }
+
 @keyframes FlashyHamburgerMobile {
-  0%{transform: translate(0,0); width: 2em;}
-  50%{transform: translate(0.4em,0); width: 3em;}
-  100%{transform: translate(0,0); width: 2em;}
+  0% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
+  50% {
+    transform: translate(0.4em, 0);
+    width: 3em;
+  }
+  100% {
+    transform: translate(0, 0);
+    width: 2em;
+  }
 }
 
 /* || SCROLLBAR */
