@@ -1,133 +1,169 @@
 [
   {
     "versionNumber": "1.1.0",
-    "releaseDate": "2020-07-24",
+    "releaseDate": "2020-07-15",
+    "betaUpdate": false,
     "items": [
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "Added a warning telling Internet Explorer users to get a better browser"
+        "content": "Added a warning telling Internet Explorer users to get a better browser\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "FAQ",
-        "content": "Updated FAQ for \"How to embed images?\""
+        "content": "Updated FAQ for \"How to embed images?\"\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Viewing",
-        "content": "Open single-message view automatically in a new tab when you bookmark a message"
+        "content": "Open single-message view automatically in a new tab when you bookmark a message\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
-        "location": "My Virtrolio",
-        "content": "Added Social Media Sharing buttons to the Sharing Link dialog. Uses native sharing on mobile devices and custom links on desktops."
+        "betaFlag": false,
+        "location": "MyVirtrolio",
+        "content": "Added Social Media Sharing buttons to the Sharing Link dialog. Uses native sharing on mobile devices and custom links on desktops.\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Signing",
-        "content": "Added support for embedding images, including a new embed helper button in the formatting bar and disclaimer about responsibilities regarding images in the send confirm dialog"
+        "content": "Added support for embedding images, including a new embed helper button in the formatting bar and disclaimer about responsibilities regarding images in the send confirm dialog\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Signing",
-        "content": "Added an Emoji button in the formatting bar, guiding users on how to open the emoji menu on their devices"
+        "content": "Added an Emoji button in the formatting bar, guiding users on how to open the emoji menu on their devices\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Signing",
-        "content": "Added \"Signing is better on a desktop/laptop!\" alert and dialog if a mobile device is detected"
+        "content": "Added \"Signing is better on a desktop/laptop!\" alert and dialog if a mobile device is detected\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Viewing",
-        "content": "Clicking the bookmark button on a message opens it in a new tab so you can bookmark it in your browser"
+        "content": "Clicking the bookmark button on a message opens it in a new tab so you can bookmark it in your browser\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Viewing",
-        "content": "You can now delete messages from the carousel"
+        "content": "You can now delete messages from the carousel\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Viewing",
-        "content": "The Responses List button will now pop out the first time to draw your attention to it. If you want to see it again, delete your cookies for the website."
+        "content": "The Responses List button will now pop out the first time to draw your attention to it. If you want to see it again, delete your cookies for the website.\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "FAQ",
-        "content": "Added questions about embedding images into messages, changing your display name and custom sharing links"
+        "content": "Added questions about embedding images into messages, changing your display name and custom sharing links\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "Added warning for Internet Explorer users, telling them to use a newer browser"
+        "content": "Added warning for Internet Explorer users, telling them to use a newer browser\r"
       },
       {
         "type": "NEW",
         "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Legal",
-        "content": "Added summaries and clauses about image sharing"
+        "content": "Added summaries and clauses about image sharing\r"
       },
       {
         "type": "UPD",
         "typeCSS": "changelog-upd",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "The footer and navbar are slightly shorter"
+        "content": "The footer and navbar are slightly shorter\r"
       },
       {
         "type": "UPD",
         "typeCSS": "changelog-upd",
+        "betaFlag": false,
         "location": "Navbar",
-        "content": "The Hamburger icon on mobile devices is now a bit brighter to be more visible"
+        "content": "The Hamburger icon on mobile devices is now a bit brighter to be more visible\r"
       },
       {
         "type": "UPD",
         "typeCSS": "changelog-upd",
+        "betaFlag": false,
         "location": "Viewing",
-        "content": "Moved the Responses List button on mobile devices for easier one-handed access"
+        "content": "Moved the Responses List button on mobile devices for easier one-handed access\r"
       },
       {
         "type": "FIX",
         "typeCSS": "changelog-fix",
-        "location": "About Us",
-        "content": "Removed random scrollbars appearing in our pictures"
+        "betaFlag": false,
+        "location": "About",
+        "content": "Removed random scrollbars appearing in our pictures\r"
       },
       {
         "type": "FIX",
         "typeCSS": "changelog-fix",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "Updated branding and capitalization for our brand. Virtrolio (capital V) is our company, while what we provide to you (your 'virtrolio') uses a lowercase V"
+        "content": "Updated branding and capitalization for our brand. Virtrolio (capital V) is our company, while what we provide to you (your 'virtrolio') uses a lowercase V\r"
       },
       {
         "type": "FIX",
         "typeCSS": "changelog-fix",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "Added support for mobile popup browsers (like the ones that open when tapping a link in Instagram or Twitter). Previously produced an Access Denied error when trying to login"
+        "content": "Added support for mobile popup browsers (like the ones that open when tapping a link in Instagram or Twitter). Previously produced an Access Denied error when trying to login\r"
       },
       {
         "type": "FIX",
         "typeCSS": "changelog-fix",
+        "betaFlag": false,
         "location": "Sitewide",
-        "content": "Any errors that occur during the sign-in process will now log you out to prevent further issues from trying to use the website with incomplete user data"
+        "content": "Any errors that occur during the sign-in process will now log you out to prevent further issues from trying to use the website with incomplete user data\r"
       },
       {
         "type": "FIX",
         "typeCSS": "changelog-fix",
+        "betaFlag": false,
         "location": "Signing",
         "content": "Pressing a format button should no longer cause a long message to scroll to the top"
+      }
+    ]
+  },
+  {
+    "versionNumber": "1.0.0",
+    "releaseDate": "2020-07-07",
+    "betaUpdate": false,
+    "items": [
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Initial release"
       }
     ]
   }

@@ -75,15 +75,19 @@
           you a chance to send <em>another</em> message to each of your friends' virtrolios! This ensures that you will
           be able to test out any new features that we develop. Keep an eye on this changelog as we will mention here if we ever do give
           you another message opportunity.</small></p>
-        <div *ngFor="let version of changelog">
-          <p><strong>v{{ version.versionNumber }} | {{ version.releaseDate }}</strong></p>
-          <ul>
-            <li *ngFor="let item of version.items">
-              <span [attr.class]="item.typeCSS">[{{ item.type }}]</span>&nbsp;<u>{{ item.location }}</u>:
-              {{ item.content }}
-            </li>
-          </ul>
-        </div>
+        <ng-container *ngFor="let version of changelog">
+          <div *ngIf="version.betaUpdate === false">
+            <p><strong>v{{ version.versionNumber }} | {{ version.releaseDate }}</strong></p>
+            <ul>
+              <ng-container *ngFor="let item of version.items">
+                <li *ngIf="item.betaFlag === false">
+                  <span [attr.class]="item.typeCSS">[{{ item.type }}]</span>&nbsp;<u>{{ item.location }}</u>:
+                  {{ item.content }}
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </ng-container>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
