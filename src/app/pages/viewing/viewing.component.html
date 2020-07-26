@@ -13,16 +13,16 @@
         <app-messages [setMessageList]="messageList"></app-messages>
         <div *ngIf="invalidMessageCount == 1" class="pt-3">
           <p class="invalid-msg-warning"> &#9888; One of your messages isn't being shown because it does not conform to
-            the message requirements. For more information, <a href="https://virtrolio.web.app/contact">Contact Us</a>
+            the message requirements. <a href="https://virtrolio.web.app/contact">Contact Us</a>
+            if you see this message.
           </p>
         </div>
         <div *ngIf="invalidMessageCount > 1" class="pt-3">
           <p class="invalid-msg-warning"> &#9888; {{ invalidMessageCount }} of your messages are not being shown because
-            they do not conform to the message requirements. For more information, <a
-              href="https://virtrolio.web.app/contact">Contact Us</a></p>
+            they do not conform to the message requirements. <a
+              href="https://virtrolio.web.app/contact">Contact Us</a> if you see this message.</p>
         </div>
       </div>
     </div>
   </div>
 </ng-template>
-
