@@ -65,6 +65,12 @@
   height: 100%;
 }
 
+#card-text {
+  background: var(--accent);
+  font-family: Roboto, sans-serif;
+  color: white;
+}
+
 #viewing-demo {
   background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
 }

@@ -106,7 +106,7 @@
           </div>
           <div class="card mr-4 rounded border-0">
             <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
-            <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
+            <p class="lead home-text body-text">We offer you an array of message
               customization tools,
               including <span style="color: #d1155a">colour pickers</span>, <span
                 style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
@@ -115,7 +115,7 @@
         </div>
 
         <!-- Demo Card -->
-        <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4 d-none d-md-block">
+        <div class="order-md-2 col-lg-6 col-xl-4 mt-4 d-none d-lg-block">
           <div class="vertical-center card-container">
             <div class="card shadow" data-aos="flip-left"
                  data-aos-duration="2000"
@@ -126,14 +126,9 @@
               </span>
                 <span class="card-header-text">Mike H.</span>
               </div>
-              <markdown
-                [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
-                class="card-body card-message"
-                data="{{ signingService.signingBoxText }}"
-                emoji id="preview-text"></markdown>
+              <markdown emoji class="card-body card-message">University across the country, huh? I don't know what I'm going to do without you next year. I'll call you whenever I can. Until I see you again! :heart:</markdown>
             </div>
           </div>
-
         </div>
       </div>
     </div>

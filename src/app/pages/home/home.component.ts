@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { AuthService } from '../../core/auth.service';
-import { SigningService } from '../../core/signing.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -11,10 +10,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  // Default blank textbox
-  inputBoxText = '';
-
-  constructor(public authService: AuthService, public signingService: SigningService, private title: Title) {
+  constructor(public authService: AuthService, private title: Title) {
     // Initialize Animate on Scroll library
     // In constructor instead of ngOnInit to avoid the page breaking when routerLinking to home
     AOS.init();
@@ -22,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
-    this.signingService.setHomeDefaultValues();
   }
 
   /**
@@ -30,14 +25,5 @@ export class HomeComponent implements OnInit {
    */
   onClickChevron() {
     document.getElementById('info').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  /**
-   * When user starts typing, assign inputBoxText by reference to signingBoxText, then update count
-   * @param textbox - The textbox to process.
-   */
-  keyup(textbox: HTMLTextAreaElement) {
-    this.signingService.signingBoxText = this.inputBoxText;
-    this.signingService.updateCount(textbox);
   }
 }
