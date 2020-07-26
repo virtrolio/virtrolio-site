@@ -56,10 +56,10 @@ export class MessagesComponent implements OnInit {
     const bgR = parseInt(backColor.slice(1, 3), 16);
     const bgG = parseInt(backColor.slice(3, 5), 16);
     const bgB = parseInt(backColor.slice(5), 16);
-    let headerTextColor;
-    let trashIcon;
-    let bookmarkIcon;
-    let popupIcon;
+    let headerTextColor: string;
+    let trashIcon: string;
+    let bookmarkIcon: string;
+    let popupIcon: string;
     if (this.getLightness(bgR, bgG, bgB) > 0.65) {
       headerTextColor = '#000000';
       trashIcon = '../../../../assets/images/icons/trash-black.svg';
