@@ -18,7 +18,7 @@
 #title-container {
   font-family: 'Roboto', sans-serif;
   position: relative;
-  padding: 30vh 0 0 10vw;
+  padding-left: 10vw;
 }
 
 #title-header {
@@ -190,10 +190,11 @@
   }
 
   #title-subtitle {
-    font-size: 6vw;
+    font-size: 4vw;
     font-weight: 400;
     color: white;
     margin-top: 1em;
+    line-height: 0;
   }
 
   .header-text {
