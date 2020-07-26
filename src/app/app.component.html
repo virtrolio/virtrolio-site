@@ -6,13 +6,15 @@
 
 <!-- Cookie Alert -->
 <div class="col-12 justify-content-center">
-  <div *ngIf="showCookieAlert" class="alert alert-primary col-sm-8 align-items-center d-flex" id="cookie-alert"
+  <div *ngIf="this.cookieService.get('new-user-cookie') == 'true'"
+       class="alert alert-primary col-sm-8 align-items-center d-flex" id="cookie-alert"
        role="alert">
     <div>
       Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of
       cookies. See our <a routerLink="/terms-of-service">Terms of Service</a> for more information.
     </div>
-    <button (click)='falsifyCookie("new-user-cookie")' class="close ml-2" id="cookie-alert-button" type="button">
+    <button (click)="this.cookieService.set('new-user-cookie', 'false', 365)" class="close ml-2"
+            id="cookie-alert-button" type="button">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
