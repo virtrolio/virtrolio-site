@@ -76,11 +76,11 @@
           be able to test out any new features that we develop. Keep an eye on this changelog as we will mention here if we ever do give
           you another message opportunity.</small></p>
         <ng-container *ngFor="let version of changelog">
-          <div *ngIf="version.betaUpdate === false">
+          <div *ngIf="version.betaUpdate === false || beta === true">
             <p><strong>v{{ version.versionNumber }} | {{ version.releaseDate }}</strong></p>
             <ul>
               <ng-container *ngFor="let item of version.items">
-                <li *ngIf="item.betaFlag === false">
+                <li *ngIf="item.betaFlag === false || beta === true">
                   <span [attr.class]="item.typeCSS">[{{ item.type }}]</span>&nbsp;<u>{{ item.location }}</u>:
                   {{ item.content }}
                 </li>

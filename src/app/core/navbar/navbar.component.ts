@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 
 import changelog from './changelog.json';
 import { ChangelogVersion } from '../../shared/interfaces';
+import { AppComponent } from '../../app.component';
 
 declare var $: any;
 
@@ -13,6 +14,7 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
   public changelog: ChangelogVersion[] = changelog;
+  public beta = AppComponent.beta;
 
   constructor(public authService: AuthService) { }
 
