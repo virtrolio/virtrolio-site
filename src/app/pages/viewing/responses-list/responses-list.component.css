@@ -4,7 +4,8 @@
   height: calc(100% - var(--navbar-height));
   position: fixed;
   left: -25em;
-  z-index: 3000;
+  /* z-index of 1051 is the level that modals appear */
+  z-index: 1050;
   transition: 0.5s;
 }
 
@@ -15,7 +16,7 @@
   background-color: white;
   overflow-x: hidden;
   padding-top: 2em;
-  z-index: 3002;
+  z-index: 2000;
 }
 
 .sidenav .close-btn {
@@ -41,7 +42,7 @@
   border-radius: 0 0.5em 0.5em 0;
   cursor: pointer;
   transition: 0.5s;
-  z-index: 3001;
+  z-index: 2000;
 }
 
 .hamburger:hover {
@@ -61,7 +62,8 @@
   height: calc(100% - var(--navbar-height));
   position: fixed;
   right: 100vw;
-  z-index: 3000;
+  /* z-index of 1051 is the level that modals appear */
+  z-index: 1050;
   transition: 0.5s;
 }
 
@@ -72,7 +74,7 @@
   background-color: white;
   overflow-x: hidden;
   padding-top: 2em;
-  z-index: 3002;
+  z-index: 2000;
 }
 
 .sidenav-mobile .close-btn {
@@ -103,7 +105,7 @@
   border-radius: 0 0.5em 0.5em 0;
   cursor: pointer;
   transition: 0.5s;
-  z-index: 3001;
+  z-index: 2000;
 }
 
 /* || SHARED */
