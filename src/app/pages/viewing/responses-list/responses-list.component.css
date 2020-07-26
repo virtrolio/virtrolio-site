@@ -191,6 +191,7 @@
   }
 }
 
+/* Supress warning for conditionally-applied CSS class */
 /*noinspection CssUnusedSymbol*/
 .flashy-hamburger {
   -webkit-animation: FlashyHamburger 2s ease infinite;
@@ -243,6 +244,7 @@
   }
 }
 
+/* Supress warning for conditionally-applied CSS class */
 /*noinspection CssUnusedSymbol*/
 .flashy-hamburger-mobile {
   -webkit-animation: FlashyHamburgerMobile 2s ease infinite;
