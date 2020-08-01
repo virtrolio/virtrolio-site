@@ -82,6 +82,10 @@
   overflow: auto;
 }
 
+#changelog-note {
+  line-height: 1em;
+}
+
 /* These format the changelog items and are used conditionally, so suppression is necessary */
 /*noinspection CssUnusedSymbol*/
 .changelog-new {
