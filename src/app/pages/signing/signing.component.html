@@ -1,4 +1,5 @@
 <!--suppress HtmlUnknownTarget -->
+<script src="../../core/prevent-urlaccess.guard.ts"></script>
 <div class="container py-4 center-children vertical-center">
   <div class="row" *ngIf="deviceDetector.isMobile()">
     <div class="col-12 alert alert-primary" id="signing-experience-alert">
@@ -10,23 +11,27 @@
 
     <!-- Signing box, header, and character count -->
     <div class="col-md-6 order-md-1 center-children">
-      <div class="row title-div vertical-center">
-        <label for="signing-box">
-          Type your message to
-          <img alt="profile-pic" class="profile-pic" src="{{ photoUrl }}">
-          <b>{{ name }}</b> below.
-        </label>
-      </div>
       <div class="row">
-        <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
-                  [(ngModel)]='signingService.signingBoxText'
-                  [ngStyle]="{'font-family': signingService.currentFontFamily}"
-                  autofocus class="form-control"
-                  id="signing-box"></textarea>
-        <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
-              id="char-count-display">
-          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
-        </span>
+        <div class="card">
+          <div class="row title-div mt-2 mt-md-0 vertical-center">
+            <label for="signing-box">
+              Type your message to
+              <img alt="profile-pic" class="profile-pic" src="{{ photoUrl }}">
+              <b>{{ name }}</b> below.
+            </label>
+          </div>
+          <div class="row">
+            <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
+                      [(ngModel)]='signingService.signingBoxText'
+                      [ngStyle]="{'font-family': signingService.currentFontFamily}"
+                      autofocus class="form-control"
+                      id="signing-box"></textarea>
+                <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
+                      id="char-count-display">
+              {{ signingService.charCount }} / {{ signingService.maxCharCount }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -114,39 +119,36 @@
 
     <!-- Preview box -->
     <div class="col-md-6 order-md-2 center-children">
-      <div class="row title-div mt-3 mt-md-0 vertical-center">
-        <div [ngStyle]="{'background': generateHeaderColor(signingService.backgroundColor).bg,
-                       'color': generateHeaderColor(signingService.backgroundColor).text}"
-             class="msg-header">
-          <div class="msg-header-group pt-1">
-            <table class="header-table">
-              <tr>
-                <td>
-            <span class="profile-pic-container-small mr-2">
-              <img alt="profile-pic" class="profile-pic" src="{{ signerPhotoUrl }}">
-            </span>
-                </td>
-                <td>
-                  <table>
-                    <tr class="msg-header-text">
-                      {{ signerName }}
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
+      <div class="row">
+        <div class="card" [ngStyle]="{'background-color': signingService.backgroundColor}">
+          <div class="row title-div mt-2 mt-md-0 vertical-center">
+            <div [ngStyle]="{'color': generateHeaderColor(signingService.backgroundColor).text}"
+                 class="msg-header">
+              <table class="header-table">
+                <tr>
+                  <td>
+                  <span class="profile-pic-container-small mr-2">
+                    <img alt="profile-pic" class="profile-pic" src="{{ signerPhotoUrl }}">
+                  </span>
+                  </td>
+                  <td>
+                    {{ signerName }}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <label for="preview-text" hidden>
+            <strong>Preview</strong>
+          </label>
+          <div id="markdown-div">
+            <markdown #previewBoxArea
+                      [ngStyle]="{'color': signingService.textColor,
+                'font-family': signingService.currentFontFamily}"
+                      data="{{ signingService.signingBoxText }}" emoji
+                      id="preview-text"></markdown>
           </div>
         </div>
-        <label for="preview-text">
-          <strong>Preview</strong>
-        </label>
-      </div>
-      <div class="row">
-        <markdown #previewBoxArea
-                  [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
-                  'font-family': signingService.currentFontFamily}"
-                  data="{{ signingService.signingBoxText }}" emoji
-                  id="preview-text"></markdown>
       </div>
     </div>
   </div>
@@ -166,7 +168,9 @@
       <div class="modal-body" style="text-align: center">
         <p>You can only submit one message to a friend’s virtrolio per account, so be absolutely certain! By sending a
           message you agree to our <a href="/terms-of-service" target="_blank">Terms of Service</a> and this
-          <app-disclaimer-anchor></app-disclaimer-anchor>.</p>
+          <app-disclaimer-anchor></app-disclaimer-anchor>
+          .
+        </p>
         <div class="row justify-content-center"></div>
       </div>
       <div class="modal-footer">
@@ -202,7 +206,8 @@
         <p><em>Note: Not all Markdown features will work with Virtrolio messages.</em></p>
         <h5>Something to Note</h5>
         <p>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-          line') counts as 5 characters. Don't worry, we've given you {{ signingService.maxCharCount }} characters to work
+          line') counts as 5 characters. Don't worry, we've given you {{ signingService.maxCharCount }} characters to
+          work
           with!</p>
       </div>
       <div class="modal-footer">
@@ -229,7 +234,8 @@
         <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for most
           photos that you see on the internet!</p>
         <ol>
-          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already publicly-viewable
+          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already
+            publicly-viewable
             online.
           </li>
           <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New
@@ -313,7 +319,8 @@
               <input #EmbedCode type="text" class="form-control" id="embed-code-field"
                      value="<img src='{{ embedLink }}' width={{ imageWidth }}%>">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{ copyButtonText }}</button>
+                <button class="btn btn-primary" type="button"
+                        (click)="copyLink(EmbedCode)">{{ copyButtonText }}</button>
               </div>
             </div>
           </div>
@@ -325,7 +332,9 @@
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage><span>No image to show!</span></ng-template>
           </div>
-          <div class="row justify-content-center"><app-disclaimer-button></app-disclaimer-button></div>
+          <div class="row justify-content-center">
+            <app-disclaimer-button></app-disclaimer-button>
+          </div>
         </div>
       </div>
     </div>
@@ -344,7 +353,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but we
+        <p>For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but
+          we
           suggest that you
           try <em>signing</em> messages on a desktop or laptop computer instead of a phone or tablet. This is because
           not only is it easier to write out a message when you have a larger screen, but some of the components (like
