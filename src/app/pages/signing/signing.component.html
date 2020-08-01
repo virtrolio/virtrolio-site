@@ -26,7 +26,7 @@
                       [ngStyle]="{'font-family': signingService.currentFontFamily}"
                       autofocus class="form-control"
                       id="signing-box"></textarea>
-                <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
+                <span *ngIf="signingService.charCount >= 5000" [ngStyle]="{'color': signingService.charCountColor}"
                       id="char-count-display">
               {{ signingService.charCount }} / {{ signingService.maxCharCount }}
             </span>
