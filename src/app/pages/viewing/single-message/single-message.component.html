@@ -26,6 +26,9 @@
     </div>
   </div>
 </div>
-<div class="row justify-content-center my-5">
+<div *ngIf="showCloseButton" class="row justify-content-center my-5">
   <a href="javascript:window.top.close()" class="btn btn-primary">Close</a>
+</div>
+<div *ngIf="!showCloseButton" class="row justify-content-center my-5">
+  <button (click)="goToMessages()" class="btn btn-primary">Go back to all messages</button>
 </div>
