@@ -87,4 +87,3 @@ export interface ChangelogVersion {
   betaUpdate: boolean;
   items: ChangelogItem[];
 }
-
