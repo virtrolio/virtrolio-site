@@ -92,11 +92,13 @@
   color: #41af14;
   font-weight: bold;
 }
+
 /*noinspection CssUnusedSymbol*/
 .changelog-upd {
   color: dodgerblue;
   font-weight: bold;
 }
+
 /*noinspection CssUnusedSymbol*/
 .changelog-fix {
   color: red;
