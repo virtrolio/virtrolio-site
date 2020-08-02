@@ -30,7 +30,5 @@
   <a href="javascript:window.top.close()" class="btn btn-primary">Close</a>
 </div>
 <ng-template #backButton>
-  <div *ngIf="!showCloseButton" class="row justify-content-center my-5">
-    <button (click)="goToMessages()" class="btn btn-primary">Go back to all messages</button>
-  </div>
+  <button (click)="goToMessages()" class="btn btn-primary">Go back to all messages</button>
 </ng-template>
