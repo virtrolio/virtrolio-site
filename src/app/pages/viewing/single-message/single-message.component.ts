@@ -15,6 +15,7 @@ import { AuthService } from '../../../core/auth.service';
 })
 export class SingleMessageComponent implements OnInit {
   currentMessageId: string;
+  showCloseButton = false;
   singleMessage: VirtrolioMessage = {
     ...new VirtrolioMessageTemplate(),
     from: '',
@@ -39,6 +40,7 @@ export class SingleMessageComponent implements OnInit {
     if (this.route.snapshot.queryParams.showBookmarkAlert) {
       this.toastr.info('This page can now be bookmarked so you can view this message later!', 'Bookmark',
         { positionClass: 'toast-bottom-full-width' });
+      this.showCloseButton = true;
       this.location.go('/viewing', '?messageId=' + this.currentMessageId);
     }
   }
