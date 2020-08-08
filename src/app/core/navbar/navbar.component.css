@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2000;
   height: var(--navbar-height);
   padding: 0;
 }
@@ -74,4 +74,33 @@
   font-size: 0.6em;
   color: rgba(255, 255, 255, 0.75);
   margin: 0 0 0 0;
+}
+
+/* Changelog */
+#changelog-body {
+  max-height: 25em;
+  overflow: auto;
+}
+
+#changelog-note {
+  line-height: 1em;
+}
+
+/* These format the changelog items and are used conditionally, so suppression is necessary */
+/*noinspection CssUnusedSymbol*/
+.changelog-new {
+  color: #41af14;
+  font-weight: bold;
+}
+
+/*noinspection CssUnusedSymbol*/
+.changelog-upd {
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+/*noinspection CssUnusedSymbol*/
+.changelog-fix {
+  color: red;
+  font-weight: bold;
 }
