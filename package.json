@@ -27,7 +27,7 @@
     "emoji-toolkit": "^5.5.1",
     "firebase": "^7.17.2",
     "jquery": "^3.5.1",
-    "ngx-cookie-service": "^10.0.0",
+    "ngx-cookie-service": "^10.0.1",
     "ngx-device-detector": "^1.4.5",
     "ngx-markdown": "^9.1.1",
     "ngx-toastr": "^12.1.0",
