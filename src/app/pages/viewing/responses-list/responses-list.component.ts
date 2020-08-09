@@ -24,7 +24,7 @@ export class ResponsesListComponent implements OnInit {
     try {
       this.uid = this.authService.uid();
     } catch (e) {
-       AuthService.displayError(e)
+       AuthService.displayError(e);
     }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
