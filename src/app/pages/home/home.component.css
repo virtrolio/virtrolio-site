@@ -1,6 +1,6 @@
 /* || Full Screen Landing */
 
-#home-background {
+.home-background {
   background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
@@ -15,7 +15,7 @@
   width: 50em;
 }
 
-#title-container {
+.title-container {
   font-family: 'Roboto', sans-serif;
   position: relative;
   padding-left: 10vw;
@@ -33,12 +33,29 @@
   margin-top: 1em;
 }
 
+#title-header-mobile-landscape {
+  font-size: 4em;
+  color: white;
+}
+
+#title-subtitle-mobile-landscape {
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  margin-top: 0.5em;
+}
+
 #chevron {
   margin-top: 2em;
   cursor: pointer;
 }
 
-#home-img-background {
+#chevron-mobile-landscape {
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.home-img-background {
   background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
   background-size: 100%;
   height: calc(100vh - var(--navbar-height));
@@ -247,19 +264,37 @@
 /* || Animations */
 
 @-webkit-keyframes SectionGradientAnimation {
-  0% { background-position: 0 0 }
-  50% { background-position: 93% 100% }
-  100% { background-position: 0 0 }
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }
 
 @-moz-keyframes SectionGradientAnimation {
-  0% { background-position: 0 0 }
-  50% { background-position: 93% 100% }
-  100% { background-position: 0 0 }
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }
 
 @keyframes SectionGradientAnimation {
-  0% { background-position: 0 0 }
-  50% { background-position: 93% 100% }
-  100% { background-position: 0 0 }
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }

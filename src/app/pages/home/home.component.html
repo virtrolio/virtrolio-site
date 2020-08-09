@@ -1,9 +1,11 @@
 <!--suppress HtmlUnknownTarget -->
-<div class="container-fluid full-width" id="home-background">
-  <div class="container-fluid full-width vertical-center" id="home-img-background">
-    <img alt="Virtrolio Logo" class="d-none d-xl-block" data-aos="zoom-in-up"
-         data-aos-duration="1500" id="bg-logo-img" src="../../../assets/images/logo_inverted-no-back.png">
-    <div id="title-container">
+<div class="container-fluid full-width home-background">
+  <!-- Default formatting for regularly tall viewports -->
+  <div *ngIf="screenHeight > 420; else mobileLandscape"
+       class="container-fluid full-width vertical-center home-img-background">
+    <img alt="Virtrolio Logo" class="d-none d-xl-block" id="bg-logo-img" data-aos="zoom-in-up"
+         data-aos-duration="1500" src="../../../assets/images/logo_inverted-no-back.png">
+    <div class="title-container">
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
         apart.</h1>
@@ -11,6 +13,20 @@
            (click)="onClickChevron()">
     </div>
   </div>
+  <!-- Formatting for landscape view on mobile devices (very low viewport heights) -->
+  <ng-template #mobileLandscape>
+    <div class="container-fluid full-width vertical-center home-img-background">
+      <div class="title-container">
+        <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header-mobile-landscape">Stay
+          connected.</h1>
+        <h1 id="title-subtitle-mobile-landscape">Even when you're
+          apart.</h1>
+        <img alt="down" height="48" id="chevron-mobile-landscape" src="../../../assets/images/icons/chevron-down.svg"
+             width="48"
+             (click)="onClickChevron()">
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 <a id="info"></a>
@@ -126,7 +142,9 @@
               </span>
                 <span class="card-header-text">Mike H.</span>
               </div>
-              <markdown emoji class="card-body card-message">University across the country, huh? I don't know what I'm going to do without you next year. I'll call you whenever I can. Until I see you again! :heart:</markdown>
+              <markdown emoji class="card-body card-message">University across the country, huh? I don't know what I'm
+                going to do without you next year. I'll call you whenever I can. Until I see you again! :heart:
+              </markdown>
             </div>
           </div>
         </div>
