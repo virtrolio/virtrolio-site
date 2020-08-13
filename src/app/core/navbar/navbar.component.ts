@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
+import changelog from './changelog.json';
+import { ChangelogVersion } from '../../shared/interfaces';
+import { AppComponent } from '../../app.component';
+
 declare var $: any;
 
 @Component({
@@ -9,6 +13,9 @@ declare var $: any;
   styleUrls: [ './navbar.component.css' ]
 })
 export class NavbarComponent implements OnInit {
+  public changelog: ChangelogVersion[] = changelog;
+  public beta = AppComponent.beta;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {

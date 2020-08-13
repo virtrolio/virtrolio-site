@@ -72,9 +72,9 @@
         </div>
 
         <div class="row justify-content-center" id="sharing-link-buttons">
-          <div *ngIf="canShare() else desktopSharing">
+          <div *ngIf="canShare() else desktopSharing" class="col-sm-5 px-0 vertical-center my-2 mx-sm-1">
             <label for="button-share-mobile">Share</label>
-            <button (click)="shareLink()" class="btn btn-success col-sm-5 mx-sm-1 my-2 my-sm-0" id="button-share-mobile"
+            <button (click)="shareLink()" class="btn btn-success w-100" id="button-share-mobile"
                     type="button">Share your link
             </button>
           </div>
@@ -99,10 +99,12 @@
               <hr/>
             </div>
           </ng-template>
-          <label for="button-new-link">Click to generate a new link</label>
-          <button (click)="warnAndGenerate()" class="btn btn-secondary col-12 col-sm-5 mx-1 my-2" id="button-new-link" type="button">
-            Generate new link
-          </button>
+          <div class="col-sm-5 px-0">
+            <label for="button-new-link">Click to generate a new link</label>
+            <button (click)="warnAndGenerate()" class="btn btn-secondary w-100 my-2 mx-sm-1" id="button-new-link" type="button">
+              Generate new link
+            </button>
+          </div>
         </div>
 
         <div class="row">

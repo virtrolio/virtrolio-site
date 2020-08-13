@@ -56,16 +56,19 @@ export class MessagesComponent implements OnInit {
     const bgR = parseInt(backColor.slice(1, 3), 16);
     const bgG = parseInt(backColor.slice(3, 5), 16);
     const bgB = parseInt(backColor.slice(5), 16);
-    let headerTextColor;
-    let trashIcon;
-    let popupIcon;
+    let headerTextColor: string;
+    let trashIcon: string;
+    let bookmarkIcon: string;
+    let popupIcon: string;
     if (this.getLightness(bgR, bgG, bgB) > 0.65) {
       headerTextColor = '#000000';
       trashIcon = '../../../../assets/images/icons/trash-black.svg';
+      bookmarkIcon = '../../../../assets/images/icons/bookmark-black.svg';
       popupIcon = '../../../../assets/images/icons/maximize-black.svg';
     } else {
       headerTextColor = '#FFFFFF';
       trashIcon = '../../../../assets/images/icons/trash-white.svg';
+      bookmarkIcon = '../../../../assets/images/icons/bookmark-white.svg';
       popupIcon = '../../../../assets/images/icons/maximize-white.svg';
     }
     const hR = bgR + 20 > 255 ? 255 : bgR + 20;
@@ -73,7 +76,7 @@ export class MessagesComponent implements OnInit {
     const hB = bgB + 20 > 255 ? 255 : bgB + 20;
     const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
 
-    return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, popup: popupIcon };
+    return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, bookmark: bookmarkIcon, popup: popupIcon };
   }
 
   /**
