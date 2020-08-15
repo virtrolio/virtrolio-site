@@ -23,7 +23,7 @@
     "@angular/router": "~10.0.8",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "aos": "^2.3.4",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.5.2",
     "emoji-toolkit": "^5.5.1",
     "firebase": "^7.17.2",
     "jquery": "^3.5.1",
