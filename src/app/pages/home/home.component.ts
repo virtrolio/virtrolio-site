@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
    * "Subscrbes" to the window resize event to update current value of viewport height
    */
   @HostListener('window:resize', [ '$event' ])
-  getScreenSize(event?) {
+  getScreenSize() {
     this.screenHeight = window.innerHeight;
   }
 
