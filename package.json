@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "aos": "^2.3.4",
     "bootstrap": "^4.5.2",
-    "emoji-toolkit": "^5.5.1",
+    "emoji-toolkit": "^6.0.1",
     "firebase": "^7.18.0",
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^10.0.1",
