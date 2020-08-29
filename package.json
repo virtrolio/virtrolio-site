@@ -48,7 +48,7 @@
     "firebase-tools": "^8.7.0",
     "fuzzy": "^0.1.3",
     "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
+    "inquirer-autocomplete-prompt": "^1.1.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.2",
     "karma": "~5.1.1",
