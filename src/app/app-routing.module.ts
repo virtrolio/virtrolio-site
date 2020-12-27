@@ -100,10 +100,11 @@ const routes: Routes = [
 @NgModule({
   imports: [ RouterModule.forRoot(routes,
     {
-      scrollPositionRestoration: 'enabled', // scroll to top when routerLinking
-      anchorScrolling: 'enabled',
-      onSameUrlNavigation: 'reload'
-    }) ],
+    scrollPositionRestoration: 'enabled', // scroll to top when routerLinking
+    anchorScrolling: 'enabled',
+    onSameUrlNavigation: 'reload',
+    relativeLinkResolution: 'legacy'
+}) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {
