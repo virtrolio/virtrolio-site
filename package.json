@@ -31,7 +31,7 @@
     "ngx-device-detector": "^1.4.6",
     "ngx-markdown": "^10.1.1",
     "ngx-toastr": "^13.2.0",
-    "rxjs": "~6.6.2",
+    "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "websocket-extensions": "^0.1.4",
     "zone.js": "~0.10.2"
