@@ -1,21 +1,39 @@
 <!--suppress HtmlUnknownTarget -->
-<div class="container-fluid full-width" id="home-background">
-  <div class="container-fluid full-width" id="home-img-background">
-    <img alt="Virtrolio Logo" class="d-none d-xl-block" data-aos="zoom-in-up"
-         data-aos-duration="1500" id="bg-logo-img" src="../../../assets/images/logo_inverted-no-back.png">
-    <div id="title-container">
+<div class="container-fluid full-width home-background">
+  <!-- Default formatting for regularly tall viewports -->
+  <div *ngIf="screenHeight > 420; else mobileLandscape"
+       class="container-fluid full-width vertical-center home-img-background">
+    <img alt="Virtrolio Logo" class="d-none d-xl-block" id="bg-logo-img" data-aos="zoom-in-up"
+         data-aos-duration="1500" src="../../../assets/images/logo_inverted-no-back.png">
+    <div class="title-container">
       <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay connected.</h1>
       <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
         apart.</h1>
-       <img alt="down" height="48" id="chevron" src="../../../assets/images/icons/chevron-down.svg" width="48" (click)="onClickChevron()">
+      <img alt="down" height="48" id="chevron" src="../../../assets/images/icons/chevron-down.svg" width="48"
+           (click)="onClickChevron()">
     </div>
   </div>
+  <!-- Formatting for landscape view on mobile devices (very low viewport heights) -->
+  <ng-template #mobileLandscape>
+    <div class="container-fluid full-width vertical-center home-img-background">
+      <div class="title-container">
+        <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header-mobile-landscape">Stay
+          connected.</h1>
+        <h1 id="title-subtitle-mobile-landscape">Even when you're
+          apart.</h1>
+        <img alt="down" height="48" id="chevron-mobile-landscape" src="../../../assets/images/icons/chevron-down.svg"
+             width="48"
+             (click)="onClickChevron()">
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 <a id="info"></a>
-<div class="container pt-5 vertical-center body-container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12" data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true">
+<div class="pt-5 vertical-center body-container">
+  <div class="d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-aos="zoom-in" data-aos-duration="1000"
+         data-aos-once="true">
       <h2 class="mb-3 px-5 home-text header-text">What is a virtrolio?</h2>
       <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
         those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
@@ -66,181 +84,123 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="container py-4 center-children vertical-center">
-    <div class="row">
-      <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
-        <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">Why use Virtrolio?</h3>
-          <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
-            that means <em>privacy</em>. Just like how only you can view <em>your</em> physical yearbook,
-            you can only view virtrolio messages sent directly to you (see our
-            <a href="/privacy-policy">Privacy Policy</a> for more details).
-          </p>
-        </div>
-        <div class="card mr-4 mb-5 rounded border-0">
-          <h3 class="body-header-text">How can I make a virtrolio?</h3>
-          <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
-            and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
-            your virtrolio.</p>
-        </div>
-        <div class="card mr-4 rounded border-0">
-          <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
-          <p class="lead home-text body-text">See our interactive example below! We offer you an array of message
-            customization tools,
-            including <span style="color: #d1155a">colour pickers</span>, <span
-              style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
-            editor—all so that you can truly express yourself.</p>
-        </div>
-      </div>
+<div class="full-width demo-section" id="viewing-demo">
+  <div data-aos="fade-left" data-aos-duration="2000" data-aos-once="true"
+       class="full-width demo-image d-none d-md-block viewing-demo-image">
+    <div class="vertical-center mx-5 px-5 viewing-demo-text-container">
+      <h2 class="demo-title">A virtual take on</h2>
+      <h2 class="demo-title">yearbook signing</h2>
+    </div>
+  </div>
+  <div class="full-width demo-image d-block d-md-none viewing-demo-image">
+    <div class="vertical-center mx-5 px-5 viewing-demo-text-container">
+      <h2 class="demo-title">A virtual take&nbsp;on</h2>
+      <h2 class="demo-title">yearbook signing</h2>
+    </div>
+  </div>
+</div>
 
-      <!-- Demo Card -->
-      <div class="order-md-2 col-sm-8 col-md-6 col-lg-6 col-xl-4 mt-4" data-aos="flip-left"
-           data-aos-duration="2000"
-           data-aos-once="true">
-        <div class="card shadow">
-          <div class="card-header">
+<div class="py-4 center-children vertical-center body-container">
+  <div class="">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+      <div class="row">
+        <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
+          <div class="card mr-4 mb-5 rounded border-0">
+            <h3 class="body-header-text">Why use Virtrolio?</h3>
+            <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
+              that means <em>privacy</em>. You can only view virtrolio messages sent directly to you (see our
+              <a href="/privacy-policy">Privacy Policy</a> for more details).
+            </p>
+          </div>
+          <div class="card mr-4 mb-5 rounded border-0">
+            <h3 class="body-header-text">How can I make a virtrolio?</h3>
+            <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
+              and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
+              your virtrolio.</p>
+          </div>
+          <div class="card mr-4 rounded border-0">
+            <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
+            <p class="lead home-text body-text">We offer you an array of message
+              customization tools,
+              including <span style="color: #d1155a">colour pickers</span>, <span
+                style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
+              editor—all so that you can truly express yourself.</p>
+          </div>
+        </div>
+
+        <!-- Demo Card -->
+        <div class="order-md-2 col-lg-6 col-xl-4 mt-4 d-none d-lg-block">
+          <div class="vertical-center card-container">
+            <div class="card shadow" data-aos="flip-left"
+                 data-aos-duration="2000"
+                 data-aos-once="true">
+              <div class="card-header">
               <span class="profile-pic-container-small mr-2">
                 <img alt="profile-pic" class="profile-pic" src="../../../assets/images/logo_reg.png">
               </span>
-            <span class="card-header-text">Mike H.</span>
-          </div>
-          <markdown
-            [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor, 'font-family': signingService.currentFont}"
-            class="card-body card-message"
-            data="{{ signingService.signingBoxText }}"
-            emoji id="preview-text"></markdown>
-        </div>
-      </div>
-
-      <!-- Signing component -->
-      <div class="col-md-8 order-md-3">
-        <div class="center-children">
-          <div class="row title-div vertical-center">
-          </div>
-          <div class="row">
-            <label for="signing-box" id="signing-box-label">
-              <b>Give it a try!</b>
-            </label>
-            <p id="preview-instructions">Preview your message above.</p>
-            <textarea #signingInputArea (keyup)='keyup(signingInputArea)' [(ngModel)]='inputBoxText'
-                      [ngStyle]="{'font-family': signingService.currentFont}" class="form-control"
-                      id="signing-box"></textarea>
-            <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
-                  id="char-count-display">
-          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
-        </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Formatting Tools -->
-      <div class='col-md-12 order-md-4'>
-        <div class="row justify-content-center" id="options">
-
-          <!-- Font dropdown -->
-          <div class="dropdown">
-            <button [ngStyle]="{'font-family': signingService.currentFont}" aria-expanded="false" aria-haspopup="true"
-                    class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="font-selector-dropdown"
-                    type="button">
-              <span>{{ signingService.currentFontDisplay }}</span>
-              <span class="caret"></span>
-            </button>
-            <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-              <span *ngFor="let font of signingService.fontDict | keyvalue">
-              <a (click)="signingService.selectFont(font.key)"
-                 [ngStyle]="{'font-family': font.key + ',' + font.value.backupFont}"
-                 class="dropdown-item">{{font.key}}</a>
-            </span>
+                <span class="card-header-text">Mike H.</span>
+              </div>
+              <markdown emoji class="card-body card-message">University across the country, huh? I don't know what I'm
+                going to do without you next year. I'll call you whenever I can. Until I see you again! :heart:
+              </markdown>
             </div>
           </div>
-
-          <!-- Formatting buttons -->
-          <button (click)="signingService.addFormatting(signingInputArea, '**')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-bold" type="button">
-            <b>B</b>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '*')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-italics" type="button">
-            <i>I</i>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-underline" type="button">
-            <u>U</u>
-          </button>
-          <button (click)="signingService.addFormatting(signingInputArea, '~~')"
-                  class="btn btn-secondary btn-format mr-2"
-                  id="button-strikethrough" type="button">
-            <s>S</s>
-          </button>
-
-          <!-- Color pickers for text and background -->
-          <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-            <span id="font-color-text">A</span>
-            <label for="colorpicker-font" hidden>Colour picker for font</label>
-            <input [(ngModel)]='signingService.textColor' class="mr-2" id="colorpicker-font" name="fontColorPicker"
-                   type="color" value={{signingService.textColor}}>
-            <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
-          </button>
-          <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-            <img alt="fill color selector" id="icon" src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-            <label for="colorpicker-background" hidden>Colour picker for background</label>
-            <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="colorpicker-background"
-                   name="backgroundColorPicker"
-                   type="color" value={{signingService.backgroundColor}}>
-            <span [ngStyle]="{'background-color': signingService.backgroundColor}"
-                  class="dynamic-color-bar">&nbsp;</span>
-          </button>
-        </div>
-        <div class="row mt-3 justify-content-center">
-          <button class="btn btn-primary" data-target="#info-modal" data-toggle="modal" id="btn-info"
-                  type="button">Read this first!
-          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Information modal when they click on the ? -->
-<div aria-hidden="true" aria-labelledby="info-modal-title" class="modal fade" id="info-modal" role="dialog"
-     tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="info-modal-title">Craft your perfect message!</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h5>Important Things to Note</h5>
-        <ul>
-          <li>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-            line') counts as 5 characters.
-          </li>
-          <li>Images can be embedded in messages...in a specific way. See our
-            <a routerLink="/faq" target="_blank">FAQ</a> for details.
-          </li>
-        </ul>
-        <h5>Formatting</h5>
-        <p>
-          Virtrolio supports a modified version of <em>Markdown</em> to format text. Learn how to type in markdown <a
-          href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>. ️
-        </p>
+<div class="full-width demo-section" id="signing-demo">
+  <div data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"
+       class="full-width demo-image d-none d-md-block signing-demo-image">
+    <div class="vertical-center mx-5 px-5 signing-demo-text-container">
+      <h2 class="demo-title">Give your messages</h2>
+      <h2 class="demo-title">your <i>signature</i> touch</h2>
+    </div>
+  </div>
+  <div class="full-width demo-image d-block d-md-none signing-demo-image">
+    <div class="vertical-center mx-5 px-5 signing-demo-text-container">
+      <h2 class="demo-title">Give your messages</h2>
+      <h2 class="demo-title">your <i>signature</i> touch</h2>
+    </div>
+  </div>
+</div>
 
-        <h5>Emojis</h5>
-        <p>We also use an emoji library, so you can press (Windows + Period) on a Windows computer or (Command + Control
-          + Space) on a Mac to bring up the emoji
-          keyboard. Note: not all emojis may be supported; check <a
-            href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank">this link of
-            supported emojis</a> to make sure! ❤</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+<div class="py-1 vertical-center body-container">
+  <div class="d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-aos="zoom-in" data-aos-duration="1000"
+         data-aos-once="true">
+      <div class="px-5" id="login-virtrolio-button-bottom">
+        <!-- Call to sign in and Google sign in button; displays if logged out -->
+        <div *ngIf="!authService.isLoggedIn() else MyVirtrolioBottom">
+          <div class="justify-content-center text-center pt-1">
+            <h3 class="mb-1 px-5 home-text ready-text">Ready to get signing?</h3>
+            <p class="lead pb-1">Sign in and get your virtrolio!</p>
+          </div>
+          <div class="row d-flex justify-content-center mt-4">
+            <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
+                    type="button">
+              <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
+              <span>Sign in with Google</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Button to replace 'Sign in with Google' when you're signed in -->
+        <ng-template #MyVirtrolioBottom>
+          <div class="justify-content-center text-center pt-1">
+            <h3 class="mb-1 px-5 home-text ready-text pb-4">You're all set!</h3>
+          </div>
+          <div class="d-flex justify-content-center pt-1">
+            <button class="btn-lg btn-primary" id="my-virtrolio-bottom" routerLink="/my-virtrolio" type="button">Go to
+              my
+              virtrolio
+            </button>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

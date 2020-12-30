@@ -45,21 +45,6 @@ export class SigningService {
   }
 
   /**
-   * Sets all class variables to their default values for HomeComponent
-   */
-  setHomeDefaultValues() {
-    this.signingBoxText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
-    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-    this.textColor = '#FFFFFF';
-    this.canSend = false;
-    this.charCount = 0;
-    this.charCountColor = '#bbbbbb';
-    this.currentFont = 'Arial';
-    this.currentFontFamily = 'Arial, sans-serif';
-    this.currentFontDisplay = 'Arial';
-  }
-
-  /**
    * @param font - Font selected from dropdown menu
    */
   selectFont(font: string) {
