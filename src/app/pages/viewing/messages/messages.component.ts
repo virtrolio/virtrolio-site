@@ -85,7 +85,7 @@ export class MessagesComponent implements OnInit {
    */
   popupMessage(msg: VirtrolioMessage) {
     this.viewService.currentMessageModal = msg;
-    this.modalService.open(MessageModalComponent);
+    this.modalService.open(MessageModalComponent, { centered: true });
   }
 
   /**
