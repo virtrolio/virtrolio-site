@@ -1,5 +1,26 @@
 [
   {
+    "versionNumber": "1.2.1",
+    "releaseDate": "2020-12-31",
+    "betaUpdate": false,
+    "items": [
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Add animations to most website components (most notably, popups)"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Fix navbar covering popup message cards"
+      }
+    ]
+  },
+  {
     "versionNumber": "1.2.0",
     "releaseDate": "2020-08-02",
     "betaUpdate": false,
