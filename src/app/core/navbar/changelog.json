@@ -9,6 +9,13 @@
         "typeCSS": "changelog-new",
         "betaFlag": false,
         "location": "Sitewide",
+        "content": "This changelog!\r"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
         "content": "Added a warning telling Internet Explorer users to get a better browser\r"
       },
       {
