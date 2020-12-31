@@ -15,8 +15,8 @@ import { SharingLinkService } from './sharing-link.service';
   providedIn: 'root'
 })
 export class MsgIoService {
-  static readonly currentYear = 2020;
-  static readonly currentVersion = '2020.1';
+  static readonly currentYear = 2021;
+  static readonly currentVersion = '2021.0';
   static readonly maxMessageLength = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
