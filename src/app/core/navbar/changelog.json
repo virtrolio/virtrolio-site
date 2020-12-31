@@ -1,5 +1,89 @@
 [
   {
+    "versionNumber": "1.2.0",
+    "releaseDate": "2020-08-02",
+    "betaUpdate": false,
+    "items": [
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Home",
+        "content": "Completely redesign the lower part of the homepage"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Home",
+        "content": "Add extra sign-in button at the bottom of the homepage"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Add bookmark button to cards view"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Add warning if invalid messages are detected"
+      },
+      {
+        "type": "UPD",
+        "typeCSS": "changelog-upd",
+        "betaFlag": false,
+        "location": "MyVirtrolio",
+        "content": "Update title and description of the \u201cShare Link\u201d embed to be more friendly"
+      },
+      {
+        "type": "UPD",
+        "typeCSS": "changelog-upd",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Animate response list opening and closing for mobile devices"
+      },
+      {
+        "type": "UPD",
+        "typeCSS": "changelog-upd",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Add Timestamp to Single Message View"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Prevent cookie alert from showing up on each refresh"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "Home",
+        "content": "Improve layout when viewing website in landscape on mobile devices"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Fix improperly layered components and shadows"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "MyVirtrolio",
+        "content": "Fix improperly placed \u201cShare Link\u201d button"
+      }
+    ]
+  },
+  {
     "versionNumber": "1.1.0",
     "releaseDate": "2020-07-15",
     "betaUpdate": false,
