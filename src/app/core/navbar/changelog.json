@@ -9,6 +9,13 @@
         "typeCSS": "changelog-new",
         "betaFlag": false,
         "location": "Sitewide",
+        "content": "Since 2021 begins tomorrow, you can now sign each of your friend's virtrolios again for the new year."
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
         "content": "Add animations to most website components (most notably, popups)"
       },
       {
