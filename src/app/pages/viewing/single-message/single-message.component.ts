@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 import { AuthService } from '../../../core/auth.service';
+import firebase from 'firebase';
+import firestore = firebase.firestore;
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-single-message',

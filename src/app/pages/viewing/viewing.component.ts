@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from '../../core/viewing.service';
-import { firestore } from 'firebase/app';
 import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
+import firebase from 'firebase';
+import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 
 @Component({

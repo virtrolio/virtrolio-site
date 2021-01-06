@@ -1,4 +1,5 @@
-import { firestore } from 'firebase/app';
+import firebase from 'firebase';
+import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 
 export class VirtrolioMessageTemplate {
