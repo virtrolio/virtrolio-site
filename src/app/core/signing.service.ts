@@ -8,20 +8,20 @@ import { DomSanitizer } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class SigningService {
-  public signingBoxText: string;
-  public sanitizedText: string;
-  public backgroundColor: string;
-  public textColor: string;
-  public canSend: boolean;
-  public charCount: number;
-  public maxCharCount: number;
-  public charCountColor: string;
+  signingBoxText: string;
+  sanitizedText: string;
+  backgroundColor: string;
+  textColor: string;
+  canSend: boolean;
+  charCount: number;
+  maxCharCount: number;
+  charCountColor: string;
 
   // Font service variables
-  public fontDict: Fonts; // Used to store all of the fonts
-  public currentFont: string; // Used to select a font from fontDict
-  public currentFontFamily: string; // Used to CSS select the font
-  public currentFontDisplay: string; // Shown in the Font Dropdown menu
+  fontDict: Fonts; // Used to store all of the fonts
+  currentFont: string; // Used to select a font from fontDict
+  currentFontFamily: string; // Used to CSS select the font
+  currentFontDisplay: string; // Shown in the Font Dropdown menu
 
   constructor(private sanitizer: DomSanitizer) {
     this.fontDict = FontService.fonts;
@@ -36,21 +36,6 @@ export class SigningService {
     this.sanitizedText = '';
     this.backgroundColor = '#ffffff';
     this.textColor = '#000000';
-    this.canSend = false;
-    this.charCount = 0;
-    this.charCountColor = '#bbbbbb';
-    this.currentFont = 'Arial';
-    this.currentFontFamily = 'Arial, sans-serif';
-    this.currentFontDisplay = 'Arial';
-  }
-
-  /**
-   * Sets all class variables to their default values for HomeComponent
-   */
-  setHomeDefaultValues() {
-    this.signingBoxText = 'University across the country, huh? I don\'t know what I\'m going to do without you next year. I\'ll call you whenever I can. Until I see you again! :heart:';
-    this.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-    this.textColor = '#FFFFFF';
     this.canSend = false;
     this.charCount = 0;
     this.charCountColor = '#bbbbbb';

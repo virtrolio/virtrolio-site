@@ -18,16 +18,6 @@
   }
 }
 
-/* || Meet the team */
-
-#meet-the-team > div > div {
-  /* For all items within each peron's row -- copy of vertical-center class in main.css */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: auto;
-}
-
 #meet-the-team-title {
   text-align: center;
 }
@@ -55,4 +45,16 @@
 .image-container {
   padding: 0;
   overflow: hidden;
+}
+
+.image-container, .image-container > img {
+  overflow: hidden !important;
+}
+
+ul {
+  word-break: break-word;
+}
+
+#special {
+  flex-direction: row !important;
 }

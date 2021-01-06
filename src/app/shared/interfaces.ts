@@ -29,6 +29,10 @@ export interface VirtrolioUser {
   profilePic: string;
 }
 
+export interface BetaUsers {
+  users: string[];
+}
+
 export class Font {
   fontFamily: string;
   backupFont: string;
@@ -43,16 +47,43 @@ export interface Fonts {
   [key: string]: Font;
 }
 
-export class AboutPagePictures {
+export interface Contributor {
   name: string;
-  regularLink: string;
-  sillyLink: string;
-  showSilly: boolean;
+  images: {
+    regular: string,
+    silly: string
+  };
+  blurb: string;
+  sharingLink: string;
+  social: {
+    github: string,
+    instagram: string,
+    linkedIn: string,
+    website: string
+  };
+}
 
-  constructor(name: string, regularLink: string, sillyLink: string) {
-    this.name = name;
-    this.regularLink = regularLink;
-    this.sillyLink = sillyLink;
-    this.showSilly = true;
-  }
+export interface FAQQuestion {
+  question: string;
+  answer: string;
+}
+
+export interface FAQSection {
+  sectionTitle: string;
+  questions: FAQQuestion[];
+}
+
+export interface ChangelogItem {
+  type: string;
+  typeCSS: string;
+  betaFlag: boolean;
+  location: string;
+  content: string;
+}
+
+export interface ChangelogVersion {
+  versionNumber: string;
+  releaseDate: string;
+  betaUpdate: boolean;
+  items: ChangelogItem[];
 }

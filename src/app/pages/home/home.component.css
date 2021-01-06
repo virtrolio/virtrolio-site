@@ -1,6 +1,6 @@
 /* || Full Screen Landing */
 
-#home-background {
+.home-background {
   background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
@@ -15,19 +15,10 @@
   width: 50em;
 }
 
-/* Featured image or pattern */
-#feature-img {
-  position: absolute;
-  opacity: 0.5;
-  width: 40vw;
-  height: 40vw;
-  right: 0;
-}
-
-#title-container {
+.title-container {
   font-family: 'Roboto', sans-serif;
   position: relative;
-  padding: 30vh 0 0 10vw;
+  padding-left: 10vw;
 }
 
 #title-header {
@@ -42,12 +33,29 @@
   margin-top: 1em;
 }
 
+#title-header-mobile-landscape {
+  font-size: 4em;
+  color: white;
+}
+
+#title-subtitle-mobile-landscape {
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  margin-top: 0.5em;
+}
+
 #chevron {
   margin-top: 2em;
   cursor: pointer;
 }
 
-#home-img-background {
+#chevron-mobile-landscape {
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.home-img-background {
   background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
   background-size: 100%;
   height: calc(100vh - var(--navbar-height));
@@ -57,10 +65,79 @@
   right: 0;
 }
 
+.demo-section {
+  height: 70vh;
+  overflow: hidden;
+}
+
+.demo-image {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+
+.card-container {
+  height: 100%;
+}
+
+#card-text {
+  background: var(--accent);
+  font-family: Roboto, sans-serif;
+  color: white;
+}
+
+#viewing-demo {
+  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
+}
+
+#signing-demo {
+  background: linear-gradient(129deg, #86d5d3, #a4e681, #edc556, #fa8072);
+  background-size: 800% 800%;
+  -webkit-animation: SectionGradientAnimation 10s ease infinite;
+  -moz-animation: SectionGradientAnimation 10s ease infinite;
+  animation: SectionGradientAnimation 10s ease infinite;
+}
+
+.viewing-demo-image {
+  background: url("../../../assets/images/viewing-demo.svg") no-repeat center;
+  background-size: cover;
+}
+
+.signing-demo-image {
+  background: url("../../../assets/images/signing-demo.svg") no-repeat center;
+  background-size: cover;
+}
+
+.viewing-demo-text-container {
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  left: 0;
+  text-align: left;
+  height: 100%;
+}
+
+.signing-demo-text-container {
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  height: 100%;
+}
+
+.demo-title {
+  font-size: 3em;
+  font-weight: 400;
+  color: white;
+  text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  white-space: normal;
+}
+
 /* || Body-Specific */
 
 .body-container {
-  margin-top: 3em;
+  margin: 5em 0;
 }
 
 #bolded-body-text {
@@ -78,6 +155,12 @@
   font-weight: bold;
 }
 
+.ready-text {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
 .body-header-text {
   font-size: 1.2em;
 }
@@ -85,10 +168,6 @@
 .body-text {
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
-}
-
-#logo {
-  width: 12em;
 }
 
 #login-virtrolio-button {
@@ -121,158 +200,6 @@
   display: flex;
 }
 
-/* || Signing box, Preview Box */
-
-#signing-box-label {
-  font-size: 1.5em;
-}
-
-#preview-instructions {
-  width: 100%;
-  text-align: center;
-}
-
-#signing-box {
-  margin: 0.5em;
-  padding: 1em;
-  width: 100%;
-  height: 12em;
-  resize: none;
-  color: #000000;
-  font-size: 1em;
-  border-width: 0.05em;
-  border-radius: 0.25rem;
-}
-
-#char-count-display {
-  z-index: 10;
-  position: absolute;
-  bottom: -1em;
-  right: 2.0em;
-}
-
-.form-control {
-  border-color: var(--light-grey)
-}
-
-.form-control:focus {
-  border-color: var(--accent);
-  box-shadow: none;
-}
-
-markdown {
-  padding: 1em;
-  resize: none;
-  font: 1em Arial;
-  height: 15em;
-  max-height: 15em;
-  overflow-y: auto;
-  overflow-x: auto;
-  word-wrap: break-word;
-  line-height: 1.5;
-}
-
-/* || Formatting Tools  */
-
-#options > * {
-  margin: 1.4em 0.5em 0.8em;
-}
-
-#font-selector-dropdown {
-  display: flex;
-  display: -webkit-flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: right;
-  width: 12em;
-  height: 2.5em;
-}
-
-#font-selector-dropdown span:not(.caret) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#font-selector-dropdown .caret {
-  margin: auto;
-}
-
-.btn-format {
-  width: 2.5em;
-  height: 2.5em;
-}
-
-.btn-send {
-  width: 6em;
-  height: 2.5em;
-}
-
-.btn-send:disabled {
-  background-color: var(--light-grey);
-}
-
-.dropdown-item {
-  cursor: pointer;
-}
-
-.dropdown-item:active {
-  background-color: var(--accent);
-}
-
-.dropdown-menu {
-  overflow-y: auto;
-  height: 12em;
-  z-index: 2000;
-}
-
-#icon {
-  width: 1.5em;
-  margin: 0 auto;
-}
-
-.icon-wrapper {
-  padding: 0;
-}
-
-#colorpicker-font, #colorpicker-background {
-  opacity: 0;
-  position: absolute;
-  display: block;
-  z-index: 1;
-  width: 2.2em;
-  height: 2.2em;
-  margin: -1.55em 0.05em !important;
-  cursor: pointer;
-}
-
-#font-color-text {
-  margin-bottom: 0;
-  font-size: large;
-}
-
-.dynamic-color-bar {
-  display: block;
-  height: 0.4em;
-  margin: 0.1em 0.2em;
-  border-radius: 0.4em;
-}
-
-/* || Typography */
-
-.title-div {
-  height: 3em;
-  margin: 0 0.5em 0 0.5em;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-/* || Miscellaneous */
-
-#btn-info{
-  box-shadow: var(--signing-shadow);
-  background-color: var(--accent);
-}
-
 @media only screen and (max-width: 768px) {
   #title-header {
     font-size: 10vw;
@@ -280,10 +207,11 @@ markdown {
   }
 
   #title-subtitle {
-    font-size: 6vw;
+    font-size: 4vw;
     font-weight: 400;
     color: white;
     margin-top: 1em;
+    line-height: 0;
   }
 
   .header-text {
@@ -331,4 +259,42 @@ markdown {
   display: block;
   height: 50px;
   margin: -50px 0 0 0;
+}
+
+/* || Animations */
+
+@-webkit-keyframes SectionGradientAnimation {
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@-moz-keyframes SectionGradientAnimation {
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
+}
+
+@keyframes SectionGradientAnimation {
+  0% {
+    background-position: 0 0
+  }
+  50% {
+    background-position: 93% 100%
+  }
+  100% {
+    background-position: 0 0
+  }
 }

@@ -9,18 +9,20 @@ import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
+import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MsgIoService {
-  static readonly currentYear = 2020;
-  static readonly currentVersion = '2020.0';
+  static readonly currentYear = 2021;
+  static readonly currentVersion = '2021.0';
   static readonly maxMessageLength = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer) {
+  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer,
+              private sharingLinkService: SharingLinkService) {
     this.messagesCollection = afs.collection('messages');
   }
 
@@ -137,16 +139,6 @@ export class MsgIoService {
       .doc(this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion);
     const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
     return !!msgDoc;
-    // const messages = await this.afs.collection('messages', ref => ref
-    //   .where('from', '==', this.authService.uid()).where('to', '==', toUID))
-    //   .valueChanges().pipe(take(1)).toPromise().catch(error => {
-    //     AuthService.displayError(error);
-    //   });
-    // if (messages) {
-    //   return messages.length !== 0;
-    // } else {
-    //   return false;
-    // }
   }
 
   /**
@@ -174,7 +166,7 @@ export class MsgIoService {
     }
 
     // Verify correct key
-    const keyIsCorrect = await this.authService.checkKey(messageTemplate.to, key);
+    const keyIsCorrect = await this.sharingLinkService.checkKey(messageTemplate.to, key);
     if (keyIsCorrect) {
       // Remove XSS content from message contents
       messageTemplate.contents = this.sanitizer.sanitize(SecurityContext.HTML, messageTemplate.contents);

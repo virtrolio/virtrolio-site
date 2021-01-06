@@ -49,6 +49,12 @@
 
 .navbar-toggler {
   margin-right: 1em;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler-icon {
+  /* Replace the hamburger icon image with a custom SVG that has custom colours */
+  background-image: url(../../../assets/images/hamburger-icon-custom-white.svg);
 }
 
 /* Alternate formatting for mobile navbar */
@@ -61,4 +67,40 @@
     font-weight: bold;
     padding-bottom: 1em;
   }
+}
+
+.navbar-beta-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.6em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 0 0;
+}
+
+/* Changelog */
+#changelog-body {
+  max-height: 25em;
+  overflow: auto;
+}
+
+#changelog-note {
+  line-height: 1em;
+}
+
+/* These format the changelog items and are used conditionally, so suppression is necessary */
+/*noinspection CssUnusedSymbol*/
+.changelog-new {
+  color: #41af14;
+  font-weight: bold;
+}
+
+/*noinspection CssUnusedSymbol*/
+.changelog-upd {
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+/*noinspection CssUnusedSymbol*/
+.changelog-fix {
+  color: red;
+  font-weight: bold;
 }

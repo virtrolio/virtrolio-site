@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ViewingService } from '../viewing.service';
+import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 import { VirtrolioMessage } from '../../../shared/interfaces';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-responses-list',
@@ -15,11 +16,16 @@ export class ResponsesListComponent implements OnInit {
   public uid: string;
   navIsOpen = false;
   messageList: VirtrolioMessage[] = [];
+  public showNewToViewing = true;
+  private showNewToViewingValue: string;
 
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService) {
+  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
+              private cookieService: CookieService) {
     try {
       this.uid = this.authService.uid();
-    } catch (e) { }
+    } catch (e) {
+       AuthService.displayError(e);
+    }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
     } catch (e) {
@@ -43,14 +49,31 @@ export class ResponsesListComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.cookieService.check('viewing-cookie') === false) {
+      this.cookieService.set('viewing-cookie', 'true', 365);
+    }
+
+    this.showNewToViewingValue = this.cookieService.get('viewing-cookie');
+
+    if (this.showNewToViewingValue === 'true') {
+      this.showNewToViewing = true;
+    } else if (this.showNewToViewingValue === 'false') {
+      this.showNewToViewing = false;
+    } else {
+      AuthService.displayError('Viewing-cookie not found or initialized properly.');
+    }
+  }
 
   /**
-   * Set the state of the side nav menu
-   * @param state True if nav menu is open
+   * Toggle the state of the side nav menu
    */
-  navOpen(state: boolean) {
-    this.navIsOpen = state;
+  navToggle() {
+    this.navIsOpen = !this.navIsOpen;
+    if (this.showNewToViewing) {
+      this.cookieService.set('viewing-cookie', 'false', 365);
+      this.showNewToViewing = false;
+    }
   }
 
   /**
@@ -58,7 +81,7 @@ export class ResponsesListComponent implements OnInit {
    * @param id: id attribute of the card
    */
   showMessage(id) {
-    this.navOpen(false);
+    this.navToggle();
     if (!this.viewService.isCarouselView) {
       this.vps.scrollToAnchor(id);
     }

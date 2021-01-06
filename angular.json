@@ -13,6 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@firebase/app",
+              "@firebase/auth",
+              "@firebase/component",
+              "@firebase/firestore",
+              "@firebase/util",
+              "firebase/app"
+            ],
             "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,7 +57,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

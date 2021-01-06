@@ -8,8 +8,8 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-12">
-      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
-        Booklet
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch
+        to Booklet
       </button>
       <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
         Cards
@@ -52,6 +52,13 @@
                 <button (click)="popupMessage(msg)" class="btn card-button" type="button">
                   <img alt="popup" class="card-icon" src="{{ generateHeaderColor(msg.backColor).popup }}">
                 </button>
+                <a target="_blank" [routerLink]="['/viewing']"
+                   [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                  <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
+                          type="button">
+                    <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
+                  </button>
+                </a>
                 <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
                         data-toggle="modal" type="button">
                   <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
@@ -61,7 +68,8 @@
           </table>
         </div>
       </div>
-      <div (click)="popupMessage(msg)" [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+      <div (click)="popupMessage(msg)"
+           [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
            class="card-body message-card message">
         <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
       </div>
@@ -74,7 +82,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="msg-header">
-            <div class="msg-header-group">
+            <div class="msg-header-group pt-1">
               <table class="header-table">
                 <tr>
                   <td>
@@ -97,7 +105,7 @@
             </div>
           </div>
           <div class="page title-page vertical-center">
-            <div class="title-text">Welcome to your Virtrolio! Click on the buttons below to navigate through
+            <div class="title-text">Welcome to your virtrolio! Click on the buttons below to navigate through
               your messages.
             </div>
           </div>
@@ -110,9 +118,9 @@
               <table class="header-table">
                 <tr>
                   <td>
-            <span class="profile-pic-container-small mr-2">
-              <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
-            </span>
+                    <span class="profile-pic-container-small mr-2">
+                      <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+                    </span>
                   </td>
                   <td>
                     <table>
@@ -128,21 +136,25 @@
                 </tr>
               </table>
             </div>
-            <div class="card-header-group">
+            <div class="card-header-group vertical-center">
               <table class="header-table">
                 <tr>
                   <td>
-                    <button (click)="viewService.setMessageToDelete(msg.id)" class="btn card-button" data-target="#delete"
-                            data-toggle="modal" type="button">
-                      <img alt="delete" class="card-icon" src="{{ generateHeaderColor(msg.backColor).trash }}">
-                    </button>
+                    <a target="_blank" [routerLink]="['/viewing']"
+                       [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }">
+                      <button (click)="viewService.bookmarkMessage(msg.id)" class="btn card-button"
+                              type="button">
+                        <img alt="bookmark" class="card-icon" src="{{ generateHeaderColor(msg.backColor).bookmark }}">
+                      </button>
+                    </a>
                   </td>
                 </tr>
               </table>
             </div>
           </div>
-          <div [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
-               class="card-body page message">
+          <div
+            [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
+            class="card-body page message">
             <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
           </div>
         </div>
