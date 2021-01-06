@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 import { SharingLinkService } from './sharing-link.service';
+import firebase from 'firebase';
+import firestore = firebase.firestore;
+import Timestamp = firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
