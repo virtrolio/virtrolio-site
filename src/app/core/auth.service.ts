@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 import { VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import User = firebase.User;
 import auth = firebase.auth;
 

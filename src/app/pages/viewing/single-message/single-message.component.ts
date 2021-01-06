@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
 import { AuthService } from '../../../core/auth.service';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from '../../core/viewing.service';
 import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 
