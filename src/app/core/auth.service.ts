@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { auth, User } from 'firebase/app';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { BetaUsers, VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import firebase from 'firebase';
+import User = firebase.User;
+import auth = firebase.auth;
 
 @Injectable({
   providedIn: 'root'
