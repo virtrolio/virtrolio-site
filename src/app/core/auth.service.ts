@@ -7,6 +7,7 @@ import { VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import firebase from 'firebase/app';
+import 'firebase/auth';
 import User = firebase.User;
 import auth = firebase.auth;
 

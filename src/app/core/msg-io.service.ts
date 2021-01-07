@@ -9,6 +9,7 @@ import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharingLinkService } from './sharing-link.service';
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 
