@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
 import { AuthService } from '../../../core/auth.service';
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 
