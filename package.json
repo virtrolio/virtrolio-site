@@ -28,7 +28,7 @@
     "firebase": "^8.2.4",
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^11.0.2",
-    "ngx-device-detector": "^1.4.6",
+    "ngx-device-detector": "^2.0.5",
     "ngx-markdown": "^11.0.1",
     "ngx-toastr": "^13.2.0",
     "rxjs": "~6.6.3",
