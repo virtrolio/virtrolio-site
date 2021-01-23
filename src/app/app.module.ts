@@ -12,7 +12,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
-import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { ToastrModule } from 'ngx-toastr';
 // App
@@ -87,7 +86,6 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     BrowserModule,
     CommonModule,
     CoreModule,
-    DeviceDetectorModule,
     FormsModule,
     MarkdownModule.forRoot({
       // set various markdown options
