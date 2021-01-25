@@ -1,0 +1,19 @@
+name: Build and Lint checks
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.JS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+      - name: Install Dependencies
+        run: npm ci
+      - name: Linter
+        run: npm run lint
+      - name: Build
+        run: npm run build
