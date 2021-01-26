@@ -1,4 +1,4 @@
-name: Build and Lint checks
+name: Lint Checks
 
 on: [push]
 
@@ -15,5 +15,3 @@ jobs:
         run: npm ci
       - name: Linter
         run: npm run lint
-      - name: Build
-        run: npm run build
