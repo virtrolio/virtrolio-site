@@ -1,9 +1,9 @@
-name: Build and Lint checks
+name: Lint Checks
 
 on: [push]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,5 +15,3 @@ jobs:
         run: npm ci
       - name: Linter
         run: npm run lint
-      - name: Build
-        run: npm run build
