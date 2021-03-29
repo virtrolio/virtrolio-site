@@ -26,7 +26,7 @@
     "bootstrap": "^4.6.0",
     "emoji-toolkit": "^6.5.1",
     "firebase": "^8.2.9",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "ngx-cookie-service": "^11.0.2",
     "ngx-device-detector": "^2.0.6",
     "ngx-markdown": "^11.1.0",
