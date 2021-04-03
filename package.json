@@ -25,7 +25,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^4.6.0",
     "emoji-toolkit": "^6.5.1",
-    "firebase": "^8.3.1",
+    "firebase": "^8.3.2",
     "jquery": "^3.6.0",
     "ngx-cookie-service": "^11.0.2",
     "ngx-device-detector": "^2.0.6",
