@@ -30,7 +30,7 @@
     "ngx-cookie-service": "^11.0.2",
     "ngx-device-detector": "^2.0.6",
     "ngx-markdown": "^11.1.2",
-    "ngx-toastr": "^13.2.0",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.6",
     "tslib": "^2.1.0",
     "websocket-extensions": "^0.1.4",
