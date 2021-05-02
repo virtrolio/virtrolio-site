@@ -10,9 +10,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build -- --prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: ${{ env.FIREBASE_SERVICE_ACCOUNT_VIRTROLIO != null }} # Fix when a PR is opened from a fork
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIRTROLIO }}'
           projectId: virtrolio
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+          FIREBASE_SERVICE_ACCOUNT_VIRTROLIO: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIRTROLIO }}
