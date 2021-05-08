@@ -20,12 +20,12 @@
       <div class="dropdown" style="float: right">
         <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle"
                 data-toggle="dropdown" id="year-selector-dropdown" type="button">
-          <span>Current Year</span>
+          <span>{{this.currentYear}}</span>
           <span class="caret"></span>
         </button>
         <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
             <span *ngFor="let year of this.yearList">
-              <a class="dropdown-item">{{year}}</a>
+              <a (click)="selectYear(year)" class="dropdown-item">{{year}}</a>
             </span>
         </div>
       </div>
