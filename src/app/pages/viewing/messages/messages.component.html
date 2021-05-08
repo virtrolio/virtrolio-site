@@ -24,7 +24,7 @@
           <span class="caret"></span>
         </button>
         <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-            <span *ngFor="let year of [2021, 2020]">
+            <span *ngFor="let year of this.yearList">
               <a class="dropdown-item">{{year}}</a>
             </span>
         </div>

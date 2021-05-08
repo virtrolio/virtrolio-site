@@ -16,6 +16,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
 
 export class MessagesComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
+  yearList: number[] = [];
   oneMessage = 'messages';
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
@@ -34,7 +35,9 @@ export class MessagesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.yearList = [2020, 2021];
+  }
 
   /**
    * Generate the lightness value of HSL from RBG
