@@ -7,6 +7,7 @@ import { ViewportScroller } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { VirtrolioMessage } from '../../../shared/interfaces';
+import { YearSelectService } from '../../../core/year-select.service';
 
 @Component({
   selector: 'app-messages',
@@ -20,8 +21,10 @@ export class MessagesComponent implements OnInit {
   yearList: number[] = [];
   currentYear: number;
 
-  constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
+  constructor(public viewService: ViewingService, public authService: AuthService,
+              public yearSelectService: YearSelectService, private route: ActivatedRoute,
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService,
+              private modalService: NgbModal) {
   }
 
   /**
@@ -36,17 +39,7 @@ export class MessagesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.yearList = [2020, 2021];
-    this.currentYear = this.yearList[0];
-  }
-
-  /**
-   * @param year - Year selected from dropdown menu
-   */
-  selectYear(year: number) {
-    this.currentYear = year;
-  }
+  ngOnInit(): void { }
 
   /**
    * Generate the lightness value of HSL from RBG

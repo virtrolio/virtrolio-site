@@ -21,12 +21,12 @@
         <span class="px-2">Current year:</span>
         <button aria-expanded="false" aria-haspopup="true" class="btn btn-sm btn-dark shadow dropdown-toggle"
                 data-toggle="dropdown" id="year-selector-dropdown" type="button">
-          <span>{{this.currentYear}}</span>
+          <span>{{yearSelectService.currentYear}}</span>
           <span class="caret"></span>
         </button>
         <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-            <span *ngFor="let year of this.yearList">
-              <a (click)="selectYear(year)" class="dropdown-item">{{year}}</a>
+            <span *ngFor="let year of yearSelectService.yearList">
+              <a (click)="yearSelectService.selectYear(year)" class="dropdown-item">{{year}}</a>
             </span>
         </div>
       </div>
