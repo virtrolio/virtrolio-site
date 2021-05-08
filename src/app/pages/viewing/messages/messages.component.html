@@ -7,13 +7,28 @@
 <ng-template #showMessages>
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
-    <div class="col-12">
+    <div class="col-4">
       <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch
         to Booklet
       </button>
       <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
         Cards
       </button>
+    </div>
+    <div class="col-8">
+      <!-- Year dropdown -->
+      <div class="dropdown" style="float: right">
+        <button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown" id="year-selector-dropdown" type="button">
+          <span>Current Year</span>
+          <span class="caret"></span>
+        </button>
+        <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
+            <span *ngFor="let year of [2021, 2020]">
+              <a class="dropdown-item">{{year}}</a>
+            </span>
+        </div>
+      </div>
     </div>
   </div>
 
