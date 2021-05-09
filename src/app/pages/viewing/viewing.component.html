@@ -7,13 +7,13 @@
 <!-- Regular all messages view -->
 <ng-template #allMessages>
   <div style="text-align: center; padding-top: 1.5em">
-    <h1>{{yearSelectService.currentYear - 1}} - {{yearSelectService.currentYear}}</h1> <!-- TODO: make bigger, make it 2020 - 2021 format -->
+    <h1>{{messages.yearSelected - 1}} - {{messages.yearSelected}}</h1> <!-- TODO: make bigger, make it 2020 - 2021 format -->
   </div>
   <div class="container">
     <app-responses-list [setMessageList]="messageList"></app-responses-list>
     <div class="row justify-content-center">
       <div class="col-12">
-        <app-messages [setMessageList]="messageList"></app-messages>
+        <app-messages #messages [setMessageList]="messageList"></app-messages>
         <!-- TODO: Pass year input to child component https://angular.io/guide/component-interaction -->
         <div *ngIf="invalidMessageCount == 1" class="pt-3">
           <p class="invalid-msg-warning"> &#9888; One of your messages isn't being shown because it does not conform to

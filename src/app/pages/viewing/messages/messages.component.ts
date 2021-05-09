@@ -18,8 +18,8 @@ import { YearSelectService } from '../../../core/year-select.service';
 export class MessagesComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
-  yearList: number[] = [];
-  currentYear: number;
+  yearList: number[] = [2021, 2020];
+  yearSelected: number = this.yearList[0];
 
   constructor(public viewService: ViewingService, public authService: AuthService,
               public yearSelectService: YearSelectService, private route: ActivatedRoute,
