@@ -7,7 +7,7 @@
 <!-- Regular all messages view -->
 <ng-template #allMessages>
   <div style="text-align: center; padding-top: 1.5em">
-    <h1>{{yearSelectService.currentYear}}</h1>
+    <h1>{{yearSelectService.currentYear - 1}} - {{yearSelectService.currentYear}}</h1> <!-- TODO: make bigger, make it 2020 - 2021 format -->
   </div>
   <div class="container">
     <app-responses-list [setMessageList]="messageList"></app-responses-list>
