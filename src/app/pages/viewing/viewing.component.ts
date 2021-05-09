@@ -21,8 +21,7 @@ export class ViewingComponent implements OnInit {
   // TODO: Two-way binding
 
   constructor(public yearSelectService: YearSelectService,
-              private route: ActivatedRoute, private viewService: ViewingService, private title: Title) {
-  }
+              private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle('View Your Messages | Virtrolio');
