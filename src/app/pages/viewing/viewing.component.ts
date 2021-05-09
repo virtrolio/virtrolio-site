@@ -16,8 +16,9 @@ import Timestamp = firestore.Timestamp;
 })
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
-  messageList: VirtrolioMessage[];
+  messageList: VirtrolioMessage[]; // TODO: Make a map for all messages, use this list for current messages
   invalidMessageCount = 0;
+  // TODO: Two-way binding
 
   constructor(public yearSelectService: YearSelectService,
               private route: ActivatedRoute, private viewService: ViewingService, private title: Title) {
@@ -29,6 +30,8 @@ export class ViewingComponent implements OnInit {
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;
     }
+    // TODO: Perform filter somewhere around here
+    // TODO: Map years to messages, map type in javascript
     this.viewService.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       // Get the current time to use as time since reference
       this.viewService.nowMillis = Timestamp.now().toMillis();

@@ -1,3 +1,5 @@
+// TODO: Move necessary code into viewing.component.ts
+
 import { Injectable } from '@angular/core';
 import { MsgIoService } from './msg-io.service';
 import { VirtrolioDocument } from '../shared/interfaces';
