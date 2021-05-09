@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from '../../core/viewing.service';
 import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
-import { YearSelectService } from '../../core/year-select.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
@@ -20,8 +19,7 @@ export class ViewingComponent implements OnInit {
   invalidMessageCount = 0;
   // TODO: Two-way binding
 
-  constructor(public yearSelectService: YearSelectService,
-              private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
+  constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
 
   ngOnInit(): void {
     this.title.setTitle('View Your Messages | Virtrolio');

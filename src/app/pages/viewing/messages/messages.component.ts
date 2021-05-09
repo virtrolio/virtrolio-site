@@ -7,7 +7,6 @@ import { ViewportScroller } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { VirtrolioMessage } from '../../../shared/interfaces';
-import { YearSelectService } from '../../../core/year-select.service';
 
 @Component({
   selector: 'app-messages',
@@ -21,8 +20,7 @@ export class MessagesComponent implements OnInit {
   yearList: number[] = [2021, 2020];
   yearSelected: number = this.yearList[0];
 
-  constructor(public viewService: ViewingService, public authService: AuthService,
-              public yearSelectService: YearSelectService, private route: ActivatedRoute,
+  constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService,
               private modalService: NgbModal) {
   }
