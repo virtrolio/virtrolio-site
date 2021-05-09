@@ -4,11 +4,13 @@
     <!-- Virtrolio cover -->
     <div class="vertical-center mx-5 my-3 my-lg-0">
       <div class="bg-primary rounded" id="virtrolio-outer-div" routerLink="/viewing">
+        <!-- TODO: Add darker coloured spine, make it look more like a composition book -->
         <div class="bg-light p-3 mt-4 m-4 rounded vertical-center" id="virtrolio-title">
-          <h1>2019-2020</h1>
+          <h2 style="color:black" id="users-virtrolio">{{ displayName }}'s <br> virtrolio </h2>
         </div>
         <div class="mt-5">
-          <h2 id="users-virtrolio">{{ displayName }}'s <br> virtrolio </h2>
+<!--          <h2 id="users-virtrolio">{{ displayName }}'s <br> virtrolio </h2>-->
+          <img height=200 src="../../../assets/images/logo_inverted-circle.png"> <!-- TODO: Fix this -->
         </div>
       </div>
     </div>
