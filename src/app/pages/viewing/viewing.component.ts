@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from '../../core/viewing.service';
 import { VirtrolioMessage } from '../../shared/interfaces';
@@ -16,10 +16,16 @@ import Timestamp = firestore.Timestamp;
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
   messageList: VirtrolioMessage[]; // TODO: Make a map for all messages, use this list for current messages
+  filteredMessageList: VirtrolioMessage[];
   invalidMessageCount = 0;
-  // TODO: Two-way binding
+  @ViewChild('messages') messages;
 
   constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
+
+  filterMessages(year: number): void {
+    this.filteredMessageList = this.messageList.filter(message => message.year == year);
+    // TODO: Change loose to strict equality; prevent strings from being passed in
+  }
 
   ngOnInit(): void {
     this.title.setTitle('View Your Messages | Virtrolio');
@@ -43,6 +49,8 @@ export class ViewingComponent implements OnInit {
           this.invalidMessageCount += 1;
         }
       });
+
+      this.filterMessages(this.messages.yearSelected);
     });
   }
 }

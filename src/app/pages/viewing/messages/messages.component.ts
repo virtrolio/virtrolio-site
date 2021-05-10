@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -7,6 +7,7 @@ import { ViewportScroller } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { VirtrolioMessage } from '../../../shared/interfaces';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -18,7 +19,8 @@ export class MessagesComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
   yearList: number[] = [2021, 2020];
-  yearSelected: number = this.yearList[0];
+  yearSelected = 2020;
+  @Output() yearSelectedChanged: EventEmitter<number> = new EventEmitter();
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService,
