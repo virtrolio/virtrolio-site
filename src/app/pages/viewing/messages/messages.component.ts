@@ -18,8 +18,8 @@ import { EventEmitter } from '@angular/core';
 export class MessagesComponent implements OnInit {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
-  yearList: number[] = [2021, 2020];
-  yearSelected = 2020;
+  @Input() messageYears: Set<number>;
+  yearSelected = (new Date()).getFullYear();  // Default current year
   @Output() yearSelectedChanged: EventEmitter<number> = new EventEmitter();
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,

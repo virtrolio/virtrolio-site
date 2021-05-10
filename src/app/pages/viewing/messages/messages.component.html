@@ -21,7 +21,7 @@
               (change)="this.yearSelectedChanged.emit(yearSelected)">
         <!-- TODO: Style this better -->
         <option selected disabled hidden>{{yearSelected - 1}} - {{yearSelected}}</option>  <!-- Default -->
-        <option *ngFor="let year of yearList" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
+        <option *ngFor="let year of messageYears" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
           {{year - 1}} - {{year}}
         </option>
       </select>

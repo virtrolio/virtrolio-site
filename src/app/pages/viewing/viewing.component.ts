@@ -15,9 +15,10 @@ import Timestamp = firestore.Timestamp;
 })
 export class ViewingComponent implements OnInit {
   isSingleMessageView = false;
-  messageList: VirtrolioMessage[]; // TODO: Make a map for all messages, use this list for current messages
+  messageList: VirtrolioMessage[];
   filteredMessageList: VirtrolioMessage[];
   invalidMessageCount = 0;
+  messageYears: Set<number> = new Set();
   @ViewChild('messages') messages;
 
   constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
@@ -33,23 +34,25 @@ export class ViewingComponent implements OnInit {
     if (this.route.snapshot.queryParams.messageId) {
       this.isSingleMessageView = true;
     }
-    // TODO: Perform filter somewhere around here
-    // TODO: Map years to messages, map type in javascript
+
     this.viewService.msgIo.getMessages().subscribe((messages: VirtrolioMessage[]) => {
       // Get the current time to use as time since reference
       this.viewService.nowMillis = Timestamp.now().toMillis();
       // Clear the messageList
       this.messageList = [];
+      const messageYearsArray: number[] = [];
       messages.forEach((message) => {
         try {
           // Add message to messageList if verifyMessage succeeds
           this.viewService.msgIo.verifyMessage(message);
           this.messageList.push(message);
+          messageYearsArray.push(message.year);
         } catch (e) {
           this.invalidMessageCount += 1;
         }
       });
 
+      this.messageYears = new Set(messageYearsArray.sort().reverse());  // Convert to set to remove duplicates
       this.filterMessages(this.messages.yearSelected);
     });
   }
