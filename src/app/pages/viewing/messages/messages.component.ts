@@ -41,7 +41,7 @@ export class MessagesComponent implements OnInit {
 
   selectYear(): void {
     this.yearSelectedChanged.emit(this.yearSelected);
-    this.viewService.isCarouselView = false;
+    this.viewService.isCarouselView = false;  // TODO: Switch to first carousel item instead of toggling to card view
   }
 
   ngOnInit(): void { }
