@@ -41,7 +41,7 @@ export class MessagesComponent implements OnInit {
 
   selectYear(): void {
     this.yearSelectedChanged.emit(this.yearSelected);
-    // TODO: jQuery the carousel and set it to the first item $('.carousel').carousel(0);
+    this.viewService.isCarouselView = false;
   }
 
   ngOnInit(): void { }
