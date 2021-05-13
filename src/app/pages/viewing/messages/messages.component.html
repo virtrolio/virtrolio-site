@@ -18,7 +18,7 @@
     <div class="col-8">
       <!-- Year select menu -->
       <select style="float: right" class="form-select" aria-label="year-selector" [(ngModel)]="yearSelected"
-              (change)="this.yearSelectedChanged.emit(yearSelected)">
+              (change)="selectYear()">
         <!-- TODO: Style this better -->
         <option selected disabled hidden>{{yearSelected - 1}} - {{yearSelected}}</option>  <!-- Default -->
         <option *ngFor="let year of messageYears" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
