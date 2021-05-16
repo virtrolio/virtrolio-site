@@ -133,7 +133,7 @@ export class MyVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => alert(CommonService.displayError(error)));
+      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => CommonService.displayError(error));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
