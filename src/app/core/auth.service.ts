@@ -6,6 +6,7 @@ import { take } from 'rxjs/operators';
 import { BetaUsers, VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { CommonService } from './common.service';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import User = firebase.User;
@@ -24,14 +25,6 @@ export class AuthService {
   constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
               private deviceDetectorService: DeviceDetectorService) {
     this.afa.user.subscribe((user: User) => this.user = user);
-  }
-
-  /**
-   * Displays an error to the user using an alert and a human-readable prefix.
-   * @param error - The error to display to the user.
-   */
-  static displayError(error) {
-    alert('An error occurred. Here are the details that you can report to our team through the \'Contact Us\' page:\n' + error);
   }
 
   /**
@@ -75,7 +68,7 @@ export class AuthService {
   async getUserData(uid: string = this.uid()) {
     const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
     return await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      AuthService.displayError(error);
+      CommonService.displayError(error);
     });
   }
 
@@ -84,8 +77,8 @@ export class AuthService {
    * @param error - The error to be displayed
    */
   errorLogout(error) {
-    AuthService.displayError(error);
-    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ])).catch(soError => AuthService.displayError(soError));
+    CommonService.displayError(error);
+    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ])).catch(soError => CommonService.displayError(soError));
   }
 
   /**
@@ -139,7 +132,7 @@ export class AuthService {
       this.location.go(redirectPath);
       // Sign-in with Redirect is necessary to support popup browsers which do not have support for multiple tabs)
       return this.afa.signInWithRedirect(googleAuthProvider).catch(error => {
-        AuthService.displayError(error);
+        CommonService.displayError(error);
         return this.router.navigate([ '/access-denied' ]);
       });
     }
@@ -155,7 +148,7 @@ export class AuthService {
     return this.afa.signOut().then(() => {
       return this.router.navigate([ '/' ]);
     }).catch(error => {
-      AuthService.displayError(error);
+      CommonService.displayError(error);
       return this.router.navigate([ '/' ]);
     });
   }
