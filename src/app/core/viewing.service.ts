@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MsgIoService } from './msg-io.service';
-import { Fonts, VirtrolioMessage } from '../shared/interfaces';
 import { FontService } from './font.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './auth.service';
+import { VirtrolioMessage } from '../shared/interfaces/messages';
+import { Fonts } from '../shared/interfaces/fonts';
 
 @Injectable({
   providedIn: 'root'

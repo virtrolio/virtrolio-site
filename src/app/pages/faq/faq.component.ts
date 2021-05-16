@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import faqContent from './faq.content.json';
-import { FAQSection } from '../../shared/interfaces';
+import { FAQSection } from '../../shared/interfaces/faq';
 
 @Component({
   selector: 'app-faq',
