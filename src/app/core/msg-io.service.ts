@@ -5,6 +5,7 @@ import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '.
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { CommonService } from './common.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharingLinkService } from './sharing-link.service';
@@ -126,7 +127,7 @@ export class MsgIoService {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
     ).catch(error => {
-      AuthService.displayError(error);
+      CommonService.displayError(error);
     });
   }
 
@@ -187,7 +188,7 @@ export class MsgIoService {
       // Send the message
       const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
       await msgRef.set(message).catch(error => {
-        AuthService.displayError(error);
+        CommonService.displayError(error);
       });
     } else {
       throw new TypeError('Incorrect key');

@@ -5,7 +5,7 @@ import { FontService } from './font.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from './auth.service';
+import { CommonService } from './common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -93,7 +93,7 @@ export class ViewingService {
     this.msgIo.deleteMessage(this.messageToDelete).then(() => {
       this.toastr.success('Message deleted successfully', 'Poof!', { positionClass: 'toast-bottom-full-width' });
     }).catch(e => {
-      AuthService.displayError(e);
+      CommonService.displayError(e);
     });
   }
 
