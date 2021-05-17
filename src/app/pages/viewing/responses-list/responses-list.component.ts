@@ -3,8 +3,8 @@ import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
 import { CommonService } from '../../../core/common.service';
-import { VirtrolioMessage } from '../../../shared/interfaces';
 import { CookieService } from 'ngx-cookie-service';
+import { VirtrolioMessage } from '../../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-responses-list',

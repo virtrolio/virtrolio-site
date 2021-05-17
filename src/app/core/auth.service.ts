@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { BetaUsers, VirtrolioUser } from '../shared/interfaces';
 import { Location } from '@angular/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { CommonService } from './common.service';
@@ -11,6 +10,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import User = firebase.User;
 import auth = firebase.auth;
+import { BetaUsers, VirtrolioUser } from '../shared/interfaces/users';
 
 @Injectable({
   providedIn: 'root'

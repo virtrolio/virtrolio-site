@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import contributors from './contributors.json';
-import { Contributor } from '../../shared/interfaces';
+import { Contributor } from '../../shared/interfaces/contributor';
 
 @Component({
   selector: 'app-about',

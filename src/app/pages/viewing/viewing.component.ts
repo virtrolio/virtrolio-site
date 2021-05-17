@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ViewingService } from '../../core/viewing.service';
-import { VirtrolioMessage } from '../../shared/interfaces';
 import { Title } from '@angular/platform-browser';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { VirtrolioMessage } from '../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-viewing',

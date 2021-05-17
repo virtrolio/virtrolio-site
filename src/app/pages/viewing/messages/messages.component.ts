@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
-import { VirtrolioMessage } from '../../../shared/interfaces';
+import { VirtrolioMessage } from '../../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-messages',

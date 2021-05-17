@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Font, Fonts } from '../shared/interfaces';
+import { Font, Fonts } from '../shared/interfaces/fonts';
 
 @Injectable({
   providedIn: 'root'

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 import changelog from './changelog.json';
-import { ChangelogVersion } from '../../shared/interfaces';
 import { AppComponent } from '../../app.component';
+import { ChangelogVersion } from '../../shared/interfaces/changelog';
 
 declare var $: any;
 

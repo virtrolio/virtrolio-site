@@ -3,12 +3,12 @@ import { ViewingService } from '../../../core/viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
 import { CommonService } from '../../../core/common.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-single-message',
