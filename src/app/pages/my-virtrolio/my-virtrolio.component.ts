@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
+import { CommonService } from '../../core/common.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { SharingLinkService } from '../../core/sharing-link.service';
@@ -34,7 +35,7 @@ export class MyVirtrolioComponent implements OnInit {
       this.displayName = displayName;
       this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
     });
-    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
+    this.authService.redirectLoginUserCreation().catch(error => CommonService.displayError(error));
     this.navigator = window.navigator;
   }
 
@@ -80,7 +81,7 @@ export class MyVirtrolioComponent implements OnInit {
         this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
         window.location.href = '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
       } catch (e) {
-        this.router.navigate([ '/invalid-link' ]).catch(e => AuthService.displayError(e));
+        this.router.navigate([ '/invalid-link' ]).catch(e => CommonService.displayError(e));
       }
     }
   }
@@ -96,9 +97,9 @@ export class MyVirtrolioComponent implements OnInit {
         text: 'Sign my virtual yearbook!',
         url: this.link,
       })
-        .catch((error) => AuthService.displayError('Sharing Error: ' + error));
+        .catch((error) => CommonService.displayError('Sharing Error: ' + error));
     } else {
-      AuthService.displayError('Sharing Error: Native Share not supported on this browser: ' + navigator.userAgent);
+      CommonService.displayError('Sharing Error: Native Share not supported on this browser: ' + navigator.userAgent);
     }
   }
 
@@ -120,7 +121,7 @@ export class MyVirtrolioComponent implements OnInit {
       window.open('mailto:?subject=' + 'Virtrolio%20-%20Online%20Yearbook%20Signing!'
         + '&body=' + bodyText + '%0D%0A' + urlFriendlyLink, '_blank');
     } else {
-      AuthService.displayError('Sharing Error: Unsupported social media platform: ' + platform);
+      CommonService.displayError('Sharing Error: Unsupported social media platform: ' + platform);
     }
   }
 
@@ -132,7 +133,7 @@ export class MyVirtrolioComponent implements OnInit {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => alert(AuthService.displayError(error)));
+      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => CommonService.displayError(error));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
