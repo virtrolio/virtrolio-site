@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { CommonService } from '../../core/common.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { SharingLinkService } from '../../core/sharing-link.service';
 import { MsgIoService } from '../../core/msg-io.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-my-virtrolio',
@@ -15,7 +17,7 @@ import { MsgIoService } from '../../core/msg-io.service';
 /**
  * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
-export class MyVirtrolioComponent implements OnInit {
+export class MyVirtrolioComponent implements OnInit, OnDestroy {
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
@@ -37,6 +39,11 @@ export class MyVirtrolioComponent implements OnInit {
     });
     this.authService.redirectLoginUserCreation().catch(error => CommonService.displayError(error));
     this.navigator = window.navigator;
+  }
+
+  ngOnDestroy(): void {
+    $('#link-gen').modal('hide');
+    $('#send-message').modal('hide');
   }
 
   /**
