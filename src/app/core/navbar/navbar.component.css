@@ -20,6 +20,12 @@
   color: red;
 }
 
+.navbar-nav-active {
+  color: #FFFFFF !important;
+  text-decoration: underline #FFFFFFBF !important;
+  text-underline-offset: 2px;
+}
+
 .navbar-nav li a {
   color: #FEFEFE;
   opacity: 0.75;

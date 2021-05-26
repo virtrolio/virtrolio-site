@@ -15,19 +15,21 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-2">
       <li class="nav-item">
-        <a class="nav-link" routerLink="">Home</a>
+        <a class="nav-link" routerLink="" routerLinkActive="navbar-nav-active"
+           [routerLinkActiveOptions]="{ exact: true }">Home</a>
       </li>
       <li class="nav-item">
-        <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="/my-virtrolio">My virtrolio</a>
+        <a [hidden]="!authService.isLoggedIn()"
+           class="nav-link" routerLink="my-virtrolio" routerLinkActive="navbar-nav-active">My virtrolio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="about">About Us</a>
+        <a class="nav-link" routerLink="about" routerLinkActive="navbar-nav-active">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="faq">FAQ</a>
+        <a class="nav-link" routerLink="faq" routerLinkActive="navbar-nav-active">FAQ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="contact">Contact Us</a>
+        <a class="nav-link" routerLink="contact" routerLinkActive="navbar-nav-active">Contact Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" role="button" data-toggle="modal" data-target="#changelog">What's New?</a>
