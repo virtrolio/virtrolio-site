@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { take } from 'rxjs/operators';
@@ -11,7 +11,7 @@ declare var $: any;
   templateUrl: './settings.component.html',
   styleUrls: [ './settings.component.css' ]
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   downloadMessagesData;
   downloadUserData;
   exportErrorText: string;
@@ -27,6 +27,12 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Settings | Virtrolio');
+  }
+
+  ngOnDestroy(): void {
+    $('#download').modal('hide');
+    $('#download-error').modal('hide');
+    $('#delete-error').modal('hide');
   }
 
   /**
@@ -64,5 +70,4 @@ export class SettingsComponent implements OnInit {
       return;
     }
   }
-
 }

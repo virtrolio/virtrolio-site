@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
@@ -20,7 +20,7 @@ declare var $: any;
  * Controls user interaction with the signing box, updating the preview display and sending the message when they
  * click on the 'Send' button.
  */
-export class SigningComponent implements OnInit {
+export class SigningComponent implements OnInit, OnDestroy {
   public name = 'your friend';
   public sending = false;
   public embedLink = '';
@@ -51,6 +51,14 @@ export class SigningComponent implements OnInit {
     $('.popover-dismiss').popover({
       trigger: 'focus'
     });
+  }
+
+  ngOnDestroy(): void {
+    $('#submit-confirm').modal('hide');
+    $('#info').modal('hide');
+    $('#embed-help').modal('hide');
+    $('#embed-photo').modal('hide');
+    $('#signing-experience').modal('hide');
   }
 
   /**
