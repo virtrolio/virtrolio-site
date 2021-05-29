@@ -25,9 +25,8 @@ export class ViewingComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
 
-  filterMessages(year: number): void {
-    this.filteredMessageList = this.messageList.filter(message => message.year == year);
-    // TODO: Change loose to strict equality; prevent strings from being passed in
+  filterMessages(year: string): void {
+    this.filteredMessageList = this.messageList.filter(message => message.year === parseInt(year, 10));
   }
 
   ngOnInit(): void {
