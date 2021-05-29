@@ -7,6 +7,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-viewing',
@@ -19,6 +20,7 @@ export class ViewingComponent implements OnInit {
   filteredMessageList: VirtrolioMessage[];
   invalidMessageCount = 0;
   messageYears: Set<number> = new Set();
+  currentYear: number = (new Date()).getFullYear();
   @ViewChild('messages') messages;
 
   constructor(private route: ActivatedRoute, private viewService: ViewingService, private title: Title) { }
@@ -52,12 +54,24 @@ export class ViewingComponent implements OnInit {
         }
       });
 
-      this.messageYears = new Set(messageYearsArray.sort().reverse());  // Convert to set to remove duplicates
-      this.filterMessages(this.messages.yearSelected);
-      if (this.filteredMessageList.length === 0) {
-        this.messages.yearSelected = this.messageList[0].year;
-        this.filterMessages(this.messages.yearSelected);
+      if (this.messageList.length === 0) {
+        this.messages.yearSelected = this.currentYear;
+        return;
       }
+
+      this.messageYears = new Set(messageYearsArray.sort().reverse());  // Sort and convert to set to remove duplicates
+
+      // Default to current year for filtering if messages exist, else pick the most recent year within the message list
+      console.log(this.messageYears);
+      if (this.messageYears.has(this.currentYear)) {
+        this.messages.yearSelected = this.currentYear;
+      } else if (this.messageYears.size !== 0) {
+        this.messages.yearSelected = Array.from(this.messageYears)[0];
+      } else {
+        AuthService.displayError('Error selecting year for message filtering.');
+      }
+
+      this.filterMessages(this.messages.yearSelected);
     });
   }
 }
