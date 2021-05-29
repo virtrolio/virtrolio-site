@@ -9,6 +9,15 @@
   font-size: 1em;
 }
 
+#year-select {
+  float: right;
+}
+
+#my-virtrolio-button {
+  display: flex;
+  justify-content: center;
+}
+
 /* Message Card */
 .card {
   display: inline-block;

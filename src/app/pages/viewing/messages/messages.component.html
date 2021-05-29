@@ -2,7 +2,7 @@
 <div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">
   <h2>No messages here!</h2>
   <p>Click below to go back to your virtrolio. Go get your sharing link and send it to your friends!</p>
-  <div style="display: flex; justify-content: center">
+  <div id="my-virtrolio-button">
     <button class="btn btn-lg btn-primary" routerLink="/my-virtrolio">My Virtrolio</button>
   </div>
 </div>
@@ -22,7 +22,7 @@
     <div class="col-lg-6 col-md-5 col-sm-4 col-2"></div> <!-- Spacer -->
     <div class="col-lg-2 col-md-3 col-sm-4 col-5">
       <!-- Year select menu -->
-      <select style="float: right" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
+      <select id="year-select" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
               (change)="selectYear()" [disabled]="messageYears.size === 1">
         <option selected disabled hidden>{{yearSelected - 1}} - {{yearSelected}}</option>  <!-- Default -->
         <option *ngFor="let year of messageYears" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
