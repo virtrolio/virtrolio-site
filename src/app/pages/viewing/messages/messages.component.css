@@ -116,10 +116,6 @@
   padding: 0.1em;
 }
 
-.btn {
-  padding: 0 0.5em;
-}
-
 @media (min-width: 0px) {
   .card-columns {
     column-count: 1;

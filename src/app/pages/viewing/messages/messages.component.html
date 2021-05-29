@@ -8,15 +8,15 @@
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
     <div class="col-4">
-      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn btn-primary shadow">Switch
         to Booklet
       </button>
-      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn btn-primary shadow">Switch to
         Cards
       </button>
     </div>
-    <div class="col-5"></div> <!-- Spacer -->
-    <div class="col-3">
+    <div class="col-6"></div> <!-- Spacer -->
+    <div class="col-2">
       <!-- Year select menu -->
       <select style="float: right" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
               (change)="selectYear()" [disabled]="messageYears.size === 1">
