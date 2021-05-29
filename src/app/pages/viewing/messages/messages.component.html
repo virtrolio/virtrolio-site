@@ -15,11 +15,11 @@
         Cards
       </button>
     </div>
-    <div class="col-8">
+    <div class="col-5"></div> <!-- Spacer -->
+    <div class="col-3">
       <!-- Year select menu -->
-      <select style="float: right" class="form-select" aria-label="year-selector" [(ngModel)]="yearSelected"
-              (change)="selectYear()">
-        <!-- TODO: Style this better -->
+      <select style="float: right" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
+              (change)="selectYear()" [disabled]="messageYears.size === 1">
         <option selected disabled hidden>{{yearSelected - 1}} - {{yearSelected}}</option>  <!-- Default -->
         <option *ngFor="let year of messageYears" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
           {{year - 1}} - {{year}}
