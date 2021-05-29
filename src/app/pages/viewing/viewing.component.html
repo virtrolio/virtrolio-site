@@ -6,8 +6,8 @@
 </div>
 <!-- Regular all messages view -->
 <ng-template #allMessages>
-  <div style="text-align: center; padding-top: 1.5em">
-    <h1>{{messages.yearSelected - 1}} - {{messages.yearSelected}}</h1> <!-- TODO: make bigger, make it 2020 - 2021 format -->
+  <div class="pt-4" style="text-align: center">
+    <h1 style="font-size: 4em">{{messages.yearSelected - 1}} - {{messages.yearSelected}}</h1> <!-- TODO: make bigger, make it 2020 - 2021 format -->
   </div>
   <div class="container">
     <app-responses-list [setMessageList]="filteredMessageList"></app-responses-list>
