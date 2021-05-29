@@ -1,6 +1,10 @@
 <!-- Perform a check to see if the number of messages received is 0 -->
-<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">No messages...
-  <markdown emoji>:sob:</markdown>
+<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">
+  <h2>No messages here!</h2>
+  <p>Click below to go back to your virtrolio. Go get your sharing link and send it to your friends!</p>
+  <div style="display: flex; justify-content: center">
+    <button class="btn btn-lg btn-primary" routerLink="/my-virtrolio">My Virtrolio</button>
+  </div>
 </div>
 
 <!-- If the ngIf above fails, this ngTemplate will show -->
