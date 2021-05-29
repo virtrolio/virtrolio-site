@@ -54,6 +54,10 @@ export class ViewingComponent implements OnInit {
 
       this.messageYears = new Set(messageYearsArray.sort().reverse());  // Convert to set to remove duplicates
       this.filterMessages(this.messages.yearSelected);
+      if (this.filteredMessageList.length === 0) {
+        this.messages.yearSelected = this.messageList[0].year;
+        this.filterMessages(this.messages.yearSelected);
+      }
     });
   }
 }
