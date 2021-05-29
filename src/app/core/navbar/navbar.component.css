@@ -23,7 +23,7 @@
 .navbar-nav-active {
   color: #FFFFFF !important;
   text-decoration: underline #FFFFFFBF !important;
-  text-underline-offset: 2px;
+  text-underline-offset: 0.2em;
 }
 
 .navbar-nav li a {
