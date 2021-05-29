@@ -7,7 +7,7 @@
 <ng-template #showMessages>
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
-    <div class="col-4">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-5">
       <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn btn-primary shadow">Switch
         to Booklet
       </button>
@@ -15,8 +15,8 @@
         Cards
       </button>
     </div>
-    <div class="col-6"></div> <!-- Spacer -->
-    <div class="col-2">
+    <div class="col-lg-6 col-md-5 col-sm-4 col-2"></div> <!-- Spacer -->
+    <div class="col-lg-2 col-md-3 col-sm-4 col-5">
       <!-- Year select menu -->
       <select style="float: right" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
               (change)="selectYear()" [disabled]="messageYears.size === 1">
