@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -6,7 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
-import { VirtrolioMessage } from '../../../shared/interfaces';
+import { VirtrolioMessage } from '../../../shared/interfaces/messages';
+
+declare var $: any;
 
 @Component({
   selector: 'app-messages',
@@ -14,7 +16,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces';
   styleUrls: [ './messages.component.css' ]
 })
 
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
 
@@ -46,6 +48,10 @@ export class MessagesComponent implements OnInit {
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     return (max + min) / 2;
+  }
+
+  ngOnDestroy(): void {
+    $('#delete').modal('hide');
   }
 
   /**

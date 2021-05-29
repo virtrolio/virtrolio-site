@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { VirtrolioUser } from '../shared/interfaces';
 import { take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { VirtrolioUser } from '../shared/interfaces/users';
 
 @Injectable({
   providedIn: 'root'

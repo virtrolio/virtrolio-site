@@ -1,7 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
+import { CommonService } from '../../core/common.service';
 import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ declare var $: any;
  * Controls user interaction with the signing box, updating the preview display and sending the message when they
  * click on the 'Send' button.
  */
-export class SigningComponent implements OnInit {
+export class SigningComponent implements OnInit, OnDestroy {
   public name = 'your friend';
   public sending = false;
   public embedLink = '';
@@ -36,7 +37,7 @@ export class SigningComponent implements OnInit {
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
    */
   ngOnInit(): void {
-    this.authService.redirectLoginUserCreation().catch(error => AuthService.displayError(error));
+    this.authService.redirectLoginUserCreation().catch(error => CommonService.displayError(error));
     this.route.queryParams.subscribe(params => {
       this.uid = params.uid;
       this.key = params.key;
@@ -50,6 +51,14 @@ export class SigningComponent implements OnInit {
     $('.popover-dismiss').popover({
       trigger: 'focus'
     });
+  }
+
+  ngOnDestroy(): void {
+    $('#submit-confirm').modal('hide');
+    $('#info').modal('hide');
+    $('#embed-help').modal('hide');
+    $('#embed-photo').modal('hide');
+    $('#signing-experience').modal('hide');
   }
 
   /**
@@ -89,9 +98,9 @@ export class SigningComponent implements OnInit {
     this.sending = true;
     this.msgIo.sendMessage(newMsg, this.key).then(() => {
       this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } })
-        .catch(e => AuthService.displayError(e));
+        .catch(e => CommonService.displayError(e));
     }).catch(error => {
-        AuthService.displayError(error);
+        CommonService.displayError(error);
       }
     );
   }
