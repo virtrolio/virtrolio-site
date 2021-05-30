@@ -1,3 +1,11 @@
 .invalid-msg-warning {
   color: var(--light-grey);
 }
+
+#messages-title {
+  text-align: center;
+}
+
+#messages-title > h1 {
+  font-size: 4em;
+}

@@ -1,25 +1,29 @@
 <!-- Perform a check to see if the number of messages received is 0 -->
-<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">No messages...
-  <markdown emoji>:sob:</markdown>
+<div *ngIf="messageList.length === 0; else showMessages" class="m-5" id="no-messages">
+  <h2>No messages here!</h2>
+  <p>Click below to go back to your virtrolio. Go get your sharing link and send it to your friends!</p>
+  <div id="my-virtrolio-button">
+    <button class="btn btn-lg btn-primary" routerLink="/my-virtrolio">My Virtrolio</button>
+  </div>
 </div>
 
 <!-- If the ngIf above fails, this ngTemplate will show -->
 <ng-template #showMessages>
   <!-- Toggle switch for message viewing styles -->
   <div class="row my-3">
-    <div class="col-4">
-      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch
+    <div class="col-lg-4 col-md-4 col-sm-4 col-5">
+      <button (click)="toggleViewStyle()" *ngIf="!viewService.isCarouselView" class="btn btn-primary shadow">Switch
         to Booklet
       </button>
-      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn-sm btn-primary shadow">Switch to
+      <button (click)="toggleViewStyle()" *ngIf="viewService.isCarouselView" class="btn btn-primary shadow">Switch to
         Cards
       </button>
     </div>
-    <div class="col-8">
+    <div class="col-lg-6 col-md-5 col-sm-4 col-2"></div> <!-- Spacer -->
+    <div class="col-lg-2 col-md-3 col-sm-4 col-5">
       <!-- Year select menu -->
-      <select style="float: right" class="form-select" aria-label="year-selector" [(ngModel)]="yearSelected"
-              (change)="selectYear()">
-        <!-- TODO: Style this better -->
+      <select id="year-select" class="custom-select" aria-label="year-selector" [(ngModel)]="yearSelected"
+              (change)="selectYear()" [disabled]="messageYears.size === 1">
         <option selected disabled hidden>{{yearSelected - 1}} - {{yearSelected}}</option>  <!-- Default -->
         <option *ngFor="let year of messageYears" [value]="year"> <!-- this.yearSelectedChanged.emit(year) -->
           {{year - 1}} - {{year}}

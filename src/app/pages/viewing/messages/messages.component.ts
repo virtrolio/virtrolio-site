@@ -20,7 +20,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
   @Input() messageYears: Set<number>;
-  yearSelected = (new Date()).getFullYear();  // Default current year
+  yearSelected: number;
   @Output() yearSelectedChanged: EventEmitter<number> = new EventEmitter();
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
