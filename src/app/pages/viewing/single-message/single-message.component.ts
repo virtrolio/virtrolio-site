@@ -3,12 +3,12 @@ import { ViewingService } from '../../../core/viewing.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces';
-import { AuthService } from '../../../core/auth.service';
+import { CommonService } from '../../../core/common.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-single-message',
@@ -53,7 +53,7 @@ export class SingleMessageComponent implements OnInit {
         this.viewService.msgIo.verifyMessage(message);
         this.singleMessage = message;
       } catch (e) {
-        AuthService.displayError(e);
+        CommonService.displayError(e);
         // noinspection JSIgnoredPromiseFromCall
         this.router.navigate([ '/viewing' ]);
       }

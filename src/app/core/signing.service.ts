@@ -1,8 +1,8 @@
 import { Injectable, SecurityContext } from '@angular/core';
-import { Fonts } from '../shared/interfaces';
 import { MsgIoService } from './msg-io.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Fonts } from '../shared/interfaces/fonts';
 
 @Injectable({
   providedIn: 'root'

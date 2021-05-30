@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+import { CommonService } from './common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class PreventURLAccessGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.router.url === '/') {
-      this.router.navigate([ '/access-denied' ]).catch(error => AuthService.displayError(error));
+      this.router.navigate([ '/access-denied' ]).catch(error => CommonService.displayError(error));
       return false;
     }
     return true;

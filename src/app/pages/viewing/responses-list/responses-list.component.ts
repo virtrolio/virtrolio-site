@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from '../../../core/auth.service';
-import { VirtrolioMessage } from '../../../shared/interfaces';
+import { CommonService } from '../../../core/common.service';
 import { CookieService } from 'ngx-cookie-service';
+import { VirtrolioMessage } from '../../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-responses-list',
@@ -24,7 +25,7 @@ export class ResponsesListComponent implements OnInit {
     try {
       this.uid = this.authService.uid();
     } catch (e) {
-       AuthService.displayError(e);
+       CommonService.displayError(e);
     }
     try {
       this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
@@ -61,7 +62,7 @@ export class ResponsesListComponent implements OnInit {
     } else if (this.showNewToViewingValue === 'false') {
       this.showNewToViewing = false;
     } else {
-      AuthService.displayError('Viewing-cookie not found or initialized properly.');
+      CommonService.displayError('Viewing-cookie not found or initialized properly.');
     }
   }
 

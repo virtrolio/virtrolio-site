@@ -1,10 +1,10 @@
 import { Injectable, SecurityContext } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces';
 
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { CommonService } from './common.service';
 import { FontService } from './font.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharingLinkService } from './sharing-link.service';
@@ -12,6 +12,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces/messages';
 
 @Injectable({
   providedIn: 'root'
@@ -78,7 +79,7 @@ export class MsgIoService {
 
   /**
    * Collects ALL messages from the Firestore messages database that were sent to a particular user.
-   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading shared/interfaces/messages.ts.
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
    * @throws Error - If the argument is blank, null or undefined.
@@ -98,7 +99,7 @@ export class MsgIoService {
 
   /**
    * Collects a SINGLE message from the Firestore messages database based on a message ID.
-   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading interfaces.ts.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading shared/interfaces/messages.ts.
    * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @param msgID - The ID of the message to be received.
    */
@@ -126,7 +127,7 @@ export class MsgIoService {
     await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
       { isRead: true }
     ).catch(error => {
-      AuthService.displayError(error);
+      CommonService.displayError(error);
     });
   }
 
@@ -187,7 +188,7 @@ export class MsgIoService {
       // Send the message
       const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
       await msgRef.set(message).catch(error => {
-        AuthService.displayError(error);
+        CommonService.displayError(error);
       });
     } else {
       throw new TypeError('Incorrect key');
