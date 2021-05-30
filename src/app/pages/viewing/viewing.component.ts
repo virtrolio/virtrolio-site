@@ -61,7 +61,6 @@ export class ViewingComponent implements OnInit {
       this.messageYears = new Set(messageYearsArray.sort().reverse());  // Sort and convert to set to remove duplicates
 
       // Default to current year for filtering if messages exist, else pick the most recent year within the message list
-      console.log(this.messageYears);
       if (this.messageYears.has(this.currentYear)) {
         this.messages.yearSelected = this.currentYear;
       } else if (this.messageYears.size !== 0) {
