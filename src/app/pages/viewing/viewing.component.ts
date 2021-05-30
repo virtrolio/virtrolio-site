@@ -7,7 +7,7 @@ import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 import { VirtrolioMessage } from '../../shared/interfaces/messages';
-import { AuthService } from '../../core/auth.service';
+import { CommonService } from '../../core/common.service';
 
 @Component({
   selector: 'app-viewing',
@@ -67,7 +67,7 @@ export class ViewingComponent implements OnInit {
       } else if (this.messageYears.size !== 0) {
         this.messages.yearSelected = Array.from(this.messageYears)[0];
       } else {
-        AuthService.displayError('Error selecting year for message filtering.');
+        CommonService.displayError('Error selecting year for message filtering.');
       }
 
       this.filterMessages(this.messages.yearSelected);
