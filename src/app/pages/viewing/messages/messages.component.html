@@ -73,6 +73,12 @@
            class="card-body message-card message">
         <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
       </div>
+      <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
+                       'color': generateHeaderColor(msg.backColor).text}" class="message-image-holder">
+        <img class="col-4" src="https://bit.ly/3zhRL8v">
+        <img class="col-4" src="https://bit.ly/3pBm2L7">
+        <img class="col-4" src="https://bit.ly/3gk3drr">
+      </div>
     </div>
   </div>
 
@@ -156,6 +162,9 @@
             [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
             class="card-body page message">
             <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
+            <img class="message-image-inline" src="https://bit.ly/3zhRL8v">
+            <img class="message-image-inline" src="https://bit.ly/3pBm2L7">
+            <img class="message-image-inline" src="https://bit.ly/3gk3drr">
           </div>
         </div>
       </div>

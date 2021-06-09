@@ -17,6 +17,11 @@
   overflow-y: auto;
 }
 
+.message-image-inline {
+  width: 30%;
+  padding: 0 1em 0 1em;
+}
+
 .msg-header-text {
   font-weight: bold;
   font-size: 1.6em;

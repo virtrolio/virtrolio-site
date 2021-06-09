@@ -12,6 +12,11 @@
   overflow-y: auto;
 }
 
+.message-image-inline {
+  width: 30%;
+  padding: 0 1em 0 1em;
+}
+
 .table td {
   overflow-wrap: break-word;
 }
