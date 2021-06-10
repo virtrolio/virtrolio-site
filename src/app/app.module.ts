@@ -45,6 +45,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 import { ViewingComponent } from './pages/viewing/viewing.component';
 // Services
 import { LoginResolver } from './core/login-resolver';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 
@@ -97,6 +98,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
         },
       },
     }),
+    ModalModule.forRoot(),
     NgbModule,
     ToastrModule.forRoot()
   ],
