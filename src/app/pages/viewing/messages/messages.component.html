@@ -74,10 +74,10 @@
         <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
       </div>
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
-                       'color': generateHeaderColor(msg.backColor).text}" class="message-image-holder">
-        <img class="col-4" src="https://bit.ly/3zhRL8v">
-        <img class="col-4" src="https://bit.ly/3pBm2L7">
-        <img class="col-4" src="https://bit.ly/3gk3drr">
+                       'color': generateHeaderColor(msg.backColor).text}" class="d-flex p-3 message-image-holder">
+        <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3zhRL8v" target="_blank"><img class="message-image-inline" src="https://bit.ly/3zhRL8v"></a>
+        <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3pBm2L7" target="_blank"><img class="message-image-inline" src="https://bit.ly/3pBm2L7"></a>
+        <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3gk3drr" target="_blank"><img class="message-image-inline" src="https://bit.ly/3gk3drr"></a>
       </div>
     </div>
   </div>
@@ -162,9 +162,11 @@
             [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
             class="card-body page message">
             <markdown data="{{ viewService.decodeHtml(msg.contents) }}" emoji></markdown>
-            <img class="message-image-inline" src="https://bit.ly/3zhRL8v">
-            <img class="message-image-inline" src="https://bit.ly/3pBm2L7">
-            <img class="message-image-inline" src="https://bit.ly/3gk3drr">
+            <div class="d-flex justify-content-center row pt-5">
+              <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3zhRL8v" target="_blank"><img class="message-image-inline" src="https://bit.ly/3zhRL8v"></a>
+              <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3pBm2L7" target="_blank"><img class="message-image-inline" src="https://bit.ly/3pBm2L7"></a>
+              <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3gk3drr" target="_blank"><img class="message-image-inline" src="https://bit.ly/3gk3drr"></a>
+            </div>
           </div>
         </div>
       </div>
