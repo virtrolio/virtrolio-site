@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewingService } from '../../../core/viewing.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-message-modal',
@@ -9,7 +9,7 @@ import { ViewingService } from '../../../core/viewing.service';
 })
 export class MessageModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal, public viewService: ViewingService) { }
+  constructor(public viewService: ViewingService, public modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
