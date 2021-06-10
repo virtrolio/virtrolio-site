@@ -5,6 +5,7 @@ import Timestamp = firebase.firestore.Timestamp;
 export class VirtrolioMessageTemplate {
     backColor = '';
     contents = '';
+    images?: string[] = [];
     fontColor = '';
     fontFamily = '';
     to = '';
