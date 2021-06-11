@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -19,9 +19,13 @@ declare var $: any;
 export class MessagesComponent implements OnInit, OnDestroy {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
+  @Input() messageYears: Set<number>;
+  yearSelected: number;
+  @Output() yearSelectedChanged: EventEmitter<number> = new EventEmitter();
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService,
+              private modalService: NgbModal) {
   }
 
   /**
@@ -34,6 +38,11 @@ export class MessagesComponent implements OnInit, OnDestroy {
       // Set 'You have x message(s)' text based on number of messages
       this.messageList.length === 1 ? this.oneMessage = 'message' : this.oneMessage = 'messages';
     }
+  }
+
+  selectYear(): void {
+    this.yearSelectedChanged.emit(this.yearSelected);
+    this.viewService.isCarouselView = false;  // TODO: Switch to first carousel item instead of toggling to card view
   }
 
   ngOnInit(): void { }
