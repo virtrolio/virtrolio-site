@@ -4,9 +4,9 @@ import { AuthService } from '../../../core/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { VirtrolioMessage } from '../../../shared/interfaces/messages';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 declare var $: any;
 
@@ -21,7 +21,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   oneMessage = 'messages';
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: NgbModal) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: BsModalService) {
   }
 
   /**
@@ -91,7 +91,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
    */
   popupMessage(msg: VirtrolioMessage) {
     this.viewService.currentMessageModal = msg;
-    this.modalService.open(MessageModalComponent, { centered: true });
+    this.modalService.show(MessageModalComponent, { class: 'modal-dialog-centered' });
   }
 
   /**

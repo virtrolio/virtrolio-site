@@ -2,7 +2,7 @@
   {
     "name": "Arvind Nagabhirava",
     "images": {
-      "regular": "https://bit.ly/3de5LUs",
+      "regular": "https://bit.ly/3ikDVw3",
       "silly": "https://bit.ly/2V596Pn"
     },
     "blurb": "Arvind is Virtrolio's ideator. He is well known for his compassion and spectacular,\n radiant personality that always lifts the spirits of those around him. He is known to have an undying love for\n          sports and mathematics. He is currently studying Computer Science\n          at the University of Waterloo. In his spare time, he loves to practice his nunchucks and his taekwondo\n (especially <s>on</s> with his beloved friends)!",
@@ -40,10 +40,10 @@
     "blurb": "Dabeer is an exceptional person with many talents and a wide variety of interests! He is known to have an undying love for musicals and math. And he is plenty talented in both departments! Dabeer is currently studying in the iBiomed program at McMaster University. In his spare time, he loves to practice singing, work on personal projects, and hang out with his beloved friends! He is especially fond of dropping in on people unexpectedly, but pleasant surprises are always to be expected from Dabeer.",
     "sharingLink": "/signing?uid=yluDqypoiiWtlj8M86x7HLp699r1&key=badaBoomBadaBing",
     "social": {
-      "github": "GuyInFridge",
+      "github": "DabeerAzeez",
       "instagram": "GuyInFridge",
       "linkedIn": "https://www.linkedin.com/in/dabeerabdulazeez/",
-      "website": "dabeerazeez.wixsite.com/1p10portfolio"
+      "website": "abdulazd.wixsite.com/1p10portfolio"
     }
   },
 
@@ -91,7 +91,7 @@
       "github": "Anthonyftwang",
       "instagram": "itsanthonywang",
       "linkedIn": "https://www.linkedin.com/in/anthonyftwang",
-      "website": ""
+      "website": "anthonywang.dev"
     }
   },
 
@@ -107,7 +107,23 @@
       "github": "jonapap",
       "instagram": "",
       "linkedIn": "https://www.linkedin.com/in/jonathan-papineau/",
-      "website": ""
+      "website": "jpapineau.ca"
+    }
+  },
+
+  {
+    "name": "Kishan Manoharan",
+    "images": {
+      "regular": "https://bit.ly/3ggfmxo",
+      "silly": "https://bit.ly/34RP2V0"
+    },
+    "blurb": "Kishan joined the Virtrolio team during the second round of development in 2021. Known for his addiction to Spotify's API, he likes developing software in his free time. He is currently studying as a Computer Program Analyst at George Brown College. As a software developer and an ex-Barista, he is always accompanied by a caffeinated drink in an unsuccessful attempt to solve his catastrophic sleep schedule, but it only makes it worse.",
+    "sharingLink": "/signing?uid=GJ1uuin92HOoqwv8Nvub2Dx0ZH63&key=iWantBoba",
+    "social": {
+      "github": "kishanmanoharan",
+      "instagram": "kish9n",
+      "linkedIn": "https://www.linkedin.com/in/kishan-manoharan-333464195/",
+      "website": "kishanm.ca"
     }
   },
 
