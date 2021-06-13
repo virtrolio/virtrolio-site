@@ -15,15 +15,13 @@
 }
 
 .message-image-footer {
-  max-width: 100%;
-  min-height: 3em;
-  margin: 0 1em 0 1em;
+  width: 100%;
   object-fit: cover;
-  transition: all 0.5s ease;
+  transition: all linear 0.2s;
 }
 
 .message-image-footer:hover {
-  filter: grayscale(1);
+  filter: brightness(50%);
 }
 
 /* Message Card */
