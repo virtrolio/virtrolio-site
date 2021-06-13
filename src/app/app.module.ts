@@ -49,6 +49,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
+import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     SigningComponent,
     SingleMessageComponent,
     TermsOfServiceComponent,
-    ViewingComponent
+    ViewingComponent,
+    ImageFooterComponent
   ],
   imports: [
     AngularFireAnalyticsModule,
