@@ -16,6 +16,38 @@
   overflow-wrap: break-word;
 }
 
+/* Message images */
+
+.msg-footer-img {
+  max-height: 20em;
+  transition: all linear 0.2s;
+}
+
+.msg-footer {
+  justify-content: center;
+}
+
+.msg-footer-img-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transition: all linear 0.2s;
+}
+
+.msg-footer-img-overlay:hover {
+  opacity: 100%;
+}
+
+#external-link-icon {
+  height: 33%;
+}
+
 /* Message Carousel Page */
 .page {
   background-color: var(--accent);

@@ -1,0 +1,20 @@
+<!-- Message footer (if images present) -->
+<div [ngStyle]="{'background': backColor}" class='d-flex p-2 msg-footer'>
+  <!-- Display the first three images -->
+  <a *ngFor='let image of this.imageList.slice(0,3)' class='col p-0 d-flex justify-content-center'>
+    <img class='msg-footer-img' [src]="image | getDownloadURL" alt='Virtrolio Message image'>
+    <div class='msg-footer-img-overlay'>
+      <div *ngIf='this.imageList.indexOf(image) === 2 && this.imageList.length > 3; else externalLink'
+           (click)='popupMessage.emit()' class='d-flex justify-content-center align-items-center'
+           id='extra-image-counter'>
+        <!-- Extra image counter if more than three images -->
+        <span>+{{this.imageList.length - 3}}</span>
+      </div>
+      <ng-template #externalLink>
+        <a [href]="image | getDownloadURL" target='_blank' class='h-100 w-100 d-flex justify-content-center align-items-center'>
+          <img src='../../../../../assets/images/icons/external-link.svg' class='external-link-icon' alt='Virtrolio Message image'>
+        </a>
+      </ng-template>
+    </div>
+  </a>
+</div>
