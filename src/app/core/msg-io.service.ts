@@ -114,6 +114,14 @@ export class MsgIoService {
     }));
   }
 
+  getMessageImages(msgID: string): string[] {
+    return [
+      'messages/3h2BgmX1SjVy57rVkiodrNCXbra2-yluDqypoiiWtlj8M86x7HLp699r1-2020.0/image-1.jpg',
+      'messages/3h2BgmX1SjVy57rVkiodrNCXbra2-yluDqypoiiWtlj8M86x7HLp699r1-2020.0/image-2.jpg',
+      'messages/3h2BgmX1SjVy57rVkiodrNCXbra2-yluDqypoiiWtlj8M86x7HLp699r1-2020.0/image-3.jpg'
+    ];
+  }
+
   /**
    * Marks the specified message as read by changing the isRead property of the message.
    * To avoid unnecessary writes, the caller of this method should check the isRead property prior to calling

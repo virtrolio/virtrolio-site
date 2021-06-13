@@ -182,7 +182,7 @@
             [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
             class='card-body page message'>
             <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
-            <app-inline-images [imageList]='imageList'></app-inline-images>
+            <app-inline-images [imageList]='msgIOService.getMessageImages(msg.id)'></app-inline-images>
           </div>
         </div>
       </div>

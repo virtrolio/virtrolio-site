@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewingService } from '../../../core/viewing.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { MsgIoService } from '../../../core/msg-io.service';
 
 @Component({
   selector: 'app-message-modal',
@@ -10,7 +11,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class MessageModalComponent implements OnInit {
   imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3xiaT4d'];
 
-  constructor(public viewService: ViewingService, public modalService: BsModalService) { }
+  constructor(public viewService: ViewingService, public modalService: BsModalService, public msgIOService: MsgIoService) { }
 
   ngOnInit(): void {
   }

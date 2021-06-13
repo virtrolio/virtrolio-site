@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
@@ -83,6 +84,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     BrowserModule,

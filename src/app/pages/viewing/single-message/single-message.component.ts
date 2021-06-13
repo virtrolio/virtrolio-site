@@ -9,6 +9,7 @@ import 'firebase/firestore';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
 import { VirtrolioMessage, VirtrolioMessageTemplate } from '../../../shared/interfaces/messages';
+import { MsgIoService } from '../../../core/msg-io.service';
 
 @Component({
   selector: 'app-single-message',
@@ -29,10 +30,9 @@ export class SingleMessageComponent implements OnInit {
     year: 0,
     id: '',
   };
-  imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3xiaT4d'];
 
   constructor(public viewService: ViewingService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService,
-              private location: Location) {
+              private location: Location, public msgIOService: MsgIoService) {
     this.singleMessage.contents = 'Message is loading...';
     this.singleMessage.backColor = '#FFFFFF';
     this.singleMessage.fontColor = '#000000';
