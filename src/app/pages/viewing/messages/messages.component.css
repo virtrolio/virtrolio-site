@@ -14,7 +14,7 @@
   height: 8em;
 }
 
-.message-image-inline {
+.message-image-footer {
   max-width: 100%;
   min-height: 3em;
   margin: 0 1em 0 1em;
@@ -22,7 +22,7 @@
   transition: all 0.5s ease;
 }
 
-.message-image-inline:hover {
+.message-image-footer:hover {
   filter: grayscale(1);
 }
 

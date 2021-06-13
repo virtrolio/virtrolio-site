@@ -76,7 +76,7 @@
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
                        'color': generateHeaderColor(msg.backColor).text}" class='d-flex p-3 message-image-holder'>
         <a *ngFor='let image of this.imageList' class='col d-flex justify-content-center' href='{{image}}'
-           target='_blank'><img class='message-image-inline' src='{{image}}'></a>
+           target='_blank'><img class='message-image-footer' src='{{image}}'></a>
       </div>
     </div>
   </div>
