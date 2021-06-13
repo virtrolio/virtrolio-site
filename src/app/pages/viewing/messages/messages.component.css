@@ -44,6 +44,17 @@
   height: 33%;
 }
 
+#extra-image-counter {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+#extra-image-counter > p {
+  font-size: 2em;
+  color: white;
+}
+
 /* Message Card */
 .card {
   display: inline-block;
