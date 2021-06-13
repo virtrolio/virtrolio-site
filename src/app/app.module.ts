@@ -27,6 +27,7 @@ import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/dis
 import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ImageModalComponent } from './pages/signing/image-modal/image-modal.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
@@ -62,6 +63,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     MessagesComponent,
     MsgSentComponent,
     MyVirtrolioComponent,
+    ImageModalComponent,
     InvalidLinkComponent,
     MessageModalComponent,
     MaintenanceComponent,

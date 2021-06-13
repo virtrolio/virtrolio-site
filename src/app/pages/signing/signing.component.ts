@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
@@ -7,6 +7,7 @@ import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 declare var $: any;
 
@@ -29,6 +30,8 @@ export class SigningComponent implements OnInit, OnDestroy {
 
   private uid: string;
   private key: string;
+
+  @ViewChild(ImageModalComponent) imageModalComponent: ImageModalComponent;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
               private msgIo: MsgIoService, private router: Router, private title: Title, public deviceDetector: DeviceDetectorService) { }

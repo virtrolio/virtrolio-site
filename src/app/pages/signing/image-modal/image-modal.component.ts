@@ -1,21 +1,24 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-// import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ViewingService } from '../../../core/viewing.service';
+import { Component, ViewChild } from '@angular/core';
+import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-image-modal',
   templateUrl: './image-modal.component.html',
   styleUrls: ['./image-modal.component.css']
 })
-export class ImageModalComponent implements OnInit {
-  @ViewChild('imageModal') imageModalTemplate: TemplateRef<any>;
-  // modalRef: BsModalRef;
+export class ImageModalComponent {
+  modalRef: BsModalRef;
 
-  constructor(public activeModal: NgbActiveModal, public viewService: ViewingService) { }
+  @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  ngOnInit(): void {
+  constructor(private modalService: BsModalService) { }
 
+  showImageModal(): void {
+    this.imageModal.show();
+  }
+
+  hideImageModal(): void {
+    this.imageModal.hide();
   }
 
 }
