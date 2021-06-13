@@ -48,10 +48,8 @@
                    +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }"
        class="card-body message-card message">
     <markdown data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}" emoji></markdown>
-    <div class="d-flex justify-content-center row pt-5">
-      <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3zhRL8v" target="_blank"><img class="message-image-inline" src="https://bit.ly/3zhRL8v"></a>
-      <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3pBm2L7" target="_blank"><img class="message-image-inline" src="https://bit.ly/3pBm2L7"></a>
-      <a class="col-4 d-flex justify-content-center" href="https://bit.ly/3gk3drr" target="_blank"><img class="message-image-inline" src="https://bit.ly/3gk3drr"></a>
+    <div *ngFor='let image of imageList' class="d-flex justify-content-center pt-5">
+      <a class="col-4 d-flex justify-content-center" href="{{image}}" target="_blank"><img class="message-image-inline" src="{{image}}"></a>
     </div>
   </div>
 </div>

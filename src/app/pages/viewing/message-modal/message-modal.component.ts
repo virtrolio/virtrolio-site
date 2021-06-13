@@ -8,6 +8,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: [ './message-modal.component.css' ]
 })
 export class MessageModalComponent implements OnInit {
+  imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3gk3drr'];
 
   constructor(public viewService: ViewingService, public modalService: BsModalService) { }
 
