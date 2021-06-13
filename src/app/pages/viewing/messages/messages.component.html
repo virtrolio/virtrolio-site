@@ -182,14 +182,7 @@
             [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
             class='card-body page message'>
             <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
-            <div class='d-flex justify-content-center row pt-5'>
-              <a class='col-4 d-flex justify-content-center' href='https://bit.ly/3zhRL8v' target='_blank'><img
-                class='message-image-inline' src='https://bit.ly/3zhRL8v'></a>
-              <a class='col-4 d-flex justify-content-center' href='https://bit.ly/3pBm2L7' target='_blank'><img
-                class='message-image-inline' src='https://bit.ly/3pBm2L7'></a>
-              <a class='col-4 d-flex justify-content-center' href='https://bit.ly/3gk3drr' target='_blank'><img
-                class='message-image-inline' src='https://bit.ly/3gk3drr'></a>
-            </div>
+            <app-inline-images></app-inline-images>
           </div>
         </div>
       </div>
