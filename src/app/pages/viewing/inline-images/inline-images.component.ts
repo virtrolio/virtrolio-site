@@ -11,7 +11,6 @@ export class InlineImagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.imageList);
   }
 
 }
