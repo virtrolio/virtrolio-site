@@ -20,7 +20,6 @@ declare var $: any;
 export class MessagesComponent implements OnInit, OnDestroy {
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
-  imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3xiaT4d', 'https://bit.ly/3xiaT4d'];
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
               private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: BsModalService,
