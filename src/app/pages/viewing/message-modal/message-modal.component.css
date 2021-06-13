@@ -12,17 +12,17 @@
   overflow-y: auto;
 }
 
-.message-image-footer {
+.msg-footer-img {
   max-height: 20em;
   object-fit: cover;
   transition: all linear 0.2s;
 }
 
-.card-view-image-holder {
+.msg-footer {
   justify-content: center;
 }
 
-.message-image-footer-icon-holder {
+.msg-footer-img-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
@@ -35,7 +35,7 @@
   transition: all linear 0.2s;
 }
 
-.message-image-footer-icon-holder:hover {
+.msg-footer-img-overlay:hover {
   opacity: 100%;
 }
 

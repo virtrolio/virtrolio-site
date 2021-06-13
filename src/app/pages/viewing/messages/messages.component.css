@@ -9,21 +9,21 @@
   font-size: 1em;
 }
 
-.card-view-image-holder {
+.msg-footer {
   height: 7em;
 }
 
-.message-image-footer {
+.msg-footer-img {
   width: 100%;
   object-fit: cover;
   transition: all linear 0.2s;
 }
 
-.message-image-footer:hover {
+.msg-footer-img:hover {
   filter: brightness(50%);
 }
 
-.message-image-footer-icon-holder {
+.msg-footer-img-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
@@ -36,11 +36,11 @@
   transition: all linear 0.2s;
 }
 
-.message-image-footer-icon-holder:hover {
+.msg-footer-img-overlay:hover {
   opacity: 100%;
 }
 
-.message-image-footer-icon {
+#external-link-icon {
   height: 33%;
 }
 
@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 
-#extra-image-counter > p {
+#extra-image-counter > span {
   font-size: 2em;
   color: white;
 }
