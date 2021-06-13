@@ -22,7 +22,7 @@
                        +','+ viewService.fonts[singleMessage.fontFamily].backupFont}"
            class="card-body message-card message">
         <markdown data="{{ viewService.decodeHtml(singleMessage.contents) }}" emoji></markdown>
-        <app-inline-images [imageList]='msgIOService.getMessageImages(singleMessage.id)'></app-inline-images>
+        <app-inline-images *ngIf='singleMessage.images' [imageList]='singleMessage.images'></app-inline-images>
       </div>
     </div>
   </div>

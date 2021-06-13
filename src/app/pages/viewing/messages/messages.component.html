@@ -77,8 +77,8 @@
            class='card-body message-card message'>
         <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
       </div>
-      <app-image-footer [backColor]='generateHeaderColor(msg.backColor).bg'
-                        [imageList]='msgIOService.getMessageImages(msg.id)' (popupMessage)='popupMessage(msg)'>
+      <app-image-footer *ngIf='msg.images' [imageList]='msg.images' [backColor]='generateHeaderColor(msg.backColor).bg'
+                         (popupMessage)='popupMessage(msg)'>
       </app-image-footer>
     </div>
   </div>
@@ -163,7 +163,7 @@
             [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
             class='card-body page message'>
             <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
-            <app-inline-images [imageList]='msgIOService.getMessageImages(msg.id)'></app-inline-images>
+            <app-inline-images *ngIf='msg.images' [imageList]='msg.images'></app-inline-images>
           </div>
         </div>
       </div>

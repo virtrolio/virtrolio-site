@@ -51,6 +51,6 @@
                    +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }"
        class="card-body message-card message">
     <markdown data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}" emoji></markdown>
-    <app-inline-images [imageList]='msgIOService.getMessageImages(viewService.currentMessageModal.id)'></app-inline-images>
+    <app-inline-images *ngIf='viewService.currentMessageModal.images' [imageList]='viewService.currentMessageModal.images'></app-inline-images>
   </div>
 </div>
