@@ -51,18 +51,6 @@
                    +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }"
        class="card-body message-card message">
     <markdown data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}" emoji></markdown>
-
-    <!-- Inline images (if present) -->
-    <div *ngFor='let image of this.imageList' class='d-flex p-2 justify-content-center'>
-      <div>
-        <a class='col p-0 d-flex justify-content-center' href='{{image}}'
-           target='_blank'>
-            <img class='msg-footer-img' src='{{image}}'>
-            <div class='msg-footer-img-overlay'>
-              <img src='../../../../assets/images/icons/external-link.svg' id='external-link-icon'>
-            </div>
-        </a>
-      </div>
-    </div>
+<!--    <app-inline-images></app-inline-images>-->
   </div>
 </div>
