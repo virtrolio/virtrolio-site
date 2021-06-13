@@ -29,6 +29,7 @@ export class SingleMessageComponent implements OnInit {
     year: 0,
     id: '',
   };
+  imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3xiaT4d'];
 
   constructor(public viewService: ViewingService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService,
               private location: Location) {
