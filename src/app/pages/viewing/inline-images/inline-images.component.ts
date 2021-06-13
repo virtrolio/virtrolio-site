@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./inline-images.component.css']
 })
 export class InlineImagesComponent implements OnInit {
-  @Input() imageList: string[];
+  @Input() images: string[];
 
   constructor() { }
 
