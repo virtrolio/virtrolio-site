@@ -74,9 +74,14 @@
         <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
       </div>
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
-                       'color': generateHeaderColor(msg.backColor).text}" class='d-flex p-3 message-image-holder'>
-        <a *ngFor='let image of this.imageList' class='col d-flex justify-content-center' href='{{image}}'
-           target='_blank'><img class='message-image-footer' src='{{image}}'></a>
+                       'color': generateHeaderColor(msg.backColor).text}" class='d-flex p-2 message-image-holder'>
+        <a *ngFor='let image of this.imageList.slice(0,3)' class='col p-0 d-flex justify-content-center' href='{{image}}'
+           target='_blank'>
+          <img class='message-image-footer' src='{{image}}'>
+          <div class='message-image-footer-icon-holder'>
+            <img src='../../../../assets/images/icons/external-link.svg' class='message-image-footer-icon'>
+          </div>
+        </a>
       </div>
     </div>
   </div>

@@ -24,6 +24,27 @@
   filter: brightness(50%);
 }
 
+.message-image-footer-icon-holder {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transition: all linear 0.2s;
+}
+
+.message-image-footer-icon-holder:hover {
+  opacity: 100%;
+}
+
+.message-image-footer-icon {
+  height: 33%;
+}
+
 /* Message Card */
 .card {
   display: inline-block;
