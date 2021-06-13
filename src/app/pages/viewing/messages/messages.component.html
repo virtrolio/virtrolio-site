@@ -20,6 +20,8 @@
   <!-- Card message view -->
   <div *ngIf='viewService.isCarouselView === false' class='card-columns mt-3'>
     <div *ngFor='let msg of messageList;' class='card shadow' id='{{ msg.id }}'>
+
+      <!-- Message header -->
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
                        'color': generateHeaderColor(msg.backColor).text}"
            class='msg-header'>
@@ -68,11 +70,15 @@
           </table>
         </div>
       </div>
+
+      <!-- Message body -->
       <div (click)='popupMessage(msg)'
            [ngStyle]="{'background': msg.backColor, 'color': msg.fontColor, 'font-family': viewService.fonts[msg.fontFamily].fontFamily +','+ viewService.fonts[msg.fontFamily].backupFont }"
            class='card-body message-card message'>
         <markdown data='{{ viewService.decodeHtml(msg.contents) }}' emoji></markdown>
       </div>
+
+      <!-- Message footer (if images present) -->
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
                        'color': generateHeaderColor(msg.backColor).text}" class='d-flex p-2 card-view-image-holder'>
         <a *ngFor='let image of this.imageList.slice(0,3)' class='col p-0 d-flex justify-content-center'>
