@@ -28,6 +28,7 @@ import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/dis
 import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
 import { InlineImagesComponent } from './pages/viewing/inline-images/inline-images.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
@@ -49,7 +50,6 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
-import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
 
 @NgModule({
   declarations: [
