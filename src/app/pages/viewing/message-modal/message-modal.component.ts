@@ -9,8 +9,6 @@ import { MsgIoService } from '../../../core/msg-io.service';
   styleUrls: [ './message-modal.component.css' ]
 })
 export class MessageModalComponent implements OnInit {
-  imageList = ['https://bit.ly/3zhRL8v', 'https://bit.ly/3pBm2L7', 'https://bit.ly/3xiaT4d'];
-
   constructor(public viewService: ViewingService, public modalService: BsModalService, public msgIOService: MsgIoService) { }
 
   ngOnInit(): void {
