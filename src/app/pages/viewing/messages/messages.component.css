@@ -9,6 +9,27 @@
   font-size: 1em;
 }
 
+/* Message Card */
+.card {
+  display: inline-block;
+}
+
+.message-card {
+  position: relative;
+  background-color: var(--light-grey);
+  width: 100%;
+  word-break: break-word;
+  max-height: 30em;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.table td {
+  overflow-wrap: break-word;
+}
+
+/* Message image footer */
+
 .msg-footer {
   height: 7em;
 }
@@ -53,25 +74,6 @@
 #extra-image-counter > span {
   font-size: 2em;
   color: white;
-}
-
-/* Message Card */
-.card {
-  display: inline-block;
-}
-
-.message-card {
-  position: relative;
-  background-color: var(--light-grey);
-  width: 100%;
-  word-break: break-word;
-  max-height: 30em;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.table td {
-  overflow-wrap: break-word;
 }
 
 /* Message Carousel Page */

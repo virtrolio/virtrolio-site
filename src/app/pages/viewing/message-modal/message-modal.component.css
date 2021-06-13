@@ -12,9 +12,14 @@
   overflow-y: auto;
 }
 
+.table td {
+  overflow-wrap: break-word;
+}
+
+/* Message images */
+
 .msg-footer-img {
   max-height: 20em;
-  object-fit: cover;
   transition: all linear 0.2s;
 }
 
@@ -39,29 +44,8 @@
   opacity: 100%;
 }
 
-.message-image-footer-icon {
+#external-link-icon {
   height: 33%;
-}
-
-.message-image-inline-icon-holder {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  opacity: 0;
-  transition: all linear 0.2s;
-}
-
-.message-image-inline-icon-holder:hover {
-  opacity: 100%;
-}
-
-.table td {
-  overflow-wrap: break-word;
 }
 
 /* Message Carousel Page */
