@@ -75,7 +75,6 @@
       </div>
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
                        'color': generateHeaderColor(msg.backColor).text}" class='d-flex p-2 card-view-image-holder'>
-        <!-- TODO: Show a +X overlay for the third image if there are more than three images -->
         <a *ngFor='let image of this.imageList.slice(0,3)' class='col p-0 d-flex justify-content-center'>
           <img class='message-image-footer' src='{{image}}'>
           <div class='message-image-footer-icon-holder'>
