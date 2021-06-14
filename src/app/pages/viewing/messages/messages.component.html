@@ -1,6 +1,6 @@
 <div
   *ngIf="isLoading; else messages"
-  class="loading-container d-flex justify-content-center"
+  class="loading-empty-state-container d-flex justify-content-center"
 >
   <div class="spinner-border" role="status"></div>
 </div>
@@ -9,11 +9,23 @@
   <!-- Perform a check to see if the number of messages received is 0 -->
   <div
     *ngIf="messageList.length === 0; else showMessages"
-    class="m-5"
-    id="no-messages"
+    class="loading-empty-state-container d-flex justify-content-center"
   >
-    No messages...
-    <markdown emoji>:sob:</markdown>
+    <div class="empty-state-container px-5">
+      <img
+        alt="No messages"
+        class="empty-state-img"
+        src="../../../assets/images/EmptyMessages.svg"
+      />
+      <h1 class="empty-state-header pt-2">No messages yet</h1>
+      <p class="empty-state-body pt-2">
+        Go to your
+        <a routerLink="/my-virtrolio" routerLinkActive="navbar-nav-active"
+          >virtrolio</a
+        >
+        and generate a Sharing Link to send to your friends!
+      </p>
+    </div>
   </div>
 
   <!-- If the ngIf above fails, this ngTemplate will show -->
