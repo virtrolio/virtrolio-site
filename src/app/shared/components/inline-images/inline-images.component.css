@@ -1,0 +1,36 @@
+/* Message image footer */
+
+.msg-footer {
+  height: 7em;
+}
+
+.msg-footer-img {
+  width: 100%;
+  object-fit: cover;
+  transition: all linear 0.2s;
+}
+
+.msg-footer-img:hover {
+  filter: brightness(50%);
+}
+
+.msg-footer-img-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0;
+  transition: all linear 0.2s;
+}
+
+.msg-footer-img-overlay:hover {
+  opacity: 100%;
+}
+
+.external-link-icon {
+  height: 2em;
+}

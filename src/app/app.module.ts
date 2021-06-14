@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
@@ -27,6 +28,7 @@ import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/dis
 import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
@@ -47,6 +49,7 @@ import { ViewingComponent } from './pages/viewing/viewing.component';
 import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -74,13 +77,15 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     SigningComponent,
     SingleMessageComponent,
     TermsOfServiceComponent,
-    ViewingComponent
+    ViewingComponent,
+    ImageFooterComponent,
   ],
   imports: [
     AngularFireAnalyticsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     BrowserModule,
@@ -98,10 +103,10 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
       },
     }),
     ModalModule.forRoot(),
-    ToastrModule.forRoot()
+    SharedModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [ CookieService, LoginResolver, PendingChangesGuard ],
-  bootstrap: [ AppComponent ]
+  providers: [CookieService, LoginResolver, PendingChangesGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule { }
