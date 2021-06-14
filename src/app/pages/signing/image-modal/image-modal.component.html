@@ -1,11 +1,22 @@
-<div bsModal #imageModal="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-labelledby="dialog-child-name">
-  <div class='modal-dialog modal-dialog-centered modal-lg' role='dialog'>
+<div
+  bsModal
+  #imageModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-child-name"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
     <div class="modal-content">
-      
       <div class="modal-header">
         <h5 class="embed-photo-title">Say cheese! Let's add an image!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='hideImageModal()'>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="hideImageModal()"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -14,20 +25,44 @@
         <div class="col-md-12 my-6 px-lg-5 px-3 vertical-center text-center">
           <div class="col-md-12 text-center" id="drag-upload">
             <label>Selected images:</label>
-            <br>
-            <label *ngIf="3>selectedImagesNames.length">No images selected</label>
-            <tr *ngFor="let name of selectedImagesNames; let i=index;" class="text-left">
-              <td *ngIf="i<selectedImagesNames.length-2">{{selectedImagesNames[i]}}</td>
+            <br />
+            <label *ngIf="3 > selectedImagesNames.length"
+              >No images selected</label
+            >
+            <tr
+              *ngFor="let name of selectedImagesNames; let i = index"
+              class="text-left"
+            >
+              <td *ngIf="i < selectedImagesNames.length - 2">
+                {{ selectedImagesNames[i] }}
+              </td>
             </tr>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <div class="img-upload-btn-wrapper bg-primary btn-sm mr-auto ">
-          <button class="btn btn-primary" style="padding: revert;">Select Images</button>
-          <input type="file" accept="image/*" class="file-upload" name="imgupload" id="imgupload" (change)="fileNames($event.target.files)"  multiple/>
+        <div class="img-upload-btn-wrapper bg-primary btn-sm mr-auto">
+          <button class="btn btn-primary" style="padding: revert">
+            Select Images
+          </button>
+          <input
+            type="file"
+            accept="image/*"
+            class="file-upload"
+            name="imgupload"
+            id="imgupload"
+            (change)="fileNames($event.target.files)"
+            multiple
+          />
         </div>
-        <button type="button" class="btn btn-secondary" (click)='hideImageModal()' data-dismiss="modal">Cancel</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="hideImageModal()"
+          data-dismiss="modal"
+        >
+          Cancel
+        </button>
         <button type="button" class="btn btn-primary">Upload</button>
       </div>
     </div>

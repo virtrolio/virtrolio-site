@@ -1,15 +1,21 @@
 import { Component, ViewChild } from '@angular/core';
-import { BsModalService, BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
+import {
+  BsModalService,
+  BsModalRef,
+  ModalDirective,
+} from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 
 @Component({
   selector: 'app-image-modal',
   templateUrl: './image-modal.component.html',
-  styleUrls: ['./image-modal.component.css']
+  styleUrls: ['./image-modal.component.css'],
 })
 export class ImageModalComponent {
   modalRef: BsModalRef;
 
+  selectedImagesNames: string[] = [];
+  selectedImages: File[] = [];
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
@@ -24,9 +30,6 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
-  selectedImagesNames: String[] = [];
-  selectedImages: File[] = [];
-
   fileNames(fileInput: any) {
     this.selectedImagesNames = [];
     this.selectedImages = [];
@@ -34,14 +37,15 @@ export class ImageModalComponent {
     if (fileInput.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
       return;
-    } 
-    for (var i in fileInput) {
+    }
+    for (const i in fileInput) {
       if (fileInput[i].size > 64000000) {
         this.ErrorAlertComponent.addImageSizeLimit(fileInput[i].name);
         continue;
+      } else {
+        this.selectedImagesNames.push(fileInput[i].name);
+        this.selectedImages.push(fileInput[i]);
       }
-      this.selectedImagesNames.push(fileInput[i].name);
-      this.selectedImages.push(fileInput[i]);
     }
   }
 }
