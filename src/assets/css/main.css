@@ -202,3 +202,9 @@ a.clickable-object:hover {
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
 }
+
+.display-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}

@@ -1,13 +1,31 @@
 <div class="container vertical-center montserrat">
   <div class="row mx-3 mt-3 justify-content-center">
-    <h1 class="display-4" id="title-text">{{ name ? name : 'No one' }} will receive your message soon!</h1>
+    <h1 class="display-text">
+      {{ name ? name : 'No one' }} will receive your message soon!
+    </h1>
   </div>
-  <div class="row mx-2 my-3 justify-content-center">
+  <div class="row mx-2 my-5 justify-content-center">
     <!-- Paper plane SVG -->
-    <img alt="Paper plane graphic" id="graphic" src="../../../assets/images/MessageSent-Light.svg">
+    <img
+      alt="Paper plane graphic"
+      id="graphic"
+      src="../../../assets/images/MessageSent-Light.svg"
+    />
   </div>
   <div class="row justify-content-center mb-3" id="buttons">
-    <button class="col-sm-4 col-md-3 btn btn-primary" routerLink="/my-virtrolio" type="button">My virtrolio</button>
-    <button class="col-sm-4 col-md-3 btn btn-primary" routerLink="" type="button">Home Page</button>
+    <button
+      class="col-sm-4 col-md-3 btn btn-primary"
+      routerLink="/my-virtrolio"
+      type="button"
+    >
+      My virtrolio
+    </button>
+    <button
+      class="col-sm-4 col-md-3 btn btn-primary"
+      routerLink=""
+      type="button"
+    >
+      Home Page
+    </button>
   </div>
 </div>
