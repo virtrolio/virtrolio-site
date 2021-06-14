@@ -45,9 +45,11 @@ import { SingleMessageComponent } from './pages/viewing/single-message/single-me
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 // Services
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
+import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.component';
 
 @NgModule({
   declarations: [
@@ -76,9 +78,11 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     SigningComponent,
     SingleMessageComponent,
     TermsOfServiceComponent,
-    ViewingComponent
+    ViewingComponent,
+    ErrorAlertComponent
   ],
   imports: [
+    AlertModule.forRoot(),
     AngularFireAnalyticsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
