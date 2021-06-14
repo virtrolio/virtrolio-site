@@ -208,3 +208,8 @@ a.clickable-object:hover {
   font-weight: bold;
   text-align: center;
 }
+
+.display-body-text {
+  font-size: 1em;
+  text-align: center;
+}
