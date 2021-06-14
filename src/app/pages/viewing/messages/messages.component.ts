@@ -7,6 +7,7 @@ import { ViewportScroller } from '@angular/common';
 import { MessageModalComponent } from '../message-modal/message-modal.component';
 import { VirtrolioMessage } from '../../../shared/interfaces/messages';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { MsgIoService } from '../../../core/msg-io.service';
 
 declare var $: any;
 
@@ -21,7 +22,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
   oneMessage = 'messages';
 
   constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: BsModalService) {
+              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: BsModalService,
+              public msgIOService: MsgIoService) {
   }
 
   /**

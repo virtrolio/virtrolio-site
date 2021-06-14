@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
@@ -27,6 +28,7 @@ import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/dis
 import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
 import { ImageModalComponent } from './pages/signing/image-modal/image-modal.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
@@ -50,6 +52,7 @@ import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -60,11 +63,13 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
     ContactComponent,
     DisclaimerAnchorComponent,
     DisclaimerButtonComponent,
+    ErrorAlertComponent,
     FaqComponent,
     HomeComponent,
     MessagesComponent,
     MsgSentComponent,
     MyVirtrolioComponent,
+    ImageFooterComponent,
     ImageModalComponent,
     InvalidLinkComponent,
     MessageModalComponent,
@@ -79,7 +84,6 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
     SingleMessageComponent,
     TermsOfServiceComponent,
     ViewingComponent,
-    ErrorAlertComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -87,6 +91,7 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     BrowserModule,
@@ -104,10 +109,10 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
       },
     }),
     ModalModule.forRoot(),
-    ToastrModule.forRoot()
+    SharedModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [ CookieService, LoginResolver, PendingChangesGuard ],
-  bootstrap: [ AppComponent ]
+  providers: [CookieService, LoginResolver, PendingChangesGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule { }

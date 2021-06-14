@@ -1,4 +1,5 @@
 <div class="card shadow">
+  <!-- Message header -->
   <div class="msg-header">
     <div class="msg-header-group">
       <table class="header-table">
@@ -42,11 +43,14 @@
       </table>
     </div>
   </div>
+
+  <!-- Message body -->
   <div [ngStyle]="{'background': viewService.currentMessageModal.backColor,
                    'color': viewService.currentMessageModal.fontColor,
                    'font-family': viewService.fonts[viewService.currentMessageModal.fontFamily].fontFamily
                    +','+ viewService.fonts[viewService.currentMessageModal.fontFamily].backupFont }"
        class="card-body message-card message">
     <markdown data="{{ viewService.decodeHtml(viewService.currentMessageModal.contents) }}" emoji></markdown>
+    <app-inline-images *ngIf='viewService.currentMessageModal.images' [images]='viewService.currentMessageModal.images'></app-inline-images>
   </div>
 </div>
