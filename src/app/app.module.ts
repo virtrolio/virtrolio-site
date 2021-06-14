@@ -45,7 +45,7 @@ import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-servi
 import { ViewingComponent } from './pages/viewing/viewing.component';
 // Services
 import { LoginResolver } from './core/login-resolver';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 
 @NgModule({
@@ -97,7 +97,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
         },
       },
     }),
-    NgbModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot()
   ],
   providers: [ CookieService, LoginResolver, PendingChangesGuard ],
