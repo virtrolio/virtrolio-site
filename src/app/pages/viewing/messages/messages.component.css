@@ -4,6 +4,20 @@
   font-family: Montserrat, sans-serif;
 }
 
+.loading-container {
+  width: 100%;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-border {
+  color: var(--accent);
+  height: 3em;
+  width: 3em;
+}
+
 .message {
   text-align: justify;
   font-size: 1em;
@@ -84,7 +98,7 @@
 }
 
 .profile-pic-container-small {
-  background: #FFFFFF;
+  background: #ffffff;
   height: 1.7em;
   width: 1.7em;
   border-radius: 100%;
@@ -97,7 +111,8 @@
 }
 
 /* Remove the blue outline around the buttons on the header when they're clicked */
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
   outline: none !important;
   box-shadow: none !important;
 }

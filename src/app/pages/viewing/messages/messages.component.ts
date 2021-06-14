@@ -13,16 +13,22 @@ declare var $: any;
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: [ './messages.component.css' ]
+  styleUrls: ['./messages.component.css'],
 })
-
 export class MessagesComponent implements OnInit, OnDestroy {
+  isLoading = true;
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
 
-  constructor(public viewService: ViewingService, public authService: AuthService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService, private modalService: BsModalService) {
-  }
+  constructor(
+    public viewService: ViewingService,
+    public authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private vps: ViewportScroller,
+    private toastr: ToastrService,
+    private modalService: BsModalService
+  ) {}
 
   /**
    * Assign messages passed via the [setMessageList] binding
@@ -32,11 +38,17 @@ export class MessagesComponent implements OnInit, OnDestroy {
     if (messages) {
       this.messageList = messages;
       // Set 'You have x message(s)' text based on number of messages
-      this.messageList.length === 1 ? this.oneMessage = 'message' : this.oneMessage = 'messages';
+      this.messageList.length === 1
+        ? (this.oneMessage = 'message')
+        : (this.oneMessage = 'messages');
     }
   }
 
-  ngOnInit(): void { }
+  @Input() set setIsLoading(isLoading: boolean) {
+    this.isLoading = isLoading;
+  }
+
+  ngOnInit(): void {}
 
   /**
    * Generate the lightness value of HSL from RBG
@@ -82,7 +94,13 @@ export class MessagesComponent implements OnInit, OnDestroy {
     const hB = bgB + 20 > 255 ? 255 : bgB + 20;
     const headerColor = hR.toString(16) + hG.toString(16) + hB.toString(16);
 
-    return { bg: '#' + headerColor, text: headerTextColor, trash: trashIcon, bookmark: bookmarkIcon, popup: popupIcon };
+    return {
+      bg: '#' + headerColor,
+      text: headerTextColor,
+      trash: trashIcon,
+      bookmark: bookmarkIcon,
+      popup: popupIcon,
+    };
   }
 
   /**
@@ -91,7 +109,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
    */
   popupMessage(msg: VirtrolioMessage) {
     this.viewService.currentMessageModal = msg;
-    this.modalService.show(MessageModalComponent, { class: 'modal-dialog-centered' });
+    this.modalService.show(MessageModalComponent, {
+      class: 'modal-dialog-centered',
+    });
   }
 
   /**
