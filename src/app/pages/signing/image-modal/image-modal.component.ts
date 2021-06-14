@@ -21,4 +21,17 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
+  selectedImagesNames: String[] = [];
+  selectedImages: File[] = [];
+
+  fileNames(fileInput: any) {
+    this.selectedImagesNames = [];
+    this.selectedImages = [];
+
+    for (var i in fileInput) {
+      console.log(fileInput[i].name);
+      this.selectedImagesNames.push(fileInput[i].name);
+      this.selectedImages.push(fileInput[i]);
+    }
+  }
 }

@@ -21,11 +21,11 @@
   z-index: 10;
   position: absolute;
   bottom: -1em;
-  right: 2.0em;
+  right: 2em;
 }
 
 .form-control {
-  border-color: var(--light-grey)
+  border-color: var(--light-grey);
 }
 
 .form-control:focus {
@@ -117,7 +117,8 @@ markdown {
   cursor: pointer;
 }
 
-#color-picker-font, #color-picker-background {
+#color-picker-font,
+#color-picker-background {
   opacity: 0;
   position: absolute;
   display: block;
@@ -161,7 +162,8 @@ markdown {
   text-align: center;
 }
 
-#embed-photo-dialog, .modal-content {
+#embed-photo-dialog,
+.modal-content {
   max-width: 69em;
 }
 
@@ -173,12 +175,14 @@ markdown {
   height: 1.8125em;
 }
 
-#width-slider-lg, #width-slider-sm {
+#width-slider-lg,
+#width-slider-sm {
   height: 0.625em;
   width: 6em;
 }
 
-#width-slider-field-lg, #width-slider-field-sm {
+#width-slider-field-lg,
+#width-slider-field-sm {
   width: 3.5em;
 }
 
