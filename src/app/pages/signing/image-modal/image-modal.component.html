@@ -34,37 +34,44 @@
         </div>
       </div>
       <div class="modal-footer">
-        <div class="img-upload-btn-wrapper bg-primary btn-sm mr-auto">
-          <button class="btn btn-primary" id="select-images-btn">
-            Select Images
-          </button>
-          <input
-            type="file"
-            accept="image/*"
-            class="file-upload"
-            name="imgupload"
-            id="imgupload"
-            (change)="onSelectFiles($event)"
-            multiple
-          />
+        <div class="row w-100">
+          <div class="col-6 p-0" id="footer-left-column">
+            <button
+              class="btn btn-primary"
+              id="select-images-btn"
+              (click)="imgUpload.click()"
+            >
+              Select Images
+            </button>
+            <input
+              type="file"
+              accept="image/*"
+              class="file-upload d-none"
+              id="img-upload"
+              (change)="onSelectFiles($event)"
+              multiple
+              #imgUpload
+            />
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="this.selectedImagesURLs = []"
+            >
+              Clear Images
+            </button>
+          </div>
+          <div class="col-6 p-0" id="footer-right-column">
+            <button type="button" class="btn btn-primary">Upload</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="hideImageModal()"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="this.selectedImagesURLs = []"
-        >
-          <!-- TODO: Float this button left -->
-          Clear Images
-        </button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="hideImageModal()"
-          data-dismiss="modal"
-        >
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary">Upload</button>
       </div>
     </div>
   </div>
