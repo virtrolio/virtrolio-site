@@ -6,3 +6,11 @@
 .modal-body {
   min-height: 25vh;
 }
+
+.image-buttons {
+  margin-top: 1em;
+}
+
+#no-images-graphic {
+  max-width: 100%;
+}
