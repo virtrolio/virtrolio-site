@@ -1,4 +1,7 @@
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import {
+  AngularFireAuthGuard,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
 import { NgModule } from '@angular/core';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,14 +27,14 @@ import { LoginResolver } from './core/login-resolver';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { RejeccComponent } from './pages/rejecc/rejecc.component';
 import { SigningGuard } from './core/signing.guard';
-import { PreventURLAccessGuard } from './core/prevent-urlaccess.guard';
 
-const redirectUnauthorized = () => redirectUnauthorizedTo([ '/access-denied' ]);
+const redirectUnauthorized = () => redirectUnauthorizedTo(['/access-denied']);
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent,
-    resolve: { user: LoginResolver }
+    path: '',
+    component: HomeComponent,
+    resolve: { user: LoginResolver },
   },
   { path: 'about', component: AboutComponent },
   { path: 'access-denied-beta', component: AccessDeniedBetaComponent },
@@ -56,9 +59,9 @@ const routes: Routes = [
   {
     path: 'my-virtrolio',
     component: MyVirtrolioComponent,
-    canActivate: [ AngularFireAuthGuard ],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorized },
-    resolve: { user: LoginResolver }
+    resolve: { user: LoginResolver },
   },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   {
@@ -69,16 +72,16 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
-    canActivate: [ AngularFireAuthGuard ],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorized },
-    resolve: { user: LoginResolver }
+    resolve: { user: LoginResolver },
   },
   {
     path: 'signing',
     component: SigningComponent,
-    canActivate: [ SigningGuard ],
+    canActivate: [SigningGuard],
     resolve: { user: LoginResolver },
-    canDeactivate: [ PendingChangesGuard ]
+    canDeactivate: [PendingChangesGuard],
   },
   {
     path: 'signing-auth-redirect',
@@ -89,23 +92,23 @@ const routes: Routes = [
   {
     path: 'viewing',
     component: ViewingComponent,
-    canActivate: [ AngularFireAuthGuard ],
+    canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorized },
-    resolve: { user: LoginResolver }
+    resolve: { user: LoginResolver },
   },
   { path: 'page-not-found', component: PageNotFoundComponent },
-  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' }
+  { path: '**', pathMatch: 'full', redirectTo: '/page-not-found' },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes,
-    {
-    scrollPositionRestoration: 'enabled', // scroll to top when routerLinking
-    anchorScrolling: 'enabled',
-    onSameUrlNavigation: 'reload',
-    relativeLinkResolution: 'legacy'
-}) ],
-  exports: [ RouterModule ]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled', // scroll to top when routerLinking
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload',
+      relativeLinkResolution: 'legacy',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

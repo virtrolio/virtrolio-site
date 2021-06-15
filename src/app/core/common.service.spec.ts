@@ -6,7 +6,7 @@ describe('CommonService', () => {
   let service: CommonService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(CommonService);
   });
 

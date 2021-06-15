@@ -1,27 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Virtrolio - Stay connected. Even when you're apart.</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A free, customizable, and private yearbook signing service built for students everywhere.">
-  <meta name="google-site-verification" content="p6YwJPIbFky-4SqnmPFLZALvVv7OJn2tt06ZOUGWmlk"/>
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Virtrolio - Stay connected. Even when you're apart.</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A free, customizable, and private yearbook signing service built for students everywhere."
+    />
+    <meta
+      name="google-site-verification"
+      content="p6YwJPIbFky-4SqnmPFLZALvVv7OJn2tt06ZOUGWmlk"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
+  </head>
+  <body>
+    <!--suppress JSUnresolvedVariable -->
+    <script>
+      // Alert IE users that our website is not compatible. documentMode seems to give WebStorm an error despite it working
+      let isIE = !!document.documentMode;
 
-<!--suppress JSUnresolvedVariable -->
-<script>
-  // Alert IE users that our website is not compatible. documentMode seems to give WebStorm an error despite it working
-  let isIE = !!document.documentMode;
+      if (isIE) {
+        document.body.innerHTML =
+          "We're sorry, but Virtrolio is not supported on Internet Explorer. Please use a more " +
+          'modern browser such as Chrome or Firefox or Edge.';
+      }
+    </script>
 
-  if (isIE) {
-    document.body.innerHTML = "We're sorry, but Virtrolio is not supported on Internet Explorer. Please use a more " +
-      "modern browser such as Chrome or Firefox or Edge.";
-  }
-</script>
-
-<app-root></app-root>
-</body>
+    <app-root></app-root>
+  </body>
 </html>

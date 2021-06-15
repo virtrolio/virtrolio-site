@@ -65,7 +65,9 @@
   overflow-x: auto;
 }
 
-.sharing-link-body > label, #sharing-link-buttons > label, #sharing-link-buttons > div > label {
+.sharing-link-body > label,
+#sharing-link-buttons > label,
+#sharing-link-buttons > div > label {
   display: none;
 }
 
@@ -82,11 +84,11 @@
 }
 
 #twitter-button {
-  background-color: #1DA1F2;
+  background-color: #1da1f2;
 }
 
 #email-button {
-  background-color: #B23122;
+  background-color: #b23122;
 }
 
 #sharing-buttons > button {

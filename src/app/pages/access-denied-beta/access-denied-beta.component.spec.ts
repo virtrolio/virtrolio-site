@@ -6,12 +6,13 @@ describe('AccessDeniedBetaComponent', () => {
   let component: AccessDeniedBetaComponent;
   let fixture: ComponentFixture<AccessDeniedBetaComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AccessDeniedBetaComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [AccessDeniedBetaComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccessDeniedBetaComponent);

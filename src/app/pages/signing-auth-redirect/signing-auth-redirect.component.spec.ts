@@ -6,12 +6,13 @@ describe('FriendLinkComponent', () => {
   let component: SigningAuthRedirectComponent;
   let fixture: ComponentFixture<SigningAuthRedirectComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SigningAuthRedirectComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SigningAuthRedirectComponent],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SigningAuthRedirectComponent);

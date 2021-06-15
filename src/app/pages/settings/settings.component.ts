@@ -9,15 +9,19 @@ declare var $: any;
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: [ './settings.component.css' ]
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   downloadMessagesData;
   downloadUserData;
   exportErrorText: string;
 
-  constructor(public authService: AuthService, private msgIoService: MsgIoService, private sanitizer: DomSanitizer, private title: Title) {
-  }
+  constructor(
+    public authService: AuthService,
+    private msgIoService: MsgIoService,
+    private sanitizer: DomSanitizer,
+    private title: Title
+  ) {}
 
   private static decodeHtml(html: string) {
     const txt = document.createElement('textarea');
@@ -45,24 +49,33 @@ export class SettingsComponent implements OnInit, OnDestroy {
     try {
       // Get data
       // Looser types is to allow the message array to be replaced with a single error if there are no messages
-      let messages: Array<any> | void = await this.msgIoService.getMessages().pipe(take(1)).toPromise();
+      let messages: Array<any> | void = await this.msgIoService
+        .getMessages()
+        .pipe(take(1))
+        .toPromise();
       const userData = await this.authService.getUserData();
       // Convert encoded text to normal text
       if (messages) {
-        messages.forEach(message => {
+        messages.forEach((message) => {
           message.contents = SettingsComponent.decodeHtml(message.contents);
         });
       } else {
-        messages = [ {
-          error: 'No messages found'
-        } ];
+        messages = [
+          {
+            error: 'No messages found',
+          },
+        ];
       }
       // Convert data to JSON
       const messagesJSON = JSON.stringify(messages, null, 2);
       const userJSON = JSON.stringify(userData, null, 2);
       // Set download buttons
-      this.downloadMessagesData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON));
-      this.downloadUserData = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON));
+      this.downloadMessagesData = this.sanitizer.bypassSecurityTrustUrl(
+        'data:text/json;charset=UTF-8,' + encodeURIComponent(messagesJSON)
+      );
+      this.downloadUserData = this.sanitizer.bypassSecurityTrustUrl(
+        'data:text/json;charset=UTF-8,' + encodeURIComponent(userJSON)
+      );
       downloadModal.modal('show');
     } catch (e) {
       this.exportErrorText = e;

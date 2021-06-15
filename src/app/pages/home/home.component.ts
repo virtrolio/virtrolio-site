@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { AuthService } from '../../core/auth.service';
 import { Title } from '@angular/platform-browser';
-import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: [ './home.component.css' ]
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   screenHeight: number;
@@ -22,13 +21,13 @@ export class HomeComponent implements OnInit {
   /**
    * "Subscribes" to the window resize event to update current value of viewport height
    */
-  @HostListener('window:resize', [ '$event' ])
+  @HostListener('window:resize', ['$event'])
   getScreenSize() {
     this.screenHeight = window.innerHeight;
   }
 
   ngOnInit(): void {
-    this.title.setTitle('Virtrolio - Stay connected. Even when you\'re apart.');
+    this.title.setTitle("Virtrolio - Stay connected. Even when you're apart.");
   }
 
   /**

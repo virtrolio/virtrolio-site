@@ -1,6 +1,10 @@
 .navbar {
   background: var(--accent);
-  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--navbar-left) 0%,
+    var(--navbar-right) 100%
+  );
   position: fixed;
   top: 0;
   width: 100%;
@@ -21,18 +25,18 @@
 }
 
 .navbar-nav-active {
-  color: #FFFFFF !important;
-  text-decoration: underline #FFFFFFBF !important;
+  color: #ffffff !important;
+  text-decoration: underline #ffffffbf !important;
   text-underline-offset: 0.2em;
 }
 
 .navbar-nav li a {
-  color: #FEFEFE;
+  color: #fefefe;
   opacity: 0.75;
 }
 
 .navbar-nav li:hover a:hover {
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -67,7 +71,11 @@
 @media (max-width: 767px) {
   .navbar-collapse {
     background: var(--accent);
-    background: linear-gradient(90deg, rgba(250, 128, 114, 1) 0%, rgba(251, 91, 91, 1) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(250, 128, 114, 1) 0%,
+      rgba(251, 91, 91, 1) 100%
+    );
     box-shadow: 0 0.5em 1em -1em black;
     border-radius: 0 0 1em 1em;
     font-weight: bold;

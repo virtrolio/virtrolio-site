@@ -1,1 +1,14 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960"><defs><style>.cls-1{fill:#fff;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:21px;}</style></defs><title>SigningIcon</title><polygon class="cls-1" points="134.5 785.25 333.5 378.25 564.5 646.85 672.5 581.24 825.5 785.25 134.5 785.25"/><circle class="cls-1" cx="607" cy="279.75" r="105"/></svg>
+<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 960'>
+  <defs>
+    <style>.cls-1 {
+      fill: #fff;
+      stroke: #fff;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 21px;
+    }</style>
+  </defs>
+  <title>SigningIcon</title>
+  <polygon class='cls-1' points='134.5 785.25 333.5 378.25 564.5 646.85 672.5 581.24 825.5 785.25 134.5 785.25' />
+  <circle class='cls-1' cx='607' cy='279.75' r='105' />
+</svg>

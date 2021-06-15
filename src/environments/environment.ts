@@ -13,8 +13,8 @@ export const environment = {
     storageBucket: 'virtrolio.appspot.com',
     messagingSenderId: '929821853702',
     appId: '1:929821853702:web:dfb4740eb6984e49f69b87',
-    measurementId: 'G-BT5XXRVZXP'
-  }
+    measurementId: 'G-BT5XXRVZXP',
+  },
 };
 
 /*
