@@ -9,7 +9,7 @@ import { Fonts } from '../shared/interfaces/fonts';
 import { CommonService } from './common.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ViewingService {
   fonts: Fonts;
@@ -22,13 +22,18 @@ export class ViewingService {
   /**
    * Retrieve message data from database
    */
-  constructor(public msgIo: MsgIoService, private route: ActivatedRoute,
-              private router: Router, private vps: ViewportScroller, private toastr: ToastrService) {
+  constructor(
+    public msgIo: MsgIoService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private vps: ViewportScroller,
+    private toastr: ToastrService
+  ) {
     this.fonts = FontService.fonts;
   }
 
   getMessageById(id: string) {
-    this.msgIo.getMessage(id).subscribe(message => {
+    this.msgIo.getMessage(id).subscribe((message) => {
       this.singleMessage = message;
     });
   }
@@ -54,16 +59,16 @@ export class ViewingService {
       return Math.round(secondsPast).toString() + 's ago';
     }
     if (secondsPast < 3600) {
-      return (Math.round(secondsPast / 60)).toString() + 'm ago';
+      return Math.round(secondsPast / 60).toString() + 'm ago';
     }
     if (secondsPast < 86400) {
-      return (Math.round(secondsPast / 3600)).toString() + 'h ago';
+      return Math.round(secondsPast / 3600).toString() + 'h ago';
     }
     if (secondsPast <= 172800) {
       return '1 day ago';
     }
     if (secondsPast <= 604800) {
-      return (Math.round(secondsPast / 86400)).toString() + ' days ago';
+      return Math.round(secondsPast / 86400).toString() + ' days ago';
     }
     if (secondsPast > 604800) {
       // Return the full date if the Timestamp is past a week ago
@@ -91,17 +96,21 @@ export class ViewingService {
    * Wrapper around deleteMessage()
    */
   deleteMessage() {
-    this.msgIo.deleteMessage(this.messageToDelete).then(() => {
-      this.toastr.success('Message deleted successfully', 'Poof!', { positionClass: 'toast-bottom-full-width' });
-    }).catch(e => {
-      CommonService.displayError(e);
-    });
+    this.msgIo
+      .deleteMessage(this.messageToDelete)
+      .then(() => {
+        this.toastr.success('Message deleted successfully', 'Poof!', {
+          positionClass: 'toast-bottom-full-width',
+        });
+      })
+      .catch((e) => {
+        CommonService.displayError(e);
+      });
   }
 
   /**
    * Append messageId query params to the url
    * @param id messageId
    */
-  bookmarkMessage(id: string) {
-  }
+  bookmarkMessage(id: string) {}
 }

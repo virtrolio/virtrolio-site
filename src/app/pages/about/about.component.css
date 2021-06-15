@@ -47,7 +47,8 @@
   overflow: hidden;
 }
 
-.image-container, .image-container > img {
+.image-container,
+.image-container > img {
   overflow: hidden !important;
 }
 
@@ -57,4 +58,22 @@ ul {
 
 #special {
   flex-direction: row !important;
+}
+
+.about-us-img {
+  width: 100%;
+}
+
+.about-us-img-container {
+  height: 100%;
+}
+
+.about-us-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  text-align: justify;
+}
+
+.contact-list {
+  list-style-type: none;
 }

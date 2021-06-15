@@ -9,7 +9,7 @@ import { VirtrolioMessage } from '../../../shared/interfaces/messages';
 @Component({
   selector: 'app-responses-list',
   templateUrl: './responses-list.component.html',
-  styleUrls: [ './responses-list.component.css' ]
+  styleUrls: ['./responses-list.component.css'],
 })
 export class ResponsesListComponent implements OnInit {
   public displayName: string;
@@ -20,20 +20,28 @@ export class ResponsesListComponent implements OnInit {
   public showNewToViewing = true;
   private showNewToViewingValue: string;
 
-  constructor(public viewService: ViewingService, private vps: ViewportScroller, public authService: AuthService,
-              private cookieService: CookieService) {
+  constructor(
+    public viewService: ViewingService,
+    private vps: ViewportScroller,
+    public authService: AuthService,
+    private cookieService: CookieService
+  ) {
     try {
       this.uid = this.authService.uid();
     } catch (e) {
-       CommonService.displayError(e);
+      CommonService.displayError(e);
     }
     try {
-      this.authService.displayName(this.uid).then((displayName) => { this.displayName = displayName; });
+      this.authService.displayName(this.uid).then((displayName) => {
+        this.displayName = displayName;
+      });
     } catch (e) {
       this.displayName = 'User';
     }
     try {
-      this.authService.profilePictureLink(this.uid).then((photoUrl) => { this.photoUrl = photoUrl; });
+      this.authService.profilePictureLink(this.uid).then((photoUrl) => {
+        this.photoUrl = photoUrl;
+      });
     } catch (e) {
       // Use the logo as a fallback profile picture
       this.photoUrl = '../../../../assets/images/logo_reg.png';
@@ -62,7 +70,9 @@ export class ResponsesListComponent implements OnInit {
     } else if (this.showNewToViewingValue === 'false') {
       this.showNewToViewing = false;
     } else {
-      CommonService.displayError('Viewing-cookie not found or initialized properly.');
+      CommonService.displayError(
+        'Viewing-cookie not found or initialized properly.'
+      );
     }
   }
 

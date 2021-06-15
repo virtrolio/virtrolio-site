@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { VirtrolioUser } from '../shared/interfaces/users';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharingLinkService {
-
-  constructor(private authService: AuthService, private afs: AngularFirestore) { }
+  constructor(
+    private authService: AuthService,
+    private afs: AngularFirestore
+  ) {}
 
   /**
    * Generates the shareable signing link for the current user. The signing link has two query parameters that are used
@@ -24,8 +29,13 @@ export class SharingLinkService {
     let link = 'https://virtrolio.web.app/signing?uid=';
     const user = this.authService.uid();
     link += user + '&key=';
-    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
-    let userDoc: VirtrolioUser = await userRef.valueChanges().pipe(take(1)).toPromise();
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs
+      .collection('users')
+      .doc<VirtrolioUser>(user);
+    let userDoc: VirtrolioUser = await userRef
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
     if (!userDoc) {
       await this.authService.createUser(this.authService.getUser());
       userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
@@ -56,15 +66,19 @@ export class SharingLinkService {
       throw new Error('Argument Key was not provided');
     }
 
-    await this.authService.asyncThrowErrorIfLoggedOut('verify the key that you provided');
+    await this.authService.asyncThrowErrorIfLoggedOut(
+      'verify the key that you provided'
+    );
 
-    return this.authService.userExists(uid).then(async userExists => {
+    return this.authService.userExists(uid).then(async (userExists) => {
       if (userExists) {
-        const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
+        const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs
+          .collection('users')
+          .doc<VirtrolioUser>(uid);
         const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
         return key === userDoc.key;
       } else {
-        throw new ReferenceError('User does not exist in the \'users\' database');
+        throw new ReferenceError("User does not exist in the 'users' database");
       }
     });
   }
@@ -78,21 +92,21 @@ export class SharingLinkService {
   async changeKey(): Promise<void> {
     await this.authService.asyncThrowErrorIfLoggedOut('change your key');
     const user = this.authService.uid();
-    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user);
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs
+      .collection('users')
+      .doc<VirtrolioUser>(user);
     const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise();
-    if (!('key' in userDoc)) { // This triggers if the key doesn't exist
-      return userRef.update(
-        { key: AuthService.generateKey() }
-      );
-    } else { // If the key does exist, need to make sure the new key is unique
+    if (!('key' in userDoc)) {
+      // This triggers if the key doesn't exist
+      return userRef.update({ key: AuthService.generateKey() });
+    } else {
+      // If the key does exist, need to make sure the new key is unique
       const oldKey = userDoc.key;
       let newKey = AuthService.generateKey();
       while (oldKey === newKey) {
         newKey = AuthService.generateKey();
       }
-      return userRef.update(
-        { key: newKey }
-      );
+      return userRef.update({ key: newKey });
     }
   }
 }

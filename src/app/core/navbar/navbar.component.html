@@ -1,88 +1,191 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-light">
   <a class="navbar-brand" id="navbar_title" routerLink="">
     <!--suppress CheckImageSize -->
-    <img alt="Virtrolio Logo" class="d-inline-block align-top" height="30"
-      src="../../../assets/images/logo_inverted-circle.png" width="30">
+    <img
+      alt="Virtrolio Logo"
+      class="d-inline-block align-top"
+      height="30"
+      src="../../../assets/images/logo_inverted-circle.png"
+      width="30"
+    />
     Virtrolio
   </a>
   <!-- Hamburger menu on mobile -->
-  <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-    data-target="#navbarNav" data-toggle="collapse" type="button">
+  <button
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    class="navbar-toggler"
+    data-target="#navbarNav"
+    data-toggle="collapse"
+    type="button"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- Collapsible menu items -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-2">
       <li class="nav-item">
-        <a class="nav-link" routerLink="" routerLinkActive="navbar-nav-active"
-           [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a
+          class="nav-link"
+          routerLink=""
+          routerLinkActive="navbar-nav-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
       </li>
       <li class="nav-item">
-        <a [hidden]="!authService.isLoggedIn()"
-           class="nav-link" routerLink="my-virtrolio" routerLinkActive="navbar-nav-active">My virtrolio</a>
+        <a
+          [hidden]="!authService.isLoggedIn()"
+          class="nav-link"
+          routerLink="my-virtrolio"
+          routerLinkActive="navbar-nav-active"
+          >My virtrolio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="about" routerLinkActive="navbar-nav-active">About Us</a>
+        <a
+          class="nav-link"
+          routerLink="about"
+          routerLinkActive="navbar-nav-active"
+          >About Us</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="faq" routerLinkActive="navbar-nav-active">FAQ</a>
+        <a
+          class="nav-link"
+          routerLink="faq"
+          routerLinkActive="navbar-nav-active"
+          >FAQ</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="contact" routerLinkActive="navbar-nav-active">Contact Us</a>
+        <a
+          class="nav-link"
+          routerLink="contact"
+          routerLinkActive="navbar-nav-active"
+          >Contact Us</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" role="button" data-toggle="modal" data-target="#changelog">What's New?</a>
+        <a
+          class="nav-link"
+          role="button"
+          data-toggle="modal"
+          data-target="#changelog"
+          >What's New?</a
+        >
       </li>
-      <li *ngIf="authService.isLoggedIn()" class="dropdown-divider d-block d-sm-block d-md-none"></li>
+      <li
+        *ngIf="authService.isLoggedIn()"
+        class="dropdown-divider d-block d-sm-block d-md-none"
+      ></li>
       <li class="nav-item d-block d-sm-block d-md-none">
-        <a [hidden]="!authService.isLoggedIn()" class="nav-link" routerLink="settings">Settings</a>
+        <a
+          [hidden]="!authService.isLoggedIn()"
+          class="nav-link"
+          routerLink="settings"
+          >Settings</a
+        >
       </li>
       <li class="nav-item d-block d-sm-block d-md-none">
-        <a [hidden]="!authService.isLoggedIn()" (click)="authService.logout()" class="nav-link" href="#">Logout</a>
+        <a
+          [hidden]="!authService.isLoggedIn()"
+          (click)="authService.logout()"
+          class="nav-link"
+          href="#"
+          >Logout</a
+        >
       </li>
     </ul>
   </div>
   <!-- Profile pic menu on desktop if logged in -->
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">
     <div class="dropdown dropleft">
-      <a aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" id="dropdownMenuLink" role="button">
-        <div *ngIf="authService.isLoggedIn()" class="float-right profile-pic-container">
-          <img alt="profile-pic" class="profile-pic" src="{{ authService.notAsyncProfilePictureLink() }}">
+      <a
+        aria-expanded="false"
+        aria-haspopup="true"
+        data-toggle="dropdown"
+        href="#"
+        id="dropdownMenuLink"
+        role="button"
+      >
+        <div
+          *ngIf="authService.isLoggedIn()"
+          class="float-right profile-pic-container"
+        >
+          <img
+            alt="profile-pic"
+            class="profile-pic"
+            src="{{ authService.notAsyncProfilePictureLink() }}"
+          />
         </div>
       </a>
       <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
         <a class="dropdown-item" routerLink="settings">Settings</a>
-        <a (click)="authService.logout()" class="dropdown-item" href="#" id="logout-text">Logout</a>
+        <a
+          (click)="authService.logout()"
+          class="dropdown-item"
+          href="#"
+          id="logout-text"
+          >Logout</a
+        >
       </div>
     </div>
   </div>
 </nav>
 
 <!-- Changelog modal -->
-<div class="modal fade" id="changelog" tabindex="-1" role="dialog" aria-labelledby="changelog-label" aria-hidden="true">
+<div
+  class="modal fade"
+  id="changelog"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="changelog-label"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="changelog-label">Changelog</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="changelog-body">
-        <p>New features, fixes, and updates will be posted here whenever we update the website!</p>
-        <p id="changelog-note"><small>Note: Whenever we release an update to the 'signing' page, we may, at our
-            discretion, allow
-            you to send <em>another</em> message to each of your friends' virtrolios! This ensures that you will
-            be able to enjoy any new features that we develop. Keep an eye on this changelog as we will mention here if
-            we ever do give
-            you another message opportunity.</small></p>
+        <p>
+          New features, fixes, and updates will be posted here whenever we
+          update the website!
+        </p>
+        <p id="changelog-note">
+          <small
+            >Note: Whenever we release an update to the 'signing' page, we may,
+            at our discretion, allow you to send <em>another</em> message to
+            each of your friends' virtrolios! This ensures that you will be able
+            to enjoy any new features that we develop. Keep an eye on this
+            changelog as we will mention here if we ever do give you another
+            message opportunity.</small
+          >
+        </p>
         <ng-container *ngFor="let version of changelog">
           <div *ngIf="version.betaUpdate === false || beta === true">
-            <p><strong>v{{ version.versionNumber }} | {{ version.releaseDate }}</strong></p>
+            <p>
+              <strong
+                >v{{ version.versionNumber }} |
+                {{ version.releaseDate }}</strong
+              >
+            </p>
             <ul>
               <ng-container *ngFor="let item of version.items">
                 <li *ngIf="item.betaFlag === false || beta === true">
-                  <span [attr.class]="item.typeCSS">[{{ item.type }}]</span>&nbsp;<u>{{ item.location }}</u>:
+                  <span [attr.class]="item.typeCSS">[{{ item.type }}]</span
+                  >&nbsp;<u>{{ item.location }}</u
+                  >:
                   {{ item.content }}
                 </li>
               </ng-container>
@@ -91,7 +194,9 @@
         </ng-container>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>

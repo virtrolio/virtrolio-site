@@ -6,7 +6,7 @@ import { Contributor } from '../../shared/interfaces/contributor';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: [ './about.component.css' ]
+  styleUrls: ['./about.component.css'],
 })
 
 /**
@@ -15,10 +15,9 @@ import { Contributor } from '../../shared/interfaces/contributor';
 export class AboutComponent implements OnInit {
   public contributors: Contributor[] = contributors;
 
-  constructor(private title: Title) { }
+  constructor(private title: Title) {}
 
   ngOnInit(): void {
     this.title.setTitle('About Us | Virtrolio');
   }
-
 }

@@ -6,12 +6,13 @@ describe('SingleMessageComponent', () => {
   let component: SingleMessageComponent;
   let fixture: ComponentFixture<SingleMessageComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SingleMessageComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SingleMessageComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SingleMessageComponent);

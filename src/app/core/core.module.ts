@@ -6,20 +6,9 @@ import { AppRoutingModule } from '../app-routing.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    RouterModule,
-    AppRoutingModule,
-    CommonModule
-  ],
-  declarations: [
-    NavbarComponent,
-    FooterComponent
-  ],
-  exports: [
-    NavbarComponent,
-    FooterComponent
-  ],
-  providers: []
+  imports: [RouterModule, AppRoutingModule, CommonModule],
+  declarations: [NavbarComponent, FooterComponent],
+  exports: [NavbarComponent, FooterComponent],
+  providers: [],
 })
-export class CoreModule {
-}
+export class CoreModule {}

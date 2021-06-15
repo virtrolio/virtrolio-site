@@ -74,7 +74,7 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     SigningComponent,
     SingleMessageComponent,
     TermsOfServiceComponent,
-    ViewingComponent
+    ViewingComponent,
   ],
   imports: [
     AngularFireAnalyticsModule,
@@ -98,10 +98,9 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
       },
     }),
     ModalModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
-  providers: [ CookieService, LoginResolver, PendingChangesGuard ],
-  bootstrap: [ AppComponent ]
+  providers: [CookieService, LoginResolver, PendingChangesGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

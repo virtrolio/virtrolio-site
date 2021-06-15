@@ -6,7 +6,7 @@ describe('MsgIoService', () => {
   let service: MsgIoService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(MsgIoService);
   });
 
