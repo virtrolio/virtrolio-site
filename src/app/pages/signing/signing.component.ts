@@ -104,6 +104,26 @@ export class SigningComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Checks if the user has uploaded any images to the image modal
+   */
+  checkImageList(numerical?: boolean) {
+    if (this.imageModalComponent === undefined) {
+      // Check if image modal component has not been rendered yet
+      return numerical ? 0 : false;
+    } else if (this.imageModalComponent.selectedImagesURLs.length === 0) {
+      return numerical ? 0 : false;
+    } else if (this.imageModalComponent.selectedImagesURLs.length > 0) {
+      return numerical
+        ? this.imageModalComponent.selectedImagesURLs.length
+        : true;
+    } else {
+      CommonService.displayError(
+        'There was an error while checking your uploaded images'
+      );
+    }
+  }
+
+  /**
    * Creates a new blank message and fills in all the info before sending it
    * @param textbox - the textbox where the contents of the message are retrieved from (not the preview box)
    */

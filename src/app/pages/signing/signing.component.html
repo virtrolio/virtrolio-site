@@ -153,18 +153,6 @@
         </button>
 
         <!-- Other buttons -->
-        <button
-          type="button"
-          class="btn btn-secondary btn-format mr-2 icon-wrapper"
-          id="btn-photo"
-          (click)="this.imageModalComponent.showImageModal()"
-        >
-          <img
-            alt="image icon"
-            id="image-icon"
-            src="../../../assets/images/icons/SigningIcon_image.svg"
-          />
-        </button>
         <a
           tabindex="0"
           role="button"
@@ -181,6 +169,27 @@
            supported emojis</a> to make sure! ❤"
           >😀
         </a>
+        <div class="position-relative" id="image-button-wrapper">
+          <button
+            type="button"
+            class="btn btn-format icon-wrapper"
+            [ngClass]="checkImageList() ? 'btn-primary' : 'btn-secondary'"
+            id="btn-photo"
+            (click)="this.imageModalComponent.showImageModal()"
+          >
+            <img
+              alt="image icon"
+              id="image-icon"
+              src="../../../assets/images/icons/SigningIcon_image.svg"
+            />
+          </button>
+          <span
+            *ngIf="checkImageList()"
+            class="d-flex align-items-center justify-content-center"
+            id="image-notification-circle"
+            >{{ checkImageList(true) }}</span
+          >
+        </div>
 
         <button
           type="button"
