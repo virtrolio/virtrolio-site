@@ -78,7 +78,8 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "semicolon": {
       "options": [
