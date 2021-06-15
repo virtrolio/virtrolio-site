@@ -1,29 +1,29 @@
-<div class='row justify-content-center pt-5'>
-  <div class='single-message-view col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8'>
-    <div class='author-card'>
-      <span class='profile-pic-container-small'>
+<div class="row justify-content-center pt-5">
+  <div class="single-message-view col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+    <div class="author-card">
+      <span class="profile-pic-container-small">
         <img
-          alt='profile-pic'
-          class='profile-pic'
-          src='{{ singleMessage.fromPic }}'
+          alt="profile-pic"
+          class="profile-pic"
+          src="{{ singleMessage.fromPic }}"
         />
       </span>
     </div>
-    <div class='author-card mb-3'>
+    <div class="author-card mb-3">
       <table>
-        <tr class='msg-header-text'>
+        <tr class="msg-header-text">
           {{
-          singleMessage.fromName
+            singleMessage.fromName
           }}
         </tr>
-        <tr class='msg-header-date'>
+        <tr class="msg-header-date">
           {{
-          singleMessage.timestamp.toDate().toDateString()
+            singleMessage.timestamp.toDate().toDateString()
           }}
         </tr>
       </table>
     </div>
-    <div class='card shadow message-card'>
+    <div class="card shadow message-card">
       <div
         [ngStyle]="{
           background: singleMessage.backColor,
@@ -33,25 +33,33 @@
             ',' +
             viewService.fonts[singleMessage.fontFamily].backupFont
         }"
-        class='card-body message-card message'
+        class="card-body message-card message"
       >
         <markdown
-          data='{{ viewService.decodeHtml(singleMessage.contents) }}'
+          data="{{ viewService.decodeHtml(singleMessage.contents) }}"
           emoji
         ></markdown>
-        <app-inline-images *ngIf='singleMessage.images' [images]='singleMessage.images'></app-inline-images>
+        <app-inline-images
+          *ngIf="singleMessage.images"
+          [images]="singleMessage.images"
+        ></app-inline-images>
       </div>
     </div>
   </div>
 </div>
 <div
-  *ngIf='showCloseButton; else backButton'
-  class='row justify-content-center my-5'
+  *ngIf="showCloseButton; else backButton"
+  class="row justify-content-center my-5"
 >
-  <a *ngIf='showCloseButton; else backButton' href='javascript:window.top.close()' class='btn btn-primary'>Close</a>
+  <a
+    *ngIf="showCloseButton; else backButton"
+    href="javascript:window.top.close()"
+    class="btn btn-primary"
+    >Close</a
+  >
 </div>
 <ng-template #backButton>
-  <button (click)='goToMessages()' class='btn btn-primary'>
+  <button (click)="goToMessages()" class="btn btn-primary">
     Go back to all messages
   </button>
 </ng-template>

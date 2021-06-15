@@ -8,9 +8,8 @@ describe('ImageModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageModalComponent ]
-    })
-    .compileComponents();
+      declarations: [ImageModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

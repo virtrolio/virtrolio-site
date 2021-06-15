@@ -20,7 +20,7 @@ export class ImageModalComponent {
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService) {}
 
   showImageModal(): void {
     this.imageModal.show();
