@@ -275,6 +275,7 @@ export class MsgIoService {
    * @param mID - The message/document ID of the message to be deleted.
    */
   async deleteMessage(mID: string) {
+    // TODO: Delete images
     await this.afs.collection('messages').doc(mID).delete();
   }
 }
