@@ -105,8 +105,8 @@ export class SigningGuard implements CanActivate {
                 .catch((error) => {
                   // Only possibilities for a Firebase error getting thrown:
                   // 1. Not logged in
-                  // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless
-                  // someone modifies the source code)
+                  // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage()
+                  // unless someone modifies the source code)
                   CommonService.displayError(error);
                   this.router
                     .navigate(['/signing-auth-redirect'], {

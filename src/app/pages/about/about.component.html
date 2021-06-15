@@ -1,70 +1,106 @@
 <!--suppress HtmlUnknownTarget -->
-<div class='jumbotron' id='about-us'>
-  <h1 class='mb-3' id='title'>About Us</h1>
-  <div class='row justify-content-center'>
-    <div class='col-md-4 col-lg-3 vertical-center'>
-      <img alt='pink cloud graphic' class='img-fluid' src='../../../assets/images/logo_reg_transparent.png' />
+<div class="jumbotron" id="about-us">
+  <h1 class="mb-3" id="title">About Us</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-lg-3 vertical-center">
+      <img
+        alt="pink cloud graphic"
+        class="img-fluid"
+        src="../../../assets/images/logo_reg_transparent.png"
+      />
     </div>
-    <div class='col-xl-4 col-lg-5 col-md-6 mt-3 mt-md-0 vertical-center'>
-      <p class='text-justify' id='title-blurb'>
-        We’re a group of undergraduate university students who remember exactly what it was like back in high school
-        (at The Woodlands Secondary School, to be exact, woot woot),
-        and we especially remember what those last few months of senior year meant to many of us. With the COVID-19
-        pandemic leading to lockdowns and social distancing, we wanted to create an alternative way for graduating
-        students (and
-        others!) to be able to send each other messages in a medium that they can cherish with them as they continue on
-        in their journeys.
-        <br><br>
-        Want to get in touch with us? Visit the <a routerLink='/contact'>Contact Us</a> page or check out our
-        <a href='https://bit.ly/virtrolioYouT00b' target='_blank'>YouTube channel</a>. You can also sign the team's
-        virtrolio by <a href='/signing?uid=6sXs48Uwj3ZSPX7JUPsuvdosfRm1&key=VirtrolioTeam'>
-        clicking here</a>.
+    <div class="col-xl-4 col-lg-5 col-md-6 mt-3 mt-md-0 vertical-center">
+      <p class="text-justify" id="title-blurb">
+        We’re a group of undergraduate university students who remember exactly
+        what it was like back in high school (at The Woodlands Secondary School,
+        to be exact, woot woot), and we especially remember what those last few
+        months of senior year meant to many of us. With the COVID-19 pandemic
+        leading to lockdowns and social distancing, we wanted to create an
+        alternative way for graduating students (and others!) to be able to send
+        each other messages in a medium that they can cherish with them as they
+        continue on in their journeys.
+        <br /><br />
+        Want to get in touch with us? Visit the
+        <a routerLink="/contact">Contact Us</a> page or check out our
+        <a href="https://bit.ly/virtrolioYouT00b" target="_blank"
+          >YouTube channel</a
+        >. You can also sign the team's virtrolio by
+        <a href="/signing?uid=6sXs48Uwj3ZSPX7JUPsuvdosfRm1&key=VirtrolioTeam">
+          clicking here</a
+        >.
       </p>
     </div>
   </div>
 </div>
 
-<div class='container'>
-  <h1 class='mb-4' id='meet-the-team-title'>Meet the Team!</h1>
+<div class="container">
+  <h1 class="mb-4" id="meet-the-team-title">Meet the Team!</h1>
 
   <!-- Each Row-->
-  <div *ngFor='let contributor of contributors'>
-    <div class='row d-flex my-2'>
-
+  <div *ngFor="let contributor of contributors">
+    <div class="row d-flex my-2">
       <!-- Each Image -->
-      <div class='col-md-2 order-md-2 image-container vertical-center'>
-        <img alt='Picture of {{ contributor.name }}' class='img-fluid regular-picture'
-             src='{{ contributor.images.regular }}'>
-        <img alt='Silly picture of {{ contributor.name }}' class='img-fluid silly-picture'
-             src='{{ contributor.images.silly }}'>
+      <div class="col-md-2 order-md-2 image-container vertical-center">
+        <img
+          alt="Picture of {{ contributor.name }}"
+          class="img-fluid regular-picture"
+          src="{{ contributor.images.regular }}"
+        />
+        <img
+          alt="Silly picture of {{ contributor.name }}"
+          class="img-fluid silly-picture"
+          src="{{ contributor.images.silly }}"
+        />
       </div>
 
       <!-- Each Blurb -->
-      <div class='col-md-7 order-md-3 mt-3 mt-md-0 vertical-center'>
-        <p class='text-justify' [innerHTML]='contributor.blurb'></p>
+      <div class="col-md-7 order-md-3 mt-3 mt-md-0 vertical-center">
+        <p class="text-justify" [innerHTML]="contributor.blurb"></p>
         <p>
-          <a href='{{ contributor.sharingLink }}' target='_blank'>Click here to sign {{ contributor.name }}'s
-            virtrolio.</a>
+          <a href="{{ contributor.sharingLink }}" target="_blank"
+            >Click here to sign {{ contributor.name }}'s virtrolio.</a
+          >
         </p>
       </div>
 
       <!-- Each Contact Info. -->
-      <div class='col-md-3 order-md-1 vertical-center'>
-        <p><strong>Contact {{ contributor.name }}</strong></p>
+      <div class="col-md-3 order-md-1 vertical-center">
+        <p>
+          <strong>Contact {{ contributor.name }}</strong>
+        </p>
         <ul>
-          <li *ngIf='contributor.social.github'>GitHub:
-            <a href='https://github.com/{{ contributor.social.github }}'
-               target='_blank'>{{ contributor.social.github }}</a>
+          <li *ngIf="contributor.social.github">
+            GitHub:
+            <a
+              href="https://github.com/{{ contributor.social.github }}"
+              target="_blank"
+              >{{ contributor.social.github }}</a
+            >
           </li>
-          <li *ngIf='contributor.social.instagram'>Instagram:
-            <a href='https://www.instagram.com/{{ contributor.social.instagram }}'
-               target='_blank' *ngIf='contributor.social.instagram'>@{{ contributor.social.instagram }}</a>
+          <li *ngIf="contributor.social.instagram">
+            Instagram:
+            <a
+              href="https://www.instagram.com/{{
+                contributor.social.instagram
+              }}"
+              target="_blank"
+              *ngIf="contributor.social.instagram"
+              >@{{ contributor.social.instagram }}</a
+            >
           </li>
-          <li *ngIf='contributor.social.linkedIn'>LinkedIn:
-            <a href='{{ contributor.social.linkedIn }}' target='_blank'>{{ contributor.name }}</a>
+          <li *ngIf="contributor.social.linkedIn">
+            LinkedIn:
+            <a href="{{ contributor.social.linkedIn }}" target="_blank">{{
+              contributor.name
+            }}</a>
           </li>
-          <li *ngIf='contributor.social.website'>Website:
-            <a href='https://{{ contributor.social.website }}' target='_blank'>{{ contributor.social.website }}</a>
+          <li *ngIf="contributor.social.website">
+            Website:
+            <a
+              href="https://{{ contributor.social.website }}"
+              target="_blank"
+              >{{ contributor.social.website }}</a
+            >
           </li>
         </ul>
       </div>

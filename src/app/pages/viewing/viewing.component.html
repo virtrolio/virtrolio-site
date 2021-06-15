@@ -1,26 +1,31 @@
 <!-- Single message view -->
-<div *ngIf='isSingleMessageView; else allMessages'>
-  <div class='container'>
+<div *ngIf="isSingleMessageView; else allMessages">
+  <div class="container">
     <app-single-message></app-single-message>
   </div>
 </div>
 <!-- Regular all messages view -->
 <ng-template #allMessages>
-  <div class='container'>
-    <app-responses-list [setMessageList]='messageList'></app-responses-list>
-    <div class='row justify-content-center'>
-      <div class='col-12'>
-        <app-messages [setMessageList]='messageList'></app-messages>
-        <div *ngIf='invalidMessageCount == 1' class='pt-3'>
-          <p class='invalid-msg-warning'> &#9888; One of your messages isn't being shown because it does not conform to
-            the message requirements. <a href='https://virtrolio.web.app/contact'>Contact Us</a>
+  <div class="container">
+    <app-responses-list [setMessageList]="messageList"></app-responses-list>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <app-messages [setMessageList]="messageList"></app-messages>
+        <div *ngIf="invalidMessageCount == 1" class="pt-3">
+          <p class="invalid-msg-warning">
+            &#9888; One of your messages isn't being shown because it does not
+            conform to the message requirements.
+            <a href="https://virtrolio.web.app/contact">Contact Us</a>
             if you see this message.
           </p>
         </div>
-        <div *ngIf='invalidMessageCount > 1' class='pt-3'>
-          <p class='invalid-msg-warning'> &#9888; {{ invalidMessageCount }} of your messages are not being shown because
-            they do not conform to the message requirements. <a
-              href='https://virtrolio.web.app/contact'>Contact Us</a> if you see this message.</p>
+        <div *ngIf="invalidMessageCount > 1" class="pt-3">
+          <p class="invalid-msg-warning">
+            &#9888; {{ invalidMessageCount }} of your messages are not being
+            shown because they do not conform to the message requirements.
+            <a href="https://virtrolio.web.app/contact">Contact Us</a> if you
+            see this message.
+          </p>
         </div>
       </div>
     </div>
