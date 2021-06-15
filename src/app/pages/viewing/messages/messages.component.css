@@ -84,7 +84,7 @@
 }
 
 .profile-pic-container-small {
-  background: #FFFFFF;
+  background: #ffffff;
   height: 1.7em;
   width: 1.7em;
   border-radius: 100%;
@@ -97,7 +97,8 @@
 }
 
 /* Remove the blue outline around the buttons on the header when they're clicked */
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
   outline: none !important;
   box-shadow: none !important;
 }

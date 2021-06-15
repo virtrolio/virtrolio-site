@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Arial';
   src: url('../fonts/Arial/Arial-Black.woff2') format('woff2'),
-  url('../fonts/Arial/Arial-Black.woff') format('woff');
+    url('../fonts/Arial/Arial-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'Arial';
   src: url('../fonts/Arial/Arial-BoldMT.woff2') format('woff2'),
-  url('../fonts/Arial/Arial-BoldMT.woff') format('woff');
+    url('../fonts/Arial/Arial-BoldMT.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 @font-face {
   font-family: 'Arial';
   src: url('../fonts/Arial/ArialMT.woff2') format('woff2'),
-  url('../fonts/Arial/ArialMT.woff') format('woff');
+    url('../fonts/Arial/ArialMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 @font-face {
   font-family: 'Arial';
   src: url('../fonts/Arial/Arial-ItalicMT.woff2') format('woff2'),
-  url('../fonts/Arial/Arial-ItalicMT.woff') format('woff');
+    url('../fonts/Arial/Arial-ItalicMT.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -37,17 +37,16 @@
 @font-face {
   font-family: 'Arial';
   src: url('../fonts/Arial/Arial-BoldItalicMT.woff2') format('woff2'),
-  url('../fonts/Arial/Arial-BoldItalicMT.woff') format('woff');
+    url('../fonts/Arial/Arial-BoldItalicMT.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
 }
 
-
 @font-face {
   font-family: 'Comic Sans MS';
   src: url('../fonts/Comic Sans/ComicSansMS-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Comic Sans/ComicSansMS-BoldItalic.woff') format('woff');
+    url('../fonts/Comic Sans/ComicSansMS-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -56,7 +55,7 @@
 @font-face {
   font-family: 'Comic Sans MS';
   src: url('../fonts/Comic Sans/ComicSansMS-Bold.woff2') format('woff2'),
-  url('../fonts/Comic Sans/ComicSansMS-Bold.woff') format('woff');
+    url('../fonts/Comic Sans/ComicSansMS-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -65,7 +64,7 @@
 @font-face {
   font-family: 'Comic Sans MS';
   src: url('../fonts/Comic Sans/ComicSansMS.woff2') format('woff2'),
-  url('../fonts/Comic Sans/ComicSansMS.woff') format('woff');
+    url('../fonts/Comic Sans/ComicSansMS.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -74,7 +73,7 @@
 @font-face {
   font-family: 'Comic Sans MS';
   src: url('../fonts/Comic Sans/ComicSansMS-Italic.woff2') format('woff2'),
-  url('../fonts/Comic Sans/ComicSansMS-Italic.woff') format('woff');
+    url('../fonts/Comic Sans/ComicSansMS-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -83,7 +82,7 @@
 @font-face {
   font-family: 'Courier New';
   src: url('../fonts/Courier New/CourierNewPS-ItalicMT.woff2') format('woff2'),
-  url('../fonts/Courier New/CourierNewPS-ItalicMT.woff') format('woff');
+    url('../fonts/Courier New/CourierNewPS-ItalicMT.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -92,7 +91,7 @@
 @font-face {
   font-family: 'Courier New';
   src: url('../fonts/Courier New/CourierNewPSMT.woff2') format('woff2'),
-  url('../fonts/Courier New/CourierNewPSMT.woff') format('woff');
+    url('../fonts/Courier New/CourierNewPSMT.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -101,7 +100,7 @@
 @font-face {
   font-family: 'Courier New';
   src: url('../fonts/Courier New/CourierNewPS-BoldMT.woff2') format('woff2'),
-  url('../fonts/Courier New/CourierNewPS-BoldMT.woff') format('woff');
+    url('../fonts/Courier New/CourierNewPS-BoldMT.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -109,8 +108,9 @@
 
 @font-face {
   font-family: 'Courier New';
-  src: url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff2') format('woff2'),
-  url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff') format('woff');
+  src: url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff2')
+      format('woff2'),
+    url('../fonts/Courier New/CourierNewPS-BoldItalicMT.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -118,8 +118,9 @@
 
 @font-face {
   font-family: 'Dancing Script';
-  src: url('../fonts/Dancing_Script/DancingScript-Regular.woff2') format('woff2'),
-  url('../fonts/Dancing_Script/DancingScript-Regular.woff') format('woff');
+  src: url('../fonts/Dancing_Script/DancingScript-Regular.woff2')
+      format('woff2'),
+    url('../fonts/Dancing_Script/DancingScript-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -128,7 +129,7 @@
 @font-face {
   font-family: 'Indie Flower';
   src: url('../fonts/Indie_Flower/IndieFlower.woff2') format('woff2'),
-  url('../fonts/Indie_Flower/IndieFlower.woff') format('woff');
+    url('../fonts/Indie_Flower/IndieFlower.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -137,7 +138,7 @@
 @font-face {
   font-family: 'Lobster';
   src: url('../fonts/Lobster/Lobster-Regular.woff2') format('woff2'),
-  url('../fonts/Lobster/Lobster-Regular.woff') format('woff');
+    url('../fonts/Lobster/Lobster-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -145,8 +146,9 @@
 
 @font-face {
   font-family: 'Merriweather';
-  src: url('../fonts/Merriweather/Merriweather-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-BlackItalic.woff') format('woff');
+  src: url('../fonts/Merriweather/Merriweather-BlackItalic.woff2')
+      format('woff2'),
+    url('../fonts/Merriweather/Merriweather-BlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -155,7 +157,7 @@
 @font-face {
   font-family: 'Merriweather';
   src: url('../fonts/Merriweather/Merriweather-Bold.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-Bold.woff') format('woff');
+    url('../fonts/Merriweather/Merriweather-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -163,8 +165,9 @@
 
 @font-face {
   font-family: 'Merriweather';
-  src: url('../fonts/Merriweather/Merriweather-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-BoldItalic.woff') format('woff');
+  src: url('../fonts/Merriweather/Merriweather-BoldItalic.woff2')
+      format('woff2'),
+    url('../fonts/Merriweather/Merriweather-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -173,7 +176,7 @@
 @font-face {
   font-family: 'Merriweather';
   src: url('../fonts/Merriweather/Merriweather-Italic.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-Italic.woff') format('woff');
+    url('../fonts/Merriweather/Merriweather-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -182,7 +185,7 @@
 @font-face {
   font-family: 'Merriweather';
   src: url('../fonts/Merriweather/Merriweather-Regular.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-Regular.woff') format('woff');
+    url('../fonts/Merriweather/Merriweather-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -191,7 +194,7 @@
 @font-face {
   font-family: 'Merriweather';
   src: url('../fonts/Merriweather/Merriweather-Black.woff2') format('woff2'),
-  url('../fonts/Merriweather/Merriweather-Black.woff') format('woff');
+    url('../fonts/Merriweather/Merriweather-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -199,8 +202,9 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff') format('woff');
+  src: url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff2')
+      format('woff2'),
+    url('../fonts/Montserrat/Montserrat-ExtraBoldItalic.woff') format('woff');
   font-weight: 800;
   font-style: italic;
   font-display: swap;
@@ -209,7 +213,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-Medium.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-Medium.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -218,7 +222,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -227,7 +231,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-MediumItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-MediumItalic.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -236,7 +240,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-BlackItalic.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-BlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -245,7 +249,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-Bold.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -254,7 +258,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-Italic.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-Italic.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -263,7 +267,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-BoldItalic.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -272,7 +276,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-ExtraBold.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-ExtraBold.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-ExtraBold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -281,7 +285,7 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('../fonts/Montserrat/Montserrat-Black.woff2') format('woff2'),
-  url('../fonts/Montserrat/Montserrat-Black.woff') format('woff');
+    url('../fonts/Montserrat/Montserrat-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -290,7 +294,7 @@
 @font-face {
   font-family: 'Patrick Hand';
   src: url('../fonts/Patrick_Hand/PatrickHand-Regular.woff2') format('woff2'),
-  url('../fonts/Patrick_Hand/PatrickHand-Regular.woff') format('woff');
+    url('../fonts/Patrick_Hand/PatrickHand-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -298,8 +302,9 @@
 
 @font-face {
   font-family: 'Permanent Marker';
-  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff2') format('woff2'),
-  url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff') format('woff');
+  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff2')
+      format('woff2'),
+    url('../fonts/Permanent_Marker/PermanentMarker-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -308,7 +313,7 @@
 @font-face {
   font-family: 'Poiret One';
   src: url('../fonts/Poiret_One/PoiretOne-Regular.woff2') format('woff2'),
-  url('../fonts/Poiret_One/PoiretOne-Regular.woff') format('woff');
+    url('../fonts/Poiret_One/PoiretOne-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -317,7 +322,7 @@
 @font-face {
   font-family: 'Press Start';
   src: url('../fonts/Press_Start_2P/PressStart2P-Regular.woff2') format('woff2'),
-  url('../fonts/Press_Start_2P/PressStart2P-Regular.woff') format('woff');
+    url('../fonts/Press_Start_2P/PressStart2P-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -326,7 +331,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-Black.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-Black.woff') format('woff');
+    url('../fonts/Roboto/Roboto-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -335,7 +340,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-MediumItalic.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-MediumItalic.woff') format('woff');
+    url('../fonts/Roboto/Roboto-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -344,7 +349,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-Bold.woff') format('woff');
+    url('../fonts/Roboto/Roboto-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -353,7 +358,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-Regular.woff') format('woff');
+    url('../fonts/Roboto/Roboto-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -362,7 +367,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-Italic.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-Italic.woff') format('woff');
+    url('../fonts/Roboto/Roboto-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -371,7 +376,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-BoldItalic.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-BoldItalic.woff') format('woff');
+    url('../fonts/Roboto/Roboto-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -380,7 +385,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-Medium.woff') format('woff');
+    url('../fonts/Roboto/Roboto-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -389,7 +394,7 @@
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto/Roboto-BlackItalic.woff2') format('woff2'),
-  url('../fonts/Roboto/Roboto-BlackItalic.woff') format('woff');
+    url('../fonts/Roboto/Roboto-BlackItalic.woff') format('woff');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -398,7 +403,7 @@
 @font-face {
   font-family: 'Sacramento';
   src: url('../fonts/Sacramento/Sacramento-Regular.woff2') format('woff2'),
-  url('../fonts/Sacramento/Sacramento-Regular.woff') format('woff');
+    url('../fonts/Sacramento/Sacramento-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -407,7 +412,7 @@
 @font-face {
   font-family: 'Special Elite';
   src: url('../fonts/Special_Elite/SpecialElite-Regular.woff2') format('woff2'),
-  url('../fonts/Special_Elite/SpecialElite-Regular.woff') format('woff');
+    url('../fonts/Special_Elite/SpecialElite-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

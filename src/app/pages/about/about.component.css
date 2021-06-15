@@ -47,7 +47,8 @@
   overflow: hidden;
 }
 
-.image-container, .image-container > img {
+.image-container,
+.image-container > img {
   overflow: hidden !important;
 }
 
