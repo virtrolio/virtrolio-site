@@ -24,19 +24,12 @@
       <div class="modal-body d-md-flex p-4" id="embed-photo-div">
         <div class="col-md-12 my-6 px-lg-5 px-3 vertical-center text-center">
           <div class="col-md-12 text-center" id="drag-upload">
-            <label>Selected images:</label>
-            <br />
-            <label *ngIf="3 > selectedImagesNames.length"
-              >No images selected</label
-            >
-            <tr
-              *ngFor="let name of selectedImagesNames; let i = index"
-              class="text-left"
-            >
-              <td *ngIf="i < selectedImagesNames.length - 2">
-                {{ selectedImagesNames[i] }}
-              </td>
-            </tr>
+            <label *ngIf="!selectedImagesURLs.length">No images selected</label>
+            <img
+              class="col-4"
+              *ngFor="let url of selectedImagesURLs"
+              [src]="url"
+            />
           </div>
         </div>
       </div>
