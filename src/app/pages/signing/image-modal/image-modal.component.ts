@@ -27,8 +27,9 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
-  onSelectFiles(e) {
-    const files = e.target.files;
+  onSelectFiles(e: Event): void {
+    const eventTarget = e.target as HTMLInputElement;
+    const files = Array.from(eventTarget.files);
 
     if (files.length + this.selectedImagesURLs.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
