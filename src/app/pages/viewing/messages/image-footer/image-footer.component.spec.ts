@@ -8,9 +8,8 @@ describe('ImageFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [ImageFooterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

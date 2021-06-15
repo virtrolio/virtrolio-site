@@ -11,19 +11,19 @@
 <!-- If the ngIf above fails, this ngTemplate will show -->
 <ng-template #showMessages>
   <!-- Toggle switch for message viewing styles -->
-  <div class="row my-3">
-    <div class="col-12">
+  <div class='row my-3'>
+    <div class='col-12'>
       <button
-        (click)="toggleViewStyle()"
-        *ngIf="!viewService.isCarouselView"
-        class="btn-sm btn-primary shadow"
+        (click)='toggleViewStyle()'
+        *ngIf='!viewService.isCarouselView'
+        class='btn-sm btn-primary shadow'
       >
         Switch to Booklet
       </button>
       <button
-        (click)="toggleViewStyle()"
-        *ngIf="viewService.isCarouselView"
-        class="btn-sm btn-primary shadow"
+        (click)='toggleViewStyle()'
+        *ngIf='viewService.isCarouselView'
+        class='btn-sm btn-primary shadow'
       >
         Switch to Cards
       </button>
@@ -31,38 +31,38 @@
   </div>
 
   <!-- Card message view -->
-  <div *ngIf="viewService.isCarouselView === false" class="card-columns mt-3">
-    <div *ngFor="let msg of messageList" class="card shadow" id="{{ msg.id }}">
+  <div *ngIf='viewService.isCarouselView === false' class='card-columns mt-3'>
+    <div *ngFor='let msg of messageList' class='card shadow' id='{{ msg.id }}'>
       <!-- Message header -->
       <div [ngStyle]="{'background': generateHeaderColor(msg.backColor).bg,
                        'color': generateHeaderColor(msg.backColor).text}"
            class='msg-header'>
-        <div class="msg-header-group pt-1">
-          <table class="header-table">
+        <div class='msg-header-group pt-1'>
+          <table class='header-table'>
             <tr>
               <td>
-                <span class="profile-pic-container-small mr-2">
+                <span class='profile-pic-container-small mr-2'>
                   <img
-                    alt="profile-pic"
-                    class="profile-pic"
-                    src="{{ msg.fromPic }}"
+                    alt='profile-pic'
+                    class='profile-pic'
+                    src='{{ msg.fromPic }}'
                   />
                 </span>
               </td>
               <td>
                 <table>
-                  <tr class="msg-header-text">
+                  <tr class='msg-header-text'>
                     {{
-                      msg.fromName
+                    msg.fromName
                     }}
                   </tr>
-                  <tr class="msg-header-date">
+                  <tr class='msg-header-date'>
                     {{
-                      viewService.timeSince(
-                        viewService.nowMillis,
-                        msg.timestamp.toMillis(),
-                        msg.timestamp.toDate().toDateString()
-                      )
+                    viewService.timeSince(
+                      viewService.nowMillis,
+                      msg.timestamp.toMillis(),
+                      msg.timestamp.toDate().toDateString()
+                    )
                     }}
                   </tr>
                 </table>
@@ -75,44 +75,44 @@
             <tr>
               <td>
                 <button
-                  (click)="popupMessage(msg)"
-                  class="btn card-button"
-                  type="button"
+                  (click)='popupMessage(msg)'
+                  class='btn card-button'
+                  type='button'
                 >
                   <img
-                    alt="popup"
-                    class="card-icon"
-                    src="{{ generateHeaderColor(msg.backColor).popup }}"
+                    alt='popup'
+                    class='card-icon'
+                    src='{{ generateHeaderColor(msg.backColor).popup }}'
                   />
                 </button>
                 <a
-                  target="_blank"
+                  target='_blank'
                   [routerLink]="['/viewing']"
-                  [queryParams]="{ messageId: msg.id, showBookmarkAlert: true }"
+                  [queryParams]='{ messageId: msg.id, showBookmarkAlert: true }'
                 >
                   <button
-                    (click)="viewService.bookmarkMessage(msg.id)"
-                    class="btn card-button"
-                    type="button"
+                    (click)='viewService.bookmarkMessage(msg.id)'
+                    class='btn card-button'
+                    type='button'
                   >
                     <img
-                      alt="bookmark"
-                      class="card-icon"
-                      src="{{ generateHeaderColor(msg.backColor).bookmark }}"
+                      alt='bookmark'
+                      class='card-icon'
+                      src='{{ generateHeaderColor(msg.backColor).bookmark }}'
                     />
                   </button>
                 </a>
                 <button
-                  (click)="viewService.setMessageToDelete(msg.id)"
-                  class="btn card-button"
-                  data-target="#delete"
-                  data-toggle="modal"
-                  type="button"
+                  (click)='viewService.setMessageToDelete(msg.id)'
+                  class='btn card-button'
+                  data-target='#delete'
+                  data-toggle='modal'
+                  type='button'
                 >
                   <img
-                    alt="delete"
-                    class="card-icon"
-                    src="{{ generateHeaderColor(msg.backColor).trash }}"
+                    alt='delete'
+                    class='card-icon'
+                    src='{{ generateHeaderColor(msg.backColor).trash }}'
                   />
                 </button>
               </td>
@@ -123,7 +123,7 @@
 
       <!-- Message body -->
       <div
-        (click)="popupMessage(msg)"
+        (click)='popupMessage(msg)'
         [ngStyle]="{
           background: msg.backColor,
           color: msg.fontColor,
@@ -132,10 +132,10 @@
             ',' +
             viewService.fonts[msg.fontFamily].backupFont
         }"
-        class="card-body message-card message"
+        class='card-body message-card message'
       >
         <markdown
-          data="{{ viewService.decodeHtml(msg.contents) }}"
+          data='{{ viewService.decodeHtml(msg.contents) }}'
           emoji
         ></markdown>
       </div>
@@ -147,27 +147,27 @@
 
   <!-- Carousel message view -->
   <div
-    *ngIf="viewService.isCarouselView == true"
-    class="viewing-container mb-5"
+    *ngIf='viewService.isCarouselView == true'
+    class='viewing-container mb-5'
   >
     <div
-      class="carousel slide border rounded"
-      data-interval="false"
-      data-ride="carousel"
-      id="carousel"
+      class='carousel slide border rounded'
+      data-interval='false'
+      data-ride='carousel'
+      id='carousel'
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="msg-header">
-            <div class="msg-header-group pt-1">
-              <table class="header-table">
+      <div class='carousel-inner'>
+        <div class='carousel-item active'>
+          <div class='msg-header'>
+            <div class='msg-header-group pt-1'>
+              <table class='header-table'>
                 <tr>
                   <td>
-                    <span class="profile-pic-container-small mr-2">
+                    <span class='profile-pic-container-small mr-2'>
                       <img
-                        alt="profile-pic"
-                        class="profile-pic"
-                        src="../../../../assets/images/logo_reg.png"
+                        alt='profile-pic'
+                        class='profile-pic'
+                        src='../../../../assets/images/logo_reg.png'
                       />
                     </span>
                   </td>
@@ -176,13 +176,13 @@
                       <tr class='msg-header-text'>
                         Virtrolio Team
                       </tr>
-                      <tr class="msg-header-date">
+                      <tr class='msg-header-date'>
                         You have
                         {{
-                          messageList.length
+                        messageList.length
                         }}
                         {{
-                          oneMessage
+                        oneMessage
                         }}
                       </tr>
                     </table>
@@ -191,47 +191,47 @@
               </table>
             </div>
           </div>
-          <div class="page title-page vertical-center">
-            <div class="title-text">
+          <div class='page title-page vertical-center'>
+            <div class='title-text'>
               Welcome to your virtrolio! Click on the buttons below to navigate
               through your messages.
             </div>
           </div>
         </div>
-        <div *ngFor="let msg of messageList" class="carousel-item">
+        <div *ngFor='let msg of messageList' class='carousel-item'>
           <div
-            [ngStyle]="{
+            [ngStyle]='{
               background: generateHeaderColor(msg.backColor).bg,
               color: generateHeaderColor(msg.backColor).text
-            }"
-            class="msg-header"
+            }'
+            class='msg-header'
           >
-            <div class="msg-header-group pt-1">
-              <table class="header-table">
+            <div class='msg-header-group pt-1'>
+              <table class='header-table'>
                 <tr>
                   <td>
-                    <span class="profile-pic-container-small mr-2">
+                    <span class='profile-pic-container-small mr-2'>
                       <img
-                        alt="profile-pic"
-                        class="profile-pic"
-                        src="{{ msg.fromPic }}"
+                        alt='profile-pic'
+                        class='profile-pic'
+                        src='{{ msg.fromPic }}'
                       />
                     </span>
                   </td>
                   <td>
                     <table>
-                      <tr class="msg-header-text">
+                      <tr class='msg-header-text'>
                         {{
-                          msg.fromName
+                        msg.fromName
                         }}
                       </tr>
-                      <tr class="msg-header-date">
+                      <tr class='msg-header-date'>
                         {{
-                          viewService.timeSince(
-                            viewService.nowMillis,
-                            msg.timestamp.toMillis(),
-                            msg.timestamp.toDate().toDateString()
-                          )
+                        viewService.timeSince(
+                          viewService.nowMillis,
+                          msg.timestamp.toMillis(),
+                          msg.timestamp.toDate().toDateString()
+                        )
                         }}
                       </tr>
                     </table>
@@ -244,24 +244,24 @@
                 <tr>
                   <td>
                     <a
-                      target="_blank"
+                      target='_blank'
                       [routerLink]="['/viewing']"
-                      [queryParams]="{
+                      [queryParams]='{
                         messageId: msg.id,
                         showBookmarkAlert: true
-                      }"
+                      }'
                     >
                       <button
-                        (click)="viewService.bookmarkMessage(msg.id)"
-                        class="btn card-button"
-                        type="button"
+                        (click)='viewService.bookmarkMessage(msg.id)'
+                        class='btn card-button'
+                        type='button'
                       >
                         <img
-                          alt="bookmark"
-                          class="card-icon"
-                          src="{{
+                          alt='bookmark'
+                          class='card-icon'
+                          src='{{
                             generateHeaderColor(msg.backColor).bookmark
-                          }}"
+                          }}'
                         />
                       </button>
                     </a>
@@ -279,10 +279,10 @@
                 ',' +
                 viewService.fonts[msg.fontFamily].backupFont
             }"
-            class="card-body page message"
+            class='card-body page message'
           >
             <markdown
-              data="{{ viewService.decodeHtml(msg.contents) }}"
+              data='{{ viewService.decodeHtml(msg.contents) }}'
               emoji
             ></markdown>
             <app-inline-images *ngIf='msg.images' [images]='msg.images'></app-inline-images>
@@ -290,62 +290,62 @@
         </div>
       </div>
     </div>
-    <div class="carousel-controls shadow">
+    <div class='carousel-controls shadow'>
       <a
-        class="carousel-controls-button"
-        data-slide="prev"
-        href="#carousel"
-        role="button"
-        >Prev</a
+        class='carousel-controls-button'
+        data-slide='prev'
+        href='#carousel'
+        role='button'
+      >Prev</a
       >
       <a
-        class="carousel-controls-button"
-        data-slide="next"
-        href="#carousel"
-        role="button"
-        >Next</a
+        class='carousel-controls-button'
+        data-slide='next'
+        href='#carousel'
+        role='button'
+      >Next</a
       >
     </div>
   </div>
 </ng-template>
 
 <div
-  aria-hidden="true"
-  aria-labelledby="delete-message-modal-title"
-  class="modal fade"
-  id="delete"
-  role="dialog"
-  tabindex="-1"
+  aria-hidden='true'
+  aria-labelledby='delete-message-modal-title'
+  class='modal fade'
+  id='delete'
+  role='dialog'
+  tabindex='-1'
 >
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
         <!-- Modal Title -->
-        <h5 class="modal-title" id="delete-message-modal-title">Easy now!</h5>
+        <h5 class='modal-title' id='delete-message-modal-title'>Easy now!</h5>
         <button
-          aria-label="Close"
-          class="close"
-          data-dismiss="modal"
-          type="button"
+          aria-label='Close'
+          class='close'
+          data-dismiss='modal'
+          type='button'
         >
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="delete-message-body">
+      <div class='modal-body' id='delete-message-body'>
         Looks like you're trying to delete a message! Please be sure that this
         is what you want to do.
         <b>It is not possible to recover a deleted message.</b>
       </div>
-      <div class="modal-footer">
+      <div class='modal-footer'>
         <button
-          (click)="viewService.deleteMessage()"
-          class="btn btn-danger"
-          data-dismiss="modal"
-          type="button"
+          (click)='viewService.deleteMessage()'
+          class='btn btn-danger'
+          data-dismiss='modal'
+          type='button'
         >
           Delete Message
         </button>
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>
           Cancel
         </button>
       </div>
