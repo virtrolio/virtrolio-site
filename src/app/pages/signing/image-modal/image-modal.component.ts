@@ -8,7 +8,7 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
   styleUrls: ['./image-modal.component.css'],
 })
 export class ImageModalComponent {
-  static maxFileSize = 8 * 1000000; // 8 MB in bytes
+  static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
   modalRef: BsModalRef;
   selectedImages: File[] = [];
