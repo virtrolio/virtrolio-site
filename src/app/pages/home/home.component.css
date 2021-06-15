@@ -1,7 +1,11 @@
 /* || Full Screen Landing */
 
 .home-background {
-  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--navbar-left) 0%,
+    var(--navbar-right) 100%
+  );
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
 }
@@ -56,7 +60,7 @@
 }
 
 .home-img-background {
-  background: url("../../../assets/images/bg-curve.svg") no-repeat center bottom;
+  background: url('../../../assets/images/bg-curve.svg') no-repeat center bottom;
   background-size: 100%;
   height: calc(100vh - var(--navbar-height));
   overflow: hidden;
@@ -89,7 +93,11 @@
 }
 
 #viewing-demo {
-  background: linear-gradient(90deg, var(--navbar-left) 0%, var(--navbar-right) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--navbar-left) 0%,
+    var(--navbar-right) 100%
+  );
 }
 
 #signing-demo {
@@ -101,12 +109,12 @@
 }
 
 .viewing-demo-image {
-  background: url("../../../assets/images/viewing-demo.svg") no-repeat center;
+  background: url('../../../assets/images/viewing-demo.svg') no-repeat center;
   background-size: cover;
 }
 
 .signing-demo-image {
-  background: url("../../../assets/images/signing-demo.svg") no-repeat center;
+  background: url('../../../assets/images/signing-demo.svg') no-repeat center;
   background-size: cover;
 }
 
@@ -236,7 +244,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EFEFEF;
+  background: #efefef;
   opacity: 0.1;
   border-radius: 1em;
 }
@@ -255,7 +263,7 @@
 
 /* fragment padding for header */
 #info::before {
-  content: "";
+  content: '';
   display: block;
   height: 50px;
   margin: -50px 0 0 0;
@@ -265,36 +273,36 @@
 
 @-webkit-keyframes SectionGradientAnimation {
   0% {
-    background-position: 0 0
+    background-position: 0 0;
   }
   50% {
-    background-position: 93% 100%
+    background-position: 93% 100%;
   }
   100% {
-    background-position: 0 0
+    background-position: 0 0;
   }
 }
 
 @-moz-keyframes SectionGradientAnimation {
   0% {
-    background-position: 0 0
+    background-position: 0 0;
   }
   50% {
-    background-position: 93% 100%
+    background-position: 93% 100%;
   }
   100% {
-    background-position: 0 0
+    background-position: 0 0;
   }
 }
 
 @keyframes SectionGradientAnimation {
   0% {
-    background-position: 0 0
+    background-position: 0 0;
   }
   50% {
-    background-position: 93% 100%
+    background-position: 93% 100%;
   }
   100% {
-    background-position: 0 0
+    background-position: 0 0;
   }
 }

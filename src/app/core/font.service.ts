@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Font, Fonts } from '../shared/interfaces/fonts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FontService {
-
   // Note how you don't have to override the default values if you don't want to
   private static readonly Arial = new Font('Arial', 'sans-serif');
   private static readonly ComicSansMS = new Font('Comic Sans MS', 'sans-serif');
@@ -17,9 +16,15 @@ export class FontService {
   private static readonly Lobster = new Font('Lobster', 'sans-serif');
   private static readonly IndieFlower = new Font('Indie Flower', 'sans-serif');
   private static readonly PatrickHand = new Font('Patrick Hand', 'sans-serif');
-  private static readonly PermanentMarker = new Font('Permanent Marker', 'sans-serif');
+  private static readonly PermanentMarker = new Font(
+    'Permanent Marker',
+    'sans-serif'
+  );
   private static readonly Sacramento = new Font('Sacramento', 'cursive');
-  private static readonly SpecialElite = new Font('Special Elite', 'sans-serif');
+  private static readonly SpecialElite = new Font(
+    'Special Elite',
+    'sans-serif'
+  );
   private static readonly TimesNewRoman = new Font('Times New Roman', 'serif');
   private static readonly PoiretOne = new Font('Poiret One', 'sans-serif');
   private static readonly PressStart = new Font('Press Start', 'sans-serif');
@@ -40,8 +45,8 @@ export class FontService {
     Roboto: FontService.Roboto,
     Sacramento: FontService.Sacramento,
     'Special Elite': FontService.SpecialElite,
-    'Times New Roman': FontService.TimesNewRoman
+    'Times New Roman': FontService.TimesNewRoman,
   };
 
-  constructor() { }
+  constructor() {}
 }

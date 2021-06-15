@@ -11,7 +11,7 @@ declare var $: any;
 @Component({
   selector: 'app-my-virtrolio',
   templateUrl: './my-virtrolio.component.html',
-  styleUrls: [ './my-virtrolio.component.css' ]
+  styleUrls: ['./my-virtrolio.component.css'],
 })
 
 /**
@@ -29,15 +29,21 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
   private visitLinkKEY: string;
   public navigator: any;
 
-  constructor(public authService: AuthService, private sharingLinkService: SharingLinkService,
-              public router: Router, private title: Title) { }
+  constructor(
+    public authService: AuthService,
+    private sharingLinkService: SharingLinkService,
+    public router: Router,
+    private title: Title
+  ) {}
 
   ngOnInit(): void {
     this.authService.displayName().then((displayName) => {
       this.displayName = displayName;
-      this.title.setTitle(displayName + '\'s Virtrolio | Virtrolio');
+      this.title.setTitle(displayName + "'s Virtrolio | Virtrolio");
     });
-    this.authService.redirectLoginUserCreation().catch(error => CommonService.displayError(error));
+    this.authService
+      .redirectLoginUserCreation()
+      .catch((error) => CommonService.displayError(error));
     this.navigator = window.navigator;
   }
 
@@ -70,15 +76,15 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
    */
   setLink() {
     this.copyButtonText = 'Copy';
-    this.sharingLinkService.getLink().then(link => {
+    this.sharingLinkService.getLink().then((link) => {
       this.link = link;
       this.linkReady = true;
     });
   }
 
   /**
-   * Attempts to navigate by router to a sharing link based on what is inputted in the 'send a message' input field (query
-   * params extracted with regEx if possible)
+   * Attempts to navigate by router to a sharing link based on what is inputted in the 'send a message' input field
+   * (query params extracted with regEx if possible)
    */
   navigateToLink() {
     if (this.visitLink) {
@@ -86,27 +92,40 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
         // noinspection JSIgnoredPromiseFromCall
         this.visitLinkUID = this.visitLink.match(/uid=([^&]*)/)[1];
         this.visitLinkKEY = this.visitLink.match(/key=([^&]*)/)[1];
-        window.location.href = '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
+        window.location.href =
+          '/signing?uid=' + this.visitLinkUID + '&key=' + this.visitLinkKEY;
       } catch (e) {
-        this.router.navigate([ '/invalid-link' ]).catch(e => CommonService.displayError(e));
+        this.router
+          .navigate(['/invalid-link'])
+          .catch((e) => CommonService.displayError(e));
       }
     }
   }
 
   /**
-   * Share 'sharing link' using device native sharing mechanism. Should only be available on the front end to the user if they have a native
-   * sharing mechanism.
+   * Share 'sharing link' using device native sharing mechanism. Should only be available on the front end to the user
+   * if they have a native sharing mechanism.
    */
   shareLink() {
     if (this.canShare()) {
-      this.navigator.share({
-        title: this.displayName + '\'s virtrolio for' + MsgIoService.currentYear + '!',
-        text: 'Sign my virtual yearbook!',
-        url: this.link,
-      })
-        .catch((error) => CommonService.displayError('Sharing Error: ' + error));
+      this.navigator
+        .share({
+          title:
+            this.displayName +
+            "'s virtrolio for" +
+            MsgIoService.currentYear +
+            '!',
+          text: 'Sign my virtual yearbook!',
+          url: this.link,
+        })
+        .catch((error) =>
+          CommonService.displayError('Sharing Error: ' + error)
+        );
     } else {
-      CommonService.displayError('Sharing Error: Native Share not supported on this browser: ' + navigator.userAgent);
+      CommonService.displayError(
+        'Sharing Error: Native Share not supported on this browser: ' +
+          navigator.userAgent
+      );
     }
   }
 
@@ -115,20 +134,41 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
    * @param platform - platform on which to post the sharing link
    */
   postOnSocial(platform: string) {
-    const urlFriendlyLink = 'https%3A//virtrolio.web.app/signing?uid=' + this.authService.uid() + '%26key=' +
+    const urlFriendlyLink =
+      'https%3A//virtrolio.web.app/signing?uid=' +
+      this.authService.uid() +
+      '%26key=' +
       this.link.match(/key=([^&]*)/)[1];
 
     const bodyText = 'Sign%20my%20virtual%20yearbook!';
 
     if (platform === 'facebook') {
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + urlFriendlyLink, '_blank');
+      window.open(
+        'https://www.facebook.com/sharer/sharer.php?u=' + urlFriendlyLink,
+        '_blank'
+      );
     } else if (platform === 'twitter') {
-      window.open('https://twitter.com/intent/tweet?url=' + urlFriendlyLink + '&text=' + bodyText, '_blank');
+      window.open(
+        'https://twitter.com/intent/tweet?url=' +
+          urlFriendlyLink +
+          '&text=' +
+          bodyText,
+        '_blank'
+      );
     } else if (platform === 'email') {
-      window.open('mailto:?subject=' + 'Virtrolio%20-%20Online%20Yearbook%20Signing!'
-        + '&body=' + bodyText + '%0D%0A' + urlFriendlyLink, '_blank');
+      window.open(
+        'mailto:?subject=' +
+          'Virtrolio%20-%20Online%20Yearbook%20Signing!' +
+          '&body=' +
+          bodyText +
+          '%0D%0A' +
+          urlFriendlyLink,
+        '_blank'
+      );
     } else {
-      CommonService.displayError('Sharing Error: Unsupported social media platform: ' + platform);
+      CommonService.displayError(
+        'Sharing Error: Unsupported social media platform: ' + platform
+      );
     }
   }
 
@@ -140,10 +180,12 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
       this.link = 'Generating new link...';
       this.linkReady = false;
       this.copyButtonText = 'Copy';
-      this.sharingLinkService.changeKey().then(() => this.setLink()).catch(error => CommonService.displayError(error));
+      this.sharingLinkService
+        .changeKey()
+        .then(() => this.setLink())
+        .catch((error) => CommonService.displayError(error));
       this.setLink();
     }
     this.showWarningText = !this.showWarningText;
   }
-
 }

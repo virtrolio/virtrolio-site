@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Location } from '@angular/common';
@@ -8,23 +11,29 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { CommonService } from './common.service';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { BetaUsers, VirtrolioUser } from '../shared/interfaces/users';
 import User = firebase.User;
 import auth = firebase.auth;
-import { BetaUsers, VirtrolioUser } from '../shared/interfaces/users';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   static readonly keyLength = 7;
-  static readonly keyOptions = 'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
-  static readonly notBetaErrorMessage = 'Auth Error: Current user is not a beta tester and is not permitted to access the beta website';
+  static readonly keyOptions =
+    'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
+  static readonly notBetaErrorMessage =
+    'Auth Error: Current user is not a beta tester and is not permitted to access the beta website';
   private user: User;
 
-  constructor(private afa: AngularFireAuth, private afs: AngularFirestore, private router: Router, private location: Location,
-              private deviceDetectorService: DeviceDetectorService) {
-    this.afa.user.subscribe((user: User) => this.user = user);
+  constructor(
+    private afa: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router,
+    private location: Location,
+    private deviceDetectorService: DeviceDetectorService
+  ) {
+    this.afa.user.subscribe((user: User) => (this.user = user));
   }
 
   /**
@@ -34,7 +43,9 @@ export class AuthService {
   static generateKey(): string {
     let key = '';
     for (let i = 0; i < AuthService.keyLength; i++) {
-      key += AuthService.keyOptions.charAt(Math.floor(Math.random() * AuthService.keyOptions.length));
+      key += AuthService.keyOptions.charAt(
+        Math.floor(Math.random() * AuthService.keyOptions.length)
+      );
     }
     return key;
   }
@@ -66,10 +77,16 @@ export class AuthService {
    * @returns The Firestore document containing the user's data.
    */
   async getUserData(uid: string = this.uid()) {
-    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(uid);
-    return await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      CommonService.displayError(error);
-    });
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs
+      .collection('users')
+      .doc<VirtrolioUser>(uid);
+    return await userRef
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise()
+      .catch((error) => {
+        CommonService.displayError(error);
+      });
   }
 
   /**
@@ -78,7 +95,10 @@ export class AuthService {
    */
   errorLogout(error) {
     CommonService.displayError(error);
-    return this.afa.signOut().then(() => this.router.navigate([ '/access-denied' ])).catch(soError => CommonService.displayError(soError));
+    return this.afa
+      .signOut()
+      .then(() => this.router.navigate(['/access-denied']))
+      .catch((soError) => CommonService.displayError(soError));
   }
 
   /**
@@ -92,10 +112,9 @@ export class AuthService {
   /**
    * Logs the user into the website using Firebase Authentication and the specified provider.
    * User data creation is handled ONLY for desktop devices.
-   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it redirects to, which is
-   * the routeTo param.
-   * Otherwise, mobile users will not be able to create a user.
-   * Upon login, the user will be redirected to a new page as defined in routeTo.
+   * Any page calling login **must** call AuthService.redirectLoginUserCreation() in ngOnInit() of the page that it
+   * redirects to, which is the routeTo param. Otherwise, mobile users will not be able to create a user. Upon login,
+   * the user will be redirected to a new page as defined in routeTo.
    * @param routeTo - The routerLink that the user will be redirected to on a successful login.
    * @param queryParams - Optional - Any query params to be passed during navigation after successful navigation.
    * @returns A promise evaluating to true if the redirect is successful (only returned on desktop devices).
@@ -109,31 +128,39 @@ export class AuthService {
     const googleAuthProvider = new auth.GoogleAuthProvider();
 
     // Check device type
-    if (this.deviceDetectorService.isDesktop()) { // Device is desktop, so use sign-in with popup
-      return this.afa.signInWithPopup(new auth.GoogleAuthProvider()).then((userCredentials) => {
-        if (userCredentials.user) {  // If user is not null
-          return this.createUser(userCredentials.user).then(() => {
-            return this.router.navigate([ routeTo ], { queryParams });
-          });
-        } else {
-          return this.errorLogout('Null User Credentials on login: ' + userCredentials);
-        }
-      }).catch(error => {
-        if (error.message === AuthService.notBetaErrorMessage) {
-          return this.afa.signOut().then(() => {
-            return this.router.navigate([ '/access-denied-beta' ]);
-          });
-        } else {
-          return this.errorLogout(error);
-        }
-      });
-    } else { // Device is phone/tablet, so use sign-in with redirect
+    if (this.deviceDetectorService.isDesktop()) {
+      // Device is desktop, so use sign-in with popup
+      return this.afa
+        .signInWithPopup(new auth.GoogleAuthProvider())
+        .then((userCredentials) => {
+          if (userCredentials.user) {
+            // If user is not null
+            return this.createUser(userCredentials.user).then(() => {
+              return this.router.navigate([routeTo], { queryParams });
+            });
+          } else {
+            return this.errorLogout(
+              'Null User Credentials on login: ' + userCredentials
+            );
+          }
+        })
+        .catch((error) => {
+          if (error.message === AuthService.notBetaErrorMessage) {
+            return this.afa.signOut().then(() => {
+              return this.router.navigate(['/access-denied-beta']);
+            });
+          } else {
+            return this.errorLogout(error);
+          }
+        });
+    } else {
+      // Device is phone/tablet, so use sign-in with redirect
       const redirectPath = AuthService.parseQueryParams(routeTo, queryParams);
       this.location.go(redirectPath);
       // Sign-in with Redirect is necessary to support popup browsers which do not have support for multiple tabs)
-      return this.afa.signInWithRedirect(googleAuthProvider).catch(error => {
+      return this.afa.signInWithRedirect(googleAuthProvider).catch((error) => {
         CommonService.displayError(error);
-        return this.router.navigate([ '/access-denied' ]);
+        return this.router.navigate(['/access-denied']);
       });
     }
   }
@@ -145,12 +172,15 @@ export class AuthService {
    * @throws Error - If the logout fails
    */
   logout(): Promise<boolean> {
-    return this.afa.signOut().then(() => {
-      return this.router.navigate([ '/' ]);
-    }).catch(error => {
-      CommonService.displayError(error);
-      return this.router.navigate([ '/' ]);
-    });
+    return this.afa
+      .signOut()
+      .then(() => {
+        return this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        CommonService.displayError(error);
+        return this.router.navigate(['/']);
+      });
   }
 
   /**
@@ -162,45 +192,65 @@ export class AuthService {
    */
   async createUser(user: User): Promise<void> {
     // Beta Tester Verification
-    const betaRef: AngularFirestoreDocument<BetaUsers> = this.afs.collection('beta').doc<BetaUsers>('beta-testers');
-    const betaTestersList = await betaRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      throw new Error('User Creation Error:' + error);
-    });
+    const betaRef: AngularFirestoreDocument<BetaUsers> = this.afs
+      .collection('beta')
+      .doc<BetaUsers>('beta-testers');
+    const betaTestersList = await betaRef
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise()
+      .catch((error) => {
+        throw new Error('User Creation Error:' + error);
+      });
 
     if (!betaTestersList) {
-      throw new ReferenceError('Auth Error: Failed to get list of beta testers');
+      throw new ReferenceError(
+        'Auth Error: Failed to get list of beta testers'
+      );
     } else if (betaTestersList.users.indexOf(user.uid) === -1) {
       throw new Error(AuthService.notBetaErrorMessage);
     }
 
     // Not using this.getUserData() because userRef is required
-    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs.collection('users').doc<VirtrolioUser>(user.uid);
-    const userDoc = await userRef.valueChanges().pipe(take(1)).toPromise().catch(error => {
-      throw new Error('User Creation Error:' + error);
-    });
+    const userRef: AngularFirestoreDocument<VirtrolioUser> = this.afs
+      .collection('users')
+      .doc<VirtrolioUser>(user.uid);
+    const userDoc = await userRef
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise()
+      .catch((error) => {
+        throw new Error('User Creation Error:' + error);
+      });
 
-    if (!userDoc) { // User doesn't exist in database
+    if (!userDoc) {
+      // User doesn't exist in database
       const userData: VirtrolioUser = {
         displayName: user.displayName,
         key: AuthService.generateKey(),
-        profilePic: user.photoURL
+        profilePic: user.photoURL,
       };
-      await userRef.set(userData).catch(error => {
+      await userRef.set(userData).catch((error) => {
         throw new Error('User Creation Error:' + error);
       });
-    } else { // User exists in database, make sure all fields are present
+    } else {
+      // User exists in database, make sure all fields are present
       if (!('key' in userDoc)) {
-        await userRef.update({ key: AuthService.generateKey() }).catch(error => {
-          throw new Error('User Creation Error:' + error);
-        });
+        await userRef
+          .update({ key: AuthService.generateKey() })
+          .catch((error) => {
+            throw new Error('User Creation Error:' + error);
+          });
       }
       if (!('displayName' in userDoc)) {
-        await userRef.update({ displayName: user.displayName }).catch(error => {
-          throw new Error('User Creation Error:' + error);
-        });
+        await userRef
+          .update({ displayName: user.displayName })
+          .catch((error) => {
+            throw new Error('User Creation Error:' + error);
+          });
       }
       if (!('profilePic' in userDoc)) {
-        await userRef.update({ profilePic: user.photoURL }).catch(error => {
+        await userRef.update({ profilePic: user.photoURL }).catch((error) => {
           throw new Error('User Creation Error:' + error);
         });
       }
@@ -208,18 +258,19 @@ export class AuthService {
   }
 
   /**
-   * Handles the user creation if the user was signed in using signInWithRedirect() (called on mobile devices) instead of signInWithPopup().
-   * Should be called on any page that could potentially be a page that the user is redirected to after calling AuthService.login().
-   * User creation for devices using signInWithPopup() (desktops) is handled in AuthService.login().
+   * Handles the user creation if the user was signed in using signInWithRedirect() (called on mobile devices) instead
+   * of signInWithPopup(). Should be called on any page that could potentially be a page that the user is redirected to
+   * after calling AuthService.login(). User creation for devices using signInWithPopup() (desktops) is handled in
+   * AuthService.login().
    */
   async redirectLoginUserCreation(): Promise<void> {
     const userCredentials = await this.afa.getRedirectResult();
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
-      await this.createUser(userCredentials.user).catch(error => {
+      await this.createUser(userCredentials.user).catch((error) => {
         if (error.message === AuthService.notBetaErrorMessage) {
           return this.afa.signOut().then(() => {
-            return this.router.navigate([ '/access-denied-beta' ]);
+            return this.router.navigate(['/access-denied-beta']);
           });
         } else {
           return this.errorLogout(error);
@@ -251,13 +302,15 @@ export class AuthService {
    * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
    * Does nothing if the user is logged in.
    * The Error is designed in such a way that the error message can be displayed to the user using a Modal or an Alert.
-   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'.
-   * Should be in present tense and be in user-friendly language.
+   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a
+   *   message'. Should be in present tense and be in user-friendly language.
    * @throws ReferenceError - If the user is not logged in
    */
   async asyncThrowErrorIfLoggedOut(attemptedOperation: string): Promise<void> {
-    if (!await this.asyncIsLoggedIn()) {
-      throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
+    if (!(await this.asyncIsLoggedIn())) {
+      throw new ReferenceError(
+        'Cannot ' + attemptedOperation + ' because you are not logged in.'
+      );
     }
   }
 
@@ -265,13 +318,15 @@ export class AuthService {
    * Throws a ReferenceError if the user is logged out instead of returning false (that's isLoggedIn()).
    * Does nothing if the user is logged in.
    * The Error is designed in such a way that the error message can be displayed to the user using a Modal or an Alert.
-   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a message'.
-   * Should be in present tense and be in user-friendly language.
+   * @param attemptedOperation - The operation that is not permitted if the user is logged out, such as 'send a
+   *   message'. Should be in present tense and be in user-friendly language.
    * @throws ReferenceError - If the user is not logged in
    */
   throwErrorIfLoggedOut(attemptedOperation: string): void {
     if (!this.isLoggedIn()) {
-      throw new ReferenceError('Cannot ' + attemptedOperation + ' because you are not logged in.');
+      throw new ReferenceError(
+        'Cannot ' + attemptedOperation + ' because you are not logged in.'
+      );
     }
   }
 
@@ -291,14 +346,15 @@ export class AuthService {
       if (userDoc) {
         return userDoc.profilePic;
       } else {
-        throw new ReferenceError('User document doesn\'t exist');
+        throw new ReferenceError("User document doesn't exist");
       }
     }
   }
 
   /**
-   * Same as profilePictureLink, except not async to avoid the navbar trying to load the picture before the async call completes.
-   * This method should <u>**NOT**</u> be called by anything except the navbar. Use profilePictureLink() instead.
+   * Same as profilePictureLink, except not async to avoid the navbar trying to load the picture before the async call
+   * completes. This method should <u>**NOT**</u> be called by anything except the navbar. Use profilePictureLink()
+   * instead.
    * @returns The URL to the user's profile picture.
    * @throws ReferenceError - If the user is not logged in
    */
@@ -322,7 +378,7 @@ export class AuthService {
       if (userDoc) {
         return userDoc.displayName;
       } else {
-        throw new ReferenceError('User document doesn\'t exist');
+        throw new ReferenceError("User document doesn't exist");
       }
     }
   }
@@ -347,9 +403,13 @@ export class AuthService {
       throw new Error('Argument UID was not provided');
     }
     const userRef = this.afs.collection('users').doc(uid);
-    return userRef.snapshotChanges().pipe(take(1)).toPromise().then((userDoc: any) => {
+    return userRef
+      .snapshotChanges()
+      .pipe(take(1))
+      .toPromise()
+      .then((userDoc: any) => {
         return userDoc.payload.exists;
-      }
-    ).catch(error => alert(error));
+      })
+      .catch((error) => alert(error));
   }
 }

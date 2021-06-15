@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 // Pages
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
@@ -52,7 +53,6 @@ import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.component';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -115,4 +115,4 @@ import { SharedModule } from './shared/shared.module';
   providers: [CookieService, LoginResolver, PendingChangesGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

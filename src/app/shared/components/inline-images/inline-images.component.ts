@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InlineImagesComponent implements OnInit {
   @Input() images: string[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

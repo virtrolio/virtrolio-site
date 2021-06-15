@@ -8,4 +8,4 @@ import { InlineImagesComponent } from './components/inline-images/inline-images.
   imports: [AngularFireStorageModule, CommonModule],
   exports: [InlineImagesComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

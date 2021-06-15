@@ -14,7 +14,7 @@ declare var $: any;
 @Component({
   selector: 'app-signing',
   templateUrl: './signing.component.html',
-  styleUrls: [ './signing.component.css' ]
+  styleUrls: ['./signing.component.css'],
 })
 
 /**
@@ -33,26 +33,38 @@ export class SigningComponent implements OnInit, OnDestroy {
 
   @ViewChild(ImageModalComponent) imageModalComponent: ImageModalComponent;
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, public signingService: SigningService,
-              private msgIo: MsgIoService, private router: Router, private title: Title, public deviceDetector: DeviceDetectorService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    public signingService: SigningService,
+    private msgIo: MsgIoService,
+    private router: Router,
+    private title: Title,
+    public deviceDetector: DeviceDetectorService
+  ) {}
 
   /**
    * Extract query parameters, maximum message length, fonts, and recipient username from appropriate services
    */
   ngOnInit(): void {
-    this.authService.redirectLoginUserCreation().catch(error => CommonService.displayError(error));
-    this.route.queryParams.subscribe(params => {
+    this.authService
+      .redirectLoginUserCreation()
+      .catch((error) => CommonService.displayError(error));
+    this.route.queryParams.subscribe((params) => {
       this.uid = params.uid;
       this.key = params.key;
     });
-    this.authService.displayName(this.uid).then(userName => {
-      this.name = userName;
-      this.title.setTitle('Signing ' + userName + '\'s Virtrolio | Virtrolio');
-    }).catch(error => alert(error));
+    this.authService
+      .displayName(this.uid)
+      .then((userName) => {
+        this.name = userName;
+        this.title.setTitle('Signing ' + userName + "'s Virtrolio | Virtrolio");
+      })
+      .catch((error) => alert(error));
     this.signingService.resetDefaultValues();
     $('[data-toggle="popover"]').popover();
     $('.popover-dismiss').popover({
-      trigger: 'focus'
+      trigger: 'focus',
     });
   }
 
@@ -99,13 +111,16 @@ export class SigningComponent implements OnInit, OnDestroy {
 
     // remove navigation popup
     this.sending = true;
-    this.msgIo.sendMessage(newMsg, this.key).then(() => {
-      this.router.navigate([ '/msg-sent' ], { queryParams: { name: this.name } })
-        .catch(e => CommonService.displayError(e));
-    }).catch(error => {
+    this.msgIo
+      .sendMessage(newMsg, this.key)
+      .then(() => {
+        this.router
+          .navigate(['/msg-sent'], { queryParams: { name: this.name } })
+          .catch((e) => CommonService.displayError(e));
+      })
+      .catch((error) => {
         CommonService.displayError(error);
-      }
-    );
+      });
   }
 
   /**
