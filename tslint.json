@@ -1,5 +1,5 @@
 {
-  "extends": "tslint:recommended",
+  "extends": ["tslint:recommended", "tslint-angular", "tslint-config-prettier"],
   "rules": {
     "align": {
       "options": [
@@ -78,7 +78,8 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "semicolon": {
       "options": [
@@ -125,9 +126,7 @@
         "check-decl",
         "check-operator",
         "check-separator",
-        "check-type",
         "check-typecast",
-        "check-postbrace",
         "check-module",
         "check-rest-spread"
       ]
