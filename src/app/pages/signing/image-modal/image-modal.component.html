@@ -6,7 +6,7 @@
   role="dialog"
   aria-labelledby="dialog-child-name"
 >
-  <div class="modal-dialog modal-dialog-centered modal-lg"  role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="embed-photo-title">Add up to three images!</h5>
@@ -21,9 +21,9 @@
         </button>
       </div>
       <app-error-alert></app-error-alert>
-      <div class="modal-body d-md-flex p-4" id="embed-photo-div">
+      <div class="modal-body d-md-flex p-5" id="embed-photo-div">
         <div class="col-md-12 my-6 px-lg-5 px-3 vertical-center text-center">
-          <div class="col-md-12 text-center" id="drag-upload">
+          <div class="col-md-12 text-center m-2" id="drag-upload">
             <label *ngIf="!selectedImagesURLs.length">No images selected</label>
             <img
               class="col-4"
@@ -62,11 +62,12 @@
       </div>
       <div class="modal-footer">
         <div class="row w-100">
-          <div class="col-12 p-0" id="footer-right-column">
-            <button type="button" class="btn btn-primary">Upload</button>
+          <div class="col-12 p-0">
+            <button type="button" class="btn btn-primary" style="float: right;">Upload</button>
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary mx-1"
+              style="float: right;"
               (click)="hideImageModal()"
               data-dismiss="modal"
             >
