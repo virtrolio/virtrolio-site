@@ -16,6 +16,7 @@ export class SigningService {
   charCount: number;
   maxCharCount: number;
   charCountColor: string;
+  images: File[];
 
   // Font service variables
   fontDict: Fonts; // Used to store all of the fonts
@@ -42,6 +43,7 @@ export class SigningService {
     this.currentFont = 'Arial';
     this.currentFontFamily = 'Arial, sans-serif';
     this.currentFontDisplay = 'Arial';
+    this.images = [];
   }
 
   /**
