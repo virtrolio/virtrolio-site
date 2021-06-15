@@ -44,7 +44,7 @@ export class ImageModalComponent {
 
         const reader = new FileReader();
         reader.readAsDataURL(item);
-        reader.onload = (event) => {
+        reader.onload = (event: ProgressEvent<FileReader>) => {
           this.selectedImagesURLs.push(event.target.result);
         };
       }
