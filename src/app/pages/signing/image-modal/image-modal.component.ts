@@ -17,6 +17,7 @@ export class ImageModalComponent {
 
   selectedImagesNames: string[] = [];
   selectedImages: File[] = [];
+  selectedImagesURLs = [];
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
@@ -31,21 +32,26 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
-  fileNames(fileInput: any) {
-    this.selectedImagesNames = [];
-    this.selectedImages = [];
+  onSelectFiles(e) {
+    const files = e.target.files;
 
-    if (fileInput.length > 3) {
+    if (files.length + this.selectedImagesURLs.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
       return;
     }
-    for (const i in fileInput) {
-      if (fileInput[i].size > 64000000) {
-        this.ErrorAlertComponent.addImageSizeLimit(fileInput[i].name);
-        continue;
-      } else {
-        this.selectedImagesNames.push(fileInput[i].name);
-        this.selectedImages.push(fileInput[i]);
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].size > ImageModalComponent.maxFileSize) {
+          this.ErrorAlertComponent.addImageSizeLimit(files[i].name);
+          return;
+        }
+
+        let reader = new FileReader();
+        reader.readAsDataURL(files[i]);
+        reader.onload = (event: any) => {
+          this.selectedImagesURLs.push(event.target.result);
+        };
       }
     }
   }
