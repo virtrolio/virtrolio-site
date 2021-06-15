@@ -14,3 +14,13 @@
 #no-images-graphic {
   max-width: 100%;
 }
+
+#embed-photo-div {
+  max-height: 20em;
+}
+
+#no-images-graphic,
+.uploaded-image {
+  max-height: 13em;
+  object-fit: contain;
+}
