@@ -136,7 +136,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .author-container:hover {
@@ -317,7 +317,8 @@
   border-radius: 1em;
 }
 
-.subtle-link, .subtle-link:hover {
+.subtle-link,
+.subtle-link:hover {
   color: #000000;
   text-decoration: none;
 }

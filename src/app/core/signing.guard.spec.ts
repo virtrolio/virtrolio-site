@@ -6,7 +6,7 @@ describe('SigningGuard', () => {
   let guard: SigningGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ });
+    TestBed.configureTestingModule({});
     guard = TestBed.inject(SigningGuard);
   });
 

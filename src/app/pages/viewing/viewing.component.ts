@@ -4,9 +4,9 @@ import { ViewingService } from '../../core/viewing.service';
 import { Title } from '@angular/platform-browser';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { VirtrolioMessage } from '../../shared/interfaces/messages';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
-import { VirtrolioMessage } from '../../shared/interfaces/messages';
 
 @Component({
   selector: 'app-viewing',
@@ -23,7 +23,7 @@ export class ViewingComponent implements OnInit {
     private route: ActivatedRoute,
     private viewService: ViewingService,
     private title: Title
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.title.setTitle('View Your Messages | Virtrolio');

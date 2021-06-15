@@ -1,13 +1,13 @@
 export class Font {
-    fontFamily: string;
-    backupFont: string;
+  fontFamily: string;
+  backupFont: string;
 
-    constructor(fontFamily, backupFont) {
-        this.fontFamily = fontFamily;
-        this.backupFont = backupFont;
-    }
+  constructor(fontFamily, backupFont) {
+    this.fontFamily = fontFamily;
+    this.backupFont = backupFont;
+  }
 }
 
 export interface Fonts {
-    [key: string]: Font;
+  [key: string]: Font;
 }

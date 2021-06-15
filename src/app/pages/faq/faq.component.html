@@ -34,10 +34,7 @@
         [attr.data-parent]="'#section-header' + s"
         id="answer{{ s }}-{{ q }}"
       >
-        <div
-          class="card-body card-align body-text"
-          [innerHTML]="question.answer"
-        ></div>
+        <div class="card-body card-align" [innerHTML]="question.answer"></div>
       </div>
     </div>
   </div>

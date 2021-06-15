@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
 
 /**
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   static readonly beta = true;
   public title = 'virtrolio-site';
 
-  constructor(public cookieService: CookieService) { }
+  constructor(public cookieService: CookieService) {}
 
   ngOnInit(): void {
     // Generate new-user-cookie if it does not exist

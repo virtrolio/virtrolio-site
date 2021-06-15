@@ -6,12 +6,13 @@ describe('InvalidLinkComponent', () => {
   let component: InvalidLinkComponent;
   let fixture: ComponentFixture<InvalidLinkComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ InvalidLinkComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [InvalidLinkComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(InvalidLinkComponent);

@@ -6,12 +6,13 @@ describe('VirtrolioCoverComponent', () => {
   let component: MyVirtrolioComponent;
   let fixture: ComponentFixture<MyVirtrolioComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MyVirtrolioComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MyVirtrolioComponent],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MyVirtrolioComponent);

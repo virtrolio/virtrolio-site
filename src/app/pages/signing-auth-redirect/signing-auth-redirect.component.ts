@@ -6,13 +6,17 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-friend-link',
   templateUrl: './signing-auth-redirect.component.html',
-  styleUrls: [ './signing-auth-redirect.component.css' ]
+  styleUrls: ['./signing-auth-redirect.component.css'],
 })
 export class SigningAuthRedirectComponent implements OnInit {
   uid: string;
   key: string;
 
-  constructor(public authService: AuthService, private route: ActivatedRoute, private title: Title) { }
+  constructor(
+    public authService: AuthService,
+    private route: ActivatedRoute,
+    private title: Title
+  ) {}
 
   goToSigning() {
     // noinspection JSIgnoredPromiseFromCall
@@ -21,7 +25,7 @@ export class SigningAuthRedirectComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Please Sign In. | Virtrolio');
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.uid = params.uid;
       this.key = params.key;
     });

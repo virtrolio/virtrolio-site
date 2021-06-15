@@ -1,5 +1,9 @@
 import { Injectable, SecurityContext } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -10,12 +14,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SharingLinkService } from './sharing-link.service';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import {
+  VirtrolioDocument,
+  VirtrolioMessage,
+  VirtrolioMessageTemplate,
+} from '../shared/interfaces/messages';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
-import { VirtrolioDocument, VirtrolioMessage, VirtrolioMessageTemplate } from '../shared/interfaces/messages';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MsgIoService {
   static readonly currentYear = 2021;
@@ -24,8 +32,12 @@ export class MsgIoService {
 
   private messagesCollection: AngularFirestoreCollection;
 
-  constructor(private afs: AngularFirestore, private authService: AuthService, private sanitizer: DomSanitizer,
-              private sharingLinkService: SharingLinkService) {
+  constructor(
+    private afs: AngularFirestore,
+    private authService: AuthService,
+    private sanitizer: DomSanitizer,
+    private sharingLinkService: SharingLinkService
+  ) {
     this.messagesCollection = afs.collection('messages');
   }
 
@@ -38,7 +50,10 @@ export class MsgIoService {
    * in MsgIoService.
    */
   verifyMessage(message: VirtrolioMessageTemplate): void {
-    const sanitizedContents = this.sanitizer.sanitize(SecurityContext.HTML, message.contents);
+    const sanitizedContents = this.sanitizer.sanitize(
+      SecurityContext.HTML,
+      message.contents
+    );
     if (typeof message.to === 'undefined' || !message.to) {
       // This condition (used several times below) checks for undefined, null or empty strings
       throw new Error('Recipient UID was not provided');
@@ -46,25 +61,47 @@ export class MsgIoService {
       throw new Error('Message contents were not provided');
     } else if (!/\S+/.test(message.contents)) {
       // Ensure messages does not solely consist of whitespace
-      throw new Error('Message contents cannot solely consist of whitespace/blanks');
+      throw new Error(
+        'Message contents cannot solely consist of whitespace/blanks'
+      );
     } else if (typeof message.backColor === 'undefined' || !message.backColor) {
       throw new Error('Background color was not provided');
     } else if (typeof message.fontColor === 'undefined' || !message.fontColor) {
       throw new Error('Font color was not provided');
-    } else if (typeof message.fontFamily === 'undefined' || !message.fontFamily) {
+    } else if (
+      typeof message.fontFamily === 'undefined' ||
+      !message.fontFamily
+    ) {
       throw new Error('Font family was not provided');
     } else if (sanitizedContents.length > MsgIoService.maxMessageLength) {
-      throw new RangeError('Message is too long. The max length is ' + MsgIoService.maxMessageLength + ' characters, ' +
-        'and the provided message is ' + sanitizedContents.length + ' characters long.\n' +
-        'Remember that some character such as line breaks, emojis and other languages have a length longer than one per character.');
-    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) { // Match for hex code such as: #FFFFFF
-      throw new Error('Provided font color is not a valid hex code. Did you forget to include \'#\'?' +
-        ' Provided color code: ' + message.fontColor);
-    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) { // Match for hex code such as: #FFFFFF
-      throw new Error('Provided background color is not a valid hex code. Did you forget to include \'#\'?' +
-        ' Provided color code: ' + message.backColor);
+      throw new RangeError(
+        'Message is too long. The max length is ' +
+          MsgIoService.maxMessageLength +
+          ' characters, ' +
+          'and the provided message is ' +
+          sanitizedContents.length +
+          ' characters long.\n' +
+          'Remember that some character such as line breaks, emojis and other languages have a length longer than one per character.'
+      );
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.fontColor)) {
+      // Match for hex code such as: #FFFFFF
+      throw new Error(
+        "Provided font color is not a valid hex code. Did you forget to include '#'?" +
+          ' Provided color code: ' +
+          message.fontColor
+      );
+    } else if (!/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(message.backColor)) {
+      // Match for hex code such as: #FFFFFF
+      throw new Error(
+        "Provided background color is not a valid hex code. Did you forget to include '#'?" +
+          ' Provided color code: ' +
+          message.backColor
+      );
     } else if (!(message.fontFamily in FontService.fonts)) {
-      throw new Error('Provided font family is not supported or doesn\'t exist: ' + message.fontFamily);
+      throw new Error(
+        "Provided font family is not supported or doesn't exist: " +
+          message.fontFamily
+      );
     }
     // Return not needed as an error will be thrown if something is wrong
   }
@@ -79,39 +116,49 @@ export class MsgIoService {
 
   /**
    * Collects ALL messages from the Firestore messages database that were sent to a particular user.
-   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading shared/interfaces/messages.ts.
-   * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading
+   * shared/interfaces/messages.ts. A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @returns An Observable that will contain an array of all messages sent to uid, including the message IDs.
    * @throws Error - If the argument is blank, null or undefined.
    */
   getMessages(): Observable<VirtrolioMessage[]> {
     this.authService.throwErrorIfLoggedOut('get your messages');
 
-    return this.afs.collection('messages', ref => ref.where('to', '==', this.authService.uid()))
-      .snapshotChanges().pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as VirtrolioDocument;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        }))
+    return this.afs
+      .collection('messages', (ref) =>
+        ref.where('to', '==', this.authService.uid())
+      )
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as VirtrolioDocument;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
       );
   }
 
   /**
    * Collects a SINGLE message from the Firestore messages database based on a message ID.
-   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading shared/interfaces/messages.ts.
-   * A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
+   * Pay careful attention to the fields that are returned in a VirtrolioMessage by reading
+   * shared/interfaces/messages.ts. A VirtrolioMessage is NOT identical to a VirtrolioMessageTemplate.
    * @param msgID - The ID of the message to be received.
    */
   getMessage(msgID: string): Observable<VirtrolioMessage> {
     this.authService.throwErrorIfLoggedOut('fetch a message');
 
-    const msgRef: AngularFirestoreDocument<VirtrolioMessage> = this.afs.collection('messages').doc<VirtrolioMessage>(msgID);
-    return msgRef.snapshotChanges().pipe(map(document => {
-      const data = document.payload.data() as VirtrolioDocument;
-      const id = document.payload.id;
-      return { id, ...data };
-    }));
+    const msgRef: AngularFirestoreDocument<VirtrolioMessage> = this.afs
+      .collection('messages')
+      .doc<VirtrolioMessage>(msgID);
+    return msgRef.snapshotChanges().pipe(
+      map((document) => {
+        const data = document.payload.data() as VirtrolioDocument;
+        const id = document.payload.id;
+        return { id, ...data };
+      })
+    );
   }
 
   /**
@@ -124,11 +171,13 @@ export class MsgIoService {
    * @param id - The ID of the message to mark as read.
    */
   async markAsRead(id: string): Promise<void> {
-    await this.afs.collection('messages').doc<VirtrolioDocument>(id).update(
-      { isRead: true }
-    ).catch(error => {
-      CommonService.displayError(error);
-    });
+    await this.afs
+      .collection('messages')
+      .doc<VirtrolioDocument>(id)
+      .update({ isRead: true })
+      .catch((error) => {
+        CommonService.displayError(error);
+      });
   }
 
   /**
@@ -138,9 +187,15 @@ export class MsgIoService {
    * @returns true - If the current user has already signed the virtrolio of toUID.
    */
   async checkForMessage(toUID: string): Promise<boolean> {
-    const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs.collection('messages')
-      .doc(this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion);
-    const msgDoc: VirtrolioDocument = await msgRef.valueChanges().pipe(take(1)).toPromise();
+    const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs
+      .collection('messages')
+      .doc(
+        this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion
+      );
+    const msgDoc: VirtrolioDocument = await msgRef
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
     return !!msgDoc;
   }
 
@@ -155,7 +210,10 @@ export class MsgIoService {
    * @throws TypeError - If the key is incorrect
    * @throws ReferenceError - If this method is called when logged out
    */
-  async sendMessage(messageTemplate: VirtrolioMessageTemplate, key: string): Promise<void> {
+  async sendMessage(
+    messageTemplate: VirtrolioMessageTemplate,
+    key: string
+  ): Promise<void> {
     // Check message object contents for validity
     this.verifyMessage(messageTemplate);
 
@@ -164,15 +222,23 @@ export class MsgIoService {
 
     // Verify the virtrolio has not already been signed
     if (await this.checkForMessage(messageTemplate.to)) {
-      throw new Error('You have already signed this person\'s virtrolio. If you want to sign it again,' +
-        ' you\'ll have to ask them to delete your original message first.');
+      throw new Error(
+        "You have already signed this person's virtrolio. If you want to sign it again," +
+          " you'll have to ask them to delete your original message first."
+      );
     }
 
     // Verify correct key
-    const keyIsCorrect = await this.sharingLinkService.checkKey(messageTemplate.to, key);
+    const keyIsCorrect = await this.sharingLinkService.checkKey(
+      messageTemplate.to,
+      key
+    );
     if (keyIsCorrect) {
       // Remove XSS content from message contents
-      messageTemplate.contents = this.sanitizer.sanitize(SecurityContext.HTML, messageTemplate.contents);
+      messageTemplate.contents = this.sanitizer.sanitize(
+        SecurityContext.HTML,
+        messageTemplate.contents
+      );
       // Add remaining autogenerated fields
       const message: VirtrolioDocument = {
         ...messageTemplate, // Shallow copy of messageTemplate
@@ -182,12 +248,18 @@ export class MsgIoService {
         year: MsgIoService.currentYear,
         fromName: await this.authService.displayName(),
         fromPic: await this.authService.profilePictureLink(),
-        key
+        key,
       };
 
       // Send the message
-      const msgRef = this.messagesCollection.doc(this.authService.uid() + '-' + message.to + '-' + MsgIoService.currentVersion);
-      await msgRef.set(message).catch(error => {
+      const msgRef = this.messagesCollection.doc(
+        this.authService.uid() +
+          '-' +
+          message.to +
+          '-' +
+          MsgIoService.currentVersion
+      );
+      await msgRef.set(message).catch((error) => {
         CommonService.displayError(error);
       });
     } else {

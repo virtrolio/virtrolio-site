@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
@@ -8,7 +15,7 @@ import { MsgIoService } from './msg-io.service';
 import { SharingLinkService } from './sharing-link.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 /**
@@ -24,16 +31,27 @@ export class SigningGuard implements CanActivate {
   static key = 'invalid';
   private readonly maintenance = false;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,
-              private msgIOService: MsgIoService, private sharingLinkService: SharingLinkService) { }
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private msgIOService: MsgIoService,
+    private sharingLinkService: SharingLinkService
+  ) {}
 
   // noinspection JSUnusedLocalSymbols
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     if (this.maintenance) {
-      this.router.navigate([ '/maintenance' ]).catch(e => CommonService.displayError(e));
+      this.router
+        .navigate(['/maintenance'])
+        .catch((e) => CommonService.displayError(e));
       return false;
     } else {
       // Regex Extraction of 'uid' and 'key' params
@@ -42,45 +60,72 @@ export class SigningGuard implements CanActivate {
         SigningGuard.uid = linkStr.match(/uid=([^&]*)/)[1];
         SigningGuard.key = linkStr.match(/key=([^&]*)/)[1];
       } catch (error) {
-        // Displaying alert is not necessary since an error is only thrown when one of the query params is missing/invalid = invalid link
-        this.router.navigate([ '/invalid-link' ]).catch(error => CommonService.displayError(error));
+        // Displaying alert is not necessary since an error is only thrown when one of the query params is
+        // missing/invalid = invalid link
+        this.router
+          .navigate(['/invalid-link'])
+          .catch((error) => CommonService.displayError(error));
       }
 
       // User must be signed in
-      return this.authService.asyncIsLoggedIn().then(isLoggedIn => {
+      return this.authService.asyncIsLoggedIn().then((isLoggedIn) => {
         if (!isLoggedIn) {
-          this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
-            .catch(e => CommonService.displayError(e));
+          this.router
+            .navigate(['/signing-auth-redirect'], {
+              queryParams: {
+                uid: SigningGuard.uid,
+                key: SigningGuard.key,
+              },
+            })
+            .catch((e) => CommonService.displayError(e));
           return false;
         } else {
           // Sender must not have previously signed the recipient's virtrolio
-          return this.sharingLinkService.checkKey(SigningGuard.uid, SigningGuard.key).then(validKey => {
-            if (validKey === false) {
-              this.router.navigate([ '/invalid-link' ]).catch(error => CommonService.displayError(error));
-              return false;
-            }
-            this.msgIOService.checkForMessage(SigningGuard.uid).then((signed) => {
-              if (signed) {
-                this.router.navigate([ '/rejecc' ]).catch(error => CommonService.displayError(error));
+          return this.sharingLinkService
+            .checkKey(SigningGuard.uid, SigningGuard.key)
+            .then((validKey) => {
+              if (validKey === false) {
+                this.router
+                  .navigate(['/invalid-link'])
+                  .catch((error) => CommonService.displayError(error));
                 return false;
-              } else {
-                return true;
               }
-            }).catch(error => {
-              // Only possibilities for a Firebase error getting thrown:
-              // 1. Not logged in
-              // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage() unless someone
-              // modifies the source code)
+              this.msgIOService
+                .checkForMessage(SigningGuard.uid)
+                .then((signed) => {
+                  if (signed) {
+                    this.router
+                      .navigate(['/rejecc'])
+                      .catch((error) => CommonService.displayError(error));
+                    return false;
+                  } else {
+                    return true;
+                  }
+                })
+                .catch((error) => {
+                  // Only possibilities for a Firebase error getting thrown:
+                  // 1. Not logged in
+                  // 2. Requested message was NOT sent by current user (impossible based on logic of checkMessage()
+                  // unless someone modifies the source code)
+                  CommonService.displayError(error);
+                  this.router
+                    .navigate(['/signing-auth-redirect'], {
+                      queryParams: {
+                        uid: SigningGuard.uid,
+                        key: SigningGuard.key,
+                      },
+                    })
+                    .catch((navError) => CommonService.displayError(navError));
+                });
+              return true;
+            })
+            .catch((error) => {
               CommonService.displayError(error);
-              this.router.navigate([ '/signing-auth-redirect' ], { queryParams: { uid: SigningGuard.uid, key: SigningGuard.key } })
-                .catch(navError => CommonService.displayError(navError));
+              this.router
+                .navigate(['/invalid-link'])
+                .catch((e) => CommonService.displayError(e));
+              return false;
             });
-            return true;
-          }).catch(error => {
-            CommonService.displayError(error);
-            this.router.navigate([ '/invalid-link' ]).catch(e => CommonService.displayError(e));
-            return false;
-          });
         }
       });
     }
