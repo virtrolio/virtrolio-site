@@ -1,9 +1,12 @@
 #graphic {
-  height: 10em;
+  height: 12em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
-.container {
-  text-align: center;
+#graphic-container {
+  width: 100%;
 }
 
 #title {

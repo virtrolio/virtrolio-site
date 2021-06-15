@@ -4,6 +4,42 @@
   font-family: Montserrat, sans-serif;
 }
 
+.loading-empty-state-container {
+  width: 100%;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-border {
+  color: var(--accent);
+  height: 3em;
+  width: 3em;
+}
+
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-state-img {
+  width: 10em;
+}
+
+.empty-state-header {
+  font-size: 1.5em;
+  color: var(--light-grey);
+}
+
+.empty-state-body {
+  font-size: 1em;
+  color: var(--light-grey);
+}
+
 .message {
   text-align: justify;
   font-size: 1em;
@@ -89,11 +125,6 @@
   width: 1.7em;
   border-radius: 100%;
   display: flex;
-}
-
-#no-messages {
-  font-size: 2em;
-  color: var(--light-grey);
 }
 
 /* Remove the blue outline around the buttons on the header when they're clicked */

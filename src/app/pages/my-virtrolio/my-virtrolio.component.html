@@ -27,6 +27,17 @@
       <div id="buttons">
         <div class="row">
           <button
+            (click)="setLink(); showWarningText = false"
+            class="btn-lg btn-primary"
+            data-target="#link-gen"
+            data-toggle="modal"
+            type="button"
+          >
+            Sharing Link
+          </button>
+        </div>
+        <div class="row">
+          <button
             class="btn-lg btn-primary"
             routerLink="/viewing"
             type="button"
@@ -42,17 +53,6 @@
             type="button"
           >
             Send a Message
-          </button>
-        </div>
-        <div class="row">
-          <button
-            (click)="setLink(); showWarningText = false"
-            class="btn-lg btn-primary"
-            data-target="#link-gen"
-            data-toggle="modal"
-            type="button"
-          >
-            Sharing Link
           </button>
         </div>
         <div class="row">

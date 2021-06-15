@@ -1,14 +1,14 @@
-<div class="container">
-  <h1 class="mt-3 mb-3" id="title">Frequently Asked Questions</h1>
+<div class="pt-5 container">
+  <h1 class="mb-3 header-text">Frequently Asked Questions</h1>
   <br />
 
   <div
-    class="accordion mb-3"
+    class="accordion mb-5"
     id="section-header{{ s }}"
     *ngFor="let section of faqContent; let s = index"
   >
     <!-- Each section-->
-    <h2>{{ section.sectionTitle }}</h2>
+    <h2 class="subheader-text">{{ section.sectionTitle }}</h2>
 
     <!-- Each question per section -->
     <div class="card" *ngFor="let question of section.questions; let q = index">
@@ -40,7 +40,7 @@
   </div>
 
   <hr />
-  <div class="jumbotron" id="bottom-text">
+  <div class="justify-content-center vertical-center py-4">
     <p>
       Didn't find what you were looking for? Send us your question with the
       <a routerLink="/contact">Contact Us</a> page!

@@ -16,6 +16,7 @@ declare var $: any;
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent implements OnInit, OnDestroy {
+  isLoading = true;
   messageList: VirtrolioMessage[] = [];
   oneMessage = 'messages';
 
@@ -41,6 +42,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
         ? (this.oneMessage = 'message')
         : (this.oneMessage = 'messages');
     }
+  }
+
+  @Input() set setIsLoading(isLoading: boolean) {
+    this.isLoading = isLoading;
   }
 
   ngOnInit(): void {}
