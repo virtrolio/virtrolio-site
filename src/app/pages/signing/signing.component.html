@@ -1,28 +1,28 @@
 <!--suppress HtmlUnknownTarget -->
-<div class="container py-4 center-children vertical-center">
-  <div class="row" *ngIf="deviceDetector.isMobile()">
-    <div class="col-12 alert alert-primary" id="signing-experience-alert">
+<div class='container py-4 center-children vertical-center'>
+  <div class='row' *ngIf='deviceDetector.isMobile()'>
+    <div class='col-12 alert alert-primary' id='signing-experience-alert'>
       The Virtrolio signing experience is better on a desktop or laptop computer! <strong><u>
-      <a data-toggle="modal" data-target="#signing-experience">Why?</a></u></strong>
+      <a data-toggle='modal' data-target='#signing-experience'>Why?</a></u></strong>
     </div>
   </div>
-  <div class="row">
+  <div class='row'>
 
     <!-- Signing box, header, and character count -->
-    <div class="col-md-6 order-md-1 center-children">
-      <div class="row title-div vertical-center">
-        <label for="signing-box">
+    <div class='col-md-6 order-md-1 center-children'>
+      <div class='row title-div vertical-center'>
+        <label for='signing-box'>
           <b>Type your message to {{ name }} below.</b>
         </label>
       </div>
-      <div class="row">
+      <div class='row'>
         <textarea #signingInputArea (keyup)='signingService.updateCount(signingInputArea)'
                   [(ngModel)]='signingService.signingBoxText'
                   [ngStyle]="{'font-family': signingService.currentFontFamily}"
-                  autofocus class="form-control"
-                  id="signing-box"></textarea>
-        <span *ngIf="signingService.charCount >= 2000" [ngStyle]="{'color': signingService.charCountColor}"
-              id="char-count-display">
+                  autofocus class='form-control'
+                  id='signing-box'></textarea>
+        <span *ngIf='signingService.charCount >= 2000' [ngStyle]="{'color': signingService.charCountColor}"
+              id='char-count-display'>
           {{ signingService.charCount }} / {{ signingService.maxCharCount }}
         </span>
       </div>
@@ -30,68 +30,68 @@
 
     <!-- Formatting Tools -->
     <div class='col-md-12 order-md-3'>
-      <div class=" row justify-content-center" id="options">
+      <div class=' row justify-content-center' id='options'>
 
         <!-- Font dropdown -->
-        <div class="dropdown">
-          <button [ngStyle]="{'font-family': signingService.currentFontFamily}" aria-expanded="false"
-                  aria-haspopup="true"
-                  class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="font-selector-dropdown"
-                  type="button">
+        <div class='dropdown'>
+          <button [ngStyle]="{'font-family': signingService.currentFontFamily}" aria-expanded='false'
+                  aria-haspopup='true'
+                  class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' id='font-selector-dropdown'
+                  type='button'>
             <span>{{ signingService.currentFontDisplay }}</span>
-            <span class="caret"></span>
+            <span class='caret'></span>
           </button>
-          <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-            <span *ngFor="let font of signingService.fontDict | keyvalue">
-              <a (click)="signingService.selectFont(font.key)" [ngStyle]="{'font-family': font.key}"
-                 class="dropdown-item">{{font.key}}</a>
+          <div aria-labelledby='font-selector-dropdown' class='dropdown-menu'>
+            <span *ngFor='let font of signingService.fontDict | keyvalue'>
+              <a (click)='signingService.selectFont(font.key)' [ngStyle]="{'font-family': font.key}"
+                 class='dropdown-item'>{{font.key}}</a>
             </span>
           </div>
         </div>
 
         <!-- Formatting buttons -->
-        <button (click)="signingService.addFormatting(signingInputArea, '**')" class="btn btn-secondary btn-format mr-2"
-                id="button-bold" type="button">
+        <button (click)="signingService.addFormatting(signingInputArea, '**')" class='btn btn-secondary btn-format mr-2'
+                id='button-bold' type='button'>
           <b>B</b>
         </button>
-        <button (click)="signingService.addFormatting(signingInputArea, '*')" class="btn btn-secondary btn-format mr-2"
-                id="button-italics" type="button">
+        <button (click)="signingService.addFormatting(signingInputArea, '*')" class='btn btn-secondary btn-format mr-2'
+                id='button-italics' type='button'>
           <i>I</i>
         </button>
         <button (click)="signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')"
-                class="btn btn-secondary btn-format mr-2"
-                id="button-underline" type="button">
+                class='btn btn-secondary btn-format mr-2'
+                id='button-underline' type='button'>
           <u>U</u>
         </button>
-        <button (click)="signingService.addFormatting(signingInputArea, '~~')" class="btn btn-secondary btn-format mr-2"
-                id="button-strikethrough" type="button">
+        <button (click)="signingService.addFormatting(signingInputArea, '~~')" class='btn btn-secondary btn-format mr-2'
+                id='button-strikethrough' type='button'>
           <s>S</s>
         </button>
 
         <!-- Color pickers for text and background -->
-        <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-          <span id="font-color-text">A</span>
-          <label for="color-picker-font" hidden>Colour picker for font</label>
-          <input [(ngModel)]='signingService.textColor' class="mr-2" id="color-picker-font" name="fontColorPicker"
-                 type="color" value={{signingService.textColor}}>
-          <span [ngStyle]="{'background-color': signingService.textColor}" class="dynamic-color-bar">&nbsp;</span>
+        <button class='btn btn-secondary btn-format mr-2 icon-wrapper' type='button'>
+          <span id='font-color-text'>A</span>
+          <label for='color-picker-font' hidden>Colour picker for font</label>
+          <input [(ngModel)]='signingService.textColor' class='mr-2' id='color-picker-font' name='fontColorPicker'
+                 type='color' value='{{signingService.textColor}}'>
+          <span [ngStyle]="{'background-color': signingService.textColor}" class='dynamic-color-bar'>&nbsp;</span>
         </button>
-        <button class="btn btn-secondary btn-format mr-2 icon-wrapper" type="button">
-          <img alt="fill color selector" id="fill-color-icon"
-               src="../../../assets/images/icons/SigningIcon_fill-color.svg">
-          <label for="color-picker-background" hidden>Colour picker for background</label>
-          <input [(ngModel)]='signingService.backgroundColor' class="mr-2" id="color-picker-background"
-                 name="background-color-picker" type="color" value={{signingService.backgroundColor}}>
-          <span [ngStyle]="{'background-color': signingService.backgroundColor}" class="dynamic-color-bar">&nbsp;</span>
+        <button class='btn btn-secondary btn-format mr-2 icon-wrapper' type='button'>
+          <img alt='fill color selector' id='fill-color-icon'
+               src='../../../assets/images/icons/SigningIcon_fill-color.svg'>
+          <label for='color-picker-background' hidden>Colour picker for background</label>
+          <input [(ngModel)]='signingService.backgroundColor' class='mr-2' id='color-picker-background'
+                 name='background-color-picker' type='color' value='{{signingService.backgroundColor}}'>
+          <span [ngStyle]="{'background-color': signingService.backgroundColor}" class='dynamic-color-bar'>&nbsp;</span>
         </button>
 
         <!-- Other buttons -->
-        <button type="button" class="btn btn-secondary btn-format mr-2 icon-wrapper" id="btn-photo" data-toggle="modal"
-                data-target="#embed-photo" (click)="this.copyButtonText = 'Copy'">
-          <img alt="image icon" id="image-icon" src="../../../assets/images/icons/SigningIcon_image.svg">
+        <button type='button' class='btn btn-secondary btn-format mr-2 icon-wrapper' id='btn-photo' data-toggle='modal'
+                data-target='#embed-photo' (click)="this.copyButtonText = 'Copy'">
+          <img alt='image icon' id='image-icon' src='../../../assets/images/icons/SigningIcon_image.svg'>
         </button>
-        <a tabindex="0" role="button" class="btn btn-secondary btn-format mr-2 icon-wrapper vertical-center"
-           data-toggle="popover" data-trigger="focus" title="Emojis" data-html="true" data-content="If you're on a
+        <a tabindex='0' role='button' class='btn btn-secondary btn-format mr-2 icon-wrapper vertical-center'
+           data-toggle='popover' data-trigger='focus' title='Emojis' data-html='true' data-content="If you're on a
            desktop or laptop, click inside your message and press Windows + Period on Windows or Command + Control +
            Space on a Mac to open your computer's Emoji Keyboard!<br><br>If you're on a phone you should already have an
            emoji keyboard built into your keyboard! <br><br> Note: not all emojis may be supported; check
@@ -99,113 +99,117 @@
            supported emojis</a> to make sure! ❤">😀
         </a>
 
-        <button type="button" class="btn btn-primary" id="btn-info" data-toggle="modal"
-                data-target="#info">More Info!
+        <button type='button' class='btn btn-primary' id='btn-info' data-toggle='modal'
+                data-target='#info'>More Info!
         </button>
       </div>
-      <div class="row mt-3 justify-content-center">
-        <button [disabled]="!signingService.canSend" class="btn btn-primary btn-send" data-target="#submit-confirm"
-                data-toggle="modal" id="send-button" type="button">Send
+      <div class='row mt-3 justify-content-center'>
+        <button [disabled]='!signingService.canSend' class='btn btn-primary btn-send' data-target='#submit-confirm'
+                data-toggle='modal' id='send-button' type='button'>Send
         </button>
       </div>
     </div>
 
     <!-- Preview box -->
-    <div class="col-md-6 order-md-2 center-children">
-      <div class="row title-div mt-3 mt-md-0 vertical-center">
-        <label for="preview-text">
+    <div class='col-md-6 order-md-2 center-children'>
+      <div class='row title-div mt-3 mt-md-0 vertical-center'>
+        <label for='preview-text'>
           <strong>Preview</strong>
         </label>
       </div>
-      <div class="row">
+      <div class='row'>
         <markdown #previewBoxArea
                   [ngStyle]="{'background-color': signingService.backgroundColor, 'color': signingService.textColor,
                   'font-family': signingService.currentFontFamily}"
-                  data="{{ signingService.signingBoxText }}" emoji
-                  id="preview-text"></markdown>
+                  data='{{ signingService.signingBoxText }}' emoji
+                  id='preview-text'></markdown>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Message confirmation modal -->
-<div aria-hidden="true" aria-labelledby="submit-confirm-title" class="modal fade" id="submit-confirm"
-     role="dialog" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="submit-confirm-title">Are you sure you want to send this?</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
+<div aria-hidden='true' aria-labelledby='submit-confirm-title' class='modal fade' id='submit-confirm'
+     role='dialog' tabindex='-1'>
+  <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='submit-confirm-title'>Are you sure you want to send this?</h5>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="text-align: center">
+      <div class='modal-body' style='text-align: center'>
         <p>You can only submit one message to a friend’s virtrolio per account, so be absolutely certain! By sending a
-          message you agree to our <a href="/terms-of-service" target="_blank">Terms of Service</a> and this
-          <app-disclaimer-anchor></app-disclaimer-anchor>.</p>
-        <div class="row justify-content-center"></div>
+          message you agree to our <a href='/terms-of-service' target='_blank'>Terms of Service</a> and this
+          <app-disclaimer-anchor></app-disclaimer-anchor>
+          .
+        </p>
+        <div class='row justify-content-center'></div>
       </div>
-      <div class="modal-footer">
-        <button (click)="sendMsg(signingInputArea)" class="btn btn-primary" data-dismiss="modal"
-                type="button">
+      <div class='modal-footer'>
+        <button (click)='sendMsg(signingInputArea)' class='btn btn-primary' data-dismiss='modal'
+                type='button'>
           Send it!
         </button>
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- More Info! -->
-<div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="info-title"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="info-title">Craft your perfect message!</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+<div class='modal fade' id='info' tabindex='-1' role='dialog' aria-labelledby='info-title'
+     aria-hidden='true'>
+  <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h4 class='modal-title' id='info-title'>Craft your perfect message!</h4>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class='modal-body'>
         <h5>Additional Formatting Tools</h5>
         <p>
           Virtrolio supports a modified version of <em>Markdown</em> to format text. While we support most of
           Markdown's features, we haven't added buttons for all of them, so there's still a lot to try out!
           Learn how to type in markdown
-          <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">here</a>.
+          <a href='https://www.markdownguide.org/basic-syntax/' target='_blank'>here</a>.
         </p>
         <p><em>Note: Not all Markdown features will work with Virtrolio messages.</em></p>
         <h5>Something to Note</h5>
         <p>Some characters you type will count as more characters than you think. For example, an 'enter' (or a 'new
-          line') counts as 5 characters. Don't worry, we've given you {{ signingService.maxCharCount }} characters to work
+          line') counts as 5 characters. Don't worry, we've given you {{ signingService.maxCharCount }} characters to
+          work
           with!</p>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Picture not showing up? Modal -->
-<div class="modal fade" id="embed-help" tabindex="-1" role="dialog" aria-labelledby="embed-help-title"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content shadow-lg">
-      <div class="modal-header">
-        <h5 class="modal-title" id="embed-help-title">Can't picture your perfect message?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+<div class='modal fade' id='embed-help' tabindex='-1' role='dialog' aria-labelledby='embed-help-title'
+     aria-hidden='true'>
+  <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content shadow-lg'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='embed-help-title'>Can't picture your perfect message?</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class='modal-body'>
         <p>In order for us to display your image, we need something called an <b>embed link</b>. This embed link isn't
           always easy to come by, depending on where you're trying to get the image from.</p>
         <p>Not to worry, though! In a couple minutes you can follow the steps below to get the 'embed link' for most
           photos that you see on the internet!</p>
         <ol>
-          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already publicly-viewable
+          <li>Upload your photo to some service like Google Drive or Imgur. Or just find a photo that's already
+            publicly-viewable
             online.
           </li>
           <li>Open the photo in your browser and see if you can right click the photo and click 'Open Image in New
@@ -217,8 +221,8 @@
             'embed link.'
             If you don't
             do this step, your link may not display your photo in your message properly. For example,
-            <a target="_blank" href="https://bit.ly/2NRCMvu">this link</a> will not
-            work but <a target="_blank" href="https://bit.ly/2BuNxkA">this one</a> will (and you can get from one to the
+            <a target='_blank' href='https://bit.ly/2NRCMvu'>this link</a> will not
+            work but <a target='_blank' href='https://bit.ly/2BuNxkA'>this one</a> will (and you can get from one to the
             other by using the 'Open Image in New Tab' technique just mentioned!).
           </li>
           <li>If you are not able to do the 'Open Image in New Tab' method for some reason (e.g. notably Google Drive
@@ -227,81 +231,84 @@
           </li>
         </ol>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Embed Photo Modal -->
-<div class="modal fade" id="embed-photo" tabindex="-1" role="dialog" aria-labelledby="embed-photo-title"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" id="embed-photo-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="embed-photo-title">Say cheese! Let's add an image!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+<div class='modal fade' id='embed-photo' tabindex='-1' role='dialog' aria-labelledby='embed-photo-title'
+     aria-hidden='true'>
+  <div class='modal-dialog modal-dialog-centered modal-lg' id='embed-photo-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='embed-photo-title'>Say cheese! Let's add an image!</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body d-md-flex p-4" id="embed-photo-div">
-        <div class="col-md-6 my-3 px-lg-5 px-3 vertical-center">
-          <div class="mb-3">
-            <span class="mr-3"><strong>Add a link to a photo!</strong></span>
-            <button class="btn-sm btn-primary" data-toggle="modal" data-target="#embed-help">
+      <div class='modal-body d-md-flex p-4' id='embed-photo-div'>
+        <div class='col-md-6 my-3 px-lg-5 px-3 vertical-center'>
+          <div class='mb-3'>
+            <span class='mr-3'><strong>Add a link to a photo!</strong></span>
+            <button class='btn-sm btn-primary' data-toggle='modal' data-target='#embed-help'>
               Need help?
             </button>
           </div>
-          <div class="input-group">
-            <label for="embed-link-field" style="display:none">Insert embed link</label>
-            <input class="form-control" type="text" placeholder="Put your link here!"
-                   [(ngModel)]='embedLink' id="embed-link-field">
+          <div class='input-group'>
+            <label for='embed-link-field' style='display:none'>Insert embed link</label>
+            <input class='form-control' type='text' placeholder='Put your link here!'
+                   [(ngModel)]='embedLink' id='embed-link-field'>
           </div>
 
           <!-- Image size slider options -->
-          <div class="mt-3 d-none d-sm-block">
-            <label for="width-slider-field-lg" style="display: none">Size (%)</label>
-            <label for="width-slider-lg" class="mx-2">Size (%):</label>
-            <input [(ngModel)]="imageWidth" type="number" id="width-slider-field-lg" min="0" max="100"
-                   (keyup)="checkSliderValue()">
-            <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider-lg" min="0" max="100">
-            <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
+          <div class='mt-3 d-none d-sm-block'>
+            <label for='width-slider-field-lg' style='display: none'>Size (%)</label>
+            <label for='width-slider-lg' class='mx-2'>Size (%):</label>
+            <input [(ngModel)]='imageWidth' type='number' id='width-slider-field-lg' min='0' max='100'
+                   (keyup)='checkSliderValue()'>
+            <input [(ngModel)]='imageWidth' class='mx-2' type='range' id='width-slider-lg' min='0' max='100'>
+            <button class='btn btn-sm btn-info' (click)='imageWidth=50'>Reset</button>
           </div>
           <!-- Small screen layout -->
-          <div class="row mt-4 d-sm-none">
-            <div class="col-sm-6">
-              <label for="width-slider-field-sm" class="mx-2">Size (%)</label>
-              <input [(ngModel)]="imageWidth" type="number" id="width-slider-field-sm" min="0" max="100"
-                     (keyup)="checkSliderValue()">
+          <div class='row mt-4 d-sm-none'>
+            <div class='col-sm-6'>
+              <label for='width-slider-field-sm' class='mx-2'>Size (%)</label>
+              <input [(ngModel)]='imageWidth' type='number' id='width-slider-field-sm' min='0' max='100'
+                     (keyup)='checkSliderValue()'>
             </div>
-            <div class="my-2 my-sm-0 col-sm-6">
-              <label for="width-slider-sm" style="display: none">Size (%):</label>
-              <input [(ngModel)]="imageWidth" class="mx-2" type="range" id="width-slider-sm" min="0" max="100">
-              <button class="btn btn-sm btn-info" (click)="imageWidth=50">Reset</button>
+            <div class='my-2 my-sm-0 col-sm-6'>
+              <label for='width-slider-sm' style='display: none'>Size (%):</label>
+              <input [(ngModel)]='imageWidth' class='mx-2' type='range' id='width-slider-sm' min='0' max='100'>
+              <button class='btn btn-sm btn-info' (click)='imageWidth=50'>Reset</button>
             </div>
           </div>
 
-          <div class="mt-3">
+          <div class='mt-3'>
             <strong>Your image code</strong><br>
-            <label for="embed-code-field"><small>Copy this into your message and check the 'Preview'!</small></label>
-            <div class="input-group my-3">
-              <input #EmbedCode type="text" class="form-control" id="embed-code-field"
+            <label for='embed-code-field'><small>Copy this into your message and check the 'Preview'!</small></label>
+            <div class='input-group my-3'>
+              <input #EmbedCode type='text' class='form-control' id='embed-code-field'
                      value="<img src='{{ embedLink }}' width={{ imageWidth }}%>">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button" (click)="copyLink(EmbedCode)">{{ copyButtonText }}</button>
+              <div class='input-group-append'>
+                <button class='btn btn-primary' type='button'
+                        (click)='copyLink(EmbedCode)'>{{ copyButtonText }}</button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mb-3 mb-md-0" id="embed-image-preview align-items-center">
-          <p id="image-preview-heading" class="mx-3 mt-md-3"><strong>Image Preview</strong></p>
-          <div class="card my-3 vertical-center" id="embed-image-card">
-            <img *ngIf="embedLink else noImage" alt="Invalid Image Link" src="{{ embedLink }}" id="embed-image-holder"
+        <div class='col-md-6 mb-3 mb-md-0' id='embed-image-preview align-items-center'>
+          <p id='image-preview-heading' class='mx-3 mt-md-3'><strong>Image Preview</strong></p>
+          <div class='card my-3 vertical-center' id='embed-image-card'>
+            <img *ngIf='embedLink else noImage' alt='Invalid Image Link' src='{{ embedLink }}' id='embed-image-holder'
                  [style.width]="'calc(' + imageWidth + '* 1%)'">
             <ng-template #noImage><span>No image to show!</span></ng-template>
           </div>
-          <div class="row justify-content-center"><app-disclaimer-button></app-disclaimer-button></div>
+          <div class='row justify-content-center'>
+            <app-disclaimer-button></app-disclaimer-button>
+          </div>
         </div>
       </div>
     </div>
@@ -309,25 +316,26 @@
 </div>
 
 <!-- Signing Experience  -->
-<div class="modal fade" id="signing-experience" tabindex="-1" role="dialog" aria-labelledby="experience-title"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="experience-title">Do I need a larger screen to use Virtrolio?</h4>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-          <span aria-hidden="true">&times;</span>
+<div class='modal fade' id='signing-experience' tabindex='-1' role='dialog' aria-labelledby='experience-title'
+     aria-hidden='true'>
+  <div class='modal-dialog modal-dialog-centered' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h4 class='modal-title' id='experience-title'>Do I need a larger screen to use Virtrolio?</h4>
+        <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+          <span aria-hidden='true'>&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <p>For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but we
+      <div class='modal-body'>
+        <p>For most purposes, no. We designed the rest of Virtrolio to be used on a mobile OR desktop/laptop device, but
+          we
           suggest that you
           try <em>signing</em> messages on a desktop or laptop computer instead of a phone or tablet. This is because
           not only is it easier to write out a message when you have a larger screen, but some of the components (like
           the colour pickers) are not as good-looking or easy to use on mobile.</p>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+      <div class='modal-footer'>
+        <button class='btn btn-secondary' data-dismiss='modal' type='button'>Close</button>
       </div>
     </div>
   </div>

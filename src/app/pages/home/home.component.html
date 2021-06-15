@@ -1,82 +1,82 @@
 <!--suppress HtmlUnknownTarget -->
-<div class="container-fluid full-width home-background">
+<div class='container-fluid full-width home-background'>
   <!-- Default formatting for regularly tall viewports -->
-  <div *ngIf="screenHeight > 420; else mobileLandscape"
-       class="container-fluid full-width vertical-center home-img-background">
-    <img alt="Virtrolio Logo" class="d-none d-xl-block" id="bg-logo-img" data-aos="zoom-in-up"
-         data-aos-duration="1500" src="../../../assets/images/logo_inverted-no-back.png">
-    <div class="title-container">
-      <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header">Stay connected.</h1>
-      <h1 data-aos="zoom-in" data-aos-duration="1000" data-aos-once="true" id="title-subtitle">Even when you're
+  <div *ngIf='screenHeight > 420; else mobileLandscape'
+       class='container-fluid full-width vertical-center home-img-background'>
+    <img alt='Virtrolio Logo' class='d-none d-xl-block' id='bg-logo-img' data-aos='zoom-in-up'
+         data-aos-duration='1500' src='../../../assets/images/logo_inverted-no-back.png'>
+    <div class='title-container'>
+      <h1 data-aos='zoom-in' data-aos-duration='500' data-aos-once='true' id='title-header'>Stay connected.</h1>
+      <h1 data-aos='zoom-in' data-aos-duration='1000' data-aos-once='true' id='title-subtitle'>Even when you're
         apart.</h1>
-      <img alt="down" height="48" id="chevron" src="../../../assets/images/icons/chevron-down.svg" width="48"
-           (click)="onClickChevron()">
+      <img alt='down' height='48' id='chevron' src='../../../assets/images/icons/chevron-down.svg' width='48'
+           (click)='onClickChevron()'>
     </div>
   </div>
   <!-- Formatting for landscape view on mobile devices (very low viewport heights) -->
   <ng-template #mobileLandscape>
-    <div class="container-fluid full-width vertical-center home-img-background">
-      <div class="title-container">
-        <h1 data-aos="zoom-in" data-aos-duration="500" data-aos-once="true" id="title-header-mobile-landscape">Stay
+    <div class='container-fluid full-width vertical-center home-img-background'>
+      <div class='title-container'>
+        <h1 data-aos='zoom-in' data-aos-duration='500' data-aos-once='true' id='title-header-mobile-landscape'>Stay
           connected.</h1>
-        <h1 id="title-subtitle-mobile-landscape">Even when you're
+        <h1 id='title-subtitle-mobile-landscape'>Even when you're
           apart.</h1>
-        <img alt="down" height="48" id="chevron-mobile-landscape" src="../../../assets/images/icons/chevron-down.svg"
-             width="48"
-             (click)="onClickChevron()">
+        <img alt='down' height='48' id='chevron-mobile-landscape' src='../../../assets/images/icons/chevron-down.svg'
+             width='48'
+             (click)='onClickChevron()'>
       </div>
     </div>
   </ng-template>
 </div>
 
-<a id="info"></a>
-<div class="pt-5 vertical-center body-container">
-  <div class="d-flex justify-content-center">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-aos="zoom-in" data-aos-duration="1000"
-         data-aos-once="true">
-      <h2 class="mb-3 px-5 home-text header-text">What is a virtrolio?</h2>
-      <p class="lead px-5 home-text body-text">A <em>virtrolio</em> is a virtual folio—an online version of
+<a id='info'></a>
+<div class='pt-5 vertical-center body-container'>
+  <div class='d-flex justify-content-center'>
+    <div class='col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8' data-aos='zoom-in' data-aos-duration='1000'
+         data-aos-once='true'>
+      <h2 class='mb-3 px-5 home-text header-text'>What is a virtrolio?</h2>
+      <p class='lead px-5 home-text body-text'>A <em>virtrolio</em> is a virtual folio—an online version of
         those last few pages in your yearbook that you use to write personal and long-lasting messages to your friends.
         In other words, you can create your own virtrolio, share it
         with friends, and have them write customized messages for you to keep. Whenever you want, you can view your
         virtrolio and all the messages you have received from your friends!
       </p>
 
-      <div class="px-5" id="login-virtrolio-button">
+      <div class='px-5' id='login-virtrolio-button'>
         <!-- Call to sign in and Google sign in button; displays if logged out -->
-        <div *ngIf="!authService.isLoggedIn() else MyVirtrolio">
+        <div *ngIf='!authService.isLoggedIn() else MyVirtrolio'>
           <!-- Changing this to 'true else MyVirtrolio' induces no flickering-->
-          <p class="lead" id="bolded-body-text">Sign in below to create your own virtrolio!</p>
-          <div class="row d-flex justify-content-center mt-4">
-            <p class="lead" style="color: red"><strong>WARNING: You are trying to sign into the beta website.</strong>
+          <p class='lead' id='bolded-body-text'>Sign in below to create your own virtrolio!</p>
+          <div class='row d-flex justify-content-center mt-4'>
+            <p class='lead' style='color: red'><strong>WARNING: You are trying to sign into the beta website.</strong>
             </p>
-            <p class="lead" style="color: red">This version of the website is only accessible to beta testers, and
+            <p class='lead' style='color: red'>This version of the website is only accessible to beta testers, and
               contains features that are not fully functional yet.</p>
-            <p class="lead" style="color: red; font-weight: 600">If you are not a beta tester, please use the public
-              website instead, which you can access by <a href="https://virtrolio.web.app">clicking here</a>.</p>
+            <p class='lead' style='color: red; font-weight: 600'>If you are not a beta tester, please use the public
+              website instead, which you can access by <a href='https://virtrolio.web.app'>clicking here</a>.</p>
           </div>
-          <div class="row d-flex justify-content-center mt-4">
-            <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
-                    type="button">
-              <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
+          <div class='row d-flex justify-content-center mt-4'>
+            <button (click)="authService.login('/my-virtrolio')" class='btn btn-outline-dark google-sign-in-btn'
+                    type='button'>
+              <img alt='Google Logo' height='23' src='../../../assets/images/icons/google.svg' width='23'>
               <span>Sign in with Google</span>
             </button>
           </div>
-          <div id="disclaimer-text">
-            <p class="lead pt-4">By signing up for/signing into our service, you are agreeing to our
-              <a href="/terms-of-service">Terms of Service.</a>
+          <div id='disclaimer-text'>
+            <p class='lead pt-4'>By signing up for/signing into our service, you are agreeing to our
+              <a href='/terms-of-service'>Terms of Service.</a>
             </p>
-            <p class="lead">At this time, we do not support signing in using providers other than Google.</p>
+            <p class='lead'>At this time, we do not support signing in using providers other than Google.</p>
           </div>
         </div>
 
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
         <ng-template #MyVirtrolio>
-          <div class="justify-content-center text-center pt-1">
-            <p class="lead pb-1">You're already signed in! Click the button to go to your virtrolio.</p>
+          <div class='justify-content-center text-center pt-1'>
+            <p class='lead pb-1'>You're already signed in! Click the button to go to your virtrolio.</p>
           </div>
-          <div class="d-flex justify-content-center pt-1">
-            <button class="btn-lg btn-primary" id="my-virtrolio" routerLink="/my-virtrolio" type="button">Go to my
+          <div class='d-flex justify-content-center pt-1'>
+            <button class='btn-lg btn-primary' id='my-virtrolio' routerLink='/my-virtrolio' type='button'>Go to my
               virtrolio
             </button>
           </div>
@@ -86,63 +86,63 @@
   </div>
 </div>
 
-<div class="full-width demo-section" id="viewing-demo">
-  <div data-aos="fade-left" data-aos-duration="2000" data-aos-once="true"
-       class="full-width demo-image d-none d-md-block viewing-demo-image">
-    <div class="vertical-center mx-5 px-5 viewing-demo-text-container">
-      <h2 class="demo-title">A virtual take on</h2>
-      <h2 class="demo-title">yearbook signing</h2>
+<div class='full-width demo-section' id='viewing-demo'>
+  <div data-aos='fade-left' data-aos-duration='2000' data-aos-once='true'
+       class='full-width demo-image d-none d-md-block viewing-demo-image'>
+    <div class='vertical-center mx-5 px-5 viewing-demo-text-container'>
+      <h2 class='demo-title'>A virtual take on</h2>
+      <h2 class='demo-title'>yearbook signing</h2>
     </div>
   </div>
-  <div class="full-width demo-image d-block d-md-none viewing-demo-image">
-    <div class="vertical-center mx-5 px-5 viewing-demo-text-container">
-      <h2 class="demo-title">A virtual take&nbsp;on</h2>
-      <h2 class="demo-title">yearbook signing</h2>
+  <div class='full-width demo-image d-block d-md-none viewing-demo-image'>
+    <div class='vertical-center mx-5 px-5 viewing-demo-text-container'>
+      <h2 class='demo-title'>A virtual take&nbsp;on</h2>
+      <h2 class='demo-title'>yearbook signing</h2>
     </div>
   </div>
 </div>
 
-<div class="py-4 center-children vertical-center body-container">
-  <div class="">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-      <div class="row">
-        <div class="order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5">
-          <div class="card mr-4 mb-5 rounded border-0">
-            <h3 class="body-header-text">Why use Virtrolio?</h3>
-            <p class="lead body-text">Using Virtrolio offers you an authentic yearbook signing experience, and
+<div class='py-4 center-children vertical-center body-container'>
+  <div class=''>
+    <div class='col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8'>
+      <div class='row'>
+        <div class='order-md-1 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 px-5'>
+          <div class='card mr-4 mb-5 rounded border-0'>
+            <h3 class='body-header-text'>Why use Virtrolio?</h3>
+            <p class='lead body-text'>Using Virtrolio offers you an authentic yearbook signing experience, and
               that means <em>privacy</em>. You can only view virtrolio messages sent directly to you (see our
-              <a href="/privacy-policy">Privacy Policy</a> for more details).
+              <a href='/privacy-policy'>Privacy Policy</a> for more details).
             </p>
           </div>
-          <div class="card mr-4 mb-5 rounded border-0">
-            <h3 class="body-header-text">How can I make a virtrolio?</h3>
-            <p class="lead home-text body-text">It's easy to create a virtrolio! Sign in with your Google account
+          <div class='card mr-4 mb-5 rounded border-0'>
+            <h3 class='body-header-text'>How can I make a virtrolio?</h3>
+            <p class='lead home-text body-text'>It's easy to create a virtrolio! Sign in with your Google account
               and a custom virtrolio link will be generated for you. Share this link with your friends so they can sign
               your virtrolio.</p>
           </div>
-          <div class="card mr-4 rounded border-0">
-            <h3 class="body-header-text">What does signing a virtrolio look like?</h3>
-            <p class="lead home-text body-text">We offer you an array of message
+          <div class='card mr-4 rounded border-0'>
+            <h3 class='body-header-text'>What does signing a virtrolio look like?</h3>
+            <p class='lead home-text body-text'>We offer you an array of message
               customization tools,
-              including <span style="color: #d1155a">colour pickers</span>, <span
+              including <span style='color: #d1155a'>colour pickers</span>, <span
                 style="font-family: 'Indie Flower', sans-serif"><b>fonts</b></span>, emojis 😍, and a markdown
               editor—all so that you can truly express yourself.</p>
           </div>
         </div>
 
         <!-- Demo Card -->
-        <div class="order-md-2 col-lg-6 col-xl-4 mt-4 d-none d-lg-block">
-          <div class="vertical-center card-container">
-            <div class="card shadow" data-aos="flip-left"
-                 data-aos-duration="2000"
-                 data-aos-once="true">
-              <div class="card-header">
-              <span class="profile-pic-container-small mr-2">
-                <img alt="profile-pic" class="profile-pic" src="../../../assets/images/logo_reg.png">
+        <div class='order-md-2 col-lg-6 col-xl-4 mt-4 d-none d-lg-block'>
+          <div class='vertical-center card-container'>
+            <div class='card shadow' data-aos='flip-left'
+                 data-aos-duration='2000'
+                 data-aos-once='true'>
+              <div class='card-header'>
+              <span class='profile-pic-container-small mr-2'>
+                <img alt='profile-pic' class='profile-pic' src='../../../assets/images/logo_reg.png'>
               </span>
-                <span class="card-header-text">Mike H.</span>
+                <span class='card-header-text'>Mike H.</span>
               </div>
-              <markdown emoji class="card-body card-message">University across the country, huh? I don't know what I'm
+              <markdown emoji class='card-body card-message'>University across the country, huh? I don't know what I'm
                 going to do without you next year. I'll call you whenever I can. Until I see you again! :heart:
               </markdown>
             </div>
@@ -153,37 +153,37 @@
   </div>
 </div>
 
-<div class="full-width demo-section" id="signing-demo">
-  <div data-aos="fade-right" data-aos-duration="2000" data-aos-once="true"
-       class="full-width demo-image d-none d-md-block signing-demo-image">
-    <div class="vertical-center mx-5 px-5 signing-demo-text-container">
-      <h2 class="demo-title">Give your messages</h2>
-      <h2 class="demo-title">your <i>signature</i> touch</h2>
+<div class='full-width demo-section' id='signing-demo'>
+  <div data-aos='fade-right' data-aos-duration='2000' data-aos-once='true'
+       class='full-width demo-image d-none d-md-block signing-demo-image'>
+    <div class='vertical-center mx-5 px-5 signing-demo-text-container'>
+      <h2 class='demo-title'>Give your messages</h2>
+      <h2 class='demo-title'>your <i>signature</i> touch</h2>
     </div>
   </div>
-  <div class="full-width demo-image d-block d-md-none signing-demo-image">
-    <div class="vertical-center mx-5 px-5 signing-demo-text-container">
-      <h2 class="demo-title">Give your messages</h2>
-      <h2 class="demo-title">your <i>signature</i> touch</h2>
+  <div class='full-width demo-image d-block d-md-none signing-demo-image'>
+    <div class='vertical-center mx-5 px-5 signing-demo-text-container'>
+      <h2 class='demo-title'>Give your messages</h2>
+      <h2 class='demo-title'>your <i>signature</i> touch</h2>
     </div>
   </div>
 </div>
 
-<div class="py-1 vertical-center body-container">
-  <div class="d-flex justify-content-center">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" data-aos="zoom-in" data-aos-duration="1000"
-         data-aos-once="true">
-      <div class="px-5" id="login-virtrolio-button-bottom">
+<div class='py-1 vertical-center body-container'>
+  <div class='d-flex justify-content-center'>
+    <div class='col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8' data-aos='zoom-in' data-aos-duration='1000'
+         data-aos-once='true'>
+      <div class='px-5' id='login-virtrolio-button-bottom'>
         <!-- Call to sign in and Google sign in button; displays if logged out -->
-        <div *ngIf="!authService.isLoggedIn() else MyVirtrolioBottom">
-          <div class="justify-content-center text-center pt-1">
-            <h3 class="mb-1 px-5 home-text ready-text">Ready to get signing?</h3>
-            <p class="lead pb-1">Sign in and get your virtrolio!</p>
+        <div *ngIf='!authService.isLoggedIn() else MyVirtrolioBottom'>
+          <div class='justify-content-center text-center pt-1'>
+            <h3 class='mb-1 px-5 home-text ready-text'>Ready to get signing?</h3>
+            <p class='lead pb-1'>Sign in and get your virtrolio!</p>
           </div>
-          <div class="row d-flex justify-content-center mt-4">
-            <button (click)="authService.login('/my-virtrolio')" class="btn btn-outline-dark google-sign-in-btn"
-                    type="button">
-              <img alt="Google Logo" height="23" src="../../../assets/images/icons/google.svg" width="23">
+          <div class='row d-flex justify-content-center mt-4'>
+            <button (click)="authService.login('/my-virtrolio')" class='btn btn-outline-dark google-sign-in-btn'
+                    type='button'>
+              <img alt='Google Logo' height='23' src='../../../assets/images/icons/google.svg' width='23'>
               <span>Sign in with Google</span>
             </button>
           </div>
@@ -191,11 +191,11 @@
 
         <!-- Button to replace 'Sign in with Google' when you're signed in -->
         <ng-template #MyVirtrolioBottom>
-          <div class="justify-content-center text-center pt-1">
-            <h3 class="mb-1 px-5 home-text ready-text pb-4">You're all set!</h3>
+          <div class='justify-content-center text-center pt-1'>
+            <h3 class='mb-1 px-5 home-text ready-text pb-4'>You're all set!</h3>
           </div>
-          <div class="d-flex justify-content-center pt-1">
-            <button class="btn-lg btn-primary" id="my-virtrolio-bottom" routerLink="/my-virtrolio" type="button">Go to
+          <div class='d-flex justify-content-center pt-1'>
+            <button class='btn-lg btn-primary' id='my-virtrolio-bottom' routerLink='/my-virtrolio' type='button'>Go to
               my
               virtrolio
             </button>

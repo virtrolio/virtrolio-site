@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Fonts } from '../shared/interfaces/fonts';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SigningService {
   signingBoxText: string;
@@ -59,7 +59,11 @@ export class SigningService {
    * @param formatChars - formatting character(s) to be placed around the selected text
    * @param endChars - Optional - The ending character, if different from the starting character
    */
-  addFormatting(textbox: HTMLTextAreaElement, formatChars: string, endChars?: string) {
+  addFormatting(
+    textbox: HTMLTextAreaElement,
+    formatChars: string,
+    endChars?: string
+  ) {
     const start = textbox.selectionStart;
     const end = textbox.selectionEnd;
     const text = textbox.value;
@@ -69,7 +73,11 @@ export class SigningService {
     if (typeof endChars === 'undefined' || !endChars) {
       endChars = formatChars;
     }
-    textbox.value = this.signingBoxText = text.slice(0, start) + formatChars + text.slice(start, end) + endChars +
+    textbox.value = this.signingBoxText =
+      text.slice(0, start) +
+      formatChars +
+      text.slice(start, end) +
+      endChars +
       text.slice(end);
 
     // timeout so that it sets the selection range AFTER the textbox is modified
@@ -79,11 +87,17 @@ export class SigningService {
       // special case for underline or if no text was highlighted
       // underline should always be on the outside (since it's html instead of markdown)
       if (formatChars === '<u>' || start === end) {
-        textbox.setSelectionRange(start + formatChars.length, end + formatChars.length);
+        textbox.setSelectionRange(
+          start + formatChars.length,
+          end + formatChars.length
+        );
       }
       // otherwise keep the text highlighted
       else {
-        textbox.setSelectionRange(start, end + formatChars.length + endChars.length);
+        textbox.setSelectionRange(
+          start,
+          end + formatChars.length + endChars.length
+        );
       }
     }, 0);
   }
@@ -93,9 +107,13 @@ export class SigningService {
    * @param textbox - textbox in which user types.
    */
   updateCount(textbox: HTMLTextAreaElement) {
-    this.sanitizedText = this.sanitizer.sanitize(SecurityContext.HTML, this.signingBoxText);
+    this.sanitizedText = this.sanitizer.sanitize(
+      SecurityContext.HTML,
+      this.signingBoxText
+    );
     this.charCount = this.sanitizedText.length;
-    this.charCountColor = (this.charCount > this.maxCharCount) ? '#EE1111' : '#b0b0b0';
-    this.canSend = (0 < this.charCount && this.charCount <= this.maxCharCount);
+    this.charCountColor =
+      this.charCount > this.maxCharCount ? '#EE1111' : '#b0b0b0';
+    this.canSend = 0 < this.charCount && this.charCount <= this.maxCharCount;
   }
 }

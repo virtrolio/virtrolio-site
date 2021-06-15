@@ -6,12 +6,13 @@ describe('AccessDeniedComponent', () => {
   let component: AccessDeniedComponent;
   let fixture: ComponentFixture<AccessDeniedComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AccessDeniedComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [AccessDeniedComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccessDeniedComponent);

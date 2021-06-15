@@ -1,33 +1,33 @@
-<div class="d-none d-md-block">
-  <div [class.nav-open]="navIsOpen" class="side-nav-container">
-    <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger]="showNewToViewing"
-         class="hamburger vertical-center shadow">
-      <img *ngIf="!navIsOpen" class="chevron" alt="response-list"
-           src="../../../../assets/images/icons/chevron-right.svg">
-      <img *ngIf="navIsOpen" class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-left.svg">
+<div class='d-none d-md-block'>
+  <div [class.nav-open]='navIsOpen' class='side-nav-container'>
+    <div *ngIf='messageList.length !== 0' (click)='navToggle()' [class.flashy-hamburger]='showNewToViewing'
+         class='hamburger vertical-center shadow'>
+      <img *ngIf='!navIsOpen' class='chevron' alt='response-list'
+           src='../../../../assets/images/icons/chevron-right.svg'>
+      <img *ngIf='navIsOpen' class='chevron' alt='response-list' src='../../../../assets/images/icons/chevron-left.svg'>
     </div>
-    <div class="sidenav shadow">
-      <a (click)="navToggle()" class="close-btn">&times;</a>
-      <div class="nav-item mb-2 ml-4 response-title">
+    <div class='sidenav shadow'>
+      <a (click)='navToggle()' class='close-btn'>&times;</a>
+      <div class='nav-item mb-2 ml-4 response-title'>
         My Messages
       </div>
       <!--suppress HtmlUnknownAttribute -->
-      <div (click)="showMessage(msg.id);" *ngFor="let msg of messageList; let i = index"
-           attr.data-slide-to="{{ i + 1 }}"
-           class="author-container" data-target="#carousel">
-        <table class="header-table">
+      <div (click)='showMessage(msg.id);' *ngFor='let msg of messageList; let i = index'
+           attr.data-slide-to='{{ i + 1 }}'
+           class='author-container' data-target='#carousel'>
+        <table class='header-table'>
           <tr>
-            <td class="profile-pic-col">
-              <div class="profile-pic-container">
-                <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+            <td class='profile-pic-col'>
+              <div class='profile-pic-container'>
+                <img alt='profile-pic' class='profile-pic' src='{{ msg.fromPic }}'>
               </div>
             </td>
-            <td class="author-col">
+            <td class='author-col'>
               <table>
-                <tr class="msg-header-text author-name">
-                  <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
+                <tr class='msg-header-text author-name'>
+                  <td><a href='javascript: void(0)' class='subtle-link'>{{ msg.fromName }}</a></td>
                 </tr>
-                <tr class="msg-header-date">
+                <tr class='msg-header-date'>
                   {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
                   msg.timestamp.toDate().toDateString()) }}
                 </tr>
@@ -39,35 +39,35 @@
     </div>
   </div>
 </div>
-<div class="d-block d-md-none">
-  <div [class.nav-mobile-open]="navIsOpen" class="side-nav-container-mobile">
-    <div *ngIf="messageList.length !== 0" (click)="navToggle()" [class.flashy-hamburger-mobile]="showNewToViewing"
-         class="hamburger-mobile vertical-center shadow">
-      <img *ngIf="!navIsOpen" class="chevron" alt="response-list"
-           src="../../../../assets/images/icons/chevron-right.svg">
-      <img *ngIf="navIsOpen" class="chevron" alt="response-list" src="../../../../assets/images/icons/chevron-left.svg">
+<div class='d-block d-md-none'>
+  <div [class.nav-mobile-open]='navIsOpen' class='side-nav-container-mobile'>
+    <div *ngIf='messageList.length !== 0' (click)='navToggle()' [class.flashy-hamburger-mobile]='showNewToViewing'
+         class='hamburger-mobile vertical-center shadow'>
+      <img *ngIf='!navIsOpen' class='chevron' alt='response-list'
+           src='../../../../assets/images/icons/chevron-right.svg'>
+      <img *ngIf='navIsOpen' class='chevron' alt='response-list' src='../../../../assets/images/icons/chevron-left.svg'>
     </div>
 
-    <div class="sidenav-mobile shadow">
-      <a (click)="navToggle()" class="close-btn">&times;</a>
-      <div class="nav-item mb-2 ml-4 response-title">My Messages</div>
+    <div class='sidenav-mobile shadow'>
+      <a (click)='navToggle()' class='close-btn'>&times;</a>
+      <div class='nav-item mb-2 ml-4 response-title'>My Messages</div>
       <!--suppress HtmlUnknownAttribute -->
-      <div (click)="showMessage(msg.id);" *ngFor="let msg of messageList; let i = index"
-           attr.data-slide-to="{{ i + 1 }}"
-           class="author-container" data-target="#carousel">
-        <table class="header-table">
+      <div (click)='showMessage(msg.id);' *ngFor='let msg of messageList; let i = index'
+           attr.data-slide-to='{{ i + 1 }}'
+           class='author-container' data-target='#carousel'>
+        <table class='header-table'>
           <tr>
-            <td class="profile-pic-col">
-              <div class="profile-pic-container">
-                <img alt="profile-pic" class="profile-pic" src="{{ msg.fromPic }}">
+            <td class='profile-pic-col'>
+              <div class='profile-pic-container'>
+                <img alt='profile-pic' class='profile-pic' src='{{ msg.fromPic }}'>
               </div>
             </td>
-            <td class="author-col">
+            <td class='author-col'>
               <table>
-                <tr class="msg-header-text author-name">
-                  <td><a href="javascript: void(0)" class="subtle-link">{{ msg.fromName }}</a></td>
+                <tr class='msg-header-text author-name'>
+                  <td><a href='javascript: void(0)' class='subtle-link'>{{ msg.fromName }}</a></td>
                 </tr>
-                <tr class="msg-header-date">
+                <tr class='msg-header-date'>
                   {{ viewService.timeSince(viewService.nowMillis, msg.timestamp.toMillis(),
                   msg.timestamp.toDate().toDateString()) }}
                 </tr>

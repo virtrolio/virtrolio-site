@@ -6,7 +6,7 @@ describe('SharingLinkService', () => {
   let service: SharingLinkService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ });
+    TestBed.configureTestingModule({});
     service = TestBed.inject(SharingLinkService);
   });
 

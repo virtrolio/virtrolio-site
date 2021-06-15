@@ -6,12 +6,13 @@ describe('ResponsesListComponent', () => {
   let component: ResponsesListComponent;
   let fixture: ComponentFixture<ResponsesListComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ResponsesListComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ResponsesListComponent],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ResponsesListComponent);

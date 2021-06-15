@@ -6,12 +6,13 @@ describe('MsgSentComponent', () => {
   let component: MsgSentComponent;
   let fixture: ComponentFixture<MsgSentComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MsgSentComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [MsgSentComponent],
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MsgSentComponent);

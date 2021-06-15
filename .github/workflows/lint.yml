@@ -1,6 +1,6 @@
 name: Lint Checks
 
-on: [push]
+on: [ push ]
 
 jobs:
   lint:

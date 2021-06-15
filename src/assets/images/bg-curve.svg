@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1280 800" style="enable-background:new 0 0 1280 800;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{fill:#F73434;}
-	.st2{fill:#FC4747;}
-	.st3{fill:#F9615D;}
-	.st4{fill:#FA6F67;}
-	.st5{opacity:0.6;fill:#FA8072;}
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'
+     viewBox='0 0 1280 800' style='enable-background:new 0 0 1280 800;' xml:space='preserve'>
+<style type='text/css'>
+	.st0 {
+    fill: #FFFFFF;
+  }
+
+  .st1 {
+    fill: #F73434;
+  }
+
+  .st2 {
+    fill: #FC4747;
+  }
+
+  .st3 {
+    fill: #F9615D;
+  }
+
+  .st4 {
+    fill: #FA6F67;
+  }
+
+  .st5 {
+    opacity: 0.6;
+    fill: #FA8072;
+  }
 </style>
-<g id="Cloud">
+  <g id='Cloud'>
 </g>
-<g id="Layer_4">
-	<path class="st5" d="M1279.5,799.5H-0.5l1-70c0,0,152-261,653-252s626-251,626-251V799.5z"/>
+  <g id='Layer_4'>
+	<path class='st5' d='M1279.5,799.5H-0.5l1-70c0,0,152-261,653-252s626-251,626-251V799.5z' />
 </g>
 </svg>

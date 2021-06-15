@@ -1,5 +1,9 @@
 {
-  "extends": ["tslint:recommended", "tslint-angular", "tslint-config-prettier"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-angular",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "align": {
       "options": [

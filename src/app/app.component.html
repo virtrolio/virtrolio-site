@@ -1,21 +1,21 @@
 <app-navbar></app-navbar>
-<div id="navbar-filler"></div>
-<div id="content-wrapper">
+<div id='navbar-filler'></div>
+<div id='content-wrapper'>
   <router-outlet></router-outlet>
 </div>
 
 <!-- Cookie Alert -->
-<div class="col-12 justify-content-center">
+<div class='col-12 justify-content-center'>
   <div *ngIf="this.cookieService.get('new-user-cookie') == 'true'"
-       class="alert alert-primary col-sm-8 align-items-center d-flex" id="cookie-alert"
-       role="alert">
+       class='alert alert-primary col-sm-8 align-items-center d-flex' id='cookie-alert'
+       role='alert'>
     <div>
       Virtrolio uses cookies to enhance the user experience. By continuing to use our website, you consent to our use of
-      cookies. See our <a routerLink="/terms-of-service">Terms of Service</a> for more information.
+      cookies. See our <a routerLink='/terms-of-service'>Terms of Service</a> for more information.
     </div>
-    <button (click)="this.cookieService.set('new-user-cookie', 'false', 365)" class="close ml-2"
-            id="cookie-alert-button" type="button">
-      <span aria-hidden="true">&times;</span>
+    <button (click)="this.cookieService.set('new-user-cookie', 'false', 365)" class='close ml-2'
+            id='cookie-alert-button' type='button'>
+      <span aria-hidden='true'>&times;</span>
     </button>
   </div>
 </div>

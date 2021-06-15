@@ -6,12 +6,13 @@ describe('RejeccComponent', () => {
   let component: RejeccComponent;
   let fixture: ComponentFixture<RejeccComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ RejeccComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [RejeccComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RejeccComponent);
