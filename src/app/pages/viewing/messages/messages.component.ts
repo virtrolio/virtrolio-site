@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     private vps: ViewportScroller,
     private toastr: ToastrService,
     private modalService: BsModalService
-  ) {}
+  ) { }
 
   /**
    * Assign messages passed via the [setMessageList] binding
@@ -48,7 +48,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.isLoading = isLoading;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   /**
    * Generate the lightness value of HSL from RBG

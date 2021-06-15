@@ -23,7 +23,7 @@ export class ViewingComponent implements OnInit {
     private route: ActivatedRoute,
     private viewService: ViewingService,
     private title: Title
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.title.setTitle('View Your Messages | Virtrolio');
