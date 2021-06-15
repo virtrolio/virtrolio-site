@@ -1,9 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {
-  BsModalService,
-  BsModalRef,
-  ModalDirective,
-} from 'ngx-bootstrap/modal';
+import { BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 
 @Component({
@@ -12,15 +8,16 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
   styleUrls: ['./image-modal.component.css'],
 })
 export class ImageModalComponent {
-  modalRef: BsModalRef;
+  static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
-  selectedImagesNames: string[] = [];
+  modalRef: BsModalRef;
   selectedImages: File[] = [];
+  selectedImagesURLs = [];
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  constructor(private modalService: BsModalService) {}
+  constructor() {}
 
   showImageModal(): void {
     this.imageModal.show();
@@ -30,21 +27,27 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
-  fileNames(fileInput: any) {
-    this.selectedImagesNames = [];
-    this.selectedImages = [];
+  onSelectFiles(e: Event): void {
+    const eventTarget = e.target as HTMLInputElement;
+    const files = Array.from(eventTarget.files);
 
-    if (fileInput.length > 3) {
+    if (files.length + this.selectedImagesURLs.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
       return;
     }
-    for (const i in fileInput) {
-      if (fileInput[i].size > 64000000) {
-        this.ErrorAlertComponent.addImageSizeLimit(fileInput[i].name);
-        continue;
-      } else {
-        this.selectedImagesNames.push(fileInput[i].name);
-        this.selectedImages.push(fileInput[i]);
+
+    if (files) {
+      for (const item of files) {
+        if (item.size > ImageModalComponent.maxFileSize) {
+          this.ErrorAlertComponent.addImageSizeLimit(item.name);
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.readAsDataURL(item);
+        reader.onload = (event: ProgressEvent<FileReader>) => {
+          this.selectedImagesURLs.push(event.target.result);
+        };
       }
     }
   }

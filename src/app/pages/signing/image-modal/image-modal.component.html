@@ -10,7 +10,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="embed-photo-title">Say cheese! Let's add some pictures!</h5>
+        <h5 class="embed-photo-title">Add up to three images!</h5>
         <button
           type="button"
           class="close"
@@ -22,49 +22,61 @@
         </button>
       </div>
       <app-error-alert></app-error-alert>
-      <div class="modal-body d-md-flex p-4" id="embed-photo-div">
-        <div class="col-md-12 my-6 px-lg-5 px-3 vertical-center text-center">
-          <div class="col-md-12 text-center" id="drag-upload">
-            <label>Selected images:</label>
-            <br />
-            <label *ngIf="3 > selectedImagesNames.length"
-              >No images selected</label
+      <div
+        class="modal-body d-flex align-items-center p-3"
+        id="embed-photo-div"
+      >
+        <div class="col-md-12 my-6 px-lg-5 px-3 text-center">
+          <div class="col-md-12 text-center">
+            <h5 *ngIf="!selectedImagesURLs.length">No images selected</h5>
+            <img
+              *ngIf="!selectedImagesURLs.length"
+              src="../../../../assets/images/girl-photos-folder.svg"
+              alt="girl with photos folder graphic"
+              id="no-images-graphic"
+            />
+            <img
+              class="col-4"
+              *ngFor="let url of selectedImagesURLs"
+              [src]="url"
+              alt="selected image"
+            />
+          </div>
+          <div class="image-buttons">
+            <button class="btn btn-primary mx-2" (click)="imgUpload.click()">
+              Add Images
+            </button>
+            <input
+              type="file"
+              accept="image/*"
+              class="file-upload d-none"
+              id="img-upload"
+              (change)="onSelectFiles($event)"
+              multiple
+              #imgUpload
+            />
+            <button
+              type="button"
+              class="btn btn-secondary mx-2"
+              (click)="this.selectedImagesURLs = []"
             >
-            <tr
-              *ngFor="let name of selectedImagesNames; let i = index"
-              class="text-left"
-            >
-              <td *ngIf="i < selectedImagesNames.length - 2">
-                {{ selectedImagesNames[i] }}
-              </td>
-            </tr>
+              Clear Images
+            </button>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <div class="img-upload-btn-wrapper bg-primary btn-sm mr-auto">
-          <button class="btn btn-primary" style="padding: revert">
-            Select Images
-          </button>
-          <input
-            type="file"
-            accept="image/*"
-            class="file-upload"
-            name="imgupload"
-            id="imgupload"
-            (change)="fileNames($event.target.files)"
-            multiple
-          />
+        <div class="row w-100">
+          <div class="col-12 p-0">
+            <button
+              type="button"
+              class="btn btn-primary h-100 float-right"
+              (click)="hideImageModal()"
+            >
+              Save
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="hideImageModal()"
-          data-dismiss="modal"
-        >
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>

@@ -1,13 +1,16 @@
-.img-upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+#img-upload {
+  height: 100%;
+  width: 100%;
 }
 
-.img-upload-btn-wrapper input[type='file'] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+.modal-body {
+  min-height: 25vh;
+}
+
+.image-buttons {
+  margin-top: 1em;
+}
+
+#no-images-graphic {
+  max-width: 100%;
 }
