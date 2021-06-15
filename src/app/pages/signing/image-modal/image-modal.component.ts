@@ -21,7 +21,7 @@ export class ImageModalComponent {
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  constructor(private modalService: BsModalService) {}
+  constructor() {}
 
   showImageModal(): void {
     this.imageModal.show();
