@@ -1,9 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {
-  BsModalService,
-  BsModalRef,
-  ModalDirective,
-} from 'ngx-bootstrap/modal';
+import { BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 
 @Component({
@@ -12,9 +8,9 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
   styleUrls: ['./image-modal.component.css'],
 })
 export class ImageModalComponent {
-  modalRef: BsModalRef;
   static maxFileSize = 8 * 1000000; // 8 MB in bytes
 
+  modalRef: BsModalRef;
   selectedImages: File[] = [];
   selectedImagesURLs = [];
 
@@ -40,14 +36,14 @@ export class ImageModalComponent {
     }
 
     if (files) {
-      for (let i = 0; i < files.length; i++) {
-        if (files[i].size > ImageModalComponent.maxFileSize) {
-          this.ErrorAlertComponent.addImageSizeLimit(files[i].name);
+      for (const item of files) {
+        if (item.size > ImageModalComponent.maxFileSize) {
+          this.ErrorAlertComponent.addImageSizeLimit(item.name);
           return;
         }
 
-        let reader = new FileReader();
-        reader.readAsDataURL(files[i]);
+        const reader = new FileReader();
+        reader.readAsDataURL(item);
         reader.onload = (event: any) => {
           this.selectedImagesURLs.push(event.target.result);
         };
