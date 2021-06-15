@@ -3,28 +3,10 @@
   width: 100%;
 }
 
-.img-upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+.image-buttons {
+  margin-bottom: 15px;
 }
 
-.img-upload-btn-wrapper input[type='file'] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
-#footer-left-column > * {
-  float: left;
-  margin: 0 0.5em 0 0;
-  height: 100%;
-}
-
-#footer-right-column > * {
-  float: right;
-  margin: 0 0 0 0.5em;
-  height: 100%;
+.modal-body {
+  min-height: 25vh;
 }

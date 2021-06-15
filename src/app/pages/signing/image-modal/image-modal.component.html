@@ -6,7 +6,7 @@
   role="dialog"
   aria-labelledby="dialog-child-name"
 >
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg"  role="dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="embed-photo-title">Add up to three images!</h5>
@@ -32,36 +32,37 @@
               alt="selected image"
             />
           </div>
+          <div class="image-buttons">
+            <button
+            class="btn btn-primary"
+            id="select-images-btn"
+            (click)="imgUpload.click()"
+          >
+            Add Images
+          </button>
+          <input
+            type="file"
+            accept="image/*"
+            class="file-upload d-none"
+            id="img-upload"
+            (change)="onSelectFiles($event)"
+            multiple
+            #imgUpload
+          />
+          <button
+            type="button"
+            class="btn btn-secondary mx-2"
+            (click)="this.selectedImagesURLs = []"
+          >
+            Clear Images
+          </button>
+          </div>
         </div>
+        
       </div>
       <div class="modal-footer">
         <div class="row w-100">
-          <div class="col-6 p-0" id="footer-left-column">
-            <button
-              class="btn btn-primary"
-              id="select-images-btn"
-              (click)="imgUpload.click()"
-            >
-              Select Images
-            </button>
-            <input
-              type="file"
-              accept="image/*"
-              class="file-upload d-none"
-              id="img-upload"
-              (change)="onSelectFiles($event)"
-              multiple
-              #imgUpload
-            />
-            <button
-              type="button"
-              class="btn btn-secondary"
-              (click)="this.selectedImagesURLs = []"
-            >
-              Clear Images
-            </button>
-          </div>
-          <div class="col-6 p-0" id="footer-right-column">
+          <div class="col-12 p-0" id="footer-right-column">
             <button type="button" class="btn btn-primary">Upload</button>
             <button
               type="button"
@@ -69,10 +70,10 @@
               (click)="hideImageModal()"
               data-dismiss="modal"
             >
-              Cancel
+            Cancel
             </button>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
