@@ -51,6 +51,14 @@
         <button
           type="button"
           class="btn btn-secondary"
+          (click)="this.selectedImagesURLs = []"
+        >
+          <!-- TODO: Float this button left -->
+          Clear Images
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
           (click)="hideImageModal()"
           data-dismiss="modal"
         >
