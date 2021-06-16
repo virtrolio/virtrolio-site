@@ -78,10 +78,7 @@
         >
       </li>
       <li class="nav-item login-btn-mobile">
-        <a
-          [hidden]="authService.isLoggedIn()"
-          class="nav-link"
-          (click)="authService.login('/my-virtrolio')"
+        <a [hidden]="authService.isLoggedIn()" class="nav-link" href="#info"
           ><strong>Log in | Sign up</strong></a
         >
       </li>
@@ -113,7 +110,7 @@
       <a
         [hidden]="authService.isLoggedIn()"
         class="nav-link login-btn"
-        (click)="authService.login('/my-virtrolio')"
+        href="#info"
         >Log in | Sign up</a
       >
     </li>
