@@ -13,9 +13,9 @@
         The Virtrolio signing experience is better on a desktop or laptop
         computer!
         <strong
-        ><u>
-          <a data-toggle="modal" data-target="#signing-experience">Why?</a></u
-        ></strong
+          ><u>
+            <a data-toggle="modal" data-target="#signing-experience">Why?</a></u
+          ></strong
         >
       </div>
     </div>
@@ -71,7 +71,7 @@
                   (click)="signingService.selectFont(font.key)"
                   [ngStyle]="{ 'font-family': font.key }"
                   class="dropdown-item"
-                >{{ font.key }}</a
+                  >{{ font.key }}</a
                 >
               </span>
             </div>
@@ -135,7 +135,7 @@
             <span
               [ngStyle]="{ 'background-color': signingService.textColor }"
               class="dynamic-color-bar"
-            >&nbsp;</span
+              >&nbsp;</span
             >
           </button>
           <button
@@ -148,7 +148,7 @@
               src="../../../assets/images/icons/SigningIcon_fill-color.svg"
             />
             <label for="color-picker-background" hidden
-            >Colour picker for background</label
+              >Colour picker for background</label
             >
             <input
               [(ngModel)]="signingService.backgroundColor"
@@ -161,7 +161,7 @@
             <span
               [ngStyle]="{ 'background-color': signingService.backgroundColor }"
               class="dynamic-color-bar"
-            >&nbsp;</span
+              >&nbsp;</span
             >
           </button>
 
@@ -185,7 +185,7 @@
            emoji keyboard built into your keyboard! <br><br> Note: not all emojis may be supported; check
            <a href='https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md' target='_blank'>this list of
            supported emojis</a> to make sure! ❤"
-          >😀
+            >😀
           </a>
           <div class="position-relative" id="image-button-wrapper">
             <button
@@ -205,7 +205,7 @@
               *ngIf="checkImageList()"
               class="d-flex align-items-center justify-content-center"
               id="image-notification-circle"
-            >{{ checkImageList(true) }}</span
+              >{{ checkImageList(true) }}</span
             >
           </div>
 
@@ -343,12 +343,12 @@
             <a
               href="https://www.markdownguide.org/basic-syntax/"
               target="_blank"
-            >here</a
+              >here</a
             >.
           </p>
           <p>
             <em
-            >Note: Not all Markdown features will work with Virtrolio
+              >Note: Not all Markdown features will work with Virtrolio
               messages.</em
             >
           </p>
