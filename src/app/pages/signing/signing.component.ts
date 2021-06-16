@@ -89,7 +89,7 @@ export class SigningComponent implements OnInit, OnDestroy {
    */
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    return !this.signingService.signingBoxText || this.sending;
+    return !this.signingService.signingBoxText || !this.sending;
   }
 
   /**
