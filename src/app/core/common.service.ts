@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CommonService {
+  public static currentYear: number = new Date().getFullYear();
+
   constructor() {}
 
   /**
