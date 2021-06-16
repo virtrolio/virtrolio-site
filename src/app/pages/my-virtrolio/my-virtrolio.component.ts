@@ -18,6 +18,7 @@ declare var $: any;
  * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
 export class MyVirtrolioComponent implements OnInit, OnDestroy {
+  currentYear: number = CommonService.currentYear;
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
