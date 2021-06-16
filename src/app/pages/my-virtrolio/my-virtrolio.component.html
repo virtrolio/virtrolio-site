@@ -11,7 +11,7 @@
           class="bg-light p-3 mt-4 m-4 rounded vertical-center"
           id="virtrolio-title"
         >
-          <h1>2020-2021</h1>
+          <h1>{{ this.currentYear - 1 }}-{{ this.currentYear }}</h1>
         </div>
         <div class="mt-5">
           <h2 id="users-virtrolio">
@@ -25,6 +25,17 @@
     <!-- Side buttons -->
     <div class="col-lg-3 col-md-4 col-sm-5 px-2 vertical-center">
       <div id="buttons">
+        <div class="row">
+          <button
+            (click)="setLink(); showWarningText = false"
+            class="btn-lg btn-primary"
+            data-target="#link-gen"
+            data-toggle="modal"
+            type="button"
+          >
+            Sharing Link
+          </button>
+        </div>
         <div class="row">
           <button
             class="btn-lg btn-primary"
@@ -42,17 +53,6 @@
             type="button"
           >
             Send a Message
-          </button>
-        </div>
-        <div class="row">
-          <button
-            (click)="setLink(); showWarningText = false"
-            class="btn-lg btn-primary"
-            data-target="#link-gen"
-            data-toggle="modal"
-            type="button"
-          >
-            Sharing Link
           </button>
         </div>
         <div class="row">

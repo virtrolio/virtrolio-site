@@ -188,3 +188,28 @@ a.clickable-object:hover {
   /*noinspection CssRedundantUnit*/
   padding-right: 0px !important;
 }
+
+.header-text {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.subheader-text {
+  font-size: 1.5em;
+}
+
+.body-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+
+.display-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.display-body-text {
+  font-size: 1em;
+  text-align: center;
+}

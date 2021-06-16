@@ -10,7 +10,10 @@
     <app-responses-list [setMessageList]="messageList"></app-responses-list>
     <div class="row justify-content-center">
       <div class="col-12">
-        <app-messages [setMessageList]="messageList"></app-messages>
+        <app-messages
+          [setMessageList]="messageList"
+          [setIsLoading]="isLoading"
+        ></app-messages>
         <div *ngIf="invalidMessageCount == 1" class="pt-3">
           <p class="invalid-msg-warning">
             &#9888; One of your messages isn't being shown because it does not

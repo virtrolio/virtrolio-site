@@ -14,6 +14,7 @@ import Timestamp = firestore.Timestamp;
   styleUrls: ['./viewing.component.css'],
 })
 export class ViewingComponent implements OnInit {
+  isLoading = true;
   isSingleMessageView = false;
   messageList: VirtrolioMessage[];
   invalidMessageCount = 0;
@@ -46,6 +47,7 @@ export class ViewingComponent implements OnInit {
             this.invalidMessageCount += 1;
           }
         });
+        this.isLoading = false;
       });
   }
 }
