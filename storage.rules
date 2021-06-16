@@ -4,7 +4,7 @@ service firebase.storage {
   	// Rules written under the assumption that the folder naming convention in images is as follows:
     // /images/<fromUid>-<toUid>-<versionCode>/<filename>
   	match /messages/{messageId}/{imageName} {
-    	allow get, list: if request.auth != null
+    	allow get, list, delete: if request.auth != null
       // Yearbook methodology: Recipient owns the data. Sender cannot access it.
       && messageId.split('-')[1] == request.auth.uid;
       allow create: if request.auth != null
@@ -14,7 +14,7 @@ service firebase.storage {
       && request.resource.size < 8 * 1024 * 1024
       // Only allow images
       && request.resource.contentType.matches('image/.*');
-      allow update, delete: if false;
+      allow update: if false;
     }
     match /{allPaths=**} {
       allow read, write: if false;
