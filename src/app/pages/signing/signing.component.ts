@@ -139,11 +139,13 @@ export class SigningComponent implements OnInit, OnDestroy {
     this.msgIo
       .sendMessage(newMsg, this.key)
       .then(() => {
+        this.sending = false;
         this.router
           .navigate(['/msg-sent'], { queryParams: { name: this.name } })
           .catch((e) => CommonService.displayError(e));
       })
       .catch((error) => {
+        this.sending = false;
         CommonService.displayError(error);
       });
   }
