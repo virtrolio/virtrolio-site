@@ -4,7 +4,9 @@
 }
 
 .image-buttons {
-  margin-top: 1em;
+  margin: 1em 0;
+  position: absolute;
+  bottom: 0;
 }
 
 #no-images-graphic {
