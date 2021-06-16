@@ -44,4 +44,17 @@ export class StorageService {
       return targetPath;
     });
   }
+
+  /**
+   * Delete all files in the folder provided.
+   *
+   * @param folderPath - The folder to delete.
+   */
+  public async deleteFiles(folderPath: string) {
+    this.storageService
+      .ref(folderPath)
+      .listAll()
+      .toPromise()
+      .then((res) => res.items.forEach((file) => file.delete()));
+  }
 }
