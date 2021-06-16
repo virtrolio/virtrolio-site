@@ -1,6 +1,6 @@
 <div
   *ngIf="isLoading; else messages"
-  class="loading-empty-state-container d-flex justify-content-center"
+  class="centered-container d-flex justify-content-center"
 >
   <div class="spinner-border" role="status"></div>
 </div>
@@ -9,7 +9,7 @@
   <!-- Perform a check to see if the number of messages received is 0 -->
   <div
     *ngIf="messageList.length === 0; else showMessages"
-    class="loading-empty-state-container d-flex justify-content-center"
+    class="centered-container d-flex justify-content-center"
   >
     <div class="empty-state-container px-5">
       <img
