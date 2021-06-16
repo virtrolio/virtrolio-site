@@ -156,51 +156,6 @@ markdown {
   border-radius: 0.25rem; /* based off of bootstrap btn class */
 }
 
-/* || Embed Photo */
-
-#embed-image-holder {
-  max-width: 100%;
-}
-
-#embed-image-card {
-  border: 0.0625em solid grey;
-  min-height: 2.375em;
-  color: grey;
-}
-
-#embed-link-field {
-  border: 0.1em solid var(--accent);
-  border-radius: 0.2em;
-}
-
-#embed-photo-div {
-  text-align: center;
-}
-
-#embed-photo-dialog,
-.modal-content {
-  max-width: 69em;
-}
-
-#embed-help {
-  z-index: 2000;
-}
-
-#image-preview-heading {
-  height: 1.8125em;
-}
-
-#width-slider-lg,
-#width-slider-sm {
-  height: 0.625em;
-  width: 6em;
-}
-
-#width-slider-field-lg,
-#width-slider-field-sm {
-  width: 3.5em;
-}
-
 /* || Typography */
 
 .title-div {
