@@ -3,7 +3,7 @@ service firebase.storage {
   match /b/{bucket}/o {
   	// Rules written under the assumption that the folder naming convention in images is as follows:
     // /images/<fromUid>-<toUid>-<versionCode>/<filename>
-  	match /images/{messageId}/{imageName} {
+  	match /messages/{messageId}/{imageName} {
     	allow get: if request.auth != null
       // Yearbook methodology: Recipient owns the data. Sender cannot access it.
       && messageId.split('-')[1] == request.auth.uid;
