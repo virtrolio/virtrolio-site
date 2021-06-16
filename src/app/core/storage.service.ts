@@ -14,6 +14,10 @@ export class StorageService {
 
   constructor(private storageService: AngularFireStorage) {}
 
+  public static getFileExtension(file: File): string {
+    return file.name.split('.').pop();
+  }
+
   private static generatePath(messageId: string, extension: string): string {
     return `${this.imagesBaseFolder}/${messageId}/${uuidv4()}.${extension}`;
   }
@@ -26,7 +30,7 @@ export class StorageService {
       return [];
     }
     return images.map(async (imageFile) => {
-      const extension: string = imageFile.name.split('.').pop();
+      const extension: string = StorageService.getFileExtension(imageFile);
       const targetPath: string = StorageService.generatePath(
         messageId,
         extension
