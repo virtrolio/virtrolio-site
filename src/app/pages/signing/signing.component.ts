@@ -29,7 +29,7 @@ declare var $: any;
  */
 export class SigningComponent implements OnInit, OnDestroy {
   public name = 'your friend';
-  public sending = false;
+  public isSending = false;
   public embedLink = '';
   public imageWidth = 50;
   public copyButtonText = 'Copy';
@@ -89,7 +89,7 @@ export class SigningComponent implements OnInit, OnDestroy {
    */
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    return !this.signingService.signingBoxText || this.sending;
+    return !this.signingService.signingBoxText || !this.isSending;
   }
 
   /**
@@ -135,17 +135,17 @@ export class SigningComponent implements OnInit, OnDestroy {
     newMsg.to = this.uid;
 
     // remove navigation popup
-    this.sending = true;
+    this.isSending = true;
     this.msgIo
       .sendMessage(newMsg, this.key)
       .then(() => {
-        this.sending = false;
+        this.isSending = false;
         this.router
           .navigate(['/msg-sent'], { queryParams: { name: this.name } })
           .catch((e) => CommonService.displayError(e));
       })
       .catch((error) => {
-        this.sending = false;
+        this.isSending = false;
         CommonService.displayError(error);
       });
   }
