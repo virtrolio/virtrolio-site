@@ -28,6 +28,11 @@ export class ImageModalComponent {
     this.imageModal.hide();
   }
 
+  onClearImages(): void {
+    this.selectedImages = [];
+    this.selectedImagesURLs = [];
+  }
+
   onSelectFiles(e: Event): void {
     const eventTarget = e.target as HTMLInputElement;
     const files = Array.from(eventTarget.files);
