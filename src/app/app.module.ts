@@ -25,8 +25,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/disclaimer-anchor.component';
-import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
@@ -61,8 +59,6 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
     AppComponent,
     AboutComponent,
     ContactComponent,
-    DisclaimerAnchorComponent,
-    DisclaimerButtonComponent,
     ErrorAlertComponent,
     FaqComponent,
     HomeComponent,
