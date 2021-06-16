@@ -36,8 +36,8 @@ export class StorageService {
       const uploadTask: AngularFireUploadTask = targetStorageRef.put(imageFile);
       // Wait for the upload to complete
       await uploadTask.snapshotChanges().toPromise();
-      // Return the download URL
-      return targetStorageRef.getDownloadURL().toPromise();
+      // Return the path
+      return targetPath;
     });
   }
 }
