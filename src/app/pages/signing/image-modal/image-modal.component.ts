@@ -12,7 +12,6 @@ export class ImageModalComponent {
   static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
   modalRef: BsModalRef;
-  selectedImages: File[] = [];
   selectedImagesURLs = [];
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
@@ -29,7 +28,7 @@ export class ImageModalComponent {
   }
 
   onClearImages(): void {
-    this.selectedImages = [];
+    this.signingService.images = [];
     this.selectedImagesURLs = [];
   }
 
@@ -54,7 +53,7 @@ export class ImageModalComponent {
         reader.onload = (event: ProgressEvent<FileReader>) => {
           this.selectedImagesURLs.push(event.target.result);
         };
-        this.selectedImages.push(item);
+        this.signingService.images.push(item);
       }
     }
   }
