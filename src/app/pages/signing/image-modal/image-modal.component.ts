@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
+import { SigningService } from '../../../core/signing.service';
 
 @Component({
   selector: 'app-image-modal',
@@ -17,7 +18,7 @@ export class ImageModalComponent {
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  constructor() {}
+  constructor(private signingService: SigningService) {}
 
   showImageModal(): void {
     this.imageModal.show();
