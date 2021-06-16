@@ -18,9 +18,7 @@ export class ImageModalComponent implements OnInit {
 
   constructor(public signingService: SigningService) {}
 
-  ngOnInit(): void {
-    this.signingService.imageURLs = [];
-  }
+  ngOnInit(): void {}
 
   showImageModal(): void {
     this.imageModal.show();

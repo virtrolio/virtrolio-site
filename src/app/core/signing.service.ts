@@ -45,6 +45,7 @@ export class SigningService {
     this.currentFontFamily = 'Arial, sans-serif';
     this.currentFontDisplay = 'Arial';
     this.images = [];
+    this.imageURLs = [];
   }
 
   /**
