@@ -155,12 +155,6 @@ export class SigningComponent implements OnInit, OnDestroy {
     newMsg.fontFamily = this.signingService.currentFont;
     newMsg.contents = textbox.value;
     newMsg.to = this.uid;
-    try {
-      newMsg.images = this.uploadImages(this.signingService.images);
-    } catch (e) {
-      CommonService.displayError(e);
-      return;
-    }
 
     // remove navigation popup
     this.sending = true;
