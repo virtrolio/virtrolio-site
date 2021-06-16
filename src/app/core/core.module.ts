@@ -4,9 +4,18 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
 import { CommonModule } from '@angular/common';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../../environments/environment.prod';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
-  imports: [RouterModule, AppRoutingModule, CommonModule],
+  imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    RouterModule,
+    AppRoutingModule,
+    CommonModule,
+  ],
   declarations: [NavbarComponent, FooterComponent],
   exports: [NavbarComponent, FooterComponent],
   providers: [],
