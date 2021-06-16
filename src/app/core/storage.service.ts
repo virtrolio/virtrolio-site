@@ -10,7 +10,7 @@ import {
   providedIn: 'root',
 })
 export class StorageService {
-  public static imagesBaseFolder = 'images';
+  public static imagesBaseFolder = 'messages';
 
   constructor(private storageService: AngularFireStorage) {}
 
