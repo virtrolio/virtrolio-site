@@ -21,6 +21,8 @@ import {
 } from '../shared/interfaces/messages';
 import firestore = firebase.firestore;
 import Timestamp = firestore.Timestamp;
+import { SigningService } from './signing.service';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +38,9 @@ export class MsgIoService {
     private afs: AngularFirestore,
     private authService: AuthService,
     private sanitizer: DomSanitizer,
-    private sharingLinkService: SharingLinkService
+    private sharingLinkService: SharingLinkService,
+    private signingService: SigningService,
+    private storageService: StorageService
   ) {
     this.messagesCollection = afs.collection('messages');
   }
