@@ -40,17 +40,20 @@
             />
           </div>
           <div class="image-buttons">
-            <button class="btn btn-primary mx-2" (click)="imgUpload.click()">
+            <button
+              class="btn btn-primary mx-2"
+              (click)="imgUploadInput.click()"
+            >
               Add Images
             </button>
             <input
               type="file"
               accept="image/*"
               class="file-upload d-none"
-              id="img-upload"
+              id="img-upload-input"
               (change)="onSelectFiles($event)"
               multiple
-              #imgUpload
+              #imgUploadInput
             />
             <button
               type="button"

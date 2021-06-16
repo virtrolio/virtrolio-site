@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 import { SigningService } from '../../../core/signing.service';
@@ -15,6 +15,7 @@ export class ImageModalComponent implements OnInit {
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
+  @ViewChild('imgUploadInput') imgUploadInput: ElementRef;
 
   constructor(public signingService: SigningService) {}
 
@@ -31,6 +32,7 @@ export class ImageModalComponent implements OnInit {
   onClearImages(): void {
     this.signingService.images = [];
     this.signingService.imageURLs = [];
+    this.imgUploadInput.nativeElement.value = '';
   }
 
   onSelectFiles(e: Event): void {
