@@ -170,7 +170,7 @@
           ></markdown>
         </div>
         <app-image-footer
-          *ngIf="msg.images"
+          *ngIf="msg.images && msg.images.length > 0"
           [imageList]="msg.images"
           [backColor]="generateHeaderColor(msg.backColor).bg"
           (popupMessage)="popupMessage(msg)"
