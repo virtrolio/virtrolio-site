@@ -49,6 +49,7 @@ export class ImageModalComponent {
         reader.onload = (event: ProgressEvent<FileReader>) => {
           this.selectedImagesURLs.push(event.target.result);
         };
+        this.selectedImages.push(item);
       }
     }
   }
