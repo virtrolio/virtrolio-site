@@ -100,6 +100,16 @@
       </li>
     </ul>
   </div>
+  <div class="navbar-nav mr-2 float-right">
+    <li class="nav-item">
+      <a
+        [hidden]="authService.isLoggedIn()"
+        class="nav-link login-btn login-btn-a"
+        (click)="authService.login('/my-virtrolio')"
+        >Log in | Sign up</a
+      >
+    </li>
+  </div>
   <!-- Profile pic menu on desktop if logged in -->
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">
     <div class="dropdown dropleft">

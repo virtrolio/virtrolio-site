@@ -118,3 +118,12 @@
   color: red;
   font-weight: bold;
 }
+
+.login-btn {
+  background-color: transparent;
+  border-width: 3px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #fa8072;
+  padding: 5px !important;
+}
