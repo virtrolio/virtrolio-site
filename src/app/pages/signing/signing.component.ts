@@ -6,7 +6,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { v4 as uuidv4 } from 'uuid';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { CommonService } from '../../core/common.service';
@@ -15,10 +14,6 @@ import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ImageModalComponent } from './image-modal/image-modal.component';
-import {
-  AngularFireStorage,
-  AngularFireStorageReference,
-} from '@angular/fire/storage';
 
 declare var $: any;
 
@@ -51,8 +46,7 @@ export class SigningComponent implements OnInit, OnDestroy {
     private msgIo: MsgIoService,
     private router: Router,
     private title: Title,
-    public deviceDetector: DeviceDetectorService,
-    private storageService: AngularFireStorage
+    public deviceDetector: DeviceDetectorService
   ) {}
 
   /**
@@ -126,21 +120,6 @@ export class SigningComponent implements OnInit, OnDestroy {
         'There was an error while checking your uploaded images'
       );
     }
-  }
-
-  private uploadImages(images: File[]): string[] {
-    if (images.length === 0) {
-      return [];
-    }
-    this.storageService.ref('images').put(new File([], 'asdf'));
-    return images.map((imageFile) => {
-      const extension: string = imageFile.name.split('.').pop();
-      const targetPath = `images/${uuidv4()}.${extension}`;
-      const targetStorageRef: AngularFireStorageReference =
-        this.storageService.ref(targetPath);
-      console.log(targetPath);
-      return '';
-    });
   }
 
   /**
