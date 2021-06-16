@@ -25,16 +25,16 @@
       <div class="modal-body align-items-center p-3" id="embed-photo-div">
         <div class="col-md-12 my-6 px-lg-5 px-3 text-center">
           <div class="col-md-12 text-center">
-            <h5 *ngIf="!selectedImagesURLs.length">No images selected</h5>
+            <h5 *ngIf="!signingService.imageURLs.length">No images selected</h5>
             <img
-              *ngIf="!selectedImagesURLs.length"
+              *ngIf="!signingService.imageURLs.length"
               src="../../../../assets/images/girl-photos-folder.svg"
               alt="girl with photos folder graphic"
               id="no-images-graphic"
             />
             <img
               class="col-4 uploaded-image"
-              *ngFor="let url of selectedImagesURLs"
+              *ngFor="let url of signingService.imageURLs"
               [src]="url"
               alt="selected image"
             />

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { BsModalRef, ModalDirective } from 'ngx-bootstrap/modal';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 import { SigningService } from '../../../core/signing.service';
@@ -8,16 +8,19 @@ import { SigningService } from '../../../core/signing.service';
   templateUrl: './image-modal.component.html',
   styleUrls: ['./image-modal.component.css'],
 })
-export class ImageModalComponent {
+export class ImageModalComponent implements OnInit {
   static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
   modalRef: BsModalRef;
-  selectedImagesURLs = [];
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
 
-  constructor(private signingService: SigningService) {}
+  constructor(public signingService: SigningService) {}
+
+  ngOnInit(): void {
+    this.signingService.imageURLs = [];
+  }
 
   showImageModal(): void {
     this.imageModal.show();
@@ -29,14 +32,14 @@ export class ImageModalComponent {
 
   onClearImages(): void {
     this.signingService.images = [];
-    this.selectedImagesURLs = [];
+    this.signingService.imageURLs = [];
   }
 
   onSelectFiles(e: Event): void {
     const eventTarget = e.target as HTMLInputElement;
     const files = Array.from(eventTarget.files);
 
-    if (files.length + this.selectedImagesURLs.length > 3) {
+    if (files.length + this.signingService.imageURLs.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
       return;
     }
@@ -51,7 +54,8 @@ export class ImageModalComponent {
         const reader = new FileReader();
         reader.readAsDataURL(item);
         reader.onload = (event: ProgressEvent<FileReader>) => {
-          this.selectedImagesURLs.push(event.target.result);
+          const stringURL = event.target.result.toString();
+          this.signingService.imageURLs.push(stringURL);
         };
         this.signingService.images.push(item);
       }

@@ -17,6 +17,7 @@ export class SigningService {
   maxCharCount: number;
   charCountColor: string;
   images: File[];
+  imageURLs: string[];
 
   // Font service variables
   fontDict: Fonts; // Used to store all of the fonts
