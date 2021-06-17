@@ -76,16 +76,15 @@
         working on a more user-friendly menu to be able to insert images into
         your message if you're not comfortable with this, so watch out for
         that!</p>
-    - question:
-        Can I download my messages in some way? Maybe saving as a word document
-        or a PDF?
+    - question: Can I download my messages?
       answer: >
         After sending your messages, you do not own them anymore, so you cannot
         download or save them. If you want to download and save the messages you
         have <em>received</em>, we currently have the option for you to download
-        all your data as a .json file (go to your settings page for this
-        option). We are working on a way for you to be able download your
-        messages in a more user-friendly format, though, so stay tuned!
+        all your data as a .json file (go to your <a
+        href="/settings">settings</a> page for this option). We are working on a
+        way for you to be able download your messages in a more user-friendly
+        format, though, so stay tuned!
 - sectionTitle: Your Sharing Link
   questions:
     - question: How do I get a new sharing link?
