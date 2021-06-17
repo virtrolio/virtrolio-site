@@ -81,11 +81,11 @@
         or a PDF?
       answer: >
         After sending your messages, you do not own them anymore, so you cannot
-        download or save them then. If you want to download and save the
-        messages you have <em>received</em>, we currently have the option for
-        you to download all your data as a .json file (go to your settings page
-        for this option). We are working on a way for you to be able download
-        your messages in a more user-friendly format, though, so stay tuned!
+        download or save them. If you want to download and save the messages you
+        have <em>received</em>, we currently have the option for you to download
+        all your data as a .json file (go to your settings page for this
+        option). We are working on a way for you to be able download your
+        messages in a more user-friendly format, though, so stay tuned!
     - question: How do I get a new sharing link?
       answer: >
         Go to <a href="/my-virtrolio">your virtrolio</a> and click on 'Sharing
@@ -104,17 +104,20 @@
         Delete the messages from your virtrolio; as the recipient, according to
         our <a href="/privacy-policy">privacy policy</a>, you are the only one
         with the authority to do this. You can also generate a new sharing link
-        to prevent people from misusing your old one. If the problem persists,
-        you can <a href="mailto:virtrolio.team@gmail.com" target="_blank">send
-        us an email</a> and we can take more authoritative action.
+        to prevent people from using your old sharing links. If the problem
+        persists, you can <a href="mailto:virtrolio.team@gmail.com"
+        target="_blank">send us an email</a> and we can take more authoritative
+        action.
     - question: Can I sign in with anything other than Google?
       answer: >
-        Currently, no. Sorry!
+        Currently, no. Sorry! There are plans to add more sign-in options in the
+        future though, so stay tuned!
     - question: Can I get a custom key for my sharing link?
       answer: >
         We may add this feature in the future, but for now it's only for the
         developers. Sorry!
     - question: Can I change my display name?
       answer: >
-        No, your display name is taken directly from your Google Account. We
-        suggest you use a personal Gmail account to sign up because of this.
+        No, your display name is taken directly from your Google Account.
+        Because of this, we suggest you use a personal Gmail account to sign up
+        for Virtrolio.
