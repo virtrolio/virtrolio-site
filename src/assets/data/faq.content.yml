@@ -112,10 +112,6 @@
       answer: >
         Currently, no. Sorry! There are plans to add more sign-in options in the
         future though, so stay tuned!
-    - question: Can I get a custom key for my sharing link?
-      answer: >
-        We may add this feature in the future, but for now it's only for the
-        developers. Sorry!
     - question: Can I change my display name?
       answer: >
         No, your display name is taken directly from your Google Account.
