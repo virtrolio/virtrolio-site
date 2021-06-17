@@ -90,11 +90,11 @@
       answer: >
         Go to <a target="_blank" href="/my-virtrolio">your virtrolio</a> and
         click on 'Sharing Link', then generate a new link from there. Be
-        aware—doing so will invalidate all previous links!
+        aware—doing so will invalidate your previous link!
     - question: Why would I want a new sharing link?
       answer: >
         You can generate a new sharing link if people are sending you messages
-        you do not approve of using your old one. This helps prevent spammers
+        you do not approve of using your old link. This helps prevent spammers
         and bullies from clogging up your virtrolio. Only people with your
         <em>newest</em> sharing link can sign your virtrolio.
 - sectionTitle: Miscellaneous
