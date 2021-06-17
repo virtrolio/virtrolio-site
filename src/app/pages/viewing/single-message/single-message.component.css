@@ -17,18 +17,6 @@
   overflow-y: auto;
 }
 
-.message-image-inline {
-  max-width: 100%;
-  min-height: 3em;
-  padding: 0 1em 0 1em;
-  object-fit: contain;
-  transition: all 0.5s ease;
-}
-
-.message-image-inline:hover {
-  filter: grayscale(1);
-}
-
 .msg-header-text {
   font-weight: bold;
   font-size: 1.6em;
