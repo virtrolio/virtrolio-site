@@ -56,10 +56,6 @@ export class ImageModalComponent implements OnInit {
       return;
     }
 
-    if (files.length + this.signingService.imageURLs.length === 3) {
-      console.log('hecc');
-    }
-
     if (files) {
       for (const item of files) {
         // Error handling for files over 8MiB
