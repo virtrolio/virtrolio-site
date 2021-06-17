@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import YAML from 'yaml';
 
 @Injectable({
   providedIn: 'root',
@@ -6,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class CommonService {
   public static currentYear: number = new Date().getFullYear();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   /**
    * Displays an error to the user using an alert and a human-readable prefix.
@@ -17,5 +19,15 @@ export class CommonService {
       "An error occurred. Here are the details that you can report to our team through the 'Contact Us' page:\n" +
         error
     );
+  }
+
+  async parseYAMLFromFile(path: string): Promise<any> {
+    const yamlText = await this.http
+      .get(path, {
+        observe: 'body',
+        responseType: 'text',
+      })
+      .toPromise();
+    return YAML.parse(yamlText);
   }
 }

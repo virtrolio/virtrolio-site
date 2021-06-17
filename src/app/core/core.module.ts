@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment.prod';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     RouterModule,
     AppRoutingModule,
     CommonModule,
+    HttpClientModule
   ],
   declarations: [NavbarComponent, FooterComponent],
   exports: [NavbarComponent, FooterComponent],
