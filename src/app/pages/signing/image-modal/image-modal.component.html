@@ -46,13 +46,22 @@
         </div>
         <div class="row">
           <div class="col-md-12 my-6 px-lg-5 px-3 text-center image-buttons">
-            <button
-              class="btn btn-primary mx-2"
-              (click)="imgUploadInput.click()"
-              [disabled]="signingService.imageURLs.length > 2"
-            >
-              Add Images
-            </button>
+            <span>
+              <button
+                class="btn btn-primary mx-2"
+                (click)="imgUploadInput.click()"
+                [disabled]="signingService.imageURLs.length > 2"
+                [tooltip]="
+                  signingService.imageURLs.length > 2
+                    ? 'You cannot add more than 3 images.'
+                    : ''
+                "
+                placement="bottom"
+                triggers="pointerenter:pointerout hover focus"
+              >
+                Add Images
+              </button>
+            </span>
             <input
               type="file"
               accept="image/*"
