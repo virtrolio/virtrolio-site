@@ -1,4 +1,4 @@
-- sectionTitle: Signing and Sharing your virtrolio
+- sectionTitle: Signing someone's virtrolio
   questions:
     - question: How do I sign someone's virtrolio?
       answer: >
@@ -86,6 +86,8 @@
         all your data as a .json file (go to your settings page for this
         option). We are working on a way for you to be able download your
         messages in a more user-friendly format, though, so stay tuned!
+- sectionTitle: Your Sharing Link
+  questions:
     - question: How do I get a new sharing link?
       answer: >
         Go to <a href="/my-virtrolio">your virtrolio</a> and click on 'Sharing
