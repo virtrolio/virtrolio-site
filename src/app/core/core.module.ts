@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     AppRoutingModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [NavbarComponent, FooterComponent],
   exports: [NavbarComponent, FooterComponent],
