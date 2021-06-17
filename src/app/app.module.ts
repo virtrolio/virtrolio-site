@@ -51,6 +51,7 @@ import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
 import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.com
     ModalModule.forRoot(),
     SharedModule,
     ToastrModule.forRoot(),
+    TooltipModule,
   ],
   providers: [CookieService, LoginResolver, PendingChangesGuard],
   bootstrap: [AppComponent],
