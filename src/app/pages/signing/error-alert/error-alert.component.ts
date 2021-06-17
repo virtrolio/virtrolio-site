@@ -28,6 +28,15 @@ export class ErrorAlertComponent {
     });
   }
 
+  addUnsupportedFileType(fileName: string): void {
+    this.alerts.push({
+      type: 'danger',
+      head: 'Wait, ',
+      msg: `${fileName} is not a supported file type. Please only select .png, .jpg, .jpeg, .tif, .tiff, .bmp, .gif, .jfif, .pjp files`,
+      timeout: 10000,
+    });
+  }
+
   onClosed(dismissedAlert: AlertComponent): void {
     this.alerts = this.alerts.filter((alert) => alert !== dismissedAlert);
   }

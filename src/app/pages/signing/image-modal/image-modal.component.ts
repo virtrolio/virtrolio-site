@@ -11,6 +11,18 @@ import { SigningService } from '../../../core/signing.service';
 export class ImageModalComponent implements OnInit {
   static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
+  static acceptedFiles = [
+    '.png',
+    '.jpg',
+    '.jpeg',
+    '.tif',
+    '.tiff',
+    '.bmp',
+    '.gif',
+    '.jfif',
+    '.pjp',
+  ];
+
   modalRef: BsModalRef;
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
@@ -50,8 +62,25 @@ export class ImageModalComponent implements OnInit {
 
     if (files) {
       for (const item of files) {
+        // Error handling for files over 8MiB
         if (item.size > ImageModalComponent.maxFileSize) {
           this.ErrorAlertComponent.addImageSizeLimit(item.name);
+          return;
+        }
+        // Error handling for unsupported file types
+        let acceptedFiles = false;
+        for (const type in ImageModalComponent.acceptedFiles) {
+          if (
+            item.name
+              .toLowerCase()
+              .includes(ImageModalComponent.acceptedFiles[type])
+          ) {
+            acceptedFiles = true;
+            break;
+          }
+        }
+        if (!acceptedFiles) {
+          this.ErrorAlertComponent.addUnsupportedFileType(item.name);
           return;
         }
 
