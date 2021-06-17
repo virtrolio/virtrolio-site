@@ -167,10 +167,10 @@
           <small
             >Note: Whenever we release an update to the 'signing' page, we may,
             at our discretion, allow you to send <em>another</em> message to
-            each of your friends' virtrolios! This ensures that you will be able
-            to enjoy any new features that we develop. Keep an eye on this
-            changelog as we will mention here if we ever do give you another
-            message opportunity.</small
+            each of your friends' virtrolios as if it were a new year! This
+            ensures that you will be able to enjoy any new features that we
+            develop. Keep an eye out for versions with a 💌 emoji next to them
+            to see if you're allowed to spread some more Virtrolio joy!</small
           >
         </p>
         <ng-container *ngFor="let version of changelog">
@@ -179,6 +179,12 @@
               <strong
                 >v{{ version.versionNumber }} |
                 {{ version.releaseDate }}</strong
+              ><br />
+              <small
+                ><em
+                  >You can send one new message to each of your friends with
+                  this update! </em
+                >💌</small
               >
             </p>
             <ul>
