@@ -2,7 +2,7 @@
   questions:
     - question: How do I sign someone's virtrolio?
       answer: >
-        Ask them for their 'sharing link' (which they can get from their 'Your
+        Ask them for their 'sharing link' (which they can get from their 'My
         virtrolio' page). Then visit that sharing link and sign in if you
         haven't already. You will then be taken to a wonderful place with many
         formatting tools to type your customized message.
@@ -85,7 +85,7 @@
         your messages in a more user-friendly format, though, so stay tuned!
     - question: How do I get a new sharing link?
       answer: >
-        Go to <a routerLink="/your-virtrolio">your virtrolio</a> and click on
+        Go to <a routerLink="/my-virtrolio">your virtrolio</a> and click on
         'Sharing Link', then generate a new link from there. Be aware—doing so
         will invalidate all previous links!
     - question: Why would I want a new sharing link?
