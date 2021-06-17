@@ -30,6 +30,13 @@
         "type": "NEW",
         "typeCSS": "changelog-new",
         "betaFlag": false,
+        "location": "Signing",
+        "content": "Add a spinner animation while a message is being uploaded"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
         "location": "Viewing",
         "content": "Replace the crying emoji with more professional content and graphics when there are no messages to view \ud83d\ude2d"
       },
