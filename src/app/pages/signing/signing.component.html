@@ -1,417 +1,402 @@
-<div
-  *ngIf="isSending; else signing"
-  class="centered-container d-flex justify-content-center"
->
-  <div class="spinner-border" role="status"></div>
-</div>
-
-<ng-template #signing>
-  <!--suppress HtmlUnknownTarget -->
-  <div class="container py-4 center-children vertical-center">
-    <div class="row" *ngIf="deviceDetector.isMobile()">
-      <div class="col-12 alert alert-primary" id="signing-experience-alert">
-        The Virtrolio signing experience is better on a desktop or laptop
-        computer!
-        <strong
-          ><u>
-            <a data-toggle="modal" data-target="#signing-experience">Why?</a></u
-          ></strong
+<!--suppress HtmlUnknownTarget -->
+<div class="container py-4 center-children vertical-center">
+  <div
+    *ngIf="isSending"
+    class="d-flex justify-content-center"
+    id="spinner-overlay-container"
+  >
+    <div class="spinner-border" role="status"></div>
+  </div>
+  <div class="row" *ngIf="deviceDetector.isMobile()">
+    <div class="col-12 alert alert-primary" id="signing-experience-alert">
+      The Virtrolio signing experience is better on a desktop or laptop
+      computer!
+      <strong
+        ><u>
+          <a data-toggle="modal" data-target="#signing-experience">Why?</a></u
+        ></strong
+      >
+    </div>
+  </div>
+  <div class="row">
+    <!-- Signing box, header, and character count -->
+    <div class="col-md-6 order-md-1 center-children">
+      <div class="row title-div vertical-center">
+        <label for="signing-box">
+          <b>Type your message to {{ name }} below.</b>
+        </label>
+      </div>
+      <div class="row">
+        <textarea
+          #signingInputArea
+          (keyup)="signingService.updateCount(signingInputArea)"
+          [(ngModel)]="signingService.signingBoxText"
+          [ngStyle]="{ 'font-family': signingService.currentFontFamily }"
+          autofocus
+          class="form-control"
+          id="signing-box"
+          placeholder="You must type something before you can hit send!"
+        ></textarea>
+        <span
+          *ngIf="signingService.charCount >= 2000"
+          [ngStyle]="{ color: signingService.charCountColor }"
+          id="char-count-display"
         >
+          {{ signingService.charCount }} / {{ signingService.maxCharCount }}
+        </span>
       </div>
     </div>
-    <div class="row">
-      <!-- Signing box, header, and character count -->
-      <div class="col-md-6 order-md-1 center-children">
-        <div class="row title-div vertical-center">
-          <label for="signing-box">
-            <b>Type your message to {{ name }} below.</b>
-          </label>
-        </div>
-        <div class="row">
-          <textarea
-            #signingInputArea
-            (keyup)="signingService.updateCount(signingInputArea)"
-            [(ngModel)]="signingService.signingBoxText"
+
+    <!-- Formatting Tools -->
+    <div class="col-md-12 order-md-3">
+      <div class="row justify-content-center" id="options">
+        <!-- Font dropdown -->
+        <div class="dropdown">
+          <button
             [ngStyle]="{ 'font-family': signingService.currentFontFamily }"
-            autofocus
-            class="form-control"
-            id="signing-box"
-            placeholder="You must type something before you can hit send!"
-          ></textarea>
-          <span
-            *ngIf="signingService.charCount >= 2000"
-            [ngStyle]="{ color: signingService.charCountColor }"
-            id="char-count-display"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            id="font-selector-dropdown"
+            type="button"
           >
-            {{ signingService.charCount }} / {{ signingService.maxCharCount }}
-          </span>
-        </div>
-      </div>
-
-      <!-- Formatting Tools -->
-      <div class="col-md-12 order-md-3">
-        <div class="row justify-content-center" id="options">
-          <!-- Font dropdown -->
-          <div class="dropdown">
-            <button
-              [ngStyle]="{ 'font-family': signingService.currentFontFamily }"
-              aria-expanded="false"
-              aria-haspopup="true"
-              class="btn btn-secondary dropdown-toggle"
-              data-toggle="dropdown"
-              id="font-selector-dropdown"
-              type="button"
-            >
-              <span>{{ signingService.currentFontDisplay }}</span>
-              <span class="caret"></span>
-            </button>
-            <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
-              <span *ngFor="let font of signingService.fontDict | keyvalue">
-                <a
-                  (click)="signingService.selectFont(font.key)"
-                  [ngStyle]="{ 'font-family': font.key }"
-                  class="dropdown-item"
-                  >{{ font.key }}</a
-                >
-              </span>
-            </div>
+            <span>{{ signingService.currentFontDisplay }}</span>
+            <span class="caret"></span>
+          </button>
+          <div aria-labelledby="font-selector-dropdown" class="dropdown-menu">
+            <span *ngFor="let font of signingService.fontDict | keyvalue">
+              <a
+                (click)="signingService.selectFont(font.key)"
+                [ngStyle]="{ 'font-family': font.key }"
+                class="dropdown-item"
+                >{{ font.key }}</a
+              >
+            </span>
           </div>
+        </div>
 
-          <!-- Formatting buttons -->
-          <button
-            (click)="signingService.addFormatting(signingInputArea, '**')"
-            class="btn btn-secondary btn-format mr-2"
-            id="button-bold"
-            type="button"
-          >
-            <b>B</b>
-          </button>
-          <button
-            (click)="signingService.addFormatting(signingInputArea, '*')"
-            class="btn btn-secondary btn-format mr-2"
-            id="button-italics"
-            type="button"
-          >
-            <i>I</i>
-          </button>
-          <button
-            (click)="
-              signingService.addFormatting(
-                signingInputArea,
-                '&lt;u>',
-                '&lt;/u>'
-              )
-            "
-            class="btn btn-secondary btn-format mr-2"
-            id="button-underline"
-            type="button"
-          >
-            <u>U</u>
-          </button>
-          <button
-            (click)="signingService.addFormatting(signingInputArea, '~~')"
-            class="btn btn-secondary btn-format mr-2"
-            id="button-strikethrough"
-            type="button"
-          >
-            <s>S</s>
-          </button>
+        <!-- Formatting buttons -->
+        <button
+          (click)="signingService.addFormatting(signingInputArea, '**')"
+          class="btn btn-secondary btn-format mr-2"
+          id="button-bold"
+          type="button"
+        >
+          <b>B</b>
+        </button>
+        <button
+          (click)="signingService.addFormatting(signingInputArea, '*')"
+          class="btn btn-secondary btn-format mr-2"
+          id="button-italics"
+          type="button"
+        >
+          <i>I</i>
+        </button>
+        <button
+          (click)="
+            signingService.addFormatting(signingInputArea, '&lt;u>', '&lt;/u>')
+          "
+          class="btn btn-secondary btn-format mr-2"
+          id="button-underline"
+          type="button"
+        >
+          <u>U</u>
+        </button>
+        <button
+          (click)="signingService.addFormatting(signingInputArea, '~~')"
+          class="btn btn-secondary btn-format mr-2"
+          id="button-strikethrough"
+          type="button"
+        >
+          <s>S</s>
+        </button>
 
-          <!-- Color pickers for text and background -->
-          <button
-            class="btn btn-secondary btn-format mr-2 icon-wrapper"
-            type="button"
+        <!-- Color pickers for text and background -->
+        <button
+          class="btn btn-secondary btn-format mr-2 icon-wrapper"
+          type="button"
+        >
+          <span id="font-color-text">A</span>
+          <label for="color-picker-font" hidden>Colour picker for font</label>
+          <input
+            [(ngModel)]="signingService.textColor"
+            class="mr-2"
+            id="color-picker-font"
+            name="fontColorPicker"
+            type="color"
+            value="{{ signingService.textColor }}"
+          />
+          <span
+            [ngStyle]="{ 'background-color': signingService.textColor }"
+            class="dynamic-color-bar"
+            >&nbsp;</span
           >
-            <span id="font-color-text">A</span>
-            <label for="color-picker-font" hidden>Colour picker for font</label>
-            <input
-              [(ngModel)]="signingService.textColor"
-              class="mr-2"
-              id="color-picker-font"
-              name="fontColorPicker"
-              type="color"
-              value="{{ signingService.textColor }}"
-            />
-            <span
-              [ngStyle]="{ 'background-color': signingService.textColor }"
-              class="dynamic-color-bar"
-              >&nbsp;</span
-            >
-          </button>
-          <button
-            class="btn btn-secondary btn-format mr-2 icon-wrapper"
-            type="button"
+        </button>
+        <button
+          class="btn btn-secondary btn-format mr-2 icon-wrapper"
+          type="button"
+        >
+          <img
+            alt="fill color selector"
+            id="fill-color-icon"
+            src="../../../assets/images/icons/SigningIcon_fill-color.svg"
+          />
+          <label for="color-picker-background" hidden
+            >Colour picker for background</label
           >
-            <img
-              alt="fill color selector"
-              id="fill-color-icon"
-              src="../../../assets/images/icons/SigningIcon_fill-color.svg"
-            />
-            <label for="color-picker-background" hidden
-              >Colour picker for background</label
-            >
-            <input
-              [(ngModel)]="signingService.backgroundColor"
-              class="mr-2"
-              id="color-picker-background"
-              name="background-color-picker"
-              type="color"
-              value="{{ signingService.backgroundColor }}"
-            />
-            <span
-              [ngStyle]="{ 'background-color': signingService.backgroundColor }"
-              class="dynamic-color-bar"
-              >&nbsp;</span
-            >
-          </button>
+          <input
+            [(ngModel)]="signingService.backgroundColor"
+            class="mr-2"
+            id="color-picker-background"
+            name="background-color-picker"
+            type="color"
+            value="{{ signingService.backgroundColor }}"
+          />
+          <span
+            [ngStyle]="{ 'background-color': signingService.backgroundColor }"
+            class="dynamic-color-bar"
+            >&nbsp;</span
+          >
+        </button>
 
-          <!-- Other buttons -->
-          <a
-            tabindex="0"
-            role="button"
-            class="
-              btn btn-secondary btn-format
-              mr-2
-              icon-wrapper
-              vertical-center
-            "
-            data-toggle="popover"
-            data-trigger="focus"
-            title="Emojis"
-            data-html="true"
-            data-content="If you're on a
+        <!-- Other buttons -->
+        <a
+          tabindex="0"
+          role="button"
+          class="btn btn-secondary btn-format mr-2 icon-wrapper vertical-center"
+          data-toggle="popover"
+          data-trigger="focus"
+          title="Emojis"
+          data-html="true"
+          data-content="If you're on a
            desktop or laptop, click inside your message and press Windows + Period on Windows or Command + Control +
            Space on a Mac to open your computer's Emoji Keyboard!<br><br>If you're on a phone you should already have an
            emoji keyboard built into your keyboard! <br><br> Note: not all emojis may be supported; check
            <a href='https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md' target='_blank'>this list of
            supported emojis</a> to make sure! ❤"
-            >😀
-          </a>
-          <div class="position-relative" id="image-button-wrapper">
-            <button
-              type="button"
-              class="btn btn-format icon-wrapper"
-              [ngClass]="checkImageList() ? 'btn-primary' : 'btn-secondary'"
-              id="btn-photo"
-              (click)="this.imageModalComponent.showImageModal()"
-            >
-              <img
-                alt="image icon"
-                id="image-icon"
-                src="../../../assets/images/icons/SigningIcon_image.svg"
-              />
-            </button>
-            <span
-              *ngIf="checkImageList()"
-              class="d-flex align-items-center justify-content-center"
-              id="image-notification-circle"
-              >{{ checkImageList(true) }}</span
-            >
-          </div>
+          >😀
+        </a>
+        <div class="position-relative" id="image-button-wrapper">
+          <button
+            type="button"
+            class="btn btn-format icon-wrapper"
+            [ngClass]="checkImageList() ? 'btn-primary' : 'btn-secondary'"
+            id="btn-photo"
+            (click)="this.imageModalComponent.showImageModal()"
+          >
+            <img
+              alt="image icon"
+              id="image-icon"
+              src="../../../assets/images/icons/SigningIcon_image.svg"
+            />
+          </button>
+          <span
+            *ngIf="checkImageList()"
+            class="d-flex align-items-center justify-content-center"
+            id="image-notification-circle"
+            >{{ checkImageList(true) }}</span
+          >
+        </div>
 
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="btn-info"
-            data-toggle="modal"
-            data-target="#info"
-          >
-            More Info!
-          </button>
-        </div>
-        <div class="row mt-3 justify-content-center">
-          <button
-            [disabled]="!signingService.canSend"
-            class="btn btn-primary btn-send"
-            data-target="#submit-confirm"
-            data-toggle="modal"
-            id="send-button"
-            type="button"
-          >
-            Send
-          </button>
-        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="btn-info"
+          data-toggle="modal"
+          data-target="#info"
+        >
+          More Info!
+        </button>
       </div>
+      <div class="row mt-3 justify-content-center">
+        <button
+          [disabled]="!signingService.canSend"
+          class="btn btn-primary btn-send"
+          data-target="#submit-confirm"
+          data-toggle="modal"
+          id="send-button"
+          type="button"
+        >
+          Send
+        </button>
+      </div>
+    </div>
 
-      <!-- Preview box -->
-      <div class="col-md-6 order-md-2 center-children">
-        <div class="row title-div mt-3 mt-md-0 vertical-center">
-          <label for="preview-text">
-            <strong>Preview</strong>
-          </label>
-        </div>
-        <div class="row">
-          <markdown
-            #previewBoxArea
-            [ngStyle]="{
-              'background-color': signingService.backgroundColor,
-              color: signingService.textColor,
-              'font-family': signingService.currentFontFamily
-            }"
-            data="{{ signingService.signingBoxText }}"
-            emoji
-            id="preview-text"
-          ></markdown>
-        </div>
+    <!-- Preview box -->
+    <div class="col-md-6 order-md-2 center-children">
+      <div class="row title-div mt-3 mt-md-0 vertical-center">
+        <label for="preview-text">
+          <strong>Preview</strong>
+        </label>
+      </div>
+      <div class="row">
+        <markdown
+          #previewBoxArea
+          [ngStyle]="{
+            'background-color': signingService.backgroundColor,
+            color: signingService.textColor,
+            'font-family': signingService.currentFontFamily
+          }"
+          data="{{ signingService.signingBoxText }}"
+          emoji
+          id="preview-text"
+        ></markdown>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Message confirmation modal -->
-  <div
-    aria-hidden="true"
-    aria-labelledby="submit-confirm-title"
-    class="modal fade"
-    id="submit-confirm"
-    role="dialog"
-    tabindex="-1"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="submit-confirm-title">
-            Are you sure you want to send this?
-          </h5>
-          <button
-            aria-label="Close"
-            class="close"
-            data-dismiss="modal"
-            type="button"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" style="text-align: center">
-          <p>
-            You can only submit one message to a friend’s virtrolio per year, so
-            be absolutely certain!
-          </p>
-          <p>
-            By sending a message, you agree to our
-            <a href="/terms-of-service" target="_blank">Terms of Service</a> and
-            our <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
-          </p>
-          <div class="row justify-content-center"></div>
-        </div>
-        <div class="modal-footer">
-          <button
-            (click)="sendMsg(signingInputArea)"
-            class="btn btn-primary"
-            data-dismiss="modal"
-            type="button"
-          >
-            Send it!
-          </button>
-          <button class="btn btn-secondary" data-dismiss="modal" type="button">
-            Close
-          </button>
-        </div>
+<!-- Message confirmation modal -->
+<div
+  aria-hidden="true"
+  aria-labelledby="submit-confirm-title"
+  class="modal fade"
+  id="submit-confirm"
+  role="dialog"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="submit-confirm-title">
+          Are you sure you want to send this?
+        </h5>
+        <button
+          aria-label="Close"
+          class="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <p>
+          You can only submit one message to a friend’s virtrolio per year, so
+          be absolutely certain!
+        </p>
+        <p>
+          By sending a message, you agree to our
+          <a href="/terms-of-service" target="_blank">Terms of Service</a> and
+          our <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+        </p>
+        <div class="row justify-content-center"></div>
+      </div>
+      <div class="modal-footer">
+        <button
+          (click)="sendMsg(signingInputArea)"
+          class="btn btn-primary"
+          data-dismiss="modal"
+          type="button"
+        >
+          Send it!
+        </button>
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- More Info! -->
-  <div
-    class="modal fade"
-    id="info"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="info-title"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="info-title">
-            Craft your perfect message!
-          </h4>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
+<!-- More Info! -->
+<div
+  class="modal fade"
+  id="info"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="info-title"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="info-title">Craft your perfect message!</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Additional Formatting Tools</h5>
+        <p>
+          Virtrolio supports a modified version of <em>Markdown</em> to format
+          text. While we support most of Markdown's features, we haven't added
+          buttons for all of them, so there's still a lot to try out! Learn how
+          to type in markdown
+          <a href="https://www.markdownguide.org/basic-syntax/" target="_blank"
+            >here</a
+          >.
+        </p>
+        <p>
+          <em
+            >Note: Not all Markdown features will work with Virtrolio
+            messages.</em
           >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Additional Formatting Tools</h5>
-          <p>
-            Virtrolio supports a modified version of <em>Markdown</em> to format
-            text. While we support most of Markdown's features, we haven't added
-            buttons for all of them, so there's still a lot to try out! Learn
-            how to type in markdown
-            <a
-              href="https://www.markdownguide.org/basic-syntax/"
-              target="_blank"
-              >here</a
-            >.
-          </p>
-          <p>
-            <em
-              >Note: Not all Markdown features will work with Virtrolio
-              messages.</em
-            >
-          </p>
-          <h5>Something to Note</h5>
-          <p>
-            Some characters you type will count as more characters than you
-            think. For example, an 'enter' (or a 'new line') counts as 5
-            characters. Don't worry, we've given you
-            {{ signingService.maxCharCount }} characters to work with!
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-dismiss="modal" type="button">
-            Close
-          </button>
-        </div>
+        </p>
+        <h5>Something to Note</h5>
+        <p>
+          Some characters you type will count as more characters than you think.
+          For example, an 'enter' (or a 'new line') counts as 5 characters.
+          Don't worry, we've given you
+          {{ signingService.maxCharCount }} characters to work with!
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Signing Experience  -->
-  <div
-    class="modal fade"
-    id="signing-experience"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="experience-title"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="experience-title">
-            Do I need a larger screen to use Virtrolio?
-          </h4>
-          <button
-            aria-label="Close"
-            class="close"
-            data-dismiss="modal"
-            type="button"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>
-            For most purposes, no. We designed the rest of Virtrolio to be used
-            on a mobile OR desktop/laptop device, but we suggest that you try
-            <em>signing</em> messages on a desktop or laptop computer instead of
-            a phone or tablet. This is because not only is it easier to write
-            out a message when you have a larger screen, but some of the
-            components (like the colour pickers) are not as good-looking or easy
-            to use on mobile.
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-dismiss="modal" type="button">
-            Close
-          </button>
-        </div>
+<!-- Signing Experience  -->
+<div
+  class="modal fade"
+  id="signing-experience"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="experience-title"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="experience-title">
+          Do I need a larger screen to use Virtrolio?
+        </h4>
+        <button
+          aria-label="Close"
+          class="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          For most purposes, no. We designed the rest of Virtrolio to be used on
+          a mobile OR desktop/laptop device, but we suggest that you try
+          <em>signing</em> messages on a desktop or laptop computer instead of a
+          phone or tablet. This is because not only is it easier to write out a
+          message when you have a larger screen, but some of the components
+          (like the colour pickers) are not as good-looking or easy to use on
+          mobile.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">
+          Close
+        </button>
       </div>
     </div>
   </div>
-  <app-image-modal></app-image-modal>
-</ng-template>
+</div>
+<app-image-modal></app-image-modal>
