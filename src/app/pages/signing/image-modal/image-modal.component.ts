@@ -12,7 +12,6 @@ export class ImageModalComponent implements OnInit {
   static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
 
   modalRef: BsModalRef;
-  maxImagesTooltip: string | null = '';
 
   @ViewChild(ErrorAlertComponent) ErrorAlertComponent: ErrorAlertComponent;
   @ViewChild('imageModal', { static: false }) imageModal: ModalDirective;
@@ -34,7 +33,6 @@ export class ImageModalComponent implements OnInit {
     this.signingService.images = [];
     this.signingService.imageURLs = [];
     this.imgUploadInput.nativeElement.value = '';
-    this.maxImagesTooltip = null;
   }
 
   onSelectFiles(e: Event): void {
@@ -43,13 +41,11 @@ export class ImageModalComponent implements OnInit {
 
     if (files.length + this.signingService.imageURLs.length > 3) {
       this.ErrorAlertComponent.addImageCountLimit();
-      this.maxImagesTooltip = 'You can only add up to 3 images';
       return;
     }
 
     if (files.length + this.signingService.imageURLs.length === 3) {
       console.log('hecc');
-      this.maxImagesTooltip = 'You can only add up to 3 images';
     }
 
     if (files) {
@@ -66,7 +62,6 @@ export class ImageModalComponent implements OnInit {
           this.signingService.imageURLs.push(stringURL);
         };
         this.signingService.images.push(item);
-        this.maxImagesTooltip = null;
       }
     }
   }
