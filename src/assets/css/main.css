@@ -16,9 +16,14 @@ html {
   --navbar-left: rgba(250, 128, 114, 1);
   --navbar-right: rgba(251, 91, 91, 1);
 
+  --loading-container-background: rgba(0, 0, 0, 0.5);
+
   /* Sizes */
   --footer-height: 5.5em;
   --navbar-height: 3em;
+
+  /* Z-indexes */
+  --loading-container-z-index: 3000;
 
   /* Shadows from signing component */
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);

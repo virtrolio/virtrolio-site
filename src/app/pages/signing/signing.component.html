@@ -1,13 +1,11 @@
-<div
-  *ngIf="isSending; else signing"
-  class="centered-container d-flex justify-content-center"
->
-  <div class="spinner-border" role="status"></div>
-</div>
-
-<ng-template #signing>
-  <!--suppress HtmlUnknownTarget -->
+ <!--suppress HtmlUnknownTarget -->
   <div class="container py-4 center-children vertical-center">
+    <div
+      *ngIf="isSending"
+      class="d-flex justify-content-center" id="spinner-overlay-container"
+    >
+      <div class="spinner-border" role="status"></div>
+    </div>
     <div class="row" *ngIf="deviceDetector.isMobile()">
       <div class="col-12 alert alert-primary" id="signing-experience-alert">
         The Virtrolio signing experience is better on a desktop or laptop
@@ -414,4 +412,4 @@
     </div>
   </div>
   <app-image-modal></app-image-modal>
-</ng-template>
+
