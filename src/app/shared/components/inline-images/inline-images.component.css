@@ -10,10 +10,6 @@
   transition: all linear 0.2s;
 }
 
-.msg-footer-img:hover {
-  filter: brightness(50%);
-}
-
 .msg-footer-img-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
