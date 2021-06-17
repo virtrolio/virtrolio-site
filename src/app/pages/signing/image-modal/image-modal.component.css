@@ -22,3 +22,9 @@
   max-height: 13em;
   object-fit: contain;
 }
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
