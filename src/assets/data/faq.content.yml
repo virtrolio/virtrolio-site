@@ -8,12 +8,12 @@
         formatting tools to type your customized message.
     - question: How do I delete a message I sent?
       answer: >
-        As per our <a href="/privacy-policy">privacy policy</a>, you cannot
-        delete a message once you have sent it. This is to more closely emulate
-        real-life yearbook signing, in that the virtrolio (and all its messages)
-        will stay with the <em>receiver</em>. In order to have your message
-        deleted, you must ask the <em>recipient</em> of your message to delete
-        it.
+        As per our <a target="_blank" href="/privacy-policy">privacy policy</a>,
+        you cannot delete a message once you have sent it. This is to more
+        closely emulate real-life yearbook signing, in that the virtrolio (and
+        all its messages) will stay with the <em>receiver</em>. In order to have
+        your message deleted, you must ask the <em>recipient</em> of your
+        message to delete it.
     - question: Can I sign someone's virtrolio more than once?
       answer: >
         Yes and no. For any one version of the website (for example, if you just
@@ -80,7 +80,7 @@
         After sending your messages, you do not own them anymore, so you cannot
         download or save them. If you want to download and save the messages you
         have <em>received</em>, we currently have the option for you to download
-        all your data as a .json file (go to your <a
+        all your data as a .json file (go to your <a target="_blank"
         href="/settings">settings</a> page for this option). We are working on a
         way for you to be able download your messages in a more user-friendly
         format, though, so stay tuned!
@@ -88,9 +88,9 @@
   questions:
     - question: How do I get a new sharing link?
       answer: >
-        Go to <a href="/my-virtrolio">your virtrolio</a> and click on 'Sharing
-        Link', then generate a new link from there. Be aware—doing so will
-        invalidate all previous links!
+        Go to <a target="_blank" href="/my-virtrolio">your virtrolio</a> and
+        click on 'Sharing Link', then generate a new link from there. Be
+        aware—doing so will invalidate all previous links!
     - question: Why would I want a new sharing link?
       answer: >
         You can generate a new sharing link if people are sending you messages
@@ -102,12 +102,12 @@
     - question: What do I do if I get messages I don't approve of?
       answer: >
         Delete the messages from your virtrolio; as the recipient, according to
-        our <a href="/privacy-policy">privacy policy</a>, you are the only one
-        with the authority to do this. You can also generate a new sharing link
-        to prevent people from using your old sharing links. If the problem
-        persists, you can <a href="mailto:virtrolio.team@gmail.com"
-        target="_blank">send us an email</a> and we can take more authoritative
-        action.
+        our <a target="_blank" href="/privacy-policy">privacy policy</a>, you
+        are the only one with the authority to do this. You can also generate a
+        new sharing link to prevent people from using your old sharing links. If
+        the problem persists, you can <a target="_blank"
+        href="mailto:virtrolio.team@gmail.com" target="_blank">send us an
+        email</a> and we can take more authoritative action.
     - question: Can I sign in with anything other than Google?
       answer: >
         Currently, no. Sorry! There are plans to add more sign-in options in the
