@@ -13,7 +13,7 @@ service firebase.storage {
       // File size limit: 8 MiB
       && request.resource.size < 8 * 1024 * 1024
       // Only allow images
-      && request.resource.contentType.matches('image/.*');
+      && request.resource.contentType.matches('^image/(bmp|gif|jfif|jpg|pjp|png|tif|tiff)$');
       allow update: if false;
     }
     match /{allPaths=**} {
