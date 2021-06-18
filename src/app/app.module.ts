@@ -9,6 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 // External Libraries
 import { CookieService } from 'ngx-cookie-service';
@@ -18,15 +19,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 // Pages
 import { AboutComponent } from './pages/about/about.component';
 import { AccessDeniedBetaComponent } from './pages/access-denied-beta/access-denied-beta.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { DisclaimerAnchorComponent } from './pages/signing/disclaimer-anchor/disclaimer-anchor.component';
-import { DisclaimerButtonComponent } from './pages/signing/disclaimer-button/disclaimer-button.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ImageFooterComponent } from './pages/viewing/messages/image-footer/image-footer.component';
+import { ImageModalComponent } from './pages/signing/image-modal/image-modal.component';
 import { InvalidLinkComponent } from './pages/invalid-link/invalid-link.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { MessageModalComponent } from './pages/viewing/message-modal/message-modal.component';
@@ -44,9 +46,12 @@ import { SingleMessageComponent } from './pages/viewing/single-message/single-me
 import { TermsOfServiceComponent } from './pages/terms-of-service/terms-of-service.component';
 import { ViewingComponent } from './pages/viewing/viewing.component';
 // Services
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { LoginResolver } from './core/login-resolver';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PendingChangesGuard } from './core/pending-changes.guard';
+import { ErrorAlertComponent } from './pages/signing/error-alert/error-alert.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -55,13 +60,14 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     AppComponent,
     AboutComponent,
     ContactComponent,
-    DisclaimerAnchorComponent,
-    DisclaimerButtonComponent,
+    ErrorAlertComponent,
     FaqComponent,
     HomeComponent,
     MessagesComponent,
     MsgSentComponent,
     MyVirtrolioComponent,
+    ImageFooterComponent,
+    ImageModalComponent,
     InvalidLinkComponent,
     MessageModalComponent,
     MaintenanceComponent,
@@ -77,10 +83,12 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
     ViewingComponent,
   ],
   imports: [
+    AlertModule.forRoot(),
     AngularFireAnalyticsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     BrowserModule,
@@ -98,7 +106,9 @@ import { PendingChangesGuard } from './core/pending-changes.guard';
       },
     }),
     ModalModule.forRoot(),
+    SharedModule,
     ToastrModule.forRoot(),
+    TooltipModule,
   ],
   providers: [CookieService, LoginResolver, PendingChangesGuard],
   bootstrap: [AppComponent],

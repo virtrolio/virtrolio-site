@@ -6,7 +6,7 @@ import YAML from 'yaml';
   providedIn: 'root',
 })
 export class CommonService {
-  public static currentYear: number = new Date().getFullYear();
+  public static readonly CURRENT_YEAR: number = new Date().getFullYear();
 
   constructor(private http: HttpClient) {}
 

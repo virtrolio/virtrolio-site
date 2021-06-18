@@ -28,53 +28,15 @@
         the website, you'll find a note telling you that you can send an extra
         message for the year in the changelog, which you can find by clicking
         "What's New?" at the top of the page.
-    - question:
-        Can I add images, drawings, doodles, or scribbles to my messages?
+    - question: >
+        **NEW** Can I add images, drawings, doodles, or scribbles to my
+        messages?
       answer: >
-        <p>Yes, if you have the images uploaded to some other website (since we
-        do not store images on Virtrolio). We're working on adding a menu to
-        allow you to do this soon!</p><p>However, if you know a bit of HTML, you
-        can do it yourself like this: <strong style="font-family: Consolas,
-        sans-serif">&lt;img src="insert link URL"&gt;</strong> You will be able
-        to see the image in the preview panel while you sign your message if you
-        do it properly with a URL that works.</p><p><strong>Note: Not every URL
-        works, and some URLs will only work temporarily, which makes things
-        difficult when you want the messages to last for a long time. We are not
-        responsible if your link breaks and the picture no longer shows up on a
-        message you have sent.</strong> If the URL holding your image stops
-        working, then so will your image, even if you already sent it. The only
-        way a recipient could keep the image if it was on a temporary link is if
-        they printed out their virtrolio or downloaded a type of file that would
-        allow them to view the image (features which we have not implemented
-        yet). As such, we recommend that you link to images which you know will
-        work not only now but also in the future when your friend reads your
-        message. Google Photos links will not work unless they are on a shared
-        album (this has not been tested thoroughly). Other image sharing /
-        storing services such as Google Drive and Imgur are possible
-        alternatives. Virtrolio is not making any suggestions for software to
-        use in this regard; we are simply making you aware of the options that
-        are out there.</p>  <p>Even if the URL you use does lead to an image,
-        the URL must contain ONLY an image for it to work in your virtrolio
-        message. For example, <a target="_blank"
-        href="https://bit.ly/2NRCMvu">this link</a> will not work but <a
-        target="_blank" href="https://bit.ly/2BuNxkA">this one</a> will.
-        Usually, a 'usable' URL in this context will have an 'image file
-        extension' at the end of the URL—something like .jpg or .png or .gif.
-        Some people call this type of link an 'embed link', as these links can
-        be used to 'embed' content into a website. To find this link, you could
-        search up how to get the 'embed link' for whatever online service you
-        used to upload and store your photos. For some websites, it is much
-        easier to get this embed link—the website might even provide an
-        easy-to-use button. For other websites, you might need to right-click on
-        an image and try to click 'Open image in new tab' until you get a link
-        which looks like a valid 'embed link' with only the image on it.
-        </p><p>On a related note, if you know some more HTML / CSS then you can
-        (to a limited extent) style your images too (for example, <strong
-        style="font-family: Consolas, sans-serif">&lt;img src="URL" width =
-        100%&gt;</strong> is very useful for scaling your images to a proper,
-        viewable size). We are working on a more user-friendly menu to be able
-        to insert images into your message if you're not comfortable with this,
-        so watch out for that!</p>
+        Yes! We introduced the ability to attach your own images to messages by
+        uploading them to our site in version 2.0.0. When signing someone's
+        virtrolio, click the Image button in the toolbar to try it out! The
+        possibilities are endless - send a picture of a handwritten message, add
+        in your favorite photo with your friend, send a meme, whatever you want!
     - question: Can I download my messages?
       answer: >
         After sending your messages, you do not own them anymore, so you cannot

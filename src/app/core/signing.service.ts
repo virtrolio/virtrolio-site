@@ -16,6 +16,8 @@ export class SigningService {
   charCount: number;
   maxCharCount: number;
   charCountColor: string;
+  images: File[];
+  imageURLs: string[];
 
   // Font service variables
   fontDict: Fonts; // Used to store all of the fonts
@@ -24,8 +26,8 @@ export class SigningService {
   currentFontDisplay: string; // Shown in the Font Dropdown menu
 
   constructor(private sanitizer: DomSanitizer) {
-    this.fontDict = FontService.fonts;
-    this.maxCharCount = MsgIoService.maxMessageLength;
+    this.fontDict = FontService.FONTS;
+    this.maxCharCount = MsgIoService.MAX_MSG_LENGTH;
   }
 
   /**
@@ -42,6 +44,8 @@ export class SigningService {
     this.currentFont = 'Arial';
     this.currentFontFamily = 'Arial, sans-serif';
     this.currentFontDisplay = 'Arial';
+    this.images = [];
+    this.imageURLs = [];
   }
 
   /**

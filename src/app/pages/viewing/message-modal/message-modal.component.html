@@ -1,4 +1,5 @@
 <div class="card shadow">
+  <!-- Message header -->
   <div class="msg-header">
     <div class="msg-header-group">
       <table class="header-table">
@@ -97,5 +98,9 @@
       }}"
       emoji
     ></markdown>
+    <app-inline-images
+      *ngIf="viewService.currentMessageModal.images"
+      [images]="viewService.currentMessageModal.images"
+    ></app-inline-images>
   </div>
 </div>

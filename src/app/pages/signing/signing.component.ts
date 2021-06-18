@@ -1,4 +1,10 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
@@ -7,6 +13,7 @@ import { SigningService } from '../../core/signing.service';
 import { MsgIoService } from '../../core/msg-io.service';
 import { Title } from '@angular/platform-browser';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 declare var $: any;
 
@@ -22,13 +29,15 @@ declare var $: any;
  */
 export class SigningComponent implements OnInit, OnDestroy {
   public name = 'your friend';
-  public sending = false;
+  public isSending = false;
   public embedLink = '';
   public imageWidth = 50;
   public copyButtonText = 'Copy';
 
   private uid: string;
   private key: string;
+
+  @ViewChild(ImageModalComponent) imageModalComponent: ImageModalComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -80,7 +89,7 @@ export class SigningComponent implements OnInit, OnDestroy {
    */
   @HostListener('window:beforeunload')
   canDeactivate(): Observable<boolean> | boolean {
-    return !this.signingService.signingBoxText || this.sending;
+    return !this.signingService.signingBoxText || !this.isSending;
   }
 
   /**
@@ -91,6 +100,25 @@ export class SigningComponent implements OnInit, OnDestroy {
       this.imageWidth = 100;
     } else if (this.imageWidth < 0) {
       this.imageWidth = 0;
+    }
+  }
+
+  /**
+   * Checks if the user has uploaded any images to the image modal
+   */
+  checkImageList(numerical?: boolean) {
+    const urlList = this.signingService.imageURLs;
+    if (urlList === undefined) {
+      // Check if image modal component has not been rendered yet
+      return numerical ? 0 : false;
+    } else if (urlList.length === 0) {
+      return numerical ? 0 : false;
+    } else if (urlList.length > 0) {
+      return numerical ? urlList.length : true;
+    } else {
+      CommonService.displayError(
+        'There was an error while checking your uploaded images'
+      );
     }
   }
 
@@ -107,15 +135,17 @@ export class SigningComponent implements OnInit, OnDestroy {
     newMsg.to = this.uid;
 
     // remove navigation popup
-    this.sending = true;
+    this.isSending = true;
     this.msgIo
       .sendMessage(newMsg, this.key)
       .then(() => {
+        this.isSending = false;
         this.router
           .navigate(['/msg-sent'], { queryParams: { name: this.name } })
           .catch((e) => CommonService.displayError(e));
       })
       .catch((error) => {
+        this.isSending = false;
         CommonService.displayError(error);
       });
   }

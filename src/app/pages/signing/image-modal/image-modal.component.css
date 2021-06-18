@@ -1,0 +1,30 @@
+#img-upload-input {
+  height: 100%;
+  width: 100%;
+}
+
+.image-buttons {
+  margin: 1em 0;
+  position: absolute;
+  bottom: 0;
+}
+
+#no-images-graphic {
+  max-width: 100%;
+}
+
+#embed-photo-div {
+  height: 20em;
+}
+
+#no-images-graphic,
+.uploaded-image {
+  max-height: 13em;
+  object-fit: contain;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
