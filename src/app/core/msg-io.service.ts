@@ -28,7 +28,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class MsgIoService {
-  public static readonly CURRENT_VERSION = '2021.0';
+  public static readonly CURRENT_VERSION = '2021.1';
   public static readonly MAX_MSG_LENGTH = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
