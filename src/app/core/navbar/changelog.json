@@ -1,5 +1,69 @@
 [
   {
+    "versionNumber": "2.0.0",
+    "releaseDate": "2021-06-16",
+    "newMessageAvailable": true,
+    "betaUpdate": false,
+    "items": [
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Signing",
+        "content": "Add the ability to upload (not just embed!) 3 images in a message"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Add the ability to view attached images in all message views"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Add a spinner animation while loading messages"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Signing",
+        "content": "Add a spinner animation while a message is being uploaded"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Viewing",
+        "content": "Replace the crying emoji with more professional content and graphics when there are no messages to view \ud83d\ude2d"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Revamp the graphics used throughout the website"
+      },
+      {
+        "type": "NEW",
+        "typeCSS": "changelog-new",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Add an underline to the current active page in the navbar"
+      },
+      {
+        "type": "FIX",
+        "typeCSS": "changelog-fix",
+        "betaFlag": false,
+        "location": "Sitewide",
+        "content": "Prevent modals remaining open when navigating to a new page"
+      }
+    ]
+  },
+  {
     "versionNumber": "1.2.1",
     "releaseDate": "2020-12-31",
     "betaUpdate": false,

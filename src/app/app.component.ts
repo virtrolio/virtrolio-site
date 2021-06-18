@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
  * Controls 'new user' cookie, displaying an alert if their browser hasn't visited the site before.
  */
 export class AppComponent implements OnInit {
-  static readonly beta = false;
+  public static readonly BETA = false;
   public title = 'virtrolio-site';
 
   constructor(public cookieService: CookieService) {}

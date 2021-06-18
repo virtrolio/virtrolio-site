@@ -29,7 +29,7 @@ export class ViewingService {
     private vps: ViewportScroller,
     private toastr: ToastrService
   ) {
-    this.fonts = FontService.fonts;
+    this.fonts = FontService.FONTS;
   }
 
   getMessageById(id: string) {

@@ -39,6 +39,10 @@
           data="{{ viewService.decodeHtml(singleMessage.contents) }}"
           emoji
         ></markdown>
+        <app-inline-images
+          *ngIf="singleMessage.images"
+          [images]="singleMessage.images"
+        ></app-inline-images>
       </div>
     </div>
   </div>

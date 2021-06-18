@@ -1,0 +1,99 @@
+<div
+  bsModal
+  #imageModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-child-name"
+  [config]="{ ignoreBackdropClick: true, backdrop: 'static' }"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="embed-photo-title">Attach up to three images!</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="hideImageModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <app-error-alert></app-error-alert>
+      <div class="modal-body align-items-center p-3" id="embed-photo-div">
+        <div class="row">
+          <div class="col-md-12 my-6 px-lg-5 px-3 text-center">
+            <div class="col-md-12 text-center">
+              <h5 *ngIf="!signingService.imageURLs.length">
+                No images selected
+              </h5>
+              <img
+                *ngIf="!signingService.imageURLs.length"
+                src="../../../../assets/images/girl-photos-folder.svg"
+                alt="girl with photos folder graphic"
+                id="no-images-graphic"
+              />
+              <img
+                class="col-4 uploaded-image"
+                *ngFor="let url of signingService.imageURLs"
+                [src]="url"
+                alt="selected image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 my-6 px-lg-5 px-3 text-center image-buttons">
+            <span>
+              <button
+                class="btn btn-primary mx-2"
+                (click)="imgUploadInput.click()"
+                [disabled]="signingService.imageURLs.length > 2"
+                [tooltip]="
+                  signingService.imageURLs.length > 2
+                    ? 'You cannot add more than 3 images.'
+                    : ''
+                "
+                placement="bottom"
+                triggers="pointerenter:pointerout hover focus"
+              >
+                Add Images
+              </button>
+            </span>
+            <input
+              type="file"
+              accept="image/bmp, image/gif, image/jfif, image/pjp, image/png, image/jpg, image/jpeg, image/tif, image/tiff"
+              class="file-upload d-none"
+              id="img-upload-input"
+              (change)="onSelectFiles($event)"
+              multiple
+              #imgUploadInput
+            />
+            <button
+              type="button"
+              class="btn btn-secondary mx-2"
+              (click)="onClearImages()"
+            >
+              Clear Images
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row w-100">
+          <div class="col-12 p-0">
+            <button
+              type="button"
+              class="btn btn-primary h-100 float-right"
+              (click)="hideImageModal()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

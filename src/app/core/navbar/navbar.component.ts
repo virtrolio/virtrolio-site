@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   public changelog: ChangelogVersion[] = changelog;
-  public beta = AppComponent.beta;
+  public beta = AppComponent.BETA;
 
   constructor(public authService: AuthService, private router: Router) {
     router.events.subscribe((event: Event) => {

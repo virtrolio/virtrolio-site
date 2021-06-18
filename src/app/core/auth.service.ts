@@ -19,8 +19,8 @@ import { VirtrolioUser } from '../shared/interfaces/users';
   providedIn: 'root',
 })
 export class AuthService {
-  static readonly keyLength = 7;
-  static readonly keyOptions =
+  public static readonly KEY_LENGTH = 7;
+  public static readonly KEY_OPTIONS =
     'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
   private user: User;
 
@@ -40,9 +40,9 @@ export class AuthService {
    */
   static generateKey(): string {
     let key = '';
-    for (let i = 0; i < AuthService.keyLength; i++) {
-      key += AuthService.keyOptions.charAt(
-        Math.floor(Math.random() * AuthService.keyOptions.length)
+    for (let i = 0; i < AuthService.KEY_LENGTH; i++) {
+      key += AuthService.KEY_OPTIONS.charAt(
+        Math.floor(Math.random() * AuthService.KEY_OPTIONS.length)
       );
     }
     return key;
