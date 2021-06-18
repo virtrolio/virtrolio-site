@@ -19,10 +19,10 @@ import auth = firebase.auth;
   providedIn: 'root',
 })
 export class AuthService {
-  static readonly keyLength = 7;
-  static readonly keyOptions =
+  public static readonly KEY_LENGTH = 7;
+  public static readonly KEY_OPTIONS =
     'qwertyuipasdfghjkzxcvbnmQWERTYUPASDFGHJKLZXCVBNM123456789';
-  static readonly notBetaErrorMessage =
+  public static readonly NOT_BETA_ERR_MSG =
     'Auth Error: Current user is not a beta tester and is not permitted to access the beta website';
   private user: User;
 
@@ -42,9 +42,9 @@ export class AuthService {
    */
   static generateKey(): string {
     let key = '';
-    for (let i = 0; i < AuthService.keyLength; i++) {
-      key += AuthService.keyOptions.charAt(
-        Math.floor(Math.random() * AuthService.keyOptions.length)
+    for (let i = 0; i < AuthService.KEY_LENGTH; i++) {
+      key += AuthService.KEY_OPTIONS.charAt(
+        Math.floor(Math.random() * AuthService.KEY_OPTIONS.length)
       );
     }
     return key;
@@ -145,7 +145,7 @@ export class AuthService {
           }
         })
         .catch((error) => {
-          if (error.message === AuthService.notBetaErrorMessage) {
+          if (error.message === AuthService.NOT_BETA_ERR_MSG) {
             return this.afa.signOut().then(() => {
               return this.router.navigate(['/access-denied-beta']);
             });
@@ -208,7 +208,7 @@ export class AuthService {
         'Auth Error: Failed to get list of beta testers'
       );
     } else if (betaTestersList.users.indexOf(user.uid) === -1) {
-      throw new Error(AuthService.notBetaErrorMessage);
+      throw new Error(AuthService.NOT_BETA_ERR_MSG);
     }
 
     // Not using this.getUserData() because userRef is required
@@ -268,7 +268,7 @@ export class AuthService {
     // user will be null if signInWithRedirect wasn't called right before
     if (userCredentials.user) {
       await this.createUser(userCredentials.user).catch((error) => {
-        if (error.message === AuthService.notBetaErrorMessage) {
+        if (error.message === AuthService.NOT_BETA_ERR_MSG) {
           return this.afa.signOut().then(() => {
             return this.router.navigate(['/access-denied-beta']);
           });

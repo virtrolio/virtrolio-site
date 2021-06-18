@@ -28,8 +28,8 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class MsgIoService {
-  static readonly currentVersion = '2021.0';
-  static readonly maxMessageLength = 15000;
+  public static readonly CURRENT_VERSION = '2021.0';
+  public static readonly MAX_MSG_LENGTH = 15000;
 
   private messagesCollection: AngularFirestoreCollection;
 
@@ -76,10 +76,10 @@ export class MsgIoService {
       !message.fontFamily
     ) {
       throw new Error('Font family was not provided');
-    } else if (sanitizedContents.length > MsgIoService.maxMessageLength) {
+    } else if (sanitizedContents.length > MsgIoService.MAX_MSG_LENGTH) {
       throw new RangeError(
         'Message is too long. The max length is ' +
-          MsgIoService.maxMessageLength +
+          MsgIoService.MAX_MSG_LENGTH +
           ' characters, ' +
           'and the provided message is ' +
           sanitizedContents.length +
@@ -100,7 +100,7 @@ export class MsgIoService {
           ' Provided color code: ' +
           message.backColor
       );
-    } else if (!(message.fontFamily in FontService.fonts)) {
+    } else if (!(message.fontFamily in FontService.FONTS)) {
       throw new Error(
         "Provided font family is not supported or doesn't exist: " +
           message.fontFamily
@@ -193,7 +193,11 @@ export class MsgIoService {
     const msgRef: AngularFirestoreDocument<VirtrolioDocument> = await this.afs
       .collection('messages')
       .doc(
-        this.authService.uid() + '-' + toUID + '-' + MsgIoService.currentVersion
+        this.authService.uid() +
+          '-' +
+          toUID +
+          '-' +
+          MsgIoService.CURRENT_VERSION
       );
     const msgDoc: VirtrolioDocument = await msgRef
       .valueChanges()
@@ -249,7 +253,7 @@ export class MsgIoService {
         '-' +
         messageTemplate.to +
         '-' +
-        MsgIoService.currentVersion;
+        MsgIoService.CURRENT_VERSION;
 
       // Upload images
       const images: string[] = await Promise.all(

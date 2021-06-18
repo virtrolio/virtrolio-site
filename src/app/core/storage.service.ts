@@ -10,7 +10,7 @@ import {
   providedIn: 'root',
 })
 export class StorageService {
-  public static imagesBaseFolder = 'messages';
+  public static readonly MESSAGE_IMG_BASE_PATH = 'messages';
 
   constructor(private storageService: AngularFireStorage) {}
 
@@ -19,7 +19,9 @@ export class StorageService {
   }
 
   private static generatePath(messageId: string, extension: string): string {
-    return `${this.imagesBaseFolder}/${messageId}/${uuidv4()}.${extension}`;
+    return `${
+      StorageService.MESSAGE_IMG_BASE_PATH
+    }/${messageId}/${uuidv4()}.${extension}`;
   }
 
   public async uploadImages(

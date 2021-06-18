@@ -9,9 +9,9 @@ import { SigningService } from '../../../core/signing.service';
   styleUrls: ['./image-modal.component.css'],
 })
 export class ImageModalComponent implements OnInit {
-  static maxFileSize = 8 * 1024 * 1024; // 8 MiB in bytes
+  public static readonly MAX_FILE_SIZE = 8 * 1024 * 1024; // 8 MiB in bytes
 
-  static acceptedFiles = [
+  public static readonly ACCEPTED_FILE_TYPES = [
     '.png',
     '.jpg',
     '.jpeg',
@@ -59,17 +59,17 @@ export class ImageModalComponent implements OnInit {
     if (files) {
       for (const item of files) {
         // Error handling for files over 8MiB
-        if (item.size > ImageModalComponent.maxFileSize) {
+        if (item.size > ImageModalComponent.MAX_FILE_SIZE) {
           this.ErrorAlertComponent.addImageSizeLimit(item.name);
           return;
         }
         // Error handling for unsupported file types
         let acceptedFiles = false;
-        for (const type in ImageModalComponent.acceptedFiles) {
+        for (const type in ImageModalComponent.ACCEPTED_FILE_TYPES) {
           if (
             item.name
               .toLowerCase()
-              .includes(ImageModalComponent.acceptedFiles[type])
+              .includes(ImageModalComponent.ACCEPTED_FILE_TYPES[type])
           ) {
             acceptedFiles = true;
             break;

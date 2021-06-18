@@ -26,8 +26,8 @@ export class SigningService {
   currentFontDisplay: string; // Shown in the Font Dropdown menu
 
   constructor(private sanitizer: DomSanitizer) {
-    this.fontDict = FontService.fonts;
-    this.maxCharCount = MsgIoService.maxMessageLength;
+    this.fontDict = FontService.FONTS;
+    this.maxCharCount = MsgIoService.MAX_MSG_LENGTH;
   }
 
   /**

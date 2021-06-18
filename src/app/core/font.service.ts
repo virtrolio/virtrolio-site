@@ -29,7 +29,7 @@ export class FontService {
   private static readonly PoiretOne = new Font('Poiret One', 'sans-serif');
   private static readonly PressStart = new Font('Press Start', 'sans-serif');
 
-  static readonly fonts: Fonts = {
+  public static readonly FONTS: Fonts = {
     Arial: FontService.Arial,
     'Comic Sans MS': FontService.ComicSansMS,
     'Courier New': FontService.CourierNew,
