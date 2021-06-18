@@ -52,7 +52,7 @@ export class StorageService {
    *
    * @param folderPath - The folder to delete.
    */
-  public async deleteFiles(folderPath: string) {
+  public async deleteFiles(folderPath: string): Promise<void> {
     this.storageService
       .ref(folderPath)
       .listAll()
