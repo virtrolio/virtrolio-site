@@ -12,15 +12,15 @@ export class ImageModalComponent implements OnInit {
   public static readonly MAX_FILE_SIZE = 8 * 1024 * 1024; // 8 MiB in bytes
 
   public static readonly ACCEPTED_FILE_TYPES = [
-    '.png',
-    '.jpg',
-    '.jpeg',
-    '.tif',
-    '.tiff',
-    '.bmp',
-    '.gif',
-    '.jfif',
-    '.pjp',
+    'image/png',
+    'image/jpg',
+    'image/jpeg',
+    'image/tif',
+    'image/tiff',
+    'image/bmp',
+    'image/gif',
+    'image/jfif',
+    'image/pjp',
   ];
 
   modalRef: BsModalRef;
@@ -63,19 +63,9 @@ export class ImageModalComponent implements OnInit {
           this.ErrorAlertComponent.addImageSizeLimit(item.name);
           return;
         }
+
         // Error handling for unsupported file types
-        let acceptedFiles = false;
-        for (const type in ImageModalComponent.ACCEPTED_FILE_TYPES) {
-          if (
-            item.name
-              .toLowerCase()
-              .includes(ImageModalComponent.ACCEPTED_FILE_TYPES[type])
-          ) {
-            acceptedFiles = true;
-            break;
-          }
-        }
-        if (!acceptedFiles) {
+        if (ImageModalComponent.ACCEPTED_FILE_TYPES.indexOf(item.type) === -1) {
           this.ErrorAlertComponent.addUnsupportedFileType(item.name);
           return;
         }
