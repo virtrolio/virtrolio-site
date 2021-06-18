@@ -178,12 +178,14 @@
               <strong
                 >v{{ version.versionNumber }} |
                 {{ version.releaseDate }}</strong
-              ><br />
-              <small
-                ><em
-                  >You can send one new message to each of your friends with
-                  this update! </em
-                >💌</small
+              ><span *ngIf="version.newMessageAvailable"
+                ><br />
+                <small
+                  ><em
+                    >You can send one new message to each of your friends with
+                    this update! </em
+                  >💌</small
+                ></span
               >
             </p>
             <ul>
