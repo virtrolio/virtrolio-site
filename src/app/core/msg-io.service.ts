@@ -28,7 +28,6 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class MsgIoService {
-  static readonly currentYear = CommonService.CURRENT_YEAR;
   static readonly currentVersion = '2021.0';
   static readonly maxMessageLength = 15000;
 
@@ -267,7 +266,7 @@ export class MsgIoService {
         timestamp: Timestamp.now(),
         images,
         isRead: false,
-        year: MsgIoService.currentYear,
+        year: CommonService.CURRENT_YEAR,
         fromName: await this.authService.displayName(),
         fromPic: await this.authService.profilePictureLink(),
         key,
