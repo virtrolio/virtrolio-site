@@ -28,7 +28,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class MsgIoService {
-  static readonly currentYear = 2021;
+  static readonly currentYear = CommonService.CURRENT_YEAR;
   static readonly currentVersion = '2021.0';
   static readonly maxMessageLength = 15000;
 
@@ -292,7 +292,7 @@ export class MsgIoService {
    */
   async deleteMessage(mID: string) {
     await this.storageService.deleteFiles(
-      `${StorageService.imagesBaseFolder}/${mID}`
+      `${StorageService.MESSAGE_IMG_BASE_PATH}/${mID}`
     );
     await this.afs.collection('messages').doc(mID).delete();
   }
