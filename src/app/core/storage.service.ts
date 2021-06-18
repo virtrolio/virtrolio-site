@@ -27,24 +27,27 @@ export class StorageService {
   public async uploadImages(
     messageId: string,
     images: File[]
-  ): Promise<Promise<string>[]> {
+  ): Promise<string[]> {
     if (images.length === 0) {
       return [];
     }
-    return images.map(async (imageFile) => {
-      const extension: string = StorageService.getFileExtension(imageFile);
-      const targetPath: string = StorageService.generatePath(
-        messageId,
-        extension
-      );
-      const targetStorageRef: AngularFireStorageReference =
-        this.storageService.ref(targetPath);
-      const uploadTask: AngularFireUploadTask = targetStorageRef.put(imageFile);
-      // Wait for the upload to complete
-      await uploadTask.snapshotChanges().toPromise();
-      // Return the path
-      return targetPath;
-    });
+    return Promise.all(
+      images.map(async (imageFile) => {
+        const extension: string = StorageService.getFileExtension(imageFile);
+        const targetPath: string = StorageService.generatePath(
+          messageId,
+          extension
+        );
+        const targetStorageRef: AngularFireStorageReference =
+          this.storageService.ref(targetPath);
+        const uploadTask: AngularFireUploadTask =
+          targetStorageRef.put(imageFile);
+        // Wait for the upload to complete
+        await uploadTask.snapshotChanges().toPromise();
+        // Return the path
+        return targetPath;
+      })
+    );
   }
 
   /**
