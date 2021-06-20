@@ -1,6 +1,21 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
+  	// Rules written under the assumption that the folder naming convention in images is as follows:
+    // /images/<fromUid>-<toUid>-<versionCode>/<filename>
+  	match /messages/{messageId}/{imageName} {
+    	allow get, list, delete: if request.auth != null
+      // Yearbook methodology: Recipient owns the data. Sender cannot access it.
+      && messageId.split('-')[1] == request.auth.uid;
+      allow create: if request.auth != null
+      // The targeted message must be authored by the current user
+      && messageId.split('-')[0] == request.auth.uid
+      // File size limit: 8 MiB
+      && request.resource.size < 8 * 1024 * 1024
+      // Only allow images
+      && request.resource.contentType.matches('^image/(bmp|gif|jfif|jpg|jpeg|pjp|png|tif|tiff)$');
+      allow update: if false;
+    }
     match /{allPaths=**} {
       allow read, write: if false;
     }

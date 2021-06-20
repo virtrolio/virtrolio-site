@@ -1,9 +1,10 @@
 {
   "name": "virtrolio-site",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "serve": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -33,7 +34,9 @@
     "ngx-toastr": "^14.0.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.3.0",
+    "uuid": "^8.3.2",
     "websocket-extensions": "^0.1.4",
+    "yaml": "^1.10.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

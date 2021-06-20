@@ -18,7 +18,7 @@ declare var $: any;
  * 'My virtrolio.' Displays your virtrolio as a 'book' on screen and allows you to generate a sharing link.
  */
 export class MyVirtrolioComponent implements OnInit, OnDestroy {
-  currentYear: number = CommonService.currentYear;
+  currentYear: number = CommonService.CURRENT_YEAR;
   /** Default values */
   public link = 'Getting your link...';
   public linkReady = false;
@@ -113,8 +113,8 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
         .share({
           title:
             this.displayName +
-            "'s virtrolio for" +
-            MsgIoService.currentYear +
+            "'s virtrolio for " +
+            CommonService.CURRENT_YEAR +
             '!',
           text: 'Sign my virtual yearbook!',
           url: this.link,

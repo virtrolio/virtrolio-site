@@ -17,9 +17,14 @@ html {
   --navbar-left: rgba(250, 128, 114, 1);
   --navbar-right: rgba(251, 91, 91, 1);
 
+  --loading-container-background: rgba(0, 0, 0, 0.5);
+
   /* Sizes */
   --footer-height: 5.5em;
   --navbar-height: 3em;
+
+  /* Z-indexes */
+  --loading-container-z-index: 3000;
 
   /* Shadows from signing component */
   --signing-shadow: 0 0.15em 0.25em 0.05em rgba(0, 0, 0, 0.175);
@@ -213,4 +218,18 @@ a.clickable-object:hover {
 .display-body-text {
   font-size: 1em;
   text-align: center;
+}
+
+.centered-container {
+  width: 100%;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-border {
+  color: var(--accent);
+  height: 3em;
+  width: 3em;
 }

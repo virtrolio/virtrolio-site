@@ -4,20 +4,6 @@
   font-family: Montserrat, sans-serif;
 }
 
-.loading-empty-state-container {
-  width: 100%;
-  height: calc(100vh - var(--navbar-height) - var(--footer-height));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.spinner-border {
-  color: var(--accent);
-  height: 3em;
-  width: 3em;
-}
-
 .empty-state-container {
   display: flex;
   flex-direction: column;

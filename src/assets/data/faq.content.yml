@@ -1,0 +1,81 @@
+- sectionTitle: Signing someone's virtrolio
+  questions:
+    - question: How do I sign someone's virtrolio?
+      answer: >
+        Ask them for their 'sharing link' (which they can get from their 'My
+        virtrolio' page). Then visit that sharing link and sign in if you
+        haven't already. You will then be taken to a wonderful place with many
+        formatting tools to type your customized message.
+    - question: How do I delete a message I sent?
+      answer: >
+        As per our <a target="_blank" href="/privacy-policy">privacy policy</a>,
+        you cannot delete a message once you have sent it. This is to more
+        closely emulate real-life yearbook signing, in that the virtrolio (and
+        all its messages) will stay with the <em>receiver</em>. In order to have
+        your message deleted, you must ask the <em>recipient</em> of your
+        message to delete it.
+    - question: Can I sign someone's virtrolio more than once?
+      answer: >
+        Yes and no. For any one version of the website (for example, if you just
+        created an account with us), then you will only be able to send one
+        message to each of your friends per calendar year. You probably wouldn't
+        sign someone's yearbook more than once in real life (unless you just
+        <em>wanted</em> to take space away from others). As such, we decided
+        that you can send one very special, meaningful message. However, if we
+        make a major update to the website, then we will allow for <strong>one
+        extra message to be sent to each of your friends</strong> so that you
+        can try out the new update's features. If we do make a major update to
+        the website, you'll find a note telling you that you can send an extra
+        message for the year in the changelog, which you can find by clicking
+        "What's New?" at the top of the page.
+    - question: >
+        **NEW** Can I add images, drawings, doodles, or scribbles to my
+        messages?
+      answer: >
+        Yes! We introduced the ability to attach your own images to messages by
+        uploading them to our site in version 2.0.0. When signing someone's
+        virtrolio, click the Image button in the toolbar to try it out! The
+        possibilities are endless - send a picture of a handwritten message, add
+        in your favorite photo with your friend, send a meme, whatever you want!
+    - question: Can I download my messages?
+      answer: >
+        After sending your messages, you do not own them anymore, so you cannot
+        download or save them. If you want to download and save the messages you
+        have <em>received</em>, we currently have the option for you to download
+        all your data as a .json file (go to your <a target="_blank"
+        href="/settings">settings</a> page for this option). We are working on a
+        way for you to be able download your messages in a more user-friendly
+        format, though, so stay tuned!
+- sectionTitle: Your Sharing Link
+  questions:
+    - question: How do I get a new sharing link?
+      answer: >
+        Go to <a target="_blank" href="/my-virtrolio">your virtrolio</a> and
+        click on 'Sharing Link', then generate a new link from there. Be
+        aware—doing so will invalidate your previous link!
+    - question: Why would I want a new sharing link?
+      answer: >
+        You can generate a new sharing link if people are sending you messages
+        you do not approve of using your old link. This helps prevent spammers
+        and bullies from clogging up your virtrolio. Only people with your
+        <em>newest</em> sharing link can sign your virtrolio.
+- sectionTitle: Miscellaneous
+  questions:
+    - question: What do I do if I get messages I don't approve of?
+      answer: >
+        Delete the messages from your virtrolio; as the recipient, according to
+        our <a target="_blank" href="/privacy-policy">privacy policy</a>, you
+        are the only one with the authority to do this. You can also generate a
+        new sharing link to prevent people from using your old sharing links. If
+        the problem persists, you can <a target="_blank"
+        href="mailto:virtrolio.team@gmail.com" target="_blank">send us an
+        email</a> and we can take more authoritative action.
+    - question: Can I sign in with anything other than Google?
+      answer: >
+        Currently, no. Sorry! There are plans to add more sign-in options in the
+        future though, so stay tuned!
+    - question: Can I change my display name?
+      answer: >
+        No, your display name is taken directly from your Google Account.
+        Because of this, we suggest you use a personal Gmail account to sign up
+        for Virtrolio.

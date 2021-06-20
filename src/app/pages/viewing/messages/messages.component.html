@@ -1,6 +1,6 @@
 <div
   *ngIf="isLoading; else messages"
-  class="loading-empty-state-container d-flex justify-content-center"
+  class="centered-container d-flex justify-content-center"
 >
   <div class="spinner-border" role="status"></div>
 </div>
@@ -9,7 +9,7 @@
   <!-- Perform a check to see if the number of messages received is 0 -->
   <div
     *ngIf="messageList.length === 0; else showMessages"
-    class="loading-empty-state-container d-flex justify-content-center"
+    class="centered-container d-flex justify-content-center"
   >
     <div class="empty-state-container px-5">
       <img
@@ -150,6 +150,8 @@
             </table>
           </div>
         </div>
+
+        <!-- Message body -->
         <div
           (click)="popupMessage(msg)"
           [ngStyle]="{
@@ -167,6 +169,13 @@
             emoji
           ></markdown>
         </div>
+        <app-image-footer
+          *ngIf="msg.images && msg.images.length > 0"
+          [imageList]="msg.images"
+          [backColor]="generateHeaderColor(msg.backColor).bg"
+          (popupMessage)="popupMessage(msg)"
+        >
+        </app-image-footer>
       </div>
     </div>
 
@@ -310,6 +319,10 @@
                 data="{{ viewService.decodeHtml(msg.contents) }}"
                 emoji
               ></markdown>
+              <app-inline-images
+                *ngIf="msg.images"
+                [images]="msg.images"
+              ></app-inline-images>
             </div>
           </div>
         </div>
