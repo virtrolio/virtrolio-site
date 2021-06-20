@@ -113,7 +113,7 @@ export class MyVirtrolioComponent implements OnInit, OnDestroy {
         .share({
           title:
             this.displayName +
-            "'s virtrolio for" +
+            "'s virtrolio for " +
             CommonService.CURRENT_YEAR +
             '!',
           text: 'Sign my virtual yearbook!',
