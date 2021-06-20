@@ -129,7 +129,9 @@ export class MsgIoService {
 
     return this.afs
       .collection('messages', (ref) =>
-        ref.where('to', '==', this.authService.uid())
+        ref
+          .where('to', '==', this.authService.uid())
+          .orderBy('timestamp', 'desc')
       )
       .snapshotChanges()
       .pipe(
