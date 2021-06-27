@@ -30,6 +30,16 @@
       >
         Even when you're apart.
       </h1>
+      <a href="#info">
+        <button
+          [hidden]="authService.isLoggedIn()"
+          type="button"
+          class="login-btn-home btn-lg btn-primary"
+          id="login-btn-home"
+        >
+          Log in | Sign up
+        </button>
+      </a>
       <img
         alt="down"
         height="48"
