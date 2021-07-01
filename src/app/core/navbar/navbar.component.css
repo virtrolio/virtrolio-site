@@ -133,9 +133,6 @@
 .login-btn-mobile {
   display: block;
 }
-.login-btn-home {
-  display: block;
-}
 
 @media (min-width: 768px) {
   .login-btn-container {
