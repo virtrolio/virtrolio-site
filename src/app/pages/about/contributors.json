@@ -90,21 +90,6 @@
     }
   },
   {
-    "name": "Jonathan Papineau",
-    "images": {
-      "regular": "https://bit.ly/3flxzIr",
-      "silly": "https://bit.ly/2ZgD9Gh"
-    },
-    "blurb": "Jonathan is the wandering sage for the backend of Virtrolio. If there was ever a problem with an async function or RegEx, this guy knew the answer! He's currently studying Computer Science at uOttawa and is part of the university's rocketry team. While he could stay in front of a computer all day long, he, on occasion, fancies wandering out of his man cave to do some cross-country skiing in the winter, or some water skiing and swimming in the summer. Oh, also he thinks that Vim is awesome.",
-    "sharingLink": "/signing?uid=JqE7OUrEaMTHtbEMBaJoakE1MHI3&key=PapaJohn",
-    "social": {
-      "github": "jonapap",
-      "instagram": "",
-      "linkedIn": "https://www.linkedin.com/in/jonathan-papineau/",
-      "website": "jpapineau.ca"
-    }
-  },
-  {
     "name": "Kishan Manoharan",
     "images": {
       "regular": "https://bit.ly/3ggfmxo",
