@@ -118,3 +118,27 @@
   color: red;
   font-weight: bold;
 }
+
+.login-btn-container {
+  display: none;
+}
+.login-btn {
+  background-color: transparent;
+  border-width: 3px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #fa8072;
+  padding: 3px !important;
+}
+.login-btn-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .login-btn-container {
+    display: block;
+  }
+  .login-btn-mobile {
+    display: none;
+  }
+}

@@ -77,6 +77,11 @@
           >What's New?</a
         >
       </li>
+      <li class="nav-item login-btn-mobile">
+        <a [hidden]="authService.isLoggedIn()" class="nav-link" href="#info"
+          ><strong>Log in | Sign up</strong></a
+        >
+      </li>
       <li
         *ngIf="authService.isLoggedIn()"
         class="dropdown-divider d-block d-sm-block d-md-none"
@@ -99,6 +104,16 @@
         >
       </li>
     </ul>
+  </div>
+  <div class="navbar-nav mr-2 float-right login-btn-container">
+    <li class="nav-item">
+      <a
+        [hidden]="authService.isLoggedIn()"
+        class="nav-link login-btn"
+        href="#info"
+        >Log in | Sign up</a
+      >
+    </li>
   </div>
   <!-- Profile pic menu on desktop if logged in -->
   <div class="float-right d-none d-md-block d-lg-block d-xl-block">

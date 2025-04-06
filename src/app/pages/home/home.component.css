@@ -50,7 +50,7 @@
 }
 
 #chevron {
-  margin-top: 2em;
+  margin-top: 1em;
   cursor: pointer;
 }
 
@@ -259,6 +259,24 @@
 
 #btn-info:hover {
   background-color: var(--dark-accent);
+}
+
+/* Main login button */
+
+.login-btn-home {
+  display: block;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: 0px 0px 0px white;
+  transition: 0.3s ease-in-out;
+}
+.login-btn-home:hover {
+  box-shadow: 0px 0px 10px white;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 /* fragment padding for header */
